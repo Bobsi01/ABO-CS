@@ -1,0 +1,23 @@
+{
+  "reviewed_on": "2026-10-11",
+  "protocol_id": "taal-main-plume-2020-v1",
+  "protocol_path": "docs/EVALUATION_PROTOCOL.md",
+  "methodological_review": "approved_before_evaluation",
+  "empirical_input_gate": "source_blocked",
+  "classifications": [
+    {"input": "event_definition", "status": "usable", "reason": "Publisher explicitly associates the map with 13:00 January 12 to 04:28 January 13 local; Figure 2 intense emission and Figure 4 rounded endpoint remain different definitions."},
+    {"input": "NOAA_format", "status": "usable", "reason": "Fresh official IGRA 2.2 format review confirms column units, sentinel values, processing flags and release-time limitations."},
+    {"input": "NOAA_launches_and_effective_wind", "status": "pending_raw_record_audit", "reason": "Do not approve candidate records or station representativeness from product availability alone."},
+    {"input": "historical_active_vent_datum", "status": "source_blocked", "reason": "Current 311 m GVP profile elevation is not a surveyed 2020 active-vent elevation; the existing dictionary discloses this."},
+    {"input": "independent_ash_mass_and_bulk_density", "status": "source_blocked", "reason": "Deposit-derived volume is dependent on the same observation family, while thickness alone identifies mass divided by bulk density."},
+    {"input": "emitted_grain_spectrum_and_settling_speeds", "status": "source_blocked", "reason": "Distal sampled grain distributions do not independently define the whole emitted eruption spectrum."},
+    {"input": "diffusion_and_initial_spread", "status": "assumed_only", "reason": "Protocol restricts any future calibration to these parameters with a frozen split; no fit is approved in this review."},
+    {"input": "observation_geometries", "status": "source_blocked", "reason": "Published raster contours require two independent traces and quantified registration and trace disagreement; vertices are not independent observations."},
+    {"input": "predictive_acceptance_tolerance", "status": "source_blocked", "reason": "Study fitting percentages are not complete predictive uncertainty; descriptive comparison must retain validation not established."}
+  ],
+  "source_checks": [
+    {"url": "https://link.springer.com/article/10.1007/s00445-022-01534-y", "locator": "Deposit volume calculation; Figure 2; Figure 4; Limitations; Rights and permissions", "access": "fresh publisher text"},
+    {"url": "https://www.ncei.noaa.gov/pub/data/igra/data/igra2-data-format.txt", "locator": "Header Record Format and Data Record Format, updated 19 January 2023", "access": "fresh direct text; web decoder failed, PowerShell HTTPS read succeeded"}
+  ],
+  "review_limit": "Approval covers the frozen method. It does not establish reviewed physical inputs, independent observations, predictive agreement or complete scientific validation."
+}

@@ -1,0 +1,990 @@
+[
+  {
+    "index": 329139,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:Hy",
+        "to": "Hy"
+      },
+      {
+        "from": "Hy",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:6",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 739672,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:x_",
+        "to": "x_"
+      },
+      {
+        "from": "x_",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:1",
+        "to": "system / ClosureFeedbackCellArray"
+      },
+      {
+        "from": "system / ClosureFeedbackCellArray",
+        "type": "code",
+        "edge": "hidden:0",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:28",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 739861,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:329 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:global_object",
+        "to": "Window [JSGlobalObject] / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 763734,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactProps$j6wwvxwsc8k",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:onSubmit",
+        "to": "onSubmit"
+      },
+      {
+        "from": "onSubmit",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @776629"
+      },
+      {
+        "from": "system / Context / scope @776629",
+        "type": "object",
+        "edge": "context:He",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 843259,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:317 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:global_object",
+        "to": "Window [JSGlobalObject] / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 850369,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:Hy",
+        "to": "Hy"
+      },
+      {
+        "from": "Hy",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:1",
+        "to": "system / ClosureFeedbackCellArray"
+      },
+      {
+        "from": "system / ClosureFeedbackCellArray",
+        "type": "code",
+        "edge": "hidden:0",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:3",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 908836,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:memoizedProps",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:onSubmit",
+        "to": "onSubmit"
+      },
+      {
+        "from": "onSubmit",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @776629"
+      },
+      {
+        "from": "system / Context / scope @776629",
+        "type": "object",
+        "edge": "context:He",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 912973,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:329 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:80",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      },
+      {
+        "from": "Window (internal cache) / http://127.0.0.1:8000",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Window (prototype) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 913150,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:329 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:81",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 1030656,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:zv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:internal",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 1059939,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:317 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:210",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 1060120,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:317 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:209",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      },
+      {
+        "from": "Window (internal cache) / http://127.0.0.1:8000",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Window (prototype) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 1130201,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:Nv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:ref",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:current",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1157165"
+      },
+      {
+        "from": "system / Context / scope @1157165",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:current",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 1130213,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$j6wwvxwsc8k",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:constructor",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1279519"
+      },
+      {
+        "from": "system / Context / scope @1279519",
+        "type": "object",
+        "edge": "context:Ei",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:type",
+        "to": "ab"
+      },
+      {
+        "from": "ab",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @178727"
+      },
+      {
+        "from": "system / Context / scope @178727",
+        "type": "object",
+        "edge": "context:zv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:get",
+        "to": "i"
+      },
+      {
+        "from": "i",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1504475"
+      },
+      {
+        "from": "system / Context / scope @1504475",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:internal",
+        "to": "Object"
+      }
+    ]
+  }
+]

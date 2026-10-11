@@ -1,0 +1,56 @@
+{
+  "revision": "2026-10-11-gap-evidence-v1",
+  "accessed_at": "2026-10-11",
+  "files": [
+    {
+      "file": "gap-evidence-register.json",
+      "sha256": "c41dee4563902b5d142addb298ca0dfa7c36e1dbec8ec1c2060c0cedc15b25a0"
+    },
+    {
+      "file": "source-investigations.json",
+      "sha256": "24d8aa317a8464f9b8461afe07f6d8db5ccc6f5c1007bc987031cd1be929c470"
+    },
+    {
+      "file": "domain-inventory.json",
+      "sha256": "37ec33e32a4be1bfe117f785e6b5d7013ccc7992f073bdad1940b25f52b3deab"
+    },
+    {
+      "file": "population/psgc-directory-extract.txt",
+      "sha256": "2e5738aa4df0290270f8157d97852a8ce292716fa6b3ac833652bf63a1a48768"
+    },
+    {
+      "file": "population/psgc-directory-extract-2.txt",
+      "sha256": "2366c3ff4f872a855a800b9283b6f88f8d91496785f392bdb883615bc76ef28b"
+    },
+    {
+      "file": "population/psgc-directory-extract-3.txt",
+      "sha256": "a72315e9e87840d4043500c7435e15cf42a6d7d08fdc8e9de8c3ee503a6cfbc2"
+    },
+    {
+      "file": "population/psgc-extracted-records.json",
+      "sha256": "e2bc7fe5855b1227305a800a9c722958ddde799f33539b9e9793b9f5e884e1f2"
+    },
+    {
+      "file": "population/batangas-2020-transcription.json",
+      "sha256": "59dc266d6539a819894ebcdc16cb9c4f8a985809bbfec717a80768bc37aabe09"
+    }
+  ],
+  "upstream_manifests": [
+    "manifest.json",
+    "igra/manifest.json",
+    "taal-study/manifest.json"
+  ],
+  "source_locations": {
+    "population/psgc-directory-extract*.txt": [
+      "https://psa.gov.ph/classification/psgc/municipalities",
+      "https://psa.gov.ph/classification/psgc/cities"
+    ],
+    "population/batangas-2020-transcription.json": "https://rsso04a.psa.gov.ph/sites/default/files/infographics/26R0410-QS-005.pdf"
+  },
+  "limitations": [
+    "PSA directory files are retrieved text extracts with source line locators; not original HTML",
+    "Batangas 2020 values were manually transcribed from the primary PDF page 2 table",
+    "Original national census downloads and Batangas PDF direct acquisition returned access challenges",
+    "A current correspondence code does not establish unchanged historical boundaries"
+  ]
+}

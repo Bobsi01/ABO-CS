@@ -1,0 +1,25 @@
+{
+  "source_url": "https://rsso04a.psa.gov.ph/sites/default/files/infographics/26R0410-QS-005.pdf",
+  "source_title": "Batangas QuickSTAT, April 2026, released 26 May 2026",
+  "locator": "Page 2 Population Count, 2020 and 2024 columns, independently read indexed primary PDF text 11 October 2026",
+  "original_pdf_download": "not obtained in this independent audit",
+  "rows": [
+    ["Agoncillo",39101,40662], ["Alitagtag",26819,28033],
+    ["Balayan",95913,96939], ["Balete",24055,24202],
+    ["Batangas City",351437,358267], ["Bauan",90819,94016],
+    ["Calaca City",87361,92281], ["Calatagan",58719,60420],
+    ["Cuenca",36235,36453], ["Ibaan",58507,58673],
+    ["Laurel",43210,44791], ["Lemery",93186,94736],
+    ["Lian",56280,56788], ["Lipa City",372931,387392],
+    ["Lobo",40736,41251], ["Mabini",50858,49876],
+    ["Malvar",64379,74565], ["Mataasnakahoy",30621,31912],
+    ["Nasugbu",136524,141063], ["Padre Garcia",51853,53526],
+    ["Rosario",128352,131365], ["San Jose",79868,81170],
+    ["San Juan",114068,115118], ["San Luis",36172,36841],
+    ["San Nicolas",23908,24392], ["San Pascual",69009,69419],
+    ["Santa Teresita",21559,21742], ["City of Santo Tomas",218500,226772],
+    ["Taal",61460,61559], ["Talisay",46238,46477],
+    ["City of Tanauan",193936,209697], ["Taysan",40146,41332],
+    ["Tingloy",19215,15866], ["Tuy",46519,47199]
+  ]
+}

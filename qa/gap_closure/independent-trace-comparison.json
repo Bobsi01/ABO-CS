@@ -1,0 +1,14 @@
+{
+  "comparison_kind": "Dependent source double-digitization; not model agreement",
+  "qa_frozen_trace_sha256": "bdc75755d434c093695d9d8a2690ae8884358bc6fe88a75c56ca055148f94d0b",
+  "science_frozen_trace_sha256": "8677e2d646e7097c25dddea94a7fbe697955abdd92ec90ce96cd343447bce25d",
+  "qa_area_km2": 8656.151369049236,
+  "science_area_km2": 8639.922643515696,
+  "trace_intersection_over_union": 0.9791812358010684,
+  "boundary_hausdorff_m_equal_area_projection": 1843.821638849552,
+  "bidirectional_vertex_to_boundary_median_m": 352.74882479611585,
+  "narrative_area_km2": 8605,
+  "table_3_area_km2": 3864.89,
+  "independent_observation_count": 0,
+  "limit": "Both digitizers used the same published contour. Georeferencing assumes WGS84 from printed degree ticks. Registration and trace disagreement do not include original measurement, erosion or subjective contour uncertainty; no calibrated model or empirical acceptance test was run."
+}

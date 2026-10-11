@@ -1,0 +1,74 @@
+{
+  "wind_input_sha256": "525d2f375c2e035b1ed156227895f3e8aed4214a125ad10eb045ec6044bee562",
+  "request_sha256": "1e28dce766e4d4aaa83305938487dec798439c13783ee990eca3d3e7351168af",
+  "wind": "Actual Jan 12 Tanay levels; insufficient frozen altitude coverage; no effective wind",
+  "sensitivity": "Synthetic Mayon teaching example, independent scalar equation, no fitted parameters",
+  "uncertainty": "80-120% is a teaching perturbation, not a source-supported confidence interval",
+  "receptor_east_north_m": [
+    35355.33905932737,
+    35355.33905932737
+  ],
+  "baseline_thickness_mm": 0.026909527178498996,
+  "records": [
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 0.8,
+      "thickness_mm": 0.015104764399626828
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 0.9,
+      "thickness_mm": 0.036002024682663586
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1,
+      "thickness_mm": 0.026909527178498996
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1.1,
+      "thickness_mm": 0.024723904345346378
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1.2,
+      "thickness_mm": 0.028077566668778482
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 0.8,
+      "thickness_mm": 0.016480517303619876
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 0.9,
+      "thickness_mm": 0.03841096172429425
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1,
+      "thickness_mm": 0.026909527178498996
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1.1,
+      "thickness_mm": 0.023481938701857306
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1.2,
+      "thickness_mm": 0.02574441508149037
+    }
+  ],
+  "contours": "Two independent traces of one published 0.5 mm contour; source repeatability, not model agreement",
+  "trace_input_sha256": {
+    "trace-science.geojson": "58242adb67c51e2ed5f33d4d11223a13dc452bf8daa1209f0142cc6310712918",
+    "trace-qa.geojson": "de251169ec6daf8acde9b70dda9804ad9ad503706bb2f04eb570d014eab017d1"
+  },
+  "figure_sha256": {
+    "taal-contour-traces.png": "dc5ad9cebc5c05b7b3e42851907992a508441d2aea16b54d7fe2f5dc6e4967ad",
+    "taal-wind-coverage.png": "67bb6f1b932433eacf145071f8b775516c69d334f58381a6147bf9b3fb52d048",
+    "teaching-sensitivity.png": "5b0dc528d7c956c533b203278b8916062e109993a3a0f0346633cf1276815269"
+  }
+}

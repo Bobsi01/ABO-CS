@@ -1,0 +1,43 @@
+[project]
+name = "abo-api"
+version = "0.1.0"
+description = "Local Python foundation for ABO's academic ashfall simulator"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "numpy>=2.2,<3",
+  "scipy>=1.15,<2",
+  "contourpy>=1.3,<2",
+  "shapely>=2.1,<3",
+  "pydantic>=2.10,<3",
+  "pyproj>=3.7,<4",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.13.1,<3",
+    "pytest>=8.3,<10",
+    "ruff>=0.11,<1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/abo_api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["abo_api"]

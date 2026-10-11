@@ -1,0 +1,1458 @@
+[
+  {
+    "index": 869394,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Xi",
+        "to": "e"
+      },
+      {
+        "from": "e",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:5",
+        "to": "o"
+      },
+      {
+        "from": "o",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994039"
+      },
+      {
+        "from": "system / Context / scope @1994039",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:4",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 1027775,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Xi",
+        "to": "e"
+      },
+      {
+        "from": "e",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:8",
+        "to": "o"
+      },
+      {
+        "from": "o",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994039"
+      },
+      {
+        "from": "system / Context / scope @1994039",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:3",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 2063900,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:328 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:global_object",
+        "to": "Window [JSGlobalObject] / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 2067587,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:og",
+        "to": "Ga"
+      },
+      {
+        "from": "Ga",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:3",
+        "to": "ee"
+      },
+      {
+        "from": "ee",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994097"
+      },
+      {
+        "from": "system / Context / scope @1994097",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:2",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 2636661,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Xi",
+        "to": "e"
+      },
+      {
+        "from": "e",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:6",
+        "to": "o"
+      },
+      {
+        "from": "o",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994039"
+      },
+      {
+        "from": "system / Context / scope @1994039",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:2",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 2750626,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Vy",
+        "to": "Vy"
+      },
+      {
+        "from": "Vy",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:6",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 2781412,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:328 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:81",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 2781759,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:328 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:80",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      },
+      {
+        "from": "Window (internal cache) / http://127.0.0.1:8000",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Window (prototype) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 2782781,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:316 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:global_object",
+        "to": "Window [JSGlobalObject] / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 3371689,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Xi",
+        "to": "e"
+      },
+      {
+        "from": "e",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:13",
+        "to": "o"
+      },
+      {
+        "from": "o",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994039"
+      },
+      {
+        "from": "system / Context / scope @1994039",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:3",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3692566,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactProps$7uzzz4fcghm",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:onSubmit",
+        "to": "onSubmit"
+      },
+      {
+        "from": "onSubmit",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @4100839"
+      },
+      {
+        "from": "system / Context / scope @4100839",
+        "type": "object",
+        "edge": "context:He",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3735190,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Rv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:internal",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3737943,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Xi",
+        "to": "e"
+      },
+      {
+        "from": "e",
+        "type": "object",
+        "edge": "property:_listeners",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:dispose",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:10",
+        "to": "o"
+      },
+      {
+        "from": "o",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1994039"
+      },
+      {
+        "from": "system / Context / scope @1994039",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:programs",
+        "to": "Array"
+      },
+      {
+        "from": "Array",
+        "type": "object",
+        "edge": "element:2",
+        "to": "Sh"
+      },
+      {
+        "from": "Sh",
+        "type": "object",
+        "edge": "property:destroy",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @1289171"
+      },
+      {
+        "from": "system / Context / scope @1289171",
+        "type": "object",
+        "edge": "context:e",
+        "to": "cg"
+      },
+      {
+        "from": "cg",
+        "type": "object",
+        "edge": "property:render",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @2256895"
+      },
+      {
+        "from": "system / Context / scope @2256895",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738743"
+      },
+      {
+        "from": "system / Context / scope @1738743",
+        "type": "object",
+        "edge": "internal:previous",
+        "to": "system / Context / scope @1738785"
+      },
+      {
+        "from": "system / Context / scope @1738785",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3742290,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:29",
+        "to": "C++ Persistent roots"
+      },
+      {
+        "from": "C++ Persistent roots",
+        "type": "synthetic",
+        "edge": "internal:blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>, HTMLElement &, base::OnceClosure)@..\\..\\third_party\\blink\\renderer\\core\\exported\\web_form_element_observer_impl.cc:139",
+        "to": "MutationObserver::Delegate"
+      },
+      {
+        "from": "MutationObserver::Delegate",
+        "type": "native",
+        "edge": "element:1",
+        "to": "<form>"
+      },
+      {
+        "from": "<form>",
+        "type": "native",
+        "edge": "property:__reactFiber$7uzzz4fcghm",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:alternate",
+        "to": "Ii"
+      },
+      {
+        "from": "Ii",
+        "type": "object",
+        "edge": "property:memoizedProps",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:onSubmit",
+        "to": "onSubmit"
+      },
+      {
+        "from": "onSubmit",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @4100839"
+      },
+      {
+        "from": "system / Context / scope @4100839",
+        "type": "object",
+        "edge": "context:He",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3843392,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:b_",
+        "to": "b_"
+      },
+      {
+        "from": "b_",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:1",
+        "to": "system / ClosureFeedbackCellArray"
+      },
+      {
+        "from": "system / ClosureFeedbackCellArray",
+        "type": "code",
+        "edge": "hidden:0",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:28",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 3997502,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:316 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:210",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 3997579,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:10",
+        "to": "(Global handles)"
+      },
+      {
+        "from": "(Global handles)",
+        "type": "synthetic",
+        "edge": "internal:316 / extensions::ScriptContext::v8_context_",
+        "to": "system / NativeContext / http://127.0.0.1:8000"
+      },
+      {
+        "from": "system / NativeContext / http://127.0.0.1:8000",
+        "type": "native",
+        "edge": "internal:fast_template_instantiations_cache",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "array",
+        "edge": "internal:209",
+        "to": "Window (internal cache) / http://127.0.0.1:8000"
+      },
+      {
+        "from": "Window (internal cache) / http://127.0.0.1:8000",
+        "type": "object",
+        "edge": "property:__proto__",
+        "to": "Window (prototype) / http://127.0.0.1:8000"
+      }
+    ]
+  },
+  {
+    "index": 4308593,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Vy",
+        "to": "Vy"
+      },
+      {
+        "from": "Vy",
+        "type": "closure",
+        "edge": "internal:feedback_cell",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:1",
+        "to": "system / ClosureFeedbackCellArray"
+      },
+      {
+        "from": "system / ClosureFeedbackCellArray",
+        "type": "code",
+        "edge": "hidden:0",
+        "to": "system / FeedbackCell"
+      },
+      {
+        "from": "system / FeedbackCell",
+        "type": "code",
+        "edge": "internal:value",
+        "to": "system / FeedbackVector"
+      },
+      {
+        "from": "system / FeedbackVector",
+        "type": "code",
+        "edge": "hidden:3",
+        "to": "system / AllocationSite"
+      },
+      {
+        "from": "system / AllocationSite",
+        "type": "code",
+        "edge": "internal:transition_info",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 4387743,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Rv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:get",
+        "to": "i"
+      },
+      {
+        "from": "i",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @5647589"
+      },
+      {
+        "from": "system / Context / scope @5647589",
+        "type": "object",
+        "edge": "context:o",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:internal",
+        "to": "Object"
+      }
+    ]
+  },
+  {
+    "index": 4393627,
+    "retaining_path": [
+      {
+        "from": "",
+        "type": "synthetic",
+        "edge": "element:1",
+        "to": "(GC roots)"
+      },
+      {
+        "from": "(GC roots)",
+        "type": "synthetic",
+        "edge": "element:11",
+        "to": "(Handle scope)"
+      },
+      {
+        "from": "(Handle scope)",
+        "type": "synthetic",
+        "edge": "internal:24",
+        "to": "system / InstructionStream"
+      },
+      {
+        "from": "system / InstructionStream",
+        "type": "code",
+        "edge": "hidden:4",
+        "to": "system / Context / scope @1290859"
+      },
+      {
+        "from": "system / Context / scope @1290859",
+        "type": "object",
+        "edge": "context:Mv",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:ref",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:current",
+        "to": ""
+      },
+      {
+        "from": "",
+        "type": "closure",
+        "edge": "internal:context",
+        "to": "system / Context / scope @3914697"
+      },
+      {
+        "from": "system / Context / scope @3914697",
+        "type": "object",
+        "edge": "context:n",
+        "to": "Object"
+      },
+      {
+        "from": "Object",
+        "type": "object",
+        "edge": "property:current",
+        "to": "Object"
+      }
+    ]
+  }
+]

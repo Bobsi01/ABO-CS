@@ -1,0 +1,83 @@
+{
+  "scenario": {
+    "volcano_id": "taal",
+    "label": "Taal illustrative teaching scenario",
+    "input_status": "illustrative",
+    "source_ids": [
+      "gvp-taal",
+      "assumptions"
+    ],
+    "vent_lat": 14.0106,
+    "vent_lon": 120.9975,
+    "vent_elevation_m": 311,
+    "column_height_m": 5000,
+    "mass_rate_kg_s": 10000,
+    "duration_s": 3600,
+    "wind_speed_m_s": 10,
+    "wind_from_deg": 29,
+    "diffusivity_m2_s": 500,
+    "initial_spread_m": 250,
+    "bulk_density_kg_m3": 1000,
+    "grains": [
+      {
+        "diameter_um": 32,
+        "fraction": 0.1,
+        "settling_speed_m_s": 0.05
+      },
+      {
+        "diameter_um": 63,
+        "fraction": 0.15,
+        "settling_speed_m_s": 0.2
+      },
+      {
+        "diameter_um": 125,
+        "fraction": 0.25,
+        "settling_speed_m_s": 0.8
+      },
+      {
+        "diameter_um": 250,
+        "fraction": 0.3,
+        "settling_speed_m_s": 3
+      },
+      {
+        "diameter_um": 500,
+        "fraction": 0.2,
+        "settling_speed_m_s": 10
+      }
+    ],
+    "domain_km": 200,
+    "cell_km": 1,
+    "release_layers": 16
+  },
+  "provenance": {
+    "solver_version": "abo-gaussian-1.0",
+    "dataset_revision": "2026-10-09-curation-1",
+    "source_ids": [
+      "assumptions",
+      "boundaries",
+      "caap-bicol",
+      "caap-naia",
+      "gvp-taal",
+      "psa-0401000000",
+      "psa-0402100000",
+      "psa-0500500000",
+      "psa-1804500000",
+      "psa-1804600000"
+    ],
+    "input_status": "illustrative",
+    "assumptions": [
+      "Steady eruption and uniform wind",
+      "Flat ground at vent datum",
+      "Constant class settling speeds",
+      "Uniform release-height weights",
+      "Centroids are point samples; population counts are indicative"
+    ],
+    "warnings": [
+      "Academic simulation, not a PHIVOLCS advisory",
+      "Surface exposure does not establish roof safety, water potability or flight safety",
+      "No historical predictive validation has been established",
+      "Input status is caller metadata; it does not certify scientific review",
+      "Physical inputs are illustrative assumptions, not measured eruption values"
+    ]
+  }
+}

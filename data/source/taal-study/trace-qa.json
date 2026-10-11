@@ -1,0 +1,27 @@
+{
+  "trace_id": "independent-qa-0.5mm-v1",
+  "author_role": "Independent QA evaluator",
+  "source_path": "data/source/taal-study/figure-4-pdf-extract.png",
+  "source_family": "taal-deposit-study",
+  "source_locator": "Balangue-Tarriela et al. 2022 Figure 4a, outer green 0.05 cm isopach",
+  "source_quantity": "0.05 cm = 0.5 mm",
+  "frozen_before_cross_trace_comparison": true,
+  "frozen_before_model_comparison": true,
+  "coordinate_interpretation": "Printed longitude/latitude degree ticks interpreted as WGS84 for descriptive GIS comparison; map datum not explicitly verified",
+  "longitude_tick_pixels": [64.5,248,430,613,796],
+  "longitude_tick_degrees": [120.66666666666667,121,121.33333333333333,121.66666666666667,122],
+  "latitude_tick_pixels": [92.5,281,470,658,846.5,1035,1224],
+  "latitude_tick_degrees": [15.333333333333334,15,14.666666666666666,14.333333333333334,14,13.666666666666666,13.333333333333334],
+  "outline_pixels_xy": [
+    [461,271],[525,269],[582,288],[609,338],[619,381],
+    [625,455],[623,496],[587,580],[560,646],[518,726],
+    [477,773],[435,820],[393,866],[349,917],[290,973],
+    [219,972],[188,956],[152,926],[119,863],[117,850],
+    [129,753],[137,699],[174,616],[215,528],[254,455],
+    [276,412],[305,363],[347,332],[385,302],[428,284],[461,271]
+  ],
+  "manual_trace_uncertainty_pixels": 4,
+  "tick_pick_quantization_bound_pixels": 1,
+  "occluded_segment": "Contour under 0.05 label between [619,381] and [625,455] follows visible endpoints; interpolation cannot recover hidden curvature.",
+  "limitations": "Manual derived contour, not raw observation locations or independent vertices. Pixel uncertainty describes registration/tracing only; original contour interpolation and field measurement uncertainty are additional unquantified limits."
+}

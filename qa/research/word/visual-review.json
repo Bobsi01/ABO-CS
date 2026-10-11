@@ -1,0 +1,51 @@
+{
+  "reviewer": "orchestrator",
+  "source_docx_sha256": "ac17b1d82696342c52538e36befd5a21387dd5a2d5d5ba57be784d8fe0df7c2e",
+  "pdf_sha256": "d11a86361d03eb78541e6f48ebad31299cf16025d67b1e0210aa8b97e56c7b7c",
+  "pages": {
+    "page-01.png": "5e023e0d60a31923413d5b599c05641251b858678c6c81c9f878dc025e609748",
+    "page-02.png": "46e1e319e0d3eb9fb81aa8304eb111f60185ffb02fdcdf1620fc9ba31c70f02c",
+    "page-03.png": "304051f88c8b0c83a7f915670c4a08aaf1af5cf0c5a0ff37a1aed0564ee58f71",
+    "page-04.png": "b7953fdce1cb700b0a0cdc8d93d582b6d209ef0df4f20d024eb1f7927874cc48",
+    "page-05.png": "8936522679cccf937832196d2ec71869e52a6d2a7f1e1f9ab4203e3f31e169da",
+    "page-06.png": "ba1f3f0139d27c87aba17fc2a2f188928078cce486af13770e8d17fc6144c9ee",
+    "page-07.png": "b828401ecbbb42c4d8ee4baa877b67f7ea41aec63e5588c5970c8d3a7974dd68",
+    "page-08.png": "85e3fcdf8d8a1b2a1faa24ef1260e0442840323ba7f09df91250e183c5bb9aa7",
+    "page-09.png": "7c171c40cd5a521f8d41d0c87fc7293726296a83854ac37fe17eab6be4ce4cf4",
+    "page-10.png": "5eaa1264919a7b10359860b70b423e7f6ebdcc1a1ffbbe62fcd52c65f298c2c1",
+    "page-11.png": "c633659fac5e16562fd0dec1e187d10da1b58eecc787a3ae04f52482c0b722e3",
+    "page-12.png": "0c8eb1e74204336e10f2e5aef612c11ec68c013c9286a87603a081fb489516f7",
+    "page-13.png": "863bad2dfccc026bb4a85defb04653efa4602e0f4bb87f10ba7dc04966026a0b",
+    "page-14.png": "4676de50a45154a2838582189b1b9077435cda0ccb5547e9bac16d82a60fef27",
+    "page-15.png": "203f243ead629edbca854db29dd2283a11d4b96114b3934bd4d82c545177c412"
+  },
+  "page_count": 15,
+  "visually_inspected_all_initial_pages": true,
+  "replacement_pages_reinspected": [
+    "page-11.png"
+  ],
+  "identical_reviewed_pages": [
+    "page-01.png",
+    "page-02.png",
+    "page-03.png",
+    "page-04.png",
+    "page-05.png",
+    "page-06.png",
+    "page-07.png",
+    "page-08.png",
+    "page-09.png",
+    "page-10.png",
+    "page-12.png",
+    "page-13.png",
+    "page-14.png",
+    "page-15.png"
+  ],
+  "status": "orchestrator visual review passed; independent final-page review pending",
+  "findings_closed": [
+    "Plain Figure 3 discussion paragraph no longer misclassified as a bold caption"
+  ],
+  "limits": [
+    "No independent final page review after account usage limit",
+    "No native Word accessibility checker or actual screen-reader speech"
+  ]
+}

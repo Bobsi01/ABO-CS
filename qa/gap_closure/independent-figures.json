@@ -1,0 +1,113 @@
+{
+  "figure_evidence_sha256": "1211496aa13aaf71f33a95e06bc29b78ed1ac0a506eb7db8869be50871eda998",
+  "request_sha256": "1e28dce766e4d4aaa83305938487dec798439c13783ee990eca3d3e7351168af",
+  "ten_scalar_figure_values_against_actual_kernel": [
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 0.8,
+      "thickness_mm": 0.015104764399626828,
+      "kernel_difference_mm": 0.0
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 0.9,
+      "thickness_mm": 0.036002024682663586,
+      "kernel_difference_mm": 0.0
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1,
+      "thickness_mm": 0.026909527178498996,
+      "kernel_difference_mm": -3.469446951953614e-18
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1.1,
+      "thickness_mm": 0.024723904345346378,
+      "kernel_difference_mm": 0.0
+    },
+    {
+      "parameter": "wind_speed_m_s",
+      "factor": 1.2,
+      "thickness_mm": 0.028077566668778482,
+      "kernel_difference_mm": 0.0
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 0.8,
+      "thickness_mm": 0.016480517303619876,
+      "kernel_difference_mm": 3.469446951953614e-18
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 0.9,
+      "thickness_mm": 0.03841096172429425,
+      "kernel_difference_mm": 0.0
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1,
+      "thickness_mm": 0.026909527178498996,
+      "kernel_difference_mm": -3.469446951953614e-18
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1.1,
+      "thickness_mm": 0.023481938701857306,
+      "kernel_difference_mm": -3.469446951953614e-18
+    },
+    {
+      "parameter": "column_height_m",
+      "factor": 1.2,
+      "thickness_mm": 0.02574441508149037,
+      "kernel_difference_mm": -3.469446951953614e-18
+    }
+  ],
+  "release_layer_sensitivity": [
+    {
+      "release_layers": 8,
+      "point_thickness_mm": 0.0411143712497617,
+      "inside_mass_kg": 30361340.348896496,
+      "outside_mass_kg": 5638659.651103504,
+      "cells": 200
+    },
+    {
+      "release_layers": 16,
+      "point_thickness_mm": 0.026909527178498992,
+      "inside_mass_kg": 30459336.285434518,
+      "outside_mass_kg": 5540663.714565482,
+      "cells": 200
+    },
+    {
+      "release_layers": 32,
+      "point_thickness_mm": 0.031827999217847444,
+      "inside_mass_kg": 30477278.372261308,
+      "outside_mass_kg": 5522721.627738692,
+      "cells": 200
+    }
+  ],
+  "cell_resolution_sensitivity": [
+    {
+      "cell_km": 0.5,
+      "point_thickness_mm": 0.026909527178498992,
+      "inside_mass_kg": 30459336.285434518,
+      "outside_mass_kg": 5540663.714565482,
+      "cells": 400
+    },
+    {
+      "cell_km": 1,
+      "point_thickness_mm": 0.026909527178498992,
+      "inside_mass_kg": 30459336.285434518,
+      "outside_mass_kg": 5540663.714565482,
+      "cells": 200
+    },
+    {
+      "cell_km": 2,
+      "point_thickness_mm": 0.026909527178498992,
+      "inside_mass_kg": 30459336.285434518,
+      "outside_mass_kg": 5540663.714565482,
+      "cells": 100
+    }
+  ],
+  "limit": "Fixed synthetic teaching input perturbations; no confidence interval, historical comparison or physical uncertainty validation."
+}

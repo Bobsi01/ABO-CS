@@ -1,0 +1,40 @@
+{
+  "dataset_id": "taal-figure4-derived-0.5mm-v1",
+  "source_group": "taal-deposit-study",
+  "independent_observation_count": 0,
+  "comparison_type": "Independent manual digitization repeatability, not model agreement",
+  "trace_ids": [
+    "taal-figure4-trace-science-v1",
+    "independent-qa-0.5mm-v1"
+  ],
+  "geodesic_areas_km2": [
+    8639.950156949715,
+    8656.140982394423
+  ],
+  "absolute_area_difference_km2": 16.190825444708025,
+  "relative_area_difference_fraction": 0.0018721947420684065,
+  "intertrace_iou": 0.9791802366319576,
+  "boundary_hausdorff_m": 1901.3414247067901,
+  "symmetric_difference_area_km2": 181.94751875403202,
+  "domain": {
+    "width_km": 200,
+    "vent_lat": 14.0106,
+    "vent_lon": 120.9975,
+    "projection": "Vent-centered WGS84 azimuthal equidistant",
+    "clipped_projected_areas_km2": [
+      8209.788260676733,
+      8234.147101696975
+    ],
+    "outside_domain_projected_fraction": [
+      0.04980455206517531,
+      0.04876763997305644
+    ]
+  },
+  "published_areas_km2": {
+    "narrative": 8605,
+    "table_3": 3864.89
+  },
+  "area_assessment": "Both traces depict the printed outer contour; neither was adjusted to either published area. Published definitions remain unresolved.",
+  "uncertainty": "Control-point residuals and intertrace disagreement quantify digitization only. Original interpolation, datum, crowdsourcing, erosion and event-window uncertainty are additional and unquantified.",
+  "historical_validation": "Not established; independent physical inputs and effective wind remain source blocked"
+}

@@ -1,0 +1,2826 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ABO local API",
+    "description": "Academic analytical ashfall model. Not a PHIVOLCS hazard advisory.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/catalog": {
+      "get": {
+        "tags": [
+          "inputs"
+        ],
+        "summary": "Get Catalog",
+        "operationId": "getCatalog",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulations": {
+      "post": {
+        "tags": [
+          "science"
+        ],
+        "summary": "Run Simulation",
+        "operationId": "runSimulation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wind-sweeps": {
+      "post": {
+        "tags": [
+          "science"
+        ],
+        "summary": "Run Wind Sweep",
+        "operationId": "runWindSweep",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SweepResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/replications/taal-2020": {
+      "post": {
+        "tags": [
+          "science"
+        ],
+        "summary": "Run Taal Replication",
+        "operationId": "runTaalReplication",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplicationResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/eruption-sequences": {
+      "post": {
+        "tags": [
+          "science"
+        ],
+        "summary": "Run Eruption Sequence",
+        "operationId": "runEruptionSequence",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EruptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EruptionSequence"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Catalog": {
+        "properties": {
+          "revision": {
+            "type": "string",
+            "title": "Revision"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "volcanoes": {
+            "items": {
+              "$ref": "#/components/schemas/Volcano"
+            },
+            "type": "array",
+            "title": "Volcanoes"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioPreset"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "winds": {
+            "items": {
+              "$ref": "#/components/schemas/WindPreset"
+            },
+            "type": "array",
+            "title": "Winds"
+          },
+          "receptors": {
+            "items": {
+              "$ref": "#/components/schemas/Receptor"
+            },
+            "type": "array",
+            "title": "Receptors"
+          },
+          "criteria": {
+            "items": {
+              "$ref": "#/components/schemas/Criterion"
+            },
+            "type": "array",
+            "title": "Criteria"
+          },
+          "historical": {
+            "$ref": "#/components/schemas/HistoricalRecord"
+          },
+          "parameter_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/ParameterEvidence"
+            },
+            "type": "array",
+            "title": "Parameter Evidence"
+          },
+          "inventory_coverage": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Inventory Coverage"
+          },
+          "screening_contexts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Screening Contexts"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "revision",
+          "sources",
+          "volcanoes",
+          "scenarios",
+          "winds",
+          "receptors",
+          "criteria",
+          "historical"
+        ],
+        "title": "Catalog"
+      },
+      "Criterion": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "quantity": {
+            "type": "string",
+            "enum": [
+              "load_kg_m2",
+              "thickness_mm"
+            ],
+            "title": "Quantity"
+          },
+          "threshold": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Threshold"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "reviewed",
+              "unreviewed"
+            ],
+            "title": "Review Status",
+            "default": "unreviewed"
+          },
+          "receptor_kinds": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "municipality",
+                "airport",
+                "water"
+              ]
+            },
+            "type": "array",
+            "title": "Receptor Kinds"
+          },
+          "required_conditions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Required Conditions"
+          },
+          "applicability_basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Applicability Basis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "quantity",
+          "threshold",
+          "scope"
+        ],
+        "title": "Criterion"
+      },
+      "Diagnostics": {
+        "properties": {
+          "total_ash_mass_kg": {
+            "type": "number",
+            "title": "Total Ash Mass Kg"
+          },
+          "inside_domain_mass_kg": {
+            "type": "number",
+            "title": "Inside Domain Mass Kg"
+          },
+          "outside_domain_mass_kg": {
+            "type": "number",
+            "title": "Outside Domain Mass Kg"
+          },
+          "retained_fraction": {
+            "type": "number",
+            "title": "Retained Fraction"
+          },
+          "estimated_working_bytes": {
+            "type": "integer",
+            "title": "Estimated Working Bytes"
+          },
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          },
+          "validation_status": {
+            "type": "string",
+            "const": "not_historically_validated",
+            "title": "Validation Status",
+            "default": "not_historically_validated"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "total_ash_mass_kg",
+          "inside_domain_mass_kg",
+          "outside_domain_mass_kg",
+          "retained_fraction",
+          "estimated_working_bytes",
+          "elapsed_ms"
+        ],
+        "title": "Diagnostics"
+      },
+      "EruptionFrame": {
+        "properties": {
+          "elapsed_s": {
+            "type": "number",
+            "title": "Elapsed S"
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "before",
+              "erupting",
+              "settling",
+              "after"
+            ],
+            "title": "Phase"
+          },
+          "grid": {
+            "$ref": "#/components/schemas/Grid"
+          },
+          "contours": {
+            "$ref": "#/components/schemas/GeoJSON"
+          },
+          "receptors": {
+            "items": {
+              "$ref": "#/components/schemas/ReceptorResult"
+            },
+            "type": "array",
+            "title": "Receptors"
+          },
+          "diagnostics": {
+            "$ref": "#/components/schemas/FrameDiagnostics"
+          },
+          "plume_parcels": {
+            "items": {
+              "$ref": "#/components/schemas/PlumeParcel"
+            },
+            "type": "array",
+            "title": "Plume Parcels"
+          },
+          "column_top_m": {
+            "type": "number",
+            "title": "Column Top M"
+          },
+          "fountain_particles_m": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Fountain Particles M"
+          },
+          "lava_footprint": {
+            "$ref": "#/components/schemas/GeoJSON"
+          },
+          "lava_affected_receptor_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Lava Affected Receptor Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "elapsed_s",
+          "phase",
+          "grid",
+          "contours",
+          "receptors",
+          "diagnostics",
+          "plume_parcels",
+          "column_top_m",
+          "fountain_particles_m",
+          "lava_footprint",
+          "lava_affected_receptor_ids"
+        ],
+        "title": "EruptionFrame"
+      },
+      "EruptionOptions": {
+        "properties": {
+          "frame_count": {
+            "type": "integer",
+            "maximum": 49.0,
+            "minimum": 25.0,
+            "title": "Frame Count",
+            "default": 37
+          },
+          "plume_rise_speed_m_s": {
+            "type": "number",
+            "maximum": 300.0,
+            "minimum": 1.0,
+            "title": "Plume Rise Speed M S",
+            "default": 30
+          },
+          "include_lava": {
+            "type": "boolean",
+            "title": "Include Lava",
+            "default": false
+          },
+          "lava_effusion_m3_s": {
+            "type": "number",
+            "maximum": 1000.0,
+            "minimum": 0.001,
+            "title": "Lava Effusion M3 S",
+            "default": 5
+          },
+          "lava_width_m": {
+            "type": "number",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "title": "Lava Width M",
+            "default": 20
+          },
+          "lava_viscosity_pa_s": {
+            "type": "number",
+            "maximum": 1000000000000.0,
+            "minimum": 1.0,
+            "title": "Lava Viscosity Pa S",
+            "default": 1000
+          },
+          "lava_density_kg_m3": {
+            "type": "number",
+            "maximum": 4000.0,
+            "minimum": 1000.0,
+            "title": "Lava Density Kg M3",
+            "default": 2600
+          },
+          "lava_max_distance_m": {
+            "type": "number",
+            "maximum": 50000.0,
+            "minimum": 250.0,
+            "title": "Lava Max Distance M",
+            "default": 20000
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "EruptionOptions"
+      },
+      "EruptionRequest": {
+        "properties": {
+          "simulation": {
+            "$ref": "#/components/schemas/SimulationRequest"
+          },
+          "options": {
+            "$ref": "#/components/schemas/EruptionOptions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "simulation"
+        ],
+        "title": "EruptionRequest"
+      },
+      "EruptionSequence": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          },
+          "options": {
+            "$ref": "#/components/schemas/EruptionOptions"
+          },
+          "frames": {
+            "items": {
+              "$ref": "#/components/schemas/EruptionFrame"
+            },
+            "type": "array",
+            "title": "Frames"
+          },
+          "final_grid": {
+            "$ref": "#/components/schemas/Grid"
+          },
+          "lava": {
+            "$ref": "#/components/schemas/LavaResult"
+          },
+          "fountain_paths_m": {
+            "items": {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Fountain Paths M"
+          },
+          "fountain_flight_time_s": {
+            "type": "number",
+            "title": "Fountain Flight Time S"
+          },
+          "fountain_label": {
+            "type": "string",
+            "title": "Fountain Label"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "solver_version": {
+            "type": "string",
+            "title": "Solver Version",
+            "default": "abo-finite-pulse-1.0"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario",
+          "options",
+          "frames",
+          "final_grid",
+          "lava",
+          "fountain_paths_m",
+          "fountain_flight_time_s",
+          "fountain_label",
+          "provenance",
+          "warnings",
+          "assumptions"
+        ],
+        "title": "EruptionSequence"
+      },
+      "EvidenceProtocol": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "frozen_at": {
+            "type": "string",
+            "title": "Frozen At"
+          },
+          "event_start_utc": {
+            "type": "string",
+            "title": "Event Start Utc"
+          },
+          "event_end_utc": {
+            "type": "string",
+            "title": "Event End Utc"
+          },
+          "duration_s": {
+            "type": "number",
+            "title": "Duration S"
+          },
+          "event_definition": {
+            "type": "string",
+            "title": "Event Definition"
+          },
+          "evaluation_rules": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evaluation Rules"
+          },
+          "acceptance_tolerance": {
+            "type": "string",
+            "title": "Acceptance Tolerance"
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "source_blocked"
+            ],
+            "title": "Review Status",
+            "default": "pending"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "frozen_at",
+          "event_start_utc",
+          "event_end_utc",
+          "duration_s",
+          "event_definition",
+          "evaluation_rules",
+          "acceptance_tolerance"
+        ],
+        "title": "EvidenceProtocol"
+      },
+      "FootprintReference": {
+        "properties": {
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "threshold_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Threshold Mm"
+          },
+          "geojson": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Geojson"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "dependency_group": {
+            "type": "string",
+            "title": "Dependency Group"
+          },
+          "uncertainty_notes": {
+            "type": "string",
+            "title": "Uncertainty Notes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "trace_id",
+          "label",
+          "threshold_mm",
+          "geojson",
+          "source_ids",
+          "dependency_group",
+          "uncertainty_notes"
+        ],
+        "title": "FootprintReference"
+      },
+      "FrameDiagnostics": {
+        "properties": {
+          "emitted_mass_kg": {
+            "type": "number",
+            "title": "Emitted Mass Kg"
+          },
+          "deposited_mass_kg": {
+            "type": "number",
+            "title": "Deposited Mass Kg"
+          },
+          "airborne_mass_kg": {
+            "type": "number",
+            "title": "Airborne Mass Kg"
+          },
+          "inside_domain_mass_kg": {
+            "type": "number",
+            "title": "Inside Domain Mass Kg"
+          },
+          "outside_domain_mass_kg": {
+            "type": "number",
+            "title": "Outside Domain Mass Kg"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "emitted_mass_kg",
+          "deposited_mass_kg",
+          "airborne_mass_kg",
+          "inside_domain_mass_kg",
+          "outside_domain_mass_kg"
+        ],
+        "title": "FrameDiagnostics"
+      },
+      "GeoJSON": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "FeatureCollection",
+            "title": "Type",
+            "default": "FeatureCollection"
+          },
+          "features": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Features"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "features"
+        ],
+        "title": "GeoJSON"
+      },
+      "Grain": {
+        "properties": {
+          "diameter_um": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Diameter Um"
+          },
+          "fraction": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Fraction"
+          },
+          "settling_speed_m_s": {
+            "type": "number",
+            "maximum": 1000.0,
+            "minimum": 1e-05,
+            "title": "Settling Speed M S"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "diameter_um",
+          "fraction",
+          "settling_speed_m_s"
+        ],
+        "title": "Grain"
+      },
+      "Grid": {
+        "properties": {
+          "east_m": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "East M"
+          },
+          "north_m": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "North M"
+          },
+          "cell_m": {
+            "type": "number",
+            "title": "Cell M"
+          },
+          "extent_m": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Extent M"
+          },
+          "thickness_mm": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Thickness Mm"
+          },
+          "load_kg_m2": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Load Kg M2"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "east_m",
+          "north_m",
+          "cell_m",
+          "extent_m",
+          "thickness_mm",
+          "load_kg_m2"
+        ],
+        "title": "Grid"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          },
+          "service": {
+            "type": "string",
+            "const": "ABO",
+            "title": "Service"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "model_status": {
+            "type": "string",
+            "const": "implemented",
+            "title": "Model Status"
+          },
+          "validation_status": {
+            "type": "string",
+            "const": "not_historically_validated",
+            "title": "Validation Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "service",
+          "version",
+          "model_status",
+          "validation_status"
+        ],
+        "title": "HealthResponse"
+      },
+      "HistoricalRecord": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "title": "Available",
+            "default": false
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason",
+            "default": "Reviewed historical inputs and independent observations are unavailable"
+          },
+          "scenario": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Scenario"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/Observation"
+            },
+            "type": "array",
+            "title": "Observations"
+          },
+          "blocked_inputs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Blocked Inputs"
+          },
+          "reference_tables": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Reference Tables"
+          },
+          "reference_footprint_geojson": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Footprint Geojson"
+          },
+          "reference_footprints": {
+            "items": {
+              "$ref": "#/components/schemas/FootprintReference"
+            },
+            "type": "array",
+            "title": "Reference Footprints"
+          },
+          "footprint_evidence": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Footprint Evidence"
+          },
+          "protocol": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EvidenceProtocol"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "dataset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dataset Id"
+          },
+          "source_dependencies": {
+            "items": {
+              "$ref": "#/components/schemas/SourceDependency"
+            },
+            "type": "array",
+            "title": "Source Dependencies"
+          },
+          "assessment_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assessment Reasons"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "HistoricalRecord"
+      },
+      "Illustration": {
+        "properties": {
+          "wind_east_m_s": {
+            "type": "number",
+            "title": "Wind East M S"
+          },
+          "wind_north_m_s": {
+            "type": "number",
+            "title": "Wind North M S"
+          },
+          "column_height_m": {
+            "type": "number",
+            "title": "Column Height M"
+          },
+          "paths": {
+            "items": {
+              "$ref": "#/components/schemas/Trajectory"
+            },
+            "type": "array",
+            "title": "Paths"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "default": "Representative settling illustration; not an airborne concentration forecast"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "wind_east_m_s",
+          "wind_north_m_s",
+          "column_height_m",
+          "paths"
+        ],
+        "title": "Illustration"
+      },
+      "LavaPoint": {
+        "properties": {
+          "east_m": {
+            "type": "number",
+            "title": "East M"
+          },
+          "north_m": {
+            "type": "number",
+            "title": "North M"
+          },
+          "elevation_m": {
+            "type": "number",
+            "title": "Elevation M"
+          },
+          "lon": {
+            "type": "number",
+            "title": "Lon"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "arrival_s": {
+            "type": "number",
+            "title": "Arrival S"
+          },
+          "width_m": {
+            "type": "number",
+            "title": "Width M"
+          },
+          "thickness_m": {
+            "type": "number",
+            "title": "Thickness M"
+          },
+          "speed_m_s": {
+            "type": "number",
+            "title": "Speed M S"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "east_m",
+          "north_m",
+          "elevation_m",
+          "lon",
+          "lat",
+          "arrival_s",
+          "width_m",
+          "thickness_m",
+          "speed_m_s"
+        ],
+        "title": "LavaPoint"
+      },
+      "LavaResult": {
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "path": {
+            "items": {
+              "$ref": "#/components/schemas/LavaPoint"
+            },
+            "type": "array",
+            "title": "Path"
+          },
+          "stop_reason": {
+            "type": "string",
+            "title": "Stop Reason"
+          },
+          "footprint": {
+            "$ref": "#/components/schemas/GeoJSON"
+          },
+          "affected_receptor_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Receptor Ids"
+          },
+          "model_label": {
+            "type": "string",
+            "title": "Model Label",
+            "default": "Illustrative isothermal Newtonian single-channel routing; not a hazard forecast"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "enabled",
+          "path",
+          "stop_reason",
+          "footprint",
+          "affected_receptor_ids",
+          "warnings"
+        ],
+        "title": "LavaResult"
+      },
+      "Observation": {
+        "properties": {
+          "lat": {
+            "type": "number",
+            "maximum": 85.0,
+            "minimum": -85.0,
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Lon"
+          },
+          "lower_mm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Lower Mm"
+          },
+          "upper_mm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Upper Mm"
+          },
+          "split": {
+            "type": "string",
+            "enum": [
+              "calibration",
+              "evaluation"
+            ],
+            "title": "Split"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "spatial_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spatial Group"
+          },
+          "dependency_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dependency Group"
+          },
+          "uncertainty_mm": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Uncertainty Mm"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "lat",
+          "lon",
+          "lower_mm",
+          "upper_mm",
+          "split"
+        ],
+        "title": "Observation"
+      },
+      "ObservationResult": {
+        "properties": {
+          "observation_id": {
+            "type": "string",
+            "title": "Observation Id"
+          },
+          "spatial_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spatial Group"
+          },
+          "dependency_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dependency Group"
+          },
+          "split": {
+            "type": "string",
+            "enum": [
+              "calibration",
+              "evaluation"
+            ],
+            "title": "Split"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "title": "Lon"
+          },
+          "lower_mm": {
+            "type": "number",
+            "title": "Lower Mm"
+          },
+          "upper_mm": {
+            "type": "number",
+            "title": "Upper Mm"
+          },
+          "in_domain": {
+            "type": "boolean",
+            "title": "In Domain"
+          },
+          "predicted_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Predicted Mm"
+          },
+          "interval_residual_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interval Residual Mm"
+          },
+          "midpoint_residual_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Midpoint Residual Mm"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "observation_id",
+          "spatial_group",
+          "dependency_group",
+          "split",
+          "lat",
+          "lon",
+          "lower_mm",
+          "upper_mm",
+          "in_domain",
+          "predicted_mm",
+          "interval_residual_mm",
+          "midpoint_residual_mm",
+          "reason"
+        ],
+        "title": "ObservationResult"
+      },
+      "ParameterEvidence": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "parameter": {
+            "type": "string",
+            "title": "Parameter"
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "measured",
+              "derived",
+              "calibrated",
+              "assumed"
+            ],
+            "title": "Classification"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "units": {
+            "type": "string",
+            "title": "Units"
+          },
+          "datum": {
+            "type": "string",
+            "title": "Datum"
+          },
+          "uncertainty": {
+            "type": "string",
+            "title": "Uncertainty"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "locator": {
+            "type": "string",
+            "title": "Locator"
+          },
+          "license": {
+            "type": "string",
+            "title": "License"
+          },
+          "conversions": {
+            "type": "string",
+            "title": "Conversions"
+          },
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Dependencies"
+          },
+          "readiness": {
+            "type": "string",
+            "enum": [
+              "usable",
+              "source_blocked",
+              "illustrative"
+            ],
+            "title": "Readiness"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "parameter",
+          "classification",
+          "units",
+          "datum",
+          "uncertainty",
+          "source_ids",
+          "locator",
+          "license",
+          "conversions",
+          "readiness",
+          "notes"
+        ],
+        "title": "ParameterEvidence"
+      },
+      "PlumeParcel": {
+        "properties": {
+          "parcel_id": {
+            "type": "string",
+            "title": "Parcel Id"
+          },
+          "grain_index": {
+            "type": "integer",
+            "title": "Grain Index"
+          },
+          "east_m": {
+            "type": "number",
+            "title": "East M"
+          },
+          "north_m": {
+            "type": "number",
+            "title": "North M"
+          },
+          "height_m": {
+            "type": "number",
+            "title": "Height M"
+          },
+          "radius_m": {
+            "type": "number",
+            "title": "Radius M"
+          },
+          "mass_kg": {
+            "type": "number",
+            "title": "Mass Kg"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "parcel_id",
+          "grain_index",
+          "east_m",
+          "north_m",
+          "height_m",
+          "radius_m",
+          "mass_kg"
+        ],
+        "title": "PlumeParcel"
+      },
+      "Provenance": {
+        "properties": {
+          "solver_version": {
+            "type": "string",
+            "title": "Solver Version",
+            "default": "abo-gaussian-1.0"
+          },
+          "dataset_revision": {
+            "type": "string",
+            "title": "Dataset Revision"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "input_status": {
+            "type": "string",
+            "title": "Input Status"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "dataset_revision",
+          "source_ids",
+          "input_status",
+          "assumptions",
+          "warnings"
+        ],
+        "title": "Provenance"
+      },
+      "Receptor": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "municipality",
+              "airport",
+              "water"
+            ],
+            "title": "Kind",
+            "default": "municipality"
+          },
+          "lat": {
+            "type": "number",
+            "maximum": 85.0,
+            "minimum": -85.0,
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Lon"
+          },
+          "population": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 1000000000.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population"
+          },
+          "population_year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 2100.0,
+                "minimum": 1900.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population Year"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "coordinate_role": {
+            "type": "string",
+            "title": "Coordinate Role",
+            "default": "municipality centroid"
+          },
+          "population_records": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Population Records"
+          },
+          "admin_codes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Admin Codes"
+          },
+          "screening_conditions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Screening Conditions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "lat",
+          "lon"
+        ],
+        "title": "Receptor"
+      },
+      "ReceptorResult": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "municipality",
+              "airport",
+              "water"
+            ],
+            "title": "Kind",
+            "default": "municipality"
+          },
+          "lat": {
+            "type": "number",
+            "maximum": 85.0,
+            "minimum": -85.0,
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Lon"
+          },
+          "population": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 1000000000.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population"
+          },
+          "population_year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 2100.0,
+                "minimum": 1900.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population Year"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "coordinate_role": {
+            "type": "string",
+            "title": "Coordinate Role",
+            "default": "municipality centroid"
+          },
+          "population_records": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Population Records"
+          },
+          "admin_codes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Admin Codes"
+          },
+          "screening_conditions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Screening Conditions"
+          },
+          "east_m": {
+            "type": "number",
+            "title": "East M"
+          },
+          "north_m": {
+            "type": "number",
+            "title": "North M"
+          },
+          "in_domain": {
+            "type": "boolean",
+            "title": "In Domain"
+          },
+          "load_kg_m2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Load Kg M2"
+          },
+          "thickness_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thickness Mm"
+          },
+          "reported": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reported"
+          },
+          "screening": {
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "exceeded",
+                "below",
+                "unknown"
+              ]
+            },
+            "type": "object",
+            "title": "Screening"
+          },
+          "screening_reasons": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Screening Reasons"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "lat",
+          "lon",
+          "east_m",
+          "north_m",
+          "in_domain",
+          "load_kg_m2",
+          "thickness_mm",
+          "reported",
+          "screening"
+        ],
+        "title": "ReceptorResult"
+      },
+      "ReplicationResult": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "title": "Available"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "simulation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulationResult"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "metrics": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Metrics"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/Observation"
+            },
+            "type": "array",
+            "title": "Observations"
+          },
+          "validation_status": {
+            "type": "string",
+            "title": "Validation Status",
+            "default": "unavailable"
+          },
+          "blocked_inputs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Blocked Inputs"
+          },
+          "reference_tables": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Reference Tables"
+          },
+          "protocol": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EvidenceProtocol"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "dataset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dataset Id"
+          },
+          "observation_results": {
+            "items": {
+              "$ref": "#/components/schemas/ObservationResult"
+            },
+            "type": "array",
+            "title": "Observation Results"
+          },
+          "source_dependencies": {
+            "items": {
+              "$ref": "#/components/schemas/SourceDependency"
+            },
+            "type": "array",
+            "title": "Source Dependencies"
+          },
+          "assessment_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assessment Reasons"
+          },
+          "sensitivity": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Sensitivity"
+          },
+          "reference_footprint_geojson": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Footprint Geojson"
+          },
+          "reference_footprints": {
+            "items": {
+              "$ref": "#/components/schemas/FootprintReference"
+            },
+            "type": "array",
+            "title": "Reference Footprints"
+          },
+          "footprint_evidence": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Footprint Evidence"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "available",
+          "reason"
+        ],
+        "title": "ReplicationResult"
+      },
+      "Scenario": {
+        "properties": {
+          "volcano_id": {
+            "type": "string",
+            "title": "Volcano Id",
+            "default": "custom"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "default": "Manual scenario"
+          },
+          "input_status": {
+            "type": "string",
+            "enum": [
+              "illustrative",
+              "user_entered",
+              "reviewed"
+            ],
+            "title": "Input Status",
+            "default": "user_entered"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "vent_lat": {
+            "type": "number",
+            "maximum": 85.0,
+            "minimum": -85.0,
+            "title": "Vent Lat"
+          },
+          "vent_lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Vent Lon"
+          },
+          "vent_elevation_m": {
+            "type": "number",
+            "maximum": 10000.0,
+            "minimum": 0.0,
+            "title": "Vent Elevation M"
+          },
+          "column_height_m": {
+            "type": "number",
+            "maximum": 50000.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Column Height M"
+          },
+          "mass_rate_kg_s": {
+            "type": "number",
+            "maximum": 1000000000000.0,
+            "minimum": 0.0,
+            "title": "Mass Rate Kg S"
+          },
+          "duration_s": {
+            "type": "number",
+            "maximum": 31536000.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Duration S"
+          },
+          "wind_speed_m_s": {
+            "type": "number",
+            "maximum": 200.0,
+            "minimum": 0.0,
+            "title": "Wind Speed M S"
+          },
+          "wind_from_deg": {
+            "type": "number",
+            "exclusiveMaximum": 360.0,
+            "minimum": 0.0,
+            "title": "Wind From Deg"
+          },
+          "diffusivity_m2_s": {
+            "type": "number",
+            "maximum": 10000000.0,
+            "minimum": 0.0,
+            "title": "Diffusivity M2 S"
+          },
+          "initial_spread_m": {
+            "type": "number",
+            "maximum": 100000.0,
+            "minimum": 0.001,
+            "title": "Initial Spread M"
+          },
+          "bulk_density_kg_m3": {
+            "type": "number",
+            "maximum": 10000.0,
+            "minimum": 0.001,
+            "title": "Bulk Density Kg M3"
+          },
+          "grains": {
+            "items": {
+              "$ref": "#/components/schemas/Grain"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 3,
+            "title": "Grains"
+          },
+          "domain_km": {
+            "type": "number",
+            "maximum": 400.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Domain Km",
+            "default": 200
+          },
+          "cell_km": {
+            "type": "number",
+            "maximum": 10.0,
+            "minimum": 0.25,
+            "title": "Cell Km",
+            "default": 1
+          },
+          "release_layers": {
+            "type": "integer",
+            "maximum": 32.0,
+            "minimum": 1.0,
+            "title": "Release Layers",
+            "default": 16
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "vent_lat",
+          "vent_lon",
+          "vent_elevation_m",
+          "column_height_m",
+          "mass_rate_kg_s",
+          "duration_s",
+          "wind_speed_m_s",
+          "wind_from_deg",
+          "diffusivity_m2_s",
+          "initial_spread_m",
+          "bulk_density_kg_m3",
+          "grains"
+        ],
+        "title": "Scenario"
+      },
+      "ScenarioPreset": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "scenario"
+        ],
+        "title": "ScenarioPreset"
+      },
+      "SimulationRequest": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          },
+          "receptors": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Receptor"
+                },
+                "type": "array",
+                "maxItems": 2048
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Receptors"
+          },
+          "criteria": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Criterion"
+                },
+                "type": "array",
+                "maxItems": 32
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Criteria"
+          },
+          "screening_context": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "maxProperties": 16,
+            "title": "Screening Context"
+          },
+          "population_year": {
+            "type": "integer",
+            "enum": [
+              2020,
+              2024
+            ],
+            "title": "Population Year",
+            "default": 2024
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario"
+        ],
+        "title": "SimulationRequest"
+      },
+      "SimulationResult": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          },
+          "grid": {
+            "$ref": "#/components/schemas/Grid"
+          },
+          "contours": {
+            "$ref": "#/components/schemas/GeoJSON"
+          },
+          "receptors": {
+            "items": {
+              "$ref": "#/components/schemas/ReceptorResult"
+            },
+            "type": "array",
+            "title": "Receptors"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/Summary"
+          },
+          "diagnostics": {
+            "$ref": "#/components/schemas/Diagnostics"
+          },
+          "illustration": {
+            "$ref": "#/components/schemas/Illustration"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario",
+          "grid",
+          "contours",
+          "receptors",
+          "summary",
+          "diagnostics",
+          "illustration",
+          "provenance"
+        ],
+        "title": "SimulationResult"
+      },
+      "Source": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "url"
+        ],
+        "title": "Source"
+      },
+      "SourceDependency": {
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "title": "Group Id"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "dependent_quantities": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Dependent Quantities"
+          },
+          "disclosure": {
+            "type": "string",
+            "title": "Disclosure"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "group_id",
+          "source_ids",
+          "dependent_quantities",
+          "disclosure"
+        ],
+        "title": "SourceDependency"
+      },
+      "Summary": {
+        "properties": {
+          "reporting_cutoff_mm": {
+            "type": "number",
+            "title": "Reporting Cutoff Mm",
+            "default": 0.5
+          },
+          "receptors_total": {
+            "type": "integer",
+            "title": "Receptors Total"
+          },
+          "receptors_covered": {
+            "type": "integer",
+            "title": "Receptors Covered"
+          },
+          "municipalities_reported": {
+            "type": "integer",
+            "title": "Municipalities Reported"
+          },
+          "indicative_population": {
+            "type": "integer",
+            "title": "Indicative Population"
+          },
+          "reported_population_unknown": {
+            "type": "integer",
+            "title": "Reported Population Unknown"
+          },
+          "criterion_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Criterion Counts"
+          },
+          "criterion_population": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Criterion Population"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "receptors_total",
+          "receptors_covered",
+          "municipalities_reported",
+          "indicative_population",
+          "reported_population_unknown",
+          "criterion_counts",
+          "criterion_population"
+        ],
+        "title": "Summary"
+      },
+      "SweepReceptor": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "municipality",
+              "airport",
+              "water"
+            ],
+            "title": "Kind",
+            "default": "municipality"
+          },
+          "lat": {
+            "type": "number",
+            "maximum": 85.0,
+            "minimum": -85.0,
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "maximum": 180.0,
+            "minimum": -180.0,
+            "title": "Lon"
+          },
+          "population": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 1000000000.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population"
+          },
+          "population_year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 2100.0,
+                "minimum": 1900.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population Year"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          },
+          "coordinate_role": {
+            "type": "string",
+            "title": "Coordinate Role",
+            "default": "municipality centroid"
+          },
+          "population_records": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Population Records"
+          },
+          "admin_codes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Admin Codes"
+          },
+          "screening_conditions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Screening Conditions"
+          },
+          "in_domain": {
+            "type": "boolean",
+            "title": "In Domain"
+          },
+          "maximum_thickness_mm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum Thickness Mm"
+          },
+          "maximum_load_kg_m2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum Load Kg M2"
+          },
+          "wind_from_deg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wind From Deg"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "lat",
+          "lon",
+          "in_domain",
+          "maximum_thickness_mm",
+          "maximum_load_kg_m2",
+          "wind_from_deg"
+        ],
+        "title": "SweepReceptor"
+      },
+      "SweepResult": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/Scenario"
+          },
+          "step_deg": {
+            "type": "integer",
+            "title": "Step Deg",
+            "default": 1
+          },
+          "receptors": {
+            "items": {
+              "$ref": "#/components/schemas/SweepReceptor"
+            },
+            "type": "array",
+            "title": "Receptors"
+          },
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "default": "Envelope of individual receptor maxima; not one simultaneous wind scenario"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario",
+          "receptors",
+          "elapsed_ms",
+          "provenance"
+        ],
+        "title": "SweepResult"
+      },
+      "Trajectory": {
+        "properties": {
+          "grain_index": {
+            "type": "integer",
+            "title": "Grain Index"
+          },
+          "diameter_um": {
+            "type": "number",
+            "title": "Diameter Um"
+          },
+          "settling_time_s": {
+            "type": "number",
+            "title": "Settling Time S"
+          },
+          "points_m": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Points M"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "grain_index",
+          "diameter_um",
+          "settling_time_s",
+          "points_m"
+        ],
+        "title": "Trajectory"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Volcano": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lon": {
+            "type": "number",
+            "title": "Lon"
+          },
+          "elevation_m": {
+            "type": "number",
+            "title": "Elevation M"
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "caldera",
+              "stratovolcano",
+              "cone"
+            ],
+            "title": "Profile"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "lat",
+          "lon",
+          "elevation_m",
+          "profile"
+        ],
+        "title": "Volcano"
+      },
+      "WindPreset": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "speed_m_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed M S"
+          },
+          "from_deg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Deg"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Ids"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "title": "WindPreset"
+      }
+    }
+  }
+}

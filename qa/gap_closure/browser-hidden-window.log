@@ -1,0 +1,32 @@
+### Result
+{"check":"Real Chrome window minimization and restoration","pass":false,"hiddenObserved":false,"pausedAt":"0","clockStable":true,"playButtonVisibleWhileHidden":false,"visibleAfterRestore":true,"noAutoplay":false}
+### Ran Playwright code
+```js
+await (async (page) => {
+  const evidence = { check: 'Real Chrome window minimization and restoration', pass: null };
+  const client = await page.context().newCDPSession(page);
+  try {
+    await page.getByRole('button', { name: 'Before', exact: true }).click();
+    await page.getByRole('button', { name: 'Play sequence', exact: true }).click();
+    await page.waitForTimeout(500);
+    const { windowId, bounds } = await client.send('Browser.getWindowForTarget');
+    await client.send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'minimized' } });
+    await page.waitForTimeout(800);
+    evidence.hiddenObserved = await page.evaluate(() => document.hidden);
+    evidence.pausedAt = await page.getByRole('slider', { name: 'Eruption timeline' }).inputValue();
+    await page.waitForTimeout(900);
+    evidence.clockStable = evidence.pausedAt === await page.getByRole('slider', { name: 'Eruption timeline' }).inputValue();
+    evidence.playButtonVisibleWhileHidden = await page.getByRole('button', { name: 'Play sequence', exact: true }).count() === 1;
+    await client.send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'normal' } });
+    if (bounds.width && bounds.height) await client.send('Browser.setWindowBounds', { windowId, bounds: { width: bounds.width, height: bounds.height } });
+    await page.bringToFront();
+    await page.waitForTimeout(800);
+    evidence.visibleAfterRestore = await page.evaluate(() => !document.hidden);
+    evidence.noAutoplay = await page.getByRole('button', { name: 'Play sequence', exact: true }).count() === 1;
+    evidence.pass = evidence.hiddenObserved && evidence.clockStable && evidence.playButtonVisibleWhileHidden && evidence.visibleAfterRestore && evidence.noAutoplay;
+  } catch (error) { evidence.error = error.message; }
+  await client.detach();
+  return evidence;
+}
+)(page);
+```

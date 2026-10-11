@@ -1,0 +1,106 @@
+### Result
+{"url":"http://127.0.0.1:8000/","browser":"155.0.8059.39","checks":[{"name":"Actual WebGL context loss","pass":true,"beforeLoss":"0","atLoss":"0","completedResultsPreserved":true},{"name":"Context-loss recovery","pass":true,"autoplay":false},{"name":"Native renderer exception and explicit recovery","pass":true,"completedResultsPreserved":true,"autoplay":false},{"name":"Real reduced-motion media change","pass":true,"pausedAt":"0","preferenceRestorationAutoplay":false},{"name":"Actual hidden-tab transition","pass":null,"documentHiddenObserved":false,"pausedAt":"0","returnAutoplay":null,"limitation":"Opening another page did not hide this Chrome target; actual transition not established by this attempt."}],"productionScripts":["http://127.0.0.1:8000/assets/index-W6Ud_uGT.js"],"exportButtons":["","Run simulation","Simulation","Wind comparison","Wind sweep","Taal 2020","Guide & sources","Before","During","After","Play sequence","","Deposit extent","","","+","−","Final CSV","Scenario JSON","Tanauan, Batangas","Jala-Jala","Mabitac","Famy","Siniloan","Pangil","Real","Pakil","Los Baños","Pililla","Paete","Pila","Talisay, Batangas","Bay","City of Cabuyao","Cardona","Santo Tomas, Batangas","Pagsanjan","Lumban","Calauan","Tanay","Balete, Batangas","Malvar, Batangas","Magdalena","Binangonan","Cavinti","City of Biñan","Nagcarlan","General Nakar","Teresa","Liliw","Luisiana","Mataasnakahoy, Batangas","City of Carmona","Angono","Tagaytay, Cavite","Majayjay","Silang, Cavite","City of Antipolo","City of San Pedro","Gen. Mariano Alvarez","Mauban","City of Muntinlupa","San Nicolas, Batangas","Cainta","Lucban","Rodriguez","Amadeo, Cavite","City of Taguig","Lipa, Batangas","City of Dasmariñas","City of Pasig","City of Marikina","Laurel, Batangas","City of Parañaque","City of Las Piñas","Mendez, Cavite","Ninoy Aquino International Airport","City of Makati","City of Bacoor","City of Mandaluyong","Cuenca, Batangas","Agoncillo, Batangas","Norzagaray","Pasay City","Tiaong","City of Tayabas","City of Imus","City of General Trias","Indang, Cavite","City of San Jose Del Monte","San Jose, Batangas","Trece Martires, Cavite","City of Caloocan","Kawit, Cavite","Padre Garcia, Batangas","Sariaya","Alfonso, Cavite","Noveleta, Cavite","City of Valenzuela","City of Malabon","Alitagtag, Batangas","Rosario, Cavite","Lemery, Batangas","Pagbilao","City of Lucena","Santa Teresita, Batangas","City of Meycauayan","City of Navotas","Tanza, Cavite","Marilao","Taal, Batangas","General Emilio Aguinaldo, Cavite","Obando","Ibaan, Batangas","Atimonan","Bocaue","Naic, Cavite","Rosario, Batangas","Pandi","San Pascual, Batangas","Balagtas","Calaca, Batangas","Bulacan","San Luis, Batangas","Guiguinto","Magallanes, Cavite","Taysan, Batangas","City of Cavite","San Juan, Batangas","Bauan, Batangas","Maragondon, Cavite","City of Malolos","Paombong","Tuy, Batangas","Ternate, Cavite","Calumpit","Batangas, Batangas","Nasugbu, Batangas","Balayan, Batangas","Lobo, Batangas","Mabini, Batangas","Lian, Batangas","Sasmuan","Limay","Orion","Calatagan, Batangas","Tingloy, Batangas","Abra De Ilog","Abucay","Baco","Bagac","Boac","City of Balanga","City of Calapan","Dinalupihan","Gasan","Hermosa","Lubang","Mamburao","Mariveles","Mogpog","Naujan","City of Olongapo","Orani","Paluan","Pola","Puerto Galera","Samal","San Teodoro","Subic","Bacacay, Albay","Camalig, Albay","Daraga, Albay","Guinobatan, Albay","Jovellar, Albay","Legazpi, Albay","Libon, Albay","Ligao, Albay","Malilipot, Albay","Malinao, Albay","Manito, Albay","Oas, Albay","Pio Duran, Albay","Polangui, Albay","Rapu-Rapu, Albay","Santo Domingo, Albay","Tabaco, Albay","Tiwi, Albay","Bago, Negros Occidental","Binalbagan, Negros Occidental","Cadiz, Negros Occidental","Calatrava, Negros Occidental","Candoni, Negros Occidental","Cauayan, Negros Occidental","Enrique B. Magalona, Negros Occidental","Escalante, Negros Occidental","Himamaylan, Negros Occidental","Hinigaran, Negros Occidental","Hinoba-an, Negros Occidental","Ilog, Negros Occidental","Isabela, Negros Occidental","Kabankalan, Negros Occidental","La Carlota, Negros Occidental","La Castellana, Negros Occidental","Manapla, Negros Occidental","Moises Padilla, Negros Occidental","Murcia, Negros Occidental","Pontevedra, Negros Occidental","Pulupandan, Negros Occidental","Sagay, Negros Occidental","San Carlos, Negros Occidental","San Enrique, Negros Occidental","Silay, Negros Occidental","Sipalay, Negros Occidental","Toboso, Negros Occidental","Valladolid, Negros Occidental","Salvador Benedicto, Negros Occidental","Amlan, Negros Oriental","Ayungon, Negros Oriental","Bacong, Negros Oriental","Bais, Negros Oriental","Bayawan, Negros Oriental","Bindoy, Negros Oriental","Canlaon, Negros Oriental","Dauin, Negros Oriental","Dumaguete, Negros Oriental","Guihulngan, Negros Oriental","Jimalalud, Negros Oriental","La Libertad, Negros Oriental","Mabinay, Negros Oriental","Manjuyod, Negros Oriental","Pamplona, Negros Oriental","San Jose, Negros Oriental","Santa Catalina, Negros Oriental","Siaton, Negros Oriental","Sibulan, Negros Oriental","Tanjay, Negros Oriental","Tayasan, Negros Oriental","Valencia, Negros Oriental","Vallehermoso, Negros Oriental","Zamboanguita, Negros Oriental","Agdangan","Angat","Burdeos","Bustos","Castillejos","Doña Remedios Trinidad","Panukulan","Perez","Pinamalayan","Polillo","Pulilan","Sablayan","Baao","Balatan","Basud","Bombon","Buhi","Bula","Cabusao","Calabanga","Camaligan","Canaman","Caramoan","City of Masbate","City of Sorsogon","Daet","City of Iriga","Labo","San Lorenzo Ruiz","Tagkawayan","Vinzons","Alburquerque","Alcoy","Aloguinsan","Antequera","Argao","Asturias","Baclayon","Badian","Balamban","Balilihan","Bantayan","Barili","Basay","Boljoon","Borbon","Calape","Catigbian","Catmon","City of Passi","City of Victorias","Consolacion","Cordova","Corella","Daanbantayan","Dalaguete","Dauis","Dumanjug","Ginatilan","Igbaras","City of Iloilo","Inabanga","Janiuay","Jordan","Lambunao","Leganes","Leon","Loay","Loboc","Loon","Madridejos","Malabuyoc","Maribojoc","Medellin","Miagao","Mina","Minglanilla","Moalboal","New Lucena","Nueva Valencia","Oslob","Oton","Panglao","Pavia","Pototan","Ronda","Samboan","San Dionisio","San Lorenzo","Sara","Sevilla","Sibunag","Sikatuna","Tigbauan","Tubigon","Tubungan","Zarraga","Bicol International Airport"]}
+### Ran Playwright code
+```js
+await (async (page) => {
+const evidence = { url: page.url(), browser: await page.context().browser().version(), checks: [] };
+const timeline = page.getByRole('slider', { name: 'Eruption timeline' });
+const record = async (name, details) => { const row = { name, ...details }; evidence.checks.push(row); console.log(JSON.stringify(row)); };
+const assert = (condition, message) => { if (!condition) throw new Error(message); };
+const current = () => timeline.inputValue();
+const completed = await page.getByText(/^Eventual totals:/).textContent();
+evidence.productionScripts = await page.locator('script[src]').evaluateAll(nodes => nodes.map(node => node.src));
+try {
+await page.getByRole('button', { name: 'Before', exact: true }).click();
+
+await page.getByRole('button', { name: 'Play sequence', exact: true }).click();
+await page.waitForTimeout(3200);
+const beforeLoss = await current();
+assert(await page.getByRole('button', { name: 'Pause sequence', exact: true }).isVisible(), 'Replay did not enter playing state');
+const loss = await page.evaluate(() => {
+  const canvas = document.querySelector('.scene-stage canvas');
+  const gl = canvas.getContext('webgl2');
+  const extension = gl.getExtension('WEBGL_lose_context');
+  if (!extension) return false;
+  extension.loseContext();
+  return true;
+});
+assert(loss, 'Context-loss extension unavailable');
+await page.getByRole('heading', { name: '3D needs WebGL 2' }).waitFor();
+const atLoss = await current();
+await page.waitForTimeout(1200);
+assert(await current() === atLoss, 'Shared timeline advanced after context loss');
+assert(await page.getByRole('button', { name: 'Play sequence', exact: true }).isDisabled(), 'Play remained enabled during context loss');
+assert(await page.getByText(/^Eventual totals:/).textContent() === completed, 'Completed results changed after context loss');
+assert(await page.getByLabel('Geographic ashfall map', { exact: true }).isVisible(), 'Map lost during context loss');
+await record('Actual WebGL context loss', { pass: true, beforeLoss, atLoss, completedResultsPreserved: true });
+await page.getByRole('button', { name: 'Retry 3D', exact: true }).click();
+await page.locator('.scene-stage canvas').waitFor();
+await page.waitForTimeout(600);
+assert(await page.getByRole('button', { name: 'Play sequence', exact: true }).isEnabled(), 'Retry did not restore play');
+assert(await current() === atLoss, 'Retry changed shared stage');
+await record('Context-loss recovery', { pass: true, autoplay: false });
+
+await page.evaluate(() => {
+  const canvas = document.querySelector('.scene-stage canvas');
+  const gl = canvas.getContext('webgl2');
+  gl.clear = () => { throw new Error('Independent QA injected native GL clear failure'); };
+});
+await page.getByRole('button', { name: 'Reset camera', exact: true }).click();
+await page.getByRole('heading', { name: '3D renderer stopped' }).waitFor();
+const atRendererFailure = await current();
+await page.waitForTimeout(1000);
+assert(await current() === atRendererFailure, 'Shared timeline advanced after renderer failure');
+assert(await page.getByRole('button', { name: 'Play sequence', exact: true }).isDisabled(), 'Play remained enabled after renderer failure');
+assert(await page.getByText(/^Eventual totals:/).textContent() === completed, 'Completed results lost after renderer failure');
+await page.getByRole('button', { name: 'Retry 3D', exact: true }).click();
+await page.locator('.scene-stage canvas').waitFor();
+await page.waitForTimeout(600);
+await record('Native renderer exception and explicit recovery', { pass: true, completedResultsPreserved: true, autoplay: false });
+
+await page.getByRole('button', { name: 'Before', exact: true }).click();
+await page.getByRole('button', { name: 'Play sequence', exact: true }).click();
+await page.waitForTimeout(900);
+await page.emulateMedia({ reducedMotion: 'reduce' });
+await page.getByRole('button', { name: 'Play sequence', exact: true }).waitFor();
+const reducedAt = await current();
+await page.waitForTimeout(900);
+assert(await current() === reducedAt, 'Reduced-motion change did not pause clock');
+await page.emulateMedia({ reducedMotion: 'no-preference' });
+await page.waitForTimeout(900);
+assert(await current() === reducedAt, 'Motion preference restoration autoplayed');
+await record('Real reduced-motion media change', { pass: true, pausedAt: reducedAt, preferenceRestorationAutoplay: false });
+
+await page.getByRole('button', { name: 'Play sequence', exact: true }).click();
+await page.waitForTimeout(900);
+const second = await page.context().newPage();
+await second.goto('about:blank');
+await second.bringToFront();
+await page.waitForTimeout(800);
+const actuallyHidden = await page.evaluate(() => document.hidden);
+const hiddenAt = await current();
+await page.waitForTimeout(900);
+if (actuallyHidden) assert(await current() === hiddenAt, 'Hidden tab clock advanced');
+await page.bringToFront();
+await page.waitForTimeout(900);
+if (actuallyHidden) assert(await current() === hiddenAt, 'Returning to page autoplayed');
+await second.close();
+await record('Actual hidden-tab transition', { pass: actuallyHidden ? true : null, documentHiddenObserved: actuallyHidden, pausedAt: hiddenAt, returnAutoplay: actuallyHidden ? false : null, limitation: actuallyHidden ? null : 'Opening another page did not hide this Chrome target; actual transition not established by this attempt.' });
+await page.getByRole('button', { name: 'Before', exact: true }).click();
+await page.getByText('Location table & exports', { exact: true }).click();
+evidence.exportButtons = await page.getByRole('button').allTextContents();
+} catch (error) { evidence.failure = error.message; }
+console.log(JSON.stringify(evidence));
+return evidence;
+}
+)(page);
+```
+### Open tabs
+- 0: (current) [ABO · Eruption laboratory](http://127.0.0.1:8000/)
+- 1: [](about:blank)
+### Page
+- Page URL: http://127.0.0.1:8000/
+- Page Title: ABO · Eruption laboratory
+- Console: 0 errors, 5 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-11T06-48-31-228Z.log#L11-L15

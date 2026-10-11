@@ -1,0 +1,198 @@
+{
+  "curated_at": "2026-10-10T04:17:55.953462+00:00",
+  "role": "static geographic assets; Mayon raw DEM also used by lava teaching model, never terrain-aware ashfall input",
+  "sources": {
+    "skadi-formats.md": {
+      "url": "https://raw.githubusercontent.com/tilezen/joerd/master/docs/formats.md",
+      "sha256": "f37b923b033ddb90ed454902c20a248b0f75985df1129dc2899c8ddf14459c8c",
+      "bytes": 5392,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "skadi-attribution.md": {
+      "url": "https://raw.githubusercontent.com/tilezen/joerd/master/docs/attribution.md",
+      "sha256": "2ce4d3414b4592d17ad56a5af57feb480686ddcfb0a3e4ea0b566d28cde13567",
+      "bytes": 12300,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "osm-taal-lake-270582.xml": {
+      "url": "https://www.openstreetmap.org/api/0.6/relation/270582/full",
+      "sha256": "fa707d18ffcfce6012173ca2254ab5312c3ca6c1ef6b3d422e6314449dc7bd49",
+      "bytes": 1697503,
+      "role": "display only; never a numerical ashfall input",
+      "relation_id": 270582,
+      "version": "46",
+      "timestamp": "2026-08-30T11:43:17Z",
+      "license": "ODbL 1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "area_km2": 235.97194537027806,
+      "bounds": [
+        120.9361187,
+        13.8774441,
+        121.0956055,
+        14.0921674
+      ],
+      "island_holes": 7,
+      "tagged_elevation_m": "2",
+      "elevation_note": "OSM tag ele=2 differs from historical GVP3m illustration; neither is a current water-level observation"
+    },
+    "ne_10m_land.geojson": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_land.geojson",
+      "sha256": "1ac90796408bc6ad6911d69448485d3c4dbf2190370080368a09976e1c9f7416",
+      "bytes": 10157965,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "ne_10m_lakes.geojson": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_lakes.geojson",
+      "sha256": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9",
+      "bytes": 5043554,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N13E120.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N13/N13E120.hgt.gz",
+      "sha256": "adc15c248016dca07e4b6c253de1a16738ff2bf05e0d365c66ced25c25ff629f",
+      "bytes": 9221376,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N13E121.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N13/N13E121.hgt.gz",
+      "sha256": "274691c9159439a55343f54d6dbaeac384dddaf508c7ac206dae28d1185d6871",
+      "bytes": 7398518,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N14E120.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N14/N14E120.hgt.gz",
+      "sha256": "4f40ca553fc9f904f5e3cf774869fdb39379e1ee131ed8bec770da7a3350ecda",
+      "bytes": 7677039,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N14E121.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N14/N14E121.hgt.gz",
+      "sha256": "a47e58192d5108b3446215d44cf702561f9a5edeacf4e3fcece11d3fac3de93d",
+      "bytes": 9798193,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N12E123.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N12/N12E123.hgt.gz",
+      "sha256": "775a223d7c70c2daabcdd6616db32b5530b4bb9434824033c5e8c95a05fe9f10",
+      "bytes": 6352418,
+      "role": "geographic display and raw Mayon lava teaching input; never ashfall input"
+    },
+    "N12E124.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N12/N12E124.hgt.gz",
+      "sha256": "68ee326f6c8e82c1612f36f25e85b010838e9e867fbf8ad2f12c122c9ca2fe24",
+      "bytes": 7082263,
+      "role": "geographic display and raw Mayon lava teaching input; never ashfall input"
+    },
+    "N13E123.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N13/N13E123.hgt.gz",
+      "sha256": "7f5e2acefc2585cbf0aa8679b4a10d4c2c35e5c13f345b17a3a2e7f7bc886c3e",
+      "bytes": 8597280,
+      "role": "geographic display and raw Mayon lava teaching input; never ashfall input"
+    },
+    "N13E124.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N13/N13E124.hgt.gz",
+      "sha256": "4d9d17bacd26519cafffae0c8eddf4c5123207bd5f1a81fc1db97f79293e36f2",
+      "bytes": 6987875,
+      "role": "geographic display and raw Mayon lava teaching input; never ashfall input"
+    },
+    "N09E122.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N09/N09E122.hgt.gz",
+      "sha256": "c18721fe1882fa74fa48fd764fb44a5fd10e64632fe7b6c8353ec999aa39ff6d",
+      "bytes": 9855739,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N09E123.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N09/N09E123.hgt.gz",
+      "sha256": "4fcbfe756af313f200a0b0f3a867cd2c25b988bb5e899f91b09bd7f03f5ac5d4",
+      "bytes": 8786479,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N10E122.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N10/N10E122.hgt.gz",
+      "sha256": "35a7b5237f225523edbea9d714503810d2663f08feab86c254ae7708ff18943e",
+      "bytes": 7263487,
+      "role": "display only; never a numerical ashfall input"
+    },
+    "N10E123.hgt.gz": {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/skadi/N10/N10E123.hgt.gz",
+      "sha256": "2262af25ab046d47680e786b2863dd4f5b613acea5bc4847ebcc94c0008475b3",
+      "bytes": 10199897,
+      "role": "display only; never a numerical ashfall input"
+    }
+  },
+  "terrain": [
+    {
+      "file": "frontend/public/terrain/taal.json",
+      "sha256": "4b4602651c145e89fccb102682e43cf59b70ad84bedf368c413a80ea72382d34",
+      "elevation_range_m": [
+        -904.0,
+        1467.5877685546875
+      ],
+      "land_samples": 95160,
+      "lake_samples": 15762,
+      "sea_samples": 49879,
+      "recovered_island_samples": 742,
+      "tiles": [
+        "N13E120",
+        "N13E121",
+        "N14E120",
+        "N14E121"
+      ]
+    },
+    {
+      "file": "frontend/public/terrain/mayon.json",
+      "sha256": "5e62c2ea9822ed6e10e62f6a9cdb753e157db9bf4aadd17df55b92b963c5a012",
+      "elevation_range_m": [
+        -1142.0,
+        2397.714599609375
+      ],
+      "land_samples": 86954,
+      "lake_samples": 0,
+      "sea_samples": 73847,
+      "recovered_island_samples": 0,
+      "tiles": [
+        "N12E123",
+        "N12E124",
+        "N13E123",
+        "N13E124"
+      ]
+    },
+    {
+      "file": "frontend/public/terrain/kanlaon.json",
+      "sha256": "997bd289bd9b7a43adb1f4f6fcba4750280a59e36b684e3d047c7a5bc077dfac",
+      "elevation_range_m": [
+        -521.0,
+        2420.52001953125
+      ],
+      "land_samples": 103189,
+      "lake_samples": 0,
+      "sea_samples": 57612,
+      "recovered_island_samples": 0,
+      "tiles": [
+        "N09E122",
+        "N09E123",
+        "N10E122",
+        "N10E123"
+      ]
+    }
+  ],
+  "taal_lake_geometry": {
+    "relation_id": 270582,
+    "version": "46",
+    "timestamp": "2026-08-30T11:43:17Z",
+    "license": "ODbL 1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors",
+    "area_km2": 235.97194537027806,
+    "bounds": [
+      120.9361187,
+      13.8774441,
+      121.0956055,
+      14.0921674
+    ],
+    "island_holes": 7,
+    "tagged_elevation_m": "2",
+    "elevation_note": "OSM tag ele=2 differs from historical GVP3m illustration; neither is a current water-level observation",
+    "natural_earth_original_area_km2": 120.04628308557572
+  },
+  "geography_context_sha256": "68c0d42ec804dafde4e97d0848d6b255f2d95eab3786c443d07ae4d57ccf80d0"
+}

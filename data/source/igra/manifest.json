@@ -1,0 +1,34 @@
+{
+  "publisher": "NOAA National Centers for Environmental Information",
+  "accessed_at": "2026-10-11",
+  "license": "Public NOAA US-government archive; Philippines upstream station-provider terms not independently verified",
+  "source_station_provider": "Philippines; NCDC GTS pressure-level source",
+  "protocol_id": "taal-main-plume-2020-v1",
+  "files": [
+    {
+      "file": "igra2-data-format.txt",
+      "url": "https://www.ncei.noaa.gov/pub/data/igra/data/igra2-data-format.txt",
+      "sha256": "dfd7b4d2dd18a255477455a7caefd12cb21c30549a1e70cbc3a51db9f41c1dfe"
+    },
+    {
+      "file": "igra2-station-list.txt",
+      "url": "https://www.ncei.noaa.gov/pub/data/igra/igra2-station-list.txt",
+      "sha256": "8ff2dc070248e778307613aa2ab2dfb7b745e5ff29e9d50c58bc5dc8193d0e9d"
+    },
+    {
+      "file": "RPM00098433-data.txt.zip",
+      "url": "https://www.ncei.noaa.gov/pub/data/igra/data/data-por/RPM00098433-data.txt.zip",
+      "sha256": "2d5b2d792c5f83918a63e7598c979b5cc6d11ee8d0396b0d8744be084d2aec09"
+    },
+    {
+      "file": "tanay-2020-01-12-13.txt",
+      "url": "derived: selected records from archived station ZIP",
+      "sha256": "27a56971a45daedb74ce52481ec5581bd56b4bd6967e399609a52cf31bab779f"
+    },
+    {
+      "file": "tanay-effective-wind.json",
+      "url": "derived: frozen protocol processing; no usable effective wind",
+      "sha256": "c9fbac742e5aa9b6a7f2145696a3e44e303ab327d4bdc3482b4d36c4059ef92a"
+    }
+  ]
+}

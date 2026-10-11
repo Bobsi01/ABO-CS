@@ -1,0 +1,816 @@
+{
+  "executor": "orchestrator",
+  "started": "2026-10-11T08:17:11.848Z",
+  "cases": [
+    {
+      "source": "browser-failure-motion.js",
+      "url": "http://127.0.0.1:8000/",
+      "browser": "155.0.8059.39",
+      "checks": [
+        {
+          "name": "Actual WebGL context loss",
+          "pass": true,
+          "beforeLoss": "3",
+          "atLoss": "3",
+          "completedResultsPreserved": true
+        },
+        {
+          "name": "Context-loss recovery",
+          "pass": true,
+          "autoplay": false
+        },
+        {
+          "name": "Native renderer exception and explicit recovery",
+          "pass": true,
+          "completedResultsPreserved": true,
+          "autoplay": false
+        },
+        {
+          "name": "Real reduced-motion media change",
+          "pass": true,
+          "pausedAt": "0",
+          "preferenceRestorationAutoplay": false
+        },
+        {
+          "name": "Actual hidden-tab transition",
+          "pass": null,
+          "documentHiddenObserved": false,
+          "pausedAt": "2",
+          "returnAutoplay": null,
+          "limitation": "Opening another page did not hide this Chrome target; actual transition not established by this attempt."
+        }
+      ],
+      "productionScripts": [
+        "http://127.0.0.1:8000/assets/index-lYFWRuYY.js"
+      ],
+      "exportButtons": [
+        "",
+        "Run simulation",
+        "Simulation",
+        "Wind comparison",
+        "Wind sweep",
+        "Taal 2020",
+        "Guide & sources",
+        "Before",
+        "During",
+        "After",
+        "Play sequence",
+        "",
+        "Deposit extent",
+        "",
+        "",
+        "+",
+        "−",
+        "Final CSV",
+        "Scenario JSON",
+        "Tanauan, Batangas",
+        "Jala-Jala",
+        "Mabitac",
+        "Famy",
+        "Siniloan",
+        "Pangil",
+        "Real",
+        "Pakil",
+        "Los Baños",
+        "Pililla",
+        "Paete",
+        "Pila",
+        "Talisay, Batangas",
+        "Bay",
+        "City of Cabuyao",
+        "Cardona",
+        "Santo Tomas, Batangas",
+        "Pagsanjan",
+        "Lumban",
+        "Calauan",
+        "Tanay",
+        "Balete, Batangas",
+        "Malvar, Batangas",
+        "Magdalena",
+        "Binangonan",
+        "Cavinti",
+        "City of Biñan",
+        "Nagcarlan",
+        "General Nakar",
+        "Teresa",
+        "Liliw",
+        "Luisiana",
+        "Mataasnakahoy, Batangas",
+        "City of Carmona",
+        "Angono",
+        "Tagaytay, Cavite",
+        "Majayjay",
+        "Silang, Cavite",
+        "City of Antipolo",
+        "City of San Pedro",
+        "Gen. Mariano Alvarez",
+        "Mauban",
+        "City of Muntinlupa",
+        "San Nicolas, Batangas",
+        "Cainta",
+        "Lucban",
+        "Rodriguez",
+        "Amadeo, Cavite",
+        "City of Taguig",
+        "Lipa, Batangas",
+        "City of Dasmariñas",
+        "City of Pasig",
+        "City of Marikina",
+        "Laurel, Batangas",
+        "City of Parañaque",
+        "City of Las Piñas",
+        "Mendez, Cavite",
+        "Ninoy Aquino International Airport",
+        "City of Makati",
+        "City of Bacoor",
+        "City of Mandaluyong",
+        "Cuenca, Batangas",
+        "Agoncillo, Batangas",
+        "Norzagaray",
+        "Pasay City",
+        "Tiaong",
+        "City of Tayabas",
+        "City of Imus",
+        "City of General Trias",
+        "Indang, Cavite",
+        "City of San Jose Del Monte",
+        "San Jose, Batangas",
+        "Trece Martires, Cavite",
+        "City of Caloocan",
+        "Kawit, Cavite",
+        "Padre Garcia, Batangas",
+        "Sariaya",
+        "Alfonso, Cavite",
+        "Noveleta, Cavite",
+        "City of Valenzuela",
+        "City of Malabon",
+        "Alitagtag, Batangas",
+        "Rosario, Cavite",
+        "Lemery, Batangas",
+        "Pagbilao",
+        "City of Lucena",
+        "Santa Teresita, Batangas",
+        "City of Meycauayan",
+        "City of Navotas",
+        "Tanza, Cavite",
+        "Marilao",
+        "Taal, Batangas",
+        "General Emilio Aguinaldo, Cavite",
+        "Obando",
+        "Ibaan, Batangas",
+        "Atimonan",
+        "Bocaue",
+        "Naic, Cavite",
+        "Rosario, Batangas",
+        "Pandi",
+        "San Pascual, Batangas",
+        "Balagtas",
+        "Calaca, Batangas",
+        "Bulacan",
+        "San Luis, Batangas",
+        "Guiguinto",
+        "Magallanes, Cavite",
+        "Taysan, Batangas",
+        "City of Cavite",
+        "San Juan, Batangas",
+        "Bauan, Batangas",
+        "Maragondon, Cavite",
+        "City of Malolos",
+        "Paombong",
+        "Tuy, Batangas",
+        "Ternate, Cavite",
+        "Calumpit",
+        "Batangas, Batangas",
+        "Nasugbu, Batangas",
+        "Balayan, Batangas",
+        "Lobo, Batangas",
+        "Mabini, Batangas",
+        "Lian, Batangas",
+        "Sasmuan",
+        "Limay",
+        "Orion",
+        "Calatagan, Batangas",
+        "Tingloy, Batangas",
+        "Abra De Ilog",
+        "Abucay",
+        "Baco",
+        "Bagac",
+        "Boac",
+        "City of Balanga",
+        "City of Calapan",
+        "Dinalupihan",
+        "Gasan",
+        "Hermosa",
+        "Lubang",
+        "Mamburao",
+        "Mariveles",
+        "Mogpog",
+        "Naujan",
+        "City of Olongapo",
+        "Orani",
+        "Paluan",
+        "Pola",
+        "Puerto Galera",
+        "Samal",
+        "San Teodoro",
+        "Subic",
+        "Bacacay, Albay",
+        "Camalig, Albay",
+        "Daraga, Albay",
+        "Guinobatan, Albay",
+        "Jovellar, Albay",
+        "Legazpi, Albay",
+        "Libon, Albay",
+        "Ligao, Albay",
+        "Malilipot, Albay",
+        "Malinao, Albay",
+        "Manito, Albay",
+        "Oas, Albay",
+        "Pio Duran, Albay",
+        "Polangui, Albay",
+        "Rapu-Rapu, Albay",
+        "Santo Domingo, Albay",
+        "Tabaco, Albay",
+        "Tiwi, Albay",
+        "Bago, Negros Occidental",
+        "Binalbagan, Negros Occidental",
+        "Cadiz, Negros Occidental",
+        "Calatrava, Negros Occidental",
+        "Candoni, Negros Occidental",
+        "Cauayan, Negros Occidental",
+        "Enrique B. Magalona, Negros Occidental",
+        "Escalante, Negros Occidental",
+        "Himamaylan, Negros Occidental",
+        "Hinigaran, Negros Occidental",
+        "Hinoba-an, Negros Occidental",
+        "Ilog, Negros Occidental",
+        "Isabela, Negros Occidental",
+        "Kabankalan, Negros Occidental",
+        "La Carlota, Negros Occidental",
+        "La Castellana, Negros Occidental",
+        "Manapla, Negros Occidental",
+        "Moises Padilla, Negros Occidental",
+        "Murcia, Negros Occidental",
+        "Pontevedra, Negros Occidental",
+        "Pulupandan, Negros Occidental",
+        "Sagay, Negros Occidental",
+        "San Carlos, Negros Occidental",
+        "San Enrique, Negros Occidental",
+        "Silay, Negros Occidental",
+        "Sipalay, Negros Occidental",
+        "Toboso, Negros Occidental",
+        "Valladolid, Negros Occidental",
+        "Salvador Benedicto, Negros Occidental",
+        "Amlan, Negros Oriental",
+        "Ayungon, Negros Oriental",
+        "Bacong, Negros Oriental",
+        "Bais, Negros Oriental",
+        "Bayawan, Negros Oriental",
+        "Bindoy, Negros Oriental",
+        "Canlaon, Negros Oriental",
+        "Dauin, Negros Oriental",
+        "Dumaguete, Negros Oriental",
+        "Guihulngan, Negros Oriental",
+        "Jimalalud, Negros Oriental",
+        "La Libertad, Negros Oriental",
+        "Mabinay, Negros Oriental",
+        "Manjuyod, Negros Oriental",
+        "Pamplona, Negros Oriental",
+        "San Jose, Negros Oriental",
+        "Santa Catalina, Negros Oriental",
+        "Siaton, Negros Oriental",
+        "Sibulan, Negros Oriental",
+        "Tanjay, Negros Oriental",
+        "Tayasan, Negros Oriental",
+        "Valencia, Negros Oriental",
+        "Vallehermoso, Negros Oriental",
+        "Zamboanguita, Negros Oriental",
+        "Agdangan",
+        "Angat",
+        "Burdeos",
+        "Bustos",
+        "Castillejos",
+        "Doña Remedios Trinidad",
+        "Panukulan",
+        "Perez",
+        "Pinamalayan",
+        "Polillo",
+        "Pulilan",
+        "Sablayan",
+        "Baao",
+        "Balatan",
+        "Basud",
+        "Bombon",
+        "Buhi",
+        "Bula",
+        "Cabusao",
+        "Calabanga",
+        "Camaligan",
+        "Canaman",
+        "Caramoan",
+        "City of Masbate",
+        "City of Sorsogon",
+        "Daet",
+        "City of Iriga",
+        "Labo",
+        "San Lorenzo Ruiz",
+        "Tagkawayan",
+        "Vinzons",
+        "Alburquerque",
+        "Alcoy",
+        "Aloguinsan",
+        "Antequera",
+        "Argao",
+        "Asturias",
+        "Baclayon",
+        "Badian",
+        "Balamban",
+        "Balilihan",
+        "Bantayan",
+        "Barili",
+        "Basay",
+        "Boljoon",
+        "Borbon",
+        "Calape",
+        "Catigbian",
+        "Catmon",
+        "City of Passi",
+        "City of Victorias",
+        "Consolacion",
+        "Cordova",
+        "Corella",
+        "Daanbantayan",
+        "Dalaguete",
+        "Dauis",
+        "Dumanjug",
+        "Ginatilan",
+        "Igbaras",
+        "City of Iloilo",
+        "Inabanga",
+        "Janiuay",
+        "Jordan",
+        "Lambunao",
+        "Leganes",
+        "Leon",
+        "Loay",
+        "Loboc",
+        "Loon",
+        "Madridejos",
+        "Malabuyoc",
+        "Maribojoc",
+        "Medellin",
+        "Miagao",
+        "Mina",
+        "Minglanilla",
+        "Moalboal",
+        "New Lucena",
+        "Nueva Valencia",
+        "Oslob",
+        "Oton",
+        "Panglao",
+        "Pavia",
+        "Pototan",
+        "Ronda",
+        "Samboan",
+        "San Dionisio",
+        "San Lorenzo",
+        "Sara",
+        "Sevilla",
+        "Sibunag",
+        "Sikatuna",
+        "Tigbauan",
+        "Tubigon",
+        "Tubungan",
+        "Zarraga",
+        "Bicol International Airport"
+      ]
+    },
+    {
+      "source": "browser-denial-terrain.js",
+      "checks": [
+        {
+          "name": "HTTP 503 terrain failure and explicit schematic fallback",
+          "pass": true,
+          "completedResultsPreserved": true
+        },
+        {
+          "name": "Return to geographic terrain after source restoration",
+          "pass": true
+        },
+        {
+          "name": "WebGL denied, normal computation/map/table/export controls, explicit recovery",
+          "pass": true,
+          "autoplay": false
+        }
+      ],
+      "productionScripts": [
+        "http://127.0.0.1:8000/assets/index-lYFWRuYY.js"
+      ]
+    },
+    {
+      "source": "browser-accessibility-layout.js",
+      "browser": "155.0.8059.39",
+      "checks": [
+        {
+          "name": "Custom scenario list keyboard and focus",
+          "pass": true,
+          "options": [
+            "Taal · custom inputs",
+            "Taal · teaching scenario✓",
+            "Mayon · teaching scenario",
+            "Kanlaon · teaching scenario"
+          ]
+        },
+        {
+          "name": "Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orbit.",
+          "pass": true,
+          "tabIndex": "0"
+        },
+        {
+          "name": "320px layout",
+          "pass": true,
+          "width": 320,
+          "scrollWidth": 310,
+          "bodyWidth": 310,
+          "nativeSelects": 0
+        },
+        {
+          "name": "320px layout",
+          "pass": true,
+          "width": 320,
+          "scrollWidth": 310,
+          "bodyWidth": 310,
+          "nativeSelects": 0
+        },
+        {
+          "name": "200% CSS zoom proxy",
+          "pass": true,
+          "cssZoom": "2",
+          "width": 1440,
+          "scrollWidth": 1430,
+          "limitation": "CSS zoom reflow inspected; native browser zoom and actual screen-reader speech are not established."
+        }
+      ],
+      "ax": {
+        "unnamedImages": 1,
+        "namedControls": 345
+      },
+      "nonColorLegend": "Deposit thickness · mm\n<0.5\n0.5+\n1+\n5+\n10+\n50+\n100+\nColors indicate thickness, not hazard severity.",
+      "canvasAlternative": "Municipal and facility exposure"
+    },
+    {
+      "source": "orchestrator export test",
+      "pass": true,
+      "completed_population_year": 2020,
+      "unsent_population_year": 2024,
+      "screening_context": {}
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal illustrative teaching scenario",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311,
+        "column_height_m": 5000,
+        "mass_rate_kg_s": 10000,
+        "duration_s": 3600,
+        "wind_speed_m_s": 10,
+        "wind_from_deg": 225,
+        "diffusivity_m2_s": 500,
+        "initial_spread_m": 250,
+        "bulk_density_kg_m3": 1000,
+        "grains": [
+          {
+            "diameter_um": 32,
+            "fraction": 0.1,
+            "settling_speed_m_s": 0.05
+          },
+          {
+            "diameter_um": 63,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.2
+          },
+          {
+            "diameter_um": 125,
+            "fraction": 0.25,
+            "settling_speed_m_s": 0.8
+          },
+          {
+            "diameter_um": 250,
+            "fraction": 0.3,
+            "settling_speed_m_s": 3
+          },
+          {
+            "diameter_um": 500,
+            "fraction": 0.2,
+            "settling_speed_m_s": 10
+          }
+        ],
+        "domain_km": 200,
+        "cell_km": 1,
+        "release_layers": 16
+      },
+      "screening_context": {},
+      "population_year": 2024
+    },
+    {
+      "simulation": {
+        "scenario": {
+          "volcano_id": "taal",
+          "label": "Taal illustrative teaching scenario",
+          "input_status": "illustrative",
+          "source_ids": [
+            "gvp-taal",
+            "assumptions"
+          ],
+          "vent_lat": 14.0106,
+          "vent_lon": 120.9975,
+          "vent_elevation_m": 311,
+          "column_height_m": 5000,
+          "mass_rate_kg_s": 10000,
+          "duration_s": 3600,
+          "wind_speed_m_s": 10,
+          "wind_from_deg": 225,
+          "diffusivity_m2_s": 500,
+          "initial_spread_m": 250,
+          "bulk_density_kg_m3": 1000,
+          "grains": [
+            {
+              "diameter_um": 32,
+              "fraction": 0.1,
+              "settling_speed_m_s": 0.05
+            },
+            {
+              "diameter_um": 63,
+              "fraction": 0.15,
+              "settling_speed_m_s": 0.2
+            },
+            {
+              "diameter_um": 125,
+              "fraction": 0.25,
+              "settling_speed_m_s": 0.8
+            },
+            {
+              "diameter_um": 250,
+              "fraction": 0.3,
+              "settling_speed_m_s": 3
+            },
+            {
+              "diameter_um": 500,
+              "fraction": 0.2,
+              "settling_speed_m_s": 10
+            }
+          ],
+          "domain_km": 200,
+          "cell_km": 1,
+          "release_layers": 16
+        },
+        "screening_context": {},
+        "population_year": 2024
+      },
+      "options": {
+        "include_lava": false
+      }
+    },
+    {
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal illustrative teaching scenario",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311,
+        "column_height_m": 5000,
+        "mass_rate_kg_s": 10000,
+        "duration_s": 3600,
+        "wind_speed_m_s": 10,
+        "wind_from_deg": 225,
+        "diffusivity_m2_s": 500,
+        "initial_spread_m": 250,
+        "bulk_density_kg_m3": 1000,
+        "grains": [
+          {
+            "diameter_um": 32,
+            "fraction": 0.1,
+            "settling_speed_m_s": 0.05
+          },
+          {
+            "diameter_um": 63,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.2
+          },
+          {
+            "diameter_um": 125,
+            "fraction": 0.25,
+            "settling_speed_m_s": 0.8
+          },
+          {
+            "diameter_um": 250,
+            "fraction": 0.3,
+            "settling_speed_m_s": 3
+          },
+          {
+            "diameter_um": 500,
+            "fraction": 0.2,
+            "settling_speed_m_s": 10
+          }
+        ],
+        "domain_km": 200,
+        "cell_km": 1,
+        "release_layers": 16
+      },
+      "screening_context": {},
+      "population_year": 2024
+    },
+    {
+      "simulation": {
+        "scenario": {
+          "volcano_id": "taal",
+          "label": "Taal illustrative teaching scenario",
+          "input_status": "illustrative",
+          "source_ids": [
+            "gvp-taal",
+            "assumptions"
+          ],
+          "vent_lat": 14.0106,
+          "vent_lon": 120.9975,
+          "vent_elevation_m": 311,
+          "column_height_m": 5000,
+          "mass_rate_kg_s": 10000,
+          "duration_s": 3600,
+          "wind_speed_m_s": 10,
+          "wind_from_deg": 225,
+          "diffusivity_m2_s": 500,
+          "initial_spread_m": 250,
+          "bulk_density_kg_m3": 1000,
+          "grains": [
+            {
+              "diameter_um": 32,
+              "fraction": 0.1,
+              "settling_speed_m_s": 0.05
+            },
+            {
+              "diameter_um": 63,
+              "fraction": 0.15,
+              "settling_speed_m_s": 0.2
+            },
+            {
+              "diameter_um": 125,
+              "fraction": 0.25,
+              "settling_speed_m_s": 0.8
+            },
+            {
+              "diameter_um": 250,
+              "fraction": 0.3,
+              "settling_speed_m_s": 3
+            },
+            {
+              "diameter_um": 500,
+              "fraction": 0.2,
+              "settling_speed_m_s": 10
+            }
+          ],
+          "domain_km": 200,
+          "cell_km": 1,
+          "release_layers": 16
+        },
+        "screening_context": {},
+        "population_year": 2024
+      },
+      "options": {
+        "include_lava": false
+      }
+    },
+    {
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal illustrative teaching scenario",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311,
+        "column_height_m": 5000,
+        "mass_rate_kg_s": 10000,
+        "duration_s": 3600,
+        "wind_speed_m_s": 10,
+        "wind_from_deg": 225,
+        "diffusivity_m2_s": 500,
+        "initial_spread_m": 250,
+        "bulk_density_kg_m3": 1000,
+        "grains": [
+          {
+            "diameter_um": 32,
+            "fraction": 0.1,
+            "settling_speed_m_s": 0.05
+          },
+          {
+            "diameter_um": 63,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.2
+          },
+          {
+            "diameter_um": 125,
+            "fraction": 0.25,
+            "settling_speed_m_s": 0.8
+          },
+          {
+            "diameter_um": 250,
+            "fraction": 0.3,
+            "settling_speed_m_s": 3
+          },
+          {
+            "diameter_um": 500,
+            "fraction": 0.2,
+            "settling_speed_m_s": 10
+          }
+        ],
+        "domain_km": 200,
+        "cell_km": 1,
+        "release_layers": 16
+      },
+      "screening_context": {},
+      "population_year": 2020
+    },
+    {
+      "simulation": {
+        "scenario": {
+          "volcano_id": "taal",
+          "label": "Taal illustrative teaching scenario",
+          "input_status": "illustrative",
+          "source_ids": [
+            "gvp-taal",
+            "assumptions"
+          ],
+          "vent_lat": 14.0106,
+          "vent_lon": 120.9975,
+          "vent_elevation_m": 311,
+          "column_height_m": 5000,
+          "mass_rate_kg_s": 10000,
+          "duration_s": 3600,
+          "wind_speed_m_s": 10,
+          "wind_from_deg": 225,
+          "diffusivity_m2_s": 500,
+          "initial_spread_m": 250,
+          "bulk_density_kg_m3": 1000,
+          "grains": [
+            {
+              "diameter_um": 32,
+              "fraction": 0.1,
+              "settling_speed_m_s": 0.05
+            },
+            {
+              "diameter_um": 63,
+              "fraction": 0.15,
+              "settling_speed_m_s": 0.2
+            },
+            {
+              "diameter_um": 125,
+              "fraction": 0.25,
+              "settling_speed_m_s": 0.8
+            },
+            {
+              "diameter_um": 250,
+              "fraction": 0.3,
+              "settling_speed_m_s": 3
+            },
+            {
+              "diameter_um": 500,
+              "fraction": 0.2,
+              "settling_speed_m_s": 10
+            }
+          ],
+          "domain_km": 200,
+          "cell_km": 1,
+          "release_layers": 16
+        },
+        "screening_context": {},
+        "population_year": 2020
+      },
+      "options": {
+        "include_lava": false
+      }
+    }
+  ],
+  "assets": [
+    "http://127.0.0.1:8000/assets/index-lYFWRuYY.js"
+  ],
+  "finished": "2026-10-11T08:17:43.806Z",
+  "completed": true
+}

@@ -1,0 +1,19 @@
+{
+  "started": "2026-10-11T06:52:56.211Z",
+  "duration_target_s": 1800,
+  "scheduling_mode": "Background/occlusion throttling disabled for resource-soak continuity; separate default-flag foreground benchmark owns performance gate",
+  "machine": {
+    "platform": "win32",
+    "release": "10.0.26300",
+    "cpu": "AMD Ryzen 7 5800U with Radeon Graphics         ",
+    "ram_bytes": 14877257728
+  },
+  "cycles": [],
+  "replays": [],
+  "snapshots": [],
+  "errors": [
+    "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Run simulation', exact: true }) to be visible\u001b[22m\n\n    at C:\\Workspace\\ABO-CS\\qa\\browser\\gap-engineering-soak.cjs:22:75"
+  ],
+  "completed": false,
+  "failure_snapshot": "- link \"Skip to results\":\n  - /url: \"#workspace\"\n- banner:\n  - heading \"ABO Eruption laboratory\" [level=1]\n  - group: Academic model · limits\n  - button \"Dark theme\"\n- main:\n  - complementary \"Simulation inputs\":\n    - group:\n      - text: Simulation inputs\n      - button \"Retry catalog connection\"\n  - navigation \"Scientific views\":\n    - button \"Simulation\"\n    - button \"Wind comparison\"\n    - button \"Wind sweep\"\n    - button \"Taal 2020\"\n    - button \"Guide & sources\"\n  - status: Choose inputs and run a simulation to view deposition.\n  - alert: Unexpected Python response. Check that the backend and frontend versions match. Start the local Python backend, then retry the catalog.\n  - region \"Simulation\":\n    - paragraph: Connect to Python to load the local scenario catalog. No scientific results have been fabricated.\n- contentinfo:\n  - text: CSE 103 · Computational Science\n  - link \"Project proposal\":\n    - /url: https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un"
+}

@@ -1,0 +1,16 @@
+{
+  "docx_sha256": "26086a8818fce6a931c851abeb6783fdd125ed6c55dd0dafd713c3c152c0559d",
+  "pdf_sha256": "b790d2801d3daa5347c5ea9dab40525c695112f8b08bf814ea2e2b10b9e82226",
+  "rendered_pages": 10,
+  "checked_prose_and_cell_paragraphs": 140,
+  "missing_from_render": [],
+  "rendered_fonts": [
+    "/FAAABA+Arial-BoldMT",
+    "/FAAABE+ArialMT",
+    "/FAAACI+ArialMT"
+  ],
+  "only_arial_rendered": true,
+  "source_contains_evaluation_markings": false,
+  "native_equations": 7,
+  "native_fractions": 13
+}

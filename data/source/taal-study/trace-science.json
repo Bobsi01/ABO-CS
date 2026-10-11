@@ -1,0 +1,199 @@
+{
+  "id": "taal-figure4-trace-science-v1",
+  "source_id": "taal-study",
+  "source_file": "data/source/taal-study/figure-4-pdf-extract.png",
+  "source_page": 10,
+  "figure": "4a",
+  "traced_by": "scientific implementation agent",
+  "derived": true,
+  "dependency_group": "taal-deposit-study",
+  "thickness_mm": 0.5,
+  "geographic_datum": "Longitude/latitude from printed graticule; comparison assumes WGS84, original datum not stated",
+  "digitizer_pixel_reading_bound_px": 2,
+  "coordinate_method": "Separate least-squares affine pixel-x to longitude and pixel-y to latitude using printed frame ticks",
+  "longitude_controls": [
+    [
+      64,
+      120.66666666666667
+    ],
+    [
+      247,
+      121
+    ],
+    [
+      430,
+      121.33333333333333
+    ],
+    [
+      614,
+      121.66666666666667
+    ],
+    [
+      797,
+      122
+    ]
+  ],
+  "latitude_controls": [
+    [
+      94,
+      15.333333333333334
+    ],
+    [
+      281,
+      15
+    ],
+    [
+      470,
+      14.666666666666666
+    ],
+    [
+      659,
+      14.333333333333334
+    ],
+    [
+      847,
+      14
+    ],
+    [
+      1036,
+      13.666666666666666
+    ],
+    [
+      1225,
+      13.333333333333334
+    ]
+  ],
+  "outline_pixels": [
+    [
+      461,
+      270
+    ],
+    [
+      527,
+      268
+    ],
+    [
+      582,
+      290
+    ],
+    [
+      607,
+      334
+    ],
+    [
+      621,
+      388
+    ],
+    [
+      628,
+      441
+    ],
+    [
+      625,
+      494
+    ],
+    [
+      604,
+      544
+    ],
+    [
+      579,
+      599
+    ],
+    [
+      545,
+      675
+    ],
+    [
+      525,
+      714
+    ],
+    [
+      484,
+      760
+    ],
+    [
+      438,
+      811
+    ],
+    [
+      394,
+      868
+    ],
+    [
+      343,
+      918
+    ],
+    [
+      290,
+      972
+    ],
+    [
+      227,
+      970
+    ],
+    [
+      188,
+      948
+    ],
+    [
+      160,
+      922
+    ],
+    [
+      133,
+      890
+    ],
+    [
+      118,
+      850
+    ],
+    [
+      127,
+      785
+    ],
+    [
+      137,
+      696
+    ],
+    [
+      163,
+      634
+    ],
+    [
+      194,
+      567
+    ],
+    [
+      219,
+      505
+    ],
+    [
+      251,
+      442
+    ],
+    [
+      278,
+      399
+    ],
+    [
+      304,
+      364
+    ],
+    [
+      383,
+      303
+    ],
+    [
+      461,
+      270
+    ]
+  ],
+  "limitations": [
+    "Manual trace of thick printed contour, not raw observations",
+    "0.05cm contour label partly masks the boundary; adjacent visible segments used",
+    "Pixel/control uncertainty and independent trace differences exclude crowdsourcing, erosion and subjective contour uncertainty",
+    "Unreported source map datum/projection adds unresolved systematic uncertainty",
+    "No area target or model output used to select this trace"
+  ]
+}

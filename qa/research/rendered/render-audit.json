@@ -1,0 +1,13 @@
+{
+  "renderer": "Aspose.Words 26.9.0 evaluation",
+  "evaluation_markings": "Retained in internal renders; absent from the source DOCX",
+  "source_docx_modified": false,
+  "pages": 10,
+  "last_reference_present": true,
+  "last_reference_on_final_page": true,
+  "visual_review": "PASS: independent QA inspected all ten replacement page images on 2026-10-10",
+  "reviewed_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "reviewer": "research_document_qa; orchestrator additionally inspected replacement pages 1 and 5",
+  "docx_sha256": "26086a8818fce6a931c851abeb6783fdd125ed6c55dd0dafd713c3c152c0559d",
+  "scope": "Readable body, headings, native equations, tables, page breaks and wrapped references; Word/LibreOffice pagination not independently verified"
+}

@@ -1,0 +1,118 @@
+{
+  "protocol_id": "taal-main-plume-2020-v1",
+  "independent_scalar_processing": true,
+  "selected_records_verified_against_full_archive": 4,
+  "source_sha256": {
+    "tanay-2020-01-12-13.txt": "27a56971a45daedb74ce52481ec5581bd56b4bd6967e399609a52cf31bab779f",
+    "RPM00098433-data.txt.zip": "2d5b2d792c5f83918a63e7598c979b5cc6d11ee8d0396b0d8744be084d2aec09",
+    "igra2-data-format.txt": "dfd7b4d2dd18a255477455a7caefd12cb21c30549a1e70cbc3a51db9f41c1dfe",
+    "igra2-station-list.txt": "8ff2dc070248e778307613aa2ab2dfb7b745e5ff29e9d50c58bc5dc8193d0e9d"
+  },
+  "target_profiles": [
+    {
+      "header": "#RPM00098433 2020 01 12 00 0011   55 ncdc-gts           145812  1213693",
+      "nominal_date": "2020-01-12",
+      "nominal_hour_utc": 0,
+      "raw_release_hhmm_utc": "0011",
+      "raw_levels": 55,
+      "gph_processing_flags": {
+        " ": 44,
+        "B": 11
+      },
+      "rejections": {
+        "height_missing_or_removed": 44,
+        "height_outside_frozen_band": 1,
+        "wind_missing_or_removed": 1
+      },
+      "accepted_unique_heights_m": [
+        1510,
+        3142,
+        5870,
+        7590,
+        9720,
+        11000,
+        12490,
+        14290,
+        16630
+      ],
+      "covered_grid_heights_m": [
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        8000,
+        9000,
+        10000,
+        11000,
+        12000,
+        13000,
+        14000,
+        15000,
+        16000
+      ],
+      "height_grid_coverage": 0.7142857142857143,
+      "passes_frozen_coverage_gate": false,
+      "east_m_s": -0.6690667750201906,
+      "north_m_s": 9.983851932137544,
+      "speed_m_s": 10.00624553727733,
+      "from_deg": 176.1660619744918
+    },
+    {
+      "header": "#RPM00098433 2020 01 12 12 1140   55 ncdc-gts           145812  1213693",
+      "nominal_date": "2020-01-12",
+      "nominal_hour_utc": 12,
+      "raw_release_hhmm_utc": "1140",
+      "raw_levels": 55,
+      "gph_processing_flags": {
+        " ": 45,
+        "B": 10
+      },
+      "rejections": {
+        "height_missing_or_removed": 45,
+        "height_outside_frozen_band": 1
+      },
+      "accepted_unique_heights_m": [
+        1504,
+        3139,
+        5860,
+        7590,
+        9710,
+        10980,
+        12470,
+        14270,
+        16610
+      ],
+      "covered_grid_heights_m": [
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        8000,
+        9000,
+        10000,
+        11000,
+        12000,
+        13000,
+        14000,
+        15000,
+        16000
+      ],
+      "height_grid_coverage": 0.7142857142857143,
+      "passes_frozen_coverage_gate": false,
+      "east_m_s": 3.053123207985125,
+      "north_m_s": 10.81659652976411,
+      "speed_m_s": 11.239231370998747,
+      "from_deg": 195.76240095474003
+    }
+  ],
+  "accepted_launch_count": 0,
+  "effective_east_m_s": null,
+  "effective_north_m_s": null,
+  "effective_speed_m_s": null,
+  "effective_from_deg": null,
+  "limit": "Scalar reconstruction verifies archive extraction and frozen arithmetic, not plume representativeness, instrument truth or historical model agreement."
+}

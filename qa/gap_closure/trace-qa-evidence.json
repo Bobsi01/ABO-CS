@@ -1,0 +1,39 @@
+{
+  "trace_id": "independent-qa-0.5mm-v1",
+  "trace_sha256": "bdc75755d434c093695d9d8a2690ae8884358bc6fe88a75c56ca055148f94d0b",
+  "source_sha256": "9a56f37370071a5e69ea82c435a4614a4ec0d2ae1623ca1c3f02d9a4b06f3553",
+  "longitude_affine_slope_intercept": [
+    0.001823484323421564,
+    120.54868802896512
+  ],
+  "latitude_affine_slope_intercept": [
+    -0.0017680110473777672,
+    15.496937175514676
+  ],
+  "longitude_control_residual_deg": [
+    -0.0003638988408596333,
+    0.0009121411736714435,
+    -0.000547045296940496,
+    -0.00018274744414270572,
+    0.00018155040868350625
+  ],
+  "latitude_control_residual_deg": [
+    6.282029889881358e-05,
+    0.0001260712015227483,
+    -0.0006946834195407092,
+    0.0002525730067706178,
+    0.00031582390939632887,
+    0.0003790748120202636,
+    -0.0004416798090449703
+  ],
+  "longitude_control_rmse_pixels": 0.2828428817626364,
+  "latitude_control_rmse_pixels": 0.21428574888771,
+  "metres_per_pixel_approx_east_north": [
+    196.5649073821667,
+    195.61968703698548
+  ],
+  "trace_plus_quantization_bound_m": 982.8245369108334,
+  "equal_area_polygon_km2": 8656.151369049236,
+  "trace_pixels": 31,
+  "limitation": "Manual derived contour, not raw observation locations or independent vertices. Pixel uncertainty describes registration/tracing only; original contour interpolation and field measurement uncertainty are additional unquantified limits."
+}

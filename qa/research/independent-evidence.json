@@ -1,0 +1,55 @@
+{
+  "role": "independent read-only DOCX and research audit",
+  "docx_sha256": "26086a8818fce6a931c851abeb6783fdd125ed6c55dd0dafd713c3c152c0559d",
+  "pdf_sha256": "b790d2801d3daa5347c5ea9dab40525c695112f8b08bf814ea2e2b10b9e82226",
+  "run_count": 330,
+  "direct_typography_issues": [],
+  "main_headings": [
+    "Abstract",
+    "1. Introduction",
+    "2. Methods",
+    "3. Results",
+    "4. Discussion",
+    "References"
+  ],
+  "tables": 3,
+  "prose_and_cell_paragraphs_checked": 140,
+  "missing_from_pdf_text": [],
+  "raw_extraction_cross_page_misses": 5,
+  "rendered_pages": 10,
+  "rendered_fonts": [
+    "/FAAABA+Arial-BoldMT",
+    "/FAAABE+ArialMT",
+    "/FAAACI+ArialMT"
+  ],
+  "editable_equations": [
+    "M = Q T;   (h)_(j) = (H(j + 0.5))/(J);   j = 0, …, J − 1.",
+    "(u)_(E) = −U sin(f);   (u)_(N) = −U cos(f).",
+    "(τ)_(ij) = ((h)_(j))/((v)_(i));   (μ)_(ij) = ((u)_(E)(τ)_(ij), (u)_(N)(τ)_(ij));   ((s)_(ij))^(2) = ((σ)_(0))^(2) + 2K(τ)_(ij).",
+    "L(E,N) = (Σ)_(i,j)(M (w)_(i))/(J 2π ((s)_(ij))^(2)) exp(−(((E − (μ)_(E,ij)))^(2) + ((N − (μ)_(N,ij)))^(2))/(2((s)_(ij))^(2))).",
+    "(P)_(ij) = [Φ((b − (μ)_(E,ij))/((s)_(ij))) − Φ((a − (μ)_(E,ij))/((s)_(ij)))] [Φ((d − (μ)_(N,ij))/((s)_(ij))) − Φ((c − (μ)_(N,ij))/((s)_(ij)))].",
+    "(A)_(ij)(t) = (M (w)_(i))/(J) clip((t − (τ)_(ij))/(T), 0, 1).",
+    "v = ((ρ)_(l) g (h)^(2) sin(α))/(3η);   h = ([(3ηq)/((ρ)_(l) g w sin(α))])^(1/3);   v = (q)/(wh)."
+  ],
+  "title_style_has_border": false,
+  "source_evaluation_text_present": false,
+  "tracked_changes": 0,
+  "comment_anchors": 0,
+  "synthetic_point_kg_m2": 0.015915494309189534,
+  "synthetic_cell_mass_kg": 14663.149630841179,
+  "scalar_expected_final_elapsed_s": 100475.0,
+  "scalar_expected_emitted_mass_kg": 36000000,
+  "scalar_expected_inside_mass_kg": 30459336.285434518,
+  "scalar_expected_outside_mass_kg": 5540663.714565482,
+  "live_frame_count": 37,
+  "live_final_elapsed_s": 100475.0,
+  "live_final_diagnostics": {
+    "emitted_mass_kg": 36000000.0,
+    "deposited_mass_kg": 36000000.0,
+    "airborne_mass_kg": 0.0,
+    "inside_domain_mass_kg": 30459336.28543452,
+    "outside_domain_mass_kg": 5540663.714565478
+  },
+  "live_lava_stop": "effusion_volume_limit",
+  "mass_scalar_api_difference_kg": -3.725290298461914e-09
+}

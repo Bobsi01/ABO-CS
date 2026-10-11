@@ -1,0 +1,20 @@
+{
+  "observed_at_utc": "2026-10-10T08:06:25.0057198Z",
+  "role": "orchestrator live reproduction; independent reviewer evidence is separate",
+  "request_path": "data/examples/mayon-eruption-request.json",
+  "request_sha256": "1e28dce766e4d4aaa83305938487dec798439c13783ee990eca3d3e7351168af",
+  "input_status": "illustrative",
+  "solver_version": "abo-finite-pulse-1.0",
+  "frame_count": 37,
+  "final_elapsed_s": 100475.0,
+  "final_phase": "after",
+  "final_diagnostics": {
+    "emitted_mass_kg": 36000000.0,
+    "deposited_mass_kg": 36000000.0,
+    "airborne_mass_kg": 0.0,
+    "inside_domain_mass_kg": 30459336.28543452,
+    "outside_domain_mass_kg": 5540663.714565478
+  },
+  "lava_enabled": true,
+  "lava_stop_reason": "effusion_volume_limit"
+}

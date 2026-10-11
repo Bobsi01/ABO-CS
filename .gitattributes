@@ -1,0 +1,20 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.yml text eol=lf
+*.ps1 text eol=crlf
+# Preserve archived evidence bytes and their recorded SHA-256 hashes.
+data/** -text
+frontend/public/** -text
+qa/**/*.json -text
+docs/source/** -text
+docs/figures/** -text
+antislop.md -text
+skills/antislop-ui/SKILL.md -text
+*.heapsnapshot filter=lfs diff=lfs merge=lfs -text

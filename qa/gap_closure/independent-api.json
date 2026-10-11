@@ -1,0 +1,636 @@
+{
+  "catalog_sha256": "1d031f88c11b3e596c3d408fd561bb092e1db5867a31df51c0a6004303d7bae9",
+  "revision": "2026-10-11-gap-evidence-v1",
+  "route_status": {
+    "health": 200,
+    "catalog": 200,
+    "replication": 200,
+    "simulation": 200,
+    "invalid_population_year": 422
+  },
+  "parameter_evidence_count": 31,
+  "historical": {
+    "available": false,
+    "reason": "The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.",
+    "simulation": null,
+    "metrics": {},
+    "observations": [],
+    "validation_status": "unavailable",
+    "blocked_inputs": [
+      "Tanay selected-launch coverage 71.43% below frozen 75% requirement",
+      "Reviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)",
+      "Independent ash mass and dry bulk density",
+      "Whole-event grain fractions and settling speeds",
+      "Raw geolocated thickness observations and defensible original measurement/interpolation uncertainty",
+      "2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review",
+      "Condition-specific roof/crop thresholds and water-facility coordinates",
+      "Resolve/report published footprint area definitions without target selection"
+    ],
+    "reference_tables": [
+      {
+        "title": "Published Table 3 isopach areas (not spatial geometry)",
+        "source_id": "taal-study",
+        "original_units": "cm and km2",
+        "thickness_mm": [
+          450,
+          100,
+          15,
+          5,
+          3,
+          1,
+          0.5
+        ],
+        "enclosed_area_km2": [
+          22.9,
+          123.24,
+          436.77,
+          764.24,
+          1107.91,
+          2285.22,
+          3864.89
+        ]
+      },
+      {
+        "title": "Published plume and volume references",
+        "source_id": "taal-study",
+        "observed_plume_asl_m": [
+          17000,
+          21000
+        ],
+        "height_above_profile_ground_m": [
+          16689,
+          20689
+        ],
+        "conversion": "ASL minus 311 m profile elevation; not a surveyed vent datum",
+        "inferred_height_above_vent_m": 17800,
+        "volume_estimates_km3": {
+          "exponential": 0.057,
+          "power_law": 0.042,
+          "weibull": 0.09
+        },
+        "narrative_reporting_footprint_km2": 8605,
+        "notes": "The inferred height above vent is a separate value from observed ASL height. Volume estimates depend on fit method; base-surge deposit excluded."
+      }
+    ],
+    "protocol": {
+      "id": "taal-main-plume-2020-v1",
+      "frozen_at": "2026-10-11",
+      "event_start_utc": "2020-01-12T05:00:00Z",
+      "event_end_utc": "2020-01-12T20:28:00Z",
+      "duration_s": 55680.0,
+      "event_definition": "12\u00e2\u20ac\u201c13 January 2020 main mapped fallout; published 13:00\u00e2\u20ac\u201c04:28 local, endpoint-definition uncertainty retained",
+      "evaluation_rules": [
+        "Independent inputs preferred; no evaluation-data tuning",
+        "70/30 spatial-group split only if calibration necessary; duplicate/dependency families intact",
+        "1\u00e2\u20ac\u201c21 km geopotential wind grid; 75% coverage; no extrapolation",
+        "Interval RMSE/MAE and midpoint RMSE/MAE separate; 0.5 mm footprint IoU requires accepted geometry",
+        "Resolution/release/input sensitivity without refitting"
+      ],
+      "acceptance_tolerance": "No defensible predictive tolerance established; descriptive agreement only when inputs become usable",
+      "review_status": "approved"
+    },
+    "dataset_id": "taal-published-evidence-v1",
+    "observation_results": [],
+    "source_dependencies": [
+      {
+        "group_id": "taal-deposit-study",
+        "source_ids": [
+          "taal-study"
+        ],
+        "dependent_quantities": [
+          "isopach geometry",
+          "crowd/field thickness",
+          "deposit-derived volume",
+          "deposit-inferred height"
+        ],
+        "disclosure": "These quantities derive from the same observations; contour vertices and inferred input fits are not independent evaluation evidence."
+      }
+    ],
+    "assessment_reasons": [
+      "Independent QA approved frozen methodology; scientific input gate remains blocked",
+      "Published 8,605 km\u00c2\u00b2 narrative and 3,864.89 km\u00c2\u00b2 Table 3 area statements remain distinct unresolved references",
+      "No participant or classroom empirical study was performed",
+      "Numerical verification does not establish empirical accuracy",
+      "Both target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed"
+    ],
+    "sensitivity": [],
+    "reference_footprint_geojson": {
+      "type": "Feature",
+      "properties": {
+        "trace_id": "taal-figure4-trace-science-v1",
+        "thickness_mm": 0.5,
+        "source_id": "taal-study",
+        "dependency_group": "taal-deposit-study",
+        "derived_area_km2": 8639.950156949715,
+        "control_rmse_m": 108.08792376963491,
+        "pixel_reading_bound_m": 554.4228692635518,
+        "lon_affine": [
+          0.0018185108330863687,
+          120.550646270773
+        ],
+        "lat_affine": [
+          -0.0017676737241614005,
+          15.497977792737972
+        ],
+        "uncertainty_limit": "Control/pixel error only; not full observation/map uncertainty"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.38897976482582,
+              15.020705887214394
+            ],
+            [
+              121.50900147980951,
+              15.024241234662716
+            ],
+            [
+              121.60901957562926,
+              14.985352412731165
+            ],
+            [
+              121.65448234645643,
+              14.907574768868065
+            ],
+            [
+              121.67994149811963,
+              14.812120387763349
+            ],
+            [
+              121.69267107395125,
+              14.718433680382795
+            ],
+            [
+              121.68721554145198,
+              14.62474697300224
+            ],
+            [
+              121.64902681395716,
+              14.53636328679417
+            ],
+            [
+              121.60356404313,
+              14.439141231965293
+            ],
+            [
+              121.54173467480507,
+              14.304798028929026
+            ],
+            [
+              121.50536445814335,
+              14.235858753686731
+            ],
+            [
+              121.4308055139868,
+              14.154545762375307
+            ],
+            [
+              121.34715401566483,
+              14.064394402443076
+            ],
+            [
+              121.26713953900904,
+              13.963637000165877
+            ],
+            [
+              121.17439548652163,
+              13.875253313957806
+            ],
+            [
+              121.07801441236805,
+              13.77979893285309
+            ],
+            [
+              120.96344822988361,
+              13.783334280301414
+            ],
+            [
+              120.89252630739324,
+              13.822223102232964
+            ],
+            [
+              120.84160800406681,
+              13.86818261906116
+            ],
+            [
+              120.79250821157349,
+              13.924748178234326
+            ],
+            [
+              120.76523054907719,
+              13.995455127200781
+            ],
+            [
+              120.78159714657497,
+              14.110353919271272
+            ],
+            [
+              120.79978225490584,
+              14.267676880721638
+            ],
+            [
+              120.84706353656608,
+              14.377272651619643
+            ],
+            [
+              120.90343737239175,
+              14.495706791138458
+            ],
+            [
+              120.94890014321892,
+              14.605302562036465
+            ],
+            [
+              121.00709248987768,
+              14.716666006658633
+            ],
+            [
+              121.05619228237101,
+              14.792675976797574
+            ],
+            [
+              121.10347356403126,
+              14.854544557143223
+            ],
+            [
+              121.24713591984508,
+              14.962372654317068
+            ],
+            [
+              121.38897976482582,
+              15.020705887214394
+            ]
+          ]
+        ]
+      }
+    },
+    "reference_footprints": [
+      {
+        "trace_id": "taal-figure4-trace-science-v1",
+        "label": "Science trace of published 0.5 mm contour",
+        "threshold_mm": 0.5,
+        "geojson": {
+          "type": "Feature",
+          "properties": {
+            "trace_id": "taal-figure4-trace-science-v1",
+            "thickness_mm": 0.5,
+            "source_id": "taal-study",
+            "dependency_group": "taal-deposit-study",
+            "derived_area_km2": 8639.950156949715,
+            "control_rmse_m": 108.08792376963491,
+            "pixel_reading_bound_m": 554.4228692635518,
+            "lon_affine": [
+              0.0018185108330863687,
+              120.550646270773
+            ],
+            "lat_affine": [
+              -0.0017676737241614005,
+              15.497977792737972
+            ],
+            "uncertainty_limit": "Control/pixel error only; not full observation/map uncertainty"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  121.38897976482582,
+                  15.020705887214394
+                ],
+                [
+                  121.50900147980951,
+                  15.024241234662716
+                ],
+                [
+                  121.60901957562926,
+                  14.985352412731165
+                ],
+                [
+                  121.65448234645643,
+                  14.907574768868065
+                ],
+                [
+                  121.67994149811963,
+                  14.812120387763349
+                ],
+                [
+                  121.69267107395125,
+                  14.718433680382795
+                ],
+                [
+                  121.68721554145198,
+                  14.62474697300224
+                ],
+                [
+                  121.64902681395716,
+                  14.53636328679417
+                ],
+                [
+                  121.60356404313,
+                  14.439141231965293
+                ],
+                [
+                  121.54173467480507,
+                  14.304798028929026
+                ],
+                [
+                  121.50536445814335,
+                  14.235858753686731
+                ],
+                [
+                  121.4308055139868,
+                  14.154545762375307
+                ],
+                [
+                  121.34715401566483,
+                  14.064394402443076
+                ],
+                [
+                  121.26713953900904,
+                  13.963637000165877
+                ],
+                [
+                  121.17439548652163,
+                  13.875253313957806
+                ],
+                [
+                  121.07801441236805,
+                  13.77979893285309
+                ],
+                [
+                  120.96344822988361,
+                  13.783334280301414
+                ],
+                [
+                  120.89252630739324,
+                  13.822223102232964
+                ],
+                [
+                  120.84160800406681,
+                  13.86818261906116
+                ],
+                [
+                  120.79250821157349,
+                  13.924748178234326
+                ],
+                [
+                  120.76523054907719,
+                  13.995455127200781
+                ],
+                [
+                  120.78159714657497,
+                  14.110353919271272
+                ],
+                [
+                  120.79978225490584,
+                  14.267676880721638
+                ],
+                [
+                  120.84706353656608,
+                  14.377272651619643
+                ],
+                [
+                  120.90343737239175,
+                  14.495706791138458
+                ],
+                [
+                  120.94890014321892,
+                  14.605302562036465
+                ],
+                [
+                  121.00709248987768,
+                  14.716666006658633
+                ],
+                [
+                  121.05619228237101,
+                  14.792675976797574
+                ],
+                [
+                  121.10347356403126,
+                  14.854544557143223
+                ],
+                [
+                  121.24713591984508,
+                  14.962372654317068
+                ],
+                [
+                  121.38897976482582,
+                  15.020705887214394
+                ]
+              ]
+            ]
+          }
+        },
+        "source_ids": [
+          "taal-study"
+        ],
+        "dependency_group": "taal-deposit-study",
+        "uncertainty_notes": "Control-point residuals and intertrace disagreement quantify digitization only. Original interpolation, datum, crowdsourcing, erosion and event-window uncertainty are additional and unquantified."
+      },
+      {
+        "trace_id": "independent-qa-0.5mm-v1",
+        "label": "Independent QA trace of published 0.5 mm contour",
+        "threshold_mm": 0.5,
+        "geojson": {
+          "type": "Feature",
+          "properties": {
+            "trace_id": "independent-qa-0.5mm-v1",
+            "thickness_mm": 0.5,
+            "derived_evidence": true,
+            "source_family": "taal-deposit-study",
+            "independent_observation_count": 0
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  121.38931430206246,
+                  15.0178061816753
+                ],
+                [
+                  121.50601729876144,
+                  15.021342203770056
+                ],
+                [
+                  121.60995590519647,
+                  14.987749993869878
+                ],
+                [
+                  121.65918998192885,
+                  14.899349441500991
+                ],
+                [
+                  121.67742482516306,
+                  14.823324966463746
+                ],
+                [
+                  121.68836573110359,
+                  14.692492148957792
+                ],
+                [
+                  121.68471876245675,
+                  14.620003696015303
+                ],
+                [
+                  121.61907332681358,
+                  14.47149076803557
+                ],
+                [
+                  121.56983925008119,
+                  14.354802038908637
+                ],
+                [
+                  121.49325290849748,
+                  14.213361155118417
+                ],
+                [
+                  121.4184900512372,
+                  14.130264635891661
+                ],
+                [
+                  121.3419037096535,
+                  14.047168116664906
+                ],
+                [
+                  121.26531736806979,
+                  13.96583960848553
+                ],
+                [
+                  121.18508405783925,
+                  13.875671045069263
+                ],
+                [
+                  121.07749848275736,
+                  13.776662426416108
+                ],
+                [
+                  120.94803109579443,
+                  13.778430437463486
+                ],
+                [
+                  120.89150308176838,
+                  13.80671861422153
+                ],
+                [
+                  120.8258576461252,
+                  13.859758945642863
+                ],
+                [
+                  120.76568266345228,
+                  13.971143641627663
+                ],
+                [
+                  120.76203569480543,
+                  13.994127785243574
+                ],
+                [
+                  120.78391750668649,
+                  14.165624856839218
+                ],
+                [
+                  120.79850538127387,
+                  14.261097453397616
+                ],
+                [
+                  120.86597430124047,
+                  14.407842370329972
+                ],
+                [
+                  120.94073715850075,
+                  14.563427342499214
+                ],
+                [
+                  121.0118530471142,
+                  14.692492148957792
+                ],
+                [
+                  121.05196970222947,
+                  14.768516623995035
+                ],
+                [
+                  121.1048507476087,
+                  14.855149165316547
+                ],
+                [
+                  121.1814370891924,
+                  14.909957507785258
+                ],
+                [
+                  121.25072949348242,
+                  14.96299783920659
+                ],
+                [
+                  121.32913931938954,
+                  14.99482203805939
+                ],
+                [
+                  121.38931430206246,
+                  15.0178061816753
+                ]
+              ]
+            ]
+          }
+        },
+        "source_ids": [
+          "taal-study"
+        ],
+        "dependency_group": "taal-deposit-study",
+        "uncertainty_notes": "Control-point residuals and intertrace disagreement quantify digitization only. Original interpolation, datum, crowdsourcing, erosion and event-window uncertainty are additional and unquantified."
+      }
+    ],
+    "footprint_evidence": {
+      "dataset_id": "taal-figure4-derived-0.5mm-v1",
+      "source_group": "taal-deposit-study",
+      "independent_observation_count": 0,
+      "comparison_type": "Independent manual digitization repeatability, not model agreement",
+      "trace_ids": [
+        "taal-figure4-trace-science-v1",
+        "independent-qa-0.5mm-v1"
+      ],
+      "geodesic_areas_km2": [
+        8639.950156949715,
+        8656.140982394423
+      ],
+      "absolute_area_difference_km2": 16.190825444708025,
+      "relative_area_difference_fraction": 0.0018721947420684065,
+      "intertrace_iou": 0.9791802366319576,
+      "boundary_hausdorff_m": 1901.3414247067901,
+      "symmetric_difference_area_km2": 181.94751875403202,
+      "domain": {
+        "width_km": 200,
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "projection": "Vent-centered WGS84 azimuthal equidistant",
+        "clipped_projected_areas_km2": [
+          8209.788260676733,
+          8234.147101696975
+        ],
+        "outside_domain_projected_fraction": [
+          0.04980455206517531,
+          0.04876763997305644
+        ]
+      },
+      "published_areas_km2": {
+        "narrative": 8605,
+        "table_3": 3864.89
+      },
+      "area_assessment": "Both traces depict the printed outer contour; neither was adjusted to either published area. Published definitions remain unresolved.",
+      "uncertainty": "Control-point residuals and intertrace disagreement quantify digitization only. Original interpolation, datum, crowdsourcing, erosion and event-window uncertainty are additional and unquantified.",
+      "historical_validation": "Not established; independent physical inputs and effective wind remain source blocked"
+    }
+  },
+  "simulation_summary": {
+    "reporting_cutoff_mm": 0.5,
+    "receptors_total": 320,
+    "receptors_covered": 151,
+    "municipalities_reported": 0,
+    "indicative_population": 0,
+    "reported_population_unknown": 0,
+    "criterion_counts": {},
+    "criterion_population": {}
+  },
+  "limit": "API/data status verification and numerical synthetic tests do not establish empirical predictive accuracy."
+}

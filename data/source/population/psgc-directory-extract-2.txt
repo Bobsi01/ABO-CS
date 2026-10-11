@@ -1,0 +1,255 @@
+PHILIPPINE STANDARD GEOGRAPHIC CODE | Philippine Statistics Authority (https://psa.gov.ph/classification/psgc/municipalities)
+citeturn126view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn123view0","lineno":700}); Total lines: 1897
+L678: cite592†Mexico | 0305413000  | 035413000  | 1st  | 187597
+L679: cite593†Minalin | 0305414000  | 035414000  | 2nd  | 50126
+L680: cite594†Porac | 0305415000  | 035415000  | 1st  | 147551
+L681: cite595†San Luis | 0305417000  | 035417000  | 2nd  | 64674
+L682: cite596†San Simon | 0305418000  | 035418000  | 1st  | 65760
+L683: cite597†Santa Ana | 0305419000  | 035419000  | 1st  | 63431
+L684: cite598†Santa Rita | 0305420000  | 035420000  | 2nd  | 42915
+L685: cite599†Sto. Tomas | 0305421000  | 035421000  | 2nd  | 44376
+L686: cite600†Sasmuan | 0305422000  | 035422000  | 3rd  | 32081
+L687: cite601†Anao | 0306901000  | 036901000  | 4th  | 12865
+L688: cite602†Bamban | 0306902000  | 036902000  | 1st  | 81012
+L689: cite603†Camiling | 0306903000  | 036903000  | 1st  | 91400
+L690: cite604†Capas | 0306904000  | 036904000  | 1st  | 162724
+L691: cite605†Concepcion | 0306905000  | 036905000  | 1st  | 178549
+L692: cite606†Gerona | 0306906000  | 036906000  | 1st  | 97937
+L693: cite607†La Paz | 0306907000  | 036907000  | 1st  | 71978
+L694: cite608†Mayantoc | 0306908000  | 036908000  | 1st  | 34091
+L695: cite609†Moncada | 0306909000  | 036909000  | 1st  | 66925
+L696: cite610†Paniqui | 0306910000  | 036910000  | 1st  | 106190
+L697: cite611†Pura | 0306911000  | 036911000  | 3rd  | 27017
+L698: cite612†Ramos | 0306912000  | 036912000  | 4th  | 23808
+L699: cite613†San Clemente | 0306913000  | 036913000  | 4th  | 13781
+L700: cite614†San Manuel | 0306914000  | 036914000  | 1st  | 29693
+L701: cite615†Santa Ignacia | 0306915000  | 036915000  | 1st  | 53620
+L702: cite616†Victoria | 0306917000  | 036917000  | 1st  | 71495
+L703: cite617†San Jose | 0306918000  | 036918000  | 1st  | 43185
+L704: cite618†Botolan | 0307101000  | 037101000  | 1st  | 70340
+L705: cite619†Cabangan | 0307102000  | 037102000  | 2nd  | 29334
+L706: cite620†Candelaria | 0307103000  | 037103000  | 1st  | 32182
+L707: cite621†Castillejos | 0307104000  | 037104000  | 1st  | 70105
+L708: cite622†Iba | 0307105000  | 037105000  | 1st  | 59580
+L709: cite623†Masinloc | 0307106000  | 037106000  | 1st  | 56579
+L710: cite624†Palauig | 0307108000  | 037108000  | 1st  | 43250
+L711: cite625†San Antonio | 0307109000  | 037109000  | 1st  | 38617
+L712: cite626†San Felipe | 0307110000  | 037110000  | 3rd  | 26081
+L713: cite627†San Marcelino | 0307111000  | 037111000  | 1st  | 39542
+L714: cite628†San Narciso | 0307112000  | 037112000  | 3rd  | 32180
+L715: cite629†Santa Cruz | 0307113000  | 037113000  | 1st  | 66647
+L716: cite630†Subic | 0307114000  | 037114000  | 1st  | 116788
+L717: cite631†Baler | 0307701000  | 037701000  | 1st  | 44684
+L718: cite632†Casiguran | 0307702000  | 037702000  | 1st  | 26855
+L719: cite633†Dilasag | 0307703000  | 037703000  | 2nd  | 17536
+L720: cite634†Dinalungan | 0307704000  | 037704000  | 3rd  | 12552
+L721: cite635†Dingalan | 0307705000  | 037705000  | 2nd  | 29286
+L722: cite636†Dipaculao | 0307706000  | 037706000  | 1st  | 33597
+L723: cite637†Maria Aurora | 0307707000  | 037707000  | 1st  | 45972
+L724: cite638†San Luis | 0307708000  | 037708000  | 1st  | 30342
+L725: cite639†Agoncillo | 0401001000  | 041001000  | 2nd  | 40662
+L726: cite640†Alitagtag | 0401002000  | 041002000  | 4th  | 28033
+L727: cite641†Balayan | 0401003000  | 041003000  | 1st  | 96939
+L728: cite642†Balete | 0401004000  | 041004000  | 4th  | 24202
+L729: cite643†Bauan | 0401006000  | 041006000  | 1st  | 94016
+L730: cite644†Calatagan | 0401008000  | 041008000  | 1st  | 60420
+L731: cite645†Cuenca | 0401009000  | 041009000  | 2nd  | 36453
+L732: cite646†Ibaan | 0401010000  | 041010000  | 1st  | 58673
+L733: cite647†Laurel | 0401011000  | 041011000  | 2nd  | 44791
+L734: cite648†Lemery | 0401012000  | 041012000  | 1st  | 94736
+L735: cite649†Lian | 0401013000  | 041013000  | 1st  | 56788
+--------------------------------------------------------------------------------
+PHILIPPINE STANDARD GEOGRAPHIC CODE | Philippine Statistics Authority (https://psa.gov.ph/classification/psgc/municipalities)
+citeturn126view1 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn123view0","lineno":850}); Total lines: 1897
+L832: cite746†Angono | 0405801000  | 045801000  | 1st  | 134975
+L833: cite747†Baras | 0405803000  | 045803000  | 1st  | 91099
+L834: cite748†Binangonan | 0405804000  | 045804000  | 1st  | 321281
+L835: cite749†Cainta | 0405805000  | 045805000  | 1st  | 386321
+L836: cite750†Cardona | 0405806000  | 045806000  | 2nd  | 51493
+L837: cite751†Jala-Jala | 0405807000  | 045807000  | 3rd  | 34901
+L838: cite752†Rodriguez | 0405808000  | 045808000  | 1st  | 451383
+L839: cite753†Morong | 0405809000  | 045809000  | 1st  | 72262
+L840: cite754†Pililla | 0405810000  | 045810000  | 1st  | 72503
+L841: cite755†San Mateo | 0405811000  | 045811000  | 1st  | 276449
+L842: cite756†Tanay | 0405812000  | 045812000  | 1st  | 145597
+L843: cite757†Taytay | 0405813000  | 045813000  | 1st  | 397111
+L844: cite758†Teresa | 0405814000  | 045814000  | 1st  | 67454
+L845: cite759†Boac | 1704001000  | 174001000  | 1st  | 54365
+L846: cite760†Buenavista | 1704002000  | 174002000  | 4th  | 24136
+L847: cite761†Gasan | 1704003000  | 174003000  | 2nd  | 35315
+L848: cite762†Mogpog | 1704004000  | 174004000  | 2nd  | 32577
+L849: cite763†Santa Cruz | 1704005000  | 174005000  | 1st  | 51594
+L850: cite764†Torrijos | 1704006000  | 174006000  | 2nd  | 28535
+L851: cite765†Abra De Ilog | 1705101000  | 175101000  | 1st  | 31910
+L852: cite766†Calintaan | 1705102000  | 175102000  | 1st  | 31088
+L853: cite767†Looc | 1705103000  | 175103000  | 4th  | 9426
+L854: cite768†Lubang | 1705104000  | 175104000  | 4th  | 18761
+L855: cite769†Magsaysay | 1705105000  | 175105000  | 1st  | 40987
+L856: cite770†Mamburao | 1705106000  | 175106000  | 1st  | 44554
+L857: cite771†Paluan | 1705107000  | 175107000  | 1st  | 19461
+L858: cite772†Rizal | 1705108000  | 175108000  | 2nd  | 40319
+L859: cite773†Sablayan | 1705109000  | 175109000  | 1st  | 91406
+L860: cite774†San Jose | 1705110000  | 175110000  | 1st  | 143495
+L861: cite775†Santa Cruz | 1705111000  | 175111000  | 1st  | 40010
+L862: cite776†Baco | 1705201000  | 175201000  | 1st  | 40159
+L863: cite777†Bansud | 1705202000  | 175202000  | 1st  | 44396
+L864: cite778†Bongabong | 1705203000  | 175203000  | 1st  | 77540
+L865: cite779†Bulalacao | 1705204000  | 175204000  | 1st  | 46439
+L866: cite780†Gloria | 1705206000  | 175206000  | 1st  | 52296
+L867: cite781†Mansalay | 1705207000  | 175207000  | 1st  | 60597
+L868: cite782†Naujan | 1705208000  | 175208000  | 1st  | 109122
+L869: cite783†Pinamalayan | 1705209000  | 175209000  | 1st  | 90420
+L870: cite784†Pola | 1705210000  | 175210000  | 2nd  | 35771
+L871: cite785†Puerto Galera | 1705211000  | 175211000  | 1st  | 42301
+L872: cite786†Roxas | 1705212000  | 175212000  | 1st  | 58428
+L873: cite787†San Teodoro | 1705213000  | 175213000  | 2nd  | 19650
+L874: cite788†Socorro | 1705214000  | 175214000  | 2nd  | 41612
+L875: cite789†Victoria | 1705215000  | 175215000  | 1st  | 52215
+L876: cite790†Aborlan | 1705301000  | 175301000  | 1st  | 39972
+L877: cite791†Agutaya | 1705302000  | 175302000  | 5th  | 13351
+L878: cite792†Araceli | 1705303000  | 175303000  | 3rd  | 14554
+L879: cite793†Balabac | 1705304000  | 175304000  | 1st  | 42662
+L880: cite794†Bataraza | 1705305000  | 175305000  | 1st  | 87384
+L881: cite795†Brooke's Point | 1705306000  | 175306000  | 1st  | 76715
+L882: cite796†Busuanga | 1705307000  | 175307000  | 1st  | 26974
+L883: cite797†Cagayancillo | 1705308000  | 175308000  | 5th  | 7164
+L884: cite798†Coron | 1705309000  | 175309000  | 1st  | 69439
+L885: cite799†Cuyo | 1705310000  | 175310000  | 3rd  | 24702
+L886: cite800†Dumaran | 1705311000  | 175311000  | 1st  | 23795
+L887: cite801†El Nido | 1705312000  | 175312000  | 1st  | 51367
+L888: cite802†Linapacan | 1705313000  | 175313000  | 3rd  | 16782
+L889: cite803†Magsaysay | 1705314000  | 175314000  | 4th  | 13273
+L890: cite804†Narra | 1705315000  | 175315000  | 1st  | 80572
+L891: cite805†Quezon | 1705317000  | 175317000  | 1st  | 68532
+L892: cite806†Roxas | 1705318000  | 175318000  | 1st  | 69729
+L893: cite807†San Vicente | 1705319000  | 175319000  | 1st  | 33768
+L894: cite808†Taytay | 1705320000  | 175320000  | 1st  | 85258
+L895: cite809†Kalayaan | 1705321000  | 175321000  | 4th  | 406
+L896: cite810†Culion | 1705322000  | 175322000  | 1st  | 23985
+--------------------------------------------------------------------------------
+PHILIPPINE STANDARD GEOGRAPHIC CODE | Philippine Statistics Authority (https://psa.gov.ph/classification/psgc/cities)
+citeturn126view2 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn123view1","lineno":385}); Total lines: 553
+L369: cite283†San Jose City | 0304926000  | 034926000  | 2nd  | 156714
+L370: cite284†Mabalacat City | 0305409000  | 035409000  | 1st  | 306594
+L371: cite285†City of San Fernando | 0305416000  | 035416000  | 1st  | 377534
+L372: cite286†City of Tarlac | 0306916000  | 036916000  | 1st  | 401892
+L373: cite287†City of Angeles | 0330100000  | 035401000  | 1st  | 483452
+L374: cite288†City of Olongapo | 0331400000  | 037107000  | 1st  | 264903
+L375: cite289†Batangas City | 0401005000  | 041005000  | 1st  | 358267
+L376: cite290†City of Calaca | 0401007000  | 041007000  | 3rd  | 92281
+L377: cite291†City of Lipa | 0401014000  | 041014000  | 1st  | 387392
+L378: cite292†City of Sto. Tomas | 0401028000  | 041028000  | 1st  | 226772
+L379: cite293†City of Tanauan | 0401031000  | 041031000  | 1st  | 209697
+L380: cite294†City of Bacoor | 0402103000  | 042103000  | 1st  | 661381
+L381: cite295†City of Carmona | 0402104000  | 042104000  | 2nd  | 112140
+L382: cite296†City of Cavite | 0402105000  | 042105000  | 4th  | 98673
+L383: cite297†City of Dasmariñas | 0402106000  | 042106000  | 1st  | 744511
+L384: cite298†City of General Trias | 0402108000  | 042108000  | 1st  | 482453
+L385: cite299†City of Imus | 0402109000  | 042109000  | 1st  | 481949
+L386: cite300†City of Tagaytay | 0402119000  | 042119000  | 1st  | 87811
+L387: cite301†City of Trece Martires | 0402122000  | 042122000  | 2nd  | 227892
+L388: cite302†City of Biñan | 0403403000  | 043403000  | 1st  | 584479
+L389: cite303†City of Cabuyao | 0403404000  | 043404000  | 1st  | 365202
+L390: cite304†City of Calamba | 0403405000  | 043405000  | 1st  | 575046
+L391: cite305†City of San Pablo | 0403424000  | 043424000  | 1st  | 300166
+L392: cite306†City of San Pedro | 0403425000  | 043425000  | 1st  | 348968
+L393: cite307†City of Santa Rosa | 0403428000  | 043428000  | 1st  | 430920
+L394: cite308†City of Tayabas | 0405647000  | 045647000  | 3rd  | 115318
+L395: cite309†City of Antipolo | 0405802000  | 045802000  | 1st  | 913712
+L396: cite310†City of Lucena | 0431200000  | 045624000  | 1st  | 280331
+L397: cite311†City of Calapan | 1705205000  | 175205000  | 2nd  | 148558
+L398: cite312†City of Puerto Princesa | 1731500000  | 175316000  | 1st  | 316384
+L399: cite313†City of Legazpi | 0500506000  | 050506000  | 1st  | 210616
+L400: cite314†City of Ligao | 0500508000  | 050508000  | 3rd  | 119779
+L401: cite315†City of Tabaco | 0500517000  | 050517000  | 3rd  | 140779
+L402: cite316†City of Iriga | 0501716000  | 051716000  | 3rd  | 115306
+L403: cite317†City of Naga | 0501724000  | 051724000  | 1st  | 210545
+L404: cite318†City of Masbate | 0504111000  | 054111000  | 3rd  | 104011
+L405: cite319†City of Sorsogon | 0506216000  | 056216000  | 2nd  | 187670
+L406: cite320†City of Roxas | 0601914000  | 061914000  | 2nd  | 185236
+L407: cite321†City of Passi | 0603035000  | 063035000  | 3rd  | 90313
+L408: cite322†City of Iloilo | 0631000000  | 063022000  | 1st  | 473728
+L409: cite323†City of Bago | 1804502000  | 064502000  | 1st  | 192993
+L410: cite324†City of Cadiz | 1804504000  | 064504000  | 1st  | 161558
+L411: cite325†City of Escalante | 1804509000  | 064509000  | 3rd  | 97050
+L412: cite326†City of Himamaylan | 1804510000  | 064510000  | 2nd  | 117286
+L413: cite327†City of Kabankalan | 1804515000  | 064515000  | 1st  | 210893
+L414: cite328†City of La Carlota | 1804516000  | 064516000  | 4th  | 67740
+L415: cite329†City of Sagay | 1804523000  | 064523000  | 2nd  | 152543
+L416: cite330†City of San Carlos | 1804524000  | 064524000  | 1st  | 133175
+L417: cite331†City of Silay | 1804526000  | 064526000  | 3rd  | 136802
+L418: cite332†City of Sipalay | 1804527000  | 064527000  | 3rd  | 73847
+L419: cite333†City of Talisay | 1804528000  | 064528000  | 3rd  | 109204
+L420: cite334†City of Victorias | 1804531000  | 064531000  | 4th  | 90290
+L421: cite335†City of Bais | 1804604000  | 074604000  | 3rd  | 88050
+L422: cite336†City of Bayawan | 1804606000  | 074606000  | 1st  | 126744
+L423: cite337†City of Canlaon | 1804608000  | 074608000  | 4th  | 62785
+--------------------------------------------------------------------------------
+PHILIPPINE STANDARD GEOGRAPHIC CODE | Philippine Statistics Authority (https://psa.gov.ph/classification/psgc/cities)
+citeturn126view3 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn123view1","lineno":455}); Total lines: 553
+L439: cite353†City of Baybay | 0803708000  | 083708000  | 1st  | 114708
+L440: cite354†Ormoc City | 0803738000  | 083738000  | 1st  | 238545
+L441: cite355†City of Calbayog | 0806003000  | 086003000  | 1st  | 187848
+L442: cite356†City of Catbalogan | 0806005000  | 086005000  | 3rd  | 107896
+L443: cite357†City of Maasin | 0806407000  | 086407000  | 3rd  | 85486
+L444: cite358†City of Tacloban | 0831600000  | 083747000  | 1st  | 259353
+L445: cite359†City of Dapitan | 0907201000  | 097201000  | 2nd  | 87699
+L446: cite360†City of Dipolog | 0907202000  | 097202000  | 2nd  | 136528
+L447: cite361†City of Pagadian | 0907322000  | 097322000  | 1st  | 206483
+L448: cite362†City of Zamboanga | 0931700000  | 097332000  | 1st  | 1018849
+L449: cite363†City of Isabela | 0990101000  | 099701000  | 3rd  | 151297
+L450: cite364†City of Malaybalay | 1001312000  | 101312000  | 1st  | 195046
+L451: cite365†City of Valencia | 1001321000  | 101321000  | 1st  | 223620
+L452: cite366†City of Oroquieta | 1004209000  | 104209000  | 3rd  | 71373
+L453: cite367†City of Ozamiz | 1004210000  | 104210000  | 2nd  | 143620
+L454: cite368†City of Tangub | 1004215000  | 104215000  | 3rd  | 68419
+L455: cite369†City of El Salvador | 1004307000  | 104307000  | 4th  | 62126
+L456: cite370†City of Gingoog | 1004308000  | 104308000  | 1st  | 138895
+L457: cite371†City of Cagayan De Oro | 1030500000  | 104305000  | 1st  | 741617
+L458: cite372†City of Iligan | 1030900000  | 103504000  | 1st  | 368132
+L459: cite373†City of Panabo | 1102315000  | 112315000  | 1st  | 211242
+L460: cite374†Island Garden City of Samal | 1102317000  | 112317000  | 2nd  | 119701
+L461: cite375†City of Tagum | 1102319000  | 112319000  | 1st  | 300042
+L462: cite376†City of Digos | 1102403000  | 112403000  | 1st  | 192063
+L463: cite377†City of Mati | 1102509000  | 112509000  | 1st  | 148672
+L464: cite378†City of Davao | 1130700000  | 112402000  | 1st  | 1848947
+L465: cite379†City of Kidapawan | 1204704000  | 124704000  | 1st  | 160864
+L466: cite380†City of Koronadal | 1206306000  | 126306000  | 1st  | 201844
+L467: cite381†City of Tacurong | 1206511000  | 126511000  | 3rd  | 116945
+L468: cite382†City of General Santos | 1230800000  | 126303000  | 1st  | 722059
+L469: cite383†City of Cabadbaran | 1600203000  | 160203000  | 3rd  | 82343
+L470: cite384†City of Bayugan | 1600301000  | 160301000  | 1st  | 110313
+L471: cite385†City of Surigao | 1606724000  | 166724000  | 2nd  | 177333
+L472: cite386†City of Bislig | 1606803000  | 166803000  | 2nd  | 99872
+L473: cite387†City of Tandag | 1606819000  | 166819000  | 3rd  | 63098
+L474: cite388†City of Butuan | 1630400000  | 160202000  | 1st  | 385530
+L475: cite389†City of Lamitan | 1900702000  | 150702000  | 3rd  | 116652
+L476: cite390†City of Marawi | 1903617000  | 153617000  | 3rd  | 259993
+L477: cite391†City of Cotabato | 1908703000  | 129804000  | 1st  | 383383
+L478: Browse PSGC Database [Select]
+L479: ## Latest Releases
+L480: 
+L481: cite392†Second Quarter 2026 PSGC Updates: Renaming of One Municipality and One Barangay, and Correction of 15 Geographic Names L482: 
+L483: Release Date: Monday, July 13, 2026
+L484: 
+L485: cite393†First Quarter 2026 PSGC Updates: Merging of Two Barangays, and Correction of the Names of One Municipality and Seven Barangays L486: 
+L487: Release Date: Monday, April 13, 2026
+L488: 
+L489: cite394†Fourth Quarter 2025 PSGC Updates: Correction of the Names of Three Barangays L490: 
+L491: Release Date: Tuesday, January 13, 2026
+L492: 
+L493: cite395†View more L494: ## Download PSGC Publications
+L495: 
+L496: Philippine Standard Geographic Code as of 30 June 2026
+L497: 
+L498: cite396†Summary L499: 
+L500: ##### Latest Release
+L501: 
+L502: cite397†Publication L503: 
+L504: cite398†Summary of Changes L505: 
+L506: ##### Related Links
+L507: 
+L508: cite399†PSGC API Documentation L509: 
+L510: ## Infographics
+L511: 
+L512: cite217†View more 

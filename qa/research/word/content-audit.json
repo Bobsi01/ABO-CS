@@ -1,0 +1,37 @@
+{
+  "docx_sha256": "ac17b1d82696342c52538e36befd5a21387dd5a2d5d5ba57be784d8fe0df7c2e",
+  "pdf": "qa\\research\\word\\ABO_RESEARCH_IMRAD.pdf",
+  "pdf_sha256": "d11a86361d03eb78541e6f48ebad31299cf16025d67b1e0210aa8b97e56c7b7c",
+  "rendered_pages": 15,
+  "checked_prose_and_cell_paragraphs": 162,
+  "missing_from_render": [],
+  "page_footer_prefixes_removed_from_text_comparison": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "rendered_fonts": [
+    "/BCDEEE+ArialMT",
+    "/BCDFEE+Arial-BoldMT",
+    "/BCDGEE+ArialMT"
+  ],
+  "only_arial_rendered": true,
+  "source_contains_evaluation_markings": false,
+  "native_equations": 7,
+  "native_fractions": 13,
+  "pdf_has_structure_tree": true,
+  "pdf_marked": true,
+  "accessibility_limit": "Tagged output is not a native accessibility or screen-reader pass"
+}

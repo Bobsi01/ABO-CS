@@ -1,0 +1,61 @@
+{
+  "accessed_at": "2026-10-11",
+  "purpose": "Record why investigated public impact and facility sources were not promoted to numerical criteria or geolocated facility records",
+  "records": [
+    {
+      "id": "roof-criteria-investigation",
+      "publisher": "USGS",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/buildings.html",
+      "locator": "Building vulnerability and ash loading discussion",
+      "status": "source_blocked",
+      "finding": "Vulnerability depends on roof design, span, slope, construction quality and ash wetness. General guidance does not assess the capacities or conditions of local roofs.",
+      "decision": "No universal numerical roof capacity imported. A reviewed criterion must specify load threshold, receptor type and matching roof/ash conditions. Missing criteria or conditions remain unknown."
+    },
+    {
+      "id": "crop-criteria-investigation",
+      "publisher": "USGS",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/agriculture.html",
+      "locator": "Agricultural effects and thickness discussion",
+      "status": "source_blocked",
+      "finding": "The broad 100–150 mm severe-effect statement is not a measured threshold for a specified local crop, growth stage, ash chemistry or rainfall condition.",
+      "decision": "No local crop damage threshold imported. Reporting cutoff remains 0.5 mm and is not a damage criterion."
+    },
+    {
+      "id": "water-pagasa-investigation",
+      "publisher": "PAGASA",
+      "url": "https://www.pagasa.dost.gov.ph/flood",
+      "locator": "Dam Information and Dam Water Level Update",
+      "status": "source_blocked",
+      "finding": "Retrieved primary text identifies reservoirs and water-level monitoring, without explicit geolocated intake or treatment-facility records suitable for this inventory.",
+      "decision": "Reservoir names and levels do not establish a reviewed facility coordinate. No coordinates inferred from a town centroid."
+    },
+    {
+      "id": "water-operator-investigation",
+      "publisher": "Maynilad Water Services",
+      "url": "https://www.mayniladwater.com.ph/facilities/",
+      "locator": "Water Treatment; embedded map; operator facility descriptions",
+      "status": "source_blocked",
+      "finding": "Primary operator page lists named plants, process descriptions and an embedded map, but retrieved text does not expose geographic coordinate records or representative-point definitions.",
+      "decision": "Did not substitute office address, corporate map marker or approximate town coordinate for a treatment plant."
+    },
+    {
+      "id": "water-lwua-investigation",
+      "publisher": "Local Water Utilities Administration",
+      "url": "https://lwua.gov.ph/water-districts/",
+      "locator": "Water Districts directory",
+      "status": "source_blocked",
+      "finding": "Direct authoritative page retrieval returned HTTP 403. Search result identifies a district directory, without reviewed facility coordinates.",
+      "decision": "Directory not imported as a geolocated water-facility inventory."
+    },
+    {
+      "id": "water-emb-awtip-candidate",
+      "publisher": "DENR Environmental Management Bureau; MWSS project report",
+      "url": "https://eia.emb.gov.ph/wp-content/uploads/2022/09/AWTIP-T5-EPRMP.pdf",
+      "locator": "Indexed Table 6-3.1, printed page 6-26; SW IPO 3 monitoring point",
+      "status": "source_blocked",
+      "finding": "Indexed primary snippet exposes coordinates for a surface-water monitoring point near Ipo tunnel intakes. Both direct PDF download and authoritative web open returned HTTP 403; original page, datum, context and point role could not be independently inspected.",
+      "decision": "Retain as a candidate requiring source-context verification; no receptor added. A monitoring point must not be renamed a surveyed treatment-facility location."
+    }
+  ],
+  "remaining_limit": "No water-facility receptor accepted. Any future screen would describe surface ash deposition only, not dissolved contamination, service interruption or water potability."
+}

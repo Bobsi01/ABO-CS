@@ -1,0 +1,71 @@
+{
+  "publisher": "NIH National Library of Medicine PMC open-data archive",
+  "article_publisher": "Springer Nature; Balangue-Tarriela et al. 2022",
+  "article_license": "CC BY 4.0 per article XML; third-party image terms may differ",
+  "current_archive_documentation": "https://pmc-oa-opendata.s3.amazonaws.com/README.txt",
+  "accessed_at": "2026-10-11",
+  "files": [
+    {
+      "file": "PMC8889389.1.json",
+      "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8889389.1/PMC8889389.1.json",
+      "sha256": "c9f7409e2d5e106563535991b6971a013468d661b8d0bbae183824e5fae819f4",
+      "md5": "a02c0c23576d4232862042cd45de43a7",
+      "metadata_md5_verified": false
+    },
+    {
+      "file": "PMC8889389.1.xml",
+      "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8889389.1/PMC8889389.1.xml",
+      "sha256": "b95e450e9985cef34bea58a4c73f7ca08e1954f3d35c9ef47028bd56911d1cdf",
+      "md5": "7e77a62ac730b2b6c700ef2c9076988b",
+      "metadata_md5_verified": true
+    },
+    {
+      "file": "PMC8889389.1.pdf",
+      "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8889389.1/PMC8889389.1.pdf",
+      "sha256": "386768a587f85193a6581ae72ac8f2189fbbd1206c7f417fe40721a4c960ec4a",
+      "md5": "f4d12510fca088cf3a9734d3dd0ae569",
+      "metadata_md5_verified": true
+    },
+    {
+      "file": "figure-4.jpg",
+      "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC8889389.1/445_2022_1534_Fig4_HTML.jpg",
+      "sha256": "e9489132b9e36709eb7a2a9adf0460098e7eeee622e69ec7b1ff68caf4a8f42a",
+      "md5": "0e2667192b68a1a3d9c4d2d4e52e5bca",
+      "metadata_md5_verified": true
+    }
+  ],
+  "rejected_acquisition": {
+    "file": "figure-4.png",
+    "reason": "HTML access challenge, not image"
+  },
+  "derived_assets": [
+    {
+      "file": "figure-4-pdf-extract.png",
+      "sha256": "9a56f37370071a5e69ea82c435a4614a4ec0d2ae1623ca1c3f02d9a4b06f3553"
+    },
+    {
+      "file": "trace-science.json",
+      "sha256": "8677e2d646e7097c25dddea94a7fbe697955abdd92ec90ce96cd343447bce25d"
+    },
+    {
+      "file": "trace-science.geojson",
+      "sha256": "58242adb67c51e2ed5f33d4d11223a13dc452bf8daa1209f0142cc6310712918"
+    },
+    {
+      "file": "trace-qa.json",
+      "sha256": "bdc75755d434c093695d9d8a2690ae8884358bc6fe88a75c56ca055148f94d0b"
+    },
+    {
+      "file": "trace-qa.geojson",
+      "sha256": "de251169ec6daf8acde9b70dda9804ad9ad503706bb2f04eb570d014eab017d1"
+    },
+    {
+      "file": "trace-qa-evidence.json",
+      "sha256": "5f53f0148d567059db9e374b3f6a2f585d87aaf50b91e44c7b36fc7b39dcaf78"
+    },
+    {
+      "file": "trace-comparison.json",
+      "sha256": "03083529d8984449c8d355bcbff6d75462cf58f64f12a933ce8e41895b7fd5e0"
+    }
+  ]
+}

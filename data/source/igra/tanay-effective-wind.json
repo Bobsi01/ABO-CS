@@ -1,0 +1,121 @@
+{
+  "available": false,
+  "reason": "No launch satisfies frozen coverage rule",
+  "speed_m_s": null,
+  "from_deg": null,
+  "wind_east_m_s": null,
+  "wind_north_m_s": null,
+  "profiles": [
+    {
+      "station_id": "RPM00098433",
+      "nominal_date": "2020-01-12",
+      "nominal_hour_utc": 0,
+      "release_hhmm": "0011",
+      "release_utc": "2020-01-12T00:11:00+00:00",
+      "time_basis": "actual release",
+      "lat": 14.5812,
+      "lon": 121.3693,
+      "accepted_levels": 9,
+      "rejected_levels": 46,
+      "height_processing_flags": {
+        "blank": 44,
+        "A": 0,
+        "B": 11
+      },
+      "wind_qc": "Missing/removed wind values rejected; no separate per-level wind flag",
+      "height_grid_coverage_fraction": 0.7142857142857143,
+      "usable_under_coverage_rule": false,
+      "height_geopotential_m_asl": [
+        1510.0,
+        3142.0,
+        5870.0,
+        7590.0,
+        9720.0,
+        11000.0,
+        12490.0,
+        14290.0,
+        16630.0
+      ],
+      "wind_east_m_s": [
+        -7.7274066103125465,
+        -0.2614672282429746,
+        3.6252311481465993,
+        1.2155372436685132,
+        -2.083778132003163,
+        -3.364647586332773,
+        -2.0818995585505003e-15,
+        2.091737825943791,
+        -9.29760175829539
+      ],
+      "wind_north_m_s": [
+        -2.070552360820166,
+        2.988584094275237,
+        -1.6904730469627984,
+        6.893654271085456,
+        11.817693036146496,
+        12.557035741757886,
+        17.0,
+        23.908672754201895,
+        19.9387713148063
+      ]
+    },
+    {
+      "station_id": "RPM00098433",
+      "nominal_date": "2020-01-12",
+      "nominal_hour_utc": 12,
+      "release_hhmm": "1140",
+      "release_utc": "2020-01-12T11:40:00+00:00",
+      "time_basis": "actual release",
+      "lat": 14.5812,
+      "lon": 121.3693,
+      "accepted_levels": 9,
+      "rejected_levels": 46,
+      "height_processing_flags": {
+        "blank": 45,
+        "A": 0,
+        "B": 10
+      },
+      "wind_qc": "Missing/removed wind values rejected; no separate per-level wind flag",
+      "height_grid_coverage_fraction": 0.7142857142857143,
+      "usable_under_coverage_rule": false,
+      "height_geopotential_m_asl": [
+        1504.0,
+        3139.0,
+        5860.0,
+        7590.0,
+        9710.0,
+        10980.0,
+        12470.0,
+        14270.0,
+        16610.0
+      ],
+      "wind_east_m_s": [
+        -1.9283628290596178,
+        -0.520944533000791,
+        2.5357095704441956,
+        8.191520442889916,
+        4.3999237667428535,
+        9.899494936611664,
+        9.297601758295384,
+        -4.5148526193401874,
+        -2.4492935982947065e-15
+      ],
+      "wind_north_m_s": [
+        -2.298133329356934,
+        -2.954423259036624,
+        5.4378467222199,
+        5.735764363510464,
+        16.42073904691416,
+        9.899494936611667,
+        19.938771314806303,
+        25.60500157831741,
+        20.0
+      ]
+    }
+  ],
+  "protocol_id": "taal-main-plume-2020-v1",
+  "altitude_context": "1000–21000 geopotential metres ASL; 1000 m grid; no extrapolation",
+  "averaging_period": "Selected January 12 nominal 00/12 UTC launches; actual 00:11/11:40 UTC",
+  "station_distance_from_taal_km": 74.79905036446928,
+  "representativeness": "Regional proxy; limited height coverage and changing event winds"
+}

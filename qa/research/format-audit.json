@@ -1,0 +1,20 @@
+{
+  "file": "docs\\ABO_RESEARCH_IMRAD.docx",
+  "font": "Arial",
+  "body_pt": 11,
+  "headings_pt": 12,
+  "table_headers_pt": 12,
+  "checked_text_runs": 353,
+  "major_sections": [
+    "Abstract",
+    "1. Introduction",
+    "2. Methods",
+    "3. Results",
+    "4. Discussion",
+    "References"
+  ],
+  "tables": 3,
+  "native_equations": 7,
+  "page_size": "Letter, portrait",
+  "issues": []
+}

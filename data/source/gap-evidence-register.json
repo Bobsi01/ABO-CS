@@ -1,0 +1,776 @@
+{
+  "sources": [
+    {
+      "id": "noaa-igra",
+      "title": "IGRA 2.2 Tanay radiosonde observations",
+      "url": "https://www.ncei.noaa.gov/products/weather-balloon/integrated-global-radiosonde-archive",
+      "publisher": "NOAA NCEI",
+      "locator": "Station RPM00098433 12 January 2020 nominal 00/12 records; data-format GPH/WSPD/ZFLAG/RELTIME",
+      "license": "NOAA public US-government archive; Philippines upstream station-provider terms not independently verified",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "See parameter register",
+      "conversions": "Explicit in parameter register",
+      "uncertainty": "See evidence classification",
+      "review_status": "reviewed_with_limits",
+      "notes": "Original ZIP, selected records and hashes in data/source/igra/manifest.json. Missing and QA-removed data retained."
+    },
+    {
+      "id": "psa-national-directory",
+      "title": "PSGC municipalities and cities with current/correspondence codes",
+      "url": "https://psa.gov.ph/classification/psgc/municipalities",
+      "publisher": "Philippine Statistics Authority",
+      "locator": "Municipality and /cities directories, Population (2024 POPCEN), current/correspondence codes",
+      "license": "PSA resource terms not independently verified; attribution retained",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "See parameter register",
+      "conversions": "Explicit in parameter register",
+      "uncertainty": "See evidence classification",
+      "review_status": "reviewed_with_limits",
+      "notes": "Archived retrieved page extracts, not original HTML; matching/exclusions in domain-inventory.json."
+    },
+    {
+      "id": "psa-batangas-quickstat",
+      "title": "Batangas QuickSTAT 2020 and 2024 population counts",
+      "url": "https://rsso04a.psa.gov.ph/sites/default/files/infographics/26R0410-QS-005.pdf",
+      "publisher": "PSA Batangas",
+      "locator": "PDF page 2 population table, 34 municipalities/cities, columns 2020/2024",
+      "license": "PSA resource terms not independently verified; attribution retained",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "See parameter register",
+      "conversions": "Explicit in parameter register",
+      "uncertainty": "See evidence classification",
+      "review_status": "reviewed_with_limits",
+      "notes": "Values manually transcribed from accessible primary indexed PDF. Direct download returns access challenge; original PDF not archived. Municipality total inconsistency in 2015 column is not imported."
+    },
+    {
+      "id": "usgs-building-conditions",
+      "title": "Ash impacts on buildings",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/buildings.html",
+      "publisher": "USGS",
+      "locator": "Buildings: impact depends design/quality/ash/wetness; long-span low-pitch vulnerability",
+      "license": "Public US-government resource",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "See parameter register",
+      "conversions": "Explicit in parameter register",
+      "uncertainty": "See evidence classification",
+      "review_status": "reviewed_with_limits",
+      "notes": "Qualitative applicability evidence; no universal roof load capacity or assessed local roofs. Numerical threshold withheld."
+    },
+    {
+      "id": "usgs-crop-conditions",
+      "title": "Ash impacts on agriculture",
+      "url": "https://volcanoes.usgs.gov/volcanic_ash/agriculture.html",
+      "publisher": "USGS",
+      "locator": "Agriculture: thickness/crop/growth/fluoride/rainfall; incompleteness/applicability cautions",
+      "license": "Public US-government resource",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "See parameter register",
+      "conversions": "Explicit in parameter register",
+      "uncertainty": "See evidence classification",
+      "review_status": "reviewed_with_limits",
+      "notes": "Broad 100–150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld."
+    },
+    {
+      "id": "water-inventory-candidates",
+      "title": "Public water-inventory source investigation",
+      "url": "https://eia.emb.gov.ph/wp-content/uploads/2022/09/AWTIP-T5-EPRMP.pdf",
+      "publisher": "DENR EMB / MWSS",
+      "locator": "Candidate Table 6-3.1, printed page 6-26; see source-investigations.json for PAGASA, Maynilad and LWUA checks",
+      "license": "Terms not independently verified; attribution retained",
+      "published_at": null,
+      "accessed_at": "2026-10-11",
+      "original_units": "Candidate geographic coordinates; no values accepted",
+      "conversions": "None",
+      "uncertainty": "Original context and datum not verified",
+      "review_status": "source_blocked",
+      "notes": "Indexed candidate concerns a monitoring point near Ipo intakes, not a surveyed treatment plant; original PDF access is blocked. No receptor imported."
+    }
+  ],
+  "parameters": [
+    {
+      "id": "event-duration",
+      "parameter": "Taal main mapped event duration",
+      "classification": "derived",
+      "value": 55680,
+      "units": "s",
+      "datum": "13:00 on 12 January–04:28 on 13 January local UTC+8",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "Deposit volume calculation main-part interval; Figure 4 rounds the end to about 04:00",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "Convert local UTC+8 endpoints to UTC; elapsed interval = 55,680 s",
+      "dependencies": [
+        "taal-deposit-study"
+      ],
+      "readiness": "usable",
+      "notes": "Main event is separate from peak seismic interval 17:00–03:00, not full eruption. End-definition uncertainty retained."
+    },
+    {
+      "id": "plume-observed",
+      "parameter": "Satellite-reported plume altitude",
+      "classification": "measured",
+      "value": [
+        17000,
+        21000
+      ],
+      "units": "m ASL",
+      "datum": "Above sea level",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "Field observations; cited Bachmeier/Perttu",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "Satellite altitude km ASL multiplied by 1000; model height cannot be derived without an active-vent datum",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "Range known; active vent datum not surveyed/reviewed so conversion to model H unavailable."
+    },
+    {
+      "id": "vent-active-datum",
+      "parameter": "Taal active 2020 vent elevation",
+      "classification": "measured",
+      "value": null,
+      "units": "m ASL",
+      "datum": "Active vent, not highest volcano-profile point",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "gvp-taal"
+      ],
+      "locator": "GVP profile 311 m is regional volcano elevation",
+      "license": "Smithsonian GVP profile terms not independently verified; attribution retained",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "No surveyed active-vent datum is curated; 311 m is the illustrative volcano-profile ground only."
+    },
+    {
+      "id": "wind-effective",
+      "parameter": "Effective Taal event wind",
+      "classification": "derived",
+      "value": null,
+      "units": "m/s and degrees FROM",
+      "datum": "1–21 km geopotential ASL; height grid 1 km",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "noaa-igra"
+      ],
+      "locator": "Selected 12 January nominal 00/12 launches, actual 00:11/11:40 UTC",
+      "license": "NOAA public US-government archive; upstream Philippines station-provider terms not independently verified",
+      "conversions": "Wind speed tenths m/s divided by 10; wind-from bearings converted to E/N vectors before averaging",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "Both launches have 9 accepted levels; grid coverage 15/21 = 71.43% fails the predeclared 75% gate. The station is about 75 km from Taal; changing winds are not represented."
+    },
+    {
+      "id": "ash-mass",
+      "parameter": "Modeled airborne ash mass",
+      "classification": "measured",
+      "value": null,
+      "units": "kg",
+      "datum": "Main-plume ash excluding other deposits",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "Tephra volume fits 0.042/0.057/0.090 km³",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [
+        "taal-deposit-study"
+      ],
+      "readiness": "source_blocked",
+      "notes": "Deposit volume does not give independent ash mass; conversion depends density/exclusions."
+    },
+    {
+      "id": "bulk-density",
+      "parameter": "Bulk dry deposit density",
+      "classification": "measured",
+      "value": null,
+      "units": "kg/m3",
+      "datum": "Dry bulk deposit; not particle density",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "No accepted independent event bulk-density dataset",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [
+        "taal-deposit-study"
+      ],
+      "readiness": "source_blocked",
+      "notes": "Thickness identifies M/rho; mass and density cannot both be inferred from thickness."
+    },
+    {
+      "id": "grain-spectrum",
+      "parameter": "Whole-event emitted grain fractions",
+      "classification": "measured",
+      "value": null,
+      "units": "fraction",
+      "datum": "Mass spectrum at source",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "Samples 1–4 deposit PSD different locations/time",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [
+        "taal-deposit-study"
+      ],
+      "readiness": "source_blocked",
+      "notes": "Local deposited sample distributions are not whole erupted grain spectrum."
+    },
+    {
+      "id": "settling-speeds",
+      "parameter": "Class settling speeds",
+      "classification": "derived",
+      "value": null,
+      "units": "m/s",
+      "datum": "Fixed class falling speeds",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "No accepted terminal-speed evidence tied to emitted classes",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "Shape/aggregation influence speeds; observed deposit grains do not supply measured terminal velocities."
+    },
+    {
+      "id": "diffusivity",
+      "parameter": "Horizontal diffusivityK",
+      "classification": "assumed",
+      "value": 500,
+      "units": "m2/s",
+      "datum": "Flat uniform-wind reduced model",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "Teaching presets",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not historically calibrated. Only K/sigma may fit if approved independent-group protocol becomes usable."
+    },
+    {
+      "id": "initial-spread",
+      "parameter": "Initial standard deviation sigma0",
+      "classification": "assumed",
+      "value": 250,
+      "units": "m",
+      "datum": "Vent-centered horizontal",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "Teaching presets",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a source-reviewed historical estimate."
+    },
+    {
+      "id": "teaching-density",
+      "parameter": "Teaching bulk density",
+      "classification": "assumed",
+      "value": 1000,
+      "units": "kg/m3",
+      "datum": "Dry deposit convention",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "Teaching presets",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Illustrative load-to-thickness input; no Taal event inference."
+    },
+    {
+      "id": "teaching-grains",
+      "parameter": "Teaching grain fractions",
+      "classification": "assumed",
+      "value": [
+        0.1,
+        0.15,
+        0.25,
+        0.3,
+        0.2
+      ],
+      "units": "fraction",
+      "datum": "Five illustrative classes",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "Teaching presets",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Fractions sum to 1; no event calibration."
+    },
+    {
+      "id": "teaching-settling",
+      "parameter": "Teaching settling speeds",
+      "classification": "assumed",
+      "value": [
+        0.05,
+        0.2,
+        0.8,
+        3,
+        10
+      ],
+      "units": "m/s",
+      "datum": "Fixed classes",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "Teaching presets",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "No measured 2020 event basis."
+    },
+    {
+      "id": "observation-geometry",
+      "parameter": "Published 0.5 mm reference footprint",
+      "classification": "derived",
+      "value": "Two independently digitized Figure 4a outer contours",
+      "units": "longitude/latitude degrees; threshold 0.5 mm",
+      "datum": "Printed graticule interpreted as WGS84; original map datum not stated",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "taal-study"
+      ],
+      "locator": "Figure 4 isopach, raw CSV not exposed",
+      "license": "Taal article CC BY 4.0; third-party material may have separate terms",
+      "conversions": "0.05 cm multiplied by 10 = 0.5 mm; separate affine pixel-to-graticule fits",
+      "dependencies": [
+        "taal-deposit-study"
+      ],
+      "readiness": "usable",
+      "notes": "Usable only as a derived reference footprint. Figure 4 JPEG, article XML and PDF are archived from the official NIH PMC open-data service. Two frozen manual traces were independently georeferenced and compared. Source geometry remains dependent on the deposit study; vertices are not independent thickness observations. Original observation/interpolation uncertainty is not quantified."
+    },
+    {
+      "id": "roof-criterion",
+      "parameter": "Condition-specific roof load criterion",
+      "classification": "derived",
+      "value": null,
+      "units": "kg/m2",
+      "datum": "Roof condition/type required",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "usgs-building-conditions"
+      ],
+      "locator": "Structural impacts section",
+      "license": "USGS public government text; third-party items may have different terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "General vulnerability information is insufficient to define a load threshold. Assessment remains unknown."
+    },
+    {
+      "id": "crop-criterion",
+      "parameter": "Condition-specific crop thickness criterion",
+      "classification": "derived",
+      "value": null,
+      "units": "mm",
+      "datum": "Crop/growth/ash/rain conditions required",
+      "uncertainty": "Not a complete predictive uncertainty bound; see notes",
+      "source_ids": [
+        "usgs-crop-conditions"
+      ],
+      "locator": "Agriculture summary",
+      "license": "USGS public government text; third-party items may have different terms",
+      "conversions": "None unless stated in notes",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "The general 100–150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown."
+    },
+    {
+      "id": "teaching-height",
+      "parameter": "Teaching column height",
+      "classification": "assumed",
+      "value": 5000,
+      "units": "m above model ground",
+      "datum": "Profile elevation used as teaching model ground",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "teaching-rate",
+      "parameter": "Teaching ash mass rate",
+      "classification": "assumed",
+      "value": 10000,
+      "units": "kg/s",
+      "datum": "Modeled ash only",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "teaching-duration",
+      "parameter": "Teaching steady-source duration",
+      "classification": "assumed",
+      "value": 3600,
+      "units": "s",
+      "datum": "Teaching event, separate from historical interval",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "teaching-wind-speed",
+      "parameter": "Teaching effective wind speed",
+      "classification": "assumed",
+      "value": 10,
+      "units": "m/s",
+      "datum": "Uniform horizontal wind; no measured altitude/time context",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "teaching-wind-from",
+      "parameter": "Teaching wind-from bearing",
+      "classification": "assumed",
+      "value": 225,
+      "units": "degrees clockwise from north",
+      "datum": "Meteorological FROM bearing",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "teaching-diameters",
+      "parameter": "Teaching class diameters",
+      "classification": "assumed",
+      "value": [
+        32,
+        63,
+        125,
+        250,
+        500
+      ],
+      "units": "micrometres",
+      "datum": "Class labels; do not derive settling speeds from these labels",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "domain-width",
+      "parameter": "Computational domain width",
+      "classification": "assumed",
+      "value": 200,
+      "units": "km",
+      "datum": "Vent-centered metric square",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "cell-width",
+      "parameter": "Computational cell width",
+      "classification": "assumed",
+      "value": 1,
+      "units": "km",
+      "datum": "Exact integrated cell averages",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "release-layers",
+      "parameter": "Midpoint release layers",
+      "classification": "assumed",
+      "value": 16,
+      "units": "count",
+      "datum": "Uniform mass release-height approximation",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "sweep-step",
+      "parameter": "Wind sweep increment",
+      "classification": "assumed",
+      "value": 1,
+      "units": "degrees",
+      "datum": "0 through 359 degrees FROM",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "memory-budget",
+      "parameter": "Estimated computation memory limit",
+      "classification": "assumed",
+      "value": 536870912,
+      "units": "bytes",
+      "datum": "Pre-allocation estimated kernel working budget",
+      "uncertainty": "No measured event uncertainty assigned; engineering or teaching choice",
+      "source_ids": [
+        "assumptions"
+      ],
+      "locator": "scripts/build_catalog.py teaching presets; backend contracts/kernel",
+      "license": "Locally authored ABO teaching assumptions; no measured-data license inferred",
+      "conversions": "None",
+      "dependencies": [],
+      "readiness": "illustrative",
+      "notes": "Not a reviewed Taal, Mayon or Kanlaon event input."
+    },
+    {
+      "id": "profile-geography-taal",
+      "parameter": "Taal volcano profile location and elevation",
+      "classification": "derived",
+      "value": [
+        14.0106,
+        120.9975,
+        311
+      ],
+      "units": "latitude degrees, longitude degrees, m ASL",
+      "datum": "Published profile; WGS84 interpretation used by application",
+      "uncertainty": "Not a surveyed event active-vent position or vertical datum",
+      "source_ids": [
+        "gvp-taal"
+      ],
+      "locator": "Smithsonian Global Volcanism Program volcano profile",
+      "license": "Smithsonian GVP profile terms not independently verified; attribution retained",
+      "conversions": "None; do not subtract profile elevation as a reviewed active-vent datum",
+      "dependencies": [],
+      "readiness": "usable",
+      "notes": "Usable for approximate geography and teaching model ground only. Historical active-vent conversion remains blocked."
+    },
+    {
+      "id": "profile-geography-mayon",
+      "parameter": "Mayon volcano profile location and elevation",
+      "classification": "derived",
+      "value": [
+        13.257,
+        123.685,
+        2462
+      ],
+      "units": "latitude degrees, longitude degrees, m ASL",
+      "datum": "Published profile; WGS84 interpretation used by application",
+      "uncertainty": "Not a surveyed event active-vent position or vertical datum",
+      "source_ids": [
+        "gvp-mayon"
+      ],
+      "locator": "Smithsonian Global Volcanism Program volcano profile",
+      "license": "Smithsonian GVP profile terms not independently verified; attribution retained",
+      "conversions": "None; do not subtract profile elevation as a reviewed active-vent datum",
+      "dependencies": [],
+      "readiness": "usable",
+      "notes": "Usable for approximate geography and teaching model ground only. Historical active-vent conversion remains blocked."
+    },
+    {
+      "id": "profile-geography-kanlaon",
+      "parameter": "Kanlaon volcano profile location and elevation",
+      "classification": "derived",
+      "value": [
+        10.4096,
+        123.13,
+        2422
+      ],
+      "units": "latitude degrees, longitude degrees, m ASL",
+      "datum": "Published profile; WGS84 interpretation used by application",
+      "uncertainty": "Not a surveyed event active-vent position or vertical datum",
+      "source_ids": [
+        "gvp-kanlaon"
+      ],
+      "locator": "Smithsonian Global Volcanism Program volcano profile",
+      "license": "Smithsonian GVP profile terms not independently verified; attribution retained",
+      "conversions": "None; do not subtract profile elevation as a reviewed active-vent datum",
+      "dependencies": [],
+      "readiness": "usable",
+      "notes": "Usable for approximate geography and teaching model ground only. Historical active-vent conversion remains blocked."
+    },
+    {
+      "id": "water-facility-coordinates",
+      "parameter": "Reviewed water-facility coordinates",
+      "classification": "derived",
+      "value": null,
+      "units": "latitude/longitude degrees",
+      "datum": "Facility role and geographic datum must be reviewed",
+      "uncertainty": "No accepted coordinate or inventory coverage",
+      "source_ids": [
+        "water-inventory-candidates"
+      ],
+      "locator": "data/source/source-investigations.json",
+      "license": "Source-specific terms not independently verified; attribution retained",
+      "conversions": "No candidate coordinates converted or imported",
+      "dependencies": [],
+      "readiness": "source_blocked",
+      "notes": "PAGASA and operator descriptions lack explicit reviewed facility coordinates in retrieved text. LWUA and DENR candidate original access returned 403. Monitoring-site roles cannot be relabeled as surveyed treatment plants. Surface screening would not establish water potability."
+    }
+  ],
+  "historical": {
+    "available": false,
+    "reason": "The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.",
+    "protocol": {
+      "id": "taal-main-plume-2020-v1",
+      "frozen_at": "2026-10-11",
+      "event_start_utc": "2020-01-12T05:00:00Z",
+      "event_end_utc": "2020-01-12T20:28:00Z",
+      "duration_s": 55680,
+      "event_definition": "12–13 January 2020 main mapped fallout; published 13:00–04:28 local, endpoint-definition uncertainty retained",
+      "evaluation_rules": [
+        "Independent inputs preferred; no evaluation-data tuning",
+        "70/30 spatial-group split only if calibration necessary; duplicate/dependency families intact",
+        "1–21 km geopotential wind grid; 75% coverage; no extrapolation",
+        "Interval RMSE/MAE and midpoint RMSE/MAE separate; 0.5 mm footprint IoU requires accepted geometry",
+        "Resolution/release/input sensitivity without refitting"
+      ],
+      "acceptance_tolerance": "No defensible predictive tolerance established; descriptive agreement only when inputs become usable",
+      "review_status": "approved"
+    },
+    "dataset_id": "taal-published-evidence-v1",
+    "source_dependencies": [
+      {
+        "group_id": "taal-deposit-study",
+        "source_ids": [
+          "taal-study"
+        ],
+        "dependent_quantities": [
+          "isopach geometry",
+          "crowd/field thickness",
+          "deposit-derived volume",
+          "deposit-inferred height"
+        ],
+        "disclosure": "These quantities derive from the same observations; contour vertices and inferred input fits are not independent evaluation evidence."
+      }
+    ],
+    "assessment_reasons": [
+      "Independent QA approved frozen methodology; scientific input gate remains blocked",
+      "Published 8,605 km² narrative and 3,864.89 km² Table 3 area statements remain distinct unresolved references",
+      "No participant or classroom empirical study was performed",
+      "Numerical verification does not establish empirical accuracy"
+    ],
+    "blocked_inputs": [
+      "Tanay selected-launch coverage 71.43% below frozen 75% requirement",
+      "Reviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)",
+      "Independent ash mass and dry bulk density",
+      "Whole-event grain fractions and settling speeds",
+      "Raw geolocated thickness observations and defensible original measurement/interpolation uncertainty",
+      "2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review",
+      "Condition-specific roof/crop thresholds and water-facility coordinates",
+      "Resolve/report published footprint area definitions without target selection"
+    ]
+  },
+  "screening_contexts": [
+    {
+      "id": "unspecified",
+      "label": "Conditions unavailable",
+      "values": {},
+      "notes": "Missing conditions keep damage criteria unknown."
+    },
+    {
+      "id": "roof-dry-long-span",
+      "label": "Dry ash · long-span low-pitch roof",
+      "values": {
+        "roof_type": "long_span_low_pitch",
+        "ash_condition": "dry"
+      },
+      "notes": "Declared condition only; a source-backed roof-load threshold is unavailable."
+    },
+    {
+      "id": "roof-wet-long-span",
+      "label": "Wet ash · long-span low-pitch roof",
+      "values": {
+        "roof_type": "long_span_low_pitch",
+        "ash_condition": "wet"
+      },
+      "notes": "Wetness may increase loads; model input bulk density must reflect the chosen basis. No automatic density multiplier."
+    }
+  ]
+}

@@ -1,0 +1,668 @@
+{
+  "checked_at": "2026-10-09",
+  "source": "PSA PSGC official provincial city/municipality HTML tables, Population (2024 POPCEN)",
+  "urls": [
+    "https://psa.gov.ph/classification/psgc/citimuni/0401000000",
+    "https://psa.gov.ph/classification/psgc/citimuni/0402100000",
+    "https://psa.gov.ph/classification/psgc/citimuni/0500500000",
+    "https://psa.gov.ph/classification/psgc/citimuni/1804500000",
+    "https://psa.gov.ph/classification/psgc/citimuni/1804600000"
+  ],
+  "rows": [
+    {
+      "name": "City of Legazpi",
+      "code": "0500506000",
+      "population": 210616
+    },
+    {
+      "name": "City of Ligao",
+      "code": "0500508000",
+      "population": 119779
+    },
+    {
+      "name": "City of Tabaco",
+      "code": "0500517000",
+      "population": 140779
+    },
+    {
+      "name": "Bacacay",
+      "code": "0500501000",
+      "population": 72298
+    },
+    {
+      "name": "Camalig",
+      "code": "0500502000",
+      "population": 73087
+    },
+    {
+      "name": "Daraga",
+      "code": "0500503000",
+      "population": 138000
+    },
+    {
+      "name": "Guinobatan",
+      "code": "0500504000",
+      "population": 84420
+    },
+    {
+      "name": "Jovellar",
+      "code": "0500505000",
+      "population": 17538
+    },
+    {
+      "name": "Libon",
+      "code": "0500507000",
+      "population": 72135
+    },
+    {
+      "name": "Malilipot",
+      "code": "0500509000",
+      "population": 41066
+    },
+    {
+      "name": "Malinao",
+      "code": "0500510000",
+      "population": 49570
+    },
+    {
+      "name": "Manito",
+      "code": "0500511000",
+      "population": 26425
+    },
+    {
+      "name": "Oas",
+      "code": "0500512000",
+      "population": 64890
+    },
+    {
+      "name": "Pio Duran",
+      "code": "0500513000",
+      "population": 48713
+    },
+    {
+      "name": "Polangui",
+      "code": "0500514000",
+      "population": 89344
+    },
+    {
+      "name": "Rapu-Rapu",
+      "code": "0500515000",
+      "population": 36281
+    },
+    {
+      "name": "Santo Domingo",
+      "code": "0500516000",
+      "population": 37586
+    },
+    {
+      "name": "Tiwi",
+      "code": "0500518000",
+      "population": 56871
+    },
+    {
+      "name": "City of Bais",
+      "code": "1804604000",
+      "population": 88050
+    },
+    {
+      "name": "City of Bayawan",
+      "code": "1804606000",
+      "population": 126744
+    },
+    {
+      "name": "City of Canlaon",
+      "code": "1804608000",
+      "population": 62785
+    },
+    {
+      "name": "City of Dumaguete",
+      "code": "1804610000",
+      "population": 142171
+    },
+    {
+      "name": "City of Guihulngan",
+      "code": "1804611000",
+      "population": 106576
+    },
+    {
+      "name": "City of Tanjay",
+      "code": "1804621000",
+      "population": 84593
+    },
+    {
+      "name": "Amlan",
+      "code": "1804601000",
+      "population": 26566
+    },
+    {
+      "name": "Ayungon",
+      "code": "1804602000",
+      "population": 50688
+    },
+    {
+      "name": "Bacong",
+      "code": "1804603000",
+      "population": 43889
+    },
+    {
+      "name": "Basay",
+      "code": "1804605000",
+      "population": 30018
+    },
+    {
+      "name": "Bindoy",
+      "code": "1804607000",
+      "population": 41543
+    },
+    {
+      "name": "Dauin",
+      "code": "1804609000",
+      "population": 30921
+    },
+    {
+      "name": "Jimalalud",
+      "code": "1804612000",
+      "population": 32996
+    },
+    {
+      "name": "La Libertad",
+      "code": "1804613000",
+      "population": 42721
+    },
+    {
+      "name": "Mabinay",
+      "code": "1804614000",
+      "population": 85770
+    },
+    {
+      "name": "Manjuyod",
+      "code": "1804615000",
+      "population": 46461
+    },
+    {
+      "name": "Pamplona",
+      "code": "1804616000",
+      "population": 41209
+    },
+    {
+      "name": "San Jose",
+      "code": "1804617000",
+      "population": 22870
+    },
+    {
+      "name": "Santa Catalina",
+      "code": "1804618000",
+      "population": 80382
+    },
+    {
+      "name": "Siaton",
+      "code": "1804619000",
+      "population": 84169
+    },
+    {
+      "name": "Sibulan",
+      "code": "1804620000",
+      "population": 69092
+    },
+    {
+      "name": "Tayasan",
+      "code": "1804622000",
+      "population": 39005
+    },
+    {
+      "name": "Valencia",
+      "code": "1804623000",
+      "population": 39986
+    },
+    {
+      "name": "Vallehermoso",
+      "code": "1804624000",
+      "population": 42421
+    },
+    {
+      "name": "Zamboanguita",
+      "code": "1804625000",
+      "population": 30412
+    },
+    {
+      "name": "City of Bacoor",
+      "code": "0402103000",
+      "population": 661381
+    },
+    {
+      "name": "City of Carmona",
+      "code": "0402104000",
+      "population": 112140
+    },
+    {
+      "name": "City of Cavite",
+      "code": "0402105000",
+      "population": 98673
+    },
+    {
+      "name": "City of Dasmariñas",
+      "code": "0402106000",
+      "population": 744511
+    },
+    {
+      "name": "City of General Trias",
+      "code": "0402108000",
+      "population": 482453
+    },
+    {
+      "name": "City of Imus",
+      "code": "0402109000",
+      "population": 481949
+    },
+    {
+      "name": "City of Tagaytay",
+      "code": "0402119000",
+      "population": 87811
+    },
+    {
+      "name": "City of Trece Martires",
+      "code": "0402122000",
+      "population": 227892
+    },
+    {
+      "name": "Alfonso",
+      "code": "0402101000",
+      "population": 60583
+    },
+    {
+      "name": "Amadeo",
+      "code": "0402102000",
+      "population": 44190
+    },
+    {
+      "name": "General Emilio Aguinaldo",
+      "code": "0402107000",
+      "population": 24264
+    },
+    {
+      "name": "Indang",
+      "code": "0402110000",
+      "population": 70092
+    },
+    {
+      "name": "Kawit",
+      "code": "0402111000",
+      "population": 123631
+    },
+    {
+      "name": "Magallanes",
+      "code": "0402112000",
+      "population": 25826
+    },
+    {
+      "name": "Maragondon",
+      "code": "0402113000",
+      "population": 41977
+    },
+    {
+      "name": "Mendez",
+      "code": "0402114000",
+      "population": 36518
+    },
+    {
+      "name": "Naic",
+      "code": "0402115000",
+      "population": 236978
+    },
+    {
+      "name": "Noveleta",
+      "code": "0402116000",
+      "population": 46172
+    },
+    {
+      "name": "Rosario",
+      "code": "0402117000",
+      "population": 112572
+    },
+    {
+      "name": "Silang",
+      "code": "0402118000",
+      "population": 313145
+    },
+    {
+      "name": "Tanza",
+      "code": "0402120000",
+      "population": 339308
+    },
+    {
+      "name": "Ternate",
+      "code": "0402121000",
+      "population": 24891
+    },
+    {
+      "name": "Gen. Mariano Alvarez",
+      "code": "0402123000",
+      "population": 176927
+    },
+    {
+      "name": "City of Bago",
+      "code": "1804502000",
+      "population": 192993
+    },
+    {
+      "name": "City of Cadiz",
+      "code": "1804504000",
+      "population": 161558
+    },
+    {
+      "name": "City of Escalante",
+      "code": "1804509000",
+      "population": 97050
+    },
+    {
+      "name": "City of Himamaylan",
+      "code": "1804510000",
+      "population": 117286
+    },
+    {
+      "name": "City of Kabankalan",
+      "code": "1804515000",
+      "population": 210893
+    },
+    {
+      "name": "City of La Carlota",
+      "code": "1804516000",
+      "population": 67740
+    },
+    {
+      "name": "City of Sagay",
+      "code": "1804523000",
+      "population": 152543
+    },
+    {
+      "name": "City of San Carlos",
+      "code": "1804524000",
+      "population": 133175
+    },
+    {
+      "name": "City of Silay",
+      "code": "1804526000",
+      "population": 136802
+    },
+    {
+      "name": "City of Sipalay",
+      "code": "1804527000",
+      "population": 73847
+    },
+    {
+      "name": "City of Talisay",
+      "code": "1804528000",
+      "population": 109204
+    },
+    {
+      "name": "City of Victorias",
+      "code": "1804531000",
+      "population": 90290
+    },
+    {
+      "name": "Binalbagan",
+      "code": "1804503000",
+      "population": 72594
+    },
+    {
+      "name": "Calatrava",
+      "code": "1804505000",
+      "population": 83813
+    },
+    {
+      "name": "Candoni",
+      "code": "1804506000",
+      "population": 22083
+    },
+    {
+      "name": "Cauayan",
+      "code": "1804507000",
+      "population": 110899
+    },
+    {
+      "name": "Enrique B. Magalona",
+      "code": "1804508000",
+      "population": 65730
+    },
+    {
+      "name": "Hinigaran",
+      "code": "1804511000",
+      "population": 90403
+    },
+    {
+      "name": "Hinoba-an",
+      "code": "1804512000",
+      "population": 64364
+    },
+    {
+      "name": "Ilog",
+      "code": "1804513000",
+      "population": 63444
+    },
+    {
+      "name": "Isabela",
+      "code": "1804514000",
+      "population": 65399
+    },
+    {
+      "name": "La Castellana",
+      "code": "1804517000",
+      "population": 82500
+    },
+    {
+      "name": "Manapla",
+      "code": "1804518000",
+      "population": 55882
+    },
+    {
+      "name": "Moises Padilla",
+      "code": "1804519000",
+      "population": 44864
+    },
+    {
+      "name": "Murcia",
+      "code": "1804520000",
+      "population": 90123
+    },
+    {
+      "name": "Pontevedra",
+      "code": "1804521000",
+      "population": 54941
+    },
+    {
+      "name": "Pulupandan",
+      "code": "1804522000",
+      "population": 31942
+    },
+    {
+      "name": "San Enrique",
+      "code": "1804525000",
+      "population": 24424
+    },
+    {
+      "name": "Toboso",
+      "code": "1804529000",
+      "population": 44973
+    },
+    {
+      "name": "Valladolid",
+      "code": "1804530000",
+      "population": 40487
+    },
+    {
+      "name": "Salvador Benedicto",
+      "code": "1804532000",
+      "population": 28231
+    },
+    {
+      "name": "Batangas City",
+      "code": "0401005000",
+      "population": 358267
+    },
+    {
+      "name": "City of Calaca",
+      "code": "0401007000",
+      "population": 92281
+    },
+    {
+      "name": "City of Lipa",
+      "code": "0401014000",
+      "population": 387392
+    },
+    {
+      "name": "City of Sto. Tomas",
+      "code": "0401028000",
+      "population": 226772
+    },
+    {
+      "name": "City of Tanauan",
+      "code": "0401031000",
+      "population": 209697
+    },
+    {
+      "name": "Agoncillo",
+      "code": "0401001000",
+      "population": 40662
+    },
+    {
+      "name": "Alitagtag",
+      "code": "0401002000",
+      "population": 28033
+    },
+    {
+      "name": "Balayan",
+      "code": "0401003000",
+      "population": 96939
+    },
+    {
+      "name": "Balete",
+      "code": "0401004000",
+      "population": 24202
+    },
+    {
+      "name": "Bauan",
+      "code": "0401006000",
+      "population": 94016
+    },
+    {
+      "name": "Calatagan",
+      "code": "0401008000",
+      "population": 60420
+    },
+    {
+      "name": "Cuenca",
+      "code": "0401009000",
+      "population": 36453
+    },
+    {
+      "name": "Ibaan",
+      "code": "0401010000",
+      "population": 58673
+    },
+    {
+      "name": "Laurel",
+      "code": "0401011000",
+      "population": 44791
+    },
+    {
+      "name": "Lemery",
+      "code": "0401012000",
+      "population": 94736
+    },
+    {
+      "name": "Lian",
+      "code": "0401013000",
+      "population": 56788
+    },
+    {
+      "name": "Lobo",
+      "code": "0401015000",
+      "population": 41251
+    },
+    {
+      "name": "Mabini",
+      "code": "0401016000",
+      "population": 49876
+    },
+    {
+      "name": "Malvar",
+      "code": "0401017000",
+      "population": 74565
+    },
+    {
+      "name": "Mataasnakahoy",
+      "code": "0401018000",
+      "population": 31912
+    },
+    {
+      "name": "Nasugbu",
+      "code": "0401019000",
+      "population": 141063
+    },
+    {
+      "name": "Padre Garcia",
+      "code": "0401020000",
+      "population": 53526
+    },
+    {
+      "name": "Rosario",
+      "code": "0401021000",
+      "population": 131365
+    },
+    {
+      "name": "San Jose",
+      "code": "0401022000",
+      "population": 81170
+    },
+    {
+      "name": "San Juan",
+      "code": "0401023000",
+      "population": 115118
+    },
+    {
+      "name": "San Luis",
+      "code": "0401024000",
+      "population": 36841
+    },
+    {
+      "name": "San Nicolas",
+      "code": "0401025000",
+      "population": 24392
+    },
+    {
+      "name": "San Pascual",
+      "code": "0401026000",
+      "population": 69419
+    },
+    {
+      "name": "Santa Teresita",
+      "code": "0401027000",
+      "population": 21742
+    },
+    {
+      "name": "Taal",
+      "code": "0401029000",
+      "population": 61559
+    },
+    {
+      "name": "Talisay",
+      "code": "0401030000",
+      "population": 46477
+    },
+    {
+      "name": "Taysan",
+      "code": "0401032000",
+      "population": 41332
+    },
+    {
+      "name": "Tingloy",
+      "code": "0401033000",
+      "population": 15866
+    },
+    {
+      "name": "Tuy",
+      "code": "0401034000",
+      "population": 47199
+    }
+  ]
+}

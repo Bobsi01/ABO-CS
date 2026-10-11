@@ -1,0 +1,19 @@
+/** Manually curated, dated research context. These records are not live alerts. */
+export const phaseLabel = (phase: string) => ({ before: 'Before eruption', erupting: 'During eruption', settling: 'After eruption · fallout continues', after: 'After · all modeled ash settled' }[phase] ?? phase)
+export const ERUPTION_SOURCES = [
+  { id: 'ash-buildings', publisher: 'USGS', date: '2015-12-17', title: 'Ash effects on buildings', url: 'https://volcanoes.usgs.gov/volcanic_ash/buildings.html', note: 'Effects depend on ash load, building design and condition, and environmental conditions. A thickness color alone does not establish structural damage.' },
+  { id: 'ash-crops', publisher: 'USGS', date: '2015-12-15', title: 'Ash effects on crops and livestock', url: 'https://volcanoes.usgs.gov/volcanic_ash/agriculture.html', note: 'Thickness, crop type and growth stage, rainfall and ash chemistry influence effects; generic crop-loss percentages are unsupported.' },
+  { id: 'ash-water', publisher: 'USGS', date: '2015-12-15', title: 'Ash effects on water systems', url: 'https://volcanoes.usgs.gov/volcanic_ash/water_wastewater.html', note: 'Ash can obstruct or overload collection and treatment systems. Deposit thickness does not determine drinking-water quality.' },
+  { id: 'usgs-plume', publisher: 'USGS', date: '1996', title: 'Pinatubo: eruption columns and umbrella clouds', url: 'https://pubs.usgs.gov/pinatubo/koya/', note: 'Buoyant columns spread near neutral buoyancy; wind and particle sizes influence fallout. The illustrated billows do not solve these plume dynamics.' },
+  { id: 'usgs-lava', publisher: 'USGS', date: 'undated', title: 'Lava flow controls and effects', url: 'https://www.usgs.gov/programs/VHP/lava-flows-destroy-everything-their-path', note: 'Viscosity, slope, confinement and effusion rate influence lava movement. Direct inundation can bury or ignite structures and land.' },
+  { id: 'jeffreys', publisher: 'Communications Earth & Environment', date: '2025', title: 'Lava effusion in mountainous terrain', url: 'https://www.nature.com/articles/s43247-025-02991-x', note: 'Uses the Jeffreys mean-velocity relation for Newtonian fluids. ABO uses a simplified single channel and omits cooling, ponding and branching.' },
+  { id: 'taal-fountain', publisher: 'Smithsonian GVP / PHIVOLCS reports', date: '2020-01', title: 'Taal eruption record', url: 'https://volcano.si.edu/volcano.cfm?vn=273070', note: 'January 2020 activity included lava fountaining. A fountain is not evidence for a broad downslope lava-flow footprint.' },
+  { id: 'taal-zone', publisher: 'PHIVOLCS', date: '2021-02-15', title: 'Taal: Volcano Island permanent danger zone', url: 'https://www.phivolcs.dost.gov.ph/taal-volcano-advisory-15-february-2021-03-30-p-m/', note: 'The advisory identifies Volcano Island as the PDZ. Its shoreline is shown as geographic context, not a surveyed hazard boundary or current advisory.' },
+  { id: 'mayon-zone', publisher: 'PHIVOLCS', date: '2023-11-24', title: 'Mayon: lava flows and 6 km PDZ', url: 'https://www.phivolcs.dost.gov.ph/mayon-volcano-bulletin-24-november-2023-8-00-am/', note: 'The dated bulletin reports channelized lava flows and a 6 km PDZ for multiple hazards. The circle is a reference zone, not computed lava runout.' },
+  { id: 'kanlaon-zone', publisher: 'PHIVOLCS', date: '2024-06-04', title: 'Kanlaon: activity report and 4 km PDZ', url: 'https://www.phivolcs.dost.gov.ph/volcanic-activity-report-kanlaon-volcano-negros-island-04-june-2024/', note: 'The report describes ash, ballistics and PDCs, and a 4 km PDZ. It distinguishes historical lava from the 2024 explosive event.' },
+] as const
+
+export function referenceZone(volcano: string) {
+  const source = ERUPTION_SOURCES.find(s => s.id === `${volcano}-zone`)
+  return source ? { source, radius_m: volcano === 'mayon' ? 6000 : volcano === 'kanlaon' ? 4000 : null } : null
+}

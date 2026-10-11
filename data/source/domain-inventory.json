@@ -1,0 +1,3479 @@
+{
+  "revision": "domain-inventory-v1",
+  "geometry_source": "boundaries",
+  "boundary_year": 2020,
+  "domain_width_km": 200,
+  "inclusion_rule": "Administrative polygon intersects fixed vent-centered square",
+  "domains": {
+    "taal": {
+      "intersecting_administrative_polygons": 214,
+      "included": 162,
+      "unresolved": 52,
+      "records": [
+        {
+          "shape_id": "30758251B36470920271092",
+          "name": "Abra de Ilog",
+          "psgc": "1705101000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B46343582936162",
+          "name": "Abucay",
+          "psgc": "0300801000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B21979375590034",
+          "name": "Agdangan",
+          "psgc": "0405601000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B30231322331435",
+          "name": "Agoncillo",
+          "psgc": "0401001000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86762521234938",
+          "name": "Alaminos",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403401000",
+            "0105503000"
+          ]
+        },
+        {
+          "shape_id": "30758251B26020772303451",
+          "name": "Alfonso",
+          "psgc": "0402101000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B37438092207200",
+          "name": "Alitagtag",
+          "psgc": "0401002000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B72252115450997",
+          "name": "Amadeo",
+          "psgc": "0402102000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11674695503139",
+          "name": "Angat",
+          "psgc": "0301401000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B89453678850457",
+          "name": "Angono",
+          "psgc": "0405801000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B55496023241087",
+          "name": "Atimonan",
+          "psgc": "0405603000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B69479050195003",
+          "name": "Baco",
+          "psgc": "1705201000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B21872245709611",
+          "name": "Bacoor City",
+          "psgc": "0402103000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B72127248939453",
+          "name": "Bagac",
+          "psgc": "0300802000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B61200223936905",
+          "name": "Balagtas",
+          "psgc": "0301402000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B27285986197002",
+          "name": "Balayan",
+          "psgc": "0401003000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B9712922067328",
+          "name": "Balete",
+          "psgc": "0401004000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80677147871069",
+          "name": "Baliuag",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B49056939189974",
+          "name": "Baras",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405803000"
+          ]
+        },
+        {
+          "shape_id": "30758251B42170064226471",
+          "name": "Batangas City",
+          "psgc": "0401005000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B51291858387925",
+          "name": "Bauan",
+          "psgc": "0401006000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B641829746077",
+          "name": "Bay",
+          "psgc": "0403402000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B30954744476099",
+          "name": "Binangonan",
+          "psgc": "0405804000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44068258109216",
+          "name": "Binondo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B94760060482549",
+          "name": "Boac",
+          "psgc": "1704001000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B34406453293214",
+          "name": "Bocaue",
+          "psgc": "0301404000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B40445123670017",
+          "name": "Buenavista",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1704002000",
+            "0607901000",
+            "0701209000",
+            "0405605000"
+          ]
+        },
+        {
+          "shape_id": "30758251B88033392671893",
+          "name": "Bulacan",
+          "psgc": "0301405000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B95926954005559",
+          "name": "Burdeos",
+          "psgc": "0405606000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B3009870248876",
+          "name": "Bustos",
+          "psgc": "0301406000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B33555947912261",
+          "name": "Cabuyao City",
+          "psgc": "0403404000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B76506512725367",
+          "name": "Cainta",
+          "psgc": "0405805000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B68856681488998",
+          "name": "Calaca",
+          "psgc": "0401007000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80871387182551",
+          "name": "Calatagan",
+          "psgc": "0401008000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B84649155212336",
+          "name": "Calauan",
+          "psgc": "0403406000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B52612034306412",
+          "name": "Caloocan City",
+          "psgc": "1380100000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B47768966638997",
+          "name": "Calumpit",
+          "psgc": "0301407000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B8297430856104",
+          "name": "Candelaria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307103000",
+            "0405608000"
+          ]
+        },
+        {
+          "shape_id": "30758251B57572048623065",
+          "name": "Cardona",
+          "psgc": "0405806000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B42806803343696",
+          "name": "Carmona",
+          "psgc": "0402104000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B55463127923623",
+          "name": "Castillejos",
+          "psgc": "0307104000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B82709121735753",
+          "name": "Cavinti",
+          "psgc": "0403407000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B13765165414384",
+          "name": "Cavite City",
+          "psgc": "0402105000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B52260851794711",
+          "name": "City of Antipolo",
+          "psgc": "0405802000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B46674947380799",
+          "name": "City of Balanga",
+          "psgc": "0300803000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B16723889149596",
+          "name": "City of BiÃ±an",
+          "psgc": "0403403000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25562993690796",
+          "name": "City of Calamba",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403405000"
+          ]
+        },
+        {
+          "shape_id": "30758251B77350797414463",
+          "name": "City of Calapan",
+          "psgc": "1705205000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92956518503760",
+          "name": "City of DasmariÃ±as",
+          "psgc": "0402106000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92766896635284",
+          "name": "City of General Trias",
+          "psgc": "0402108000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B78130969630418",
+          "name": "City of Las PiÃ±as",
+          "psgc": "1380200000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B57520905128305",
+          "name": "City of Makati",
+          "psgc": "1380300000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44622440586331",
+          "name": "City of Malabon",
+          "psgc": "1380400000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B20138524188329",
+          "name": "City of Malolos",
+          "psgc": "0301410000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B74980464983736",
+          "name": "City of Mandaluyong",
+          "psgc": "1380500000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86241834064496",
+          "name": "City of Marikina",
+          "psgc": "1380700000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B3506482067844",
+          "name": "City of Meycauayan",
+          "psgc": "0301412000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49263672612013",
+          "name": "City of Muntinlupa",
+          "psgc": "1380800000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B65774388040689",
+          "name": "City of Navotas",
+          "psgc": "1380900000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B15145867760436",
+          "name": "City of ParaÃ±aque",
+          "psgc": "1381000000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B15316626994525",
+          "name": "City of Pasig",
+          "psgc": "1381200000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B35007836972970",
+          "name": "City of San Jose del Monte",
+          "psgc": "0301420000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B17425503156128",
+          "name": "City of San Juan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1806105000",
+            "0401023000",
+            "1381400000"
+          ]
+        },
+        {
+          "shape_id": "30758251B17311985979646",
+          "name": "City of San Pedro",
+          "psgc": "0403425000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B88250453342652",
+          "name": "City of Santa Rosa",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403428000"
+          ]
+        },
+        {
+          "shape_id": "30758251B62709822601123",
+          "name": "City of Tanauan",
+          "psgc": "0401031000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B70245066805584",
+          "name": "City of Tayabas",
+          "psgc": "0405647000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B59148711322243",
+          "name": "City of Valenzuela",
+          "psgc": "1381600000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B33118282824163",
+          "name": "Cuenca",
+          "psgc": "0401009000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B87193060903149",
+          "name": "Dinalupihan",
+          "psgc": "0300804000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B18917837863618",
+          "name": "Dolores",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405615000"
+          ]
+        },
+        {
+          "shape_id": "30758251B33129254568465",
+          "name": "DoÃ±a Remedios Trinidad",
+          "psgc": "0301424000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B98174252836465",
+          "name": "Ermita",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B75261766623391",
+          "name": "Famy",
+          "psgc": "0403408000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B62487244382534",
+          "name": "Floridablanca",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B69905180384114",
+          "name": "Gasan",
+          "psgc": "1704003000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B6653564464331",
+          "name": "Gen. Mariano Alvarez",
+          "psgc": "0402123000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7170785123118",
+          "name": "General Emilio Aguinaldo",
+          "psgc": "0402107000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80195971051308",
+          "name": "General Nakar",
+          "psgc": "0405617000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B84945919751232",
+          "name": "Guiguinto",
+          "psgc": "0301408000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B93181595327102",
+          "name": "Hagonoy",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0301409000"
+          ]
+        },
+        {
+          "shape_id": "30758251B15732618156338",
+          "name": "Hermosa",
+          "psgc": "0300805000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B8254101193317",
+          "name": "Ibaan",
+          "psgc": "0401010000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B96342431093437",
+          "name": "Imus City",
+          "psgc": "0402109000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B89143958154434",
+          "name": "Indang",
+          "psgc": "0402110000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B63604482475035",
+          "name": "Infanta",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405620000"
+          ]
+        },
+        {
+          "shape_id": "30758251B44482047291863",
+          "name": "Intramuros",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B16311826266125",
+          "name": "Jala-Jala",
+          "psgc": "0405807000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7830805264743",
+          "name": "Kalayaan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705321000",
+            "0403409000"
+          ]
+        },
+        {
+          "shape_id": "30758251B10181127311894",
+          "name": "Kawit",
+          "psgc": "0402111000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B77759274087167",
+          "name": "Laurel",
+          "psgc": "0401011000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B5665377491734",
+          "name": "Lemery",
+          "psgc": "0401012000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B81633231484096",
+          "name": "Lian",
+          "psgc": "0401013000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B58026034412685",
+          "name": "Liliw",
+          "psgc": "0403410000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B34995051512109",
+          "name": "Limay",
+          "psgc": "0300806000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B54075680975044",
+          "name": "Lipa City",
+          "psgc": "0401014000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B32727086192084",
+          "name": "Lobo",
+          "psgc": "0401015000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B31470126644095",
+          "name": "Looc",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705103000",
+            "1705907000"
+          ]
+        },
+        {
+          "shape_id": "30758251B45670091737840",
+          "name": "Los BaÃ±os",
+          "psgc": "0403411000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11611856867349",
+          "name": "Lubang",
+          "psgc": "1705104000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B85700326948768",
+          "name": "Lubao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B44778470140505",
+          "name": "Lucban",
+          "psgc": "0405623000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B97555965649214",
+          "name": "Lucena City",
+          "psgc": "0431200000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80791162648573",
+          "name": "Luisiana",
+          "psgc": "0403412000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19502788585364",
+          "name": "Lumban",
+          "psgc": "0403413000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B64129218321366",
+          "name": "Mabini",
+          "psgc": "0401016000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B40270166730947",
+          "name": "Mabitac",
+          "psgc": "0403414000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25010155253639",
+          "name": "Macabebe",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B48484598892391",
+          "name": "Magallanes",
+          "psgc": "0402112000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B37787171987907",
+          "name": "Magdalena",
+          "psgc": "0403415000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B95762646893125",
+          "name": "Majayjay",
+          "psgc": "0403416000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B54664651587304",
+          "name": "Malate",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B86715159474326",
+          "name": "Malvar",
+          "psgc": "0401017000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B70283159165752",
+          "name": "Mamburao",
+          "psgc": "1705106000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B1630286055776",
+          "name": "Maragondon",
+          "psgc": "0402113000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11566455240441",
+          "name": "Marilao",
+          "psgc": "0301411000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B81885646660603",
+          "name": "Mariveles",
+          "psgc": "0300807000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7856900683747",
+          "name": "Masantol",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B55651779812419",
+          "name": "Mataasnakahoy",
+          "psgc": "0401018000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B43842848901261",
+          "name": "Mauban",
+          "psgc": "0405627000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B56327904281600",
+          "name": "Mendez",
+          "psgc": "0402114000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B75724413863333",
+          "name": "Mogpog",
+          "psgc": "1704004000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B50173683620188",
+          "name": "Morong",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405809000",
+            "0300808000"
+          ]
+        },
+        {
+          "shape_id": "30758251B549341994031",
+          "name": "Morong",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405809000",
+            "0300808000"
+          ]
+        },
+        {
+          "shape_id": "30758251B18586490451466",
+          "name": "Nagcarlan",
+          "psgc": "0403417000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11802167700274",
+          "name": "Naic",
+          "psgc": "0402115000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B8927375136038",
+          "name": "Nasugbu",
+          "psgc": "0401019000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B73486212842201",
+          "name": "Naujan",
+          "psgc": "1705208000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B28396415682182",
+          "name": "Norzagaray",
+          "psgc": "0301413000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26560222225231",
+          "name": "Noveleta",
+          "psgc": "0402116000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B34403699619291",
+          "name": "Obando",
+          "psgc": "0301414000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B1579745133837",
+          "name": "Olongapo City",
+          "psgc": "0331400000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4793511613736",
+          "name": "Orani",
+          "psgc": "0300809000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25905682576781",
+          "name": "Orion",
+          "psgc": "0300810000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49724573895846",
+          "name": "Paco",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B51252146080167",
+          "name": "Padre Burgos",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405629000"
+          ]
+        },
+        {
+          "shape_id": "30758251B75041728100669",
+          "name": "Padre Garcia",
+          "psgc": "0401020000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B55553660747763",
+          "name": "Paete",
+          "psgc": "0403418000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B2518509658018",
+          "name": "Pagbilao",
+          "psgc": "0405630000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B62240018312192",
+          "name": "Pagsanjan",
+          "psgc": "0403419000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26528649252550",
+          "name": "Pakil",
+          "psgc": "0403420000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4069170927747",
+          "name": "Paluan",
+          "psgc": "1705107000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B59821537391276",
+          "name": "Pandacan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B75610884117479",
+          "name": "Pandi",
+          "psgc": "0301415000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B63928376402493",
+          "name": "Pangil",
+          "psgc": "0403421000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B73840124509325",
+          "name": "Panukulan",
+          "psgc": "0405631000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B84355932760435",
+          "name": "Paombong",
+          "psgc": "0301416000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B21149777703056",
+          "name": "Pasay City",
+          "psgc": "1381100000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B83435175026830",
+          "name": "Pateros",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B86160385363219",
+          "name": "Perez",
+          "psgc": "0405633000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49530658943400",
+          "name": "Pila",
+          "psgc": "0403422000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7851333843517",
+          "name": "Pilar",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701234000",
+            "0702236000",
+            "0300811000"
+          ]
+        },
+        {
+          "shape_id": "30758251B3557386785722",
+          "name": "Pililla",
+          "psgc": "0405810000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B9076432182480",
+          "name": "Pinamalayan",
+          "psgc": "1705209000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B39966399473469",
+          "name": "Plaridel",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0301417000",
+            "0405635000"
+          ]
+        },
+        {
+          "shape_id": "30758251B5257459344407",
+          "name": "Pola",
+          "psgc": "1705210000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B72190087571376",
+          "name": "Polillo",
+          "psgc": "0405636000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B68060450724237",
+          "name": "Port Area",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B54215534625427",
+          "name": "Puerto Galera",
+          "psgc": "1705211000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B69399459557735",
+          "name": "Pulilan",
+          "psgc": "0301418000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44289263240939",
+          "name": "Quezon City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705317000",
+            "0205011000",
+            "0405637000",
+            "1381300000"
+          ]
+        },
+        {
+          "shape_id": "30758251B84669397306109",
+          "name": "Quiapo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B78685665231141",
+          "name": "Real",
+          "psgc": "0405638000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B93953059217751",
+          "name": "Rizal",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705108000",
+            "0403423000"
+          ]
+        },
+        {
+          "shape_id": "30758251B28604379202623",
+          "name": "Rodriguez",
+          "psgc": "0405808000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26885487370879",
+          "name": "Rosario",
+          "psgc": "0401021000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22134644718406",
+          "name": "Rosario",
+          "psgc": "0402117000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B34022252316389",
+          "name": "Sablayan",
+          "psgc": "1705109000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26373043106772",
+          "name": "Samal",
+          "psgc": "0300812000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60406679280817",
+          "name": "Sampaloc",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405639000"
+          ]
+        },
+        {
+          "shape_id": "30758251B27178292320434",
+          "name": "Sampaloc",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405639000"
+          ]
+        },
+        {
+          "shape_id": "30758251B44301326667503",
+          "name": "San Antonio",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307109000",
+            "0405641000"
+          ]
+        },
+        {
+          "shape_id": "30758251B10052680344935",
+          "name": "San Antonio",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307109000",
+            "0405641000"
+          ]
+        },
+        {
+          "shape_id": "30758251B22922317245242",
+          "name": "San Jose",
+          "psgc": "0401022000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B36989213936618",
+          "name": "San Juan",
+          "psgc": "0401023000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60634471978235",
+          "name": "San Luis",
+          "psgc": "0401024000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86089983795598",
+          "name": "San Mateo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405811000"
+          ]
+        },
+        {
+          "shape_id": "30758251B91475720845993",
+          "name": "San Miguel",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603041000",
+            "0701238000",
+            "0301421000"
+          ]
+        },
+        {
+          "shape_id": "30758251B83345334824937",
+          "name": "San Nicolas",
+          "psgc": "0401025000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B10759916050792",
+          "name": "San Nicolas",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0401025000"
+          ]
+        },
+        {
+          "shape_id": "30758251B96921420214384",
+          "name": "San Pablo City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403424000"
+          ]
+        },
+        {
+          "shape_id": "30758251B99992201046216",
+          "name": "San Pascual",
+          "psgc": "0401026000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B90204819305655",
+          "name": "San Teodoro",
+          "psgc": "1705213000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80289193646137",
+          "name": "Santa Ana",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0305419000"
+          ]
+        },
+        {
+          "shape_id": "30758251B85886628165841",
+          "name": "Santa Cruz",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307113000",
+            "1704005000",
+            "1705111000",
+            "0403426000"
+          ]
+        },
+        {
+          "shape_id": "30758251B50871741269469",
+          "name": "Santa Cruz",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307113000",
+            "1704005000",
+            "1705111000",
+            "0403426000"
+          ]
+        },
+        {
+          "shape_id": "30758251B4413725625416",
+          "name": "Santa Cruz",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307113000",
+            "1704005000",
+            "1705111000",
+            "0403426000"
+          ]
+        },
+        {
+          "shape_id": "30758251B94770277751528",
+          "name": "Santa Maria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403427000",
+            "0301423000",
+            "1705917000"
+          ]
+        },
+        {
+          "shape_id": "30758251B60359964634827",
+          "name": "Santa Maria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0403427000",
+            "0301423000",
+            "1705917000"
+          ]
+        },
+        {
+          "shape_id": "30758251B65020041021646",
+          "name": "Santa Teresita",
+          "psgc": "0401027000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B29832257254847",
+          "name": "Santo Tomas",
+          "psgc": "0401028000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B55152096669132",
+          "name": "Sariaya",
+          "psgc": "0405645000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19069500410191",
+          "name": "Sasmuan",
+          "psgc": "0305422000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B65416136656933",
+          "name": "Silang",
+          "psgc": "0402118000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B87471395485830",
+          "name": "Siniloan",
+          "psgc": "0403429000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49339662744818",
+          "name": "Socorro",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705214000"
+          ]
+        },
+        {
+          "shape_id": "30758251B42276045150270",
+          "name": "Subic",
+          "psgc": "0307114000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11016781940262",
+          "name": "Taal",
+          "psgc": "0401029000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B41438074837585",
+          "name": "Tagaytay City",
+          "psgc": "0402119000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B69828994242652",
+          "name": "Taguig City",
+          "psgc": "1381500000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B80500535312528",
+          "name": "Talisay",
+          "psgc": "0401030000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B99469843476303",
+          "name": "Tanay",
+          "psgc": "0405812000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B17999592905510",
+          "name": "Tanza",
+          "psgc": "0402120000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B32633454457385",
+          "name": "Taysan",
+          "psgc": "0401032000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B47474969400955",
+          "name": "Taytay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405813000",
+            "1705320000"
+          ]
+        },
+        {
+          "shape_id": "30758251B5946986755811",
+          "name": "Teresa",
+          "psgc": "0405814000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92987425451541",
+          "name": "Ternate",
+          "psgc": "0402121000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22989008298037",
+          "name": "Tiaong",
+          "psgc": "0405648000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B31190272548393",
+          "name": "Tingloy",
+          "psgc": "0401033000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B17137737947399",
+          "name": "Tondo I / II",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B97625371583583",
+          "name": "Trece Martires City",
+          "psgc": "0402122000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B67063088197244",
+          "name": "Tuy",
+          "psgc": "0401034000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60553088936825",
+          "name": "Victoria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306917000",
+            "1705215000",
+            "0403430000"
+          ]
+        },
+        {
+          "shape_id": "30758251B49564856626223",
+          "name": "Victoria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306917000",
+            "1705215000",
+            "0403430000"
+          ]
+        }
+      ]
+    },
+    "mayon": {
+      "intersecting_administrative_polygons": 112,
+      "included": 37,
+      "unresolved": 75,
+      "records": [
+        {
+          "shape_id": "30758251B86813203852202",
+          "name": "Allen",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B32987971976921",
+          "name": "Aroroy",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B83742421641730",
+          "name": "Baao",
+          "psgc": "0501701000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B91787985073572",
+          "name": "Bacacay",
+          "psgc": "0500501000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B59142853450865",
+          "name": "Bagamanoc",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B20087067633208",
+          "name": "Balatan",
+          "psgc": "0501702000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B93962495881517",
+          "name": "Baleno",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B70953932532311",
+          "name": "Baras",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405803000"
+          ]
+        },
+        {
+          "shape_id": "30758251B63978156729606",
+          "name": "Barcelona",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B50616374221449",
+          "name": "Basud",
+          "psgc": "0501601000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25061359196597",
+          "name": "Bato",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0501703000"
+          ]
+        },
+        {
+          "shape_id": "30758251B781054791526",
+          "name": "Bato",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0501703000"
+          ]
+        },
+        {
+          "shape_id": "30758251B92443363095578",
+          "name": "Batuan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701207000"
+          ]
+        },
+        {
+          "shape_id": "30758251B50768173933099",
+          "name": "Biri",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B19042362786959",
+          "name": "Bobon",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B14591039015578",
+          "name": "Bombon",
+          "psgc": "0501704000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B40011294763010",
+          "name": "Buhi",
+          "psgc": "0501705000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B33307504465511",
+          "name": "Bula",
+          "psgc": "0501706000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B83470150439749",
+          "name": "Bulan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B89540499101387",
+          "name": "Bulusan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B48434085268731",
+          "name": "Cabusao",
+          "psgc": "0501707000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B85876225109747",
+          "name": "Calabanga",
+          "psgc": "0501708000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49910210330724",
+          "name": "Camalig",
+          "psgc": "0500502000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44874081828887",
+          "name": "Camaligan",
+          "psgc": "0501709000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B59508339277809",
+          "name": "Canaman",
+          "psgc": "0501710000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B12334515375978",
+          "name": "Capul",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B12412533731052",
+          "name": "Caramoan",
+          "psgc": "0501711000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B83263319405118",
+          "name": "Caramoran",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B58212609685015",
+          "name": "Casiguran",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307702000"
+          ]
+        },
+        {
+          "shape_id": "30758251B41591816430114",
+          "name": "Castilla",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B24379666600488",
+          "name": "Catarman",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B54991272307692",
+          "name": "City of Ligao",
+          "psgc": "0500508000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B12655386269107",
+          "name": "City of Masbate",
+          "psgc": "0504111000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B39347385950217",
+          "name": "City of Sorsogon",
+          "psgc": "0506216000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B75861383716628",
+          "name": "City of Tabaco",
+          "psgc": "0500517000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B14663924862074",
+          "name": "Claveria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B92813581823724",
+          "name": "Daet",
+          "psgc": "0501603000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B85710407391035",
+          "name": "Daraga",
+          "psgc": "0500503000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B11399000509804",
+          "name": "Del Gallego",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B78827955884904",
+          "name": "Donsol",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B63624521547352",
+          "name": "Gainza",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B40937413002129",
+          "name": "Garchitorena",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B49692104133170",
+          "name": "Gigmoto",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B64069082540255",
+          "name": "Goa",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B1476462816000",
+          "name": "Gubat",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B92622239064783",
+          "name": "Guinobatan",
+          "psgc": "0500504000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92034423804037",
+          "name": "Iriga City",
+          "psgc": "0501716000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B81086391606543",
+          "name": "Irosin",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B38370299499479",
+          "name": "Jovellar",
+          "psgc": "0500505000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25814545213885",
+          "name": "Juban",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B4129960077068",
+          "name": "Labo",
+          "psgc": "0501606000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60102557901251",
+          "name": "Lagonoy",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B52108501680053",
+          "name": "Lavezares",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B45508344321255",
+          "name": "Legazpi City",
+          "psgc": "0500506000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7660717026766",
+          "name": "Libmanan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B33812388660229",
+          "name": "Libon",
+          "psgc": "0500507000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B79599023717940",
+          "name": "Lope de Vega",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B13192443251748",
+          "name": "Lupi",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B24930162212883",
+          "name": "Magallanes",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0402112000"
+          ]
+        },
+        {
+          "shape_id": "30758251B22935570216565",
+          "name": "Magarao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B40560232053392",
+          "name": "Malilipot",
+          "psgc": "0500509000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B79961363157368",
+          "name": "Malinao",
+          "psgc": "0500510000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B52587531996198",
+          "name": "Manito",
+          "psgc": "0500511000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19439306687504",
+          "name": "Matnog",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B91233781588772",
+          "name": "Mercedes",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0501607000"
+          ]
+        },
+        {
+          "shape_id": "30758251B47632906140247",
+          "name": "Milaor",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B9994709288668",
+          "name": "Minalabac",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B42419582255323",
+          "name": "Monreal",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B88883641582403",
+          "name": "Nabua",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B67238532990437",
+          "name": "Naga City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0501724000"
+          ]
+        },
+        {
+          "shape_id": "30758251B22907415261768",
+          "name": "Oas",
+          "psgc": "0500512000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B20065579392201",
+          "name": "Ocampo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B58646010264693",
+          "name": "Pamplona",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1804616000"
+          ]
+        },
+        {
+          "shape_id": "30758251B58304777640417",
+          "name": "Pandan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B52035813830347",
+          "name": "Panganiban",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B74500883185148",
+          "name": "Pasacao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B95177734597058",
+          "name": "Pilar",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701234000",
+            "0702236000",
+            "0300811000"
+          ]
+        },
+        {
+          "shape_id": "30758251B53297443650612",
+          "name": "Pili",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B7916733720670",
+          "name": "Pio Duran",
+          "psgc": "0500513000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B28395288618687",
+          "name": "Polangui",
+          "psgc": "0500514000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19946568365659",
+          "name": "Presentacion",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B55319475412309",
+          "name": "Prieto Diaz",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B23999947934104",
+          "name": "Ragay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B43953309192552",
+          "name": "Rapu-Rapu",
+          "psgc": "0500515000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B57957454535676",
+          "name": "Rosario",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0402117000"
+          ]
+        },
+        {
+          "shape_id": "30758251B59561254174499",
+          "name": "SagÃ±ay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1804523000"
+          ]
+        },
+        {
+          "shape_id": "30758251B65152519595273",
+          "name": "San Andres",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0405640000",
+            "1705912000"
+          ]
+        },
+        {
+          "shape_id": "30758251B11679002524911",
+          "name": "San Antonio",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0307109000",
+            "0405641000"
+          ]
+        },
+        {
+          "shape_id": "30758251B90301857682432",
+          "name": "San Fernando",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0305416000",
+            "0702241000",
+            "1705913000",
+            "0103314000"
+          ]
+        },
+        {
+          "shape_id": "30758251B6927182606556",
+          "name": "San Fernando",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0305416000",
+            "0702241000",
+            "1705913000",
+            "0103314000"
+          ]
+        },
+        {
+          "shape_id": "30758251B77998286980481",
+          "name": "San Isidro",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701237000"
+          ]
+        },
+        {
+          "shape_id": "30758251B27565231296261",
+          "name": "San Jacinto",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B67944670665540",
+          "name": "San Jose",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306918000",
+            "1705110000",
+            "0304926000",
+            "1804617000",
+            "1705914000"
+          ]
+        },
+        {
+          "shape_id": "30758251B10201134015189",
+          "name": "San Jose",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306918000",
+            "1705110000",
+            "0304926000",
+            "1804617000",
+            "1705914000"
+          ]
+        },
+        {
+          "shape_id": "30758251B16172470654133",
+          "name": "San Lorenzo Ruiz",
+          "psgc": "0501604000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B81030660303746",
+          "name": "San Miguel",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603041000",
+            "0701238000",
+            "0301421000"
+          ]
+        },
+        {
+          "shape_id": "30758251B17362038496048",
+          "name": "San Pascual",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0401026000"
+          ]
+        },
+        {
+          "shape_id": "30758251B44254062576901",
+          "name": "San Vicente",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705319000",
+            "0501609000"
+          ]
+        },
+        {
+          "shape_id": "30758251B91795830779635",
+          "name": "San Vicente",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1705319000",
+            "0501609000"
+          ]
+        },
+        {
+          "shape_id": "30758251B27542334536223",
+          "name": "Santa Magdalena",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B82534297587726",
+          "name": "Santo Domingo",
+          "psgc": "0500516000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B70291415391467",
+          "name": "Sipocot",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B38539874694447",
+          "name": "Siruma",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B29801061309945",
+          "name": "Tagkawayan",
+          "psgc": "0405646000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44537978372454",
+          "name": "Talisay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1804528000",
+            "0401030000",
+            "0501611000"
+          ]
+        },
+        {
+          "shape_id": "30758251B83863346028510",
+          "name": "Tigaon",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B38953781960130",
+          "name": "Tinambac",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B71671176044973",
+          "name": "Tiwi",
+          "psgc": "0500518000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B37626690235270",
+          "name": "Victoria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306917000",
+            "1705215000",
+            "0403430000"
+          ]
+        },
+        {
+          "shape_id": "30758251B12930649127475",
+          "name": "Viga",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B3136042153209",
+          "name": "Vinzons",
+          "psgc": "0501612000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19106004120834",
+          "name": "Virac",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        }
+      ]
+    },
+    "kanlaon": {
+      "intersecting_administrative_polygons": 171,
+      "included": 109,
+      "unresolved": 62,
+      "records": [
+        {
+          "shape_id": "30758251B13636492235142",
+          "name": "Ajuy",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B8675136777312",
+          "name": "Alburquerque",
+          "psgc": "0701201000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4866188313996",
+          "name": "Alcantara",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0702201000",
+            "1705901000"
+          ]
+        },
+        {
+          "shape_id": "30758251B20245885110769",
+          "name": "Alcoy",
+          "psgc": "0702202000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B71332435145613",
+          "name": "Alegria",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0702203000"
+          ]
+        },
+        {
+          "shape_id": "30758251B69807687189448",
+          "name": "Alimodian",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B54294081358978",
+          "name": "Aloguinsan",
+          "psgc": "0702204000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B65127658552758",
+          "name": "Anilao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B37541415004526",
+          "name": "Antequera",
+          "psgc": "0701204000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92328009891536",
+          "name": "Argao",
+          "psgc": "0702205000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B6698478403796",
+          "name": "Asturias",
+          "psgc": "0702206000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B30231816662876",
+          "name": "Ayungon",
+          "psgc": "1804602000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B40565049686432",
+          "name": "Baclayon",
+          "psgc": "0701205000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B10359126771558",
+          "name": "Bacolod City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B23528812068772",
+          "name": "Badian",
+          "psgc": "0702207000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B83246187592592",
+          "name": "Badiangan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B44456462498857",
+          "name": "Bago City",
+          "psgc": "1804502000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B97079733925928",
+          "name": "Bais City",
+          "psgc": "1804604000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B3567017136018",
+          "name": "Balamban",
+          "psgc": "0702208000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B54841431701448",
+          "name": "Balilihan",
+          "psgc": "0701206000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B10114533037033",
+          "name": "Banate",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B23204734995246",
+          "name": "Bantayan",
+          "psgc": "0702209000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B53137473181184",
+          "name": "Barili",
+          "psgc": "0702210000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B27600807378408",
+          "name": "Barotac Nuevo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B5280486819408",
+          "name": "Barotac Viejo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B60263736267026",
+          "name": "Basay",
+          "psgc": "1804605000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B163560276547",
+          "name": "Binalbagan",
+          "psgc": "1804503000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B7642209697633",
+          "name": "Bindoy",
+          "psgc": "1804607000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B3620864881495",
+          "name": "Bingawan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B69594331288937",
+          "name": "Boljoon",
+          "psgc": "0702212000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B50320825367181",
+          "name": "Borbon",
+          "psgc": "0702213000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22766078272355",
+          "name": "Buenavista",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1704002000",
+            "0607901000",
+            "0701209000",
+            "0405605000"
+          ]
+        },
+        {
+          "shape_id": "30758251B35504106282542",
+          "name": "Buenavista",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1704002000",
+            "0607901000",
+            "0701209000",
+            "0405605000"
+          ]
+        },
+        {
+          "shape_id": "30758251B63515771273363",
+          "name": "Bugasong",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B22577560425955",
+          "name": "Cabatuan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B74690587258532",
+          "name": "Cadiz City",
+          "psgc": "1804504000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B97088218061457",
+          "name": "Calape",
+          "psgc": "0701210000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B51763303574827",
+          "name": "Calatrava",
+          "psgc": "1804505000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B12853657019239",
+          "name": "Calinog",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B37131808105677",
+          "name": "Candoni",
+          "psgc": "1804506000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22693356898691",
+          "name": "Canlaon City",
+          "psgc": "1804608000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26189357704702",
+          "name": "Carmen",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701212000",
+            "0702215000"
+          ]
+        },
+        {
+          "shape_id": "30758251B12549633394912",
+          "name": "Catigbian",
+          "psgc": "0701213000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B54228421239633",
+          "name": "Catmon",
+          "psgc": "0702216000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B70595272616613",
+          "name": "Cauayan",
+          "psgc": "1804507000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44889135236977",
+          "name": "Cebu City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B98971931409152",
+          "name": "City of Bayawan",
+          "psgc": "1804606000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B41533783393082",
+          "name": "City of Bogo",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B83848416648343",
+          "name": "City of Carcar",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B93268177737855",
+          "name": "City of Escalante",
+          "psgc": "1804509000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60818257765105",
+          "name": "City of Guihulngan",
+          "psgc": "1804611000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B87460719980042",
+          "name": "City of Himamaylan",
+          "psgc": "1804510000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B39137179877227",
+          "name": "City of Kabankalan",
+          "psgc": "1804515000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B29828848489028",
+          "name": "City of Naga",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0501724000"
+          ]
+        },
+        {
+          "shape_id": "30758251B16184179741083",
+          "name": "City of Passi",
+          "psgc": "0603035000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B39035544266980",
+          "name": "City of Sipalay",
+          "psgc": "1804527000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B1176164020832",
+          "name": "City of Talisay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1804528000",
+            "0401030000",
+            "0501611000"
+          ]
+        },
+        {
+          "shape_id": "30758251B71097287635299",
+          "name": "City of Talisay",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "1804528000",
+            "0401030000",
+            "0501611000"
+          ]
+        },
+        {
+          "shape_id": "30758251B79018653951628",
+          "name": "City of Tanjay",
+          "psgc": "1804621000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B44366819417362",
+          "name": "City of Victorias",
+          "psgc": "1804531000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B13304224452965",
+          "name": "Clarin",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701214000"
+          ]
+        },
+        {
+          "shape_id": "30758251B98103416866095",
+          "name": "Compostela",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0702218000"
+          ]
+        },
+        {
+          "shape_id": "30758251B48944971182305",
+          "name": "Concepcion",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0306905000",
+            "1705905000"
+          ]
+        },
+        {
+          "shape_id": "30758251B64510927807876",
+          "name": "Consolacion",
+          "psgc": "0702219000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86533440533220",
+          "name": "Cordova",
+          "psgc": "0702220000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60977474796551",
+          "name": "Corella",
+          "psgc": "0701215000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B74263620831243",
+          "name": "Cortes",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701216000"
+          ]
+        },
+        {
+          "shape_id": "30758251B48393981905237",
+          "name": "Cuartero",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B23123203384487",
+          "name": "Daanbantayan",
+          "psgc": "0702221000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B97190479635325",
+          "name": "Dalaguete",
+          "psgc": "0702222000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B84060605893793",
+          "name": "Danao City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701218000"
+          ]
+        },
+        {
+          "shape_id": "30758251B72127200927882",
+          "name": "Dauis",
+          "psgc": "0701219000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B96469229002048",
+          "name": "Dingle",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B74764778081274",
+          "name": "DueÃ±as",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B32411004469798",
+          "name": "Dumalag",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B4631438533579",
+          "name": "Dumangas",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B70679396498245",
+          "name": "Dumanjug",
+          "psgc": "0702224000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B32548313034997",
+          "name": "Dumarao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B93552266540793",
+          "name": "Enrique B. Magalona",
+          "psgc": "1804508000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22393946342584",
+          "name": "Ginatilan",
+          "psgc": "0702225000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B64500013384047",
+          "name": "Guimbal",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B50394625091243",
+          "name": "Hinigaran",
+          "psgc": "1804511000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B90502148254132",
+          "name": "Hinoba-An",
+          "psgc": "1804512000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B73695480511112",
+          "name": "Igbaras",
+          "psgc": "0603021000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B19549547171132",
+          "name": "Ilog",
+          "psgc": "1804513000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B78795121530407",
+          "name": "Iloilo City",
+          "psgc": "0631000000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B57824109626327",
+          "name": "Inabanga",
+          "psgc": "0701224000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B76125738133682",
+          "name": "Isabela",
+          "psgc": "1804514000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B33781149829441",
+          "name": "Jamindan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B33356441907272",
+          "name": "Janiuay",
+          "psgc": "0603023000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B35162320168665",
+          "name": "Jimalalud",
+          "psgc": "1804612000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86005089124827",
+          "name": "Jordan",
+          "psgc": "0607902000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4643469409429",
+          "name": "La Carlota City",
+          "psgc": "1804516000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B45255679920724",
+          "name": "La Castellana",
+          "psgc": "1804517000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B96075835138209",
+          "name": "La Libertad",
+          "psgc": "1804613000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4674777474698",
+          "name": "Lambunao",
+          "psgc": "0603025000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B79263204396093",
+          "name": "Lapu-Lapu City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B71622698937954",
+          "name": "Leganes",
+          "psgc": "0603026000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B24164674445814",
+          "name": "Lemery",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0401012000",
+            "0603027000"
+          ]
+        },
+        {
+          "shape_id": "30758251B37119050088735",
+          "name": "Leon",
+          "psgc": "0603028000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B40401951871819",
+          "name": "Libacao",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B78513601653277",
+          "name": "Liloan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0702227000"
+          ]
+        },
+        {
+          "shape_id": "30758251B19799872361278",
+          "name": "Loay",
+          "psgc": "0701228000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B48223035746597",
+          "name": "Loboc",
+          "psgc": "0701229000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B53907232187821",
+          "name": "Loon",
+          "psgc": "0701230000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B47865682990811",
+          "name": "Ma-Ayon",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B69609518420046",
+          "name": "Maasin",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0806407000",
+            "0603029000"
+          ]
+        },
+        {
+          "shape_id": "30758251B10017268667222",
+          "name": "Mabinay",
+          "psgc": "1804614000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B20504693372643",
+          "name": "Madridejos",
+          "psgc": "0702228000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B5622679541907",
+          "name": "Malabuyoc",
+          "psgc": "0702229000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B2817508515429",
+          "name": "Manapla",
+          "psgc": "1804518000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B92617172480237",
+          "name": "Mandaue City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B66064059312986",
+          "name": "Manjuyod",
+          "psgc": "1804615000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B35739051919791",
+          "name": "Maribojoc",
+          "psgc": "0701232000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B99468977928548",
+          "name": "Medellin",
+          "psgc": "0702231000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B76411822263604",
+          "name": "Miagao",
+          "psgc": "0603030000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B21503626063200",
+          "name": "Mina",
+          "psgc": "0603031000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B22390909973267",
+          "name": "Minglanilla",
+          "psgc": "0702232000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B4277122757903",
+          "name": "Moalboal",
+          "psgc": "0702233000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86559237055177",
+          "name": "Moises Padilla",
+          "psgc": "1804519000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B26190802664029",
+          "name": "Murcia",
+          "psgc": "1804520000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B49974401944820",
+          "name": "New Lucena",
+          "psgc": "0603032000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B31351007635483",
+          "name": "Nueva Valencia",
+          "psgc": "0607903000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B1349946349096",
+          "name": "Oslob",
+          "psgc": "0702235000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B51291325035886",
+          "name": "Oton",
+          "psgc": "0603034000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B24092981342629",
+          "name": "Pamplona",
+          "psgc": "1804616000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B6279384221388",
+          "name": "Panglao",
+          "psgc": "0701233000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B29225258114217",
+          "name": "Pavia",
+          "psgc": "0603036000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B96280543021320",
+          "name": "Pinamungahan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B40366129803792",
+          "name": "Pontevedra",
+          "psgc": "1804521000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B41604182496552",
+          "name": "Pototan",
+          "psgc": "0603037000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B33327911617473",
+          "name": "Pulupandan",
+          "psgc": "1804522000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B81602489933177",
+          "name": "Ronda",
+          "psgc": "0702239000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B74171926345191",
+          "name": "Sagay City",
+          "psgc": "1804523000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86894559838043",
+          "name": "Salvador Benedicto",
+          "psgc": "1804532000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B25852339699086",
+          "name": "Samboan",
+          "psgc": "0702240000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B8075335495854",
+          "name": "San Carlos City",
+          "psgc": "1804524000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B41670751061492",
+          "name": "San Dionisio",
+          "psgc": "0603038000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B30024033253187",
+          "name": "San Enrique",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603039000",
+            "1804525000"
+          ]
+        },
+        {
+          "shape_id": "30758251B11825035117570",
+          "name": "San Enrique",
+          "psgc": "1804525000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B67564352322913",
+          "name": "San Fernando",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0305416000",
+            "0702241000",
+            "1705913000",
+            "0103314000"
+          ]
+        },
+        {
+          "shape_id": "30758251B59726651934341",
+          "name": "San Isidro",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0701237000"
+          ]
+        },
+        {
+          "shape_id": "30758251B36032174319233",
+          "name": "San Lorenzo",
+          "psgc": "0607904000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B47884920320624",
+          "name": "San Miguel",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603041000",
+            "0701238000",
+            "0301421000"
+          ]
+        },
+        {
+          "shape_id": "30758251B32106504500412",
+          "name": "San Rafael",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603042000",
+            "0301422000"
+          ]
+        },
+        {
+          "shape_id": "30758251B95078134984075",
+          "name": "San Remigio",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B39221878947402",
+          "name": "San Remigio",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B45613097855532",
+          "name": "Santa Barbara",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0603043000"
+          ]
+        },
+        {
+          "shape_id": "30758251B94132471744968",
+          "name": "Santa Fe",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": [
+            "0205012000",
+            "1705915000"
+          ]
+        },
+        {
+          "shape_id": "30758251B62217465277456",
+          "name": "Sara",
+          "psgc": "0603044000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B72536662192698",
+          "name": "Sevilla",
+          "psgc": "0701239000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B53627623083695",
+          "name": "Sibonga",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B58676290170427",
+          "name": "Sibunag",
+          "psgc": "0607905000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B28480536196407",
+          "name": "Sikatuna",
+          "psgc": "0701241000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B60701013344406",
+          "name": "Silay City",
+          "psgc": "1804526000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B30485850222483",
+          "name": "Sogod",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B75999052770002",
+          "name": "Tabogon",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B6036797208049",
+          "name": "Tabuelan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B36339359488922",
+          "name": "Tagbilaran City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B39430570353961",
+          "name": "Tapaz",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B37133567842554",
+          "name": "Tayasan",
+          "psgc": "1804622000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B68181414646701",
+          "name": "Tigbauan",
+          "psgc": "0603045000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B45465879841482",
+          "name": "Toboso",
+          "psgc": "1804529000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B47449241103787",
+          "name": "Toledo City",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B14000269063439",
+          "name": "Tubigon",
+          "psgc": "0701245000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B36135336796092",
+          "name": "Tubungan",
+          "psgc": "0603046000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B86140491886495",
+          "name": "Tuburan",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B81631950154646",
+          "name": "Valderrama",
+          "status": "unresolved",
+          "reason": "No unique reviewed name-to-PSGC match in archived extracts",
+          "candidate_codes": []
+        },
+        {
+          "shape_id": "30758251B22103021346639",
+          "name": "Valladolid",
+          "psgc": "1804530000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B9618582640277",
+          "name": "Vallehermoso",
+          "psgc": "1804624000",
+          "status": "included"
+        },
+        {
+          "shape_id": "30758251B45667509211770",
+          "name": "Zarraga",
+          "psgc": "0603047000",
+          "status": "included"
+        }
+      ]
+    }
+  },
+  "included_unique": 308,
+  "omitted_existing_outside_all_domains": [
+    "1804601000",
+    "1804603000",
+    "1804609000",
+    "1804610000",
+    "1804617000",
+    "1804618000",
+    "1804619000",
+    "1804620000",
+    "1804623000",
+    "1804625000"
+  ],
+  "limitations": [
+    "Simplified boundaries and centroid screening; not population polygon exposure",
+    "Current correspondence codes do not prove unchanged 2020 boundaries",
+    "Repeated names and missing directory rows remain unresolved and excluded",
+    "Water-facility inventory and full national census acquisition remain source blocked"
+  ]
+}

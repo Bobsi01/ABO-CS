@@ -1,0 +1,69 @@
+{
+  "started": "2026-10-11T05:36:15.507Z",
+  "duration_target_s": 1800,
+  "machine": {
+    "platform": "win32",
+    "release": "10.0.26300",
+    "cpu": "AMD Ryzen 7 5800U with Radeon Graphics         ",
+    "ram_bytes": 14877257728
+  },
+  "cycles": [],
+  "snapshots": [
+    {
+      "label": "initial",
+      "elapsed_s": 0.005,
+      "telemetry": {
+        "callbackTimes": 0,
+        "renderTimes": 0,
+        "visibility": [],
+        "resources": {
+          "1": {
+            "created": {
+              "Texture": 7,
+              "Framebuffer": 3,
+              "Buffer": 21,
+              "Program": 7,
+              "Shader": 14,
+              "VertexArray": 7
+            },
+            "deleted": {
+              "Shader": 14
+            },
+            "lost": false
+          }
+        },
+        "errors": [],
+        "capture": false,
+        "version": 1,
+        "hidden": false,
+        "heap": 32137484,
+        "canvases": 1,
+        "playback": null
+      },
+      "metrics": {
+        "Documents": 4,
+        "JSEventListeners": 338,
+        "Nodes": 814,
+        "JSHeapUsedSize": 18739480,
+        "JSHeapTotalSize": 32620544
+      }
+    }
+  ],
+  "errors": [
+    "locator.waitFor: Timeout 120000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Play sequence', exact: true }) to be visible\u001b[22m\n\n    at C:\\Workspace\\ABO-CS\\qa\\browser\\gap-engineering-soak.cjs:45:76"
+  ],
+  "initial_accessibility_snapshot": "- link \"Skip to results\":\n  - /url: \"#workspace\"\n- banner:\n  - heading \"ABO Eruption laboratory\" [level=1]\n  - group: Academic model · limits\n  - button \"Dark theme\"\n- main:\n  - complementary \"Simulation inputs\":\n    - group:\n      - text: Simulation inputs Scenario\n      - combobox \"Scenario Taal · teaching scenario\": Taal · teaching scenario\n      - paragraph: Illustrative inputs, not a historical eruption.\n      - text: Column above ground (m)\n      - spinbutton \"Column above ground (m)\": \"5000\"\n      - text: Modeled ash rate (kg/s)\n      - spinbutton \"Modeled ash rate (kg/s)\": \"10000\"\n      - text: Duration (s)\n      - spinbutton \"Duration (s)\": \"3600\"\n      - text: Wind speed (m/s)\n      - spinbutton \"Wind speed (m/s)\": \"10\"\n      - text: Wind FROM (° clockwise from N)\n      - spinbutton \"Wind FROM (° clockwise from N)\": \"225\"\n      - group: Eruption illustration & lava\n      - group: Dispersion & density\n      - group: Screening & population\n      - group: Location & grid\n      - group: Grain classes and release layers\n      - button \"Run simulation\"\n  - navigation \"Scientific views\":\n    - button \"Simulation\"\n    - button \"Wind comparison\"\n    - button \"Wind sweep\"\n    - button \"Taal 2020\"\n    - button \"Guide & sources\"\n  - status: Choose inputs and run a simulation to view deposition.\n  - region \"Simulation\":\n    - region \"Eruption & terrain\":\n      - heading \"Eruption & terrain\" [level=2]\n      - text: Camera view\n      - combobox \"Camera view Volcano close-up\": Volcano close-up\n      - button \"Reset camera\"\n      - button \"Play settling\" [disabled]\n      - button \"Replay from start\" [disabled]\n      - strong: Taal · Lake Taal\n      - text: Schematic geographic fallback Wind FROM 225° · 10 m/s Column 5 km above ground\n      - status: Loading geographic terrain · temporary schematic view · enlarged class markers.\n      - group: Illustration guide\n      - group: Terrain source & graphics\n    - region \"Affected locations\":\n      - heading \"Affected locations\" [level=2]\n      - text: Map effect\n      - combobox \"Map effect Accumulated ash\": Accumulated ash\n      - button \"Deposit extent\" [disabled]\n      - button \"Reset map to volcano region\"\n      - button \"taal model vent\"\n      - button \"Zoom in\"\n      - button \"Zoom out\"\n      - text: 10 km\n      - link \"Leaflet\":\n        - /url: https://leafletjs.com\n      - text: \"Land/lakes: Natural Earth; Taal Lake ©\"\n      - link \"OpenStreetMap contributors · ODbL\":\n        - /url: https://www.openstreetmap.org/copyright\n      - text: Deposit thickness · mm <0.5 0.5+ 1+ 5+ 10+ 50+ 100+ Colors indicate thickness, not hazard severity.\n      - paragraph: The geographic backdrop is ready. Run a scenario to compute contours and location exposure.\n      - group: Effects, reference zones & sources\n- contentinfo:\n  - text: CSE 103 · Computational Science\n  - link \"Project proposal\":\n    - /url: https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un",
+  "build_assets": [
+    "http://127.0.0.1:8000/assets/index-cvjd-H34.js"
+  ],
+  "browser": "155.0.8059.39",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "gpu": {
+    "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (AMD)"
+  },
+  "completed": false
+}

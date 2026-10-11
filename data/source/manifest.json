@@ -1,0 +1,22 @@
+[
+  {
+    "file": "municipal-boundaries.geojson",
+    "url": "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/main/releaseData/gbOpen/PHL/ADM3/geoBoundaries-PHL-ADM3_simplified.geojson",
+    "sha256": "2ece3d44a5c6a2afb385ffbf3a6b88d83e4d3a3e7eed9a52cb3be1bc59e289fc"
+  },
+  {
+    "file": "municipal-boundaries-metadata.json",
+    "url": "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/main/releaseData/gbOpen/PHL/ADM3/geoBoundaries-PHL-ADM3-metaData.json",
+    "sha256": "3153bc4f00baec271abf7908362eb7061d9b43ab7f7ffbbf3373304f8ad8dbab"
+  },
+  {
+    "file": "natural-earth-coastline.geojson",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_coastline.geojson",
+    "sha256": "271f1c4c1908312bac6b29d158ea1356544beafc129f260005300913aa5ea283"
+  },
+  {
+    "file": "cavite-quickstat-may-2026.pdf",
+    "url": "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Cavite%20QuickSTAT_May%202026.pdf",
+    "status": "Unavailable: HTTP 403"
+  }
+]

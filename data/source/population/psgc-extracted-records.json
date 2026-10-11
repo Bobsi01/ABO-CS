@@ -1,0 +1,4265 @@
+[
+  {
+    "name": "Mexico",
+    "code": "0305413000",
+    "correspondence_code": "035413000",
+    "population_2024": 187597,
+    "locator": "psgc-directory-extract-2.txt: directory line 678"
+  },
+  {
+    "name": "Minalin",
+    "code": "0305414000",
+    "correspondence_code": "035414000",
+    "population_2024": 50126,
+    "locator": "psgc-directory-extract-2.txt: directory line 679"
+  },
+  {
+    "name": "Porac",
+    "code": "0305415000",
+    "correspondence_code": "035415000",
+    "population_2024": 147551,
+    "locator": "psgc-directory-extract-2.txt: directory line 680"
+  },
+  {
+    "name": "San Luis",
+    "code": "0305417000",
+    "correspondence_code": "035417000",
+    "population_2024": 64674,
+    "locator": "psgc-directory-extract-2.txt: directory line 681"
+  },
+  {
+    "name": "San Simon",
+    "code": "0305418000",
+    "correspondence_code": "035418000",
+    "population_2024": 65760,
+    "locator": "psgc-directory-extract-2.txt: directory line 682"
+  },
+  {
+    "name": "Santa Ana",
+    "code": "0305419000",
+    "correspondence_code": "035419000",
+    "population_2024": 63431,
+    "locator": "psgc-directory-extract-2.txt: directory line 683"
+  },
+  {
+    "name": "Santa Rita",
+    "code": "0305420000",
+    "correspondence_code": "035420000",
+    "population_2024": 42915,
+    "locator": "psgc-directory-extract-2.txt: directory line 684"
+  },
+  {
+    "name": "Sto. Tomas",
+    "code": "0305421000",
+    "correspondence_code": "035421000",
+    "population_2024": 44376,
+    "locator": "psgc-directory-extract-2.txt: directory line 685"
+  },
+  {
+    "name": "Sasmuan",
+    "code": "0305422000",
+    "correspondence_code": "035422000",
+    "population_2024": 32081,
+    "locator": "psgc-directory-extract-2.txt: directory line 686"
+  },
+  {
+    "name": "Anao",
+    "code": "0306901000",
+    "correspondence_code": "036901000",
+    "population_2024": 12865,
+    "locator": "psgc-directory-extract-2.txt: directory line 687"
+  },
+  {
+    "name": "Bamban",
+    "code": "0306902000",
+    "correspondence_code": "036902000",
+    "population_2024": 81012,
+    "locator": "psgc-directory-extract-2.txt: directory line 688"
+  },
+  {
+    "name": "Camiling",
+    "code": "0306903000",
+    "correspondence_code": "036903000",
+    "population_2024": 91400,
+    "locator": "psgc-directory-extract-2.txt: directory line 689"
+  },
+  {
+    "name": "Capas",
+    "code": "0306904000",
+    "correspondence_code": "036904000",
+    "population_2024": 162724,
+    "locator": "psgc-directory-extract-2.txt: directory line 690"
+  },
+  {
+    "name": "Concepcion",
+    "code": "0306905000",
+    "correspondence_code": "036905000",
+    "population_2024": 178549,
+    "locator": "psgc-directory-extract-2.txt: directory line 691"
+  },
+  {
+    "name": "Gerona",
+    "code": "0306906000",
+    "correspondence_code": "036906000",
+    "population_2024": 97937,
+    "locator": "psgc-directory-extract-2.txt: directory line 692"
+  },
+  {
+    "name": "La Paz",
+    "code": "0306907000",
+    "correspondence_code": "036907000",
+    "population_2024": 71978,
+    "locator": "psgc-directory-extract-2.txt: directory line 693"
+  },
+  {
+    "name": "Mayantoc",
+    "code": "0306908000",
+    "correspondence_code": "036908000",
+    "population_2024": 34091,
+    "locator": "psgc-directory-extract-2.txt: directory line 694"
+  },
+  {
+    "name": "Moncada",
+    "code": "0306909000",
+    "correspondence_code": "036909000",
+    "population_2024": 66925,
+    "locator": "psgc-directory-extract-2.txt: directory line 695"
+  },
+  {
+    "name": "Paniqui",
+    "code": "0306910000",
+    "correspondence_code": "036910000",
+    "population_2024": 106190,
+    "locator": "psgc-directory-extract-2.txt: directory line 696"
+  },
+  {
+    "name": "Pura",
+    "code": "0306911000",
+    "correspondence_code": "036911000",
+    "population_2024": 27017,
+    "locator": "psgc-directory-extract-2.txt: directory line 697"
+  },
+  {
+    "name": "Ramos",
+    "code": "0306912000",
+    "correspondence_code": "036912000",
+    "population_2024": 23808,
+    "locator": "psgc-directory-extract-2.txt: directory line 698"
+  },
+  {
+    "name": "San Clemente",
+    "code": "0306913000",
+    "correspondence_code": "036913000",
+    "population_2024": 13781,
+    "locator": "psgc-directory-extract-2.txt: directory line 699"
+  },
+  {
+    "name": "San Manuel",
+    "code": "0306914000",
+    "correspondence_code": "036914000",
+    "population_2024": 29693,
+    "locator": "psgc-directory-extract-2.txt: directory line 700"
+  },
+  {
+    "name": "Santa Ignacia",
+    "code": "0306915000",
+    "correspondence_code": "036915000",
+    "population_2024": 53620,
+    "locator": "psgc-directory-extract-2.txt: directory line 701"
+  },
+  {
+    "name": "Victoria",
+    "code": "0306917000",
+    "correspondence_code": "036917000",
+    "population_2024": 71495,
+    "locator": "psgc-directory-extract-2.txt: directory line 702"
+  },
+  {
+    "name": "San Jose",
+    "code": "0306918000",
+    "correspondence_code": "036918000",
+    "population_2024": 43185,
+    "locator": "psgc-directory-extract-2.txt: directory line 703"
+  },
+  {
+    "name": "Botolan",
+    "code": "0307101000",
+    "correspondence_code": "037101000",
+    "population_2024": 70340,
+    "locator": "psgc-directory-extract-2.txt: directory line 704"
+  },
+  {
+    "name": "Cabangan",
+    "code": "0307102000",
+    "correspondence_code": "037102000",
+    "population_2024": 29334,
+    "locator": "psgc-directory-extract-2.txt: directory line 705"
+  },
+  {
+    "name": "Candelaria",
+    "code": "0307103000",
+    "correspondence_code": "037103000",
+    "population_2024": 32182,
+    "locator": "psgc-directory-extract-2.txt: directory line 706"
+  },
+  {
+    "name": "Castillejos",
+    "code": "0307104000",
+    "correspondence_code": "037104000",
+    "population_2024": 70105,
+    "locator": "psgc-directory-extract-2.txt: directory line 707"
+  },
+  {
+    "name": "Iba",
+    "code": "0307105000",
+    "correspondence_code": "037105000",
+    "population_2024": 59580,
+    "locator": "psgc-directory-extract-2.txt: directory line 708"
+  },
+  {
+    "name": "Masinloc",
+    "code": "0307106000",
+    "correspondence_code": "037106000",
+    "population_2024": 56579,
+    "locator": "psgc-directory-extract-2.txt: directory line 709"
+  },
+  {
+    "name": "Palauig",
+    "code": "0307108000",
+    "correspondence_code": "037108000",
+    "population_2024": 43250,
+    "locator": "psgc-directory-extract-2.txt: directory line 710"
+  },
+  {
+    "name": "San Antonio",
+    "code": "0307109000",
+    "correspondence_code": "037109000",
+    "population_2024": 38617,
+    "locator": "psgc-directory-extract-2.txt: directory line 711"
+  },
+  {
+    "name": "San Felipe",
+    "code": "0307110000",
+    "correspondence_code": "037110000",
+    "population_2024": 26081,
+    "locator": "psgc-directory-extract-2.txt: directory line 712"
+  },
+  {
+    "name": "San Marcelino",
+    "code": "0307111000",
+    "correspondence_code": "037111000",
+    "population_2024": 39542,
+    "locator": "psgc-directory-extract-2.txt: directory line 713"
+  },
+  {
+    "name": "San Narciso",
+    "code": "0307112000",
+    "correspondence_code": "037112000",
+    "population_2024": 32180,
+    "locator": "psgc-directory-extract-2.txt: directory line 714"
+  },
+  {
+    "name": "Santa Cruz",
+    "code": "0307113000",
+    "correspondence_code": "037113000",
+    "population_2024": 66647,
+    "locator": "psgc-directory-extract-2.txt: directory line 715"
+  },
+  {
+    "name": "Subic",
+    "code": "0307114000",
+    "correspondence_code": "037114000",
+    "population_2024": 116788,
+    "locator": "psgc-directory-extract-2.txt: directory line 716"
+  },
+  {
+    "name": "Baler",
+    "code": "0307701000",
+    "correspondence_code": "037701000",
+    "population_2024": 44684,
+    "locator": "psgc-directory-extract-2.txt: directory line 717"
+  },
+  {
+    "name": "Casiguran",
+    "code": "0307702000",
+    "correspondence_code": "037702000",
+    "population_2024": 26855,
+    "locator": "psgc-directory-extract-2.txt: directory line 718"
+  },
+  {
+    "name": "Dilasag",
+    "code": "0307703000",
+    "correspondence_code": "037703000",
+    "population_2024": 17536,
+    "locator": "psgc-directory-extract-2.txt: directory line 719"
+  },
+  {
+    "name": "Dinalungan",
+    "code": "0307704000",
+    "correspondence_code": "037704000",
+    "population_2024": 12552,
+    "locator": "psgc-directory-extract-2.txt: directory line 720"
+  },
+  {
+    "name": "Dingalan",
+    "code": "0307705000",
+    "correspondence_code": "037705000",
+    "population_2024": 29286,
+    "locator": "psgc-directory-extract-2.txt: directory line 721"
+  },
+  {
+    "name": "Dipaculao",
+    "code": "0307706000",
+    "correspondence_code": "037706000",
+    "population_2024": 33597,
+    "locator": "psgc-directory-extract-2.txt: directory line 722"
+  },
+  {
+    "name": "Maria Aurora",
+    "code": "0307707000",
+    "correspondence_code": "037707000",
+    "population_2024": 45972,
+    "locator": "psgc-directory-extract-2.txt: directory line 723"
+  },
+  {
+    "name": "San Luis",
+    "code": "0307708000",
+    "correspondence_code": "037708000",
+    "population_2024": 30342,
+    "locator": "psgc-directory-extract-2.txt: directory line 724"
+  },
+  {
+    "name": "Agoncillo",
+    "code": "0401001000",
+    "correspondence_code": "041001000",
+    "population_2024": 40662,
+    "locator": "psgc-directory-extract-2.txt: directory line 725"
+  },
+  {
+    "name": "Alitagtag",
+    "code": "0401002000",
+    "correspondence_code": "041002000",
+    "population_2024": 28033,
+    "locator": "psgc-directory-extract-2.txt: directory line 726"
+  },
+  {
+    "name": "Balayan",
+    "code": "0401003000",
+    "correspondence_code": "041003000",
+    "population_2024": 96939,
+    "locator": "psgc-directory-extract-2.txt: directory line 727"
+  },
+  {
+    "name": "Balete",
+    "code": "0401004000",
+    "correspondence_code": "041004000",
+    "population_2024": 24202,
+    "locator": "psgc-directory-extract-2.txt: directory line 728"
+  },
+  {
+    "name": "Bauan",
+    "code": "0401006000",
+    "correspondence_code": "041006000",
+    "population_2024": 94016,
+    "locator": "psgc-directory-extract-2.txt: directory line 729"
+  },
+  {
+    "name": "Calatagan",
+    "code": "0401008000",
+    "correspondence_code": "041008000",
+    "population_2024": 60420,
+    "locator": "psgc-directory-extract-2.txt: directory line 730"
+  },
+  {
+    "name": "Cuenca",
+    "code": "0401009000",
+    "correspondence_code": "041009000",
+    "population_2024": 36453,
+    "locator": "psgc-directory-extract-2.txt: directory line 731"
+  },
+  {
+    "name": "Ibaan",
+    "code": "0401010000",
+    "correspondence_code": "041010000",
+    "population_2024": 58673,
+    "locator": "psgc-directory-extract-2.txt: directory line 732"
+  },
+  {
+    "name": "Laurel",
+    "code": "0401011000",
+    "correspondence_code": "041011000",
+    "population_2024": 44791,
+    "locator": "psgc-directory-extract-2.txt: directory line 733"
+  },
+  {
+    "name": "Lemery",
+    "code": "0401012000",
+    "correspondence_code": "041012000",
+    "population_2024": 94736,
+    "locator": "psgc-directory-extract-2.txt: directory line 734"
+  },
+  {
+    "name": "Lian",
+    "code": "0401013000",
+    "correspondence_code": "041013000",
+    "population_2024": 56788,
+    "locator": "psgc-directory-extract-2.txt: directory line 735"
+  },
+  {
+    "name": "Angono",
+    "code": "0405801000",
+    "correspondence_code": "045801000",
+    "population_2024": 134975,
+    "locator": "psgc-directory-extract-2.txt: directory line 832"
+  },
+  {
+    "name": "Baras",
+    "code": "0405803000",
+    "correspondence_code": "045803000",
+    "population_2024": 91099,
+    "locator": "psgc-directory-extract-2.txt: directory line 833"
+  },
+  {
+    "name": "Binangonan",
+    "code": "0405804000",
+    "correspondence_code": "045804000",
+    "population_2024": 321281,
+    "locator": "psgc-directory-extract-2.txt: directory line 834"
+  },
+  {
+    "name": "Cainta",
+    "code": "0405805000",
+    "correspondence_code": "045805000",
+    "population_2024": 386321,
+    "locator": "psgc-directory-extract-2.txt: directory line 835"
+  },
+  {
+    "name": "Cardona",
+    "code": "0405806000",
+    "correspondence_code": "045806000",
+    "population_2024": 51493,
+    "locator": "psgc-directory-extract-2.txt: directory line 836"
+  },
+  {
+    "name": "Jala-Jala",
+    "code": "0405807000",
+    "correspondence_code": "045807000",
+    "population_2024": 34901,
+    "locator": "psgc-directory-extract-2.txt: directory line 837"
+  },
+  {
+    "name": "Rodriguez",
+    "code": "0405808000",
+    "correspondence_code": "045808000",
+    "population_2024": 451383,
+    "locator": "psgc-directory-extract-2.txt: directory line 838"
+  },
+  {
+    "name": "Morong",
+    "code": "0405809000",
+    "correspondence_code": "045809000",
+    "population_2024": 72262,
+    "locator": "psgc-directory-extract-2.txt: directory line 839"
+  },
+  {
+    "name": "Pililla",
+    "code": "0405810000",
+    "correspondence_code": "045810000",
+    "population_2024": 72503,
+    "locator": "psgc-directory-extract-2.txt: directory line 840"
+  },
+  {
+    "name": "San Mateo",
+    "code": "0405811000",
+    "correspondence_code": "045811000",
+    "population_2024": 276449,
+    "locator": "psgc-directory-extract-2.txt: directory line 841"
+  },
+  {
+    "name": "Tanay",
+    "code": "0405812000",
+    "correspondence_code": "045812000",
+    "population_2024": 145597,
+    "locator": "psgc-directory-extract-2.txt: directory line 842"
+  },
+  {
+    "name": "Taytay",
+    "code": "0405813000",
+    "correspondence_code": "045813000",
+    "population_2024": 397111,
+    "locator": "psgc-directory-extract-2.txt: directory line 843"
+  },
+  {
+    "name": "Teresa",
+    "code": "0405814000",
+    "correspondence_code": "045814000",
+    "population_2024": 67454,
+    "locator": "psgc-directory-extract-2.txt: directory line 844"
+  },
+  {
+    "name": "Boac",
+    "code": "1704001000",
+    "correspondence_code": "174001000",
+    "population_2024": 54365,
+    "locator": "psgc-directory-extract-2.txt: directory line 845"
+  },
+  {
+    "name": "Buenavista",
+    "code": "1704002000",
+    "correspondence_code": "174002000",
+    "population_2024": 24136,
+    "locator": "psgc-directory-extract-2.txt: directory line 846"
+  },
+  {
+    "name": "Gasan",
+    "code": "1704003000",
+    "correspondence_code": "174003000",
+    "population_2024": 35315,
+    "locator": "psgc-directory-extract-2.txt: directory line 847"
+  },
+  {
+    "name": "Mogpog",
+    "code": "1704004000",
+    "correspondence_code": "174004000",
+    "population_2024": 32577,
+    "locator": "psgc-directory-extract-2.txt: directory line 848"
+  },
+  {
+    "name": "Santa Cruz",
+    "code": "1704005000",
+    "correspondence_code": "174005000",
+    "population_2024": 51594,
+    "locator": "psgc-directory-extract-2.txt: directory line 849"
+  },
+  {
+    "name": "Torrijos",
+    "code": "1704006000",
+    "correspondence_code": "174006000",
+    "population_2024": 28535,
+    "locator": "psgc-directory-extract-2.txt: directory line 850"
+  },
+  {
+    "name": "Abra De Ilog",
+    "code": "1705101000",
+    "correspondence_code": "175101000",
+    "population_2024": 31910,
+    "locator": "psgc-directory-extract-2.txt: directory line 851"
+  },
+  {
+    "name": "Calintaan",
+    "code": "1705102000",
+    "correspondence_code": "175102000",
+    "population_2024": 31088,
+    "locator": "psgc-directory-extract-2.txt: directory line 852"
+  },
+  {
+    "name": "Looc",
+    "code": "1705103000",
+    "correspondence_code": "175103000",
+    "population_2024": 9426,
+    "locator": "psgc-directory-extract-2.txt: directory line 853"
+  },
+  {
+    "name": "Lubang",
+    "code": "1705104000",
+    "correspondence_code": "175104000",
+    "population_2024": 18761,
+    "locator": "psgc-directory-extract-2.txt: directory line 854"
+  },
+  {
+    "name": "Magsaysay",
+    "code": "1705105000",
+    "correspondence_code": "175105000",
+    "population_2024": 40987,
+    "locator": "psgc-directory-extract-2.txt: directory line 855"
+  },
+  {
+    "name": "Mamburao",
+    "code": "1705106000",
+    "correspondence_code": "175106000",
+    "population_2024": 44554,
+    "locator": "psgc-directory-extract-2.txt: directory line 856"
+  },
+  {
+    "name": "Paluan",
+    "code": "1705107000",
+    "correspondence_code": "175107000",
+    "population_2024": 19461,
+    "locator": "psgc-directory-extract-2.txt: directory line 857"
+  },
+  {
+    "name": "Rizal",
+    "code": "1705108000",
+    "correspondence_code": "175108000",
+    "population_2024": 40319,
+    "locator": "psgc-directory-extract-2.txt: directory line 858"
+  },
+  {
+    "name": "Sablayan",
+    "code": "1705109000",
+    "correspondence_code": "175109000",
+    "population_2024": 91406,
+    "locator": "psgc-directory-extract-2.txt: directory line 859"
+  },
+  {
+    "name": "San Jose",
+    "code": "1705110000",
+    "correspondence_code": "175110000",
+    "population_2024": 143495,
+    "locator": "psgc-directory-extract-2.txt: directory line 860"
+  },
+  {
+    "name": "Santa Cruz",
+    "code": "1705111000",
+    "correspondence_code": "175111000",
+    "population_2024": 40010,
+    "locator": "psgc-directory-extract-2.txt: directory line 861"
+  },
+  {
+    "name": "Baco",
+    "code": "1705201000",
+    "correspondence_code": "175201000",
+    "population_2024": 40159,
+    "locator": "psgc-directory-extract-2.txt: directory line 862"
+  },
+  {
+    "name": "Bansud",
+    "code": "1705202000",
+    "correspondence_code": "175202000",
+    "population_2024": 44396,
+    "locator": "psgc-directory-extract-2.txt: directory line 863"
+  },
+  {
+    "name": "Bongabong",
+    "code": "1705203000",
+    "correspondence_code": "175203000",
+    "population_2024": 77540,
+    "locator": "psgc-directory-extract-2.txt: directory line 864"
+  },
+  {
+    "name": "Bulalacao",
+    "code": "1705204000",
+    "correspondence_code": "175204000",
+    "population_2024": 46439,
+    "locator": "psgc-directory-extract-2.txt: directory line 865"
+  },
+  {
+    "name": "Gloria",
+    "code": "1705206000",
+    "correspondence_code": "175206000",
+    "population_2024": 52296,
+    "locator": "psgc-directory-extract-2.txt: directory line 866"
+  },
+  {
+    "name": "Mansalay",
+    "code": "1705207000",
+    "correspondence_code": "175207000",
+    "population_2024": 60597,
+    "locator": "psgc-directory-extract-2.txt: directory line 867"
+  },
+  {
+    "name": "Naujan",
+    "code": "1705208000",
+    "correspondence_code": "175208000",
+    "population_2024": 109122,
+    "locator": "psgc-directory-extract-2.txt: directory line 868"
+  },
+  {
+    "name": "Pinamalayan",
+    "code": "1705209000",
+    "correspondence_code": "175209000",
+    "population_2024": 90420,
+    "locator": "psgc-directory-extract-2.txt: directory line 869"
+  },
+  {
+    "name": "Pola",
+    "code": "1705210000",
+    "correspondence_code": "175210000",
+    "population_2024": 35771,
+    "locator": "psgc-directory-extract-2.txt: directory line 870"
+  },
+  {
+    "name": "Puerto Galera",
+    "code": "1705211000",
+    "correspondence_code": "175211000",
+    "population_2024": 42301,
+    "locator": "psgc-directory-extract-2.txt: directory line 871"
+  },
+  {
+    "name": "Roxas",
+    "code": "1705212000",
+    "correspondence_code": "175212000",
+    "population_2024": 58428,
+    "locator": "psgc-directory-extract-2.txt: directory line 872"
+  },
+  {
+    "name": "San Teodoro",
+    "code": "1705213000",
+    "correspondence_code": "175213000",
+    "population_2024": 19650,
+    "locator": "psgc-directory-extract-2.txt: directory line 873"
+  },
+  {
+    "name": "Socorro",
+    "code": "1705214000",
+    "correspondence_code": "175214000",
+    "population_2024": 41612,
+    "locator": "psgc-directory-extract-2.txt: directory line 874"
+  },
+  {
+    "name": "Victoria",
+    "code": "1705215000",
+    "correspondence_code": "175215000",
+    "population_2024": 52215,
+    "locator": "psgc-directory-extract-2.txt: directory line 875"
+  },
+  {
+    "name": "Aborlan",
+    "code": "1705301000",
+    "correspondence_code": "175301000",
+    "population_2024": 39972,
+    "locator": "psgc-directory-extract-2.txt: directory line 876"
+  },
+  {
+    "name": "Agutaya",
+    "code": "1705302000",
+    "correspondence_code": "175302000",
+    "population_2024": 13351,
+    "locator": "psgc-directory-extract-2.txt: directory line 877"
+  },
+  {
+    "name": "Araceli",
+    "code": "1705303000",
+    "correspondence_code": "175303000",
+    "population_2024": 14554,
+    "locator": "psgc-directory-extract-2.txt: directory line 878"
+  },
+  {
+    "name": "Balabac",
+    "code": "1705304000",
+    "correspondence_code": "175304000",
+    "population_2024": 42662,
+    "locator": "psgc-directory-extract-2.txt: directory line 879"
+  },
+  {
+    "name": "Bataraza",
+    "code": "1705305000",
+    "correspondence_code": "175305000",
+    "population_2024": 87384,
+    "locator": "psgc-directory-extract-2.txt: directory line 880"
+  },
+  {
+    "name": "Brooke's Point",
+    "code": "1705306000",
+    "correspondence_code": "175306000",
+    "population_2024": 76715,
+    "locator": "psgc-directory-extract-2.txt: directory line 881"
+  },
+  {
+    "name": "Busuanga",
+    "code": "1705307000",
+    "correspondence_code": "175307000",
+    "population_2024": 26974,
+    "locator": "psgc-directory-extract-2.txt: directory line 882"
+  },
+  {
+    "name": "Cagayancillo",
+    "code": "1705308000",
+    "correspondence_code": "175308000",
+    "population_2024": 7164,
+    "locator": "psgc-directory-extract-2.txt: directory line 883"
+  },
+  {
+    "name": "Coron",
+    "code": "1705309000",
+    "correspondence_code": "175309000",
+    "population_2024": 69439,
+    "locator": "psgc-directory-extract-2.txt: directory line 884"
+  },
+  {
+    "name": "Cuyo",
+    "code": "1705310000",
+    "correspondence_code": "175310000",
+    "population_2024": 24702,
+    "locator": "psgc-directory-extract-2.txt: directory line 885"
+  },
+  {
+    "name": "Dumaran",
+    "code": "1705311000",
+    "correspondence_code": "175311000",
+    "population_2024": 23795,
+    "locator": "psgc-directory-extract-2.txt: directory line 886"
+  },
+  {
+    "name": "El Nido",
+    "code": "1705312000",
+    "correspondence_code": "175312000",
+    "population_2024": 51367,
+    "locator": "psgc-directory-extract-2.txt: directory line 887"
+  },
+  {
+    "name": "Linapacan",
+    "code": "1705313000",
+    "correspondence_code": "175313000",
+    "population_2024": 16782,
+    "locator": "psgc-directory-extract-2.txt: directory line 888"
+  },
+  {
+    "name": "Magsaysay",
+    "code": "1705314000",
+    "correspondence_code": "175314000",
+    "population_2024": 13273,
+    "locator": "psgc-directory-extract-2.txt: directory line 889"
+  },
+  {
+    "name": "Narra",
+    "code": "1705315000",
+    "correspondence_code": "175315000",
+    "population_2024": 80572,
+    "locator": "psgc-directory-extract-2.txt: directory line 890"
+  },
+  {
+    "name": "Quezon",
+    "code": "1705317000",
+    "correspondence_code": "175317000",
+    "population_2024": 68532,
+    "locator": "psgc-directory-extract-2.txt: directory line 891"
+  },
+  {
+    "name": "Roxas",
+    "code": "1705318000",
+    "correspondence_code": "175318000",
+    "population_2024": 69729,
+    "locator": "psgc-directory-extract-2.txt: directory line 892"
+  },
+  {
+    "name": "San Vicente",
+    "code": "1705319000",
+    "correspondence_code": "175319000",
+    "population_2024": 33768,
+    "locator": "psgc-directory-extract-2.txt: directory line 893"
+  },
+  {
+    "name": "Taytay",
+    "code": "1705320000",
+    "correspondence_code": "175320000",
+    "population_2024": 85258,
+    "locator": "psgc-directory-extract-2.txt: directory line 894"
+  },
+  {
+    "name": "Kalayaan",
+    "code": "1705321000",
+    "correspondence_code": "175321000",
+    "population_2024": 406,
+    "locator": "psgc-directory-extract-2.txt: directory line 895"
+  },
+  {
+    "name": "Culion",
+    "code": "1705322000",
+    "correspondence_code": "175322000",
+    "population_2024": 23985,
+    "locator": "psgc-directory-extract-2.txt: directory line 896"
+  },
+  {
+    "name": "San Jose City",
+    "code": "0304926000",
+    "correspondence_code": "034926000",
+    "population_2024": 156714,
+    "locator": "psgc-directory-extract-2.txt: directory line 369"
+  },
+  {
+    "name": "Mabalacat City",
+    "code": "0305409000",
+    "correspondence_code": "035409000",
+    "population_2024": 306594,
+    "locator": "psgc-directory-extract-2.txt: directory line 370"
+  },
+  {
+    "name": "City of San Fernando",
+    "code": "0305416000",
+    "correspondence_code": "035416000",
+    "population_2024": 377534,
+    "locator": "psgc-directory-extract-2.txt: directory line 371"
+  },
+  {
+    "name": "City of Tarlac",
+    "code": "0306916000",
+    "correspondence_code": "036916000",
+    "population_2024": 401892,
+    "locator": "psgc-directory-extract-2.txt: directory line 372"
+  },
+  {
+    "name": "City of Angeles",
+    "code": "0330100000",
+    "correspondence_code": "035401000",
+    "population_2024": 483452,
+    "locator": "psgc-directory-extract-2.txt: directory line 373"
+  },
+  {
+    "name": "City of Olongapo",
+    "code": "0331400000",
+    "correspondence_code": "037107000",
+    "population_2024": 264903,
+    "locator": "psgc-directory-extract-2.txt: directory line 374"
+  },
+  {
+    "name": "Batangas City",
+    "code": "0401005000",
+    "correspondence_code": "041005000",
+    "population_2024": 358267,
+    "locator": "psgc-directory-extract-2.txt: directory line 375"
+  },
+  {
+    "name": "City of Calaca",
+    "code": "0401007000",
+    "correspondence_code": "041007000",
+    "population_2024": 92281,
+    "locator": "psgc-directory-extract-2.txt: directory line 376"
+  },
+  {
+    "name": "City of Lipa",
+    "code": "0401014000",
+    "correspondence_code": "041014000",
+    "population_2024": 387392,
+    "locator": "psgc-directory-extract-2.txt: directory line 377"
+  },
+  {
+    "name": "City of Sto. Tomas",
+    "code": "0401028000",
+    "correspondence_code": "041028000",
+    "population_2024": 226772,
+    "locator": "psgc-directory-extract-2.txt: directory line 378"
+  },
+  {
+    "name": "City of Tanauan",
+    "code": "0401031000",
+    "correspondence_code": "041031000",
+    "population_2024": 209697,
+    "locator": "psgc-directory-extract-2.txt: directory line 379"
+  },
+  {
+    "name": "City of Bacoor",
+    "code": "0402103000",
+    "correspondence_code": "042103000",
+    "population_2024": 661381,
+    "locator": "psgc-directory-extract-2.txt: directory line 380"
+  },
+  {
+    "name": "City of Carmona",
+    "code": "0402104000",
+    "correspondence_code": "042104000",
+    "population_2024": 112140,
+    "locator": "psgc-directory-extract-2.txt: directory line 381"
+  },
+  {
+    "name": "City of Cavite",
+    "code": "0402105000",
+    "correspondence_code": "042105000",
+    "population_2024": 98673,
+    "locator": "psgc-directory-extract-2.txt: directory line 382"
+  },
+  {
+    "name": "City of Dasmariñas",
+    "code": "0402106000",
+    "correspondence_code": "042106000",
+    "population_2024": 744511,
+    "locator": "psgc-directory-extract-2.txt: directory line 383"
+  },
+  {
+    "name": "City of General Trias",
+    "code": "0402108000",
+    "correspondence_code": "042108000",
+    "population_2024": 482453,
+    "locator": "psgc-directory-extract-2.txt: directory line 384"
+  },
+  {
+    "name": "City of Imus",
+    "code": "0402109000",
+    "correspondence_code": "042109000",
+    "population_2024": 481949,
+    "locator": "psgc-directory-extract-2.txt: directory line 385"
+  },
+  {
+    "name": "City of Tagaytay",
+    "code": "0402119000",
+    "correspondence_code": "042119000",
+    "population_2024": 87811,
+    "locator": "psgc-directory-extract-2.txt: directory line 386"
+  },
+  {
+    "name": "City of Trece Martires",
+    "code": "0402122000",
+    "correspondence_code": "042122000",
+    "population_2024": 227892,
+    "locator": "psgc-directory-extract-2.txt: directory line 387"
+  },
+  {
+    "name": "City of Biñan",
+    "code": "0403403000",
+    "correspondence_code": "043403000",
+    "population_2024": 584479,
+    "locator": "psgc-directory-extract-2.txt: directory line 388"
+  },
+  {
+    "name": "City of Cabuyao",
+    "code": "0403404000",
+    "correspondence_code": "043404000",
+    "population_2024": 365202,
+    "locator": "psgc-directory-extract-2.txt: directory line 389"
+  },
+  {
+    "name": "City of Calamba",
+    "code": "0403405000",
+    "correspondence_code": "043405000",
+    "population_2024": 575046,
+    "locator": "psgc-directory-extract-2.txt: directory line 390"
+  },
+  {
+    "name": "City of San Pablo",
+    "code": "0403424000",
+    "correspondence_code": "043424000",
+    "population_2024": 300166,
+    "locator": "psgc-directory-extract-2.txt: directory line 391"
+  },
+  {
+    "name": "City of San Pedro",
+    "code": "0403425000",
+    "correspondence_code": "043425000",
+    "population_2024": 348968,
+    "locator": "psgc-directory-extract-2.txt: directory line 392"
+  },
+  {
+    "name": "City of Santa Rosa",
+    "code": "0403428000",
+    "correspondence_code": "043428000",
+    "population_2024": 430920,
+    "locator": "psgc-directory-extract-2.txt: directory line 393"
+  },
+  {
+    "name": "City of Tayabas",
+    "code": "0405647000",
+    "correspondence_code": "045647000",
+    "population_2024": 115318,
+    "locator": "psgc-directory-extract-2.txt: directory line 394"
+  },
+  {
+    "name": "City of Antipolo",
+    "code": "0405802000",
+    "correspondence_code": "045802000",
+    "population_2024": 913712,
+    "locator": "psgc-directory-extract-2.txt: directory line 395"
+  },
+  {
+    "name": "City of Lucena",
+    "code": "0431200000",
+    "correspondence_code": "045624000",
+    "population_2024": 280331,
+    "locator": "psgc-directory-extract-2.txt: directory line 396"
+  },
+  {
+    "name": "City of Calapan",
+    "code": "1705205000",
+    "correspondence_code": "175205000",
+    "population_2024": 148558,
+    "locator": "psgc-directory-extract-2.txt: directory line 397"
+  },
+  {
+    "name": "City of Puerto Princesa",
+    "code": "1731500000",
+    "correspondence_code": "175316000",
+    "population_2024": 316384,
+    "locator": "psgc-directory-extract-2.txt: directory line 398"
+  },
+  {
+    "name": "City of Legazpi",
+    "code": "0500506000",
+    "correspondence_code": "050506000",
+    "population_2024": 210616,
+    "locator": "psgc-directory-extract-2.txt: directory line 399"
+  },
+  {
+    "name": "City of Ligao",
+    "code": "0500508000",
+    "correspondence_code": "050508000",
+    "population_2024": 119779,
+    "locator": "psgc-directory-extract-2.txt: directory line 400"
+  },
+  {
+    "name": "City of Tabaco",
+    "code": "0500517000",
+    "correspondence_code": "050517000",
+    "population_2024": 140779,
+    "locator": "psgc-directory-extract-2.txt: directory line 401"
+  },
+  {
+    "name": "City of Iriga",
+    "code": "0501716000",
+    "correspondence_code": "051716000",
+    "population_2024": 115306,
+    "locator": "psgc-directory-extract-2.txt: directory line 402"
+  },
+  {
+    "name": "City of Naga",
+    "code": "0501724000",
+    "correspondence_code": "051724000",
+    "population_2024": 210545,
+    "locator": "psgc-directory-extract-2.txt: directory line 403"
+  },
+  {
+    "name": "City of Masbate",
+    "code": "0504111000",
+    "correspondence_code": "054111000",
+    "population_2024": 104011,
+    "locator": "psgc-directory-extract-2.txt: directory line 404"
+  },
+  {
+    "name": "City of Sorsogon",
+    "code": "0506216000",
+    "correspondence_code": "056216000",
+    "population_2024": 187670,
+    "locator": "psgc-directory-extract-2.txt: directory line 405"
+  },
+  {
+    "name": "City of Roxas",
+    "code": "0601914000",
+    "correspondence_code": "061914000",
+    "population_2024": 185236,
+    "locator": "psgc-directory-extract-2.txt: directory line 406"
+  },
+  {
+    "name": "City of Passi",
+    "code": "0603035000",
+    "correspondence_code": "063035000",
+    "population_2024": 90313,
+    "locator": "psgc-directory-extract-2.txt: directory line 407"
+  },
+  {
+    "name": "City of Iloilo",
+    "code": "0631000000",
+    "correspondence_code": "063022000",
+    "population_2024": 473728,
+    "locator": "psgc-directory-extract-2.txt: directory line 408"
+  },
+  {
+    "name": "City of Bago",
+    "code": "1804502000",
+    "correspondence_code": "064502000",
+    "population_2024": 192993,
+    "locator": "psgc-directory-extract-2.txt: directory line 409"
+  },
+  {
+    "name": "City of Cadiz",
+    "code": "1804504000",
+    "correspondence_code": "064504000",
+    "population_2024": 161558,
+    "locator": "psgc-directory-extract-2.txt: directory line 410"
+  },
+  {
+    "name": "City of Escalante",
+    "code": "1804509000",
+    "correspondence_code": "064509000",
+    "population_2024": 97050,
+    "locator": "psgc-directory-extract-2.txt: directory line 411"
+  },
+  {
+    "name": "City of Himamaylan",
+    "code": "1804510000",
+    "correspondence_code": "064510000",
+    "population_2024": 117286,
+    "locator": "psgc-directory-extract-2.txt: directory line 412"
+  },
+  {
+    "name": "City of Kabankalan",
+    "code": "1804515000",
+    "correspondence_code": "064515000",
+    "population_2024": 210893,
+    "locator": "psgc-directory-extract-2.txt: directory line 413"
+  },
+  {
+    "name": "City of La Carlota",
+    "code": "1804516000",
+    "correspondence_code": "064516000",
+    "population_2024": 67740,
+    "locator": "psgc-directory-extract-2.txt: directory line 414"
+  },
+  {
+    "name": "City of Sagay",
+    "code": "1804523000",
+    "correspondence_code": "064523000",
+    "population_2024": 152543,
+    "locator": "psgc-directory-extract-2.txt: directory line 415"
+  },
+  {
+    "name": "City of San Carlos",
+    "code": "1804524000",
+    "correspondence_code": "064524000",
+    "population_2024": 133175,
+    "locator": "psgc-directory-extract-2.txt: directory line 416"
+  },
+  {
+    "name": "City of Silay",
+    "code": "1804526000",
+    "correspondence_code": "064526000",
+    "population_2024": 136802,
+    "locator": "psgc-directory-extract-2.txt: directory line 417"
+  },
+  {
+    "name": "City of Sipalay",
+    "code": "1804527000",
+    "correspondence_code": "064527000",
+    "population_2024": 73847,
+    "locator": "psgc-directory-extract-2.txt: directory line 418"
+  },
+  {
+    "name": "City of Talisay",
+    "code": "1804528000",
+    "correspondence_code": "064528000",
+    "population_2024": 109204,
+    "locator": "psgc-directory-extract-2.txt: directory line 419"
+  },
+  {
+    "name": "City of Victorias",
+    "code": "1804531000",
+    "correspondence_code": "064531000",
+    "population_2024": 90290,
+    "locator": "psgc-directory-extract-2.txt: directory line 420"
+  },
+  {
+    "name": "City of Bais",
+    "code": "1804604000",
+    "correspondence_code": "074604000",
+    "population_2024": 88050,
+    "locator": "psgc-directory-extract-2.txt: directory line 421"
+  },
+  {
+    "name": "City of Bayawan",
+    "code": "1804606000",
+    "correspondence_code": "074606000",
+    "population_2024": 126744,
+    "locator": "psgc-directory-extract-2.txt: directory line 422"
+  },
+  {
+    "name": "City of Canlaon",
+    "code": "1804608000",
+    "correspondence_code": "074608000",
+    "population_2024": 62785,
+    "locator": "psgc-directory-extract-2.txt: directory line 423"
+  },
+  {
+    "name": "City of Baybay",
+    "code": "0803708000",
+    "correspondence_code": "083708000",
+    "population_2024": 114708,
+    "locator": "psgc-directory-extract-2.txt: directory line 439"
+  },
+  {
+    "name": "Ormoc City",
+    "code": "0803738000",
+    "correspondence_code": "083738000",
+    "population_2024": 238545,
+    "locator": "psgc-directory-extract-2.txt: directory line 440"
+  },
+  {
+    "name": "City of Calbayog",
+    "code": "0806003000",
+    "correspondence_code": "086003000",
+    "population_2024": 187848,
+    "locator": "psgc-directory-extract-2.txt: directory line 441"
+  },
+  {
+    "name": "City of Catbalogan",
+    "code": "0806005000",
+    "correspondence_code": "086005000",
+    "population_2024": 107896,
+    "locator": "psgc-directory-extract-2.txt: directory line 442"
+  },
+  {
+    "name": "City of Maasin",
+    "code": "0806407000",
+    "correspondence_code": "086407000",
+    "population_2024": 85486,
+    "locator": "psgc-directory-extract-2.txt: directory line 443"
+  },
+  {
+    "name": "City of Tacloban",
+    "code": "0831600000",
+    "correspondence_code": "083747000",
+    "population_2024": 259353,
+    "locator": "psgc-directory-extract-2.txt: directory line 444"
+  },
+  {
+    "name": "City of Dapitan",
+    "code": "0907201000",
+    "correspondence_code": "097201000",
+    "population_2024": 87699,
+    "locator": "psgc-directory-extract-2.txt: directory line 445"
+  },
+  {
+    "name": "City of Dipolog",
+    "code": "0907202000",
+    "correspondence_code": "097202000",
+    "population_2024": 136528,
+    "locator": "psgc-directory-extract-2.txt: directory line 446"
+  },
+  {
+    "name": "City of Pagadian",
+    "code": "0907322000",
+    "correspondence_code": "097322000",
+    "population_2024": 206483,
+    "locator": "psgc-directory-extract-2.txt: directory line 447"
+  },
+  {
+    "name": "City of Zamboanga",
+    "code": "0931700000",
+    "correspondence_code": "097332000",
+    "population_2024": 1018849,
+    "locator": "psgc-directory-extract-2.txt: directory line 448"
+  },
+  {
+    "name": "City of Isabela",
+    "code": "0990101000",
+    "correspondence_code": "099701000",
+    "population_2024": 151297,
+    "locator": "psgc-directory-extract-2.txt: directory line 449"
+  },
+  {
+    "name": "City of Malaybalay",
+    "code": "1001312000",
+    "correspondence_code": "101312000",
+    "population_2024": 195046,
+    "locator": "psgc-directory-extract-2.txt: directory line 450"
+  },
+  {
+    "name": "City of Valencia",
+    "code": "1001321000",
+    "correspondence_code": "101321000",
+    "population_2024": 223620,
+    "locator": "psgc-directory-extract-2.txt: directory line 451"
+  },
+  {
+    "name": "City of Oroquieta",
+    "code": "1004209000",
+    "correspondence_code": "104209000",
+    "population_2024": 71373,
+    "locator": "psgc-directory-extract-2.txt: directory line 452"
+  },
+  {
+    "name": "City of Ozamiz",
+    "code": "1004210000",
+    "correspondence_code": "104210000",
+    "population_2024": 143620,
+    "locator": "psgc-directory-extract-2.txt: directory line 453"
+  },
+  {
+    "name": "City of Tangub",
+    "code": "1004215000",
+    "correspondence_code": "104215000",
+    "population_2024": 68419,
+    "locator": "psgc-directory-extract-2.txt: directory line 454"
+  },
+  {
+    "name": "City of El Salvador",
+    "code": "1004307000",
+    "correspondence_code": "104307000",
+    "population_2024": 62126,
+    "locator": "psgc-directory-extract-2.txt: directory line 455"
+  },
+  {
+    "name": "City of Gingoog",
+    "code": "1004308000",
+    "correspondence_code": "104308000",
+    "population_2024": 138895,
+    "locator": "psgc-directory-extract-2.txt: directory line 456"
+  },
+  {
+    "name": "City of Cagayan De Oro",
+    "code": "1030500000",
+    "correspondence_code": "104305000",
+    "population_2024": 741617,
+    "locator": "psgc-directory-extract-2.txt: directory line 457"
+  },
+  {
+    "name": "City of Iligan",
+    "code": "1030900000",
+    "correspondence_code": "103504000",
+    "population_2024": 368132,
+    "locator": "psgc-directory-extract-2.txt: directory line 458"
+  },
+  {
+    "name": "City of Panabo",
+    "code": "1102315000",
+    "correspondence_code": "112315000",
+    "population_2024": 211242,
+    "locator": "psgc-directory-extract-2.txt: directory line 459"
+  },
+  {
+    "name": "Island Garden City of Samal",
+    "code": "1102317000",
+    "correspondence_code": "112317000",
+    "population_2024": 119701,
+    "locator": "psgc-directory-extract-2.txt: directory line 460"
+  },
+  {
+    "name": "City of Tagum",
+    "code": "1102319000",
+    "correspondence_code": "112319000",
+    "population_2024": 300042,
+    "locator": "psgc-directory-extract-2.txt: directory line 461"
+  },
+  {
+    "name": "City of Digos",
+    "code": "1102403000",
+    "correspondence_code": "112403000",
+    "population_2024": 192063,
+    "locator": "psgc-directory-extract-2.txt: directory line 462"
+  },
+  {
+    "name": "City of Mati",
+    "code": "1102509000",
+    "correspondence_code": "112509000",
+    "population_2024": 148672,
+    "locator": "psgc-directory-extract-2.txt: directory line 463"
+  },
+  {
+    "name": "City of Davao",
+    "code": "1130700000",
+    "correspondence_code": "112402000",
+    "population_2024": 1848947,
+    "locator": "psgc-directory-extract-2.txt: directory line 464"
+  },
+  {
+    "name": "City of Kidapawan",
+    "code": "1204704000",
+    "correspondence_code": "124704000",
+    "population_2024": 160864,
+    "locator": "psgc-directory-extract-2.txt: directory line 465"
+  },
+  {
+    "name": "City of Koronadal",
+    "code": "1206306000",
+    "correspondence_code": "126306000",
+    "population_2024": 201844,
+    "locator": "psgc-directory-extract-2.txt: directory line 466"
+  },
+  {
+    "name": "City of Tacurong",
+    "code": "1206511000",
+    "correspondence_code": "126511000",
+    "population_2024": 116945,
+    "locator": "psgc-directory-extract-2.txt: directory line 467"
+  },
+  {
+    "name": "City of General Santos",
+    "code": "1230800000",
+    "correspondence_code": "126303000",
+    "population_2024": 722059,
+    "locator": "psgc-directory-extract-2.txt: directory line 468"
+  },
+  {
+    "name": "City of Cabadbaran",
+    "code": "1600203000",
+    "correspondence_code": "160203000",
+    "population_2024": 82343,
+    "locator": "psgc-directory-extract-2.txt: directory line 469"
+  },
+  {
+    "name": "City of Bayugan",
+    "code": "1600301000",
+    "correspondence_code": "160301000",
+    "population_2024": 110313,
+    "locator": "psgc-directory-extract-2.txt: directory line 470"
+  },
+  {
+    "name": "City of Surigao",
+    "code": "1606724000",
+    "correspondence_code": "166724000",
+    "population_2024": 177333,
+    "locator": "psgc-directory-extract-2.txt: directory line 471"
+  },
+  {
+    "name": "City of Bislig",
+    "code": "1606803000",
+    "correspondence_code": "166803000",
+    "population_2024": 99872,
+    "locator": "psgc-directory-extract-2.txt: directory line 472"
+  },
+  {
+    "name": "City of Tandag",
+    "code": "1606819000",
+    "correspondence_code": "166819000",
+    "population_2024": 63098,
+    "locator": "psgc-directory-extract-2.txt: directory line 473"
+  },
+  {
+    "name": "City of Butuan",
+    "code": "1630400000",
+    "correspondence_code": "160202000",
+    "population_2024": 385530,
+    "locator": "psgc-directory-extract-2.txt: directory line 474"
+  },
+  {
+    "name": "City of Lamitan",
+    "code": "1900702000",
+    "correspondence_code": "150702000",
+    "population_2024": 116652,
+    "locator": "psgc-directory-extract-2.txt: directory line 475"
+  },
+  {
+    "name": "City of Marawi",
+    "code": "1903617000",
+    "correspondence_code": "153617000",
+    "population_2024": 259993,
+    "locator": "psgc-directory-extract-2.txt: directory line 476"
+  },
+  {
+    "name": "City of Cotabato",
+    "code": "1908703000",
+    "correspondence_code": "129804000",
+    "population_2024": 383383,
+    "locator": "psgc-directory-extract-2.txt: directory line 477"
+  },
+  {
+    "name": "Igbaras",
+    "code": "0603021000",
+    "correspondence_code": "063021000",
+    "population_2024": 32442,
+    "locator": "psgc-directory-extract-3.txt: directory line 1093"
+  },
+  {
+    "name": "Janiuay",
+    "code": "0603023000",
+    "correspondence_code": "063023000",
+    "population_2024": 67509,
+    "locator": "psgc-directory-extract-3.txt: directory line 1094"
+  },
+  {
+    "name": "Lambunao",
+    "code": "0603025000",
+    "correspondence_code": "063025000",
+    "population_2024": 80724,
+    "locator": "psgc-directory-extract-3.txt: directory line 1095"
+  },
+  {
+    "name": "Leganes",
+    "code": "0603026000",
+    "correspondence_code": "063026000",
+    "population_2024": 36542,
+    "locator": "psgc-directory-extract-3.txt: directory line 1096"
+  },
+  {
+    "name": "Lemery",
+    "code": "0603027000",
+    "correspondence_code": "063027000",
+    "population_2024": 32836,
+    "locator": "psgc-directory-extract-3.txt: directory line 1097"
+  },
+  {
+    "name": "Leon",
+    "code": "0603028000",
+    "correspondence_code": "063028000",
+    "population_2024": 52777,
+    "locator": "psgc-directory-extract-3.txt: directory line 1098"
+  },
+  {
+    "name": "Maasin",
+    "code": "0603029000",
+    "correspondence_code": "063029000",
+    "population_2024": 38761,
+    "locator": "psgc-directory-extract-3.txt: directory line 1099"
+  },
+  {
+    "name": "Miagao",
+    "code": "0603030000",
+    "correspondence_code": "063030000",
+    "population_2024": 68163,
+    "locator": "psgc-directory-extract-3.txt: directory line 1100"
+  },
+  {
+    "name": "Mina",
+    "code": "0603031000",
+    "correspondence_code": "063031000",
+    "population_2024": 24145,
+    "locator": "psgc-directory-extract-3.txt: directory line 1101"
+  },
+  {
+    "name": "New Lucena",
+    "code": "0603032000",
+    "correspondence_code": "063032000",
+    "population_2024": 24785,
+    "locator": "psgc-directory-extract-3.txt: directory line 1102"
+  },
+  {
+    "name": "Oton",
+    "code": "0603034000",
+    "correspondence_code": "063034000",
+    "population_2024": 99920,
+    "locator": "psgc-directory-extract-3.txt: directory line 1103"
+  },
+  {
+    "name": "Pavia",
+    "code": "0603036000",
+    "correspondence_code": "063036000",
+    "population_2024": 74594,
+    "locator": "psgc-directory-extract-3.txt: directory line 1104"
+  },
+  {
+    "name": "Pototan",
+    "code": "0603037000",
+    "correspondence_code": "063037000",
+    "population_2024": 78919,
+    "locator": "psgc-directory-extract-3.txt: directory line 1105"
+  },
+  {
+    "name": "San Dionisio",
+    "code": "0603038000",
+    "correspondence_code": "063038000",
+    "population_2024": 39423,
+    "locator": "psgc-directory-extract-3.txt: directory line 1106"
+  },
+  {
+    "name": "San Enrique",
+    "code": "0603039000",
+    "correspondence_code": "063039000",
+    "population_2024": 37381,
+    "locator": "psgc-directory-extract-3.txt: directory line 1107"
+  },
+  {
+    "name": "San Joaquin",
+    "code": "0603040000",
+    "correspondence_code": "063040000",
+    "population_2024": 52773,
+    "locator": "psgc-directory-extract-3.txt: directory line 1108"
+  },
+  {
+    "name": "San Miguel",
+    "code": "0603041000",
+    "correspondence_code": "063041000",
+    "population_2024": 31093,
+    "locator": "psgc-directory-extract-3.txt: directory line 1109"
+  },
+  {
+    "name": "San Rafael",
+    "code": "0603042000",
+    "correspondence_code": "063042000",
+    "population_2024": 18293,
+    "locator": "psgc-directory-extract-3.txt: directory line 1110"
+  },
+  {
+    "name": "Santa Barbara",
+    "code": "0603043000",
+    "correspondence_code": "063043000",
+    "population_2024": 68467,
+    "locator": "psgc-directory-extract-3.txt: directory line 1111"
+  },
+  {
+    "name": "Sara",
+    "code": "0603044000",
+    "correspondence_code": "063044000",
+    "population_2024": 55476,
+    "locator": "psgc-directory-extract-3.txt: directory line 1112"
+  },
+  {
+    "name": "Tigbauan",
+    "code": "0603045000",
+    "correspondence_code": "063045000",
+    "population_2024": 65657,
+    "locator": "psgc-directory-extract-3.txt: directory line 1113"
+  },
+  {
+    "name": "Tubungan",
+    "code": "0603046000",
+    "correspondence_code": "063046000",
+    "population_2024": 23083,
+    "locator": "psgc-directory-extract-3.txt: directory line 1114"
+  },
+  {
+    "name": "Zarraga",
+    "code": "0603047000",
+    "correspondence_code": "063047000",
+    "population_2024": 27852,
+    "locator": "psgc-directory-extract-3.txt: directory line 1115"
+  },
+  {
+    "name": "Buenavista",
+    "code": "0607901000",
+    "correspondence_code": "067901000",
+    "population_2024": 54352,
+    "locator": "psgc-directory-extract-3.txt: directory line 1116"
+  },
+  {
+    "name": "Jordan",
+    "code": "0607902000",
+    "correspondence_code": "067902000",
+    "population_2024": 40647,
+    "locator": "psgc-directory-extract-3.txt: directory line 1117"
+  },
+  {
+    "name": "Nueva Valencia",
+    "code": "0607903000",
+    "correspondence_code": "067903000",
+    "population_2024": 43822,
+    "locator": "psgc-directory-extract-3.txt: directory line 1118"
+  },
+  {
+    "name": "San Lorenzo",
+    "code": "0607904000",
+    "correspondence_code": "067904000",
+    "population_2024": 30266,
+    "locator": "psgc-directory-extract-3.txt: directory line 1119"
+  },
+  {
+    "name": "Sibunag",
+    "code": "0607905000",
+    "correspondence_code": "067905000",
+    "population_2024": 23787,
+    "locator": "psgc-directory-extract-3.txt: directory line 1120"
+  },
+  {
+    "name": "Binalbagan",
+    "code": "1804503000",
+    "correspondence_code": "064503000",
+    "population_2024": 72594,
+    "locator": "psgc-directory-extract-3.txt: directory line 1121"
+  },
+  {
+    "name": "Calatrava",
+    "code": "1804505000",
+    "correspondence_code": "064505000",
+    "population_2024": 83813,
+    "locator": "psgc-directory-extract-3.txt: directory line 1122"
+  },
+  {
+    "name": "Candoni",
+    "code": "1804506000",
+    "correspondence_code": "064506000",
+    "population_2024": 22083,
+    "locator": "psgc-directory-extract-3.txt: directory line 1123"
+  },
+  {
+    "name": "Cauayan",
+    "code": "1804507000",
+    "correspondence_code": "064507000",
+    "population_2024": 110899,
+    "locator": "psgc-directory-extract-3.txt: directory line 1124"
+  },
+  {
+    "name": "Enrique B. Magalona",
+    "code": "1804508000",
+    "correspondence_code": "064508000",
+    "population_2024": 65730,
+    "locator": "psgc-directory-extract-3.txt: directory line 1125"
+  },
+  {
+    "name": "Hinigaran",
+    "code": "1804511000",
+    "correspondence_code": "064511000",
+    "population_2024": 90403,
+    "locator": "psgc-directory-extract-3.txt: directory line 1126"
+  },
+  {
+    "name": "Hinoba-an",
+    "code": "1804512000",
+    "correspondence_code": "064512000",
+    "population_2024": 64364,
+    "locator": "psgc-directory-extract-3.txt: directory line 1127"
+  },
+  {
+    "name": "Ilog",
+    "code": "1804513000",
+    "correspondence_code": "064513000",
+    "population_2024": 63444,
+    "locator": "psgc-directory-extract-3.txt: directory line 1128"
+  },
+  {
+    "name": "Isabela",
+    "code": "1804514000",
+    "correspondence_code": "064514000",
+    "population_2024": 65399,
+    "locator": "psgc-directory-extract-3.txt: directory line 1129"
+  },
+  {
+    "name": "La Castellana",
+    "code": "1804517000",
+    "correspondence_code": "064517000",
+    "population_2024": 82500,
+    "locator": "psgc-directory-extract-3.txt: directory line 1130"
+  },
+  {
+    "name": "Manapla",
+    "code": "1804518000",
+    "correspondence_code": "064518000",
+    "population_2024": 55882,
+    "locator": "psgc-directory-extract-3.txt: directory line 1131"
+  },
+  {
+    "name": "Moises Padilla",
+    "code": "1804519000",
+    "correspondence_code": "064519000",
+    "population_2024": 44864,
+    "locator": "psgc-directory-extract-3.txt: directory line 1132"
+  },
+  {
+    "name": "Murcia",
+    "code": "1804520000",
+    "correspondence_code": "064520000",
+    "population_2024": 90123,
+    "locator": "psgc-directory-extract-3.txt: directory line 1133"
+  },
+  {
+    "name": "Pontevedra",
+    "code": "1804521000",
+    "correspondence_code": "064521000",
+    "population_2024": 54941,
+    "locator": "psgc-directory-extract-3.txt: directory line 1134"
+  },
+  {
+    "name": "Pulupandan",
+    "code": "1804522000",
+    "correspondence_code": "064522000",
+    "population_2024": 31942,
+    "locator": "psgc-directory-extract-3.txt: directory line 1135"
+  },
+  {
+    "name": "San Enrique",
+    "code": "1804525000",
+    "correspondence_code": "064525000",
+    "population_2024": 24424,
+    "locator": "psgc-directory-extract-3.txt: directory line 1136"
+  },
+  {
+    "name": "Toboso",
+    "code": "1804529000",
+    "correspondence_code": "064529000",
+    "population_2024": 44973,
+    "locator": "psgc-directory-extract-3.txt: directory line 1137"
+  },
+  {
+    "name": "Valladolid",
+    "code": "1804530000",
+    "correspondence_code": "064530000",
+    "population_2024": 40487,
+    "locator": "psgc-directory-extract-3.txt: directory line 1138"
+  },
+  {
+    "name": "Salvador Benedicto",
+    "code": "1804532000",
+    "correspondence_code": "064532000",
+    "population_2024": 28231,
+    "locator": "psgc-directory-extract-3.txt: directory line 1139"
+  },
+  {
+    "name": "Amlan",
+    "code": "1804601000",
+    "correspondence_code": "074601000",
+    "population_2024": 26566,
+    "locator": "psgc-directory-extract-3.txt: directory line 1140"
+  },
+  {
+    "name": "Ayungon",
+    "code": "1804602000",
+    "correspondence_code": "074602000",
+    "population_2024": 50688,
+    "locator": "psgc-directory-extract-3.txt: directory line 1141"
+  },
+  {
+    "name": "Bacong",
+    "code": "1804603000",
+    "correspondence_code": "074603000",
+    "population_2024": 43889,
+    "locator": "psgc-directory-extract-3.txt: directory line 1142"
+  },
+  {
+    "name": "Basay",
+    "code": "1804605000",
+    "correspondence_code": "074605000",
+    "population_2024": 30018,
+    "locator": "psgc-directory-extract-3.txt: directory line 1143"
+  },
+  {
+    "name": "Bindoy",
+    "code": "1804607000",
+    "correspondence_code": "074607000",
+    "population_2024": 41543,
+    "locator": "psgc-directory-extract-3.txt: directory line 1144"
+  },
+  {
+    "name": "Dauin",
+    "code": "1804609000",
+    "correspondence_code": "074609000",
+    "population_2024": 30921,
+    "locator": "psgc-directory-extract-3.txt: directory line 1145"
+  },
+  {
+    "name": "Jimalalud",
+    "code": "1804612000",
+    "correspondence_code": "074612000",
+    "population_2024": 32996,
+    "locator": "psgc-directory-extract-3.txt: directory line 1146"
+  },
+  {
+    "name": "La Libertad",
+    "code": "1804613000",
+    "correspondence_code": "074613000",
+    "population_2024": 42721,
+    "locator": "psgc-directory-extract-3.txt: directory line 1147"
+  },
+  {
+    "name": "Mabinay",
+    "code": "1804614000",
+    "correspondence_code": "074614000",
+    "population_2024": 85770,
+    "locator": "psgc-directory-extract-3.txt: directory line 1148"
+  },
+  {
+    "name": "Manjuyod",
+    "code": "1804615000",
+    "correspondence_code": "074615000",
+    "population_2024": 46461,
+    "locator": "psgc-directory-extract-3.txt: directory line 1149"
+  },
+  {
+    "name": "Pamplona",
+    "code": "1804616000",
+    "correspondence_code": "074616000",
+    "population_2024": 41209,
+    "locator": "psgc-directory-extract-3.txt: directory line 1150"
+  },
+  {
+    "name": "San Jose",
+    "code": "1804617000",
+    "correspondence_code": "074617000",
+    "population_2024": 22870,
+    "locator": "psgc-directory-extract-3.txt: directory line 1151"
+  },
+  {
+    "name": "Santa Catalina",
+    "code": "1804618000",
+    "correspondence_code": "074618000",
+    "population_2024": 80382,
+    "locator": "psgc-directory-extract-3.txt: directory line 1152"
+  },
+  {
+    "name": "Siaton",
+    "code": "1804619000",
+    "correspondence_code": "074619000",
+    "population_2024": 84169,
+    "locator": "psgc-directory-extract-3.txt: directory line 1153"
+  },
+  {
+    "name": "Sibulan",
+    "code": "1804620000",
+    "correspondence_code": "074620000",
+    "population_2024": 69092,
+    "locator": "psgc-directory-extract-3.txt: directory line 1154"
+  },
+  {
+    "name": "Tayasan",
+    "code": "1804622000",
+    "correspondence_code": "074622000",
+    "population_2024": 39005,
+    "locator": "psgc-directory-extract-3.txt: directory line 1155"
+  },
+  {
+    "name": "Valencia",
+    "code": "1804623000",
+    "correspondence_code": "074623000",
+    "population_2024": 39986,
+    "locator": "psgc-directory-extract-3.txt: directory line 1156"
+  },
+  {
+    "name": "Vallehermoso",
+    "code": "1804624000",
+    "correspondence_code": "074624000",
+    "population_2024": 42421,
+    "locator": "psgc-directory-extract-3.txt: directory line 1157"
+  },
+  {
+    "name": "Zamboanguita",
+    "code": "1804625000",
+    "correspondence_code": "074625000",
+    "population_2024": 30412,
+    "locator": "psgc-directory-extract-3.txt: directory line 1158"
+  },
+  {
+    "name": "Enrique Villanueva",
+    "code": "1806101000",
+    "correspondence_code": "076101000",
+    "population_2024": 6965,
+    "locator": "psgc-directory-extract-3.txt: directory line 1159"
+  },
+  {
+    "name": "Larena",
+    "code": "1806102000",
+    "correspondence_code": "076102000",
+    "population_2024": 14933,
+    "locator": "psgc-directory-extract-3.txt: directory line 1160"
+  },
+  {
+    "name": "Lazi",
+    "code": "1806103000",
+    "correspondence_code": "076103000",
+    "population_2024": 23092,
+    "locator": "psgc-directory-extract-3.txt: directory line 1161"
+  },
+  {
+    "name": "Maria",
+    "code": "1806104000",
+    "correspondence_code": "076104000",
+    "population_2024": 15146,
+    "locator": "psgc-directory-extract-3.txt: directory line 1162"
+  },
+  {
+    "name": "San Juan",
+    "code": "1806105000",
+    "correspondence_code": "076105000",
+    "population_2024": 17291,
+    "locator": "psgc-directory-extract-3.txt: directory line 1163"
+  },
+  {
+    "name": "Siquijor",
+    "code": "1806106000",
+    "correspondence_code": "076106000",
+    "population_2024": 30215,
+    "locator": "psgc-directory-extract-3.txt: directory line 1164"
+  },
+  {
+    "name": "Alburquerque",
+    "code": "0701201000",
+    "correspondence_code": "071201000",
+    "population_2024": 11489,
+    "locator": "psgc-directory-extract-3.txt: directory line 1165"
+  },
+  {
+    "name": "Alicia",
+    "code": "0701202000",
+    "correspondence_code": "071202000",
+    "population_2024": 24663,
+    "locator": "psgc-directory-extract-3.txt: directory line 1166"
+  },
+  {
+    "name": "Anda",
+    "code": "0701203000",
+    "correspondence_code": "071203000",
+    "population_2024": 17835,
+    "locator": "psgc-directory-extract-3.txt: directory line 1167"
+  },
+  {
+    "name": "Antequera",
+    "code": "0701204000",
+    "correspondence_code": "071204000",
+    "population_2024": 14881,
+    "locator": "psgc-directory-extract-3.txt: directory line 1168"
+  },
+  {
+    "name": "Baclayon",
+    "code": "0701205000",
+    "correspondence_code": "071205000",
+    "population_2024": 22754,
+    "locator": "psgc-directory-extract-3.txt: directory line 1169"
+  },
+  {
+    "name": "Balilihan",
+    "code": "0701206000",
+    "correspondence_code": "071206000",
+    "population_2024": 19747,
+    "locator": "psgc-directory-extract-3.txt: directory line 1170"
+  },
+  {
+    "name": "Batuan",
+    "code": "0701207000",
+    "correspondence_code": "071207000",
+    "population_2024": 14423,
+    "locator": "psgc-directory-extract-3.txt: directory line 1171"
+  },
+  {
+    "name": "Bilar",
+    "code": "0701208000",
+    "correspondence_code": "071208000",
+    "population_2024": 18877,
+    "locator": "psgc-directory-extract-3.txt: directory line 1172"
+  },
+  {
+    "name": "Buenavista",
+    "code": "0701209000",
+    "correspondence_code": "071209000",
+    "population_2024": 31095,
+    "locator": "psgc-directory-extract-3.txt: directory line 1173"
+  },
+  {
+    "name": "Calape",
+    "code": "0701210000",
+    "correspondence_code": "071210000",
+    "population_2024": 33022,
+    "locator": "psgc-directory-extract-3.txt: directory line 1174"
+  },
+  {
+    "name": "Candijay",
+    "code": "0701211000",
+    "correspondence_code": "071211000",
+    "population_2024": 30142,
+    "locator": "psgc-directory-extract-3.txt: directory line 1175"
+  },
+  {
+    "name": "Carmen",
+    "code": "0701212000",
+    "correspondence_code": "071212000",
+    "population_2024": 50249,
+    "locator": "psgc-directory-extract-3.txt: directory line 1176"
+  },
+  {
+    "name": "Catigbian",
+    "code": "0701213000",
+    "correspondence_code": "071213000",
+    "population_2024": 23812,
+    "locator": "psgc-directory-extract-3.txt: directory line 1177"
+  },
+  {
+    "name": "Clarin",
+    "code": "0701214000",
+    "correspondence_code": "071214000",
+    "population_2024": 21318,
+    "locator": "psgc-directory-extract-3.txt: directory line 1178"
+  },
+  {
+    "name": "Corella",
+    "code": "0701215000",
+    "correspondence_code": "071215000",
+    "population_2024": 9889,
+    "locator": "psgc-directory-extract-3.txt: directory line 1179"
+  },
+  {
+    "name": "Cortes",
+    "code": "0701216000",
+    "correspondence_code": "071216000",
+    "population_2024": 18976,
+    "locator": "psgc-directory-extract-3.txt: directory line 1180"
+  },
+  {
+    "name": "Dagohoy",
+    "code": "0701217000",
+    "correspondence_code": "071217000",
+    "population_2024": 20068,
+    "locator": "psgc-directory-extract-3.txt: directory line 1181"
+  },
+  {
+    "name": "Danao",
+    "code": "0701218000",
+    "correspondence_code": "071218000",
+    "population_2024": 20299,
+    "locator": "psgc-directory-extract-3.txt: directory line 1182"
+  },
+  {
+    "name": "Dauis",
+    "code": "0701219000",
+    "correspondence_code": "071219000",
+    "population_2024": 53864,
+    "locator": "psgc-directory-extract-3.txt: directory line 1183"
+  },
+  {
+    "name": "Dimiao",
+    "code": "0701220000",
+    "correspondence_code": "071220000",
+    "population_2024": 14894,
+    "locator": "psgc-directory-extract-3.txt: directory line 1184"
+  },
+  {
+    "name": "Duero",
+    "code": "0701221000",
+    "correspondence_code": "071221000",
+    "population_2024": 19136,
+    "locator": "psgc-directory-extract-3.txt: directory line 1185"
+  },
+  {
+    "name": "Garcia Hernandez",
+    "code": "0701222000",
+    "correspondence_code": "071222000",
+    "population_2024": 24450,
+    "locator": "psgc-directory-extract-3.txt: directory line 1186"
+  },
+  {
+    "name": "Guindulman",
+    "code": "0701223000",
+    "correspondence_code": "071223000",
+    "population_2024": 34660,
+    "locator": "psgc-directory-extract-3.txt: directory line 1187"
+  },
+  {
+    "name": "Inabanga",
+    "code": "0701224000",
+    "correspondence_code": "071224000",
+    "population_2024": 49133,
+    "locator": "psgc-directory-extract-3.txt: directory line 1188"
+  },
+  {
+    "name": "Jagna",
+    "code": "0701225000",
+    "correspondence_code": "071225000",
+    "population_2024": 36674,
+    "locator": "psgc-directory-extract-3.txt: directory line 1189"
+  },
+  {
+    "name": "Getafe",
+    "code": "0701226000",
+    "correspondence_code": "071226000",
+    "population_2024": 33485,
+    "locator": "psgc-directory-extract-3.txt: directory line 1190"
+  },
+  {
+    "name": "Lila",
+    "code": "0701227000",
+    "correspondence_code": "071227000",
+    "population_2024": 11450,
+    "locator": "psgc-directory-extract-3.txt: directory line 1191"
+  },
+  {
+    "name": "Loay",
+    "code": "0701228000",
+    "correspondence_code": "071228000",
+    "population_2024": 17957,
+    "locator": "psgc-directory-extract-3.txt: directory line 1192"
+  },
+  {
+    "name": "Loboc",
+    "code": "0701229000",
+    "correspondence_code": "071229000",
+    "population_2024": 17338,
+    "locator": "psgc-directory-extract-3.txt: directory line 1193"
+  },
+  {
+    "name": "Loon",
+    "code": "0701230000",
+    "correspondence_code": "071230000",
+    "population_2024": 43857,
+    "locator": "psgc-directory-extract-3.txt: directory line 1194"
+  },
+  {
+    "name": "Mabini",
+    "code": "0701231000",
+    "correspondence_code": "071231000",
+    "population_2024": 28224,
+    "locator": "psgc-directory-extract-3.txt: directory line 1195"
+  },
+  {
+    "name": "Maribojoc",
+    "code": "0701232000",
+    "correspondence_code": "071232000",
+    "population_2024": 22268,
+    "locator": "psgc-directory-extract-3.txt: directory line 1196"
+  },
+  {
+    "name": "Panglao",
+    "code": "0701233000",
+    "correspondence_code": "071233000",
+    "population_2024": 41760,
+    "locator": "psgc-directory-extract-3.txt: directory line 1197"
+  },
+  {
+    "name": "Pilar",
+    "code": "0701234000",
+    "correspondence_code": "071234000",
+    "population_2024": 28860,
+    "locator": "psgc-directory-extract-3.txt: directory line 1198"
+  },
+  {
+    "name": "President Carlos P. Garcia",
+    "code": "0701235000",
+    "correspondence_code": "071235000",
+    "population_2024": 23858,
+    "locator": "psgc-directory-extract-3.txt: directory line 1199"
+  },
+  {
+    "name": "Sagbayan",
+    "code": "0701236000",
+    "correspondence_code": "071236000",
+    "population_2024": 25329,
+    "locator": "psgc-directory-extract-3.txt: directory line 1200"
+  },
+  {
+    "name": "San Isidro",
+    "code": "0701237000",
+    "correspondence_code": "071237000",
+    "population_2024": 10228,
+    "locator": "psgc-directory-extract-3.txt: directory line 1201"
+  },
+  {
+    "name": "San Miguel",
+    "code": "0701238000",
+    "correspondence_code": "071238000",
+    "population_2024": 26124,
+    "locator": "psgc-directory-extract-3.txt: directory line 1202"
+  },
+  {
+    "name": "Sevilla",
+    "code": "0701239000",
+    "correspondence_code": "071239000",
+    "population_2024": 11425,
+    "locator": "psgc-directory-extract-3.txt: directory line 1203"
+  },
+  {
+    "name": "Sierra Bullones",
+    "code": "0701240000",
+    "correspondence_code": "071240000",
+    "population_2024": 26154,
+    "locator": "psgc-directory-extract-3.txt: directory line 1204"
+  },
+  {
+    "name": "Sikatuna",
+    "code": "0701241000",
+    "correspondence_code": "071241000",
+    "population_2024": 7031,
+    "locator": "psgc-directory-extract-3.txt: directory line 1205"
+  },
+  {
+    "name": "Talibon",
+    "code": "0701243000",
+    "correspondence_code": "071243000",
+    "population_2024": 71450,
+    "locator": "psgc-directory-extract-3.txt: directory line 1206"
+  },
+  {
+    "name": "Trinidad",
+    "code": "0701244000",
+    "correspondence_code": "071244000",
+    "population_2024": 37191,
+    "locator": "psgc-directory-extract-3.txt: directory line 1207"
+  },
+  {
+    "name": "Tubigon",
+    "code": "0701245000",
+    "correspondence_code": "071245000",
+    "population_2024": 49275,
+    "locator": "psgc-directory-extract-3.txt: directory line 1208"
+  },
+  {
+    "name": "Ubay",
+    "code": "0701246000",
+    "correspondence_code": "071246000",
+    "population_2024": 82179,
+    "locator": "psgc-directory-extract-3.txt: directory line 1209"
+  },
+  {
+    "name": "Valencia",
+    "code": "0701247000",
+    "correspondence_code": "071247000",
+    "population_2024": 28535,
+    "locator": "psgc-directory-extract-3.txt: directory line 1210"
+  },
+  {
+    "name": "Bien Unido",
+    "code": "0701248000",
+    "correspondence_code": "071248000",
+    "population_2024": 26278,
+    "locator": "psgc-directory-extract-3.txt: directory line 1211"
+  },
+  {
+    "name": "Alcantara",
+    "code": "0702201000",
+    "correspondence_code": "072201000",
+    "population_2024": 17490,
+    "locator": "psgc-directory-extract-3.txt: directory line 1212"
+  },
+  {
+    "name": "Alcoy",
+    "code": "0702202000",
+    "correspondence_code": "072202000",
+    "population_2024": 19207,
+    "locator": "psgc-directory-extract-3.txt: directory line 1213"
+  },
+  {
+    "name": "Alegria",
+    "code": "0702203000",
+    "correspondence_code": "072203000",
+    "population_2024": 26520,
+    "locator": "psgc-directory-extract-3.txt: directory line 1214"
+  },
+  {
+    "name": "Aloguinsan",
+    "code": "0702204000",
+    "correspondence_code": "072204000",
+    "population_2024": 34990,
+    "locator": "psgc-directory-extract-3.txt: directory line 1215"
+  },
+  {
+    "name": "Argao",
+    "code": "0702205000",
+    "correspondence_code": "072205000",
+    "population_2024": 78111,
+    "locator": "psgc-directory-extract-3.txt: directory line 1216"
+  },
+  {
+    "name": "Asturias",
+    "code": "0702206000",
+    "correspondence_code": "072206000",
+    "population_2024": 54777,
+    "locator": "psgc-directory-extract-3.txt: directory line 1217"
+  },
+  {
+    "name": "Badian",
+    "code": "0702207000",
+    "correspondence_code": "072207000",
+    "population_2024": 44626,
+    "locator": "psgc-directory-extract-3.txt: directory line 1218"
+  },
+  {
+    "name": "Balamban",
+    "code": "0702208000",
+    "correspondence_code": "072208000",
+    "population_2024": 98170,
+    "locator": "psgc-directory-extract-3.txt: directory line 1219"
+  },
+  {
+    "name": "Bantayan",
+    "code": "0702209000",
+    "correspondence_code": "072209000",
+    "population_2024": 87394,
+    "locator": "psgc-directory-extract-3.txt: directory line 1220"
+  },
+  {
+    "name": "Barili",
+    "code": "0702210000",
+    "correspondence_code": "072210000",
+    "population_2024": 82427,
+    "locator": "psgc-directory-extract-3.txt: directory line 1221"
+  },
+  {
+    "name": "Boljoon",
+    "code": "0702212000",
+    "correspondence_code": "072212000",
+    "population_2024": 17153,
+    "locator": "psgc-directory-extract-3.txt: directory line 1222"
+  },
+  {
+    "name": "Borbon",
+    "code": "0702213000",
+    "correspondence_code": "072213000",
+    "population_2024": 40097,
+    "locator": "psgc-directory-extract-3.txt: directory line 1223"
+  },
+  {
+    "name": "Carmen",
+    "code": "0702215000",
+    "correspondence_code": "072215000",
+    "population_2024": 60230,
+    "locator": "psgc-directory-extract-3.txt: directory line 1224"
+  },
+  {
+    "name": "Catmon",
+    "code": "0702216000",
+    "correspondence_code": "072216000",
+    "population_2024": 34608,
+    "locator": "psgc-directory-extract-3.txt: directory line 1225"
+  },
+  {
+    "name": "Compostela",
+    "code": "0702218000",
+    "correspondence_code": "072218000",
+    "population_2024": 58178,
+    "locator": "psgc-directory-extract-3.txt: directory line 1226"
+  },
+  {
+    "name": "Consolacion",
+    "code": "0702219000",
+    "correspondence_code": "072219000",
+    "population_2024": 153931,
+    "locator": "psgc-directory-extract-3.txt: directory line 1227"
+  },
+  {
+    "name": "Cordova",
+    "code": "0702220000",
+    "correspondence_code": "072220000",
+    "population_2024": 72915,
+    "locator": "psgc-directory-extract-3.txt: directory line 1228"
+  },
+  {
+    "name": "Daanbantayan",
+    "code": "0702221000",
+    "correspondence_code": "072221000",
+    "population_2024": 95080,
+    "locator": "psgc-directory-extract-3.txt: directory line 1229"
+  },
+  {
+    "name": "Dalaguete",
+    "code": "0702222000",
+    "correspondence_code": "072222000",
+    "population_2024": 75937,
+    "locator": "psgc-directory-extract-3.txt: directory line 1230"
+  },
+  {
+    "name": "Dumanjug",
+    "code": "0702224000",
+    "correspondence_code": "072224000",
+    "population_2024": 59954,
+    "locator": "psgc-directory-extract-3.txt: directory line 1231"
+  },
+  {
+    "name": "Ginatilan",
+    "code": "0702225000",
+    "correspondence_code": "072225000",
+    "population_2024": 17184,
+    "locator": "psgc-directory-extract-3.txt: directory line 1232"
+  },
+  {
+    "name": "Liloan",
+    "code": "0702227000",
+    "correspondence_code": "072227000",
+    "population_2024": 158387,
+    "locator": "psgc-directory-extract-3.txt: directory line 1233"
+  },
+  {
+    "name": "Madridejos",
+    "code": "0702228000",
+    "correspondence_code": "072228000",
+    "population_2024": 42828,
+    "locator": "psgc-directory-extract-3.txt: directory line 1234"
+  },
+  {
+    "name": "Malabuyoc",
+    "code": "0702229000",
+    "correspondence_code": "072229000",
+    "population_2024": 20378,
+    "locator": "psgc-directory-extract-3.txt: directory line 1235"
+  },
+  {
+    "name": "Medellin",
+    "code": "0702231000",
+    "correspondence_code": "072231000",
+    "population_2024": 62163,
+    "locator": "psgc-directory-extract-3.txt: directory line 1236"
+  },
+  {
+    "name": "Minglanilla",
+    "code": "0702232000",
+    "correspondence_code": "072232000",
+    "population_2024": 155934,
+    "locator": "psgc-directory-extract-3.txt: directory line 1237"
+  },
+  {
+    "name": "Moalboal",
+    "code": "0702233000",
+    "correspondence_code": "072233000",
+    "population_2024": 37993,
+    "locator": "psgc-directory-extract-3.txt: directory line 1238"
+  },
+  {
+    "name": "Oslob",
+    "code": "0702235000",
+    "correspondence_code": "072235000",
+    "population_2024": 29378,
+    "locator": "psgc-directory-extract-3.txt: directory line 1239"
+  },
+  {
+    "name": "Pilar",
+    "code": "0702236000",
+    "correspondence_code": "072236000",
+    "population_2024": 12454,
+    "locator": "psgc-directory-extract-3.txt: directory line 1240"
+  },
+  {
+    "name": "Pinamungajan",
+    "code": "0702237000",
+    "correspondence_code": "072237000",
+    "population_2024": 76568,
+    "locator": "psgc-directory-extract-3.txt: directory line 1241"
+  },
+  {
+    "name": "Poro",
+    "code": "0702238000",
+    "correspondence_code": "072238000",
+    "population_2024": 26908,
+    "locator": "psgc-directory-extract-3.txt: directory line 1242"
+  },
+  {
+    "name": "Ronda",
+    "code": "0702239000",
+    "correspondence_code": "072239000",
+    "population_2024": 21179,
+    "locator": "psgc-directory-extract-3.txt: directory line 1243"
+  },
+  {
+    "name": "Samboan",
+    "code": "0702240000",
+    "correspondence_code": "072240000",
+    "population_2024": 20736,
+    "locator": "psgc-directory-extract-3.txt: directory line 1244"
+  },
+  {
+    "name": "San Fernando",
+    "code": "0702241000",
+    "correspondence_code": "072241000",
+    "population_2024": 76110,
+    "locator": "psgc-directory-extract-3.txt: directory line 1245"
+  },
+  {
+    "name": "San Juan",
+    "code": "0401023000",
+    "correspondence_code": "041023000",
+    "population_2024": 115118,
+    "locator": "psgc-directory-extract-3.txt: directory line 744"
+  },
+  {
+    "name": "San Luis",
+    "code": "0401024000",
+    "correspondence_code": "041024000",
+    "population_2024": 36841,
+    "locator": "psgc-directory-extract-3.txt: directory line 745"
+  },
+  {
+    "name": "San Nicolas",
+    "code": "0401025000",
+    "correspondence_code": "041025000",
+    "population_2024": 24392,
+    "locator": "psgc-directory-extract-3.txt: directory line 746"
+  },
+  {
+    "name": "San Pascual",
+    "code": "0401026000",
+    "correspondence_code": "041026000",
+    "population_2024": 69419,
+    "locator": "psgc-directory-extract-3.txt: directory line 747"
+  },
+  {
+    "name": "Santa Teresita",
+    "code": "0401027000",
+    "correspondence_code": "041027000",
+    "population_2024": 21742,
+    "locator": "psgc-directory-extract-3.txt: directory line 748"
+  },
+  {
+    "name": "Taal",
+    "code": "0401029000",
+    "correspondence_code": "041029000",
+    "population_2024": 61559,
+    "locator": "psgc-directory-extract-3.txt: directory line 749"
+  },
+  {
+    "name": "Talisay",
+    "code": "0401030000",
+    "correspondence_code": "041030000",
+    "population_2024": 46477,
+    "locator": "psgc-directory-extract-3.txt: directory line 750"
+  },
+  {
+    "name": "Taysan",
+    "code": "0401032000",
+    "correspondence_code": "041032000",
+    "population_2024": 41332,
+    "locator": "psgc-directory-extract-3.txt: directory line 751"
+  },
+  {
+    "name": "Tingloy",
+    "code": "0401033000",
+    "correspondence_code": "041033000",
+    "population_2024": 15866,
+    "locator": "psgc-directory-extract-3.txt: directory line 752"
+  },
+  {
+    "name": "Tuy",
+    "code": "0401034000",
+    "correspondence_code": "041034000",
+    "population_2024": 47199,
+    "locator": "psgc-directory-extract-3.txt: directory line 753"
+  },
+  {
+    "name": "Alfonso",
+    "code": "0402101000",
+    "correspondence_code": "042101000",
+    "population_2024": 60583,
+    "locator": "psgc-directory-extract-3.txt: directory line 754"
+  },
+  {
+    "name": "Amadeo",
+    "code": "0402102000",
+    "correspondence_code": "042102000",
+    "population_2024": 44190,
+    "locator": "psgc-directory-extract-3.txt: directory line 755"
+  },
+  {
+    "name": "General Emilio Aguinaldo",
+    "code": "0402107000",
+    "correspondence_code": "042107000",
+    "population_2024": 24264,
+    "locator": "psgc-directory-extract-3.txt: directory line 756"
+  },
+  {
+    "name": "Indang",
+    "code": "0402110000",
+    "correspondence_code": "042110000",
+    "population_2024": 70092,
+    "locator": "psgc-directory-extract-3.txt: directory line 757"
+  },
+  {
+    "name": "Kawit",
+    "code": "0402111000",
+    "correspondence_code": "042111000",
+    "population_2024": 123631,
+    "locator": "psgc-directory-extract-3.txt: directory line 758"
+  },
+  {
+    "name": "Magallanes",
+    "code": "0402112000",
+    "correspondence_code": "042112000",
+    "population_2024": 25826,
+    "locator": "psgc-directory-extract-3.txt: directory line 759"
+  },
+  {
+    "name": "Maragondon",
+    "code": "0402113000",
+    "correspondence_code": "042113000",
+    "population_2024": 41977,
+    "locator": "psgc-directory-extract-3.txt: directory line 760"
+  },
+  {
+    "name": "Mendez",
+    "code": "0402114000",
+    "correspondence_code": "042114000",
+    "population_2024": 36518,
+    "locator": "psgc-directory-extract-3.txt: directory line 761"
+  },
+  {
+    "name": "Naic",
+    "code": "0402115000",
+    "correspondence_code": "042115000",
+    "population_2024": 236978,
+    "locator": "psgc-directory-extract-3.txt: directory line 762"
+  },
+  {
+    "name": "Noveleta",
+    "code": "0402116000",
+    "correspondence_code": "042116000",
+    "population_2024": 46172,
+    "locator": "psgc-directory-extract-3.txt: directory line 763"
+  },
+  {
+    "name": "Rosario",
+    "code": "0402117000",
+    "correspondence_code": "042117000",
+    "population_2024": 112572,
+    "locator": "psgc-directory-extract-3.txt: directory line 764"
+  },
+  {
+    "name": "Silang",
+    "code": "0402118000",
+    "correspondence_code": "042118000",
+    "population_2024": 313145,
+    "locator": "psgc-directory-extract-3.txt: directory line 765"
+  },
+  {
+    "name": "Tanza",
+    "code": "0402120000",
+    "correspondence_code": "042120000",
+    "population_2024": 339308,
+    "locator": "psgc-directory-extract-3.txt: directory line 766"
+  },
+  {
+    "name": "Ternate",
+    "code": "0402121000",
+    "correspondence_code": "042121000",
+    "population_2024": 24891,
+    "locator": "psgc-directory-extract-3.txt: directory line 767"
+  },
+  {
+    "name": "Gen. Mariano Alvarez",
+    "code": "0402123000",
+    "correspondence_code": "042123000",
+    "population_2024": 176927,
+    "locator": "psgc-directory-extract.txt: directory line 768"
+  },
+  {
+    "name": "Alaminos",
+    "code": "0403401000",
+    "correspondence_code": "043401000",
+    "population_2024": 53589,
+    "locator": "psgc-directory-extract.txt: directory line 769"
+  },
+  {
+    "name": "Bay",
+    "code": "0403402000",
+    "correspondence_code": "043402000",
+    "population_2024": 69802,
+    "locator": "psgc-directory-extract.txt: directory line 770"
+  },
+  {
+    "name": "Calauan",
+    "code": "0403406000",
+    "correspondence_code": "043406000",
+    "population_2024": 89670,
+    "locator": "psgc-directory-extract.txt: directory line 771"
+  },
+  {
+    "name": "Cavinti",
+    "code": "0403407000",
+    "correspondence_code": "043407000",
+    "population_2024": 24740,
+    "locator": "psgc-directory-extract.txt: directory line 772"
+  },
+  {
+    "name": "Famy",
+    "code": "0403408000",
+    "correspondence_code": "043408000",
+    "population_2024": 17668,
+    "locator": "psgc-directory-extract.txt: directory line 773"
+  },
+  {
+    "name": "Kalayaan",
+    "code": "0403409000",
+    "correspondence_code": "043409000",
+    "population_2024": 25243,
+    "locator": "psgc-directory-extract.txt: directory line 774"
+  },
+  {
+    "name": "Liliw",
+    "code": "0403410000",
+    "correspondence_code": "043410000",
+    "population_2024": 39976,
+    "locator": "psgc-directory-extract.txt: directory line 775"
+  },
+  {
+    "name": "Los Baños",
+    "code": "0403411000",
+    "correspondence_code": "043411000",
+    "population_2024": 117030,
+    "locator": "psgc-directory-extract.txt: directory line 776"
+  },
+  {
+    "name": "Luisiana",
+    "code": "0403412000",
+    "correspondence_code": "043412000",
+    "population_2024": 21824,
+    "locator": "psgc-directory-extract.txt: directory line 777"
+  },
+  {
+    "name": "Lumban",
+    "code": "0403413000",
+    "correspondence_code": "043413000",
+    "population_2024": 32793,
+    "locator": "psgc-directory-extract.txt: directory line 778"
+  },
+  {
+    "name": "Mabitac",
+    "code": "0403414000",
+    "correspondence_code": "043414000",
+    "population_2024": 21748,
+    "locator": "psgc-directory-extract.txt: directory line 779"
+  },
+  {
+    "name": "Magdalena",
+    "code": "0403415000",
+    "correspondence_code": "043415000",
+    "population_2024": 28131,
+    "locator": "psgc-directory-extract.txt: directory line 780"
+  },
+  {
+    "name": "Majayjay",
+    "code": "0403416000",
+    "correspondence_code": "043416000",
+    "population_2024": 28504,
+    "locator": "psgc-directory-extract.txt: directory line 781"
+  },
+  {
+    "name": "Nagcarlan",
+    "code": "0403417000",
+    "correspondence_code": "043417000",
+    "population_2024": 66351,
+    "locator": "psgc-directory-extract.txt: directory line 782"
+  },
+  {
+    "name": "Paete",
+    "code": "0403418000",
+    "correspondence_code": "043418000",
+    "population_2024": 25254,
+    "locator": "psgc-directory-extract.txt: directory line 783"
+  },
+  {
+    "name": "Pagsanjan",
+    "code": "0403419000",
+    "correspondence_code": "043419000",
+    "population_2024": 45602,
+    "locator": "psgc-directory-extract.txt: directory line 784"
+  },
+  {
+    "name": "Pakil",
+    "code": "0403420000",
+    "correspondence_code": "043420000",
+    "population_2024": 23972,
+    "locator": "psgc-directory-extract.txt: directory line 785"
+  },
+  {
+    "name": "Pangil",
+    "code": "0403421000",
+    "correspondence_code": "043421000",
+    "population_2024": 25318,
+    "locator": "psgc-directory-extract.txt: directory line 786"
+  },
+  {
+    "name": "Pila",
+    "code": "0403422000",
+    "correspondence_code": "043422000",
+    "population_2024": 57776,
+    "locator": "psgc-directory-extract.txt: directory line 787"
+  },
+  {
+    "name": "Rizal",
+    "code": "0403423000",
+    "correspondence_code": "043423000",
+    "population_2024": 18864,
+    "locator": "psgc-directory-extract.txt: directory line 788"
+  },
+  {
+    "name": "Santa Cruz",
+    "code": "0403426000",
+    "correspondence_code": "043426000",
+    "population_2024": 126844,
+    "locator": "psgc-directory-extract.txt: directory line 789"
+  },
+  {
+    "name": "Santa Maria",
+    "code": "0403427000",
+    "correspondence_code": "043427000",
+    "population_2024": 34102,
+    "locator": "psgc-directory-extract.txt: directory line 790"
+  },
+  {
+    "name": "Siniloan",
+    "code": "0403429000",
+    "correspondence_code": "043429000",
+    "population_2024": 42533,
+    "locator": "psgc-directory-extract.txt: directory line 791"
+  },
+  {
+    "name": "Victoria",
+    "code": "0403430000",
+    "correspondence_code": "043430000",
+    "population_2024": 45230,
+    "locator": "psgc-directory-extract.txt: directory line 792"
+  },
+  {
+    "name": "Agdangan",
+    "code": "0405601000",
+    "correspondence_code": "045601000",
+    "population_2024": 13316,
+    "locator": "psgc-directory-extract.txt: directory line 793"
+  },
+  {
+    "name": "Alabat",
+    "code": "0405602000",
+    "correspondence_code": "045602000",
+    "population_2024": 15744,
+    "locator": "psgc-directory-extract.txt: directory line 794"
+  },
+  {
+    "name": "Atimonan",
+    "code": "0405603000",
+    "correspondence_code": "045603000",
+    "population_2024": 65552,
+    "locator": "psgc-directory-extract.txt: directory line 795"
+  },
+  {
+    "name": "Buenavista",
+    "code": "0405605000",
+    "correspondence_code": "045605000",
+    "population_2024": 31550,
+    "locator": "psgc-directory-extract.txt: directory line 796"
+  },
+  {
+    "name": "Burdeos",
+    "code": "0405606000",
+    "correspondence_code": "045606000",
+    "population_2024": 22742,
+    "locator": "psgc-directory-extract.txt: directory line 797"
+  },
+  {
+    "name": "Calauag",
+    "code": "0405607000",
+    "correspondence_code": "045607000",
+    "population_2024": 68999,
+    "locator": "psgc-directory-extract.txt: directory line 798"
+  },
+  {
+    "name": "Candelaria",
+    "code": "0405608000",
+    "correspondence_code": "045608000",
+    "population_2024": 137933,
+    "locator": "psgc-directory-extract.txt: directory line 799"
+  },
+  {
+    "name": "Kasibu",
+    "code": "0205009000",
+    "correspondence_code": "025009000",
+    "population_2024": 46845,
+    "locator": "psgc-directory-extract.txt: directory line 597"
+  },
+  {
+    "name": "Kayapa",
+    "code": "0205010000",
+    "correspondence_code": "025010000",
+    "population_2024": 27865,
+    "locator": "psgc-directory-extract.txt: directory line 598"
+  },
+  {
+    "name": "Quezon",
+    "code": "0205011000",
+    "correspondence_code": "025011000",
+    "population_2024": 25306,
+    "locator": "psgc-directory-extract.txt: directory line 599"
+  },
+  {
+    "name": "Santa Fe",
+    "code": "0205012000",
+    "correspondence_code": "025012000",
+    "population_2024": 18950,
+    "locator": "psgc-directory-extract.txt: directory line 600"
+  },
+  {
+    "name": "Solano",
+    "code": "0205013000",
+    "correspondence_code": "025013000",
+    "population_2024": 69296,
+    "locator": "psgc-directory-extract.txt: directory line 601"
+  },
+  {
+    "name": "Villaverde",
+    "code": "0205014000",
+    "correspondence_code": "025014000",
+    "population_2024": 21001,
+    "locator": "psgc-directory-extract.txt: directory line 602"
+  },
+  {
+    "name": "Alfonso Castaneda",
+    "code": "0205015000",
+    "correspondence_code": "025015000",
+    "population_2024": 8933,
+    "locator": "psgc-directory-extract.txt: directory line 603"
+  },
+  {
+    "name": "Aglipay",
+    "code": "0205701000",
+    "correspondence_code": "025701000",
+    "population_2024": 31596,
+    "locator": "psgc-directory-extract.txt: directory line 604"
+  },
+  {
+    "name": "Cabarroguis",
+    "code": "0205702000",
+    "correspondence_code": "025702000",
+    "population_2024": 34720,
+    "locator": "psgc-directory-extract.txt: directory line 605"
+  },
+  {
+    "name": "Diffun",
+    "code": "0205703000",
+    "correspondence_code": "025703000",
+    "population_2024": 58254,
+    "locator": "psgc-directory-extract.txt: directory line 606"
+  },
+  {
+    "name": "Maddela",
+    "code": "0205704000",
+    "correspondence_code": "025704000",
+    "population_2024": 41867,
+    "locator": "psgc-directory-extract.txt: directory line 607"
+  },
+  {
+    "name": "Saguday",
+    "code": "0205705000",
+    "correspondence_code": "025705000",
+    "population_2024": 17863,
+    "locator": "psgc-directory-extract.txt: directory line 608"
+  },
+  {
+    "name": "Nagtipunan",
+    "code": "0205706000",
+    "correspondence_code": "025706000",
+    "population_2024": 26541,
+    "locator": "psgc-directory-extract.txt: directory line 609"
+  },
+  {
+    "name": "Abucay",
+    "code": "0300801000",
+    "correspondence_code": "030801000",
+    "population_2024": 44846,
+    "locator": "psgc-directory-extract.txt: directory line 610"
+  },
+  {
+    "name": "Bagac",
+    "code": "0300802000",
+    "correspondence_code": "030802000",
+    "population_2024": 32799,
+    "locator": "psgc-directory-extract.txt: directory line 611"
+  },
+  {
+    "name": "Dinalupihan",
+    "code": "0300804000",
+    "correspondence_code": "030804000",
+    "population_2024": 124188,
+    "locator": "psgc-directory-extract.txt: directory line 612"
+  },
+  {
+    "name": "Hermosa",
+    "code": "0300805000",
+    "correspondence_code": "030805000",
+    "population_2024": 80557,
+    "locator": "psgc-directory-extract.txt: directory line 613"
+  },
+  {
+    "name": "Limay",
+    "code": "0300806000",
+    "correspondence_code": "030806000",
+    "population_2024": 81960,
+    "locator": "psgc-directory-extract.txt: directory line 614"
+  },
+  {
+    "name": "Mariveles",
+    "code": "0300807000",
+    "correspondence_code": "030807000",
+    "population_2024": 156200,
+    "locator": "psgc-directory-extract.txt: directory line 615"
+  },
+  {
+    "name": "Morong",
+    "code": "0300808000",
+    "correspondence_code": "030808000",
+    "population_2024": 37024,
+    "locator": "psgc-directory-extract.txt: directory line 616"
+  },
+  {
+    "name": "Orani",
+    "code": "0300809000",
+    "correspondence_code": "030809000",
+    "population_2024": 72941,
+    "locator": "psgc-directory-extract.txt: directory line 617"
+  },
+  {
+    "name": "Orion",
+    "code": "0300810000",
+    "correspondence_code": "030810000",
+    "population_2024": 63044,
+    "locator": "psgc-directory-extract.txt: directory line 618"
+  },
+  {
+    "name": "Pilar",
+    "code": "0300811000",
+    "correspondence_code": "030811000",
+    "population_2024": 47107,
+    "locator": "psgc-directory-extract.txt: directory line 619"
+  },
+  {
+    "name": "Samal",
+    "code": "0300812000",
+    "correspondence_code": "030812000",
+    "population_2024": 40843,
+    "locator": "psgc-directory-extract.txt: directory line 620"
+  },
+  {
+    "name": "Angat",
+    "code": "0301401000",
+    "correspondence_code": "031401000",
+    "population_2024": 67862,
+    "locator": "psgc-directory-extract.txt: directory line 621"
+  },
+  {
+    "name": "Balagtas",
+    "code": "0301402000",
+    "correspondence_code": "031402000",
+    "population_2024": 80221,
+    "locator": "psgc-directory-extract.txt: directory line 622"
+  },
+  {
+    "name": "Bocaue",
+    "code": "0301404000",
+    "correspondence_code": "031404000",
+    "population_2024": 147755,
+    "locator": "psgc-directory-extract.txt: directory line 623"
+  },
+  {
+    "name": "Bulacan",
+    "code": "0301405000",
+    "correspondence_code": "031405000",
+    "population_2024": 83101,
+    "locator": "psgc-directory-extract.txt: directory line 624"
+  },
+  {
+    "name": "Bustos",
+    "code": "0301406000",
+    "correspondence_code": "031406000",
+    "population_2024": 80565,
+    "locator": "psgc-directory-extract.txt: directory line 625"
+  },
+  {
+    "name": "Calumpit",
+    "code": "0301407000",
+    "correspondence_code": "031407000",
+    "population_2024": 122187,
+    "locator": "psgc-directory-extract.txt: directory line 626"
+  },
+  {
+    "name": "Guiguinto",
+    "code": "0301408000",
+    "correspondence_code": "031408000",
+    "population_2024": 118173,
+    "locator": "psgc-directory-extract.txt: directory line 627"
+  },
+  {
+    "name": "Hagonoy",
+    "code": "0301409000",
+    "correspondence_code": "031409000",
+    "population_2024": 136673,
+    "locator": "psgc-directory-extract.txt: directory line 628"
+  },
+  {
+    "name": "Marilao",
+    "code": "0301411000",
+    "correspondence_code": "031411000",
+    "population_2024": 263507,
+    "locator": "psgc-directory-extract.txt: directory line 629"
+  },
+  {
+    "name": "Norzagaray",
+    "code": "0301413000",
+    "correspondence_code": "031413000",
+    "population_2024": 140697,
+    "locator": "psgc-directory-extract.txt: directory line 630"
+  },
+  {
+    "name": "Obando",
+    "code": "0301414000",
+    "correspondence_code": "031414000",
+    "population_2024": 61073,
+    "locator": "psgc-directory-extract.txt: directory line 631"
+  },
+  {
+    "name": "Pandi",
+    "code": "0301415000",
+    "correspondence_code": "031415000",
+    "population_2024": 162725,
+    "locator": "psgc-directory-extract.txt: directory line 632"
+  },
+  {
+    "name": "Paombong",
+    "code": "0301416000",
+    "correspondence_code": "031416000",
+    "population_2024": 58453,
+    "locator": "psgc-directory-extract.txt: directory line 633"
+  },
+  {
+    "name": "Plaridel",
+    "code": "0301417000",
+    "correspondence_code": "031417000",
+    "population_2024": 120939,
+    "locator": "psgc-directory-extract.txt: directory line 634"
+  },
+  {
+    "name": "Pulilan",
+    "code": "0301418000",
+    "correspondence_code": "031418000",
+    "population_2024": 111384,
+    "locator": "psgc-directory-extract.txt: directory line 635"
+  },
+  {
+    "name": "San Ildefonso",
+    "code": "0301419000",
+    "correspondence_code": "031419000",
+    "population_2024": 123140,
+    "locator": "psgc-directory-extract.txt: directory line 636"
+  },
+  {
+    "name": "San Miguel",
+    "code": "0301421000",
+    "correspondence_code": "031421000",
+    "population_2024": 179792,
+    "locator": "psgc-directory-extract.txt: directory line 637"
+  },
+  {
+    "name": "San Rafael",
+    "code": "0301422000",
+    "correspondence_code": "031422000",
+    "population_2024": 108256,
+    "locator": "psgc-directory-extract.txt: directory line 638"
+  },
+  {
+    "name": "Santa Maria",
+    "code": "0301423000",
+    "correspondence_code": "031423000",
+    "population_2024": 322525,
+    "locator": "psgc-directory-extract.txt: directory line 639"
+  },
+  {
+    "name": "Doña Remedios Trinidad",
+    "code": "0301424000",
+    "correspondence_code": "031424000",
+    "population_2024": 30064,
+    "locator": "psgc-directory-extract.txt: directory line 640"
+  },
+  {
+    "name": "Aliaga",
+    "code": "0304901000",
+    "correspondence_code": "034901000",
+    "population_2024": 72134,
+    "locator": "psgc-directory-extract.txt: directory line 641"
+  },
+  {
+    "name": "Bongabon",
+    "code": "0304902000",
+    "correspondence_code": "034902000",
+    "population_2024": 69376,
+    "locator": "psgc-directory-extract.txt: directory line 642"
+  },
+  {
+    "name": "Cabiao",
+    "code": "0304904000",
+    "correspondence_code": "034904000",
+    "population_2024": 89497,
+    "locator": "psgc-directory-extract.txt: directory line 643"
+  },
+  {
+    "name": "Carranglan",
+    "code": "0304905000",
+    "correspondence_code": "034905000",
+    "population_2024": 43694,
+    "locator": "psgc-directory-extract.txt: directory line 644"
+  },
+  {
+    "name": "Cuyapo",
+    "code": "0304906000",
+    "correspondence_code": "034906000",
+    "population_2024": 70919,
+    "locator": "psgc-directory-extract.txt: directory line 645"
+  },
+  {
+    "name": "Gabaldon",
+    "code": "0304907000",
+    "correspondence_code": "034907000",
+    "population_2024": 40223,
+    "locator": "psgc-directory-extract.txt: directory line 646"
+  },
+  {
+    "name": "General Mamerto Natividad",
+    "code": "0304909000",
+    "correspondence_code": "034909000",
+    "population_2024": 43779,
+    "locator": "psgc-directory-extract.txt: directory line 647"
+  },
+  {
+    "name": "General Tinio",
+    "code": "0304910000",
+    "correspondence_code": "034910000",
+    "population_2024": 58093,
+    "locator": "psgc-directory-extract.txt: directory line 648"
+  },
+  {
+    "name": "Guimba",
+    "code": "0304911000",
+    "correspondence_code": "034911000",
+    "population_2024": 131468,
+    "locator": "psgc-directory-extract.txt: directory line 649"
+  },
+  {
+    "name": "Jaen",
+    "code": "0304912000",
+    "correspondence_code": "034912000",
+    "population_2024": 83895,
+    "locator": "psgc-directory-extract.txt: directory line 650"
+  },
+  {
+    "name": "Laur",
+    "code": "0304913000",
+    "correspondence_code": "034913000",
+    "population_2024": 40185,
+    "locator": "psgc-directory-extract.txt: directory line 651"
+  },
+  {
+    "name": "Licab",
+    "code": "0304914000",
+    "correspondence_code": "034914000",
+    "population_2024": 29590,
+    "locator": "psgc-directory-extract.txt: directory line 652"
+  },
+  {
+    "name": "Llanera",
+    "code": "0304915000",
+    "correspondence_code": "034915000",
+    "population_2024": 44620,
+    "locator": "psgc-directory-extract.txt: directory line 653"
+  },
+  {
+    "name": "Catanauan",
+    "code": "0405610000",
+    "correspondence_code": "045610000",
+    "population_2024": 76250,
+    "locator": "psgc-directory-extract.txt: directory line 800"
+  },
+  {
+    "name": "Dolores",
+    "code": "0405615000",
+    "correspondence_code": "045615000",
+    "population_2024": 32645,
+    "locator": "psgc-directory-extract.txt: directory line 801"
+  },
+  {
+    "name": "General Luna",
+    "code": "0405616000",
+    "correspondence_code": "045616000",
+    "population_2024": 25110,
+    "locator": "psgc-directory-extract.txt: directory line 802"
+  },
+  {
+    "name": "General Nakar",
+    "code": "0405617000",
+    "correspondence_code": "045617000",
+    "population_2024": 34982,
+    "locator": "psgc-directory-extract.txt: directory line 803"
+  },
+  {
+    "name": "Guinayangan",
+    "code": "0405618000",
+    "correspondence_code": "045618000",
+    "population_2024": 45375,
+    "locator": "psgc-directory-extract.txt: directory line 804"
+  },
+  {
+    "name": "Gumaca",
+    "code": "0405619000",
+    "correspondence_code": "045619000",
+    "population_2024": 72454,
+    "locator": "psgc-directory-extract.txt: directory line 805"
+  },
+  {
+    "name": "Infanta",
+    "code": "0405620000",
+    "correspondence_code": "045620000",
+    "population_2024": 77676,
+    "locator": "psgc-directory-extract.txt: directory line 806"
+  },
+  {
+    "name": "Jomalig",
+    "code": "0405621000",
+    "correspondence_code": "045621000",
+    "population_2024": 7884,
+    "locator": "psgc-directory-extract.txt: directory line 807"
+  },
+  {
+    "name": "Lopez",
+    "code": "0405622000",
+    "correspondence_code": "045622000",
+    "population_2024": 96006,
+    "locator": "psgc-directory-extract.txt: directory line 808"
+  },
+  {
+    "name": "Lucban",
+    "code": "0405623000",
+    "correspondence_code": "045623000",
+    "population_2024": 54134,
+    "locator": "psgc-directory-extract.txt: directory line 809"
+  },
+  {
+    "name": "Macalelon",
+    "code": "0405625000",
+    "correspondence_code": "045625000",
+    "population_2024": 25266,
+    "locator": "psgc-directory-extract.txt: directory line 810"
+  },
+  {
+    "name": "Mauban",
+    "code": "0405627000",
+    "correspondence_code": "045627000",
+    "population_2024": 70135,
+    "locator": "psgc-directory-extract.txt: directory line 811"
+  },
+  {
+    "name": "Mulanay",
+    "code": "0405628000",
+    "correspondence_code": "045628000",
+    "population_2024": 53976,
+    "locator": "psgc-directory-extract.txt: directory line 812"
+  },
+  {
+    "name": "Padre Burgos",
+    "code": "0405629000",
+    "correspondence_code": "045629000",
+    "population_2024": 23392,
+    "locator": "psgc-directory-extract.txt: directory line 813"
+  },
+  {
+    "name": "Pagbilao",
+    "code": "0405630000",
+    "correspondence_code": "045630000",
+    "population_2024": 82132,
+    "locator": "psgc-directory-extract.txt: directory line 814"
+  },
+  {
+    "name": "Panukulan",
+    "code": "0405631000",
+    "correspondence_code": "045631000",
+    "population_2024": 17118,
+    "locator": "psgc-directory-extract.txt: directory line 815"
+  },
+  {
+    "name": "Patnanungan",
+    "code": "0405632000",
+    "correspondence_code": "045632000",
+    "population_2024": 15554,
+    "locator": "psgc-directory-extract.txt: directory line 816"
+  },
+  {
+    "name": "Perez",
+    "code": "0405633000",
+    "correspondence_code": "045633000",
+    "population_2024": 13052,
+    "locator": "psgc-directory-extract.txt: directory line 817"
+  },
+  {
+    "name": "Pitogo",
+    "code": "0405634000",
+    "correspondence_code": "045634000",
+    "population_2024": 22499,
+    "locator": "psgc-directory-extract.txt: directory line 818"
+  },
+  {
+    "name": "Plaridel",
+    "code": "0405635000",
+    "correspondence_code": "045635000",
+    "population_2024": 10866,
+    "locator": "psgc-directory-extract.txt: directory line 819"
+  },
+  {
+    "name": "Polillo",
+    "code": "0405636000",
+    "correspondence_code": "045636000",
+    "population_2024": 31737,
+    "locator": "psgc-directory-extract.txt: directory line 820"
+  },
+  {
+    "name": "Quezon",
+    "code": "0405637000",
+    "correspondence_code": "045637000",
+    "population_2024": 15869,
+    "locator": "psgc-directory-extract.txt: directory line 821"
+  },
+  {
+    "name": "Real",
+    "code": "0405638000",
+    "correspondence_code": "045638000",
+    "population_2024": 39969,
+    "locator": "psgc-directory-extract.txt: directory line 822"
+  },
+  {
+    "name": "Sampaloc",
+    "code": "0405639000",
+    "correspondence_code": "045639000",
+    "population_2024": 13331,
+    "locator": "psgc-directory-extract.txt: directory line 823"
+  },
+  {
+    "name": "San Andres",
+    "code": "0405640000",
+    "correspondence_code": "045640000",
+    "population_2024": 38407,
+    "locator": "psgc-directory-extract.txt: directory line 824"
+  },
+  {
+    "name": "San Antonio",
+    "code": "0405641000",
+    "correspondence_code": "045641000",
+    "population_2024": 36451,
+    "locator": "psgc-directory-extract.txt: directory line 825"
+  },
+  {
+    "name": "San Francisco",
+    "code": "0405642000",
+    "correspondence_code": "045642000",
+    "population_2024": 63789,
+    "locator": "psgc-directory-extract.txt: directory line 826"
+  },
+  {
+    "name": "San Narciso",
+    "code": "0405644000",
+    "correspondence_code": "045644000",
+    "population_2024": 53375,
+    "locator": "psgc-directory-extract.txt: directory line 827"
+  },
+  {
+    "name": "Sariaya",
+    "code": "0405645000",
+    "correspondence_code": "045645000",
+    "population_2024": 172018,
+    "locator": "psgc-directory-extract.txt: directory line 828"
+  },
+  {
+    "name": "Tagkawayan",
+    "code": "0405646000",
+    "correspondence_code": "045646000",
+    "population_2024": 54709,
+    "locator": "psgc-directory-extract.txt: directory line 829"
+  },
+  {
+    "name": "Tiaong",
+    "code": "0405648000",
+    "correspondence_code": "045648000",
+    "population_2024": 107666,
+    "locator": "psgc-directory-extract.txt: directory line 830"
+  },
+  {
+    "name": "Unisan",
+    "code": "0405649000",
+    "correspondence_code": "045649000",
+    "population_2024": 25357,
+    "locator": "psgc-directory-extract.txt: directory line 831"
+  },
+  {
+    "name": "Dr. Jose P. Rizal",
+    "code": "1705323000",
+    "correspondence_code": "175323000",
+    "population_2024": 59040,
+    "locator": "psgc-directory-extract.txt: directory line 897"
+  },
+  {
+    "name": "Sofronio Española",
+    "code": "1705324000",
+    "correspondence_code": "175324000",
+    "population_2024": 39371,
+    "locator": "psgc-directory-extract.txt: directory line 898"
+  },
+  {
+    "name": "Alcantara",
+    "code": "1705901000",
+    "correspondence_code": "175901000",
+    "population_2024": 16417,
+    "locator": "psgc-directory-extract.txt: directory line 899"
+  },
+  {
+    "name": "Banton",
+    "code": "1705902000",
+    "correspondence_code": "175902000",
+    "population_2024": 5848,
+    "locator": "psgc-directory-extract.txt: directory line 900"
+  },
+  {
+    "name": "Cajidiocan",
+    "code": "1705903000",
+    "correspondence_code": "175903000",
+    "population_2024": 23488,
+    "locator": "psgc-directory-extract.txt: directory line 901"
+  },
+  {
+    "name": "Calatrava",
+    "code": "1705904000",
+    "correspondence_code": "175904000",
+    "population_2024": 11254,
+    "locator": "psgc-directory-extract.txt: directory line 902"
+  },
+  {
+    "name": "Concepcion",
+    "code": "1705905000",
+    "correspondence_code": "175905000",
+    "population_2024": 3427,
+    "locator": "psgc-directory-extract.txt: directory line 903"
+  },
+  {
+    "name": "Corcuera",
+    "code": "1705906000",
+    "correspondence_code": "175906000",
+    "population_2024": 9021,
+    "locator": "psgc-directory-extract.txt: directory line 904"
+  },
+  {
+    "name": "Looc",
+    "code": "1705907000",
+    "correspondence_code": "175907000",
+    "population_2024": 21964,
+    "locator": "psgc-directory-extract.txt: directory line 905"
+  },
+  {
+    "name": "Magdiwang",
+    "code": "1705908000",
+    "correspondence_code": "175908000",
+    "population_2024": 15170,
+    "locator": "psgc-directory-extract.txt: directory line 906"
+  },
+  {
+    "name": "Odiongan",
+    "code": "1705909000",
+    "correspondence_code": "175909000",
+    "population_2024": 48133,
+    "locator": "psgc-directory-extract.txt: directory line 907"
+  },
+  {
+    "name": "Romblon",
+    "code": "1705910000",
+    "correspondence_code": "175910000",
+    "population_2024": 39004,
+    "locator": "psgc-directory-extract.txt: directory line 908"
+  },
+  {
+    "name": "San Agustin",
+    "code": "1705911000",
+    "correspondence_code": "175911000",
+    "population_2024": 23698,
+    "locator": "psgc-directory-extract.txt: directory line 909"
+  },
+  {
+    "name": "San Andres",
+    "code": "1705912000",
+    "correspondence_code": "175912000",
+    "population_2024": 16350,
+    "locator": "psgc-directory-extract.txt: directory line 910"
+  },
+  {
+    "name": "San Fernando",
+    "code": "1705913000",
+    "correspondence_code": "175913000",
+    "population_2024": 23660,
+    "locator": "psgc-directory-extract.txt: directory line 911"
+  },
+  {
+    "name": "San Jose",
+    "code": "1705914000",
+    "correspondence_code": "175914000",
+    "population_2024": 11626,
+    "locator": "psgc-directory-extract.txt: directory line 912"
+  },
+  {
+    "name": "Santa Fe",
+    "code": "1705915000",
+    "correspondence_code": "175915000",
+    "population_2024": 17578,
+    "locator": "psgc-directory-extract.txt: directory line 913"
+  },
+  {
+    "name": "Ferrol",
+    "code": "1705916000",
+    "correspondence_code": "175916000",
+    "population_2024": 7826,
+    "locator": "psgc-directory-extract.txt: directory line 914"
+  },
+  {
+    "name": "Santa Maria",
+    "code": "1705917000",
+    "correspondence_code": "175917000",
+    "population_2024": 8360,
+    "locator": "psgc-directory-extract.txt: directory line 915"
+  },
+  {
+    "name": "Bacacay",
+    "code": "0500501000",
+    "correspondence_code": "050501000",
+    "population_2024": 72298,
+    "locator": "psgc-directory-extract.txt: directory line 916"
+  },
+  {
+    "name": "Camalig",
+    "code": "0500502000",
+    "correspondence_code": "050502000",
+    "population_2024": 73087,
+    "locator": "psgc-directory-extract.txt: directory line 917"
+  },
+  {
+    "name": "Daraga",
+    "code": "0500503000",
+    "correspondence_code": "050503000",
+    "population_2024": 138000,
+    "locator": "psgc-directory-extract.txt: directory line 918"
+  },
+  {
+    "name": "Guinobatan",
+    "code": "0500504000",
+    "correspondence_code": "050504000",
+    "population_2024": 84420,
+    "locator": "psgc-directory-extract.txt: directory line 919"
+  },
+  {
+    "name": "Jovellar",
+    "code": "0500505000",
+    "correspondence_code": "050505000",
+    "population_2024": 17538,
+    "locator": "psgc-directory-extract.txt: directory line 920"
+  },
+  {
+    "name": "Libon",
+    "code": "0500507000",
+    "correspondence_code": "050507000",
+    "population_2024": 72135,
+    "locator": "psgc-directory-extract.txt: directory line 921"
+  },
+  {
+    "name": "Malilipot",
+    "code": "0500509000",
+    "correspondence_code": "050509000",
+    "population_2024": 41066,
+    "locator": "psgc-directory-extract.txt: directory line 922"
+  },
+  {
+    "name": "Malinao",
+    "code": "0500510000",
+    "correspondence_code": "050510000",
+    "population_2024": 49570,
+    "locator": "psgc-directory-extract.txt: directory line 923"
+  },
+  {
+    "name": "Manito",
+    "code": "0500511000",
+    "correspondence_code": "050511000",
+    "population_2024": 26425,
+    "locator": "psgc-directory-extract.txt: directory line 924"
+  },
+  {
+    "name": "Oas",
+    "code": "0500512000",
+    "correspondence_code": "050512000",
+    "population_2024": 64890,
+    "locator": "psgc-directory-extract.txt: directory line 925"
+  },
+  {
+    "name": "Pio Duran",
+    "code": "0500513000",
+    "correspondence_code": "050513000",
+    "population_2024": 48713,
+    "locator": "psgc-directory-extract.txt: directory line 926"
+  },
+  {
+    "name": "Polangui",
+    "code": "0500514000",
+    "correspondence_code": "050514000",
+    "population_2024": 89344,
+    "locator": "psgc-directory-extract.txt: directory line 927"
+  },
+  {
+    "name": "Rapu-Rapu",
+    "code": "0500515000",
+    "correspondence_code": "050515000",
+    "population_2024": 36281,
+    "locator": "psgc-directory-extract.txt: directory line 928"
+  },
+  {
+    "name": "Santo Domingo",
+    "code": "0500516000",
+    "correspondence_code": "050516000",
+    "population_2024": 37586,
+    "locator": "psgc-directory-extract.txt: directory line 929"
+  },
+  {
+    "name": "Tiwi",
+    "code": "0500518000",
+    "correspondence_code": "050518000",
+    "population_2024": 56871,
+    "locator": "psgc-directory-extract.txt: directory line 930"
+  },
+  {
+    "name": "Basud",
+    "code": "0501601000",
+    "correspondence_code": "051601000",
+    "population_2024": 43388,
+    "locator": "psgc-directory-extract.txt: directory line 931"
+  },
+  {
+    "name": "Capalonga",
+    "code": "0501602000",
+    "correspondence_code": "051602000",
+    "population_2024": 32800,
+    "locator": "psgc-directory-extract.txt: directory line 932"
+  },
+  {
+    "name": "Daet",
+    "code": "0501603000",
+    "correspondence_code": "051603000",
+    "population_2024": 106465,
+    "locator": "psgc-directory-extract.txt: directory line 933"
+  },
+  {
+    "name": "San Lorenzo Ruiz",
+    "code": "0501604000",
+    "correspondence_code": "051604000",
+    "population_2024": 15072,
+    "locator": "psgc-directory-extract.txt: directory line 934"
+  },
+  {
+    "name": "Jose Panganiban",
+    "code": "0501605000",
+    "correspondence_code": "051605000",
+    "population_2024": 60626,
+    "locator": "psgc-directory-extract.txt: directory line 935"
+  },
+  {
+    "name": "Labo",
+    "code": "0501606000",
+    "correspondence_code": "051606000",
+    "population_2024": 108319,
+    "locator": "psgc-directory-extract.txt: directory line 936"
+  },
+  {
+    "name": "Mercedes",
+    "code": "0501607000",
+    "correspondence_code": "051607000",
+    "population_2024": 53702,
+    "locator": "psgc-directory-extract.txt: directory line 937"
+  },
+  {
+    "name": "Paracale",
+    "code": "0501608000",
+    "correspondence_code": "051608000",
+    "population_2024": 58391,
+    "locator": "psgc-directory-extract.txt: directory line 938"
+  },
+  {
+    "name": "San Vicente",
+    "code": "0501609000",
+    "correspondence_code": "051609000",
+    "population_2024": 11774,
+    "locator": "psgc-directory-extract.txt: directory line 939"
+  },
+  {
+    "name": "Santa Elena",
+    "code": "0501610000",
+    "correspondence_code": "051610000",
+    "population_2024": 42585,
+    "locator": "psgc-directory-extract.txt: directory line 940"
+  },
+  {
+    "name": "Talisay",
+    "code": "0501611000",
+    "correspondence_code": "051611000",
+    "population_2024": 26371,
+    "locator": "psgc-directory-extract.txt: directory line 941"
+  },
+  {
+    "name": "Vinzons",
+    "code": "0501612000",
+    "correspondence_code": "051612000",
+    "population_2024": 45173,
+    "locator": "psgc-directory-extract.txt: directory line 942"
+  },
+  {
+    "name": "Baao",
+    "code": "0501701000",
+    "correspondence_code": "051701000",
+    "population_2024": 61357,
+    "locator": "psgc-directory-extract.txt: directory line 943"
+  },
+  {
+    "name": "Balatan",
+    "code": "0501702000",
+    "correspondence_code": "051702000",
+    "population_2024": 31069,
+    "locator": "psgc-directory-extract.txt: directory line 944"
+  },
+  {
+    "name": "Bato",
+    "code": "0501703000",
+    "correspondence_code": "051703000",
+    "population_2024": 52021,
+    "locator": "psgc-directory-extract.txt: directory line 945"
+  },
+  {
+    "name": "Bombon",
+    "code": "0501704000",
+    "correspondence_code": "051704000",
+    "population_2024": 17346,
+    "locator": "psgc-directory-extract.txt: directory line 946"
+  },
+  {
+    "name": "Buhi",
+    "code": "0501705000",
+    "correspondence_code": "051705000",
+    "population_2024": 78104,
+    "locator": "psgc-directory-extract.txt: directory line 947"
+  },
+  {
+    "name": "Bula",
+    "code": "0501706000",
+    "correspondence_code": "051706000",
+    "population_2024": 75943,
+    "locator": "psgc-directory-extract.txt: directory line 948"
+  },
+  {
+    "name": "Cabusao",
+    "code": "0501707000",
+    "correspondence_code": "051707000",
+    "population_2024": 18882,
+    "locator": "psgc-directory-extract.txt: directory line 949"
+  },
+  {
+    "name": "Calabanga",
+    "code": "0501708000",
+    "correspondence_code": "051708000",
+    "population_2024": 88918,
+    "locator": "psgc-directory-extract.txt: directory line 950"
+  },
+  {
+    "name": "Camaligan",
+    "code": "0501709000",
+    "correspondence_code": "051709000",
+    "population_2024": 25218,
+    "locator": "psgc-directory-extract.txt: directory line 951"
+  },
+  {
+    "name": "Canaman",
+    "code": "0501710000",
+    "correspondence_code": "051710000",
+    "population_2024": 35766,
+    "locator": "psgc-directory-extract.txt: directory line 952"
+  },
+  {
+    "name": "Caramoan",
+    "code": "0501711000",
+    "correspondence_code": "051711000",
+    "population_2024": 50433,
+    "locator": "psgc-directory-extract.txt: directory line 953"
+  },
+  {
+    "name": "City of Caloocan",
+    "code": "1380100000",
+    "correspondence_code": "137501000",
+    "population_2024": 1712945,
+    "locator": "psgc-directory-extract.txt: directory line 329"
+  },
+  {
+    "name": "City of Las Piñas",
+    "code": "1380200000",
+    "correspondence_code": "137601000",
+    "population_2024": 615549,
+    "locator": "psgc-directory-extract.txt: directory line 330"
+  },
+  {
+    "name": "City of Makati",
+    "code": "1380300000",
+    "correspondence_code": "137602000",
+    "population_2024": 309770,
+    "locator": "psgc-directory-extract.txt: directory line 331"
+  },
+  {
+    "name": "City of Malabon",
+    "code": "1380400000",
+    "correspondence_code": "137502000",
+    "population_2024": 389929,
+    "locator": "psgc-directory-extract.txt: directory line 332"
+  },
+  {
+    "name": "City of Mandaluyong",
+    "code": "1380500000",
+    "correspondence_code": "137401000",
+    "population_2024": 465902,
+    "locator": "psgc-directory-extract.txt: directory line 333"
+  },
+  {
+    "name": "City of Manila",
+    "code": "1380600000",
+    "correspondence_code": "133900000",
+    "population_2024": 1902590,
+    "locator": "psgc-directory-extract.txt: directory line 334"
+  },
+  {
+    "name": "City of Marikina",
+    "code": "1380700000",
+    "correspondence_code": "137402000",
+    "population_2024": 471323,
+    "locator": "psgc-directory-extract.txt: directory line 335"
+  },
+  {
+    "name": "City of Muntinlupa",
+    "code": "1380800000",
+    "correspondence_code": "137603000",
+    "population_2024": 552225,
+    "locator": "psgc-directory-extract.txt: directory line 336"
+  },
+  {
+    "name": "City of Navotas",
+    "code": "1380900000",
+    "correspondence_code": "137503000",
+    "population_2024": 252878,
+    "locator": "psgc-directory-extract.txt: directory line 337"
+  },
+  {
+    "name": "City of Parañaque",
+    "code": "1381000000",
+    "correspondence_code": "137604000",
+    "population_2024": 703245,
+    "locator": "psgc-directory-extract.txt: directory line 338"
+  },
+  {
+    "name": "Pasay City",
+    "code": "1381100000",
+    "correspondence_code": "137605000",
+    "population_2024": 453186,
+    "locator": "psgc-directory-extract.txt: directory line 339"
+  },
+  {
+    "name": "City of Pasig",
+    "code": "1381200000",
+    "correspondence_code": "137403000",
+    "population_2024": 853050,
+    "locator": "psgc-directory-extract.txt: directory line 340"
+  },
+  {
+    "name": "Quezon City",
+    "code": "1381300000",
+    "correspondence_code": "137404000",
+    "population_2024": 3084270,
+    "locator": "psgc-directory-extract.txt: directory line 341"
+  },
+  {
+    "name": "City of San Juan",
+    "code": "1381400000",
+    "correspondence_code": "137405000",
+    "population_2024": 134312,
+    "locator": "psgc-directory-extract.txt: directory line 342"
+  },
+  {
+    "name": "City of Taguig",
+    "code": "1381500000",
+    "correspondence_code": "137607000",
+    "population_2024": 1308085,
+    "locator": "psgc-directory-extract.txt: directory line 343"
+  },
+  {
+    "name": "City of Valenzuela",
+    "code": "1381600000",
+    "correspondence_code": "137504000",
+    "population_2024": 725173,
+    "locator": "psgc-directory-extract.txt: directory line 344"
+  },
+  {
+    "name": "City of Tabuk",
+    "code": "1403213000",
+    "correspondence_code": "143213000",
+    "population_2024": 122771,
+    "locator": "psgc-directory-extract.txt: directory line 345"
+  },
+  {
+    "name": "City of Baguio",
+    "code": "1430300000",
+    "correspondence_code": "141102000",
+    "population_2024": 368426,
+    "locator": "psgc-directory-extract.txt: directory line 346"
+  },
+  {
+    "name": "City of Batac",
+    "code": "0102805000",
+    "correspondence_code": "012805000",
+    "population_2024": 56781,
+    "locator": "psgc-directory-extract.txt: directory line 347"
+  },
+  {
+    "name": "City of Laoag",
+    "code": "0102812000",
+    "correspondence_code": "012812000",
+    "population_2024": 112117,
+    "locator": "psgc-directory-extract.txt: directory line 348"
+  },
+  {
+    "name": "City of Candon",
+    "code": "0102906000",
+    "correspondence_code": "012906000",
+    "population_2024": 61315,
+    "locator": "psgc-directory-extract.txt: directory line 349"
+  },
+  {
+    "name": "City of Vigan",
+    "code": "0102934000",
+    "correspondence_code": "012934000",
+    "population_2024": 54498,
+    "locator": "psgc-directory-extract.txt: directory line 350"
+  },
+  {
+    "name": "City of San Fernando",
+    "code": "0103314000",
+    "correspondence_code": "013314000",
+    "population_2024": 124809,
+    "locator": "psgc-directory-extract.txt: directory line 351"
+  },
+  {
+    "name": "City of Alaminos",
+    "code": "0105503000",
+    "correspondence_code": "015503000",
+    "population_2024": 100430,
+    "locator": "psgc-directory-extract.txt: directory line 352"
+  },
+  {
+    "name": "City of Dagupan",
+    "code": "0105518000",
+    "correspondence_code": "015518000",
+    "population_2024": 174777,
+    "locator": "psgc-directory-extract.txt: directory line 353"
+  },
+  {
+    "name": "City of San Carlos",
+    "code": "0105532000",
+    "correspondence_code": "015532000",
+    "population_2024": 208330,
+    "locator": "psgc-directory-extract.txt: directory line 354"
+  },
+  {
+    "name": "City of Urdaneta",
+    "code": "0105546000",
+    "correspondence_code": "015546000",
+    "population_2024": 145935,
+    "locator": "psgc-directory-extract.txt: directory line 355"
+  },
+  {
+    "name": "Tuguegarao City",
+    "code": "0201529000",
+    "correspondence_code": "021529000",
+    "population_2024": 167297,
+    "locator": "psgc-directory-extract.txt: directory line 356"
+  },
+  {
+    "name": "City of Cauayan",
+    "code": "0203108000",
+    "correspondence_code": "023108000",
+    "population_2024": 143539,
+    "locator": "psgc-directory-extract.txt: directory line 357"
+  },
+  {
+    "name": "City of Ilagan",
+    "code": "0203114000",
+    "correspondence_code": "023114000",
+    "population_2024": 164020,
+    "locator": "psgc-directory-extract.txt: directory line 358"
+  },
+  {
+    "name": "City of Santiago",
+    "code": "0203135000",
+    "correspondence_code": "023135000",
+    "population_2024": 150313,
+    "locator": "psgc-directory-extract.txt: directory line 359"
+  },
+  {
+    "name": "City of Balanga",
+    "code": "0300803000",
+    "correspondence_code": "030803000",
+    "population_2024": 109931,
+    "locator": "psgc-directory-extract.txt: directory line 360"
+  },
+  {
+    "name": "City of Baliwag",
+    "code": "0301403000",
+    "correspondence_code": "031403000",
+    "population_2024": 174194,
+    "locator": "psgc-directory-extract.txt: directory line 361"
+  },
+  {
+    "name": "City of Malolos",
+    "code": "0301410000",
+    "correspondence_code": "031410000",
+    "population_2024": 269809,
+    "locator": "psgc-directory-extract.txt: directory line 362"
+  },
+  {
+    "name": "City of Meycauayan",
+    "code": "0301412000",
+    "correspondence_code": "031412000",
+    "population_2024": 228023,
+    "locator": "psgc-directory-extract.txt: directory line 363"
+  },
+  {
+    "name": "City of San Jose Del Monte",
+    "code": "0301420000",
+    "correspondence_code": "031420000",
+    "population_2024": 685688,
+    "locator": "psgc-directory-extract.txt: directory line 364"
+  },
+  {
+    "name": "City of Cabanatuan",
+    "code": "0304903000",
+    "correspondence_code": "034903000",
+    "population_2024": 343672,
+    "locator": "psgc-directory-extract.txt: directory line 365"
+  }
+]

@@ -1,0 +1,42 @@
+name: ABO verification
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install backend from lock
+        working-directory: backend
+        run: uv sync --locked
+      - name: Check Python
+        working-directory: backend
+        run: |
+          uv run ruff check --config pyproject.toml . ../scripts ../qa
+          uv run ruff format --check --config pyproject.toml . ../scripts ../qa
+          uv run pytest tests ../qa
+      - name: Install frontend from lock
+        working-directory: frontend
+        run: npm ci
+      - name: Regenerate actual API contract
+        working-directory: frontend
+        run: npm run api:types
+      - name: Check generated contract drift
+        run: git diff --exit-code -- frontend/openapi.json frontend/src/api/schema.d.ts
+      - name: Check React and build
+        working-directory: frontend
+        run: npm run check

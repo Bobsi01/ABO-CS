@@ -1,0 +1,26 @@
+# Local environments and generated build/cache output
+.venv/
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.runtime/
+.playwright-cli/
+data/source/terrain/*.hgt.gz
+data/source/terrain/ne_10m_*.geojson
+test-results/
+playwright-report/
+
+# Editor and OS metadata
+.idea/
+.DS_Store
+Thumbs.db
+~$*.docx
