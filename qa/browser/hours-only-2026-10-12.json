@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-12",
+  "executor": "orchestrator",
+  "asset": "/assets/index-BfQBsCVz.js",
+  "timeline": [
+    "BeforeDuringAfterPlay sequenceDuring eruptionModel time: 0.5 h / 27.9 hEmission duration: 1 h36-second accelerated replay with nonuniform model-time steps. Billows and fountain shapes are schematic; accumulated ash is computed in Python."
+  ],
+  "map": [
+    "Snapshot: During eruption · 0.5 h · 0 municipal centroids with ash ≥0.5 mm"
+  ],
+  "errors": []
+}

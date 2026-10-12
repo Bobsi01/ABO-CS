@@ -10,9 +10,10 @@ const route = [{ east_m: 0, north_m: 0, elevation_m: 2000, arrival_s: 10, width_
 
 describe('backend eruption timeline interpolation', () => {
   it('shows elapsed scenario hours beyond a day without wrapping or losing the emission duration', () => {
-    expect(scenarioClock(3600)).toBe('1:00:00')
-    expect(scenarioClock(100475)).toBe('27:54:35')
-    expect(scenarioClock(1883.4)).toBe('0:31:23')
+    expect(scenarioClock(3600)).toBe('1 h')
+    expect(scenarioClock(100475)).toBe('27.9 h')
+    expect(scenarioClock(1883.4)).toBe('0.5 h')
+    expect(scenarioClock(30)).toBe('<0.1 h')
   })
   it('keeps the before state clear even when its next frame contains ash', () => {
     const result = eruptionDisplayFrame(sequence([frame('before', 0, []), frame('erupting', 20, [parcel('a', 100)])]), 0.8)

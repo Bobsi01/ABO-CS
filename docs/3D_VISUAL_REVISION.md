@@ -44,6 +44,8 @@ The default preset emits for `1:00:00` and reaches eventual settling at `27:54:3
 
 ## Remaining work
 
+The user's subsequent display preference is hours only: timeline, map and accessible readout use hours, with at most one decimal (`1 h` emission / `27.9 h` total in the default). Backend seconds and the 36-second accelerated replay are unchanged. The h:mm:ss screenshots above are retained as earlier evidence; `qa/browser/hours-only-2026-10-12.*` records the updated interface.
+
 Independent final visual review and user acceptance are pending. The bounded cohort illustration remains an approximation: it is neither volumetric plume CFD nor an airborne ash forecast. Full graphics retention/cleanup, actual hidden-page lifecycle, native accessibility checks and the scientific source/empirical-validation gaps remain open. The research manuscript and scientific results were preserved; a more convincing image does not establish predictive accuracy.
 
 The display still uses a bounded set of cloud cohorts, so distinct puffs can remain visible in a close-up, particularly downwind. That is a remaining visual approximation, not a claim that a real plume separates into these exact forms. The current correction improves softness, grain distinction, terrain contact and framing; it does not close final artistic acceptance automatically.

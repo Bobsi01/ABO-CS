@@ -33,8 +33,8 @@ export default function EruptionTimeline({ sequence, index, playing, onIndex, on
   return <section className="eruption-timeline" aria-label="Eruption sequence">
     <div className="timeline-top"><div className="phase-choices" aria-label="Jump to eruption stage">{['Before', 'During', 'After'].map((label, i) => <button type="button" aria-pressed={stage === i} key={label} onClick={() => seek(i === 0 ? 0 : i === 1 ? during : after >= 0 ? after : last)}>{label}</button>)}</div>
       <button type="button" disabled={!sceneAvailable} onClick={() => { if (!playing && index >= last) onIndex(0); onPlaying(!playing) }}><Icon name={playing ? 'pause' : 'play'} />{playing ? 'Pause sequence' : index >= last ? 'Replay sequence' : 'Play sequence'}</button></div>
-    <label className="timeline-slider">{phaseLabel(current.phase)}<input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, ${scenarioClock(current.elapsed_s)} elapsed hours, minutes and seconds`} onChange={event => seek(Number(event.target.value))} /></label>
-    <div className="timeline-readout"><span>Model time (h:mm:ss): {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>
+    <label className="timeline-slider">{phaseLabel(current.phase)}<input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, ${scenarioClock(current.elapsed_s).replace(' h', ' hours')} elapsed model time`} onChange={event => seek(Number(event.target.value))} /></label>
+    <div className="timeline-readout"><span>Model time: {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>
     <p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay with nonuniform model-time steps. Billows and fountain shapes are schematic; accumulated ash is computed in Python.</p>
   </section>
 }
