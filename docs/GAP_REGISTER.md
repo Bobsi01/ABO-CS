@@ -10,6 +10,17 @@ The dated table below preserves the 11 October evidence. Its 15-page manuscript 
 
 The user rejected the previous visual output. A revised scientific illustration uses soft cloud textures, sparse ash markers, a surface lava ribbon and oblique close-up framing. See [current visual revision](3D_VISUAL_REVISION.md). The dated rows below retain their evidence: old-bundle performance passes do not transfer to the new renderer, final independent visual acceptance is pending, and cleanup/lifecycle/accessibility/source gates remain open. No overall engineering/3D QA completion is claimed.
 
+## 13 October Taal focus decisions
+
+Basis: [Taal implementation plan](TAAL_IMPLEMENTATION_PLAN.md), derived from `TAAL_FOCUS_QA_AND_DATA.md`. User decisions on 13 October: the application stays ash-only, and Taal becomes the stated scientific focus. The rows below add to the dated table, they do not replace it.
+
+| Gap | Status | Evidence and practical consequence | Owner |
+| --- | --- | --- | --- |
+| Taal focus and teaching-preset wording | implemented, browser evidence pending | `frontend/src/scientificScope.ts` and the input panel state that Taal is the scientific focus with a reference contour and no established agreement. Mayon and Kanlaon are labeled teaching illustrations with no curated reference event. Preset option names are unchanged so retained browser scripts still match. Unit tests only; no browser screenshot was taken for this change. | Orchestrator |
+| Altitude-dependent wind profile and multi-pulse emission | deferred, proposal exclusion | `PROJECT_CONTEXT.md` lists both as explicit proposal exclusions. The user chose not to change scope. The uniform-wind, single-block source remains, and a profile would still need a reviewed wind source, which the 71.43% Tanay coverage does not supply. | Science |
+| Post-2020 Taal activity sources | source blocked | `data/source/taal-activity/manifest.json`: GVP and Bato et al. (2021) returned HTTP 403; the PHIVOLCS page resolved to a 2019 bulletin. No seismicity, SO2, alert-level, satellite or deformation value is curated or displayed. | Science |
+| Remaining Taal administrative coverage | source blocked, unchanged | The 52 unresolved Taal-domain records stay as recorded in the dated table. No new matching was attempted in this change. | Science |
+
 This register distinguishes implemented and independently tested changes from source availability and model limitations. A closed software item does not establish eruption prediction accuracy. Owners are the scientific/backend specialist, engineering/3D specialist, independent QA evaluator and orchestrator.
 
 | Gap | Status | Evidence and practical consequence | Owner |

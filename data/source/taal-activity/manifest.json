@@ -1,0 +1,40 @@
+{
+  "id": "taal-post-2020-activity-source-attempts",
+  "accessed_at": "2026-10-13",
+  "basis": "docs/TAAL_IMPLEMENTATION_PLAN.md, derived from TAAL_FOCUS_QA_AND_DATA.md (12 October 2026)",
+  "purpose": "One-time attempt to archive public post-2020 Taal activity sources for manuscript discussion only. User decision 2026-10-13: the application stays ash-only; no seismicity, SO2, alert-level or deformation layers are added.",
+  "policy": "Only values traceable to an archived raw file may be used. Anything not archived stays unavailable. The example values in TAAL_FOCUS_QA_AND_DATA.md (GVP SO2 table, TROPOMI bearing/length/DU, Bato et al. dike azimuth/length) are unverified and are not used.",
+  "records": [
+    {
+      "id": "gvp-taal-273070",
+      "publisher": "Smithsonian Global Volcanism Program",
+      "url": "https://volcano.si.edu/volcano.cfm?vn=273070",
+      "status": "source_blocked",
+      "finding": "Scripted download and read-only fetch both returned HTTP 403.",
+      "decision": "No GVP/BGVN activity values are used."
+    },
+    {
+      "id": "bato-2021-grl",
+      "publisher": "AGU / Wiley, Geophysical Research Letters",
+      "url": "https://doi.org/10.1029/2021GL092803",
+      "status": "source_blocked",
+      "finding": "DOI resolver and publisher full-text page both returned HTTP 403.",
+      "decision": "No deformation, uplift or dike values are used. The citation may be named as context only, without quoted quantities."
+    },
+    {
+      "id": "phivolcs-taal-bulletin-index",
+      "publisher": "PHIVOLCS",
+      "url": "https://www.phivolcs.dost.gov.ph/taal-volcano-bulletin/",
+      "status": "rejected_content_mismatch",
+      "file": "phivolcs-taal-bulletin-index.html",
+      "bytes": 82240,
+      "sha256": "4E57EBBA754CA3A615F3CEBD3A14416C911972F55F9284C236831ED1F3746E6A",
+      "finding": "Download succeeded, but the page title resolves to 'TAAL VOLCANO BULLETIN 01 April 2019 8:00 A.M.', not a 2021 to 2024 archive.",
+      "decision": "Retained only as the record of this attempt. It supports no post-2020 statement."
+    }
+  ],
+  "not_attempted": [
+    "USGS FDSN earthquake catalog, Sentinel-5P TROPOMI, PHIVOLCS PDZ KMZ and WOVOdat: not needed after the user chose no application context layers. The existing dated PHIVOLCS PDZ reference (eruptionResearch.ts, 15 February 2021 advisory) is unchanged."
+  ],
+  "remaining_limit": "No post-2020 Taal activity value is curated. Manual retrieval through a browser by the user would be needed before any such value enters the manuscript."
+}

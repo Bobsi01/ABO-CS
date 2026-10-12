@@ -50,4 +50,10 @@ describe('completed-result workflow', () => {
     await screen.findByText('Event sequence failed')
     expect(screen.getByRole('button', { name: /^During$/ }).getAttribute('aria-pressed')).toBe('true')
   })
+  it('labels Taal as the scientific focus without a validation claim', async () => {
+    vi.mocked(getCatalog).mockResolvedValue(catalog)
+    render(<Workspace />)
+    expect(await screen.findByText(/^Scientific focus\./)).toBeTruthy()
+    expect(screen.queryByText(/validated/i)).toBeNull()
+  })
 })

@@ -21,6 +21,9 @@ Paths are relative to the repository root. Dated ownership below records previou
 | `docs/REPOSITORY_HANDOFF.md` | GitHub scope, Git LFS, source rights and reproducibility boundaries |
 | `frontend/src/components/eruptionVisuals.ts`, `eruptionVisuals.test.ts` | Cloud texture, sparse ash markers, surface lava ribbon and geometry/data-boundary checks |
 | `docs/3D_VISUAL_REVISION.md`, `qa/browser/3d-visual-2026-10-12-*` | Current renderer revision, visual evidence and remaining QA gates |
+| `docs/TAAL_IMPLEMENTATION_PLAN.md` | Implementation roadmap based on TAAL_FOCUS_QA_AND_DATA.md, with 13 October user decisions and status |
+| `frontend/src/scientificScope.ts`, `scientificScope.test.ts` | Taal scientific-focus and Mayon/Kanlaon teaching-illustration wording (no validation claim) |
+| `data/source/taal-activity/` | 13 October post-2020 Taal source attempts; blocked or mismatched, no values curated |
 
 ## QA gap closure — 2026-10-11
 
