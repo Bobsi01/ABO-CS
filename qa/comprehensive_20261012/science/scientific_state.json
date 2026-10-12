@@ -1,0 +1,281 @@
+{
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pyproj": "3.8.0",
+    "shapely": "2.2.0",
+    "pydantic": "2.13.5",
+    "fastapi": "0.142.4",
+    "pytest": "9.1.1"
+  },
+  "dataset_revision": "2026-10-12-gap-evidence-v2-utf8",
+  "catalog_sha256": "051c78d4e4b6c5765696da31b51059af57b3c85188d791ec0079275682bbe684",
+  "reviewed_source_sha256": {
+    "backend/src/abo_api/kernel.py": "01d4818c7ac062f10f11076d8f0333c4de55453a54861091cd3998f6ba371fc9",
+    "backend/src/abo_api/service.py": "978cd50895a63abecd1d0805ace6802497b3df7f18497cf3e5072fd4b75f79eb",
+    "backend/src/abo_api/eruption.py": "02ea27dbcf7e5958f82afb7b8be442bfe3ea81e3018adc6eabd2f63f926b3be6",
+    "backend/src/abo_api/evidence.py": "3a8ae1850f5220e8db5925055c3895bdba6c55c5dda888118818f29b584e1254",
+    "backend/src/abo_api/contracts.py": "3d2c52632e79b57628218bdadaf6c49d2715090b3acd2aa626f12f0d28b59d2e",
+    "backend/src/abo_api/main.py": "558288177808593cee08b6ed7e5b65df38b4e214c9d7302445e55a704c429597",
+    "docs/ABO_RESEARCH_IMRAD.md": "3267db0c3eecc69bc2e5d42086a0891c1cef4508b61c443121be01c2a095f8fc"
+  },
+  "source_and_derived_sha256_checks": [
+    {
+      "file": "data/source/municipal-boundaries.geojson",
+      "sha256": "2ece3d44a5c6a2afb385ffbf3a6b88d83e4d3a3e7eed9a52cb3be1bc59e289fc"
+    },
+    {
+      "file": "data/source/municipal-boundaries-metadata.json",
+      "sha256": "3153bc4f00baec271abf7908362eb7061d9b43ab7f7ffbbf3373304f8ad8dbab"
+    },
+    {
+      "file": "data/source/natural-earth-coastline.geojson",
+      "sha256": "271f1c4c1908312bac6b29d158ea1356544beafc129f260005300913aa5ea283"
+    },
+    {
+      "file": "data/source/gap-evidence-register.json",
+      "sha256": "c41dee4563902b5d142addb298ca0dfa7c36e1dbec8ec1c2060c0cedc15b25a0"
+    },
+    {
+      "file": "data/source/source-investigations.json",
+      "sha256": "24d8aa317a8464f9b8461afe07f6d8db5ccc6f5c1007bc987031cd1be929c470"
+    },
+    {
+      "file": "data/source/domain-inventory.json",
+      "sha256": "dd2f3425c5c8e4e2bf757569d39d47bc08e0d9344bf71d5cd4c27f6816c55c5c"
+    },
+    {
+      "file": "data/source/population/psgc-directory-extract.txt",
+      "sha256": "2e5738aa4df0290270f8157d97852a8ce292716fa6b3ac833652bf63a1a48768"
+    },
+    {
+      "file": "data/source/population/psgc-directory-extract-2.txt",
+      "sha256": "2366c3ff4f872a855a800b9283b6f88f8d91496785f392bdb883615bc76ef28b"
+    },
+    {
+      "file": "data/source/population/psgc-directory-extract-3.txt",
+      "sha256": "a72315e9e87840d4043500c7435e15cf42a6d7d08fdc8e9de8c3ee503a6cfbc2"
+    },
+    {
+      "file": "data/source/population/psgc-extracted-records.json",
+      "sha256": "e2bc7fe5855b1227305a800a9c722958ddde799f33539b9e9793b9f5e884e1f2"
+    },
+    {
+      "file": "data/source/population/batangas-2020-transcription.json",
+      "sha256": "59dc266d6539a819894ebcdc16cb9c4f8a985809bbfec717a80768bc37aabe09"
+    },
+    {
+      "file": "data/source/igra/igra2-data-format.txt",
+      "sha256": "dfd7b4d2dd18a255477455a7caefd12cb21c30549a1e70cbc3a51db9f41c1dfe"
+    },
+    {
+      "file": "data/source/igra/igra2-station-list.txt",
+      "sha256": "8ff2dc070248e778307613aa2ab2dfb7b745e5ff29e9d50c58bc5dc8193d0e9d"
+    },
+    {
+      "file": "data/source/igra/RPM00098433-data.txt.zip",
+      "sha256": "2d5b2d792c5f83918a63e7598c979b5cc6d11ee8d0396b0d8744be084d2aec09"
+    },
+    {
+      "file": "data/source/igra/tanay-2020-01-12-13.txt",
+      "sha256": "27a56971a45daedb74ce52481ec5581bd56b4bd6967e399609a52cf31bab779f"
+    },
+    {
+      "file": "data/source/igra/tanay-effective-wind.json",
+      "sha256": "c9fbac742e5aa9b6a7f2145696a3e44e303ab327d4bdc3482b4d36c4059ef92a"
+    },
+    {
+      "file": "data/source/taal-study/PMC8889389.1.json",
+      "sha256": "c9f7409e2d5e106563535991b6971a013468d661b8d0bbae183824e5fae819f4"
+    },
+    {
+      "file": "data/source/taal-study/PMC8889389.1.xml",
+      "sha256": "b95e450e9985cef34bea58a4c73f7ca08e1954f3d35c9ef47028bd56911d1cdf"
+    },
+    {
+      "file": "data/source/taal-study/PMC8889389.1.pdf",
+      "sha256": "386768a587f85193a6581ae72ac8f2189fbbd1206c7f417fe40721a4c960ec4a"
+    },
+    {
+      "file": "data/source/taal-study/figure-4.jpg",
+      "sha256": "e9489132b9e36709eb7a2a9adf0460098e7eeee622e69ec7b1ff68caf4a8f42a"
+    },
+    {
+      "file": "data/source/taal-study/figure-4-pdf-extract.png",
+      "sha256": "9a56f37370071a5e69ea82c435a4614a4ec0d2ae1623ca1c3f02d9a4b06f3553"
+    },
+    {
+      "file": "data/source/taal-study/trace-science.json",
+      "sha256": "8677e2d646e7097c25dddea94a7fbe697955abdd92ec90ce96cd343447bce25d"
+    },
+    {
+      "file": "data/source/taal-study/trace-science.geojson",
+      "sha256": "58242adb67c51e2ed5f33d4d11223a13dc452bf8daa1209f0142cc6310712918"
+    },
+    {
+      "file": "data/source/taal-study/trace-qa.json",
+      "sha256": "bdc75755d434c093695d9d8a2690ae8884358bc6fe88a75c56ca055148f94d0b"
+    },
+    {
+      "file": "data/source/taal-study/trace-qa.geojson",
+      "sha256": "de251169ec6daf8acde9b70dda9804ad9ad503706bb2f04eb570d014eab017d1"
+    },
+    {
+      "file": "data/source/taal-study/trace-qa-evidence.json",
+      "sha256": "5f53f0148d567059db9e374b3f6a2f585d87aaf50b91e44c7b36fc7b39dcaf78"
+    },
+    {
+      "file": "data/source/taal-study/trace-comparison.json",
+      "sha256": "03083529d8984449c8d355bcbff6d75462cf58f64f12a933ce8e41895b7fd5e0"
+    }
+  ],
+  "source_references_resolve": true,
+  "unique_receptor_ids": true,
+  "municipal_receptors": 318,
+  "historical_2020_known": 34,
+  "criteria_count": 0,
+  "water_facilities_count": 0,
+  "parameter_classifications": {
+    "derived": 10,
+    "measured": 5,
+    "assumed": 16
+  },
+  "parameter_readiness": {
+    "usable": 5,
+    "source_blocked": 10,
+    "illustrative": 16
+  },
+  "tanay_wind": {
+    "available": false,
+    "reason": "No launch satisfies frozen coverage rule",
+    "speed_m_s": null,
+    "from_deg": null,
+    "wind_east_m_s": null,
+    "wind_north_m_s": null,
+    "profiles": [
+      {
+        "station_id": "RPM00098433",
+        "nominal_date": "2020-01-12",
+        "nominal_hour_utc": 0,
+        "release_hhmm": "0011",
+        "release_utc": "2020-01-12T00:11:00+00:00",
+        "time_basis": "actual release",
+        "lat": 14.5812,
+        "lon": 121.3693,
+        "accepted_levels": 9,
+        "rejected_levels": 46,
+        "height_processing_flags": {
+          "blank": 44,
+          "A": 0,
+          "B": 11
+        },
+        "wind_qc": "Missing/removed wind values rejected; no separate per-level wind flag",
+        "height_grid_coverage_fraction": 0.7142857142857143,
+        "usable_under_coverage_rule": false,
+        "height_geopotential_m_asl": [
+          1510.0,
+          3142.0,
+          5870.0,
+          7590.0,
+          9720.0,
+          11000.0,
+          12490.0,
+          14290.0,
+          16630.0
+        ],
+        "wind_east_m_s": [
+          -7.7274066103125465,
+          -0.2614672282429746,
+          3.6252311481465993,
+          1.2155372436685132,
+          -2.083778132003163,
+          -3.364647586332773,
+          -2.0818995585505003e-15,
+          2.091737825943791,
+          -9.29760175829539
+        ],
+        "wind_north_m_s": [
+          -2.070552360820166,
+          2.988584094275237,
+          -1.6904730469627984,
+          6.893654271085456,
+          11.817693036146496,
+          12.557035741757886,
+          17.0,
+          23.908672754201895,
+          19.9387713148063
+        ]
+      },
+      {
+        "station_id": "RPM00098433",
+        "nominal_date": "2020-01-12",
+        "nominal_hour_utc": 12,
+        "release_hhmm": "1140",
+        "release_utc": "2020-01-12T11:40:00+00:00",
+        "time_basis": "actual release",
+        "lat": 14.5812,
+        "lon": 121.3693,
+        "accepted_levels": 9,
+        "rejected_levels": 46,
+        "height_processing_flags": {
+          "blank": 45,
+          "A": 0,
+          "B": 10
+        },
+        "wind_qc": "Missing/removed wind values rejected; no separate per-level wind flag",
+        "height_grid_coverage_fraction": 0.7142857142857143,
+        "usable_under_coverage_rule": false,
+        "height_geopotential_m_asl": [
+          1504.0,
+          3139.0,
+          5860.0,
+          7590.0,
+          9710.0,
+          10980.0,
+          12470.0,
+          14270.0,
+          16610.0
+        ],
+        "wind_east_m_s": [
+          -1.9283628290596178,
+          -0.520944533000791,
+          2.5357095704441956,
+          8.191520442889916,
+          4.3999237667428535,
+          9.899494936611664,
+          9.297601758295384,
+          -4.5148526193401874,
+          -2.4492935982947065e-15
+        ],
+        "wind_north_m_s": [
+          -2.298133329356934,
+          -2.954423259036624,
+          5.4378467222199,
+          5.735764363510464,
+          16.42073904691416,
+          9.899494936611667,
+          19.938771314806303,
+          25.60500157831741,
+          20.0
+        ]
+      }
+    ]
+  },
+  "historical_available": false,
+  "historical_metrics": {},
+  "historical_blockers": [
+    "Tanay selected-launch coverage 71.43% below frozen 75% requirement",
+    "Reviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)",
+    "Independent ash mass and dry bulk density",
+    "Whole-event grain fractions and settling speeds",
+    "Raw geolocated thickness observations and defensible original measurement/interpolation uncertainty",
+    "2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review",
+    "Condition-specific roof/crop thresholds and water-facility coordinates",
+    "Resolve/report published footprint area definitions without target selection"
+  ],
+  "historical_reference_dependency_groups": [
+    "taal-deposit-study"
+  ],
+  "limit": "Hashes prove retained-byte identity, not source truth or empirical prediction accuracy."
+}

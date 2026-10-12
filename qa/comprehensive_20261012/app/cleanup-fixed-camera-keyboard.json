@@ -1,0 +1,17 @@
+{
+  "captured": "2026-10-12T09:48:53.557Z",
+  "assets": [
+    "http://127.0.0.1:8012/assets/index-D9xPQGL8.js"
+  ],
+  "mode": "Headless installed Chrome paused terrain; image hashes prove camera interactions only. Five-pixel border crop excludes the keyboard-vs-pointer focus outline.",
+  "keys": [
+    "ArrowLeft",
+    "ArrowUp",
+    "+"
+  ],
+  "before": "01a300e1ab610fe87eb068e65de70a3076bd6b9cbf6242a84a6caa3246fa8ac2",
+  "after_keys": "40922090f3a237a53eab11b59c8906a11450d103e5164d169d06fefc4dbb0681",
+  "reset": "01a300e1ab610fe87eb068e65de70a3076bd6b9cbf6242a84a6caa3246fa8ac2",
+  "reset_matches_before": true,
+  "errors": []
+}

@@ -1,0 +1,121 @@
+{
+  "started": "2026-10-12T09:34:06.419Z",
+  "base": "http://127.0.0.1:8012",
+  "errors": [],
+  "scope": "One headed actual-tab-visibility check, then 20 headless run/view cycles with forced-GC JS heap/DOM/listener metrics and instrumented paused WebGL draw calls; no foreground FPS/30-minute/full-GPU certification",
+  "assets": [
+    "http://127.0.0.1:8012/assets/index-CPAkKjCr.js"
+  ],
+  "visibility": {
+    "mode": "headed installed Chrome, native tab foreground change",
+    "hiddenEvidence": {
+      "events": [],
+      "hidden": false,
+      "slider": "1",
+      "playing": true
+    },
+    "resumedEvidence": {
+      "events": [],
+      "hidden": false,
+      "slider": "1",
+      "playing": true
+    },
+    "observed_hidden_transition": false,
+    "paused": false
+  },
+  "cleanup": {
+    "mode": "headless installed Chrome",
+    "samples": [
+      {
+        "cycle": 0,
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 1288,
+          "Nodes": 11379,
+          "JSHeapUsedSize": 28915760,
+          "JSHeapTotalSize": 30523392
+        },
+        "visible_nodes": 4587,
+        "canvas_count": 1,
+        "map_count": 1,
+        "playing": false,
+        "draws": 19,
+        "paused_draw_calls_400ms": 0
+      },
+      {
+        "cycle": 5,
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 1583,
+          "Nodes": 12966,
+          "JSHeapUsedSize": 31047496,
+          "JSHeapTotalSize": 32620544
+        },
+        "visible_nodes": 4587,
+        "canvas_count": 1,
+        "map_count": 1,
+        "playing": false,
+        "draws": 172,
+        "paused_draw_calls_400ms": 0
+      },
+      {
+        "cycle": 10,
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 1878,
+          "Nodes": 14551,
+          "JSHeapUsedSize": 31999176,
+          "JSHeapTotalSize": 33144832
+        },
+        "visible_nodes": 4587,
+        "canvas_count": 1,
+        "map_count": 1,
+        "playing": false,
+        "draws": 316,
+        "paused_draw_calls_400ms": 0
+      },
+      {
+        "cycle": 15,
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 2173,
+          "Nodes": 16136,
+          "JSHeapUsedSize": 32576368,
+          "JSHeapTotalSize": 34979840
+        },
+        "visible_nodes": 4587,
+        "canvas_count": 1,
+        "map_count": 1,
+        "playing": false,
+        "draws": 460,
+        "paused_draw_calls_400ms": 0
+      },
+      {
+        "cycle": 20,
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 2468,
+          "Nodes": 17721,
+          "JSHeapUsedSize": 32995116,
+          "JSHeapTotalSize": 35766272
+        },
+        "visible_nodes": 4587,
+        "canvas_count": 1,
+        "map_count": 1,
+        "playing": false,
+        "draws": 613,
+        "paused_draw_calls_400ms": 0
+      }
+    ],
+    "delta": {
+      "Documents": 0,
+      "JSEventListeners": 1180,
+      "Nodes": 6342,
+      "JSHeapUsedSize": 4079356,
+      "JSHeapTotalSize": 5242880
+    },
+    "visible_nodes_delta": 0,
+    "all_paused_draw_samples_zero": true
+  },
+  "finished": "2026-10-12T09:34:42.638Z"
+}

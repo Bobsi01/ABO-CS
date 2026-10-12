@@ -1,0 +1,332 @@
+{
+  "started": "2026-10-12T09:23:14.319Z",
+  "base": "http://127.0.0.1:8012",
+  "mode": "Headless installed Chrome functional and visual checks; no foreground GPU-performance or screen-reader certification",
+  "checks": [
+    {
+      "name": "Normal default Taal run traces same submitted context through grid and sequence",
+      "passed": true,
+      "duration_ms": 1384,
+      "evidence": {
+        "requests": [
+          {
+            "path": "/api/simulations",
+            "body": {
+              "scenario": {
+                "volcano_id": "taal",
+                "label": "Taal illustrative teaching scenario",
+                "input_status": "illustrative",
+                "source_ids": [
+                  "gvp-taal",
+                  "assumptions"
+                ],
+                "vent_lat": 14.0106,
+                "vent_lon": 120.9975,
+                "vent_elevation_m": 311,
+                "column_height_m": 5000,
+                "mass_rate_kg_s": 10000,
+                "duration_s": 3600,
+                "wind_speed_m_s": 10,
+                "wind_from_deg": 225,
+                "diffusivity_m2_s": 500,
+                "initial_spread_m": 250,
+                "bulk_density_kg_m3": 1000,
+                "grains": [
+                  {
+                    "diameter_um": 32,
+                    "fraction": 0.1,
+                    "settling_speed_m_s": 0.05
+                  },
+                  {
+                    "diameter_um": 63,
+                    "fraction": 0.15,
+                    "settling_speed_m_s": 0.2
+                  },
+                  {
+                    "diameter_um": 125,
+                    "fraction": 0.25,
+                    "settling_speed_m_s": 0.8
+                  },
+                  {
+                    "diameter_um": 250,
+                    "fraction": 0.3,
+                    "settling_speed_m_s": 3
+                  },
+                  {
+                    "diameter_um": 500,
+                    "fraction": 0.2,
+                    "settling_speed_m_s": 10
+                  }
+                ],
+                "domain_km": 200,
+                "cell_km": 1,
+                "release_layers": 16
+              },
+              "screening_context": {},
+              "population_year": 2024
+            }
+          },
+          {
+            "path": "/api/eruption-sequences",
+            "body": {
+              "simulation": {
+                "scenario": {
+                  "volcano_id": "taal",
+                  "label": "Taal illustrative teaching scenario",
+                  "input_status": "illustrative",
+                  "source_ids": [
+                    "gvp-taal",
+                    "assumptions"
+                  ],
+                  "vent_lat": 14.0106,
+                  "vent_lon": 120.9975,
+                  "vent_elevation_m": 311,
+                  "column_height_m": 5000,
+                  "mass_rate_kg_s": 10000,
+                  "duration_s": 3600,
+                  "wind_speed_m_s": 10,
+                  "wind_from_deg": 225,
+                  "diffusivity_m2_s": 500,
+                  "initial_spread_m": 250,
+                  "bulk_density_kg_m3": 1000,
+                  "grains": [
+                    {
+                      "diameter_um": 32,
+                      "fraction": 0.1,
+                      "settling_speed_m_s": 0.05
+                    },
+                    {
+                      "diameter_um": 63,
+                      "fraction": 0.15,
+                      "settling_speed_m_s": 0.2
+                    },
+                    {
+                      "diameter_um": 125,
+                      "fraction": 0.25,
+                      "settling_speed_m_s": 0.8
+                    },
+                    {
+                      "diameter_um": 250,
+                      "fraction": 0.3,
+                      "settling_speed_m_s": 3
+                    },
+                    {
+                      "diameter_um": 500,
+                      "fraction": 0.2,
+                      "settling_speed_m_s": 10
+                    }
+                  ],
+                  "domain_km": 200,
+                  "cell_km": 1,
+                  "release_layers": 16
+                },
+                "screening_context": {},
+                "population_year": 2024
+              },
+              "options": {
+                "include_lava": false
+              }
+            }
+          }
+        ],
+        "summary": {
+          "reporting_cutoff_mm": 0.5,
+          "receptors_total": 320,
+          "receptors_covered": 151,
+          "municipalities_reported": 0,
+          "indicative_population": 0,
+          "reported_population_unknown": 0,
+          "criterion_counts": {},
+          "criterion_population": {}
+        },
+        "lava": false,
+        "frame_count": 37
+      }
+    },
+    {
+      "name": "Stage seeks and keyboard timeline select computed map snapshots",
+      "passed": true,
+      "duration_ms": 349,
+      "evidence": {
+        "during": "Snapshot: During eruption · 0.5 h · 0 municipal centroids with ash ≥0.5 mm",
+        "after": "Snapshot: After eruption · fallout continues · 1 h · 0 municipal centroids with ash ≥0.5 mm",
+        "final": "After · all modeled ash settled, map snapshot at 27.9 hours",
+        "computed_reported": 0
+      }
+    },
+    {
+      "name": "Keyboard selector, location inspector and CSV agree with final Python point samples",
+      "passed": true,
+      "duration_ms": 420,
+      "evidence": {
+        "inspector": "0 mm\nAccumulated ash at selected time\n\n0 kg/m²\nGround load\n\nBelow the 0.5 mm reporting cutoff.\n\nRoof load\nUnknownNo reviewed applicable roof criterion\nCrop deposit\nUnknownNo reviewed applicable crop criterion\n\nPopulation: 31,910 (2024). A centroid sample does not describe every resident or building.",
+        "exported_population": 2024,
+        "rows": 320
+      }
+    },
+    {
+      "name": "Stale edits and failed run preserve completed views and downloadable scenario",
+      "passed": true,
+      "duration_ms": 1485,
+      "evidence": {
+        "exported_wind": 10,
+        "recovery_error_count": 0
+      }
+    },
+    {
+      "name": "Native input failure opens hidden invalid field and focuses it",
+      "passed": true,
+      "duration_ms": 325,
+      "evidence": {
+        "focus": "Bulk deposit density",
+        "error": "Bulk deposit density (kg/m³): Value must be greater than or equal to 0.001."
+      }
+    },
+    {
+      "name": "Comparison error then valid manual winds remain quantitative and inspectable",
+      "passed": true,
+      "duration_ms": 477,
+      "evidence": {
+        "descriptions": [
+          "Taal illustrative teaching scenario · Manual wind 10 municipal centroids ≥0.5 mm · 0 indicative residentsRetained mass 84.61% · Wind 10 m/s from 45°Inspect this wind result",
+          "Taal illustrative teaching scenario · Manual wind 20 municipal centroids ≥0.5 mm · 0 indicative residentsRetained mass 81.45% · Wind 15 m/s from 225°Inspect this wind result"
+        ],
+        "inspected_caption": "Wind FROM 45° · 10 m/s\nColumn 5 km above ground"
+      }
+    },
+    {
+      "name": "Sweep handles bounded resource response and enables direction reuse when available",
+      "passed": false,
+      "duration_ms": 166,
+      "error": "Error: No sweep outcomes: Estimated working memory exceeds the 512 MiB computation budget\n    at D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:144:163\n    at async check (D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:14:26)\n    at async D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:138:3"
+    },
+    {
+      "name": "Historical blocked science retains derived traces and structured exports",
+      "passed": false,
+      "duration_ms": 75,
+      "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /validation is not established/. Input:\n\n'unavailable. The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.\\n' +\n  '\\n' +\n  'Independent QA approved frozen methodology; scientific input gate remains blocked\\n' +\n  'Published 8,605 km² narrative and 3,864.89 km² Table 3 area statements remain distinct unresolved references\\n' +\n  'No participant or classroom empirical study was performed\\n' +\n  'Numerical verification does not establish empirical accuracy\\n' +\n  'Both target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed\\n' +\n  'Evaluation JSON\\n' +\n  '\\n' +\n  'No geolocated thickness observations have passed the evidence gate. Published summary areas cannot supply point residuals.\\n' +\n  '\\n' +\n  'Derived reference contours & digitization uncertainty\\n' +\n  'Frozen protocol & source dependencies'\n\n    at D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:153:12\n    at async check (D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:14:26)\n    at async D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:148:3"
+    },
+    {
+      "name": "Mayon lava real workflow, effect switch, scene/camera controls and final timeline",
+      "passed": true,
+      "duration_ms": 2376,
+      "evidence": {
+        "path_points": 7,
+        "stop_reason": "effusion_volume_limit",
+        "caption": "Snapshot: After · all modeled ash settled · 27.9 h · 0 municipal centroids intersect the illustrative channel"
+      }
+    },
+    {
+      "name": "Replay pauses on draft edit and actual reduced-motion preference transition",
+      "passed": true,
+      "duration_ms": 859,
+      "evidence": {
+        "reduced_motion_pause_value": "0"
+      }
+    },
+    {
+      "name": "320 px light dimensions",
+      "passed": true,
+      "evidence": {
+        "innerWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "body": 320
+      }
+    },
+    {
+      "name": "320 px dark dimensions",
+      "passed": true,
+      "evidence": {
+        "innerWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "body": 320
+      }
+    },
+    {
+      "name": "320 px reflow in both themes with keyboard selection and eventual table",
+      "passed": true,
+      "duration_ms": 686,
+      "evidence": {
+        "keyboard": "End/Enter picks camera at 320 px"
+      }
+    },
+    {
+      "name": "Repeated scene/map unmount and remount keep one canvas and map",
+      "passed": true,
+      "duration_ms": 2402,
+      "evidence": {
+        "cycles": 8,
+        "errors_added": 0,
+        "note": "DOM cleanup only; not retained GPU object or 30-minute soak proof"
+      }
+    },
+    {
+      "name": "WebGL context loss pauses and preserves map, stage slider and exports",
+      "passed": true,
+      "duration_ms": 621,
+      "evidence": {
+        "export_preserved": "mayon",
+        "recovered_canvas": 1,
+        "note": "Synthetic context-loss event, not native GPU reset"
+      }
+    },
+    {
+      "name": "Catalog network failure and retry recover",
+      "passed": true,
+      "duration_ms": 152,
+      "evidence": {
+        "recovered": true
+      }
+    },
+    {
+      "name": "Malformed grid response is rejected with retained completed results",
+      "passed": true,
+      "duration_ms": 1462,
+      "evidence": {
+        "retained_sequence": true
+      }
+    },
+    {
+      "name": "Malformed catalog criteria is rejected before rendering results",
+      "passed": false,
+      "duration_ms": 7198,
+      "error": "AssertionError [ERR_ASSERTION]: {\"errors\":[{\"time\":\"2026-10-12T09:23:29.762Z\",\"message\":\"Cannot read properties of null (reading 'find')\"}],\"application_count\":0,\"body_text\":\"\"}\n\n1 !== 0\n\n    at D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:275:12\n    at async check (D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:14:26)\n    at async D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\workflows.cjs:259:3"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "P1",
+      "title": "Default bundled wind sweep rejects resource estimate",
+      "evidence": [
+        "Estimated working memory exceeds the 512 MiB computation budget"
+      ]
+    },
+    {
+      "severity": "P2",
+      "title": "Catalog criteria omitted from runtime validator causes entire workspace crash",
+      "evidence": {
+        "errors": [
+          {
+            "time": "2026-10-12T09:23:29.762Z",
+            "message": "Cannot read properties of null (reading 'find')"
+          }
+        ],
+        "application_count": 0,
+        "body_text": ""
+      }
+    }
+  ],
+  "pageErrors": [
+    {
+      "time": "2026-10-12T09:23:29.762Z",
+      "message": "Cannot read properties of null (reading 'find')"
+    }
+  ],
+  "browser": "154.0.8037.99",
+  "assets": [
+    "http://127.0.0.1:8012/assets/index-CzstAtRQ.js"
+  ],
+  "finished": "2026-10-12T09:23:35.656Z"
+}

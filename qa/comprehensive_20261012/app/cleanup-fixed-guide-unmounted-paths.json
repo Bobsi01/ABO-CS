@@ -1,0 +1,429 @@
+{
+  "source": "qa/comprehensive_20261012/app/cleanup-fixed-guide-unmounted.heapsnapshot",
+  "node_count": 746483,
+  "edge_count": 2372490,
+  "counts": {
+    "object:HTMLCanvasElement (prototype) / http://127.0.0.1:8012": 2,
+    "object:HTMLDivElement (internal cache) / http://127.0.0.1:8012": 2,
+    "object:HTMLDivElement (prototype) / http://127.0.0.1:8012": 2,
+    "object:HTMLCanvasElement (internal cache) / http://127.0.0.1:8012": 2,
+    "native:WebGL2RenderingContext": 1,
+    "object:WebGL2RenderingContext (prototype) / http://127.0.0.1:8012": 1,
+    "object:HTMLDivElement": 41,
+    "object:HTMLCanvasElement": 3,
+    "object:WebGL2RenderingContext": 1,
+    "object:WebGL2RenderingContext (internal cache) / http://127.0.0.1:8012": 1,
+    "native:blink::HeapVectorBacking<blink::WebGLRenderingContextBase::TextureUnitState>": 1
+  },
+  "controls": [],
+  "canvases": [
+    {
+      "node": 406894,
+      "id": 813849,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 313568,
+          "id": 627139,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 28064,
+        "path": [
+          {
+            "node": 1,
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "29"
+            }
+          },
+          {
+            "node": 725862,
+            "id": 1451725,
+            "type": "synthetic",
+            "name": "C++ Persistent roots",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "blink::WebFormElementObserverImpl::WebFormElementObserverImpl(base::PassKey<WebFormElementObserver>,"
+            }
+          },
+          {
+            "node": 725871,
+            "id": 18,
+            "type": "native",
+            "name": "MutationObserver::Delegate",
+            "detachedness": 0,
+            "self_size": 64,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 514450,
+            "id": 1028903,
+            "type": "native",
+            "name": "<form>",
+            "detachedness": 1,
+            "self_size": 248,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "__reactFiber$kqm2v4a264j"
+            }
+          },
+          {
+            "node": 514451,
+            "id": 1028905,
+            "type": "object",
+            "name": "Ti",
+            "detachedness": 0,
+            "self_size": 104,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "__proto__"
+            }
+          },
+          {
+            "node": 336718,
+            "id": 673437,
+            "type": "object",
+            "name": "Object",
+            "detachedness": 0,
+            "self_size": 28,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "constructor"
+            }
+          },
+          {
+            "node": 370059,
+            "id": 740141,
+            "type": "closure",
+            "name": "Ti",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "context"
+            }
+          },
+          {
+            "node": 346096,
+            "id": 692193,
+            "type": "object",
+            "name": "system / Context / scope @631351",
+            "detachedness": 0,
+            "self_size": 3408,
+            "retaining_edge": {
+              "kind": "context",
+              "label": "P"
+            }
+          },
+          {
+            "node": 369107,
+            "id": 738237,
+            "type": "object",
+            "name": "Object",
+            "detachedness": 0,
+            "self_size": 28,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "S"
+            }
+          },
+          {
+            "node": 628109,
+            "id": 1256225,
+            "type": "closure",
+            "name": "",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "context"
+            }
+          },
+          {
+            "node": 520896,
+            "id": 1041795,
+            "type": "object",
+            "name": "system / Context / scope @616143",
+            "detachedness": 0,
+            "self_size": 2804,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "previous"
+            }
+          },
+          {
+            "node": 360028,
+            "id": 720069,
+            "type": "object",
+            "name": "system / Context / scope @616173",
+            "detachedness": 0,
+            "self_size": 4364,
+            "retaining_edge": {
+              "kind": "context",
+              "label": "Hv"
+            }
+          },
+          {
+            "node": 363566,
+            "id": 727145,
+            "type": "object",
+            "name": "Object",
+            "detachedness": 0,
+            "self_size": 12,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "gl"
+            }
+          },
+          {
+            "node": 402898,
+            "id": 805853,
+            "type": "object",
+            "name": "fg",
+            "detachedness": 0,
+            "self_size": 296,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 313568,
+            "id": 627139,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 406894,
+            "id": 813849,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 575143,
+      "id": 1150293,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 742940,
+          "id": 34154,
+          "type": "native",
+          "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+          "detachedness": 0,
+          "self_size": 4104,
+          "retaining_edge": {
+            "kind": "element",
+            "label": "36"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 864,
+        "path": [
+          {
+            "node": 1,
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "29"
+            }
+          },
+          {
+            "node": 725862,
+            "id": 1451725,
+            "type": "synthetic",
+            "name": "C++ Persistent roots",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "blink::ScriptState::ScriptState(v8::Local<v8::Context>, DOMWrapperWorld *, scoped_refptr<scheduler::"
+            }
+          },
+          {
+            "node": 725904,
+            "id": 84,
+            "type": "native",
+            "name": "blink::ScriptStateImpl",
+            "detachedness": 0,
+            "self_size": 112,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 742939,
+            "id": 34152,
+            "type": "native",
+            "name": "blink::V8PerContextData",
+            "detachedness": 0,
+            "self_size": 120,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 742940,
+            "id": 34154,
+            "type": "native",
+            "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+            "detachedness": 0,
+            "self_size": 4104,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "36"
+            }
+          },
+          {
+            "node": 575143,
+            "id": 1150293,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 713966,
+      "id": 1427933,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 742944,
+          "id": 34162,
+          "type": "native",
+          "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+          "detachedness": 0,
+          "self_size": 2056,
+          "retaining_edge": {
+            "kind": "element",
+            "label": "36"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 51,
+        "path": [
+          {
+            "node": 1,
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "29"
+            }
+          },
+          {
+            "node": 725862,
+            "id": 1451725,
+            "type": "synthetic",
+            "name": "C++ Persistent roots",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "blink::ScriptState::ScriptState(v8::Local<v8::Context>, DOMWrapperWorld *, scoped_refptr<scheduler::"
+            }
+          },
+          {
+            "node": 725876,
+            "id": 28,
+            "type": "native",
+            "name": "blink::ScriptStateImpl",
+            "detachedness": 0,
+            "self_size": 112,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 742943,
+            "id": 34160,
+            "type": "native",
+            "name": "blink::V8PerContextData",
+            "detachedness": 0,
+            "self_size": 120,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 742944,
+            "id": 34162,
+            "type": "native",
+            "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+            "detachedness": 0,
+            "self_size": 2056,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "36"
+            }
+          },
+          {
+            "node": 713966,
+            "id": 1427933,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    }
+  ]
+}

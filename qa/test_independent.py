@@ -405,7 +405,17 @@ def test_sweep_maximum_reproduces_selected_single_simulation(client):
     assert maximum["maximum_load_kg_m2"] == pytest.approx(single["load_kg_m2"], rel=1e-12)
 
 
-def test_sweep_budget_rejected_before_large_allocation(client):
+def test_sweep_budget_rejected_before_large_allocation(client, monkeypatch):
+    from abo_api import kernel
+
+    # The largest contract now fits under 512 MiB through bearing batching.
+    # A constrained synthetic budget must still reject before kernel allocation.
+    monkeypatch.setattr(kernel, "MEMORY_LIMIT_BYTES", 128 * 1024 * 1024)
+
+    def unexpected_allocation(*args):
+        pytest.fail("Sweep kernel ran before its memory admission check")
+
+    monkeypatch.setattr(kernel, "sweep_maxima", unexpected_allocation)
     payload = request()
     payload["scenario"]["release_layers"] = 32
     payload["scenario"]["grains"].extend(
@@ -423,7 +433,7 @@ def test_sweep_budget_rejected_before_large_allocation(client):
     assert "memory" in response.json()["detail"].lower()
 
 
-def test_computational_module_has_no_python_loop_or_vectorize_wrapper():
+def test_computational_module_only_orchestrates_bearing_batches_in_python():
     source_path = Path(__file__).resolve().parents[1] / "backend/src/abo_api/kernel.py"
     tree = ast.parse(source_path.read_text(encoding="utf-8"))
     prohibited = (
@@ -435,7 +445,16 @@ def test_computational_module_has_no_python_loop_or_vectorize_wrapper():
         ast.DictComp,
         ast.GeneratorExp,
     )
-    assert not any(isinstance(node, prohibited) for node in ast.walk(tree))
+    for function in tree.body:
+        if not isinstance(function, ast.FunctionDef):
+            continue
+        loops = [node for node in ast.walk(function) if isinstance(node, prohibited)]
+        if function.name == "sweep_maxima":
+            assert len(loops) == 1 and isinstance(loops[0], ast.For)
+            assert loops[0] in function.body
+            assert ast.unparse(loops[0].iter) == "range(0, 360, SWEEP_DIRECTION_BATCH)"
+        else:
+            assert not loops, function.name
     assert not any(
         isinstance(node, ast.Call)
         and isinstance(node.func, ast.Attribute)

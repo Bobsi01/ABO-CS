@@ -12,15 +12,26 @@ export type EruptionFrame = components['schemas']['EruptionFrame']
 type ReportingOptions = Partial<Pick<components['schemas']['SimulationRequest'], 'screening_context' | 'population_year'>>
 
 function record(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const numbers = (value: unknown): value is number[] => Array.isArray(value) && value.every(finite)
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(v => typeof v === 'string')
 const nullableNumber = (value: unknown) => value === null || finite(value)
+const nullableString = (value: unknown) => value === null || typeof value === 'string'
 const stringRecord = (value: unknown) => record(value) && Object.values(value).every(entry => typeof entry === 'string')
 const optional = (value: unknown, check: (value: unknown) => boolean) => value === undefined || check(value)
+function criterionValid(value: unknown): boolean {
+  return record(value) && ['id', 'label', 'scope'].every(key => typeof value[key] === 'string')
+    && ['load_kg_m2', 'thickness_mm'].includes(String(value.quantity))
+    && finite(value.threshold) && value.threshold >= 0
+    && optional(value.source_ids, strings)
+    && optional(value.review_status, status => ['reviewed', 'unreviewed'].includes(String(status)))
+    && optional(value.receptor_kinds, kinds => Array.isArray(kinds) && kinds.every(kind => ['municipality', 'airport', 'water'].includes(String(kind))))
+    && optional(value.required_conditions, stringRecord)
+    && optional(value.applicability_basis, basis => basis === null || typeof basis === 'string')
+}
 function referenceGeojsonValid(value: unknown): boolean {
   if (!record(value)) return false
   if (value.type === 'FeatureCollection') return Array.isArray(value.features) && value.features.every(referenceGeojsonValid)
@@ -30,14 +41,16 @@ function referenceGeojsonValid(value: unknown): boolean {
   return depth > 0 && coordinates(value.geometry.coordinates, depth)
 }
 function evidenceValid(value: unknown): boolean {
-  return optional(value, entries => Array.isArray(entries) && entries.every(entry => record(entry) && ['id', 'parameter', 'units', 'datum', 'uncertainty', 'locator', 'license', 'conversions', 'notes'].every(key => typeof entry[key] === 'string') && ['measured', 'derived', 'calibrated', 'assumed'].includes(String(entry.classification)) && ['usable', 'source_blocked', 'illustrative'].includes(String(entry.readiness)) && strings(entry.source_ids) && strings(entry.dependencies)))
+  return optional(value, entries => Array.isArray(entries) && entries.every(entry => record(entry) && ['id', 'parameter', 'units', 'datum', 'uncertainty', 'locator', 'license', 'conversions', 'notes'].every(key => typeof entry[key] === 'string') && ['measured', 'derived', 'calibrated', 'assumed'].includes(String(entry.classification)) && ['usable', 'source_blocked', 'illustrative'].includes(String(entry.readiness)) && strings(entry.source_ids) && strings(entry.dependencies) && optional(entry.value, item => item === null || finite(item) || typeof item === 'string' || numbers(item))))
 }
 function historicalDetailsValid(value: Record<string, unknown>): boolean {
   return optional(value.protocol, protocol => protocol === null || record(protocol) && ['id', 'frozen_at', 'event_start_utc', 'event_end_utc', 'event_definition', 'acceptance_tolerance', 'review_status'].every(key => typeof protocol[key] === 'string') && finite(protocol.duration_s) && strings(protocol.evaluation_rules))
     && optional(value.dataset_id, id => id === null || typeof id === 'string')
     && optional(value.assessment_reasons, strings)
+    && optional(value.blocked_inputs, strings)
+    && optional(value.reference_tables, entries => Array.isArray(entries) && entries.every(record))
     && optional(value.source_dependencies, groups => Array.isArray(groups) && groups.every(group => record(group) && typeof group.group_id === 'string' && typeof group.disclosure === 'string' && strings(group.source_ids) && strings(group.dependent_quantities)))
-    && optional(value.observation_results, rows => Array.isArray(rows) && rows.every(row => record(row) && typeof row.observation_id === 'string' && ['calibration', 'evaluation'].includes(String(row.split)) && finite(row.lat) && finite(row.lon) && finite(row.lower_mm) && finite(row.upper_mm) && row.lower_mm >= 0 && row.upper_mm >= row.lower_mm && typeof row.in_domain === 'boolean' && nullableNumber(row.predicted_mm) && nullableNumber(row.interval_residual_mm) && nullableNumber(row.midpoint_residual_mm) && typeof row.reason === 'string'))
+    && optional(value.observation_results, rows => Array.isArray(rows) && rows.every(row => record(row) && typeof row.observation_id === 'string' && ['calibration', 'evaluation'].includes(String(row.split)) && optional(row.spatial_group, nullableString) && optional(row.dependency_group, nullableString) && finite(row.lat) && finite(row.lon) && finite(row.lower_mm) && finite(row.upper_mm) && row.lower_mm >= 0 && row.upper_mm >= row.lower_mm && typeof row.in_domain === 'boolean' && nullableNumber(row.predicted_mm) && nullableNumber(row.interval_residual_mm) && nullableNumber(row.midpoint_residual_mm) && typeof row.reason === 'string'))
     && optional(value.sensitivity, entries => Array.isArray(entries) && entries.every(record))
     && optional(value.reference_footprints, entries => Array.isArray(entries) && entries.every(entry => record(entry) && ['trace_id', 'label', 'dependency_group', 'uncertainty_notes'].every(key => typeof entry[key] === 'string') && finite(entry.threshold_mm) && entry.threshold_mm > 0 && strings(entry.source_ids) && referenceGeojsonValid(entry.geojson)))
     && optional(value.footprint_evidence, record)
@@ -100,7 +113,7 @@ async function request<T>(path: string, signal: AbortSignal, body?: unknown): Pr
   }
   if (!record(value)) throw new Error('Unexpected Python response. Check that the backend and frontend versions match.')
   const valid = path === 'catalog'
-    ? typeof value.revision === 'string' && Array.isArray(value.scenarios) && value.scenarios.every(p => record(p) && typeof p.id === 'string' && typeof p.name === 'string' && typeof p.status === 'string' && scenarioValid(p.scenario)) && Array.isArray(value.volcanoes) && value.volcanoes.every(v => record(v) && typeof v.id === 'string' && typeof v.name === 'string' && finite(v.lat) && finite(v.lon) && finite(v.elevation_m)) && Array.isArray(value.sources) && value.sources.every(s => record(s) && typeof s.title === 'string' && typeof s.url === 'string') && Array.isArray(value.receptors) && value.receptors.every(receptorValid) && Array.isArray(value.winds) && value.winds.every(w => record(w) && typeof w.name === 'string' && typeof w.status === 'string' && nullableNumber(w.speed_m_s) && nullableNumber(w.from_deg)) && record(value.historical) && typeof value.historical.reason === 'string' && evidenceValid(value.parameter_evidence) && optional(value.inventory_coverage, record) && optional(value.screening_contexts, entries => Array.isArray(entries) && entries.every(entry => record(entry) && typeof entry.id === 'string' && typeof entry.label === 'string' && stringRecord(entry.values))) && historicalDetailsValid(value.historical)
+    ? typeof value.revision === 'string' && Array.isArray(value.scenarios) && value.scenarios.every(p => record(p) && typeof p.id === 'string' && typeof p.name === 'string' && typeof p.status === 'string' && scenarioValid(p.scenario)) && Array.isArray(value.volcanoes) && value.volcanoes.every(v => record(v) && typeof v.id === 'string' && typeof v.name === 'string' && finite(v.lat) && finite(v.lon) && finite(v.elevation_m)) && Array.isArray(value.sources) && value.sources.every(s => record(s) && typeof s.title === 'string' && typeof s.url === 'string') && Array.isArray(value.receptors) && value.receptors.every(receptorValid) && Array.isArray(value.criteria) && value.criteria.every(criterionValid) && Array.isArray(value.winds) && value.winds.every(w => record(w) && typeof w.name === 'string' && typeof w.status === 'string' && nullableNumber(w.speed_m_s) && nullableNumber(w.from_deg)) && record(value.historical) && typeof value.historical.reason === 'string' && evidenceValid(value.parameter_evidence) && optional(value.inventory_coverage, record) && optional(value.screening_contexts, entries => Array.isArray(entries) && entries.every(entry => record(entry) && typeof entry.id === 'string' && typeof entry.label === 'string' && stringRecord(entry.values))) && historicalDetailsValid(value.historical)
     : path === 'eruption-sequences'
       ? sequenceValid(value)
       : path === 'simulations'

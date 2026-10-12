@@ -1,0 +1,38 @@
+{
+  "docx_sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a",
+  "pdf": "qa\\comprehensive_20261012\\integration\\word\\ABO_RESEARCH_IMRAD.pdf",
+  "pdf_sha256": "73b2d232139f322099f051869b7d2b4935cb9701fe86b8a2f76142448d6a64ee",
+  "rendered_pages": 16,
+  "checked_prose_and_cell_paragraphs": 162,
+  "missing_from_render": [],
+  "page_footer_prefixes_removed_from_text_comparison": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "rendered_fonts": [
+    "/BCDEEE+ArialMT",
+    "/BCDFEE+Arial-BoldMT",
+    "/BCDGEE+ArialMT"
+  ],
+  "only_arial_rendered": true,
+  "source_contains_evaluation_markings": false,
+  "native_equations": 7,
+  "native_fractions": 13,
+  "pdf_has_structure_tree": true,
+  "pdf_marked": true,
+  "accessibility_limit": "Tagged output is not a native accessibility or screen-reader pass"
+}

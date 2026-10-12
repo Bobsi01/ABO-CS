@@ -1,0 +1,193 @@
+{
+  "reviewer": "root integration QA, fresh read-only Microsoft Word render",
+  "docx_sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a",
+  "source_md_sha256": "3267db0c3eecc69bc2e5d42086a0891c1cef4508b61c443121be01c2a095f8fc",
+  "pdf_sha256": "73b2d232139f322099f051869b7d2b4935cb9701fe86b8a2f76142448d6a64ee",
+  "checked_runs": 211,
+  "typography_issues": [],
+  "tables": 3,
+  "figures": 3,
+  "native_equations": 7,
+  "source_archive_hashes": [
+    {
+      "file": "PMC8889389.1.json",
+      "matches": true
+    },
+    {
+      "file": "PMC8889389.1.xml",
+      "matches": true
+    },
+    {
+      "file": "PMC8889389.1.pdf",
+      "matches": true
+    },
+    {
+      "file": "figure-4.jpg",
+      "matches": true
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "file": "qa/comprehensive_20261012/integration/word/page-1.png",
+      "sha256": "fb453264a22cf33bcae58ad3b0fc457e6e125625f70713189abcbb63992467c9",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 2,
+      "file": "qa/comprehensive_20261012/integration/word/page-2.png",
+      "sha256": "9cb4e9345efd7a66096a34a6f22066421106f66b9eb7a31f25544273d6afae12",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 3,
+      "file": "qa/comprehensive_20261012/integration/word/page-3.png",
+      "sha256": "5ec9e0171c46470da8ea7be2cf0f7bb1cd7314b8aaa00583e7bf9521d244150b",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 4,
+      "file": "qa/comprehensive_20261012/integration/word/page-4.png",
+      "sha256": "9acf282229a2b15a6bfaf46b3426e6747ca5c24cb51c0dbe0d7c481f7dc9fbe4",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 5,
+      "file": "qa/comprehensive_20261012/integration/word/page-5.png",
+      "sha256": "61d451ff7294abc30b0fa4ae03015ff280a468b2aeeb37f769646f917ae9a14f",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 6,
+      "file": "qa/comprehensive_20261012/integration/word/page-6.png",
+      "sha256": "2dfad80cc0ea883d46e2e9be4a8082972635f4c14802de686e80699660198e69",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 7,
+      "file": "qa/comprehensive_20261012/integration/word/page-7.png",
+      "sha256": "fb007967263a0fc75a6682c9a06bb2aea7d2a6ff919c3a4efb7044c3e41af9a5",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 8,
+      "file": "qa/comprehensive_20261012/integration/word/page-8.png",
+      "sha256": "ce0ca08a6bca5adff06814df6bcfc591a5d603d0acffe597f3cbdea5fce04245",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 9,
+      "file": "qa/comprehensive_20261012/integration/word/page-9.png",
+      "sha256": "18afefba6b42138c3458620ffe952cfac27f798be4e222f39dbaa8f2b5f7faf3",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 10,
+      "file": "qa/comprehensive_20261012/integration/word/page-10.png",
+      "sha256": "b693d9d8c7bdbe8185498b2d53bb4a9a3bd01cf84badea4968a588e42d2f2baf",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 11,
+      "file": "qa/comprehensive_20261012/integration/word/page-11.png",
+      "sha256": "38b9ecdf2f25cecda673c9321e543990c4666fdc8b76a173f59954329e30594f",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 12,
+      "file": "qa/comprehensive_20261012/integration/word/page-12.png",
+      "sha256": "0e8b10cab9128ecb224f73a29faab71e40509c19100ab8a6ad59a0b9a7ae78d0",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 13,
+      "file": "qa/comprehensive_20261012/integration/word/page-13.png",
+      "sha256": "40a214318eab5388d6f782336c5892ca2474e00e0c321c8250d0747fb86364da",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 14,
+      "file": "qa/comprehensive_20261012/integration/word/page-14.png",
+      "sha256": "411a130240dbecb1d62f7de64d148bd51098fc132553f8ca0651f856052a1591",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 15,
+      "file": "qa/comprehensive_20261012/integration/word/page-15.png",
+      "sha256": "57ee6b3c9888740635591922b36e97e6e0a14ca0afb82bc11f5bb84f9eea3225",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    },
+    {
+      "page": 16,
+      "file": "qa/comprehensive_20261012/integration/word/page-16.png",
+      "sha256": "e4aabc750bc4202cec67901bee6676d81e5c68e7239487819969a8d8c98ecfd2",
+      "size_px": [
+        1275,
+        1651
+      ],
+      "pixel_identical_to_previous_word_page": false
+    }
+  ],
+  "visual_review": "Root inspected all 16 fresh pages in eight side-by-side page-pair images. Prose, equations, tables, captions, figures and references readable; no observed clipping, overlap or missing glyphs. Pair images were resized by the viewing tool to 1976 x 1280; native PNGs retain 1275 x 1651. Native accessibility remains untested.",
+  "limits": "No native Word accessibility checker or screen-reader speech test"
+}

@@ -1,0 +1,90 @@
+{
+  "started": "2026-10-12T09:33:16.730Z",
+  "base": "http://127.0.0.1:8012",
+  "checks": [
+    {
+      "name": "Edited draft during asynchronous computation remains stale after old request completes",
+      "passed": true,
+      "evidence": {
+        "draft": "18",
+        "completed": "Wind FROM 225° · 12 m/s\nBefore eruption · clear source"
+      }
+    },
+    {
+      "name": "Cancel active computation keeps completed calculation and permits retry",
+      "passed": true,
+      "evidence": {
+        "recovered": true
+      }
+    },
+    {
+      "name": "Non-JSON API response is actionable and retains results",
+      "passed": true,
+      "evidence": {
+        "completed_result_retained": true
+      }
+    },
+    {
+      "name": "Document visibility event is captured from actual background tab if available",
+      "passed": true,
+      "evidence": {
+        "events": [],
+        "hidden": false,
+        "outcome": "Unsupported in this headless execution; actual hidden-page gate remains open"
+      }
+    },
+    {
+      "name": "Bundled geography and terrain failure preserve computation and recover",
+      "passed": true,
+      "evidence": {
+        "computation_worked": true,
+        "explicit_fallback_choice": true,
+        "terrain_recovered": true
+      }
+    },
+    {
+      "name": "Keyboard skip link, disclosures and canvas expose usable focus",
+      "passed": true,
+      "evidence": {
+        "skip_link_destination": "workspace",
+        "canvas": {
+          "role": null,
+          "label": "Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orbit.",
+          "tabIndex": 0,
+          "outline": "solid"
+        }
+      }
+    },
+    {
+      "name": "Visible text contrast and button targets across themes at 320 px",
+      "passed": true,
+      "evidence": {
+        "results": [
+          {
+            "theme": "light",
+            "failures": [],
+            "sample_count": 50,
+            "minimum": 5.3978840282453255,
+            "targets_under_44": [],
+            "targets_count": 15
+          },
+          {
+            "theme": "dark",
+            "failures": [],
+            "sample_count": 50,
+            "minimum": 6.1956770824328995,
+            "targets_under_44": [],
+            "targets_count": 15
+          }
+        ],
+        "note": "Opaque DOM text only; excludes raster scenes/maps, translucent graphics and disabled opacity. Not full WCAG certification."
+      }
+    }
+  ],
+  "errors": [],
+  "mode": "Headless installed Chrome; functional accessibility evidence only",
+  "assets": [
+    "http://127.0.0.1:8012/assets/index-CPAkKjCr.js"
+  ],
+  "finished": "2026-10-12T09:33:25.174Z"
+}

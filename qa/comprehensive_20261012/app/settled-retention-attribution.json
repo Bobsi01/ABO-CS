@@ -1,0 +1,193 @@
+{
+  "started": "2026-10-12T09:38:27.191Z",
+  "base": "http://127.0.0.1:8012",
+  "scope": "Headless forced-GC remount-only controls: both views, 3D import denied, map import denied; no repeated computation. Deliberate lazy-module denials are synthetic fixtures.",
+  "modes": [
+    {
+      "mode": "both",
+      "errors": [],
+      "samples": [
+        {
+          "cycle": 0,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1286,
+            "Nodes": 11375,
+            "JSHeapUsedSize": 28868160
+          },
+          "visible_nodes": 4586,
+          "canvases": 1,
+          "maps": 1
+        },
+        {
+          "cycle": 5,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1466,
+            "Nodes": 12842,
+            "JSHeapUsedSize": 30424512
+          },
+          "visible_nodes": 4586,
+          "canvases": 1,
+          "maps": 1
+        },
+        {
+          "cycle": 10,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1646,
+            "Nodes": 14307,
+            "JSHeapUsedSize": 31521716
+          },
+          "visible_nodes": 4586,
+          "canvases": 1,
+          "maps": 1
+        }
+      ],
+      "unmounted": {
+        "cycle": "guide-unmounted",
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 661,
+          "Nodes": 5518,
+          "JSHeapUsedSize": 26301408
+        },
+        "visible_nodes": 814,
+        "canvases": 0,
+        "maps": 0
+      },
+      "delta": {
+        "Documents": 0,
+        "JSEventListeners": 360,
+        "Nodes": 2932,
+        "JSHeapUsedSize": 2653556
+      },
+      "heap_snapshot": {
+        "path": "D:\\Bobs Workspace\\ABO-CS\\qa\\comprehensive_20261012\\app\\settled-guide-unmounted.heapsnapshot",
+        "bytes": 53030701,
+        "state": "Guide tab; zero application canvas/map DOM; one completed result remains intentionally in Workspace state"
+      }
+    },
+    {
+      "mode": "map-only",
+      "errors": [],
+      "samples": [
+        {
+          "cycle": 0,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1246,
+            "Nodes": 11103,
+            "JSHeapUsedSize": 23068596
+          },
+          "visible_nodes": 4531,
+          "canvases": 0,
+          "maps": 1
+        },
+        {
+          "cycle": 5,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1246,
+            "Nodes": 11105,
+            "JSHeapUsedSize": 23605416
+          },
+          "visible_nodes": 4531,
+          "canvases": 0,
+          "maps": 1
+        },
+        {
+          "cycle": 10,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 1246,
+            "Nodes": 11105,
+            "JSHeapUsedSize": 23787256
+          },
+          "visible_nodes": 4531,
+          "canvases": 0,
+          "maps": 1
+        }
+      ],
+      "unmounted": {
+        "cycle": "guide-unmounted",
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 256,
+          "Nodes": 2186,
+          "JSHeapUsedSize": 18873052
+        },
+        "visible_nodes": 814,
+        "canvases": 0,
+        "maps": 0
+      },
+      "delta": {
+        "Documents": 0,
+        "JSEventListeners": 0,
+        "Nodes": 2,
+        "JSHeapUsedSize": 718660
+      }
+    },
+    {
+      "mode": "scene-only",
+      "errors": [],
+      "samples": [
+        {
+          "cycle": 0,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 594,
+            "Nodes": 10268,
+            "JSHeapUsedSize": 24870536
+          },
+          "visible_nodes": 4171,
+          "canvases": 1,
+          "maps": 0
+        },
+        {
+          "cycle": 5,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 639,
+            "Nodes": 11170,
+            "JSHeapUsedSize": 26035288
+          },
+          "visible_nodes": 4171,
+          "canvases": 1,
+          "maps": 0
+        },
+        {
+          "cycle": 10,
+          "metrics": {
+            "Documents": 1,
+            "JSEventListeners": 684,
+            "Nodes": 12070,
+            "JSHeapUsedSize": 26834776
+          },
+          "visible_nodes": 4171,
+          "canvases": 1,
+          "maps": 0
+        }
+      ],
+      "unmounted": {
+        "cycle": "guide-unmounted",
+        "metrics": {
+          "Documents": 1,
+          "JSEventListeners": 364,
+          "Nodes": 4275,
+          "JSHeapUsedSize": 25585412
+        },
+        "visible_nodes": 814,
+        "canvases": 0,
+        "maps": 0
+      },
+      "delta": {
+        "Documents": 0,
+        "JSEventListeners": 90,
+        "Nodes": 1802,
+        "JSHeapUsedSize": 1964240
+      }
+    }
+  ],
+  "finished": "2026-10-12T09:39:02.201Z"
+}

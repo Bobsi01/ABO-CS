@@ -1,5 +1,11 @@
 # QA gap register — 11 October 2026
 
+## Comprehensive fresh-clone QA — 12 October 2026
+
+The latest integrated record is [COMPREHENSIVE_QA_20261012.md](COMPREHENSIVE_QA_20261012.md), with two independent reviewers and new evidence under `qa/comprehensive_20261012/`. Current checks pass 188 Python / 86 frontend cases and the explicit lint/format/type/build/contract gates. Default sweeps now complete over the expanded catalog within the retained memory cap; consumed response fields are rejected safely when malformed. A document-root OrbitControls listener retained detached canvases and is corrected through original-target cleanup, independently checked across 20 current-build run/view cycles: zero listener growth, three additional nodes and zero sampled paused GL draws. The full 30-minute/graphics-retention gate remains open; this closes only the identified listener mechanism and its bounded retest. Both headed and headless native-tab attempts still fail to produce an actual hidden-document event. Native zoom/speech/accessibility, foreground matched-settings performance, scientific source gates and model limitations remain open. Fresh read-only Word rendering/content/font and all-page visual checks preserve the existing DOCX hash.
+
+The records below retain earlier evidence and statuses for their dated builds; they do not supersede this update.
+
 ## Current two-agent review — 12 October
 
 Both requested QA agents completed independent review and correction retests. [Current delivery](CURRENT_QA_DELIVERY.md) records the fixes and evidence. Custom-receptor census selection, interpolated-versus-computed snapshot wording and Windows UTF-8 curation defects are closed. Current checks pass 164 Python / 61 frontend cases. The revised 16-page actual Word manuscript has independent content/font/equation and every-page visual review, closing the previous final manuscript review gap for its recorded hash. The current app has independent scoped workflow/visual review; full performance, cleanup, lifecycle, native accessibility and empirical-source gates remain open.

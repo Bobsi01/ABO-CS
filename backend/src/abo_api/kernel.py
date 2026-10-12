@@ -6,6 +6,7 @@ from pyproj import CRS, Transformer
 from scipy.special import ndtr
 
 MEMORY_LIMIT_BYTES = 512 * 1024 * 1024
+SWEEP_DIRECTION_BATCH = 16
 
 
 def check_budget(kernel_count, cells, receptors, directions=1):
@@ -116,24 +117,35 @@ def exposure(
 
 
 def sweep_maxima(east, north, times, weights, variance, speed):
-    directions = np.arange(360, dtype=float)
     if speed == 0:
         return point_load(east, north, times, weights, variance, 0, 0)[0], np.zeros(east.size)
-    radians = np.deg2rad(directions)[:, None]
-    # Rotate receptors into the wind frame. At the vent, the squared distance
-    # is exactly (speed * time)**2 for every bearing: sin/cos norm round-off
-    # must not invent a preferred direction in an isotropic model.
-    along = -np.sin(radians) * east[None, :] - np.cos(radians) * north[None, :]
-    across = np.cos(radians) * east[None, :] - np.sin(radians) * north[None, :]
-    distance_squared = (along[:, None, :] - speed * times[None, :, None]) ** 2
-    distance_squared += across[:, None, :] ** 2
-    loads = np.sum(
-        np.exp(-distance_squared / (2 * variance[None, :, None]))
-        * (weights / (2 * np.pi * variance))[None, :, None],
-        axis=1,
-    )
-    indices = np.argmax(loads, axis=0)
-    return loads[indices, np.arange(east.size)], directions[indices]
+    maxima = np.full(east.size, -1.0)
+    bearings = np.zeros(east.size)
+    receptor_indices = np.arange(east.size)
+    # Only bearing batches are orchestrated in Python. Each batch broadcasts
+    # all release components and receptors, then retains one maximum per point.
+    for start in range(0, 360, SWEEP_DIRECTION_BATCH):
+        directions = np.arange(start, min(start + SWEEP_DIRECTION_BATCH, 360), dtype=float)
+        radians = np.deg2rad(directions)[:, None]
+        # At the vent, distance is exactly (speed * time)**2 at every bearing;
+        # sin/cos norm round-off must not invent a preferred direction.
+        along = -np.sin(radians) * east[None, :] - np.cos(radians) * north[None, :]
+        across = np.cos(radians) * east[None, :] - np.sin(radians) * north[None, :]
+        distance_squared = (along[:, None, :] - speed * times[None, :, None]) ** 2
+        distance_squared += across[:, None, :] ** 2
+        loads = np.sum(
+            np.exp(-distance_squared / (2 * variance[None, :, None]))
+            * (weights / (2 * np.pi * variance))[None, :, None],
+            axis=1,
+        )
+        indices = np.argmax(loads, axis=0)
+        batch_maxima = loads[indices, receptor_indices]
+        improved = batch_maxima > maxima
+        maxima[improved] = batch_maxima[improved]
+        # Strict improvement preserves the lowest bearing on exact ties across
+        # batches, including zero-mass and vent receptors.
+        bearings[improved] = directions[indices[improved]]
+    return maxima, bearings
 
 
 def observation_metrics(predicted, lower, upper):

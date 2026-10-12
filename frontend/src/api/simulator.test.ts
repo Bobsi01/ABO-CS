@@ -3,6 +3,7 @@ import { eruption, getCatalog, replicate, simulate } from './simulator'
 import type { Scenario } from './simulator'
 import curatedCatalog from '../../../data/catalog.json'
 
+const criterion = { id: 'synthetic', label: 'Synthetic criterion', quantity: 'load_kg_m2', threshold: 1, scope: 'Synthetic contract fixture only' }
 const scenario: Scenario = { volcano_id: 'taal', label: 'Synthetic contract fixture', input_status: 'illustrative', vent_lat: 14, vent_lon: 121, vent_elevation_m: 300, column_height_m: 3000, mass_rate_kg_s: 100, duration_s: 3600, wind_speed_m_s: 10, wind_from_deg: 180, diffusivity_m2_s: 1000, initial_spread_m: 500, bulk_density_kg_m3: 1000, grains: [{ diameter_um: 10, fraction: 0.2, settling_speed_m_s: 1 }, { diameter_um: 100, fraction: 0.3, settling_speed_m_s: 2 }, { diameter_um: 1000, fraction: 0.5, settling_speed_m_s: 5 }], domain_km: 200, cell_km: 1, release_layers: 16 }
 function fixture() {
   return { scenario, grid: { east_m: [0, 1000], north_m: [0, 1000], thickness_mm: [[0, 1], [2, 3]], load_kg_m2: [[0, 1], [2, 3]], cell_m: 1000, extent_m: [-500, -500, 1500, 1500] }, contours: { type: 'FeatureCollection', features: [] }, receptors: [], illustration: { wind_east_m_s: 0, wind_north_m_s: 10, paths: [{ grain_index: 0, diameter_um: 10, settling_time_s: 1500, points_m: [[0, 0, 1500], [0, 15000, 0]] }] }, summary: { reporting_cutoff_mm: 0.5, receptors_total: 0, receptors_covered: 0, municipalities_reported: 0, indicative_population: 0, reported_population_unknown: 0 }, diagnostics: { elapsed_ms: 10, retained_fraction: 1, outside_domain_mass_kg: 0, validation_status: 'not_historically_validated' }, provenance: { solver_version: 'test', dataset_revision: 'test', input_status: 'illustrative', assumptions: [], warnings: [] } }
@@ -15,6 +16,49 @@ function sequenceFixture() {
 }
 afterEach(() => vi.unstubAllGlobals())
 describe('Python simulation boundary', () => {
+  it.each([
+    ['missing', undefined],
+    ['null', null],
+    ['object instead of list', {}],
+    ['null row', [null]],
+    ['non-text label', [{ ...criterion, label: { text: 'Invalid label' } }]],
+    ['negative threshold', [{ ...criterion, threshold: -1 }]],
+    ['unsupported quantity', [{ ...criterion, quantity: 'airborne_concentration' }]],
+  ])('rejects %s catalog criteria before workspace rendering', async (_label, criteria) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ ...curatedCatalog, criteria }))))
+    await expect(getCatalog(new AbortController().signal)).rejects.toThrow('Unexpected Python response')
+  })
+  it('accepts a structurally valid synthetic criterion without certifying its review status', async () => {
+    const value = { ...curatedCatalog, criteria: [{ ...criterion, review_status: 'unreviewed' }] }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(value))))
+    await expect(getCatalog(new AbortController().signal)).resolves.toEqual(value)
+  })
+  it.each([
+    { blocked_inputs: 'unexpected string' },
+    { blocked_inputs: [{ text: 'unexpected object' }] },
+    { reference_tables: [null] },
+    { reference_tables: [[]] },
+  ])('rejects malformed historical reference disclosures %j', async invalid => {
+    const value = { ...curatedCatalog, historical: { ...curatedCatalog.historical, ...invalid } }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(value))))
+    await expect(getCatalog(new AbortController().signal)).rejects.toThrow('Unexpected Python response')
+  })
+  it.each([{ unknown: 1 }, true, [{ value: 1 }]])('rejects non-renderable parameter evidence value %j', async value => {
+    const invalid = { ...curatedCatalog, parameter_evidence: [{ ...curatedCatalog.parameter_evidence[0], value }] }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(invalid))))
+    await expect(getCatalog(new AbortController().signal)).rejects.toThrow('Unexpected Python response')
+  })
+  it.each([undefined, null, 1, 'Unavailable', [1, 2]])('accepts the contract parameter evidence value %j', async value => {
+    const valid = { ...curatedCatalog, parameter_evidence: [{ ...curatedCatalog.parameter_evidence[0], value }] }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(valid))))
+    await expect(getCatalog(new AbortController().signal)).resolves.toEqual(JSON.parse(JSON.stringify(valid)))
+  })
+  it.each(['spatial_group', 'dependency_group'])('rejects non-text historical observation %s before evaluation rendering', async field => {
+    const row = { observation_id: 'synthetic', spatial_group: null, dependency_group: 'synthetic study', split: 'evaluation', lat: 14, lon: 121, lower_mm: 1, upper_mm: 3, in_domain: true, predicted_mm: 2, interval_residual_mm: 0, midpoint_residual_mm: 0, reason: 'Synthetic contract fixture', [field]: { text: 'unexpected object' } }
+    const value = { available: true, reason: 'Synthetic fixture', validation_status: 'evaluated_not_validated', metrics: {}, observation_results: [row] }
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(value))))
+    await expect(replicate(new AbortController().signal)).rejects.toThrow('Unexpected Python response')
+  })
   it('accepts the curated catalog including its derived GeoJSON Feature reference traces', async () => {
     expect(curatedCatalog.historical.reference_footprints[0].geojson.type).toBe('Feature')
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(curatedCatalog))))

@@ -2,7 +2,9 @@
 
 ## Contributor entry points
 
-Current two-agent review (12 October): `docs/CURRENT_QA_DELIVERY.md` is the integrated evidence record. `docs/CURRENT_SCIENCE_QA.md` and `CURRENT_APP_QA.md` are independent reports. `qa/current_review/` contains current defect fixtures, catalog comparisons, browser evidence and 16 actual-Word page renders; `test_current_science.py` runs in the standard full suite. Earlier role assignments and evidence below remain dated history.
+Current comprehensive review (12 October, fresh clone): `docs/COMPREHENSIVE_QA_20261012.md` integrates two independent reviewers, corrected default sweeps, response-validation crashes and document-root camera listener retention. `docs/COMPREHENSIVE_SCIENCE_QA_20261012.md` and `COMPREHENSIVE_APP_QA_20261012.md` identify independent evidence. Fresh scripts, scalar cases, screenshots, retaining paths, integration logs and read-only Word renders belong in `qa/comprehensive_20261012/`. Current integration passes 188 Python / 86 frontend tests. `frontend/src/components/orbitControlsLifecycle.ts` owns the locked Three r186 original-event-root disposal workaround.
+
+Earlier two-agent review (12 October): `docs/CURRENT_QA_DELIVERY.md` is its dated integration record. `docs/CURRENT_SCIENCE_QA.md` and `CURRENT_APP_QA.md` are independent reports. `qa/current_review/` preserves its defect fixtures, catalog comparisons, browser evidence and 16 actual-Word page renders; `test_current_science.py` still runs in the standard full suite. Earlier role assignments and evidence below remain dated history.
 
 Paths are relative to the repository root. Dated ownership below records previous implementation milestones; new contributors assign ownership for their own change.
 

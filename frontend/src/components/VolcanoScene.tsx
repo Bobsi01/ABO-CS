@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import type { ThreeEvent } from '@react-three/fiber'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import type { EruptionSequence, Scenario, SimulationResult, Trajectory } from '../api/simulator'
 import { depositColor, download, number } from '../presentation'
 import Legend from './Legend'
@@ -16,6 +15,7 @@ import Select from './Select'
 import EruptionEffects from './EruptionEffects'
 import { eruptionFramePair } from './eruptionReplay'
 import { guardRenderer } from './rendererLifecycle'
+import { createOrbitControls } from './orbitControlsLifecycle'
 
 type View = 'regional' | 'close'
 type Props = { scenario: Scenario; result: SimulationResult | null; selected: string | null; onSelect: (id: string) => void; eruptionSequence?: EruptionSequence | null; frameIndex?: number; sequencePlaying?: boolean; onAvailabilityChange?: (available: boolean) => void }
@@ -38,7 +38,7 @@ function supportsWebGL2() {
 function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { view: View; reset: number; height: number; base: number; emphasizeTaal: boolean; lavaDirection: readonly number[] | null }) {
   const { camera, gl, invalidate } = useThree()
   useEffect(() => {
-    const controls = new OrbitControls(camera, gl.domElement)
+    const controls = createOrbitControls(camera, gl.domElement)
     controls.enableDamping = false
     controls.minDistance = 3
     controls.maxDistance = 420

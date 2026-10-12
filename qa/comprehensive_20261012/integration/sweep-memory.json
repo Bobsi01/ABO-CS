@@ -1,0 +1,14 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "components": 160,
+  "receptors": 2048,
+  "grid_cells_per_axis": 400,
+  "candidate_bearings": 360,
+  "batch_bearings": 16,
+  "estimated_working_bytes": 357063680,
+  "tracemalloc_peak_bytes": 130210949,
+  "elapsed_s": 2.487847199983662,
+  "limit_bytes": 536870912,
+  "scope": "Python/NumPy traced allocation, not total OS RSS or GPU memory"
+}

@@ -1,0 +1,48 @@
+
+> abo-frontend@0.1.0 check
+> npm run lint && npm run typecheck && npm test && npm run build
+
+
+> abo-frontend@0.1.0 lint
+> eslint .
+
+
+> abo-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+
+> abo-frontend@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.11 D:/Bobs Workspace/ABO-CS/frontend
+
+
+ Test Files  17 passed (17)
+      Tests  86 passed (86)
+   Start at  17:43:04
+   Duration  2.72s (transform 1.97s, setup 0ms, import 4.57s, tests 3.61s, environment 17.41s)
+
+
+> abo-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 56 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                           0.61 kB │ gzip:   0.38 kB
+dist/assets/GeographicMap-vh-t_kPv.css   15.09 kB │ gzip:   6.36 kB
+dist/assets/index-yEEMm0CD.css           16.70 kB │ gzip:   4.10 kB
+dist/assets/Legend-BA81oN8J.js            0.52 kB │ gzip:   0.30 kB
+dist/assets/GeographicMap-DiO_D0KQ.js    11.21 kB │ gzip:   4.49 kB
+dist/assets/index-D9xPQGL8.js           436.91 kB │ gzip: 133.61 kB
+dist/assets/VolcanoScene-mQbEhHZk.js    969.11 kB │ gzip: 258.84 kB
+
+✓ built in 294ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

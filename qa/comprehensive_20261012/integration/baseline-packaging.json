@@ -1,0 +1,185 @@
+{
+  "reviewer": "root integration QA",
+  "at_utc": "2026-10-12T09:22:45.961107+00:00",
+  "base_url": "http://127.0.0.1:8012",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Sep  1 2026, 14:17:39) [MSC v.1944 64 bit (AMD64)]",
+  "git_baseline": "b46f13f866e82412937a080a2e46443d10bea4f1",
+  "http_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 613,
+      "sha256": "f9c7f81a45345662bebbcaadfc3eabab3ab9decbb764c667fd70ad2671ceeabb"
+    },
+    {
+      "path": "/workspace",
+      "status": 200,
+      "expected": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 613,
+      "sha256": "f9c7f81a45345662bebbcaadfc3eabab3ab9decbb764c667fd70ad2671ceeabb"
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "expected": 200,
+      "content_type": "application/json",
+      "bytes": 127,
+      "sha256": "fb332f1db4bd246433305a0a57ea8ed213822c390169ddabb1384d8e5b9c859b"
+    },
+    {
+      "path": "/api/catalog",
+      "status": 200,
+      "expected": 200,
+      "content_type": "application/json",
+      "bytes": 180707,
+      "sha256": "181533d1fe545a4b2db276a4d31988f6ed0acf4893293b4e4fd05587713a123e"
+    },
+    {
+      "path": "/api/openapi.json",
+      "status": 200,
+      "expected": 200,
+      "content_type": "application/json",
+      "bytes": 35406,
+      "sha256": "b97718e825028baee9012d2b728843477eb9ff92126659a14ffe2b7a91f9bf57"
+    },
+    {
+      "path": "/api",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/api/missing",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/assets/missing.js",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/.env",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/backend/uv.lock",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/data/catalog.json",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/documentation/../AGENTS.md",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/documentation/%2E%2E/AGENTS.md",
+      "status": 404,
+      "expected": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d"
+    },
+    {
+      "path": "/documentation/ABO_RESEARCH_IMRAD.docx",
+      "status": 200,
+      "expected": 200,
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 311919,
+      "sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a"
+    },
+    {
+      "path": "/documentation/COMPUTATION.md",
+      "status": 200,
+      "expected": 200,
+      "content_type": "text/markdown; charset=utf-8",
+      "bytes": 23235,
+      "sha256": "a70ad6bf57d7fb8e871507bd5fe3529098003bbfea113542a3a881255d5c385e"
+    }
+  ],
+  "packaged_hash_checks": [
+    {
+      "file": "frontend/public/terrain/taal.json",
+      "sha256": "4b4602651c145e89fccb102682e43cf59b70ad84bedf368c413a80ea72382d34",
+      "served_bytes_match": true
+    },
+    {
+      "file": "frontend/public/terrain/mayon.json",
+      "sha256": "5e62c2ea9822ed6e10e62f6a9cdb753e157db9bf4aadd17df55b92b963c5a012",
+      "served_bytes_match": true
+    },
+    {
+      "file": "frontend/public/terrain/kanlaon.json",
+      "sha256": "997bd289bd9b7a43adb1f4f6fcba4750280a59e36b684e3d047c7a5bc077dfac",
+      "served_bytes_match": true
+    },
+    {
+      "file": "frontend/public/geography-context.geojson",
+      "sha256": "68c0d42ec804dafde4e97d0848d6b255f2d95eab3786c443d07ae4d57ccf80d0",
+      "served_bytes_match": true
+    }
+  ],
+  "build_assets": [
+    {
+      "file": "frontend/dist/assets/GeographicMap-vh-t_kPv.css",
+      "sha256": "86d3d093fad979e1d185c8a93258f5f124d863fd13ca894c0b9f50bb68b66997",
+      "bytes": 15095
+    },
+    {
+      "file": "frontend/dist/assets/GeographicMap-Y85BHFp1.js",
+      "sha256": "4e3effa2263660a60b3e4f32f2d3413ffc4450dcf16e5ef0dbb2299f2a53f6dd",
+      "bytes": 11217
+    },
+    {
+      "file": "frontend/dist/assets/index-CzstAtRQ.js",
+      "sha256": "0f76d9e4e1d49348ed1b1a9130a7f42ad2fdca6ddd21ff45b5b487b2cea03021",
+      "bytes": 436172
+    },
+    {
+      "file": "frontend/dist/assets/index-yEEMm0CD.css",
+      "sha256": "4d817763663ad1102bc23e2b4eabc6cbbc705cb9696015ee109b6cf5a48df497",
+      "bytes": 16708
+    },
+    {
+      "file": "frontend/dist/assets/Legend-xjYJy9oj.js",
+      "sha256": "203b7bb2ac156207b9751e43f5a20d694c52df09e2b31432159e021ec023327a",
+      "bytes": 525
+    },
+    {
+      "file": "frontend/dist/assets/VolcanoScene-Ejww_WMp.js",
+      "sha256": "97bb1783d34cd0929a00a88d0fd93a3a8f45410f6288f0a835d0021e7cbc76dd",
+      "bytes": 968885
+    }
+  ],
+  "limits": "Local serving and asset checks, not a security penetration test or historical validation. Optional ignored raw terrain caches were not downloaded or re-curated."
+}

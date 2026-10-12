@@ -1,0 +1,29 @@
+{
+  "implementation_revision": "b46f13f866e82412937a080a2e46443d10bea4f1",
+  "dataset_revision": "2026-10-12-gap-evidence-v2-utf8",
+  "catalog_receptor_count": 320,
+  "legacy_all_bearings_estimated_bytes": 595207680,
+  "cases": [
+    {
+      "preset": "taal-teaching",
+      "status": 422,
+      "detail": "Estimated working memory exceeds the 512 MiB computation budget",
+      "returned_receptors": 0,
+      "step_deg": null
+    },
+    {
+      "preset": "mayon-teaching",
+      "status": 422,
+      "detail": "Estimated working memory exceeds the 512 MiB computation budget",
+      "returned_receptors": 0,
+      "step_deg": null
+    },
+    {
+      "preset": "kanlaon-teaching",
+      "status": 422,
+      "detail": "Estimated working memory exceeds the 512 MiB computation budget",
+      "returned_receptors": 0,
+      "step_deg": null
+    }
+  ]
+}

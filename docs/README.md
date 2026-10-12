@@ -2,7 +2,8 @@
 
 ## Start here
 
-- [Current two-agent QA and corrections](CURRENT_QA_DELIVERY.md): latest implementation, research review and retained gates; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
+- [Comprehensive fresh-clone QA and corrections](COMPREHENSIVE_QA_20261012.md): latest 188 Python / 86 frontend checks, independent [science/backend](COMPREHENSIVE_SCIENCE_QA_20261012.md) and [application/browser](COMPREHENSIVE_APP_QA_20261012.md) reports, corrected sweep/response/camera-lifetime behavior, and preserved limits.
+- [Earlier two-agent QA and corrections](CURRENT_QA_DELIVERY.md): dated implementation and manuscript review; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
 - [Contributor instructions](../CONTRIBUTING.md) and [repository map](../repository_map.md): setup and exact file locations.
 - [Gap register](GAP_REGISTER.md) and [gap-closure delivery](GAP_CLOSURE_DELIVERY.md): current status, open source gates and verification limits.
 - [Computation](COMPUTATION.md), [eruption model](ERUPTION_MODEL.md) and [input values](INPUT_VALUES.md): units, equations and physical assumptions.

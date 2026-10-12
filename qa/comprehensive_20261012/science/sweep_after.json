@@ -1,0 +1,29 @@
+{
+  "implementation_revision": "working-tree",
+  "dataset_revision": "2026-10-12-gap-evidence-v2-utf8",
+  "catalog_receptor_count": 320,
+  "legacy_all_bearings_estimated_bytes": 595207680,
+  "cases": [
+    {
+      "preset": "taal-teaching",
+      "status": 200,
+      "detail": null,
+      "returned_receptors": 320,
+      "step_deg": 1
+    },
+    {
+      "preset": "mayon-teaching",
+      "status": 200,
+      "detail": null,
+      "returned_receptors": 320,
+      "step_deg": 1
+    },
+    {
+      "preset": "kanlaon-teaching",
+      "status": 200,
+      "detail": null,
+      "returned_receptors": 320,
+      "step_deg": 1
+    }
+  ]
+}

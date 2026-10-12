@@ -1,0 +1,2324 @@
+{
+  "source": "qa/comprehensive_20261012/app/settled-guide-unmounted.heapsnapshot",
+  "node_count": 770815,
+  "edge_count": 2474247,
+  "counts": {
+    "object:HTMLDivElement": 282,
+    "object:HTMLDivElement (prototype) / http://127.0.0.1:8012": 2,
+    "object:HTMLDivElement (internal cache) / http://127.0.0.1:8012": 2,
+    "object:HTMLCanvasElement (internal cache) / http://127.0.0.1:8012": 2,
+    "object:WebGL2RenderingContext (internal cache) / http://127.0.0.1:8012": 1,
+    "object:WebGL2RenderingContext (prototype) / http://127.0.0.1:8012": 1,
+    "object:HTMLCanvasElement": 13,
+    "object:HTMLCanvasElement (prototype) / http://127.0.0.1:8012": 2,
+    "native:WebGL2RenderingContext": 12,
+    "object:WebGL2RenderingContext": 1,
+    "native:blink::HeapVectorBacking<blink::WebGLRenderingContextBase::TextureUnitState>": 12
+  },
+  "canvases": [
+    {
+      "node": 433097,
+      "id": 866241,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 520693,
+          "id": 1041411,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20641,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "10"
+            }
+          },
+          {
+            "node": 738969,
+            "id": 372,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 738970,
+            "id": 374,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 747967,
+            "id": 18368,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 624011,
+            "id": 1248031,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 623615,
+            "id": 1247239,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 520693,
+            "id": 1041411,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 433097,
+            "id": 866241,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 437314,
+      "id": 874671,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 557738,
+          "id": 1115493,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20641,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "8"
+            }
+          },
+          {
+            "node": 739823,
+            "id": 2080,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 739824,
+            "id": 2082,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 746013,
+            "id": 14460,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 680954,
+            "id": 1361913,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 680955,
+            "id": 1361915,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 557738,
+            "id": 1115493,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 437314,
+            "id": 874671,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 458658,
+      "id": 917357,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 692426,
+          "id": 1384857,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20645,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "5"
+            }
+          },
+          {
+            "node": 742849,
+            "id": 8132,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 742850,
+            "id": 8134,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 745392,
+            "id": 13218,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 680652,
+            "id": 1361309,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 680647,
+            "id": 1361299,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 692426,
+            "id": 1384857,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 458658,
+            "id": 917357,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 508002,
+      "id": 1016027,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 624587,
+          "id": 1249183,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20641,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "3"
+            }
+          },
+          {
+            "node": 743749,
+            "id": 9932,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 743750,
+            "id": 9934,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 748422,
+            "id": 19278,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 698358,
+            "id": 1396721,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 698313,
+            "id": 1396631,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 624587,
+            "id": 1249183,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 508002,
+            "id": 1016027,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 508003,
+      "id": 1016029,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 764603,
+          "id": 51640,
+          "type": "native",
+          "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+          "detachedness": 0,
+          "self_size": 2056,
+          "retaining_edge": {
+            "kind": "element",
+            "label": "36"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 51,
+        "path": [
+          {
+            "node": 1,
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "29"
+            }
+          },
+          {
+            "node": 738782,
+            "id": 1477565,
+            "type": "synthetic",
+            "name": "C++ Persistent roots",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "blink::ScriptState::ScriptState(v8::Local<v8::Context>, DOMWrapperWorld *, scoped_refptr<scheduler::"
+            }
+          },
+          {
+            "node": 738795,
+            "id": 26,
+            "type": "native",
+            "name": "blink::ScriptStateImpl",
+            "detachedness": 0,
+            "self_size": 112,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 764602,
+            "id": 51638,
+            "type": "native",
+            "name": "blink::V8PerContextData",
+            "detachedness": 0,
+            "self_size": 120,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 764603,
+            "id": 51640,
+            "type": "native",
+            "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+            "detachedness": 0,
+            "self_size": 2056,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "36"
+            }
+          },
+          {
+            "node": 508003,
+            "id": 1016029,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 539818,
+      "id": 1079655,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 508706,
+          "id": 1017435,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 36066,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "13"
+            }
+          },
+          {
+            "node": 738873,
+            "id": 180,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 738874,
+            "id": 182,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 744491,
+            "id": 11416,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 508752,
+            "id": 1017527,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 508705,
+            "id": 1017433,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 508706,
+            "id": 1017435,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 539818,
+            "id": 1079655,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 543730,
+      "id": 1087477,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 570682,
+          "id": 1141383,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20645,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "12"
+            }
+          },
+          {
+            "node": 738891,
+            "id": 216,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 738892,
+            "id": 218,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 743848,
+            "id": 10130,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 570728,
+            "id": 1141475,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 570680,
+            "id": 1141379,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 570682,
+            "id": 1141383,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 543730,
+            "id": 1087477,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 557885,
+      "id": 1115787,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 676166,
+          "id": 1352337,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20641,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "7"
+            }
+          },
+          {
+            "node": 739040,
+            "id": 514,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 739041,
+            "id": 516,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 746179,
+            "id": 14792,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 676155,
+            "id": 1352315,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 501657,
+            "id": 1003345,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 676166,
+            "id": 1352337,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 557885,
+            "id": 1115787,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 599494,
+      "id": 1198999,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 764599,
+          "id": 51632,
+          "type": "native",
+          "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+          "detachedness": 0,
+          "self_size": 4104,
+          "retaining_edge": {
+            "kind": "element",
+            "label": "36"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 1974,
+        "path": [
+          {
+            "node": 1,
+            "id": 3,
+            "type": "synthetic",
+            "name": "(GC roots)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "29"
+            }
+          },
+          {
+            "node": 738782,
+            "id": 1477565,
+            "type": "synthetic",
+            "name": "C++ Persistent roots",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "blink::ScriptState::ScriptState(v8::Local<v8::Context>, DOMWrapperWorld *, scoped_refptr<scheduler::"
+            }
+          },
+          {
+            "node": 738823,
+            "id": 82,
+            "type": "native",
+            "name": "blink::ScriptStateImpl",
+            "detachedness": 0,
+            "self_size": 112,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 764598,
+            "id": 51630,
+            "type": "native",
+            "name": "blink::V8PerContextData",
+            "detachedness": 0,
+            "self_size": 120,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 764599,
+            "id": 51632,
+            "type": "native",
+            "name": "blink::HeapHashTableBacking<blink::HashTable<const blink::WrapperTypeInfo *, blink::KeyValuePair<const blink::WrapperTypeInfo *, v8::TracedReference<v8::Object>>, blink::KeyValuePa",
+            "detachedness": 0,
+            "self_size": 4104,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "36"
+            }
+          },
+          {
+            "node": 599494,
+            "id": 1198999,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 629281,
+      "id": 1258569,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 421446,
+          "id": 842937,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20641,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "11"
+            }
+          },
+          {
+            "node": 743743,
+            "id": 9920,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 743744,
+            "id": 9922,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 744297,
+            "id": 11028,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 421475,
+            "id": 842995,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 421444,
+            "id": 842933,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 421446,
+            "id": 842937,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 629281,
+            "id": 1258569,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 675693,
+      "id": 1351391,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 662512,
+          "id": 1325031,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20645,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "4"
+            }
+          },
+          {
+            "node": 739526,
+            "id": 1486,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 739527,
+            "id": 1488,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 744166,
+            "id": 10766,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 499847,
+            "id": 999727,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 396508,
+            "id": 793065,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 662512,
+            "id": 1325031,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 675693,
+            "id": 1351391,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 700854,
+      "id": 1401713,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 538474,
+          "id": 1076967,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20645,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 741140,
+            "id": 4714,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 741141,
+            "id": 4716,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 743851,
+            "id": 10136,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 439907,
+            "id": 879857,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 439906,
+            "id": 879855,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 538474,
+            "id": 1076967,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 700854,
+            "id": 1401713,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    },
+    {
+      "node": 728209,
+      "id": 1456419,
+      "type": "object",
+      "name": "HTMLCanvasElement",
+      "detachedness": 0,
+      "self_size": 16,
+      "direct_retainers": [
+        {
+          "node": 436822,
+          "id": 873687,
+          "type": "native",
+          "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+          "detachedness": 2,
+          "self_size": 664,
+          "retaining_edge": {
+            "kind": "internal",
+            "label": "part of key -> value pair in ephemeron table"
+          }
+        }
+      ],
+      "root_path": {
+        "visited": 20645,
+        "path": [
+          {
+            "node": 11,
+            "id": 23,
+            "type": "synthetic",
+            "name": "(Global handles)",
+            "detachedness": 0,
+            "self_size": 0,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "289 / DevTools console"
+            }
+          },
+          {
+            "node": 3883,
+            "id": 7767,
+            "type": "object",
+            "name": "InjectedScript",
+            "detachedness": 0,
+            "self_size": 136,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "document"
+            }
+          },
+          {
+            "node": 352378,
+            "id": 704765,
+            "type": "native",
+            "name": "HTMLDocument",
+            "detachedness": 1,
+            "self_size": 3376,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "74"
+            }
+          },
+          {
+            "node": 755153,
+            "id": 32740,
+            "type": "native",
+            "name": "blink::EventTargetData",
+            "detachedness": 0,
+            "self_size": 56,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755154,
+            "id": 32742,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<std::pair<blink::AtomicString, cppgc::internal::BasicMember<blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember",
+            "detachedness": 0,
+            "self_size": 264,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "9"
+            }
+          },
+          {
+            "node": 755639,
+            "id": 33712,
+            "type": "native",
+            "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::kGCed, cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::D",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 755640,
+            "id": 33714,
+            "type": "native",
+            "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink::RegisteredEventListener, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy>>",
+            "detachedness": 0,
+            "self_size": 72,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "6"
+            }
+          },
+          {
+            "node": 740017,
+            "id": 2468,
+            "type": "native",
+            "name": "blink::RegisteredEventListener",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 740018,
+            "id": 2470,
+            "type": "native",
+            "name": "EventListener",
+            "detachedness": 0,
+            "self_size": 32,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 744418,
+            "id": 11270,
+            "type": "native",
+            "name": "V8EventListener",
+            "detachedness": 0,
+            "self_size": 40,
+            "retaining_edge": {
+              "kind": "element",
+              "label": "1"
+            }
+          },
+          {
+            "node": 436868,
+            "id": 873779,
+            "type": "closure",
+            "name": "native_bind",
+            "detachedness": 0,
+            "self_size": 24,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "bound_this"
+            }
+          },
+          {
+            "node": 436820,
+            "id": 873683,
+            "type": "object",
+            "name": "py",
+            "detachedness": 0,
+            "self_size": 312,
+            "retaining_edge": {
+              "kind": "property",
+              "label": "domElement"
+            }
+          },
+          {
+            "node": 436822,
+            "id": 873687,
+            "type": "native",
+            "name": "<canvas data-engine=\"three.js r186\" width=\"548\" height=\"478\" tabindex=\"0\" aria-label=\"Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orb",
+            "detachedness": 2,
+            "self_size": 664,
+            "retaining_edge": {
+              "kind": "internal",
+              "label": "part of key -> value pair in ephemeron table"
+            }
+          },
+          {
+            "node": 728209,
+            "id": 1456419,
+            "type": "object",
+            "name": "HTMLCanvasElement",
+            "detachedness": 0,
+            "self_size": 16,
+            "retaining_edge": null
+          }
+        ]
+      }
+    }
+  ]
+}

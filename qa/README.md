@@ -1,6 +1,8 @@
 # Verification and retained evidence
 
-`current_review/` holds the 12 October two-agent science/app review, correction retests, current catalog comparison and actual-Word replacement pages. Its `test_current_science.py` contributes 22 independent cases to standard full-suite discovery. See `docs/CURRENT_QA_DELIVERY.md` for the latest evidence and its scope.
+`comprehensive_20261012/` holds the fresh-clone comprehensive review: independent `science/` and `app/` cases, before/after failures, renderer retaining paths, correction retests, and `integration/` logs/packaging/Word checks. Its 19 scientific cases are discovered by the standard full Python command. New browser runs should use a new `ABO_QA_SUFFIX` and an explicit `ABO_QA_URL` when needed; preserve prior outputs. `docs/COMPREHENSIVE_QA_20261012.md` integrates the current 188 Python / 86 frontend checks and their limits. The new OrbitControls wrapper targets the locked Three r186 listener-root behavior; detached-root tests must remain when changing that runtime.
+
+`current_review/` preserves the earlier 12 October two-agent science/app review, correction retests, catalog comparison and actual-Word replacement pages. Its `test_current_science.py` contributes 22 independent cases to standard full-suite discovery. See `docs/CURRENT_QA_DELIVERY.md` for that dated evidence and its scope.
 
 `backend/tests/` and the `qa/test_*.py` / `qa/gap_closure/test_*.py` cases run through the locked backend environment. Frontend tests run through `frontend/package-lock.json`. See [CONTRIBUTING.md](../CONTRIBUTING.md) for the standard checks.
 

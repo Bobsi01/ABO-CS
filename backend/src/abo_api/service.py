@@ -75,7 +75,10 @@ def prepare(request, sweep=False):
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
     budget = kernel.check_budget(
-        len(s.grains) * s.release_layers, n, len(receptors), 360 if sweep else 1
+        len(s.grains) * s.release_layers,
+        n,
+        len(receptors),
+        kernel.SWEEP_DIRECTION_BATCH if sweep else 1,
     )
     fractions = np.asarray([g.fraction for g in s.grains])
     settling = np.asarray([g.settling_speed_m_s for g in s.grains])
