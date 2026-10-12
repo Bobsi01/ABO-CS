@@ -5,6 +5,13 @@ export type PlumeParcel = EruptionFrame['plume_parcels'][number]
 export type LavaPoint = EruptionSequence['lava']['path'][number]
 export type DisplayParcel = PlumeParcel & { visibility: number }
 
+/** Elapsed hours do not wrap at midnight; the settling tail can exceed a day. */
+export function scenarioClock(seconds: number): string {
+  if (!Number.isFinite(seconds)) return 'Unknown'
+  const total = Math.max(0, Math.round(seconds))
+  return `${Math.floor(total / 3600)}:${String(Math.floor(total % 3600 / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`
+}
+
 export function eruptionFramePair(sequence: EruptionSequence, frameIndex: number) {
   const index = Math.max(0, Math.min(sequence.frames.length - 1, Number.isFinite(frameIndex) ? frameIndex : 0))
   const lower = Math.floor(index), upper = Math.min(sequence.frames.length - 1, lower + 1)

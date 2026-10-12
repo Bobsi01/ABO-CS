@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { EruptionSequence } from '../api/simulator'
-import { eruptionDisplayFrame, eruptionFramePair, lavaVisiblePath } from './eruptionReplay'
+import { eruptionDisplayFrame, eruptionFramePair, lavaVisiblePath, scenarioClock } from './eruptionReplay'
 import type { EruptionFrame, LavaPoint, PlumeParcel } from './eruptionReplay'
 
 const parcel = (id: string, east: number): PlumeParcel => ({ parcel_id: id, grain_index: 0, east_m: east, north_m: 20, height_m: 1000, radius_m: 200, mass_kg: 10 })
@@ -9,6 +9,11 @@ const sequence = (frames: EruptionFrame[]): EruptionSequence => ({ frames } as E
 const route = [{ east_m: 0, north_m: 0, elevation_m: 2000, arrival_s: 10, width_m: 20, thickness_m: 1 }, { east_m: 1000, north_m: 500, elevation_m: 1500, arrival_s: 20, width_m: 30, thickness_m: 2 }] as LavaPoint[]
 
 describe('backend eruption timeline interpolation', () => {
+  it('shows elapsed scenario hours beyond a day without wrapping or losing the emission duration', () => {
+    expect(scenarioClock(3600)).toBe('1:00:00')
+    expect(scenarioClock(100475)).toBe('27:54:35')
+    expect(scenarioClock(1883.4)).toBe('0:31:23')
+  })
   it('keeps the before state clear even when its next frame contains ash', () => {
     const result = eruptionDisplayFrame(sequence([frame('before', 0, []), frame('erupting', 20, [parcel('a', 100)])]), 0.8)
     expect(result.parcels).toEqual([])

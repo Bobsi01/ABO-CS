@@ -2,6 +2,10 @@
 
 ## Visual revision — 12 October 2026
 
+The transport arrow now has an attached, screen-readable **Wind / ash transport** label. It follows the arrow tip during camera movement and is removed with the arrow. North/east compass arrows retain their N/E labels; the numeric wind-FROM caption describes the input bearing, while the transport arrow points downwind. Arrow length is still a display cue, not distance or speed.
+
+The timeline shows elapsed model time and total horizon as **h:mm:ss**, plus the emission duration. Hours do not reset after 24. For the default 5 km / 1-hour teaching preset, emission lasts `1:00:00` and eventual settlement is reached at `27:54:35`. A full replay takes approximately 36 display seconds with nonuniform model-time steps; it is not a sequence of hourly frames.
+
 The user rejected the earlier eruption-effect appearance and selected a more convincing scientific illustration with clearer flow and texture. `EruptionEffects.tsx` now uses soft-edged, noisy cloud impostors instead of sphere stacks, and distinct enlarged ash markers. The source-column bend is a bounded illustration cue using the Python result's wind vector and the prescribed rise-speed setting; it does not solve buoyancy, turbulence or gas transport. Cloud texture and opacity are not airborne concentration.
 
 `eruptionVisuals.ts` owns procedural texture, deterministic display detail, sparse grain markers, and the surface lava ribbon. The ribbon samples the same triangular terrain mesh as the backdrop, including reduced detail, so its enlarged sides lie above the displayed surface. Its centerline and advancing front still come from Python's route and arrival times. It has a dark edge and warmer core; these are qualitative stage colors, not computed temperatures. Mayon's camera is oblique to the routed slope to reveal downhill length. Taal's framing includes more of the source-column top.

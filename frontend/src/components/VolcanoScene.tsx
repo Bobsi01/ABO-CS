@@ -222,14 +222,43 @@ function ReceptorMarkers({ result, terrain, emphasizeTaal, selected, onSelect }:
 }
 
 function Wind({ result, height, view }: { result: SimulationResult; height: number; view: View }) {
+  const label = useRef<HTMLSpanElement | null>(null)
+  const { camera, gl, size, invalidate } = useThree()
+  const projected = useMemo(() => new THREE.Vector3(), [])
+  const length = view === 'close' ? 2 : 8
   const arrow = useMemo(() => {
     const direction = new THREE.Vector3(result.illustration.wind_east_m_s, 0, -result.illustration.wind_north_m_s)
     if (direction.length() === 0) return null
     // Direction cue only: arrow length is a view-dependent display size, never wind speed.
-    const length = view === 'close' ? 2 : 8
     return new THREE.ArrowHelper(direction.normalize(), new THREE.Vector3(0, height, 0), length, '#324f53', length * 0.15, length * 0.075)
-  }, [result, height, view])
+  }, [result, height, length])
   useEffect(() => () => arrow?.dispose(), [arrow])
+  useEffect(() => {
+    if (!arrow || !gl.domElement.parentElement) return
+    const element = document.createElement('span')
+    element.className = 'scene-arrow-label'
+    element.textContent = 'Wind / ash transport'
+    element.style.visibility = 'hidden'
+    gl.domElement.parentElement.appendChild(element)
+    label.current = element
+    invalidate()
+    return () => { element.remove(); label.current = null }
+  }, [arrow, gl, invalidate])
+  useFrame(() => {
+    if (!arrow || !label.current) return
+    projected.set(0, length, 0)
+    arrow.localToWorld(projected).project(camera)
+    const x = (projected.x + 1) * size.width / 2, y = (1 - projected.y) * size.height / 2
+    const visible = projected.z >= -1 && projected.z <= 1 && x >= 0 && x <= size.width && y >= 0 && y <= size.height
+    label.current.style.visibility = visible ? 'visible' : 'hidden'
+    const left = Math.max(8, Math.min(size.width - label.current.offsetWidth - 8, x + 8))
+    let top = Math.max(8, Math.min(size.height - label.current.offsetHeight - 8, y - label.current.offsetHeight - 5))
+    const hud = gl.domElement.closest('.scene-stage')?.querySelector<HTMLElement>('.scene-hud')
+    if (hud && left < hud.offsetLeft + hud.offsetWidth && left + label.current.offsetWidth > hud.offsetLeft && top < hud.offsetTop + hud.offsetHeight && top + label.current.offsetHeight > hud.offsetTop) {
+      top = Math.min(size.height - label.current.offsetHeight - 8, hud.offsetTop + hud.offsetHeight + 8)
+    }
+    label.current.style.transform = `translate(${left}px, ${top}px)`
+  })
   return arrow ? <primitive object={arrow} /> : null
 }
 

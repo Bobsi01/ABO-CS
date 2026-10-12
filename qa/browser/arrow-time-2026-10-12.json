@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-12",
+  "executor": "orchestrator",
+  "asset": "/assets/index-BdSPQSOW.js",
+  "label": "Wind / ash transport",
+  "styleBeforeCameraKey": "visibility: visible; transform: translate(391.727px, 10.3055px);",
+  "styleAfterCameraKey": "visibility: visible; transform: translate(394.421px, 13.0746px);",
+  "modelTimeline": [
+    "BeforeDuringAfterPlay sequenceDuring eruptionModel time (h:mm:ss): 0:31:23 / 27:54:35Emission duration: 1:00:0036-second accelerated replay with nonuniform model-time steps. Billows and fountain shapes are schematic; accumulated ash is computed in Python."
+  ],
+  "mapSnapshot": [
+    "Snapshot: During eruption · 0:31:23 (h:mm:ss) · 0 municipal centroids with ash ≥0.5 mm"
+  ],
+  "consoleErrors": [],
+  "scope": "Label visibility/camera following and consistent elapsed/duration/horizon units; not a full graphics QA pass",
+  "narrowCheck": {
+    "width": 320,
+    "labelStyle": "visibility: visible; transform: translate(139px, 88px);",
+    "screenshot": "qa/browser/arrow-time-2026-10-12-320.jpg",
+    "observed": "Label stays visible below the volcano HUD without covering its name"
+  }
+}

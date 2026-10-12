@@ -36,6 +36,12 @@ The interpretation distinguishes wind-transported ash from gases and source appe
 
 Raw timing and its measured viewport/settings belong to this scoped check. They do not replace the prescribed three-replay, matched-settings Chrome/in-app foreground campaign or a 30-minute final-bundle cleanup soak. The 11 October performance PASS remains evidence for its previous bundle only.
 
+## Arrow and time clarification — 12 October 2026
+
+At the user's request, the wind arrow has an attached **Wind / ash transport** label that follows its projected tip while orbiting. It avoids the volcano HUD on narrow layouts and cleans up on unmount. The timeline and map use elapsed `h:mm:ss` without wrapping at 24 hours, and the timeline distinguishes emission duration, full model horizon and the 36-second accelerated replay.
+
+The default preset emits for `1:00:00` and reaches eventual settling at `27:54:35`; this does not imply an eruption lasting almost 28 hours. Snapshot spacing is nonuniform rather than hourly. Current checks pass 142 Python and 61 frontend cases. Final annotation assets are `index-BdSPQSOW.js` and `VolcanoScene-MHNgxiLf.js`; `qa/browser/arrow-time-2026-10-12.json` and its normal/320 px images record visible camera-following labels, matching map/time readouts and no browser console errors. This small follow-up does not close the broader graphics QA gates.
+
 ## Remaining work
 
 Independent final visual review and user acceptance are pending. The bounded cohort illustration remains an approximation: it is neither volumetric plume CFD nor an airborne ash forecast. Full graphics retention/cleanup, actual hidden-page lifecycle, native accessibility checks and the scientific source/empirical-validation gaps remain open. The research manuscript and scientific results were preserved; a more convincing image does not establish predictive accuracy.

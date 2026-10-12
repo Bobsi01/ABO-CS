@@ -101,6 +101,7 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .zone-line { display: inline-block; width: 24px; border-top: 2px dashed #5b527e; vertical-align: middle; margin-right: 0.35rem; }
 .scene-hud { position: absolute; z-index: 1; top: 0.75rem; left: 0.75rem; display: flex; flex-direction: column; gap: 0.2rem; pointer-events: none; padding: 0.45rem 0.6rem; border-radius: 4px; background: #edf4fde8; color: #203e68; font-size: 0.7rem; }
 .scene-hud strong { font-size: 0.8rem; }
+.scene-arrow-label { position: absolute; z-index: 1; left: 0; top: 0; padding: 0.25rem 0.45rem; border: 1px solid #c3d2e5; border-radius: 4px; background: #f4f8fdf2; color: #203e68; font: 600 0.75rem/1.4 "Segoe UI", sans-serif; pointer-events: none; white-space: nowrap; }
 .vent-marker { filter: drop-shadow(0 1px 1px #203e6840); }
 .scene-toolbar button { font-size: 0.8rem; }
 .application .camera-control { margin: 0; width: 180px; }
