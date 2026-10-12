@@ -296,7 +296,9 @@ def normalized(name):
     return re.sub(r"[^a-z]", "", name)
 
 
-centroids = json.loads((ROOT / "data/source/derived-municipal-centroids.json").read_text())
+centroids = json.loads(
+    (ROOT / "data/source/derived-municipal-centroids.json").read_text(encoding="utf-8")
+)
 aliases = {
     "Mendez": "Mendez (Mendez-Nunez)",
     "Canlaon": "Canlaon",

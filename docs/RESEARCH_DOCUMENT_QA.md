@@ -1,5 +1,11 @@
 # IMRaD research document and formatting record
 
+## Current two-agent revision — 12 October 2026
+
+The current editable DOCX incorporates census-selection corrections, the 3D/map snapshot distinction, an hour-only presentation example and the scope of the previous renderer benchmark. It retains IMRaD, Arial 11 pt body / 12 pt headings, seven editable equations and three tables/figures. Actual Microsoft Word 16.0 build 20326 rendered it read-only into **16 pages**. The independent scientific evaluator inspected every replacement page and audited the actual DOCX and PDF; all 162 prose/table paragraphs are present, Arial-only rendered fonts and editable equations pass. The orchestrator separately inspected pages 1, 7, 8 and 9.
+
+Evidence is in `qa/current_review/word/` and `science-document.json` / `science-page-review.json`. DOCX SHA-256: `666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a`; actual Word PDF: `b2931607b35b7c88d9eaa15b9a616724b9474d27481b33d9fa8bd3b8bc64226f`. [Independent scientific review](CURRENT_SCIENCE_QA.md) closes the previous final-page review gate for this exact file. Native Word accessibility and speech remain unperformed. Earlier sections below refer to preserved older files and checks, including the 15-page 11 October artifact.
+
 ## Current actual-Word revision — 11 October 2026
 
 The current [editable manuscript](ABO_RESEARCH_IMRAD.docx) incorporates the frozen protocol, reviewed inventories, actual wind coverage, two dependent contour traces, synthetic sensitivity and final browser/soak findings. It contains 15 pages, seven native editable equations, three numeric tables and three figures with alternative text. Arial is 11 pt for regular text/captions/references and 12 pt for headings/table headers. The original Google Doc remains preserved.

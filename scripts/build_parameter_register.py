@@ -21,7 +21,7 @@ def main():
     lines = [
         "# Parameter evidence register",
         "",
-        "Revision: `2026-10-11-gap-evidence-v1`. Reproduce with "
+        f"Revision: `{catalog['revision']}`. Reproduce with "
         "`uv run python ../scripts/build_parameter_register.py` from `backend/` "
         "after the catalog build.",
         "",

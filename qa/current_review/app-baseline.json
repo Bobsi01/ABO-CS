@@ -1,0 +1,18 @@
+{
+  "reviewedAt": "2026-10-12T03:11:12.022Z",
+  "executor": "independent application QA agent",
+  "assets": [
+    "/assets/index-BfQBsCVz.js"
+  ],
+  "historicText": "12–13 January 2020 Taal fallout\nCheck historical reference\n\nunavailable. The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.\n\nIndependent QA approved frozen methodology; scientific input gate remains blocked\nPublished 8,605 kmÂ² narrative and 3,864.89 kmÂ² Table 3 area statements remain distinct unresolved references\nNo participant or classroom empirical study was performed\nNumerical verification does not establish empirical accuracy\nBoth target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed\nEvaluation JSON\n\nNo geolocated thickness observations have passed the evidence gate. Published summary areas cannot supply point residuals.\n\nDerived reference contours & digitization uncertainty\nFrozen protocol & source dependencies\nInputs still requiring review\nTanay selected-launch coverage 71.43% below frozen 75% requirement\nReviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)\nIndependent ash mass and dry bulk density\nWhole-event grain fractions and settling speeds\nRaw geolocated thickness observations and defensible original measurement/interpolation uncertainty\n2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review\nCondition-specific roof/crop thresholds and water-facility coordinates\nResolve/report published footprint area definitions without target selection\n\nPublished quantities are reference evidence, not a computed historical validation.\n\nPublished Table 3 isopach areas (not spatial geometry)\nPublished plume and volume references",
+  "consoleErrors": [],
+  "tests": "npm run check: 61 cases, lint/types/build passed",
+  "staleExport": "wind_speed_m_s=10 and population_year=2024 after unsent draft wind20",
+  "mobile": {
+    "width": 320,
+    "documentClientWidth": 310,
+    "documentScrollWidth": 310,
+    "theme": "dark"
+  },
+  "status": "baseline before orchestrator corrections"
+}

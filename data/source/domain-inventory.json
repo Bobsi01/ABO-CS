@@ -301,7 +301,7 @@
         },
         {
           "shape_id": "30758251B16723889149596",
-          "name": "City of BiÃ±an",
+          "name": "City of Biñan",
           "psgc": "0403403000",
           "status": "included"
         },
@@ -322,7 +322,7 @@
         },
         {
           "shape_id": "30758251B92956518503760",
-          "name": "City of DasmariÃ±as",
+          "name": "City of Dasmariñas",
           "psgc": "0402106000",
           "status": "included"
         },
@@ -334,7 +334,7 @@
         },
         {
           "shape_id": "30758251B78130969630418",
-          "name": "City of Las PiÃ±as",
+          "name": "City of Las Piñas",
           "psgc": "1380200000",
           "status": "included"
         },
@@ -388,7 +388,7 @@
         },
         {
           "shape_id": "30758251B15145867760436",
-          "name": "City of ParaÃ±aque",
+          "name": "City of Parañaque",
           "psgc": "1381000000",
           "status": "included"
         },
@@ -471,7 +471,7 @@
         },
         {
           "shape_id": "30758251B33129254568465",
-          "name": "DoÃ±a Remedios Trinidad",
+          "name": "Doña Remedios Trinidad",
           "psgc": "0301424000",
           "status": "included"
         },
@@ -650,7 +650,7 @@
         },
         {
           "shape_id": "30758251B45670091737840",
-          "name": "Los BaÃ±os",
+          "name": "Los Baños",
           "psgc": "0403411000",
           "status": "included"
         },
@@ -2056,7 +2056,7 @@
         },
         {
           "shape_id": "30758251B59561254174499",
-          "name": "SagÃ±ay",
+          "name": "Sagñay",
           "status": "unresolved",
           "reason": "No unique reviewed name-to-PSGC match in archived extracts",
           "candidate_codes": [
@@ -2806,7 +2806,7 @@
         },
         {
           "shape_id": "30758251B74764778081274",
-          "name": "DueÃ±as",
+          "name": "Dueñas",
           "status": "unresolved",
           "reason": "No unique reviewed name-to-PSGC match in archived extracts",
           "candidate_codes": []

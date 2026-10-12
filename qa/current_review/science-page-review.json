@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-12",
+  "reviewer": "independent research_accuracy_qa",
+  "docx_sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a",
+  "pdf_sha256": "b2931607b35b7c88d9eaa15b9a616724b9474d27481b33d9fa8bd3b8bc64226f",
+  "pages": [
+    {
+      "page": 1,
+      "file": "qa/current_review/word/page-1.png",
+      "sha256": "e3c7afcc5850f08440ae92f260c265e23ddd859de97c21dff1252d616c80ddf9",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 2,
+      "file": "qa/current_review/word/page-2.png",
+      "sha256": "1ccf96104b1fa710a170d82153e5bdec505feaeb106732ff26e2879b6129d178",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 3,
+      "file": "qa/current_review/word/page-3.png",
+      "sha256": "184e7b6fe7377171f9611b5dc9d14c6824188a1bb8827bb283d2062800b99b06",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 4,
+      "file": "qa/current_review/word/page-4.png",
+      "sha256": "6f4578b1a3e2c056bf5d55f133053bba23079e522063f5a493c929bd2b42cd65",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 5,
+      "file": "qa/current_review/word/page-5.png",
+      "sha256": "c17a22677c8bf8a0ac6cb51cf9ede39c82781fb76fbeccaed365377275e3232e",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 6,
+      "file": "qa/current_review/word/page-6.png",
+      "sha256": "39343168c49de620a2ba03a6e008ef9769a1150ad69b3b327a09ecbd6c0727c4",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 7,
+      "file": "qa/current_review/word/page-7.png",
+      "sha256": "516eacaa70c1a2050ef56a01e7d767d346f283aa9e2bfcdd05fa9e984c3e2487",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 8,
+      "file": "qa/current_review/word/page-8.png",
+      "sha256": "e37674222872b5fc71a3b9f0d1e9bc89a7363e5546f4b5ad59538082e8e280e5",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 9,
+      "file": "qa/current_review/word/page-9.png",
+      "sha256": "84fcbed4ae6d60b42a3e231c7f9830e1c2e0a7396628061b9a9777393bf7f574",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 10,
+      "file": "qa/current_review/word/page-10.png",
+      "sha256": "cc087edec4e2de60cb0acc198673ecefafae663d7946e56b3b7f3c2b9f5d37d6",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 11,
+      "file": "qa/current_review/word/page-11.png",
+      "sha256": "c9c1e025a23531c6d75a3269036d4ba799be353c6bb3c463a71ec5d1a97b52ac",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 12,
+      "file": "qa/current_review/word/page-12.png",
+      "sha256": "e7f211099cfb749c717482192cd243bdaa36e9c68ac3c9d9b45e1d2a92d093a7",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 13,
+      "file": "qa/current_review/word/page-13.png",
+      "sha256": "164f8b40045dbe8c7ad72a90dfe61967f38be445da47321d686adfb8261c3065",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 14,
+      "file": "qa/current_review/word/page-14.png",
+      "sha256": "478b330816a21ab552e5fee8595da23682ce1de89ddcb549ca386cc4b07e7343",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 15,
+      "file": "qa/current_review/word/page-15.png",
+      "sha256": "809b5f0e57d8457c47840eb1d35743ec2aafe28b15d0f9d5aee476894bf3596e",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    },
+    {
+      "page": 16,
+      "file": "qa/current_review/word/page-16.png",
+      "sha256": "61c34ae24514e57977ff368c3bf9a9ba2442e39a5685e535ff2519a5a030f24e",
+      "inspected_individually": true,
+      "result": "readable; no clipping or overlap"
+    }
+  ],
+  "page11_note": "Ordinary whitespace because Figure2 and caption remain together on page12; no blocking defect",
+  "content_and_typography": "science-document.json",
+  "accessibility": "NativeWordchecker and screenreader speech not performed"
+}

@@ -1,5 +1,5 @@
 {
-  "revision": "2026-10-11-gap-evidence-v1",
+  "revision": "2026-10-12-gap-evidence-v2-utf8",
   "sources": [
     {
       "id": "gvp-taal",
@@ -298,7 +298,7 @@
       "conversions": "Explicit in parameter register",
       "uncertainty": "See evidence classification",
       "review_status": "reviewed_with_limits",
-      "notes": "Broad 100â€“150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld."
+      "notes": "Broad 100–150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld."
     },
     {
       "id": "water-inventory-candidates",
@@ -7764,11 +7764,11 @@
       "event_start_utc": "2020-01-12T05:00:00Z",
       "event_end_utc": "2020-01-12T20:28:00Z",
       "duration_s": 55680,
-      "event_definition": "12â€“13 January 2020 main mapped fallout; published 13:00â€“04:28 local, endpoint-definition uncertainty retained",
+      "event_definition": "12–13 January 2020 main mapped fallout; published 13:00–04:28 local, endpoint-definition uncertainty retained",
       "evaluation_rules": [
         "Independent inputs preferred; no evaluation-data tuning",
         "70/30 spatial-group split only if calibration necessary; duplicate/dependency families intact",
-        "1â€“21 km geopotential wind grid; 75% coverage; no extrapolation",
+        "1–21 km geopotential wind grid; 75% coverage; no extrapolation",
         "Interval RMSE/MAE and midpoint RMSE/MAE separate; 0.5 mm footprint IoU requires accepted geometry",
         "Resolution/release/input sensitivity without refitting"
       ],
@@ -7793,7 +7793,7 @@
     ],
     "assessment_reasons": [
       "Independent QA approved frozen methodology; scientific input gate remains blocked",
-      "Published 8,605 kmÂ² narrative and 3,864.89 kmÂ² Table 3 area statements remain distinct unresolved references",
+      "Published 8,605 km² narrative and 3,864.89 km² Table 3 area statements remain distinct unresolved references",
       "No participant or classroom empirical study was performed",
       "Numerical verification does not establish empirical accuracy",
       "Both target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed"
@@ -8372,7 +8372,7 @@
       "classification": "derived",
       "value": 55680,
       "units": "s",
-      "datum": "13:00 on 12 Januaryâ€“04:28 on 13 January local UTC+8",
+      "datum": "13:00 on 12 January–04:28 on 13 January local UTC+8",
       "uncertainty": "Not a complete predictive uncertainty bound; see notes",
       "source_ids": [
         "taal-study"
@@ -8384,7 +8384,7 @@
         "taal-deposit-study"
       ],
       "readiness": "usable",
-      "notes": "Main event is separate from peak seismic interval 17:00â€“03:00, not full eruption. End-definition uncertainty retained."
+      "notes": "Main event is separate from peak seismic interval 17:00–03:00, not full eruption. End-definition uncertainty retained."
     },
     {
       "id": "plume-observed",
@@ -8431,7 +8431,7 @@
       "classification": "derived",
       "value": null,
       "units": "m/s and degrees FROM",
-      "datum": "1â€“21 km geopotential ASL; height grid 1 km",
+      "datum": "1–21 km geopotential ASL; height grid 1 km",
       "uncertainty": "Not a complete predictive uncertainty bound; see notes",
       "source_ids": [
         "noaa-igra"
@@ -8454,7 +8454,7 @@
       "source_ids": [
         "taal-study"
       ],
-      "locator": "Tephra volume fits 0.042/0.057/0.090 kmÂ³",
+      "locator": "Tephra volume fits 0.042/0.057/0.090 km³",
       "license": "Taal article CC BY 4.0; third-party material may have separate terms",
       "conversions": "None unless stated in notes",
       "dependencies": [
@@ -8494,7 +8494,7 @@
       "source_ids": [
         "taal-study"
       ],
-      "locator": "Samples 1â€“4 deposit PSD different locations/time",
+      "locator": "Samples 1–4 deposit PSD different locations/time",
       "license": "Taal article CC BY 4.0; third-party material may have separate terms",
       "conversions": "None unless stated in notes",
       "dependencies": [
@@ -8677,7 +8677,7 @@
       "conversions": "None unless stated in notes",
       "dependencies": [],
       "readiness": "source_blocked",
-      "notes": "The general 100â€“150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown."
+      "notes": "The general 100–150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown."
     },
     {
       "id": "teaching-height",
@@ -8977,7 +8977,7 @@
     },
     {
       "id": "roof-dry-long-span",
-      "label": "Dry ash Â· long-span low-pitch roof",
+      "label": "Dry ash · long-span low-pitch roof",
       "values": {
         "roof_type": "long_span_low_pitch",
         "ash_condition": "dry"
@@ -8986,7 +8986,7 @@
     },
     {
       "id": "roof-wet-long-span",
-      "label": "Wet ash Â· long-span low-pitch roof",
+      "label": "Wet ash · long-span low-pitch roof",
       "values": {
         "roof_type": "long_span_low_pitch",
         "ash_condition": "wet"

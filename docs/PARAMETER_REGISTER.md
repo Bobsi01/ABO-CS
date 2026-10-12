@@ -1,6 +1,6 @@
 # Parameter evidence register
 
-Revision: `2026-10-11-gap-evidence-v1`. Reproduce with `uv run python ../scripts/build_parameter_register.py` from `backend/` after the catalog build.
+Revision: `2026-10-12-gap-evidence-v2-utf8`. Reproduce with `uv run python ../scripts/build_parameter_register.py` from `backend/` after the catalog build.
 
 The authoritative records are `data/source/gap-evidence-register.json`, exposed through `GET /api/catalog`. **Usable** means usable for the explicitly stated purpose, not empirical validation. A missing measured value is a required measurement category with no accepted value. **Illustrative** values are assumptions or engineering choices. No parameter is currently calibrated.
 
@@ -46,13 +46,13 @@ Frozen retrospective case: 12 January 2020 13:00 to 13 January 04:28 local (UTC+
 
 `event-duration` — derived; usable. Value: 55680 s.
 
-Datum: 13:00 on 12 Januaryâ€“04:28 on 13 January local UTC+8. Uncertainty: Not a complete predictive uncertainty bound; see notes.
+Datum: 13:00 on 12 January–04:28 on 13 January local UTC+8. Uncertainty: Not a complete predictive uncertainty bound; see notes.
 
 Source: [taal-study](https://link.springer.com/article/10.1007/s00445-022-01534-y). Locator: Deposit volume calculation main-part interval; Figure 4 rounds the end to about 04:00. License: Taal article CC BY 4.0; third-party material may have separate terms.
 
 Conversions: Convert local UTC+8 endpoints to UTC; elapsed interval = 55,680 s. Dependencies: taal-deposit-study.
 
-Main event is separate from peak seismic interval 17:00â€“03:00, not full eruption. End-definition uncertainty retained.
+Main event is separate from peak seismic interval 17:00–03:00, not full eruption. End-definition uncertainty retained.
 
 ### Satellite-reported plume altitude
 
@@ -82,7 +82,7 @@ No surveyed active-vent datum is curated; 311 m is the illustrative volcano-prof
 
 `wind-effective` — derived; source_blocked. Value: Unavailable m/s and degrees FROM.
 
-Datum: 1â€“21 km geopotential ASL; height grid 1 km. Uncertainty: Not a complete predictive uncertainty bound; see notes.
+Datum: 1–21 km geopotential ASL; height grid 1 km. Uncertainty: Not a complete predictive uncertainty bound; see notes.
 
 Source: [noaa-igra](https://www.ncei.noaa.gov/products/weather-balloon/integrated-global-radiosonde-archive). Locator: Selected 12 January nominal 00/12 launches, actual 00:11/11:40 UTC. License: NOAA public US-government archive; upstream Philippines station-provider terms not independently verified.
 
@@ -96,7 +96,7 @@ Both launches have 9 accepted levels; grid coverage 15/21 = 71.43% fails the pre
 
 Datum: Main-plume ash excluding other deposits. Uncertainty: Not a complete predictive uncertainty bound; see notes.
 
-Source: [taal-study](https://link.springer.com/article/10.1007/s00445-022-01534-y). Locator: Tephra volume fits 0.042/0.057/0.090 kmÂ³. License: Taal article CC BY 4.0; third-party material may have separate terms.
+Source: [taal-study](https://link.springer.com/article/10.1007/s00445-022-01534-y). Locator: Tephra volume fits 0.042/0.057/0.090 km³. License: Taal article CC BY 4.0; third-party material may have separate terms.
 
 Conversions: None unless stated in notes. Dependencies: taal-deposit-study.
 
@@ -120,7 +120,7 @@ Thickness identifies M/rho; mass and density cannot both be inferred from thickn
 
 Datum: Mass spectrum at source. Uncertainty: Not a complete predictive uncertainty bound; see notes.
 
-Source: [taal-study](https://link.springer.com/article/10.1007/s00445-022-01534-y). Locator: Samples 1â€“4 deposit PSD different locations/time. License: Taal article CC BY 4.0; third-party material may have separate terms.
+Source: [taal-study](https://link.springer.com/article/10.1007/s00445-022-01534-y). Locator: Samples 1–4 deposit PSD different locations/time. License: Taal article CC BY 4.0; third-party material may have separate terms.
 
 Conversions: None unless stated in notes. Dependencies: taal-deposit-study.
 
@@ -232,7 +232,7 @@ Source: [usgs-crop-conditions](https://volcanoes.usgs.gov/volcanic_ash/agricultu
 
 Conversions: None unless stated in notes. Dependencies: none recorded.
 
-The general 100â€“150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown.
+The general 100–150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown.
 
 ### Teaching column height
 

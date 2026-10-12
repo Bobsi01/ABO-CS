@@ -1,0 +1,21 @@
+{
+  "executor": "orchestrator, live production Python",
+  "captured_at": "2026-10-12T11:17:47.7694191+08:00",
+  "dataset_revision": "2026-10-12-gap-evidence-v2-utf8",
+  "saved_request": "data/examples/mayon-eruption-request.json",
+  "request_sha256": "1e28dce766e4d4aaa83305938487dec798439c13783ee990eca3d3e7351168af",
+  "frame_count": 37,
+  "emission_h": 1.0,
+  "final_h": 27.90972222222222,
+  "final": {
+    "emitted_mass_kg": 36000000.0,
+    "deposited_mass_kg": 36000000.0,
+    "airborne_mass_kg": 0.0,
+    "inside_domain_mass_kg": 30459336.28543452,
+    "outside_domain_mass_kg": 5540663.714565478
+  },
+  "historical_available": false,
+  "historical_validation": "unavailable",
+  "historical_metrics": {},
+  "limits": "Teaching assumptions; this endpoint reproduction does not establish empirical eruption accuracy"
+}

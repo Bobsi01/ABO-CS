@@ -2,6 +2,7 @@
 
 ## Start here
 
+- [Current two-agent QA and corrections](CURRENT_QA_DELIVERY.md): latest implementation, research review and retained gates; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
 - [Contributor instructions](../CONTRIBUTING.md) and [repository map](../repository_map.md): setup and exact file locations.
 - [Gap register](GAP_REGISTER.md) and [gap-closure delivery](GAP_CLOSURE_DELIVERY.md): current status, open source gates and verification limits.
 - [Computation](COMPUTATION.md), [eruption model](ERUPTION_MODEL.md) and [input values](INPUT_VALUES.md): units, equations and physical assumptions.

@@ -1,5 +1,11 @@
 # QA gap register — 11 October 2026
 
+## Current two-agent review — 12 October
+
+Both requested QA agents completed independent review and correction retests. [Current delivery](CURRENT_QA_DELIVERY.md) records the fixes and evidence. Custom-receptor census selection, interpolated-versus-computed snapshot wording and Windows UTF-8 curation defects are closed. Current checks pass 164 Python / 61 frontend cases. The revised 16-page actual Word manuscript has independent content/font/equation and every-page visual review, closing the previous final manuscript review gap for its recorded hash. The current app has independent scoped workflow/visual review; full performance, cleanup, lifecycle, native accessibility and empirical-source gates remain open.
+
+The dated table below preserves the 11 October evidence. Its 15-page manuscript and previous renderer benchmark refer to those older artifacts, not the current Word file or renderer. No overall predictive accuracy or exhaustive engineering pass is claimed.
+
 ## 12 October renderer revision
 
 The user rejected the previous visual output. A revised scientific illustration uses soft cloud textures, sparse ash markers, a surface lava ribbon and oblique close-up framing. See [current visual revision](3D_VISUAL_REVISION.md). The dated rows below retain their evidence: old-bundle performance passes do not transfer to the new renderer, final independent visual acceptance is pending, and cleanup/lifecycle/accessibility/source gates remain open. No overall engineering/3D QA completion is claimed.

@@ -1,0 +1,38 @@
+{
+  "reviewer": "independent research_accuracy_qa",
+  "docx_sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a",
+  "pdf_sha256": "b2931607b35b7c88d9eaa15b9a616724b9474d27481b33d9fa8bd3b8bc64226f",
+  "source_md_sha256": "3267db0c3eecc69bc2e5d42086a0891c1cef4508b61c443121be01c2a095f8fc",
+  "pages": 16,
+  "checked_prose_cell_paragraphs": 162,
+  "missing_from_actual_word_pdf": [],
+  "checked_runs": 204,
+  "typography_issues": [],
+  "native_equations": 7,
+  "tables": 3,
+  "figures": 3,
+  "source_archive_hashes": [
+    {
+      "file": "PMC8889389.1.json",
+      "sha256": "c9f7409e2d5e106563535991b6971a013468d661b8d0bbae183824e5fae819f4",
+      "matches": true
+    },
+    {
+      "file": "PMC8889389.1.xml",
+      "sha256": "b95e450e9985cef34bea58a4c73f7ca08e1954f3d35c9ef47028bd56911d1cdf",
+      "matches": true
+    },
+    {
+      "file": "PMC8889389.1.pdf",
+      "sha256": "386768a587f85193a6581ae72ac8f2189fbbd1206c7f417fe40721a4c960ec4a",
+      "matches": true
+    },
+    {
+      "file": "figure-4.jpg",
+      "sha256": "e9489132b9e36709eb7a2a9adf0460098e7eeee622e69ec7b1ff68caf4a8f42a",
+      "matches": true
+    }
+  ],
+  "native_word_accessibility_or_speech": "not performed",
+  "visual_review": "separate hash-bound page inspection record required"
+}

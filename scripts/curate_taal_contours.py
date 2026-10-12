@@ -116,15 +116,15 @@ def georeference(trace):
 
 if __name__ == "__main__":
     folder = ROOT / "data/source/taal-study"
-    trace = json.loads((folder / "trace-science.json").read_text())
+    trace = json.loads((folder / "trace-science.json").read_text(encoding="utf-8"))
     result = georeference(trace)
     (folder / "trace-science.geojson").write_text(json.dumps(result, indent=2) + "\n")
     if (folder / "trace-qa.geojson").exists():
-        second = json.loads((folder / "trace-qa.geojson").read_text())
+        second = json.loads((folder / "trace-qa.geojson").read_text(encoding="utf-8"))
         comparison = compare_traces(result, second)
         (folder / "trace-comparison.json").write_text(json.dumps(comparison, indent=2) + "\n")
     items = []
-    metadata = json.loads((folder / "PMC8889389.1.json").read_text())
+    metadata = json.loads((folder / "PMC8889389.1.json").read_text(encoding="utf-8"))
     expected_md5 = {
         "PMC8889389.1.xml": metadata["xml_url"].split("md5=")[1],
         "PMC8889389.1.pdf": metadata["pdf_url"].split("md5=")[1],

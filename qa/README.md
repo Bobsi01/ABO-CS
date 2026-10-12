@@ -1,5 +1,7 @@
 # Verification and retained evidence
 
+`current_review/` holds the 12 October two-agent science/app review, correction retests, current catalog comparison and actual-Word replacement pages. Its `test_current_science.py` contributes 22 independent cases to standard full-suite discovery. See `docs/CURRENT_QA_DELIVERY.md` for the latest evidence and its scope.
+
 `backend/tests/` and the `qa/test_*.py` / `qa/gap_closure/test_*.py` cases run through the locked backend environment. Frontend tests run through `frontend/package-lock.json`. See [CONTRIBUTING.md](../CONTRIBUTING.md) for the standard checks.
 
 `browser/` preserves scripts, screenshots, telemetry and before/after failure evidence. `gap_closure/` contains independent scientific audits and saved browser cases. `research/word/` preserves actual Microsoft Word render evidence; `research/rendered/` is the earlier evaluation-renderer record. Old failures are evidence, not current expected outputs. Existing JSON reports contain historical machine paths and timestamps intentionally; new executions need their own attribution.

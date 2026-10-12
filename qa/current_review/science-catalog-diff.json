@@ -1,0 +1,89 @@
+{
+  "before_revision": "2026-10-11-gap-evidence-v1",
+  "after_revision": "2026-10-12-gap-evidence-v2-utf8",
+  "current_sha256": "051c78d4e4b6c5765696da31b51059af57b3c85188d791ec0079275682bbe684",
+  "changes": [
+    {
+      "path": "catalog.historical.assessment_reasons[1]",
+      "before": "Published 8,605 km\u00c2\u00b2 narrative and 3,864.89 km\u00c2\u00b2 Table 3 area statements remain distinct unresolved references",
+      "after": "Published 8,605 km\u00b2 narrative and 3,864.89 km\u00b2 Table 3 area statements remain distinct unresolved references",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.historical.protocol.evaluation_rules[2]",
+      "before": "1\u00e2\u20ac\u201c21 km geopotential wind grid; 75% coverage; no extrapolation",
+      "after": "1\u201321 km geopotential wind grid; 75% coverage; no extrapolation",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.historical.protocol.event_definition",
+      "before": "12\u00e2\u20ac\u201c13 January 2020 main mapped fallout; published 13:00\u00e2\u20ac\u201c04:28 local, endpoint-definition uncertainty retained",
+      "after": "12\u201313 January 2020 main mapped fallout; published 13:00\u201304:28 local, endpoint-definition uncertainty retained",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[0].datum",
+      "before": "13:00 on 12 January\u00e2\u20ac\u201c04:28 on 13 January local UTC+8",
+      "after": "13:00 on 12 January\u201304:28 on 13 January local UTC+8",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[0].notes",
+      "before": "Main event is separate from peak seismic interval 17:00\u00e2\u20ac\u201c03:00, not full eruption. End-definition uncertainty retained.",
+      "after": "Main event is separate from peak seismic interval 17:00\u201303:00, not full eruption. End-definition uncertainty retained.",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[3].datum",
+      "before": "1\u00e2\u20ac\u201c21 km geopotential ASL; height grid 1 km",
+      "after": "1\u201321 km geopotential ASL; height grid 1 km",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[4].locator",
+      "before": "Tephra volume fits 0.042/0.057/0.090 km\u00c2\u00b3",
+      "after": "Tephra volume fits 0.042/0.057/0.090 km\u00b3",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[6].locator",
+      "before": "Samples 1\u00e2\u20ac\u201c4 deposit PSD different locations/time",
+      "after": "Samples 1\u20134 deposit PSD different locations/time",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.parameter_evidence[15].notes",
+      "before": "The general 100\u00e2\u20ac\u201c150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown.",
+      "after": "The general 100\u2013150 mm range does not define a threshold for a specified local crop condition. Assessment remains unknown.",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.revision",
+      "before": "2026-10-11-gap-evidence-v1",
+      "after": "2026-10-12-gap-evidence-v2-utf8",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.screening_contexts[1].label",
+      "before": "Dry ash \u00c2\u00b7 long-span low-pitch roof",
+      "after": "Dry ash \u00b7 long-span low-pitch roof",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.screening_contexts[2].label",
+      "before": "Wet ash \u00c2\u00b7 long-span low-pitch roof",
+      "after": "Wet ash \u00b7 long-span low-pitch roof",
+      "kind": "text"
+    },
+    {
+      "path": "catalog.sources[20].notes",
+      "before": "Broad 100\u00e2\u20ac\u201c150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld.",
+      "after": "Broad 100\u2013150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld.",
+      "kind": "text"
+    }
+  ],
+  "non_text_changes": [],
+  "scientific_inputs_unchanged": true,
+  "receptors_unchanged": true,
+  "criteria_unchanged": true
+}

@@ -49,10 +49,12 @@ def normalize(name):
 
 def inventory(catalog, records):
     """Audit every archived administrative polygon against the fixed projected domains."""
-    features = json.loads((ROOT / "data/source/municipal-boundaries.geojson").read_text())[
-        "features"
-    ]
-    centroids = json.loads((ROOT / "data/source/derived-municipal-centroids.json").read_text())
+    features = json.loads(
+        (ROOT / "data/source/municipal-boundaries.geojson").read_text(encoding="utf-8")
+    )["features"]
+    centroids = json.loads(
+        (ROOT / "data/source/derived-municipal-centroids.json").read_text(encoding="utf-8")
+    )
     centroid_by_id = {r["properties"]["shapeID"]: r for r in centroids}
     existing = {r["id"]: r for r in catalog["receptors"] if r["kind"] == "municipality"}
     known_by_name = {}
@@ -192,7 +194,7 @@ def inventory(catalog, records):
 
 def archive_wind():
     path = ROOT / "data/source/igra/tanay-2020-01-12-13.txt"
-    profiles = evidence.parse_igra(path.read_text())
+    profiles = evidence.parse_igra(path.read_text(encoding="utf-8"))
     selected = [
         p for p in profiles if p["date"] == "2020-01-12" and p["nominal_hour_utc"] in (0, 12)
     ]
@@ -251,13 +253,13 @@ def archive_wind():
 def reference_footprints():
     """Accepted double digitization is derived evidence, not raw measurement points."""
     folder = ROOT / "data/source/taal-study"
-    comparison = json.loads((folder / "trace-comparison.json").read_text())
+    comparison = json.loads((folder / "trace-comparison.json").read_text(encoding="utf-8"))
     references = []
     for filename, label in (
         ("trace-science.geojson", "Science trace of published 0.5 mm contour"),
         ("trace-qa.geojson", "Independent QA trace of published 0.5 mm contour"),
     ):
-        feature = json.loads((folder / filename).read_text())
+        feature = json.loads((folder / filename).read_text(encoding="utf-8"))
         geometry = shapely.geometry.shape(feature["geometry"])
         if not geometry.is_valid or geometry.geom_type != "Polygon":
             raise ValueError(f"Invalid reference geometry: {filename}")
@@ -293,7 +295,7 @@ def write_curation_manifest():
     write_json(
         ROOT / "data/source/gap-curation-manifest.json",
         dict(
-            revision="2026-10-11-gap-evidence-v1",
+            revision="2026-10-12-gap-evidence-v2-utf8",
             accessed_at="2026-10-11",
             files=entries,
             upstream_manifests=["manifest.json", "igra/manifest.json", "taal-study/manifest.json"],
@@ -320,7 +322,9 @@ def enrich_catalog(catalog):
     records = psgc_extract()
     inventory(catalog, records)
     wind = archive_wind()
-    additions = json.loads((ROOT / "data/source/gap-evidence-register.json").read_text())
+    additions = json.loads(
+        (ROOT / "data/source/gap-evidence-register.json").read_text(encoding="utf-8")
+    )
     catalog["sources"] = list(
         {r["id"]: r for r in catalog["sources"] + additions["sources"]}.values()
     )
@@ -349,7 +353,9 @@ def enrich_catalog(catalog):
         )
     )
     population = json.loads(
-        (ROOT / "data/source/population/batangas-2020-transcription.json").read_text()
+        (ROOT / "data/source/population/batangas-2020-transcription.json").read_text(
+            encoding="utf-8"
+        )
     )
     for receptor in catalog["receptors"]:
         if receptor["id"] in population["values"]:
@@ -358,7 +364,7 @@ def enrich_catalog(catalog):
                 set(receptor["source_ids"] + ["psa-batangas-quickstat"])
             )
     catalog["screening_contexts"] = additions["screening_contexts"]
-    catalog["revision"] = "2026-10-11-gap-evidence-v1"
+    catalog["revision"] = "2026-10-12-gap-evidence-v2-utf8"
     catalog["coverage_notes"] = (
         f"{sum(r['kind'] == 'municipality' for r in catalog['receptors'])} municipalities/cities "
         "with explicit domain inventory and unresolved exclusions; 34 Batangas 2020 census counts. "

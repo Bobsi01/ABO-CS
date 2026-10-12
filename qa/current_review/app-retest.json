@@ -1,0 +1,16 @@
+{
+  "reviewedAt": "2026-10-12T03:14:50.836Z",
+  "executor": "independent application QA agent",
+  "assets": [
+    "/assets/index-CzstAtRQ.js"
+  ],
+  "historicText": "12–13 January 2020 Taal fallout\nCheck historical reference\n\nunavailable. The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.\n\nIndependent QA approved frozen methodology; scientific input gate remains blocked\nPublished 8,605 km² narrative and 3,864.89 km² Table 3 area statements remain distinct unresolved references\nNo participant or classroom empirical study was performed\nNumerical verification does not establish empirical accuracy\nBoth target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed\nEvaluation JSON\n\nNo geolocated thickness observations have passed the evidence gate. Published summary areas cannot supply point residuals.\n\nDerived reference contours & digitization uncertainty\nFrozen protocol & source dependencies\nInputs still requiring review\nTanay selected-launch coverage 71.43% below frozen 75% requirement\nReviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)\nIndependent ash mass and dry bulk density\nWhole-event grain fractions and settling speeds\nRaw geolocated thickness observations and defensible original measurement/interpolation uncertainty\n2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review\nCondition-specific roof/crop thresholds and water-facility coordinates\nResolve/report published footprint area definitions without target selection\n\nPublished quantities are reference evidence, not a computed historical validation.\n\nPublished Table 3 isopach areas (not spatial geometry)\nPublished plume and volume references",
+  "consoleErrors": [],
+  "snapshotLabel": "Map snapshot: 0.5 h /27.9 h",
+  "ariaClock": "During eruption, map snapshot at 0.5 hours",
+  "conditionLabels": [
+    "Dry ash · long-span low-pitch roof",
+    "Wet ash · long-span low-pitch roof"
+  ],
+  "status": "correction retest passed"
+}

@@ -2,6 +2,8 @@
 
 ## Contributor entry points
 
+Current two-agent review (12 October): `docs/CURRENT_QA_DELIVERY.md` is the integrated evidence record. `docs/CURRENT_SCIENCE_QA.md` and `CURRENT_APP_QA.md` are independent reports. `qa/current_review/` contains current defect fixtures, catalog comparisons, browser evidence and 16 actual-Word page renders; `test_current_science.py` runs in the standard full suite. Earlier role assignments and evidence below remain dated history.
+
 Paths are relative to the repository root. Dated ownership below records previous implementation milestones; new contributors assign ownership for their own change.
 
 | Path | Purpose |

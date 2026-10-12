@@ -1,5 +1,5 @@
 {
-  "revision": "2026-10-11-gap-evidence-v1",
+  "revision": "2026-10-12-gap-evidence-v2-utf8",
   "accessed_at": "2026-10-11",
   "files": [
     {
@@ -12,7 +12,7 @@
     },
     {
       "file": "domain-inventory.json",
-      "sha256": "37ec33e32a4be1bfe117f785e6b5d7013ccc7992f073bdad1940b25f52b3deab"
+      "sha256": "dd2f3425c5c8e4e2bf757569d39d47bc08e0d9344bf71d5cd4c27f6816c55c5c"
     },
     {
       "file": "population/psgc-directory-extract.txt",

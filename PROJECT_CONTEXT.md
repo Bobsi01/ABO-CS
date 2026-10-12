@@ -1,5 +1,9 @@
 # ABO project context
 
+## Current two-agent QA — 2026-10-12
+
+Two requested independent QA agents completed review and correction retests. The orchestrator fixed selected-census handling for custom receptors, clarified smooth 3D interpolation versus discrete map snapshots, and repaired platform-default source decoding through explicit UTF-8. Dataset revision is `2026-10-12-gap-evidence-v2-utf8`; an independent comparison confirms only text changed, with scientific numeric inputs preserved. Current checks pass 164 Python / 61 frontend cases. The revised IMRaD Word manuscript is 16 pages, Arial 11/12, seven editable equations, and has independent actual-DOCX and every-page review. Both QA tasks are complete. `docs/CURRENT_QA_DELIVERY.md` routes current evidence; historical accuracy, incomplete input/inventory data and remaining engineering/accessibility gates are still open.
+
 ## Scientific illustration revision — 2026-10-12
 
 The user rejected the previous smoke/ash/lava appearance and selected clearer scientific flow and texture. The renderer replaces sphere stacks with soft cloud impostors, adds sparse enlarged ash markers, draws lava as a terrain-conforming ribbon, and uses an oblique Mayon camera. Quantitative Python routes, grain settling, clock, footprints and exposures are unchanged. `docs/3D_VISUAL_REVISION.md` records current checks. Final independent visual review, cleanup/soak and matched-settings performance retests remain separate open gates; the old engineering report does not certify these new effects. No specialist is currently active in this recovered session.

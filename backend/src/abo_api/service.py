@@ -46,23 +46,27 @@ def catalog():
 def prepare(request, sweep=False):
     data = catalog()
     receptors = request.receptors if request.receptors is not None else data.receptors
-    if request.receptors is None:
-        year = str(request.population_year)
-        receptors = [
+    year = str(request.population_year)
+    selected_receptors = []
+    for r in receptors:
+        population = (
+            r.population_records[year]
+            if year in r.population_records
+            else r.population
+            if r.population_year == request.population_year
+            else None
+        )
+        selected_receptors.append(
             r.model_copy(
                 update={
-                    "population": r.population_records.get(year)
-                    if r.population_records
-                    else r.population
-                    if r.population_year == request.population_year
-                    else None,
+                    "population": population,
                     "population_year": request.population_year
-                    if r.kind == "municipality"
+                    if r.kind == "municipality" or population is not None
                     else None,
                 }
             )
-            for r in receptors
-        ]
+        )
+    receptors = selected_receptors
     criteria = request.criteria if request.criteria is not None else data.criteria
     if len({r.id for r in receptors}) != len(receptors):
         raise ValueError("Receptor identifiers must be unique; population cannot be double-counted")
