@@ -1,5 +1,9 @@
 # QA gap register — 11 October 2026
 
+## 12 October renderer revision
+
+The user rejected the previous visual output. A revised scientific illustration uses soft cloud textures, sparse ash markers, a surface lava ribbon and oblique close-up framing. See [current visual revision](3D_VISUAL_REVISION.md). The dated rows below retain their evidence: old-bundle performance passes do not transfer to the new renderer, final independent visual acceptance is pending, and cleanup/lifecycle/accessibility/source gates remain open. No overall engineering/3D QA completion is claimed.
+
 This register distinguishes implemented and independently tested changes from source availability and model limitations. A closed software item does not establish eruption prediction accuracy. Owners are the scientific/backend specialist, engineering/3D specialist, independent QA evaluator and orchestrator.
 
 | Gap | Status | Evidence and practical consequence | Owner |

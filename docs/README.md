@@ -7,6 +7,7 @@
 - [Computation](COMPUTATION.md), [eruption model](ERUPTION_MODEL.md) and [input values](INPUT_VALUES.md): units, equations and physical assumptions.
 - [Parameter register](PARAMETER_REGISTER.md), [evaluation protocol](EVALUATION_PROTOCOL.md) and [scientific gap closure](SCIENTIFIC_GAP_CLOSURE.md): source classifications and frozen historical methods.
 - [Geography references](GEOGRAPHY_REFERENCES.md) and [3D illustration](3D_ILLUSTRATION.md): source assets and display approximations.
+- [12 October visual revision](3D_VISUAL_REVISION.md): current smoke, ash, lava and camera changes with scoped checks and open acceptance gates.
 - [Engineering evidence](ENGINEERING_GAP_EVIDENCE.md) and [independent gap QA](GAP_CLOSURE_INDEPENDENT_QA.md): what was tested and by whom.
 - [IMRaD research source](ABO_RESEARCH_IMRAD.md) and [editable Word manuscript](ABO_RESEARCH_IMRAD.docx): the research artifact; [document QA](RESEARCH_DOCUMENT_QA.md) records rendering limits.
 - [Demonstration](DEMONSTRATION.md): classroom workflow.

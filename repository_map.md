@@ -17,6 +17,8 @@ Paths are relative to the repository root. Dated ownership below records previou
 | `scripts/` | Setup, startup, explicit curation and manuscript/contract generation |
 | `.github/workflows/ci.yml` | Linux locked-install verification on pushes and pull requests |
 | `docs/REPOSITORY_HANDOFF.md` | GitHub scope, Git LFS, source rights and reproducibility boundaries |
+| `frontend/src/components/eruptionVisuals.ts`, `eruptionVisuals.test.ts` | Cloud texture, sparse ash markers, surface lava ribbon and geometry/data-boundary checks |
+| `docs/3D_VISUAL_REVISION.md`, `qa/browser/3d-visual-2026-10-12-*` | Current renderer revision, visual evidence and remaining QA gates |
 
 ## QA gap closure — 2026-10-11
 

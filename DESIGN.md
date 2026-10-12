@@ -1,5 +1,9 @@
 # Approved simulator design
 
+## Scientific flow and texture — 2026-10-12
+
+The user selected a more convincing scientific illustration with clearer flow and texture after rejecting the earlier eruption appearance. Soft cloud edges replace rigid sphere stacks; distinct enlarged ash markers follow supplied cohort centers. Lava uses a surface ribbon with dark edges and a warm core, and an oblique camera reveals its downhill route. Directional relief lighting clarifies the existing geography. No decorative animation, cinematic weather, new hazard physics or implied empirical validation is added. Source-column texture/bend and cooling colors remain explicitly illustrative. Final visual acceptance is separate from performance and functional QA.
+
 ## Eruption sequence refinement, 2026-10-10
 
 The user's added before/during/after request uses one timeline above the paired scene and map. Stage buttons seek; the single Play/Pause/Replay action controls motion. Camera reset retains its separate spatial purpose. No second player appears in the scene when a sequence is present. The existing blue palette and ENERGY 2 / RHYTHM 2 / MOTION 2 remain: user-started scientific teaching motion, no decorative animation.

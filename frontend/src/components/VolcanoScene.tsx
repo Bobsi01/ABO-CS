@@ -43,15 +43,19 @@ function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { v
     controls.minDistance = 3
     controls.maxDistance = 420
     controls.maxPolarAngle = Math.PI / 2 - 0.04
-    if (emphasizeTaal) { const extent = Math.max(7.5, height * 1.4); camera.position.set(extent * 0.65, base + extent, extent * 0.95) }
+    if (emphasizeTaal) { const extent = Math.max(8, height * 1.55); camera.position.set(extent * 0.65, base + extent, extent * 0.95) }
     else if (view === 'close') {
       const extent = Math.max(10, height * 1.7)
-      // Face the routed slope so the teaching channel is not hidden behind the cone.
-      if (lavaDirection) { const length = Math.hypot(...lavaDirection); camera.position.set(extent * 1.5 * lavaDirection[0] / length, base + extent * 0.7, -extent * 1.5 * lavaDirection[1] / length) }
+      // Stay on the routed slope's side, with an oblique view to expose its downhill length.
+      if (lavaDirection) {
+        const length = Math.hypot(...lavaDirection), east = lavaDirection[0] / length, south = -lavaDirection[1] / length
+        const angle = Math.PI / 5
+        camera.position.set(extent * 1.5 * (east * Math.cos(angle) + south * Math.sin(angle)), base + extent * 0.7, extent * 1.5 * (south * Math.cos(angle) - east * Math.sin(angle)))
+      }
       else camera.position.set(extent, base + extent * 0.8, extent * 1.2)
     }
     else camera.position.set(145, 130, 160)
-    controls.target.set(0, emphasizeTaal ? base + height * 0.24 : view === 'close' ? base + height * 0.3 : 0, 0)
+    controls.target.set(0, emphasizeTaal ? base + height * 0.32 : view === 'close' ? base + height * 0.3 : 0, 0)
     controls.update()
     const change = () => invalidate()
     controls.addEventListener('change', change)
@@ -375,7 +379,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         rendererCleanup.current = guardRenderer(gl, () => { setPlaying(false); setRendererFailed(true) })
       }} fallback={<p>3D unavailable. Use map and table.</p>}>
         <color attach="background" args={['#e8f0fa']} />
-        <ambientLight intensity={1.4} /><directionalLight position={[30, 70, 50]} intensity={2} />
+        <ambientLight intensity={0.65} /><directionalLight position={[-18, 32, 25]} intensity={2} />
         <Camera view={view} reset={reset} height={height} base={base} emphasizeTaal={emphasizeTaal} lavaDirection={lavaDirection} />
         <Compass view={view} height={height} base={base} />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}><planeGeometry args={[scenario.domain_km, scenario.domain_km]} /><meshStandardMaterial color="#dce5ef" side={THREE.DoubleSide} /></mesh>
@@ -385,7 +389,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         <group position={[0, base, 0]}>{!eruptionSequence && <mesh position={[0, height / 2, 0]}><cylinderGeometry args={[0.7, 0.08, height, 24]} /><meshStandardMaterial color="#aaa69e" transparent opacity={0.35} depthWrite={false} /></mesh>}
           {result && showSource && <><Wind result={result} height={Math.max(0.1, columnTopM / 1000)} view={view} />{(!eruptionSequence || showGrains) && result.illustration.paths.map(path => <Path key={path.grain_index} path={path} />)}{!eruptionSequence && <Ash paths={result.illustration.paths} playing={playing} replay={replay} reduced={reduced} onDone={() => setPlaying(false)} onPerformance={reportPerformance} onClock={setPhysicalElapsed} />}</>}
         </group>
-        {eruptionSequence && <EruptionEffects sequence={eruptionSequence} frameIndex={frameIndex} baseM={base * 1000} reduced={reduced} playing={sequencePlaying} onPerformance={reportPerformance} />}
+        {eruptionSequence && <EruptionEffects sequence={eruptionSequence} frameIndex={frameIndex} baseM={base * 1000} reduced={reduced} playing={sequencePlaying} onPerformance={reportPerformance} terrain={terrain} emphasizeTaal={emphasizeTaal} wind={[result?.illustration.wind_east_m_s ?? 0, result?.illustration.wind_north_m_s ?? 0]} />}
         {frameResult && <ReceptorMarkers result={frameResult} terrain={terrain} emphasizeTaal={emphasizeTaal} selected={selected} onSelect={onSelect} />}
       </Canvas></SceneBoundary> : <div className="fallback" role="alert"><h3>{rendererFailed ? '3D renderer stopped' : '3D needs WebGL 2'}</h3><p>Playback is paused. Run simulations normally, then use the map, stage slider, and location table.</p><button type="button" onClick={retryGraphics}>Retry 3D</button></div>}
       <div className="scene-caption"><span><Icon name="wind" />Wind FROM {number(scenario.wind_from_deg, 0)}° · {number(scenario.wind_speed_m_s)} m/s</span><span>{sequenceFrame ? sequenceFrame.phase === 'before' ? 'Before eruption · clear source' : sequenceFrame.phase === 'erupting' ? `Rising source column ${number(columnTopM / 1000)} km` : sequenceFrame.phase === 'settling' ? 'Source stopped · ash drifts and settles' : 'After eruption · accumulated deposits' : `Column ${number(scenario.column_height_m / 1000)} km above ground`}</span></div>

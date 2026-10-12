@@ -1,5 +1,9 @@
 # ABO project context
 
+## Scientific illustration revision — 2026-10-12
+
+The user rejected the previous smoke/ash/lava appearance and selected clearer scientific flow and texture. The renderer replaces sphere stacks with soft cloud impostors, adds sparse enlarged ash markers, draws lava as a terrain-conforming ribbon, and uses an oblique Mayon camera. Quantitative Python routes, grain settling, clock, footprints and exposures are unchanged. `docs/3D_VISUAL_REVISION.md` records current checks. Final independent visual review, cleanup/soak and matched-settings performance retests remain separate open gates; the old engineering report does not certify these new effects. No specialist is currently active in this recovered session.
+
 ## QA gap closure integration — 2026-10-11
 
 Current evidence passes 142 Python and 56 frontend cases, generated contracts, final-build browser recovery/export checks and sampled-foreground 30 fps replay targets. The actual Microsoft Word manuscript has 15 pages, Arial 11 pt body/12 pt headings, seven editable equations and three figures, with exact-content/font/hash and all-page orchestrator visual review. Three specialists were spawned: science completed; engineering and independent QA saved their work before account usage limits stopped them. Independent final integration/replacement-page review remains pending. Full cleanup, real hidden-page transitions, native zoom/speech/accessibility evidence and scientific source blocks remain open. `docs/GAP_REGISTER.md` is authoritative; older dated records below are historical.
