@@ -1,0 +1,35 @@
+{
+  "volcano": "Taal",
+  "gvp_volcano_number": "273070",
+  "observatory": "Philippine Institute of Volcanology and Seismology (PHIVOLCS)",
+  "portal_urls": {
+    "wovodat": "https://wovodat.org",
+    "phivolcs_lava": "https://wovodat.phivolcs.dost.gov.ph/"
+  },
+  "monitoring_networks": {
+    "continuous_gps": {
+      "status": "operational",
+      "description": "Continuous geodetic monitoring of inflation and deflation episodes on Volcano Island and caldera rim."
+    },
+    "tiltmeters": {
+      "status": "operational",
+      "description": "Electronic tilt monitoring stations detecting edifice deformation."
+    },
+    "so2_doas": {
+      "status": "operational",
+      "stations": [
+        "Buco",
+        "Tagaytay",
+        "Pangasihan"
+      ],
+      "description": "Differential Optical Absorption Spectroscopy for daily SO2 emission flux measurement."
+    },
+    "seismic_network": {
+      "status": "operational",
+      "description": "Taal Volcano Network (TVN) recording local volcanic-tectonic earthquakes, harmonic tremors, and low-frequency events."
+    }
+  },
+  "license": "Public institutional monitoring service (PHIVOLCS / WOVOdat)",
+  "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+  "note": "Catalog of institutional multi-parameter monitoring infrastructure for Taal. Reference information compiled from WOVOdat and PHIVOLCS monitoring publications."
+}
