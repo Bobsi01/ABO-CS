@@ -49,16 +49,27 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       // The cached Lake Taal polygon's native holes preserve the island coastline.
       // Show the largest nearby island as context, never an invented Taal radius.
       if (scenario.volcano_id === 'taal') {
-        const candidates: number[][][] = []
-        data.features.forEach(feature => {
-          if (feature.properties?.kind !== 'lake') return
-          const polygons = feature.geometry.type === 'Polygon' ? [feature.geometry.coordinates] : feature.geometry.type === 'MultiPolygon' ? feature.geometry.coordinates : []
-          polygons.forEach(polygon => polygon.slice(1).forEach(ring => {
-            if (ring.some(p => Math.abs(p[0] - scenario.vent_lon) < 0.05 && Math.abs(p[1] - scenario.vent_lat) < 0.05)) candidates.push(ring)
-          }))
-        })
-        const island = candidates.sort((a, b) => b.length - a.length)[0]
-        if (island) L.polygon(island.map(p => [p[1], p[0]] as L.LatLngTuple), { color: '#5b527e', weight: 2, dashArray: '6 5', fillOpacity: 0.04 }).bindTooltip('Volcano Island shoreline context · PHIVOLCS PDZ reference, 15 Feb 2021 · not a surveyed boundary').addTo(reference)
+        fetch('/taal_pdz.geojson', { signal: controller.signal, cache: 'no-store' })
+          .then(r => r.ok ? (r.json() as Promise<FeatureCollection>) : null)
+          .then(pdz => {
+            if (pdz) {
+              L.geoJSON(pdz, { style: { color: '#5b527e', weight: 2, dashArray: '6 5', fillOpacity: 0.04 } })
+                .bindTooltip('Volcano Island shoreline context · PHIVOLCS PDZ reference, 15 Feb 2021 · contextual reference overlay, not a computed model result')
+                .addTo(reference)
+            } else {
+              const candidates: number[][][] = []
+              data.features.forEach(feature => {
+                if (feature.properties?.kind !== 'lake') return
+                const polygons = feature.geometry.type === 'Polygon' ? [feature.geometry.coordinates] : feature.geometry.type === 'MultiPolygon' ? feature.geometry.coordinates : []
+                polygons.forEach(polygon => polygon.slice(1).forEach(ring => {
+                  if (ring.some(p => Math.abs(p[0] - scenario.vent_lon) < 0.05 && Math.abs(p[1] - scenario.vent_lat) < 0.05)) candidates.push(ring)
+                }))
+              })
+              const island = candidates.sort((a, b) => b.length - a.length)[0]
+              if (island) L.polygon(island.map(p => [p[1], p[0]] as L.LatLngTuple), { color: '#5b527e', weight: 2, dashArray: '6 5', fillOpacity: 0.04 }).bindTooltip('Volcano Island shoreline context · PHIVOLCS PDZ reference, 15 Feb 2021 · not a surveyed boundary').addTo(reference)
+            }
+          })
+          .catch(() => {})
       }
     }).catch(error => {
       if (!controller.signal.aborted) setMapState(`Offline geography unavailable (${error.message}). Coordinates, contours and receptors still work.`)

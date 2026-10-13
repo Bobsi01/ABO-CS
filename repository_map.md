@@ -79,6 +79,7 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `data/examples/mayon-eruption-request.json` | Orchestrator: reproducible finite-duration ash/lava teaching request with explicit assumed values |
 | `scripts/build_catalog.py`, `curate_reference_assets.py` | Orchestrator: explicit curation/reproduction |
 | `scripts/curate_gap_inputs.py`, `curate_taal_contours.py`, `build_parameter_register.py`, `export_gap_evidence.py` | Scientific owner: archived wind/inventory curation, frozen contour transforms, evidence-register documentation and reproducible historical evidence export |
+| `scripts/curate_taal_context.py`, `data/source/taal/` | Scientific owner: offline static curation of Taal PDZ, seismicity, activity timeline, and InSAR deformation context |
 | `docs/PARAMETER_REGISTER.md`, `docs/EVALUATION_PROTOCOL.md` | Scientific owner: classified input evidence and frozen retrospective methods |
 | `docs/SCIENTIFIC_GAP_CLOSURE.md` | Scientific owner: final curation, numerical/API checks, investigation outcomes and retained source/model limits |
 | `scripts/setup.ps1`, `start.ps1` | Orchestrator: locked Windows installation and single-port startup |

@@ -197,6 +197,40 @@ export default function Workspace() {
           {inputFields(primaryKeys)}
           <details><summary>Eruption illustration & lava</summary><p className="view-note">Finite-duration ash uses the submitted eruption and wind inputs. Plume shape and fountains are schematic.</p>{draft.volcano_id === 'mayon' ? <label className="checkbox-label"><input type="checkbox" checked={Boolean(eruptionOptions.include_lava)} onChange={event => { setEruptionOptions({ ...eruptionOptions, include_lava: event.target.checked }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} />Include lava-channel teaching model</label> : <p className="view-note">{draft.volcano_id === 'taal' ? 'Taal shows an illustrative lava fountain. A downslope lava flow is not inferred from that mechanism.' : 'Effusive lava is not enabled for this explosive teaching scenario.'}</p>}<div className="field-grid">{optionFields.filter(field => field.key === 'plume_rise_speed_m_s' || eruptionOptions.include_lava).map(field => <label key={field.key}>{field.label}<input type="number" step="any" required min={field.min} max={field.max} value={Number.isNaN(eruptionOptions[field.key]) ? '' : Number(eruptionOptions[field.key] ?? field.initial)} onChange={event => { setEruptionOptions({ ...eruptionOptions, [field.key]: event.target.value === '' ? NaN : Number(event.target.value) }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /></label>)}</div>{eruptionOptions.include_lava && <p className="view-note">These are illustrative fluid inputs, not measured Mayon values. The channel follows the raw DEM with constant viscosity. Cooling, branching and PDCs are not solved.</p>}</details>
           <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'bulk_density_kg_m3'])}</details>
+          <details><summary>Vertical wind profile (opt-in extension)</summary>
+            <p className="view-note">Optional height-dependent wind levels. Linearly interpolated across column release heights. When disabled, uniform wind is used.</p>
+            <label className="checkbox-label"><input type="checkbox" checked={Boolean(draft.wind_profile && draft.wind_profile.length > 0)} onChange={event => {
+              if (event.target.checked) {
+                change({
+                  ...draft,
+                  wind_profile: [
+                    { height_above_vent_m: 0, speed_m_s: draft.wind_speed_m_s, wind_from_deg: draft.wind_from_deg },
+                    { height_above_vent_m: draft.column_height_m, speed_m_s: draft.wind_speed_m_s, wind_from_deg: draft.wind_from_deg },
+                  ],
+                })
+              } else {
+                change({ ...draft, wind_profile: null })
+              }
+            }} />Enable vertical wind profile</label>
+            {draft.wind_profile && draft.wind_profile.length > 0 && <div className="wind-levels">
+              {draft.wind_profile.map((level, i) => <fieldset key={i}><legend>Profile level {i + 1}</legend>
+                <div className="field-grid">
+                  <label>Height above vent (m)<input type="number" min={0} required value={Number.isNaN(level.height_above_vent_m) ? '' : level.height_above_vent_m} onChange={e => {
+                    const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, height_above_vent_m: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
+                    change({ ...draft, wind_profile: next })
+                  }} /></label>
+                  <label>Speed (m/s)<input type="number" min={0} max={150} required value={Number.isNaN(level.speed_m_s) ? '' : level.speed_m_s} onChange={e => {
+                    const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, speed_m_s: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
+                    change({ ...draft, wind_profile: next })
+                  }} /></label>
+                  <label>Wind FROM (°)<input type="number" min={0} max={359.999} step="any" required value={Number.isNaN(level.wind_from_deg) ? '' : level.wind_from_deg} onChange={e => {
+                    const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, wind_from_deg: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
+                    change({ ...draft, wind_profile: next })
+                  }} /></label>
+                </div>
+              </fieldset>)}
+            </div>}
+          </details>
           <details><summary>Screening & population</summary><Select label="Population year" value={String(populationYear)} onChange={value => { setPopulationYear(Number(value) as 2020 | 2024); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '2024', label: '2024 · current scenarios' }, { value: '2020', label: '2020 · historical reporting' }]} /><Select label="Screening conditions" value={screeningContextId} onChange={value => { setScreeningContextId(value); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '', label: 'Unspecified · applicability unknown' }, ...(catalog.screening_contexts ?? []).filter(context => context.id !== 'unspecified').map(context => ({ value: String(context.id), label: String(context.label ?? context.id) }))]} /><p className="view-note">A damage criterion applies only when the location type and documented conditions match. Missing conditions produce unknown. The 0.5 mm cutoff reports ash presence, not damage or safety.</p></details>
           <details><summary>Location & grid</summary>{inputFields(['vent_lat', 'vent_lon', 'vent_elevation_m', 'domain_km', 'cell_km'])}</details>
           <details><summary>Grain classes and release layers</summary><label>Release layers<input type="number" min="1" max="32" required value={draft.release_layers} onChange={e => scalar('release_layers', e.target.value)} /></label><Select label="Class count" value={String(draft.grains.length)} onChange={value => { const length = Number(value); const grains = Array.from({ length }, (_, i) => ({ ...(draft.grains[i] ?? { diameter_um: 1, settling_speed_m_s: 1 }), fraction: 1 / length })); change({ ...draft, grains }) }} options={[3, 4, 5].map(count => ({ value: String(count), label: `${count} classes` }))} /><p className="muted">Changing count resets fractions equally; new class sizes/speeds require your entry. Fractions must sum to 1.</p>

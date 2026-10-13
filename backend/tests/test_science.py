@@ -9,8 +9,16 @@ import numpy as np
 import pytest
 from fastapi.testclient import TestClient
 
-from abo_api import kernel, service
-from abo_api.contracts import Catalog, Scenario, SimulationRequest
+from abo_api import eruption, kernel, service
+from abo_api.contracts import (
+    Catalog,
+    EruptionOptions,
+    EruptionPulse,
+    EruptionRequest,
+    Scenario,
+    SimulationRequest,
+    WindLevel,
+)
 from abo_api.main import app, compute_slot
 
 
@@ -345,3 +353,138 @@ def test_missing_local_catalog_is_informative_503(scenario, monkeypatch, tmp_pat
     response = client.post("/api/simulations", json={"scenario": scenario.model_dump()})
     assert response.status_code == 503
     assert "missing or invalid" in response.json()["detail"]
+
+
+def test_wind_profile_equivalent_to_uniform_wind(scenario, local_catalog):
+    base_scenario = scenario.model_copy(update={"wind_speed_m_s": 8.0, "wind_from_deg": 225.0})
+    profile_scenario = base_scenario.model_copy(
+        update={
+            "wind_profile": [
+                WindLevel(height_above_vent_m=0.0, speed_m_s=8.0, wind_from_deg=225.0),
+                WindLevel(height_above_vent_m=2000.0, speed_m_s=8.0, wind_from_deg=225.0),
+            ]
+        }
+    )
+    req_base = SimulationRequest(scenario=base_scenario, receptors=local_catalog.receptors)
+    req_profile = SimulationRequest(scenario=profile_scenario, receptors=local_catalog.receptors)
+    res_base = service.simulate(req_base)
+    res_profile = service.simulate(req_profile)
+    assert np.allclose(res_base.grid.load_kg_m2, res_profile.grid.load_kg_m2, rtol=1e-5, atol=1e-8)
+    assert math.isclose(
+        res_base.receptors[0].load_kg_m2, res_profile.receptors[0].load_kg_m2, abs_tol=1e-6
+    )
+
+
+def test_wind_profile_directional_shear(scenario, local_catalog):
+    # Wind shear: at ground blowing from 180° (northward); at 2000m from 270° (eastward).
+    sheared_scenario = scenario.model_copy(
+        update={
+            "column_height_m": 2000.0,
+            "wind_profile": [
+                WindLevel(height_above_vent_m=0.0, speed_m_s=10.0, wind_from_deg=180.0),
+                WindLevel(height_above_vent_m=2000.0, speed_m_s=10.0, wind_from_deg=270.0),
+            ],
+        }
+    )
+    res = service.simulate(
+        SimulationRequest(scenario=sheared_scenario, receptors=local_catalog.receptors)
+    )
+    grid = np.asarray(res.grid.load_kg_m2)
+    assert np.sum(grid) > 0
+    assert "height-dependent wind linearly interpolated" in res.provenance.assumptions[0]
+
+
+def test_pulses_equivalent_to_single_steady_block(scenario, local_catalog):
+    single_pulse_scenario = scenario.model_copy(
+        update={
+            "pulses": [
+                EruptionPulse(
+                    start_s=0.0,
+                    duration_s=scenario.duration_s,
+                    mass_rate_kg_s=scenario.mass_rate_kg_s,
+                    column_height_m=scenario.column_height_m,
+                )
+            ]
+        }
+    )
+    req_base = SimulationRequest(scenario=scenario, receptors=local_catalog.receptors)
+    req_pulse = SimulationRequest(scenario=single_pulse_scenario, receptors=local_catalog.receptors)
+    res_base = service.simulate(req_base)
+    res_pulse = service.simulate(req_pulse)
+    assert np.allclose(res_base.grid.load_kg_m2, res_pulse.grid.load_kg_m2, rtol=1e-5, atol=1e-8)
+    assert math.isclose(
+        res_base.receptors[0].load_kg_m2, res_pulse.receptors[0].load_kg_m2, abs_tol=1e-6
+    )
+
+
+def test_multi_pulse_mass_conservation(scenario, local_catalog):
+    # Two pulses: pulse 1 (0s..500s, 120 kg/s), pulse 2 (500s..1000s, 80 kg/s)
+    # Total mass = 500*120 + 500*80 = 60,000 + 40,000 = 100,000 kg
+    two_pulse_scenario = scenario.model_copy(
+        update={
+            "duration_s": 1000.0,
+            "column_height_m": 1200.0,
+            "mass_rate_kg_s": 100.0,
+            "pulses": [
+                EruptionPulse(
+                    start_s=0.0,
+                    duration_s=500.0,
+                    mass_rate_kg_s=120.0,
+                    column_height_m=1000.0,
+                ),
+                EruptionPulse(
+                    start_s=500.0,
+                    duration_s=500.0,
+                    mass_rate_kg_s=80.0,
+                    column_height_m=1200.0,
+                ),
+            ],
+        }
+    )
+    res = service.simulate(
+        SimulationRequest(scenario=two_pulse_scenario, receptors=local_catalog.receptors)
+    )
+    total_mass = 100000.0
+    assert res.diagnostics.total_ash_mass_kg == total_mass
+    retained = res.diagnostics.inside_domain_mass_kg
+    outside = res.diagnostics.outside_domain_mass_kg
+    assert math.isclose(retained + outside, total_mass, rel_tol=1e-4)
+
+
+def test_eruption_sequence_with_pulses_and_wind_profile(scenario, local_catalog):
+    multi_scenario = scenario.model_copy(
+        update={
+            "duration_s": 1000.0,
+            "mass_rate_kg_s": 100.0,
+            "pulses": [
+                EruptionPulse(
+                    start_s=0.0,
+                    duration_s=500.0,
+                    mass_rate_kg_s=100.0,
+                    column_height_m=1000.0,
+                ),
+                EruptionPulse(
+                    start_s=500.0,
+                    duration_s=500.0,
+                    mass_rate_kg_s=100.0,
+                    column_height_m=1000.0,
+                ),
+            ],
+            "wind_profile": [
+                WindLevel(height_above_vent_m=0.0, speed_m_s=5.0, wind_from_deg=180.0),
+                WindLevel(height_above_vent_m=1000.0, speed_m_s=10.0, wind_from_deg=270.0),
+            ],
+        }
+    )
+    seq = eruption.sequence(
+        EruptionRequest(
+            simulation=SimulationRequest(
+                scenario=multi_scenario, receptors=local_catalog.receptors
+            ),
+            options=EruptionOptions(frame_count=25),
+        )
+    )
+    assert len(seq.frames) == 25
+    # Final frame cumulative load should be positive
+    last_frame = seq.frames[-1]
+    assert np.sum(last_frame.grid.load_kg_m2) > 0

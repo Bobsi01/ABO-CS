@@ -260,6 +260,20 @@ export interface components {
              */
             lava_max_distance_m: number;
         };
+        /**
+         * EruptionPulse
+         * @description One constant-rate emission block of an opt-in multi-pulse source.
+         */
+        EruptionPulse: {
+            /** Start S */
+            start_s: number;
+            /** Duration S */
+            duration_s: number;
+            /** Mass Rate Kg S */
+            mass_rate_kg_s: number;
+            /** Column Height M */
+            column_height_m: number;
+        };
         /** EruptionRequest */
         EruptionRequest: {
             simulation: components["schemas"]["SimulationRequest"];
@@ -850,6 +864,10 @@ export interface components {
              * @default 16
              */
             release_layers: number;
+            /** Wind Profile */
+            wind_profile?: components["schemas"]["WindLevel"][] | null;
+            /** Pulses */
+            pulses?: components["schemas"]["EruptionPulse"][] | null;
         };
         /** ScenarioPreset */
         ScenarioPreset: {
@@ -1053,6 +1071,18 @@ export interface components {
             source_ids?: string[];
         } & {
             [key: string]: unknown;
+        };
+        /**
+         * WindLevel
+         * @description One level of an opt-in wind profile; heights are above the vent like release heights.
+         */
+        WindLevel: {
+            /** Height Above Vent M */
+            height_above_vent_m: number;
+            /** Speed M S */
+            speed_m_s: number;
+            /** Wind From Deg */
+            wind_from_deg: number;
         };
         /** WindPreset */
         WindPreset: {

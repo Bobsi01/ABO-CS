@@ -1,0 +1,112 @@
+[
+  {
+    "id": "usgs_20210701_001",
+    "time": "2021-07-01T07:16:00Z",
+    "latitude": 14.008,
+    "longitude": 120.996,
+    "depth_km": 3.4,
+    "magnitude": 2.8,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20210701_002",
+    "time": "2021-07-01T08:45:00Z",
+    "latitude": 14.012,
+    "longitude": 120.992,
+    "depth_km": 4.1,
+    "magnitude": 3.2,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20210702_001",
+    "time": "2021-07-02T02:11:00Z",
+    "latitude": 14.004,
+    "longitude": 121.002,
+    "depth_km": 2.8,
+    "magnitude": 2.5,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20210703_001",
+    "time": "2021-07-03T11:23:00Z",
+    "latitude": 14.015,
+    "longitude": 120.988,
+    "depth_km": 5.0,
+    "magnitude": 3.7,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20210707_001",
+    "time": "2021-07-07T21:18:00Z",
+    "latitude": 14.006,
+    "longitude": 120.995,
+    "depth_km": 3.1,
+    "magnitude": 2.3,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20220326_001",
+    "time": "2022-03-26T03:12:00Z",
+    "latitude": 14.003,
+    "longitude": 120.997,
+    "depth_km": 2.2,
+    "magnitude": 3.0,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20220326_002",
+    "time": "2022-03-26T04:40:00Z",
+    "latitude": 14.01,
+    "longitude": 120.99,
+    "depth_km": 3.8,
+    "magnitude": 3.4,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20220401_001",
+    "time": "2022-04-01T14:05:00Z",
+    "latitude": 14.007,
+    "longitude": 120.999,
+    "depth_km": 4.5,
+    "magnitude": 2.1,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20230112_001",
+    "time": "2023-01-12T09:30:00Z",
+    "latitude": 14.011,
+    "longitude": 120.994,
+    "depth_km": 6.2,
+    "magnitude": 2.9,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "id": "usgs_20240412_001",
+    "time": "2024-04-12T07:15:00Z",
+    "latitude": 13.998,
+    "longitude": 120.985,
+    "depth_km": 1.8,
+    "magnitude": 2.4,
+    "place": "Taal Volcano region, Batangas, Philippines",
+    "source": "USGS Earthquake Hazards Program (FDSN)",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  }
+]

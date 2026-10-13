@@ -310,6 +310,48 @@ function Compass({ view, height, base }: { view: View; height: number; base: num
   return <primitive object={group} />
 }
 
+type Earthquake = {
+  id: string
+  time: string
+  latitude: number
+  longitude: number
+  depth_km: number
+  magnitude: number
+  place: string
+  source: string
+}
+
+function SubsurfaceSeismicity({ scenario, show }: { scenario: Scenario; show: boolean }) {
+  const [quakes, setQuakes] = useState<Earthquake[]>([])
+  const { invalidate } = useThree()
+
+  useEffect(() => {
+    if (!show || scenario.volcano_id !== 'taal') return
+    const controller = new AbortController()
+    fetch('/taal_earthquakes_2021_2024.json', { signal: controller.signal, cache: 'no-store' })
+      .then(r => r.json() as Promise<Earthquake[]>)
+      .then(data => { setQuakes(data); invalidate() })
+      .catch(() => {})
+    return () => controller.abort()
+  }, [show, scenario.volcano_id, invalidate])
+
+  if (!show || scenario.volcano_id !== 'taal' || quakes.length === 0) return null
+
+  return <group>
+    {quakes.map(q => {
+      const dLat = (q.latitude - scenario.vent_lat) * 111.0
+      const dLon = (q.longitude - scenario.vent_lon) * 111.0 * Math.cos(scenario.vent_lat * Math.PI / 180)
+      const y = -q.depth_km
+      const radius = Math.max(0.2, (q.magnitude - 1.5) * 0.25)
+      const color = q.depth_km <= 3 ? '#e04f32' : q.depth_km <= 5 ? '#e68a2e' : '#3d72a4'
+      return <mesh key={q.id} position={[dLon, y, -dLat]}>
+        <sphereGeometry args={[radius, 16, 16]} />
+        <meshStandardMaterial color={color} transparent opacity={0.7} depthWrite={false} />
+      </mesh>
+    })}
+  </group>
+}
+
 export default function VolcanoScene({ scenario, result, selected, onSelect, eruptionSequence = null, frameIndex = 0, sequencePlaying = false, onAvailabilityChange }: Props) {
   const [supported, setSupported] = useState(supportsWebGL2)
   const [rendererFailed, setRendererFailed] = useState(false)
@@ -325,6 +367,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
   const [physicalElapsed, setPhysicalElapsed] = useState(0)
   const [showDeposit, setShowDeposit] = useState(false)
   const [showGrains, setShowGrains] = useState(false)
+  const [showSeismicity, setShowSeismicity] = useState(false)
   const [terrainState, setTerrainState] = useState<{ key: string; asset: TerrainAsset | null; error: string }>({ key: '', asset: null, error: '' })
   const terrainKey = `${scenario.volcano_id}:${scenario.vent_lat}:${scenario.vent_lon}`
   const terrain = terrainState.key === terrainKey ? terrainState.asset : null
@@ -419,6 +462,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           {result && showSource && <><Wind result={result} height={Math.max(0.1, columnTopM / 1000)} view={view} />{(!eruptionSequence || showGrains) && result.illustration.paths.map(path => <Path key={path.grain_index} path={path} />)}{!eruptionSequence && <Ash paths={result.illustration.paths} playing={playing} replay={replay} reduced={reduced} onDone={() => setPlaying(false)} onPerformance={reportPerformance} onClock={setPhysicalElapsed} />}</>}
         </group>
         {eruptionSequence && <EruptionEffects sequence={eruptionSequence} frameIndex={frameIndex} baseM={base * 1000} reduced={reduced} playing={sequencePlaying} onPerformance={reportPerformance} terrain={terrain} emphasizeTaal={emphasizeTaal} wind={[result?.illustration.wind_east_m_s ?? 0, result?.illustration.wind_north_m_s ?? 0]} />}
+        <SubsurfaceSeismicity scenario={scenario} show={showSeismicity} />
         {frameResult && <ReceptorMarkers result={frameResult} terrain={terrain} emphasizeTaal={emphasizeTaal} selected={selected} onSelect={onSelect} />}
       </Canvas></SceneBoundary> : <div className="fallback" role="alert"><h3>{rendererFailed ? '3D renderer stopped' : '3D needs WebGL 2'}</h3><p>Playback is paused. Run simulations normally, then use the map, stage slider, and location table.</p><button type="button" onClick={retryGraphics}>Retry 3D</button></div>}
       <div className="scene-caption"><span><Icon name="wind" />Wind FROM {number(scenario.wind_from_deg, 0)}° · {number(scenario.wind_speed_m_s)} m/s</span><span>{sequenceFrame ? sequenceFrame.phase === 'before' ? 'Before eruption · clear source' : sequenceFrame.phase === 'erupting' ? `Rising source column ${number(columnTopM / 1000)} km` : sequenceFrame.phase === 'settling' ? 'Source stopped · ash drifts and settles' : 'After eruption · accumulated deposits' : `Column ${number(scenario.column_height_m / 1000)} km above ground`}</span></div>
@@ -433,7 +477,8 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
       <p className="view-note">Terrain does not change ash transport in the flat-ground solver. The optional class paths describe final representative settling paths.</p>
       {eruptionSequence && eruptionSequence.fountain_paths_m.length > 0 && <p className="view-note">Fountain arcs are enlarged 4× with 100 m display fragments for visibility. These assumed paths do not predict ballistic ranges.</p>}
       {ventSurface !== null && Math.abs(scenario.vent_elevation_m - ventSurface) > 25 && <p className="view-note">The column starts at the submitted {number(scenario.vent_elevation_m, 0)} m ASL model datum; the sampled vent surface is {number(ventSurface, 0)} m. The dashed connector shows this display offset, without changing the model.</p>}
-      <div className="scene-layer-controls"><label><input type="checkbox" checked={showDeposit} disabled={!result} onChange={event => setShowDeposit(event.target.checked)} />Show detached deposit layer</label>{eruptionSequence && <label><input type="checkbox" checked={showGrains} disabled={!result} onChange={event => setShowGrains(event.target.checked)} />Show final grain-class paths</label>}</div>
+      <div className="scene-layer-controls"><label><input type="checkbox" checked={showDeposit} disabled={!result} onChange={event => setShowDeposit(event.target.checked)} />Show detached deposit layer</label>{eruptionSequence && <label><input type="checkbox" checked={showGrains} disabled={!result} onChange={event => setShowGrains(event.target.checked)} />Show final grain-class paths</label>}{scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} />Show 2021-2024 hypocenters (USGS context)</label>}</div>
+      {showSeismicity && scenario.volcano_id === 'taal' && <p className="view-note">Subsurface spheres show USGS FDSN catalog context (depth 1-6 km below vent, scaled by magnitude). Contextual reference overlay - not a computed result of the ash model.</p>}
       {result && <ul aria-label="Grain-class legend">{result.illustration.paths.map(path => <li key={path.grain_index}><span aria-hidden="true" style={{ display: 'inline-block', width: '1.5rem', height: '0.2rem', background: GRAIN_COLORS[path.grain_index % GRAIN_COLORS.length], verticalAlign: 'middle', marginRight: '0.5rem' }} />Class {path.grain_index + 1} · {number(path.diameter_um)} µm · {number(scenario.grains[path.grain_index]?.settling_speed_m_s)} m/s · representative fall {number(path.settling_time_s)} s</li>)}</ul>}</details>
     <details><summary>Terrain source & graphics</summary>{terrain ? <><p>{terrain.source.title} · {terrain.source.resolution_m} m display sampling · {terrain.source.datum}. {emphasizeTaal ? 'Volcano Island relief is enlarged 6× for visibility, tapering to normal scale outside the island. Water levels and horizontal geography retain their source scale. Regional overview restores true relief; the simulation and eruption column height are unchanged.' : 'No vertical exaggeration.'}</p><p>Asset origin: {number(terrain.origin.lat, 5)}° N, {number(terrain.origin.lon, 5)}° E. Geographic coverage: 100 × 100 km. Outside it, the neutral plane indicates unavailable terrain. Ash paths use a flat datum translated by {scenario.vent_elevation_m} m ASL; they are not bent to terrain. The optional lava route uses raw terrain elevations.</p>{Math.abs(scenario.vent_elevation_m - terrain.vent_ground_m) > 0.01 && <p>Submitted vent elevation differs from the {terrain.vent_ground_m} m source-profile reference. The illustration uses your submitted datum.</p>}<a href={terrain.source.url} target="_blank" rel="noreferrer">Terrain source</a></> : <p>{!['taal', 'mayon', 'kanlaon'].includes(scenario.volcano_id) ? 'No geographic terrain asset is registered for this custom volcano.' : terrainState.key === terrainKey ? terrainState.error : 'Loading the local geographic terrain asset…'}</p>}<button type="button" aria-pressed={reduced} disabled={!supported} onClick={() => setReduced(v => !v)}>{reduced ? 'Restore visual detail' : 'Reduce visual detail'}</button>{fps !== null && <p className="performance-note">Replay: {number(fps.render, 0)} fps · browser callbacks: {number(fps.pacing, 0)}/s (recent two-second window). {fps.render < 30 ? 'Below the 30 fps target. Reduce detail or use a foreground browser with hardware acceleration.' : ''}</p>}</details></div>
   </div>

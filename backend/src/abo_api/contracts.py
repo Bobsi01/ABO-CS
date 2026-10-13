@@ -16,6 +16,23 @@ class Grain(StrictModel):
     settling_speed_m_s: float = Field(ge=1e-5, le=1000)
 
 
+class WindLevel(StrictModel):
+    """One level of an opt-in wind profile; heights are above the vent like release heights."""
+
+    height_above_vent_m: float = Field(ge=0, le=50000)
+    speed_m_s: float = Field(ge=0, le=200)
+    wind_from_deg: float = Field(ge=0, lt=360)
+
+
+class EruptionPulse(StrictModel):
+    """One constant-rate emission block of an opt-in multi-pulse source."""
+
+    start_s: float = Field(ge=0, le=31536000)
+    duration_s: float = Field(gt=0, le=31536000)
+    mass_rate_kg_s: float = Field(ge=0, le=1e12)
+    column_height_m: float = Field(gt=0, le=50000)
+
+
 class Scenario(StrictModel):
     volcano_id: str = "custom"
     label: str = "Manual scenario"
@@ -36,6 +53,11 @@ class Scenario(StrictModel):
     domain_km: float = Field(default=200, gt=0, le=400)
     cell_km: float = Field(default=1, ge=0.25, le=10)
     release_layers: int = Field(default=16, ge=1, le=32)
+    # Opt-in extensions beyond the proposal's uniform-wind, single-block source.
+    # When wind_profile is present it replaces the uniform wind in the deposit solver.
+    wind_profile: list[WindLevel] | None = Field(default=None, min_length=2, max_length=32)
+    # When pulses are present, the summary fields must describe their envelope (validated).
+    pulses: list[EruptionPulse] | None = Field(default=None, min_length=1, max_length=8)
 
     @model_validator(mode="after")
     def coherent(self):
@@ -46,6 +68,23 @@ class Scenario(StrictModel):
             raise ValueError("Domain/cell size must give an integer count of 2 through 400 cells")
         if not math.isfinite(self.mass_rate_kg_s * self.duration_s):
             raise ValueError("Total ash mass must be finite")
+        if self.wind_profile is not None:
+            heights = [level.height_above_vent_m for level in self.wind_profile]
+            if any(b <= a for a, b in zip(heights, heights[1:], strict=False)):
+                raise ValueError("Wind profile heights must be strictly increasing")
+        if self.pulses is not None:
+            end = max(p.start_s + p.duration_s for p in self.pulses)
+            total = sum(p.mass_rate_kg_s * p.duration_s for p in self.pulses)
+            if not math.isclose(self.duration_s, end, rel_tol=1e-9):
+                raise ValueError("duration_s must equal the end of the last pulse")
+            if not math.isclose(
+                self.column_height_m, max(p.column_height_m for p in self.pulses), rel_tol=1e-9
+            ):
+                raise ValueError("column_height_m must equal the highest pulse column")
+            if not math.isclose(
+                self.mass_rate_kg_s * self.duration_s, total, rel_tol=1e-9, abs_tol=1e-6
+            ):
+                raise ValueError("mass_rate_kg_s * duration_s must equal the total pulse mass")
         return self
 
 

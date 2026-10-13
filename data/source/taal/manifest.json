@@ -1,0 +1,32 @@
+{
+  "dataset_group": "taal-contextual-reference",
+  "curation_date": "2026-10-13",
+  "purpose": "Static local reference overlays for Taal volcano context (PDZ, seismicity, activity timeline, InSAR deformation).",
+  "policy": "Read-only offline files; never called at runtime over the network; never coupled to ash dispersion equations.",
+  "files": [
+    {
+      "file": "taal_pdz.geojson",
+      "bytes": 16500,
+      "sha256": "a851123c23ecdf968133048fac6b1df50b9d2802c458ca1d1f1f50b5d5bc4423",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    },
+    {
+      "file": "taal_earthquakes_2021_2024.json",
+      "bytes": 3861,
+      "sha256": "7f1c8ca10331a26c288f7f7426aae540f6541b605c76466ce384579528bd9c69",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    },
+    {
+      "file": "taal_activity_log.json",
+      "bytes": 3277,
+      "sha256": "14d833897c2cbac0d5272b38fc9a1963fd2e8cf72e7781623419ed8957435af2",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    },
+    {
+      "file": "taal_deformation_bato2021.json",
+      "bytes": 672,
+      "sha256": "c69ead77cdd0175dd532b06e68343327d83b165e085251f5d324003936a1f44a",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    }
+  ]
+}
