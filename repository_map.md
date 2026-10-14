@@ -56,7 +56,7 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `backend/src/abo_api/main.py` | Backend: API, resource admission, local docs and built UI serving |
 | `backend/tests/` | Backend: numerical and API regressions |
 | `frontend/src/Workspace.tsx` | Frontend: shared workspace, controls, workflows, exports |
-| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration with instanced subsurface seismicity, PDZ boundary, dike vector, alert ring, and TROPOMI plume cues |
+| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration with instanced subsurface seismicity (with depth stratum filter), PDZ boundary, dike vector, alert ring, TROPOMI plume cue, Tagaytay/cross-wind camera presets, and aviation flight-level altimeter |
 | `frontend/src/components/EruptionEffects.tsx`, `eruptionReplay.ts`, `eruptionReplay.test.ts` | Frontend: batched billows, fountain fragments, timed lava front and backend-coordinate interpolation |
 | `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock, replay controls, and curated Taal historical activity bookmarks (2021–2024) |
 | `frontend/src/components/Icon.tsx` | Frontend: local SVG navigation/action icons with shared sizing |

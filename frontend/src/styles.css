@@ -131,6 +131,14 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .scene-toolbar button { font-size: 0.8rem; }
 .application .camera-control { margin: 0; width: 180px; }
 .playback-controls { margin-left: auto; display: flex; gap: 0.5rem; }
+.scene-layer-controls { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
+.scene-layer-controls > label { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.8rem; }
+.scene-layer-controls input[type="checkbox"] { accent-color: var(--action); cursor: pointer; }
+.seismicity-layer-wrap { display: flex; flex-direction: column; gap: 0.25rem; }
+.seismicity-layer-wrap > label { display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.8rem; }
+.sublayer-filter { display: flex; flex-wrap: wrap; gap: 0.75rem; padding-left: 1.5rem; margin-top: 0.15rem; font-size: 0.75rem; }
+.sublayer-filter .radio-label { display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; color: var(--secondary); }
+.sublayer-filter input[type="radio"] { accent-color: var(--action); cursor: pointer; }
 .scene-stage { height: clamp(340px, 48vh, 580px); position: relative; background: #e8f0fa; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .scene-stage canvas:focus-visible { outline: 3px solid var(--action); outline-offset: -4px; }
 .scene-caption { position: absolute; bottom: 0; inset-inline: 0; display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; padding: 0.65rem 0.85rem; background: #edf4fd; color: #203e68; font-size: 0.75rem; pointer-events: none; }

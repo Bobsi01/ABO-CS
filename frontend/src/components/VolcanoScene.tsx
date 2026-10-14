@@ -17,7 +17,7 @@ import EruptionEffects from './EruptionEffects'
 import { eruptionFramePair } from './eruptionReplay'
 import { guardRenderer } from './rendererLifecycle'
 
-type View = 'regional' | 'close'
+type View = 'regional' | 'close' | 'tagaytay' | 'crosswind'
 type Props = { scenario: Scenario; result: SimulationResult | null; selected: string | null; onSelect: (id: string) => void; eruptionSequence?: EruptionSequence | null; frameIndex?: number; sequencePlaying?: boolean; onAvailabilityChange?: (available: boolean) => void }
 
 // Categorical colors identify grain classes; deposit thickness retains its sequential scale.
@@ -35,7 +35,7 @@ function supportsWebGL2() {
   try { const canvas = document.createElement('canvas'); const gl = canvas.getContext('webgl2'); if (!gl) return false; gl.getExtension('WEBGL_lose_context')?.loseContext(); return true } catch { return false }
 }
 
-function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { view: View; reset: number; height: number; base: number; emphasizeTaal: boolean; lavaDirection: readonly number[] | null }) {
+function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection, windFromDeg }: { view: View; reset: number; height: number; base: number; emphasizeTaal: boolean; lavaDirection: readonly number[] | null; windFromDeg: number }) {
   const { camera, gl, invalidate } = useThree()
   useEffect(() => {
     const controls = new OrbitControls(camera, gl.domElement)
@@ -43,8 +43,24 @@ function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { v
     controls.minDistance = 3
     controls.maxDistance = 420
     controls.maxPolarAngle = Math.PI / 2 - 0.04
-    if (emphasizeTaal) { const extent = Math.max(8, height * 1.55); camera.position.set(extent * 0.65, base + extent, extent * 0.95) }
-    else if (view === 'close') {
+    if (view === 'tagaytay') {
+      // Overlooking lake and Volcano Island from northern caldera rim (~600 m ASL)
+      const dist = Math.max(16, height * 1.8)
+      camera.position.set(0, base + Math.max(3.2, height * 0.45), -dist)
+      controls.target.set(0, base + height * 0.25, 0)
+    } else if (view === 'crosswind') {
+      // Perpendicular to downwind transport vector to expose plume column rise and bend
+      const transportDeg = (windFromDeg + 180) % 360
+      const crossDeg = (transportDeg + 90) % 360
+      const rad = (crossDeg * Math.PI) / 180
+      const dist = Math.max(14, height * 2.2)
+      camera.position.set(dist * Math.sin(rad), base + height * 0.7, -dist * Math.cos(rad))
+      controls.target.set(0, base + height * 0.4, 0)
+    } else if (emphasizeTaal) {
+      const extent = Math.max(8, height * 1.55)
+      camera.position.set(extent * 0.65, base + extent, extent * 0.95)
+      controls.target.set(0, base + height * 0.32, 0)
+    } else if (view === 'close') {
       const extent = Math.max(10, height * 1.7)
       // Stay on the routed slope's side, with an oblique view to expose its downhill length.
       if (lavaDirection) {
@@ -53,9 +69,11 @@ function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { v
         camera.position.set(extent * 1.5 * (east * Math.cos(angle) + south * Math.sin(angle)), base + extent * 0.7, extent * 1.5 * (south * Math.cos(angle) - east * Math.sin(angle)))
       }
       else camera.position.set(extent, base + extent * 0.8, extent * 1.2)
+      controls.target.set(0, base + height * 0.3, 0)
+    } else {
+      camera.position.set(145, 130, 160)
+      controls.target.set(0, 0, 0)
     }
-    else camera.position.set(145, 130, 160)
-    controls.target.set(0, emphasizeTaal ? base + height * 0.32 : view === 'close' ? base + height * 0.3 : 0, 0)
     controls.update()
     const change = () => invalidate()
     controls.addEventListener('change', change)
@@ -76,7 +94,7 @@ function Camera({ view, reset, height, base, emphasizeTaal, lavaDirection }: { v
     gl.domElement.addEventListener('keydown', key)
     invalidate()
     return () => { controls.removeEventListener('change', change); gl.domElement.removeEventListener('keydown', key); controls.dispose() }
-  }, [camera, gl, invalidate, view, reset, height, base, emphasizeTaal, lavaDirection])
+  }, [camera, gl, invalidate, view, reset, height, base, emphasizeTaal, lavaDirection, windFromDeg])
   return null
 }
 
@@ -225,7 +243,7 @@ function Wind({ result, height, view }: { result: SimulationResult; height: numb
   const label = useRef<HTMLSpanElement | null>(null)
   const { camera, gl, size, invalidate } = useThree()
   const projected = useMemo(() => new THREE.Vector3(), [])
-  const length = view === 'close' ? 2 : 8
+  const length = view === 'regional' ? 8 : 2
   const arrow = useMemo(() => {
     const direction = new THREE.Vector3(result.illustration.wind_east_m_s, 0, -result.illustration.wind_north_m_s)
     if (direction.length() === 0) return null
@@ -277,8 +295,9 @@ function Compass({ view, height, base }: { view: View; height: number; base: num
   const group = useMemo(() => {
     const value = new THREE.Group()
     const extent = Math.max(10, height * 1.7)
-    const length = view === 'close' ? extent * 0.15 : 20
-    const origin = new THREE.Vector3(view === 'close' ? -extent * 0.45 : -65, base + 0.3, view === 'close' ? extent * 0.4 : 65)
+    const isClose = view !== 'regional'
+    const length = isClose ? extent * 0.15 : 20
+    const origin = new THREE.Vector3(isClose ? -extent * 0.45 : -65, base + 0.3, isClose ? extent * 0.4 : 65)
     for (const direction of [new THREE.Vector3(0, 0, -1), new THREE.Vector3(1, 0, 0)]) {
       const arrow = new THREE.ArrowHelper(direction, origin, length, '#173b63', length * 0.1, length * 0.05)
       for (const material of [arrow.line.material, arrow.cone.material].flat()) {
@@ -321,7 +340,7 @@ type Earthquake = {
   source: string
 }
 
-function SubsurfaceSeismicity({ scenario, show, onInspectQuake }: { scenario: Scenario; show: boolean; onInspectQuake: (quake: Earthquake | null) => void }) {
+function SubsurfaceSeismicity({ scenario, show, depthFilter = 'all', onInspectQuake }: { scenario: Scenario; show: boolean; depthFilter?: 'all' | 'shallow' | 'deep'; onInspectQuake: (quake: Earthquake | null) => void }) {
   const [quakes, setQuakes] = useState<Earthquake[]>([])
   const mesh = useRef<THREE.InstancedMesh>(null)
   const { invalidate } = useThree()
@@ -336,10 +355,16 @@ function SubsurfaceSeismicity({ scenario, show, onInspectQuake }: { scenario: Sc
     return () => controller.abort()
   }, [show, scenario.volcano_id, invalidate])
 
+  const filteredQuakes = useMemo(() => {
+    if (depthFilter === 'shallow') return quakes.filter(q => q.depth_km <= 15)
+    if (depthFilter === 'deep') return quakes.filter(q => q.depth_km > 15)
+    return quakes
+  }, [quakes, depthFilter])
+
   useEffect(() => {
-    if (!mesh.current || quakes.length === 0) return
+    if (!mesh.current || filteredQuakes.length === 0) return
     const object = new THREE.Object3D()
-    quakes.forEach((q, index) => {
+    filteredQuakes.forEach((q, index) => {
       const dLat = (q.latitude - scenario.vent_lat) * 111.0
       const dLon = (q.longitude - scenario.vent_lon) * 111.0 * Math.cos((scenario.vent_lat * Math.PI) / 180)
       const displayDepth = Math.min(35, q.depth_km)
@@ -352,22 +377,22 @@ function SubsurfaceSeismicity({ scenario, show, onInspectQuake }: { scenario: Sc
       const color = new THREE.Color(q.depth_km <= 5 ? '#e04f32' : q.depth_km <= 15 ? '#e68a2e' : '#3d72a4')
       mesh.current!.setColorAt(index, color)
     })
-    mesh.current.count = quakes.length
+    mesh.current.count = filteredQuakes.length
     mesh.current.instanceMatrix.needsUpdate = true
     if (mesh.current.instanceColor) mesh.current.instanceColor.needsUpdate = true
     invalidate()
-  }, [quakes, scenario.vent_lat, scenario.vent_lon, invalidate])
+  }, [filteredQuakes, scenario.vent_lat, scenario.vent_lon, invalidate])
 
-  if (!show || scenario.volcano_id !== 'taal' || quakes.length === 0) return null
+  if (!show || scenario.volcano_id !== 'taal' || filteredQuakes.length === 0) return null
 
   function handleClick(event: ThreeEvent<MouseEvent>) {
     event.stopPropagation()
-    if (event.instanceId != null && quakes[event.instanceId]) {
-      onInspectQuake(quakes[event.instanceId])
+    if (event.instanceId != null && filteredQuakes[event.instanceId]) {
+      onInspectQuake(filteredQuakes[event.instanceId])
     }
   }
 
-  return <instancedMesh ref={mesh} args={[undefined, undefined, quakes.length]} onClick={handleClick} frustumCulled={false}><sphereGeometry args={[1, 14, 14]} /><meshStandardMaterial transparent opacity={0.75} depthWrite={false} roughness={0.6} /></instancedMesh>
+  return <instancedMesh ref={mesh} args={[undefined, undefined, filteredQuakes.length]} onClick={handleClick} frustumCulled={false}><sphereGeometry args={[1, 14, 14]} /><meshStandardMaterial transparent opacity={0.75} depthWrite={false} roughness={0.6} /></instancedMesh>
 }
 
 function TaalPDZ3D({ scenario, terrain, emphasizeTaal, show }: { scenario: Scenario; terrain: TerrainAsset | null; emphasizeTaal: boolean; show: boolean }) {
@@ -515,6 +540,79 @@ function TaalTropomiPlumeCue({ scenario, height, show }: { scenario: Scenario; h
   return <primitive object={arrow} />
 }
 
+function ColumnAltimeter({ base, height, show }: { base: number; height: number; show: boolean }) {
+  const rulerGroup = useMemo(() => {
+    if (!show) return null
+    const group = new THREE.Group()
+    const maxHeight = Math.max(height, 20)
+    const points: THREE.Vector3[] = []
+    const x = -1.5
+    // Main vertical axis line
+    points.push(new THREE.Vector3(x, base, 0))
+    points.push(new THREE.Vector3(x, base + maxHeight, 0))
+
+    // Ticks every 5 km ASL
+    const tickPoints: THREE.Vector3[] = []
+    for (let h = 5; h <= maxHeight; h += 5) {
+      tickPoints.push(new THREE.Vector3(x, base + h, 0))
+      tickPoints.push(new THREE.Vector3(x - 0.4, base + h, 0))
+    }
+
+    const axisGeom = new THREE.BufferGeometry().setFromPoints(points)
+    const axisMat = new THREE.LineBasicMaterial({ color: '#2563eb', transparent: true, opacity: 0.75 })
+    group.add(new THREE.Line(axisGeom, axisMat))
+
+    const tickGeom = new THREE.BufferGeometry().setFromPoints(tickPoints)
+    const tickMat = new THREE.LineBasicMaterial({ color: '#2563eb', transparent: true, opacity: 0.85 })
+    group.add(new THREE.LineSegments(tickGeom, tickMat))
+
+    const flightLevels: Record<number, string> = { 5: '5 km · FL160', 10: '10 km · FL330', 15: '15 km · FL490', 20: '20 km · FL650' }
+    for (let h = 5; h <= maxHeight; h += 5) {
+      const text = flightLevels[h] ?? `${h} km`
+      const canvas = document.createElement('canvas')
+      canvas.width = 256
+      canvas.height = 64
+      const ctx = canvas.getContext('2d')!
+      ctx.fillStyle = '#ffffffd8'
+      ctx.fillRect(0, 0, 256, 64)
+      ctx.strokeStyle = '#93c5fd'
+      ctx.lineWidth = 4
+      ctx.strokeRect(2, 2, 252, 60)
+      ctx.font = 'bold 26px Segoe UI, sans-serif'
+      ctx.fillStyle = '#1e3a8a'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText(text, 128, 32)
+      const texture = new THREE.CanvasTexture(canvas)
+      texture.colorSpace = THREE.SRGBColorSpace
+      const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false }))
+      sprite.geometry = sprite.geometry.clone()
+      sprite.position.set(x - 1.5, base + h, 0)
+      sprite.scale.set(1.8, 0.45, 1)
+      group.add(sprite)
+    }
+
+    return group
+  }, [base, height, show])
+
+  useEffect(() => () => {
+    if (!rulerGroup) return
+    rulerGroup.children.forEach(child => {
+      if (child instanceof THREE.Line || child instanceof THREE.LineSegments) {
+        child.geometry.dispose()
+        if (child.material instanceof THREE.Material) child.material.dispose()
+      } else if (child instanceof THREE.Sprite) {
+        child.geometry.dispose()
+        child.material.map?.dispose()
+        child.material.dispose()
+      }
+    })
+  }, [rulerGroup])
+
+  if (!show || !rulerGroup) return null
+  return <primitive object={rulerGroup} />
+}
+
 export default function VolcanoScene({ scenario, result, selected, onSelect, eruptionSequence = null, frameIndex = 0, sequencePlaying = false, onAvailabilityChange }: Props) {
   const [supported, setSupported] = useState(supportsWebGL2)
   const [rendererFailed, setRendererFailed] = useState(false)
@@ -530,13 +628,31 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
   const [physicalElapsed, setPhysicalElapsed] = useState(0)
   const [showDeposit, setShowDeposit] = useState(false)
   const [showGrains, setShowGrains] = useState(false)
+  const [showAltimeter, setShowAltimeter] = useState(false)
   const [showSeismicity, setShowSeismicity] = useState(false)
+  const [quakeDepthFilter, setQuakeDepthFilter] = useState<'all' | 'shallow' | 'deep'>('all')
   const [showPDZ3D, setShowPDZ3D] = useState(false)
   const [showDike, setShowDike] = useState(false)
   const [showAlertRing, setShowAlertRing] = useState(false)
   const [showTropomi, setShowTropomi] = useState(false)
   const [inspectedQuake, setInspectedQuake] = useState<Earthquake | null>(null)
   const [terrainState, setTerrainState] = useState<{ key: string; asset: TerrainAsset | null; error: string }>({ key: '', asset: null, error: '' })
+
+  const cameraOptions = useMemo(() => {
+    const list: { value: View; label: string }[] = [{ value: 'close', label: 'Volcano close-up' }]
+    if (scenario.volcano_id === 'taal') {
+      list.push({ value: 'tagaytay', label: 'Tagaytay Ridge (caldera rim)' })
+    }
+    list.push({ value: 'crosswind', label: 'Cross-wind plume profile' })
+    list.push({ value: 'regional', label: 'Regional overview' })
+    return list
+  }, [scenario.volcano_id])
+
+  useEffect(() => {
+    if (view === 'tagaytay' && scenario.volcano_id !== 'taal') {
+      setView('close')
+    }
+  }, [view, scenario.volcano_id])
   const terrainKey = `${scenario.volcano_id}:${scenario.vent_lat}:${scenario.vent_lon}`
   const terrain = terrainState.key === terrainKey ? terrainState.asset : null
   const terrainStatus = terrain ? 'Geographic terrain · ash uses flat model ground' : !['taal', 'mayon', 'kanlaon'].includes(scenario.volcano_id) ? 'Schematic terrain fallback · no geographic asset for this vent' : terrainState.key === terrainKey && terrainState.error ? 'Schematic terrain fallback · geographic terrain unavailable; see source details' : 'Loading geographic terrain · temporary schematic view'
@@ -601,7 +717,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
   return <div className="scene-wrap">
     {qaMode && <button type="button" disabled={!supported} onClick={() => { const raw = canvasElement.current?.getAttribute('data-frame-evidence'); if (raw) download('abo-frame-timing.json', JSON.stringify({ ...JSON.parse(raw), captured_at: new Date().toISOString(), viewport: [window.innerWidth, window.innerHeight], device_pixel_ratio: window.devicePixelRatio, hidden: document.hidden, has_focus: document.hasFocus(), camera: view, reduced_detail: reduced, scenario, eruption_options: eruptionSequence?.options ?? null, assets: [...document.querySelectorAll<HTMLScriptElement>('script[src]')].map(script => script.src) }, null, 2), 'application/json') }}>Download frame timing JSON</button>}
     <div className="scene-toolbar">
-      <Select label="Camera view" disabled={!supported} value={view} onChange={value => { setView(value as View); setReset(v => v + 1) }} options={[{ value: 'close', label: 'Volcano close-up' }, { value: 'regional', label: 'Regional overview' }]} />
+      <Select label="Camera view" disabled={!supported} value={view} onChange={value => { setView(value as View); setReset(v => v + 1) }} options={cameraOptions} />
       <button className="icon-button" type="button" aria-label="Reset camera" title="Reset camera" disabled={!supported} onClick={() => setReset(v => v + 1)}><Icon name="reset" /></button>
       {!eruptionSequence && <div className="playback-controls"><button type="button" disabled={!result || !supported} onClick={() => {
         if (!playing && result && physicalElapsed >= replayDuration(result.illustration.paths)) setReplay(v => v + 1)
@@ -628,8 +744,9 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         rendererCleanup.current = guardRenderer(gl, () => { setPlaying(false); setRendererFailed(true) })
       }} fallback={<p>3D unavailable. Use map and table.</p>}>
         <color attach="background" args={['#e8f0fa']} />
-        <ambientLight intensity={0.65} /><directionalLight position={[-18, 32, 25]} intensity={2} />
-        <Camera view={view} reset={reset} height={height} base={base} emphasizeTaal={emphasizeTaal} lavaDirection={lavaDirection} />
+        <fog attach="fog" args={['#e8f0fa', 180, 650]} />
+        <ambientLight intensity={0.5} /><hemisphereLight args={['#ffffff', '#8fa3be', 0.5]} /><directionalLight position={[-18, 32, 25]} intensity={1.7} />
+        <Camera view={view} reset={reset} height={height} base={base} emphasizeTaal={emphasizeTaal} lavaDirection={lavaDirection} windFromDeg={scenario.wind_from_deg} />
         <Compass view={view} height={height} base={base} />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}><planeGeometry args={[scenario.domain_km, scenario.domain_km]} /><meshStandardMaterial color="#dce5ef" side={THREE.DoubleSide} /></mesh>
         {terrain ? <TerrainBackdrop asset={terrain} reduced={reduced} emphasizeTaal={emphasizeTaal} /> : <Volcano id={scenario.volcano_id} scale={Math.min(1, height / 24)} />}
@@ -639,7 +756,8 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           {result && showSource && <><Wind result={result} height={Math.max(0.1, columnTopM / 1000)} view={view} />{(!eruptionSequence || showGrains) && result.illustration.paths.map(path => <Path key={path.grain_index} path={path} />)}{!eruptionSequence && <Ash paths={result.illustration.paths} playing={playing} replay={replay} reduced={reduced} onDone={() => setPlaying(false)} onPerformance={reportPerformance} onClock={setPhysicalElapsed} />}</>}
         </group>
         {eruptionSequence && <EruptionEffects sequence={eruptionSequence} frameIndex={frameIndex} baseM={base * 1000} reduced={reduced} playing={sequencePlaying} onPerformance={reportPerformance} terrain={terrain} emphasizeTaal={emphasizeTaal} wind={[result?.illustration.wind_east_m_s ?? 0, result?.illustration.wind_north_m_s ?? 0]} />}
-        <SubsurfaceSeismicity scenario={scenario} show={showSeismicity} onInspectQuake={setInspectedQuake} />
+        <ColumnAltimeter base={base} height={Math.max(0.1, columnTopM / 1000)} show={showAltimeter} />
+        <SubsurfaceSeismicity scenario={scenario} show={showSeismicity} depthFilter={quakeDepthFilter} onInspectQuake={setInspectedQuake} />
         <TaalPDZ3D scenario={scenario} terrain={terrain} emphasizeTaal={emphasizeTaal} show={showPDZ3D} />
         <TaalDikeVector3D scenario={scenario} base={base} show={showDike} />
         <TaalAlertLevelRing3D scenario={scenario} base={base} show={showAlertRing} />
@@ -661,12 +779,25 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
       <div className="scene-layer-controls">
         <label><input type="checkbox" checked={showDeposit} disabled={!result} onChange={event => setShowDeposit(event.target.checked)} />Show detached deposit layer</label>
         {eruptionSequence && <label><input type="checkbox" checked={showGrains} disabled={!result} onChange={event => setShowGrains(event.target.checked)} />Show final grain-class paths</label>}
-        {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} />Show 2021-2024 hypocenters (USGS context)</label>}
+        <label><input type="checkbox" checked={showAltimeter} onChange={event => setShowAltimeter(event.target.checked)} />Show vertical altitude scale (flight levels)</label>
+        {scenario.volcano_id === 'taal' && (
+          <div className="seismicity-layer-wrap">
+            <label><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} />Show 2021-2024 hypocenters (USGS context)</label>
+            {showSeismicity && (
+              <div className="sublayer-filter" role="radiogroup" aria-label="Seismicity depth filter">
+                <label className="radio-label"><input type="radio" name="depth-filter" value="all" checked={quakeDepthFilter === 'all'} onChange={() => setQuakeDepthFilter('all')} />All depths</label>
+                <label className="radio-label"><input type="radio" name="depth-filter" value="shallow" checked={quakeDepthFilter === 'shallow'} onChange={() => setQuakeDepthFilter('shallow')} />Conduit (≤15 km)</label>
+                <label className="radio-label"><input type="radio" name="depth-filter" value="deep" checked={quakeDepthFilter === 'deep'} onChange={() => setQuakeDepthFilter('deep')} />Subduction (&gt;15 km)</label>
+              </div>
+            )}
+          </div>
+        )}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showPDZ3D} onChange={event => setShowPDZ3D(event.target.checked)} />Show PHIVOLCS PDZ (3D boundary)</label>}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showAlertRing} onChange={event => setShowAlertRing(event.target.checked)} />Show Alert Level ring (GVP/PHIVOLCS)</label>}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showDike} onChange={event => setShowDike(event.target.checked)} />Show 2020 dike intrusion (Bato et al. 2021)</label>}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showTropomi} onChange={event => setShowTropomi(event.target.checked)} />Show Sentinel-5P observed plume bearing</label>}
       </div>
+      {showAltimeter && <p className="view-note">Blue vertical ruler marks altitude above vent (5 km ~ FL160, 10 km ~ FL330 commercial jet cruising altitude, 15 km ~ FL490, 20 km ~ FL650 lower stratosphere). Contextual reference overlay.</p>}
       {showSeismicity && scenario.volcano_id === 'taal' && <p className="view-note">Subsurface spheres show USGS FDSN catalog context (depth 1-35 km below vent, scaled by magnitude; click sphere for details). Contextual reference overlay - not a computed result of the ash model.</p>}
       {showPDZ3D && scenario.volcano_id === 'taal' && <p className="view-note">Purple dashed line marks official PHIVOLCS Permanent Danger Zone boundary around Volcano Island (15 Feb 2021). Contextual reference overlay - not a computed result of the ash model.</p>}
       {showAlertRing && scenario.volcano_id === 'taal' && <p className="view-note">Base ring indicates curated Alert Level (Green: AL1, Amber: AL2, Red: AL3) from GVP/PHIVOLCS bulletin archives. Contextual reference overlay - not a computed result of the ash model.</p>}
