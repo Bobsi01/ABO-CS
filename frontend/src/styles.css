@@ -96,11 +96,36 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .application .timeline-slider input { padding: 0; border: 0; accent-color: var(--action); background: transparent; cursor: pointer; }
 .timeline-readout { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.75rem; color: var(--secondary); font-variant-numeric: tabular-nums; }
 .eruption-timeline .view-note { margin: 0.4rem 0 0; font-size: 0.75rem; }
+.historical-bookmarks { margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+.bookmarks-header { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.bookmarks-title { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 600; color: var(--text); }
+.reference-badge { font-size: 0.7rem; color: var(--secondary); background: var(--surface); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--line); }
+.bookmarks-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.bookmark-pill { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.55rem; min-height: 32px; font-size: 0.75rem; border-radius: 4px; background: var(--surface); border: 1px solid var(--line); color: var(--text); cursor: pointer; }
+.bookmark-pill:hover { background: var(--hover); }
+.bookmark-pill.active { background: var(--selected); border-color: var(--action); font-weight: 600; }
+.pill-date { font-weight: 500; }
+.pill-plume { color: var(--secondary); font-variant-numeric: tabular-nums; }
+.pill-alert { font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.3rem; border-radius: 3px; }
+.pill-alert.alert-1 { background: #dcfce7; color: #15803d; }
+.pill-alert.alert-2 { background: #fef3c7; color: #b45309; }
+.pill-alert.alert-3 { background: #fee2e2; color: #b91c1c; }
+.bookmark-detail-card { margin-top: 0.6rem; padding: 0.65rem 0.8rem; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); font-size: 0.75rem; }
+.bookmark-detail-card .detail-header { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.bookmark-detail-card .close-button { min-height: 24px; width: 24px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 3px; background: transparent; cursor: pointer; font-size: 1rem; line-height: 1; }
+.bookmark-detail-card .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.4rem 1rem; margin-bottom: 0.4rem; }
+.bookmark-detail-card .detail-label { color: var(--secondary); font-weight: 500; margin-right: 0.25rem; }
+.bookmark-detail-card .full-width { grid-column: 1 / -1; }
+.bookmark-detail-card .reference-disclaimer { margin: 0.4rem 0 0; font-size: 0.7rem; color: var(--secondary); font-style: italic; }
 .application .checkbox-label { flex-direction: row; align-items: center; gap: 0.6rem; min-height: 44px; }
 .application .checkbox-label input { width: 18px; min-height: 18px; height: 18px; flex-shrink: 0; accent-color: var(--action); }
 .zone-line { display: inline-block; width: 24px; border-top: 2px dashed #5b527e; vertical-align: middle; margin-right: 0.35rem; }
 .scene-hud { position: absolute; z-index: 1; top: 0.75rem; left: 0.75rem; display: flex; flex-direction: column; gap: 0.2rem; pointer-events: none; padding: 0.45rem 0.6rem; border-radius: 4px; background: #edf4fde8; color: #203e68; font-size: 0.7rem; }
 .scene-hud strong { font-size: 0.8rem; }
+.scene-inspection-card { position: absolute; z-index: 2; top: 0.75rem; right: 0.75rem; max-width: 250px; display: flex; flex-direction: column; gap: 0.25rem; padding: 0.5rem 0.65rem; border-radius: 6px; background: #fffffffa; border: 1px solid #b9cde3; color: #1e3a5f; font-size: 0.75rem; box-shadow: 0 2px 8px #00000018; }
+.scene-inspection-card strong { font-size: 0.8rem; color: #102a45; }
+.scene-inspection-card button { align-self: flex-end; font-size: 0.7rem; padding: 0.15rem 0.45rem; min-height: 24px; border-radius: 3px; background: #f0f4f8; border: 1px solid #c2d3e5; color: #1e3a5f; cursor: pointer; }
+.scene-inspection-card button:hover { background: #e2ebf4; }
 .scene-arrow-label { position: absolute; z-index: 1; left: 0; top: 0; padding: 0.25rem 0.45rem; border: 1px solid #c3d2e5; border-radius: 4px; background: #f4f8fdf2; color: #203e68; font: 600 0.75rem/1.4 "Segoe UI", sans-serif; pointer-events: none; white-space: nowrap; }
 .vent-marker { filter: drop-shadow(0 1px 1px #203e6840); }
 .scene-toolbar button { font-size: 0.8rem; }
@@ -166,6 +191,14 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .historical-references article { border-top: 1px solid var(--line); margin-top: 1rem; }
 .historical-references dl div { display: grid; grid-template-columns: minmax(120px, 1fr) 2fr; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); font-size: 0.85rem; }
 .historical-references dd { margin: 0; overflow-wrap: anywhere; }
+.curated-evidence-section { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 2px solid var(--line); }
+.evidence-section-header { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.evidence-section-header h3 { margin: 0; font-size: 1.1rem; color: var(--text); }
+.evidence-accordion { margin-top: 0.75rem; border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem 0.85rem; background: var(--panel); }
+.evidence-accordion > summary { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; padding: 0.4rem 0; }
+.summary-count { font-size: 0.75rem; color: var(--secondary); background: var(--surface); padding: 0.15rem 0.45rem; border-radius: 3px; border: 1px solid var(--line); }
+.badge-status { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; padding: 0.1rem 0.35rem; border-radius: 3px; background: #dcfce7; color: #15803d; margin-right: 0.35rem; }
+.station-pills { margin-top: 0.35rem; font-size: 0.8rem; }
 .computation-steps { padding-left: 1.25rem; line-height: 1.7; }
 .computation-steps li { padding: 0.35rem 0; }
 .application .page-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 1.75rem; border-top: 1px solid var(--line); font-size: 0.75rem; margin: 0; color: var(--secondary); }

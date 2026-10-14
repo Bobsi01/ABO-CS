@@ -56,15 +56,15 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `backend/src/abo_api/main.py` | Backend: API, resource admission, local docs and built UI serving |
 | `backend/tests/` | Backend: numerical and API regressions |
 | `frontend/src/Workspace.tsx` | Frontend: shared workspace, controls, workflows, exports |
-| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration |
+| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration with instanced subsurface seismicity, PDZ boundary, dike vector, alert ring, and TROPOMI plume cues |
 | `frontend/src/components/EruptionEffects.tsx`, `eruptionReplay.ts`, `eruptionReplay.test.ts` | Frontend: batched billows, fountain fragments, timed lava front and backend-coordinate interpolation |
-| `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock and curated mechanism/reference-zone sources |
+| `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock, replay controls, and curated Taal historical activity bookmarks (2021–2024) |
 | `frontend/src/components/Icon.tsx` | Frontend: local SVG navigation/action icons with shared sizing |
 | `frontend/src/components/Select.tsx`, `Select.test.tsx` | Orchestrator: themed keyboard-accessible single-select and viewport placement checks |
 | `frontend/src/components/TerrainBackdrop.tsx`, `terrain.ts`, `terrain.test.ts` | Frontend: source-traced terrain mesh, datum/origin checks, display sampling and labeled Taal close-up relief |
 | `frontend/src/components/settlingReplay.ts`, `settlingReplay.test.ts` | Frontend: common physical clock interpolation of Python paths |
 | `frontend/src/components/GeographicMap.tsx` | Frontend: Leaflet map and offline fallback |
-| `frontend/src/components/HistoricalReferences.tsx`, `Legend.tsx` | Frontend: references and quantitative legend |
+| `frontend/src/components/HistoricalReferences.tsx`, `Legend.tsx` | Frontend: references, quantitative legend, and curated Taal multi-parameter evidence panels (unrest log, WOVOdat, HDX/ARIA) |
 | `frontend/src/components/ScientificViewBoundary.tsx` | Orchestrator recovery: isolate renderer/lazy-view failures from controls and completed results |
 | `frontend/src/components/rendererLifecycle.ts`, `rendererLifecycle.test.ts` | Engineering: retired-renderer wrappers and shared graphics-resource lifetime |
 | `frontend/src/components/leafletAccessibility.ts`, `leafletAccessibility.test.ts` | Engineering: decorative vector paths and equivalent accessible map/table workflows |
