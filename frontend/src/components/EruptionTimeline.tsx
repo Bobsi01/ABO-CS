@@ -33,6 +33,17 @@ export default function EruptionTimeline({ sequence, index, playing, onIndex, on
     return () => controller.abort()
   }, [sequence.scenario.volcano_id])
 
+  useEffect(() => {
+    if (!selectedEvent) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedEvent(null)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedEvent])
+
   const frames = sequence.frames, last = frames.length - 1
   const current = frames[Math.min(last, Math.floor(index))]
   useEffect(() => {

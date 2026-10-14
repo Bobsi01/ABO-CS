@@ -108,8 +108,12 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .pill-plume { color: var(--secondary); font-variant-numeric: tabular-nums; }
 .pill-alert { font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.3rem; border-radius: 3px; }
 .pill-alert.alert-1 { background: #dcfce7; color: #15803d; }
-.pill-alert.alert-2 { background: #fef3c7; color: #b45309; }
+.pill-alert.alert-2 { background: #fef3c7; color: #92400e; }
 .pill-alert.alert-3 { background: #fee2e2; color: #b91c1c; }
+[data-theme="dark"] .pill-alert.alert-1 { background: #064e3b; color: #6ee7b7; }
+[data-theme="dark"] .pill-alert.alert-2 { background: #451a03; color: #fcd34d; }
+[data-theme="dark"] .pill-alert.alert-3 { background: #7f1d1d; color: #fca5a5; }
+[data-theme="dark"] .badge-status { background: #064e3b; color: #6ee7b7; }
 .bookmark-detail-card { margin-top: 0.6rem; padding: 0.65rem 0.8rem; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); font-size: 0.75rem; }
 .bookmark-detail-card .detail-header { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
 .bookmark-detail-card .close-button { min-height: 24px; width: 24px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 3px; background: transparent; cursor: pointer; font-size: 1rem; line-height: 1; }
@@ -122,10 +126,12 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .zone-line { display: inline-block; width: 24px; border-top: 2px dashed #5b527e; vertical-align: middle; margin-right: 0.35rem; }
 .scene-hud { position: absolute; z-index: 1; top: 0.75rem; left: 0.75rem; display: flex; flex-direction: column; gap: 0.2rem; pointer-events: none; padding: 0.45rem 0.6rem; border-radius: 4px; background: #edf4fde8; color: #203e68; font-size: 0.7rem; }
 .scene-hud strong { font-size: 0.8rem; }
-.scene-inspection-card { position: absolute; z-index: 2; top: 0.75rem; right: 0.75rem; max-width: 250px; display: flex; flex-direction: column; gap: 0.25rem; padding: 0.5rem 0.65rem; border-radius: 6px; background: #fffffffa; border: 1px solid #b9cde3; color: #1e3a5f; font-size: 0.75rem; box-shadow: 0 2px 8px #00000018; }
-.scene-inspection-card strong { font-size: 0.8rem; color: #102a45; }
-.scene-inspection-card button { align-self: flex-end; font-size: 0.7rem; padding: 0.15rem 0.45rem; min-height: 24px; border-radius: 3px; background: #f0f4f8; border: 1px solid #c2d3e5; color: #1e3a5f; cursor: pointer; }
-.scene-inspection-card button:hover { background: #e2ebf4; }
+.scene-inspection-card, .seismicity-hud-card { position: absolute; z-index: 2; top: 0.75rem; right: 0.75rem; max-width: 250px; display: flex; flex-direction: column; gap: 0.25rem; padding: 0.5rem 0.65rem; border-radius: 6px; background: var(--panel); border: 1px solid var(--control-line); color: var(--text); font-size: 0.75rem; box-shadow: 0 2px 8px #00000018; }
+.scene-inspection-card strong, .seismicity-hud-card strong { font-size: 0.8rem; color: var(--text); }
+.scene-inspection-card button, .seismicity-hud-card button { align-self: flex-end; font-size: 0.7rem; padding: 0.15rem 0.45rem; min-height: 24px; border-radius: 3px; background: var(--surface); border: 1px solid var(--line); color: var(--text); cursor: pointer; }
+.scene-inspection-card button:hover, .seismicity-hud-card button:hover { background: var(--selected); }
+.seismicity-accessible-select { margin-top: 0.35rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.seismicity-accessible-select select { font-size: 0.75rem; padding: 0.25rem 0.4rem; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--text); }
 .scene-arrow-label { position: absolute; z-index: 1; left: 0; top: 0; padding: 0.25rem 0.45rem; border: 1px solid #c3d2e5; border-radius: 4px; background: #f4f8fdf2; color: #203e68; font: 600 0.75rem/1.4 "Segoe UI", sans-serif; pointer-events: none; white-space: nowrap; }
 .vent-marker { filter: drop-shadow(0 1px 1px #203e6840); }
 .scene-toolbar button { font-size: 0.8rem; }
@@ -266,6 +272,7 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
   .playback-controls { margin-left: 0; }
   .form-actions { position: static; }
   .manual-winds { grid-template-columns: 1fr; }
+  .scene-inspection-card, .seismicity-hud-card { top: auto; bottom: 2.2rem; left: 0.5rem; right: 0.5rem; max-width: none; width: auto; }
   .application .page-footer { padding: 1rem; }
 }
 

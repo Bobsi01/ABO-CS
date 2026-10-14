@@ -490,6 +490,7 @@ def sync_frontend_public():
         "taal_eruption_timeline_2021_2024.json",
         "taal_deformation_bato2021.json",
         "taal_wovodat_metadata.json",
+        "taal_hdx_damage_proxy_metadata.json",
     ]
     for fname in public_files:
         src = OUT_DIR / fname

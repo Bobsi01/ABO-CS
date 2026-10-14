@@ -340,7 +340,19 @@ type Earthquake = {
   source: string
 }
 
-function SubsurfaceSeismicity({ scenario, show, depthFilter = 'all', onInspectQuake }: { scenario: Scenario; show: boolean; depthFilter?: 'all' | 'shallow' | 'deep'; onInspectQuake: (quake: Earthquake | null) => void }) {
+function SubsurfaceSeismicity({
+  scenario,
+  show,
+  depthFilter = 'all',
+  onInspectQuake,
+  onQuakesLoaded,
+}: {
+  scenario: Scenario
+  show: boolean
+  depthFilter?: 'all' | 'shallow' | 'deep'
+  onInspectQuake: (quake: Earthquake | null) => void
+  onQuakesLoaded?: (quakes: Earthquake[]) => void
+}) {
   const [quakes, setQuakes] = useState<Earthquake[]>([])
   const mesh = useRef<THREE.InstancedMesh>(null)
   const { invalidate } = useThree()
@@ -350,16 +362,33 @@ function SubsurfaceSeismicity({ scenario, show, depthFilter = 'all', onInspectQu
     const controller = new AbortController()
     fetch('/taal_earthquakes_2021_2024.json', { signal: controller.signal, cache: 'no-store' })
       .then(r => r.ok ? (r.json() as Promise<Earthquake[]>) : [])
-      .then(data => { setQuakes(data); invalidate() })
+      .then(data => {
+        setQuakes(data)
+        onQuakesLoaded?.(data)
+        invalidate()
+      })
       .catch(() => {})
     return () => controller.abort()
-  }, [show, scenario.volcano_id, invalidate])
+  }, [show, scenario.volcano_id, onQuakesLoaded, invalidate])
 
   const filteredQuakes = useMemo(() => {
     if (depthFilter === 'shallow') return quakes.filter(q => q.depth_km <= 15)
     if (depthFilter === 'deep') return quakes.filter(q => q.depth_km > 15)
     return quakes
   }, [quakes, depthFilter])
+
+  useEffect(() => {
+    const currentMesh = mesh.current
+    return () => {
+      if (currentMesh) {
+        currentMesh.geometry.dispose()
+        if (currentMesh.material instanceof THREE.Material) {
+          currentMesh.material.dispose()
+        }
+        currentMesh.dispose()
+      }
+    }
+  }, [filteredQuakes])
 
   useEffect(() => {
     if (!mesh.current || filteredQuakes.length === 0) return
@@ -392,7 +421,18 @@ function SubsurfaceSeismicity({ scenario, show, depthFilter = 'all', onInspectQu
     }
   }
 
-  return <instancedMesh ref={mesh} args={[undefined, undefined, filteredQuakes.length]} onClick={handleClick} frustumCulled={false}><sphereGeometry args={[1, 14, 14]} /><meshStandardMaterial transparent opacity={0.75} depthWrite={false} roughness={0.6} /></instancedMesh>
+  return (
+    <instancedMesh
+      ref={mesh}
+      args={[undefined, undefined, filteredQuakes.length]}
+      onClick={handleClick}
+      frustumCulled={false}
+      renderOrder={999}
+    >
+      <sphereGeometry args={[1, 14, 14]} />
+      <meshStandardMaterial transparent opacity={0.85} depthTest={false} depthWrite={false} roughness={0.6} />
+    </instancedMesh>
+  )
 }
 
 function TaalPDZ3D({ scenario, terrain, emphasizeTaal, show }: { scenario: Scenario; terrain: TerrainAsset | null; emphasizeTaal: boolean; show: boolean }) {
@@ -457,7 +497,7 @@ function TaalDikeVector3D({ scenario, base, show }: { scenario: Scenario; base: 
   const arrow = useMemo(() => {
     if (!data) return null
     const rad = (data.dike_azimuth_deg * Math.PI) / 180
-    const dir = new THREE.Vector3(Math.sin(rad), 0, Math.cos(rad)).normalize()
+    const dir = new THREE.Vector3(Math.sin(rad), 0, -Math.cos(rad)).normalize()
     const origin = new THREE.Vector3(0, base - 1.2, 0)
     const length = data.dike_length_km
     return new THREE.ArrowHelper(dir, origin, length, '#d97706', length * 0.2, length * 0.1)
@@ -482,7 +522,7 @@ function TaalAlertLevelRing3D({ scenario, base, show }: { scenario: Scenario; ba
       .then(r => r.ok ? (r.json() as Promise<ActivityEntry[]>) : [])
       .then(entries => {
         if (entries.length > 0) {
-          setLatest(entries[1] ?? entries[0])
+          setLatest(entries[entries.length - 1] ?? entries[0])
           invalidate()
         }
       })
@@ -636,7 +676,25 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
   const [showAlertRing, setShowAlertRing] = useState(false)
   const [showTropomi, setShowTropomi] = useState(false)
   const [inspectedQuake, setInspectedQuake] = useState<Earthquake | null>(null)
+  const [availableQuakes, setAvailableQuakes] = useState<Earthquake[]>([])
   const [terrainState, setTerrainState] = useState<{ key: string; asset: TerrainAsset | null; error: string }>({ key: '', asset: null, error: '' })
+
+  useEffect(() => {
+    if (!showSeismicity || scenario.volcano_id !== 'taal') {
+      setInspectedQuake(null)
+    }
+  }, [showSeismicity, scenario.volcano_id])
+
+  useEffect(() => {
+    if (!inspectedQuake) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setInspectedQuake(null)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [inspectedQuake])
 
   const cameraOptions = useMemo(() => {
     const list: { value: View; label: string }[] = [{ value: 'close', label: 'Volcano close-up' }]
@@ -757,7 +815,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         </group>
         {eruptionSequence && <EruptionEffects sequence={eruptionSequence} frameIndex={frameIndex} baseM={base * 1000} reduced={reduced} playing={sequencePlaying} onPerformance={reportPerformance} terrain={terrain} emphasizeTaal={emphasizeTaal} wind={[result?.illustration.wind_east_m_s ?? 0, result?.illustration.wind_north_m_s ?? 0]} />}
         <ColumnAltimeter base={base} height={Math.max(0.1, columnTopM / 1000)} show={showAltimeter} />
-        <SubsurfaceSeismicity scenario={scenario} show={showSeismicity} depthFilter={quakeDepthFilter} onInspectQuake={setInspectedQuake} />
+        <SubsurfaceSeismicity scenario={scenario} show={showSeismicity} depthFilter={quakeDepthFilter} onInspectQuake={setInspectedQuake} onQuakesLoaded={setAvailableQuakes} />
         <TaalPDZ3D scenario={scenario} terrain={terrain} emphasizeTaal={emphasizeTaal} show={showPDZ3D} />
         <TaalDikeVector3D scenario={scenario} base={base} show={showDike} />
         <TaalAlertLevelRing3D scenario={scenario} base={base} show={showAlertRing} />
@@ -784,11 +842,43 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           <div className="seismicity-layer-wrap">
             <label><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} />Show 2021-2024 hypocenters (USGS context)</label>
             {showSeismicity && (
-              <div className="sublayer-filter" role="radiogroup" aria-label="Seismicity depth filter">
-                <label className="radio-label"><input type="radio" name="depth-filter" value="all" checked={quakeDepthFilter === 'all'} onChange={() => setQuakeDepthFilter('all')} />All depths</label>
-                <label className="radio-label"><input type="radio" name="depth-filter" value="shallow" checked={quakeDepthFilter === 'shallow'} onChange={() => setQuakeDepthFilter('shallow')} />Conduit (≤15 km)</label>
-                <label className="radio-label"><input type="radio" name="depth-filter" value="deep" checked={quakeDepthFilter === 'deep'} onChange={() => setQuakeDepthFilter('deep')} />Subduction (&gt;15 km)</label>
-              </div>
+              <>
+                <div className="sublayer-filter" role="radiogroup" aria-label="Seismicity depth filter">
+                  <label className="radio-label"><input type="radio" name="depth-filter" value="all" checked={quakeDepthFilter === 'all'} onChange={() => setQuakeDepthFilter('all')} />All depths</label>
+                  <label className="radio-label"><input type="radio" name="depth-filter" value="shallow" checked={quakeDepthFilter === 'shallow'} onChange={() => setQuakeDepthFilter('shallow')} />Conduit (≤15 km)</label>
+                  <label className="radio-label"><input type="radio" name="depth-filter" value="deep" checked={quakeDepthFilter === 'deep'} onChange={() => setQuakeDepthFilter('deep')} />Subduction (&gt;15 km)</label>
+                </div>
+                {availableQuakes.length > 0 && (
+                  <div className="seismicity-accessible-select">
+                    <label htmlFor="quake-inspect-select" className="view-note">Keyboard inspection:</label>
+                    <select
+                      id="quake-inspect-select"
+                      value={inspectedQuake ? `${inspectedQuake.time}_${inspectedQuake.magnitude}` : ''}
+                      onChange={e => {
+                        const val = e.target.value
+                        if (!val) setInspectedQuake(null)
+                        else {
+                          const match = availableQuakes.find(q => `${q.time}_${q.magnitude}` === val)
+                          setInspectedQuake(match ?? null)
+                        }
+                      }}
+                      aria-label="Select earthquake hypocenter for keyboard inspection"
+                    >
+                      <option value="">Inspect hypocenter (keyboard accessible)…</option>
+                      {(quakeDepthFilter === 'shallow'
+                        ? availableQuakes.filter(q => q.depth_km <= 15)
+                        : quakeDepthFilter === 'deep'
+                        ? availableQuakes.filter(q => q.depth_km > 15)
+                        : availableQuakes
+                      ).map((q, idx) => (
+                        <option key={`${q.time}_${idx}`} value={`${q.time}_${q.magnitude}`}>
+                          M{number(q.magnitude, 1)} · Depth {number(q.depth_km, 1)} km · {q.time.slice(0, 10)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
@@ -798,11 +888,11 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showTropomi} onChange={event => setShowTropomi(event.target.checked)} />Show Sentinel-5P observed plume bearing</label>}
       </div>
       {showAltimeter && <p className="view-note">Blue vertical ruler marks altitude above vent (5 km ~ FL160, 10 km ~ FL330 commercial jet cruising altitude, 15 km ~ FL490, 20 km ~ FL650 lower stratosphere). Contextual reference overlay.</p>}
-      {showSeismicity && scenario.volcano_id === 'taal' && <p className="view-note">Subsurface spheres show USGS FDSN catalog context (depth 1-35 km below vent, scaled by magnitude; click sphere for details). Contextual reference overlay - not a computed result of the ash model.</p>}
-      {showPDZ3D && scenario.volcano_id === 'taal' && <p className="view-note">Purple dashed line marks official PHIVOLCS Permanent Danger Zone boundary around Volcano Island (15 Feb 2021). Contextual reference overlay - not a computed result of the ash model.</p>}
+      {showSeismicity && scenario.volcano_id === 'taal' && <p className="view-note">Subsurface spheres show USGS FDSN catalog context (48 of 49 events represent deep subduction zone earthquakes 47–234 km clamped to 35 km for visual scale; shallow volcanic conduit micro-seismicity is monitored by PHIVOLCS TVN/WOVOdat; click sphere or use keyboard selector for details). Contextual reference overlay - not a computed result of the ash model.</p>}
+      {showPDZ3D && scenario.volcano_id === 'taal' && <p className="view-note">Purple dashed line marks official PHIVOLCS Permanent Danger Zone boundary around Volcano Island (15 Feb 2021; distinct from the temporary 14 km radius Level 4 evacuation buffer of January 2020). Contextual reference overlay - not a computed result of the ash model.</p>}
       {showAlertRing && scenario.volcano_id === 'taal' && <p className="view-note">Base ring indicates curated Alert Level (Green: AL1, Amber: AL2, Red: AL3) from GVP/PHIVOLCS bulletin archives. Contextual reference overlay - not a computed result of the ash model.</p>}
       {showDike && scenario.volcano_id === 'taal' && <p className="view-note">Amber vector indicates modeled 2020 lateral dike intrusion (~5 km SW, azimuth 225°) from Sentinel-1 InSAR (Bato et al. 2021, GRL). Contextual reference overlay - not a computed result of the ash model.</p>}
-      {showTropomi && scenario.volcano_id === 'taal' && <p className="view-note">Blue arrow indicates satellite-observed plume transport bearing (225° from SW) from Copernicus Sentinel-5P TROPOMI (July 2021). Contextual reference overlay - not a computed result of the ash model.</p>}
+      {showTropomi && scenario.volcano_id === 'taal' && <p className="view-note">Blue arrow indicates satellite-observed plume transport towards 45° NE (wind from 225° SW) from Copernicus Sentinel-5P TROPOMI (July 2021). Contextual reference overlay - not a computed result of the ash model.</p>}
       {result && <ul aria-label="Grain-class legend">{result.illustration.paths.map(path => <li key={path.grain_index}><span aria-hidden="true" style={{ display: 'inline-block', width: '1.5rem', height: '0.2rem', background: GRAIN_COLORS[path.grain_index % GRAIN_COLORS.length], verticalAlign: 'middle', marginRight: '0.5rem' }} />Class {path.grain_index + 1} · {number(path.diameter_um)} µm · {number(scenario.grains[path.grain_index]?.settling_speed_m_s)} m/s · representative fall {number(path.settling_time_s)} s</li>)}</ul>}</details>
     <details><summary>Terrain source & graphics</summary>{terrain ? <><p>{terrain.source.title} · {terrain.source.resolution_m} m display sampling · {terrain.source.datum}. {emphasizeTaal ? 'Volcano Island relief is enlarged 6× for visibility, tapering to normal scale outside the island. Water levels and horizontal geography retain their source scale. Regional overview restores true relief; the simulation and eruption column height are unchanged.' : 'No vertical exaggeration.'}</p><p>Asset origin: {number(terrain.origin.lat, 5)}° N, {number(terrain.origin.lon, 5)}° E. Geographic coverage: 100 × 100 km. Outside it, the neutral plane indicates unavailable terrain. Ash paths use a flat datum translated by {scenario.vent_elevation_m} m ASL; they are not bent to terrain. The optional lava route uses raw terrain elevations.</p>{Math.abs(scenario.vent_elevation_m - terrain.vent_ground_m) > 0.01 && <p>Submitted vent elevation differs from the {terrain.vent_ground_m} m source-profile reference. The illustration uses your submitted datum.</p>}<a href={terrain.source.url} target="_blank" rel="noreferrer">Terrain source</a></> : <p>{!['taal', 'mayon', 'kanlaon'].includes(scenario.volcano_id) ? 'No geographic terrain asset is registered for this custom volcano.' : terrainState.key === terrainKey ? terrainState.error : 'Loading the local geographic terrain asset…'}</p>}<button type="button" aria-pressed={reduced} disabled={!supported} onClick={() => setReduced(v => !v)}>{reduced ? 'Restore visual detail' : 'Reduce visual detail'}</button>{fps !== null && <p className="performance-note">Replay: {number(fps.render, 0)} fps · browser callbacks: {number(fps.pacing, 0)}/s (recent two-second window). {fps.render < 30 ? 'Below the 30 fps target. Reduce detail or use a foreground browser with hardware acceleration.' : ''}</p>}</details></div>
   </div>

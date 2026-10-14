@@ -155,8 +155,8 @@ export default function HistoricalReferences({
                 <div>
                   <dt>Portal References</dt>
                   <dd>
-                    <a href={wovodat.portal_urls.wovodat} target="_blank" rel="noopener noreferrer">WOVOdat Global Database</a> ·{' '}
-                    <a href={wovodat.portal_urls.phivolcs_lava} target="_blank" rel="noopener noreferrer">PHIVOLCS LAVA Portal</a>
+                    <a href={wovodat.portal_urls.wovodat} target="_blank" rel="noopener noreferrer">WOVOdat Global Database<span className="sr-only"> (opens in a new tab)</span></a> ·{' '}
+                    <a href={wovodat.portal_urls.phivolcs_lava} target="_blank" rel="noopener noreferrer">PHIVOLCS LAVA Portal<span className="sr-only"> (opens in a new tab)</span></a>
                   </dd>
                 </div>
                 {Object.entries(wovodat.monitoring_networks).map(([netKey, net]) => (
@@ -186,13 +186,13 @@ export default function HistoricalReferences({
               <dl>
                 <div>
                   <dt>Repository</dt>
-                  <dd><a href={hdx.portal_url} target="_blank" rel="noopener noreferrer">{hdx.source}</a></dd>
+                  <dd><a href={hdx.portal_url} target="_blank" rel="noopener noreferrer">{hdx.source}<span className="sr-only"> (opens in a new tab)</span></a></dd>
                 </div>
                 {hdx.datasets.map((ds) => (
                   <div key={ds.id}>
                     <dt>{ds.format}</dt>
                     <dd>
-                      <strong><a href={ds.url} target="_blank" rel="noopener noreferrer">{ds.title}</a></strong>
+                      <strong><a href={ds.url} target="_blank" rel="noopener noreferrer">{ds.title}<span className="sr-only"> (opens in a new tab)</span></a></strong>
                       <div><small className="muted">Publisher: {ds.publisher}{ds.date ? ` · Date: ${ds.date}` : ''}</small></div>
                     </dd>
                   </div>
