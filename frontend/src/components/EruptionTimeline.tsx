@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { EruptionSequence } from '../api/simulator'
 import Icon from './Icon'
 import { phaseLabel } from './eruptionResearch'
@@ -6,9 +6,44 @@ import { scenarioClock } from './eruptionReplay'
 
 const SEQUENCE_DISPLAY_SECONDS = 36
 
+type TaalTimelineEvent = {
+  date_phst: string
+  event_type: string
+  duration: string
+  plume_height_m: number
+  so2_t_day: number
+  alert_level: number
+  source: string
+  disclaimer: string
+}
+
 export default function EruptionTimeline({ sequence, index, playing, onIndex, onPlaying, sceneAvailable = true }: {
   sequence: EruptionSequence; index: number; playing: boolean; onIndex: (index: number) => void; onPlaying: (playing: boolean) => void; sceneAvailable?: boolean
 }) {
+  const [events, setEvents] = useState<TaalTimelineEvent[]>([])
+  const [selectedEvent, setSelectedEvent] = useState<TaalTimelineEvent | null>(null)
+
+  useEffect(() => {
+    if (sequence.scenario.volcano_id !== 'taal') return
+    const controller = new AbortController()
+    fetch('/taal_eruption_timeline_2021_2024.json', { signal: controller.signal, cache: 'no-store' })
+      .then(r => r.ok ? (r.json() as Promise<TaalTimelineEvent[]>) : [])
+      .then(data => setEvents(data))
+      .catch(() => {})
+    return () => controller.abort()
+  }, [sequence.scenario.volcano_id])
+
+  useEffect(() => {
+    if (!selectedEvent) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedEvent(null)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedEvent])
+
   const frames = sequence.frames, last = frames.length - 1
   const current = frames[Math.min(last, Math.floor(index))]
   useEffect(() => {
@@ -36,5 +71,45 @@ export default function EruptionTimeline({ sequence, index, playing, onIndex, on
     <label className="timeline-slider">{phaseLabel(current.phase)}<input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, map snapshot at ${scenarioClock(current.elapsed_s).replace(' h', ' hours')}`} onChange={event => seek(Number(event.target.value))} /></label>
     <div className="timeline-readout"><span>Map snapshot: {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>
     <p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay. The 3D illustration interpolates between nonuniform snapshots; the map shows the preceding computed snapshot. Billows and fountains are schematic.</p>
+    {sequence.scenario.volcano_id === 'taal' && events.length > 0 && (
+      <div className="historical-bookmarks" aria-label="Historical activity reference">
+        <div className="bookmarks-header">
+          <span className="bookmarks-title"><Icon name="history" />Historical Activity Bookmarks (2021–2024)</span>
+          <span className="reference-badge">Reference overlay · non-model</span>
+        </div>
+        <div className="bookmarks-pills" role="group" aria-label="Taal historical eruption events">
+          {events.map((evt, idx) => (
+            <button
+              type="button"
+              key={idx}
+              className={`bookmark-pill ${selectedEvent === evt ? 'active' : ''}`}
+              onClick={() => setSelectedEvent(selectedEvent === evt ? null : evt)}
+              aria-expanded={selectedEvent === evt}
+            >
+              <span className="pill-date">{evt.date_phst.split(' ')[0]}</span>
+              <span className="pill-plume">{evt.plume_height_m} m</span>
+              <span className={`pill-alert alert-${evt.alert_level}`}>AL{evt.alert_level}</span>
+            </button>
+          ))}
+        </div>
+        {selectedEvent && (
+          <div className="bookmark-detail-card" role="region" aria-label="Event details">
+            <div className="detail-header">
+              <strong>{selectedEvent.date_phst}</strong>
+              <span className={`pill-alert alert-${selectedEvent.alert_level}`}>Alert Level {selectedEvent.alert_level}</span>
+              <button type="button" className="close-button" onClick={() => setSelectedEvent(null)} aria-label="Close event details">×</button>
+            </div>
+            <div className="detail-grid">
+              <div><span className="detail-label">Type:</span> {selectedEvent.event_type.replace(/_/g, ' ')}</div>
+              <div><span className="detail-label">Duration:</span> {selectedEvent.duration}</div>
+              <div><span className="detail-label">Plume Height:</span> {selectedEvent.plume_height_m.toLocaleString()} m</div>
+              <div><span className="detail-label">SO₂ Flux:</span> {selectedEvent.so2_t_day.toLocaleString()} t/day</div>
+              <div className="full-width"><span className="detail-label">Source:</span> {selectedEvent.source}</div>
+            </div>
+            <p className="reference-disclaimer">{selectedEvent.disclaimer}</p>
+          </div>
+        )}
+      </div>
+    )}
   </section>
 }

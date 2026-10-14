@@ -43,6 +43,59 @@ def catalog():
         ) from exc
 
 
+def sources(s):
+    """Source components and per-component transport winds shared by every deposit route.
+
+    Without the opt-in extensions this is one constant block under one uniform wind,
+    numerically identical to kernel.components() with kernel.wind_components().
+    """
+    fractions = np.asarray([g.fraction for g in s.grains])
+    settling = np.asarray([g.settling_speed_m_s for g in s.grains])
+    if s.pulses:
+        starts = np.asarray([p.start_s for p in s.pulses])
+        durations = np.asarray([p.duration_s for p in s.pulses])
+        rates = np.asarray([p.mass_rate_kg_s for p in s.pulses])
+        heights = np.asarray([p.column_height_m for p in s.pulses])
+    else:
+        starts = np.zeros(1)
+        durations = np.asarray([s.duration_s])
+        rates = np.asarray([s.mass_rate_kg_s])
+        heights = np.asarray([s.column_height_m])
+    parts = kernel.pulse_components(
+        starts,
+        durations,
+        rates,
+        heights,
+        fractions,
+        settling,
+        s.release_layers,
+        s.diffusivity_m2_s,
+        s.initial_spread_m,
+    )
+    if s.wind_profile:
+        levels = (
+            np.asarray([level.height_above_vent_m for level in s.wind_profile]),
+            [level.speed_m_s for level in s.wind_profile],
+            [level.wind_from_deg for level in s.wind_profile],
+        )
+        u_e, u_n = kernel.layer_winds(parts["release_m"], *levels)
+        mid_e, mid_n = kernel.layer_winds(np.asarray([s.column_height_m / 2]), *levels)
+        middle = (float(mid_e[0]), float(mid_n[0]))
+    else:
+        east, north = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
+        u_e, u_n = np.full(parts["times"].size, east), np.full(parts["times"].size, north)
+        middle = (float(east), float(north))
+    parts.update(
+        u_e=u_e,
+        u_n=u_n,
+        middle_wind=middle,
+        pulse_start_s=starts,
+        pulse_duration_s=durations,
+        pulse_rate_kg_s=rates,
+    )
+    return parts
+
+
 def prepare(request, sweep=False):
     data = catalog()
     receptors = request.receptors if request.receptors is not None else data.receptors
@@ -75,19 +128,14 @@ def prepare(request, sweep=False):
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
     budget = kernel.check_budget(
-        len(s.grains) * s.release_layers, n, len(receptors), 360 if sweep else 1
+        len(s.grains) * s.release_layers * len(s.pulses or [None]),
+        n,
+        len(receptors),
+        360 if sweep else 1,
     )
-    fractions = np.asarray([g.fraction for g in s.grains])
     settling = np.asarray([g.settling_speed_m_s for g in s.grains])
-    times, weights, variance = kernel.components(
-        s.column_height_m,
-        s.mass_rate_kg_s * s.duration_s,
-        fractions,
-        settling,
-        s.release_layers,
-        s.diffusivity_m2_s,
-        s.initial_spread_m,
-    )
+    source = sources(s)
+    times, weights, variance = source["times"], source["weights"], source["variance"]
     forward, inverse = kernel.projection(s.vent_lat, s.vent_lon)
     east, north = forward.transform(
         np.asarray([r.lon for r in receptors]), np.asarray([r.lat for r in receptors])
@@ -111,7 +159,26 @@ def prepare(request, sweep=False):
         north,
         inside,
         inverse,
+        source,
     )
+
+
+def source_assumption(scenario):
+    if not scenario.pulses and not scenario.wind_profile:
+        return "Steady eruption and uniform wind"
+    emission = (
+        f"{len(scenario.pulses)} constant-rate emission pulse(s)"
+        if scenario.pulses
+        else "Steady eruption"
+    )
+    wind = (
+        f"height-dependent wind linearly interpolated between {len(scenario.wind_profile)} "
+        "levels above the vent and held constant beyond the end levels; the single wind "
+        "fields are not used by the deposit solver"
+        if scenario.wind_profile
+        else "uniform wind"
+    )
+    return f"{emission} and {wind} (opt-in extension beyond the proposal's assumptions)"
 
 
 def provenance(scenario, data, receptors=(), criteria=()):
@@ -125,7 +192,7 @@ def provenance(scenario, data, receptors=(), criteria=()):
         source_ids=source_ids,
         input_status=scenario.input_status,
         assumptions=[
-            "Steady eruption and uniform wind",
+            source_assumption(scenario),
             "Flat ground at vent datum",
             "Constant class settling speeds",
             "Uniform release-height weights",
@@ -199,9 +266,10 @@ def simulate(request: SimulationRequest):
         north,
         inside,
         inverse,
+        source,
     ) = prepare(request)
     s = request.scenario
-    u_e, u_n = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
+    u_e, u_n = source["u_e"], source["u_n"]
     centers, grid, retained = kernel.grid_load(
         s.domain_km * 1000, s.cell_km * 1000, times, weights, variance, u_e, u_n
     )
@@ -279,8 +347,9 @@ def simulate(request: SimulationRequest):
                 screening_reasons=screening_reasons,
             )
         )
-    falling, paths = kernel.trajectories(s.column_height_m, settling, u_e, u_n)
-    total = s.mass_rate_kg_s * s.duration_s
+    mid_e, mid_n = source["middle_wind"]
+    falling, paths = kernel.trajectories(s.column_height_m, settling, mid_e, mid_n)
+    total = float(np.sum(source["pulse_rate_kg_s"] * source["pulse_duration_s"]))
     grid_mm = grid * 1000 / s.bulk_density_kg_m3
     return SimulationResult(
         scenario=s,
@@ -316,8 +385,8 @@ def simulate(request: SimulationRequest):
             elapsed_ms=(perf_counter() - started) * 1000,
         ),
         illustration=Illustration(
-            wind_east_m_s=float(u_e),
-            wind_north_m_s=float(u_n),
+            wind_east_m_s=float(mid_e),
+            wind_north_m_s=float(mid_n),
             column_height_m=s.column_height_m,
             paths=[
                 Trajectory(
@@ -335,7 +404,7 @@ def simulate(request: SimulationRequest):
 
 def sweep(request: SimulationRequest):
     started = perf_counter()
-    (data, receptors, _, _, _, times, weights, variance, east, north, inside, _) = prepare(
+    (data, receptors, _, _, _, times, weights, variance, east, north, inside, _, *_) = prepare(
         request, sweep=True
     )
     loads, bearings = kernel.sweep_maxima(
@@ -408,16 +477,9 @@ def replication():
         np.asarray([o.lon for o in evaluation]), np.asarray([o.lat for o in evaluation])
     )
     s = record.scenario
-    times, weights, variance = kernel.components(
-        s.column_height_m,
-        s.mass_rate_kg_s * s.duration_s,
-        np.asarray([g.fraction for g in s.grains]),
-        np.asarray([g.settling_speed_m_s for g in s.grains]),
-        s.release_layers,
-        s.diffusivity_m2_s,
-        s.initial_spread_m,
-    )
-    u_e, u_n = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
+    source = sources(s)
+    times, weights, variance = source["times"], source["weights"], source["variance"]
+    u_e, u_n = source["u_e"], source["u_n"]
     predicted = (
         kernel.point_load(np.asarray(east), np.asarray(north), times, weights, variance, u_e, u_n)[
             0

@@ -1,0 +1,72 @@
+[
+  {
+    "date_phst": "2021-07-01 15:16 PHT",
+    "event_type": "phreatomagmatic",
+    "duration": "short-lived",
+    "plume_height_m": 1000,
+    "so2_t_day": 13287,
+    "alert_level": 3,
+    "source": "GVP BGVN 46:08 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2021-07-07 05:18 PHT",
+    "event_type": "phreatomagmatic_burst",
+    "duration": "short-lived",
+    "plume_height_m": 300,
+    "so2_t_day": 7500,
+    "alert_level": 3,
+    "source": "GVP BGVN 46:08 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2021-11-15 to 2021-11-22",
+    "event_type": "phreatomagmatic_bursts_thermal",
+    "duration": "7 days",
+    "plume_height_m": 500,
+    "so2_t_day": 3500,
+    "alert_level": 2,
+    "source": "GVP BGVN 46:12 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2022-03-26 07:22 PHT",
+    "event_type": "phreatomagmatic",
+    "duration": "multi-day",
+    "plume_height_m": 2000,
+    "so2_t_day": 21000,
+    "alert_level": 3,
+    "source": "GVP BGVN 47:04 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2022-04-01",
+    "event_type": "phreatomagmatic_bursts",
+    "duration": "short-lived",
+    "plume_height_m": 700,
+    "so2_t_day": 8500,
+    "alert_level": 3,
+    "source": "GVP BGVN 47:05 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2022-10-05",
+    "event_type": "minor_bursts_declining",
+    "duration": "brief",
+    "plume_height_m": 400,
+    "so2_t_day": 2000,
+    "alert_level": 1,
+    "source": "GVP BGVN 47:11 / PHIVOLCS Bulletin",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date_phst": "2024-04-12",
+    "event_type": "phreatic_new_vent",
+    "duration": "single event",
+    "plume_height_m": 2400,
+    "so2_t_day": 4100,
+    "alert_level": 1,
+    "source": "PHIVOLCS Bulletin, 12 April 2024",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  }
+]

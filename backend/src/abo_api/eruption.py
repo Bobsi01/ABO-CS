@@ -41,16 +41,38 @@ def snapshot_times(duration, max_fall_time, rise_time, count):
     return times
 
 
-def cumulative_weights(times, falling_times, weights, duration):
-    return weights[None, :] * np.clip((times[:, None] - falling_times[None, :]) / duration, 0, 1)
+def cumulative_weights(
+    times, falling_times, weights, duration, pulse_starts=None, pulse_durations=None
+):
+    if pulse_starts is not None and pulse_durations is not None:
+        delay = pulse_starts[None, :] + falling_times[None, :]
+        span = pulse_durations[None, :]
+    else:
+        delay = falling_times[None, :]
+        span = duration
+    return weights[None, :] * np.clip((times[:, None] - delay) / span, 0, 1)
 
 
-def sequence_grids(times, falling_times, weights, variance, duration, domain_m, count, u_e, u_n):
+def sequence_grids(
+    times,
+    falling_times,
+    weights,
+    variance,
+    duration,
+    domain_m,
+    count,
+    u_e,
+    u_n,
+    pulse_starts=None,
+    pulse_durations=None,
+):
     edges = np.linspace(-domain_m / 2, domain_m / 2, count + 1)
     sigma = np.sqrt(variance)
     px = kernel.gaussian_intervals(edges, u_e * falling_times, sigma)
     py = kernel.gaussian_intervals(edges, u_n * falling_times, sigma)
-    arrived = cumulative_weights(times, falling_times, weights, duration)
+    arrived = cumulative_weights(
+        times, falling_times, weights, duration, pulse_starts, pulse_durations
+    )
     cell_m = domain_m / count
     grids = np.einsum("tk,ky,kx->tyx", arrived, py, px, optimize=True) / cell_m**2
     return (edges[:-1] + edges[1:]) / 2, grids, arrived
@@ -398,6 +420,7 @@ def sequence(request: EruptionRequest):
         north,
         inside,
         inverse,
+        source,
     ) = service.prepare(simulation)
     count = round(s.domain_km / s.cell_km)
     frame_count = options.frame_count
@@ -428,20 +451,43 @@ def sequence(request: EruptionRequest):
             "Requested timeline cannot be represented at floating-point resolution; "
             "height, duration and settling times are too far apart"
         )
-    u_e, u_n = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
+    u_e, u_n = source["u_e"], source["u_n"]
+    pulse_starts, pulse_durations = source["start_s"], source["duration_s"]
     centers, grids, arrived = sequence_grids(
-        times, falling, weights, variance, s.duration_s, s.domain_km * 1000, count, u_e, u_n
+        times,
+        falling,
+        weights,
+        variance,
+        s.duration_s,
+        s.domain_km * 1000,
+        count,
+        u_e,
+        u_n,
+        pulse_starts,
+        pulse_durations,
     )
     coarse_count = min(count, 50)
     coarse_centers, coarse_grids, _ = sequence_grids(
-        times, falling, weights, variance, s.duration_s, s.domain_km * 1000, coarse_count, u_e, u_n
+        times,
+        falling,
+        weights,
+        variance,
+        s.duration_s,
+        s.domain_km * 1000,
+        coarse_count,
+        u_e,
+        u_n,
+        pulse_starts,
+        pulse_durations,
     )
     # Per-component receptor Gaussian factors, then native frame × component reduction.
-    dx, dy = east[None, :] - u_e * falling[:, None], north[None, :] - u_n * falling[:, None]
+    dx = east[None, :] - (u_e * falling)[:, None]
+    dy = north[None, :] - (u_n * falling)[:, None]
     receptor_basis = np.exp(-(dx**2 + dy**2) / (2 * variance[:, None])) / (
         2 * np.pi * variance[:, None]
     )
     receptor_loads = arrived @ receptor_basis
+    mid_e, mid_n = source["middle_wind"]
     parcel_arrays = airborne_parcels(
         times,
         s.column_height_m,
@@ -450,8 +496,8 @@ def sequence(request: EruptionRequest):
         np.asarray([g.fraction for g in s.grains]),
         s.mass_rate_kg_s,
         s.duration_s,
-        u_e,
-        u_n,
+        mid_e,
+        mid_n,
         s.diffusivity_m2_s,
         s.initial_spread_m,
     )

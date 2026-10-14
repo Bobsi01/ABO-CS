@@ -1,0 +1,33 @@
+{
+  "source": "Humanitarian Data Exchange (HDX) / NASA-JPL ARIA / EOS-RS",
+  "portal_url": "https://data.humdata.org/api/3/action/package_search?q=philippines+volcano",
+  "datasets": [
+    {
+      "id": "eos_aria_2020_dpm",
+      "title": "Philippines Taal Volcano: Damage Proxy Map, Jan 2020",
+      "publisher": "Earth Observatory of Singapore (EOS) / NASA-JPL ARIA",
+      "url": "https://data.humdata.org/dataset/d49f060a-91a8-49b2-a66d-6d75d576b4d9",
+      "format": "GeoTIFF (COPERNICUS/Sentinel-1)",
+      "date": "2020-01-15",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    },
+    {
+      "id": "eosrs_2026_dpm",
+      "title": "Philippines Volcano Taal: Damage Proxy Map, Oct 2026",
+      "publisher": "EOS-RS (Remote Sensing Lab)",
+      "url": "https://data.humdata.org/dataset/28f6e9f8-1277-49e9-8d5e-645cd030c758",
+      "format": "GeoTIFF (Sentinel-1 SAR)",
+      "date": "2026-10-12",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    },
+    {
+      "id": "ocha_taal_3w",
+      "title": "Philippines: Who is Doing What and Where in Taal Volcano Eruption",
+      "publisher": "UN OCHA Philippines",
+      "url": "https://data.humdata.org/dataset/7e75d5cc-a645-49d7-8b42-59e46ab0feed",
+      "format": "XLSX",
+      "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    }
+  ],
+  "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+}

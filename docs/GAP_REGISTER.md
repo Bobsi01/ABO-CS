@@ -10,6 +10,27 @@ The dated table below preserves the 11 October evidence. Its 15-page manuscript 
 
 The user rejected the previous visual output. A revised scientific illustration uses soft cloud textures, sparse ash markers, a surface lava ribbon and oblique close-up framing. See [current visual revision](3D_VISUAL_REVISION.md). The dated rows below retain their evidence: old-bundle performance passes do not transfer to the new renderer, final independent visual acceptance is pending, and cleanup/lifecycle/accessibility/source gates remain open. No overall engineering/3D QA completion is claimed.
 
+## 13 October Taal focus decisions
+
+Basis: [Taal implementation plan](TAAL_IMPLEMENTATION_PLAN.md), derived from `TAAL_FOCUS_QA_AND_DATA.md`. User decisions on 13 October: the application stays ash-only, and Taal becomes the stated scientific focus. The rows below add to the dated table, they do not replace it.
+
+| Gap | Status | Evidence and practical consequence | Owner |
+| --- | --- | --- | --- |
+| Taal focus and teaching-preset wording | implemented, browser evidence pending | `frontend/src/scientificScope.ts` and the input panel state that Taal is the scientific focus with a reference contour and no established agreement. Mayon and Kanlaon are labeled teaching illustrations with no curated reference event. Preset option names are unchanged so retained browser scripts still match. Unit tests only; no browser screenshot was taken for this change. | Orchestrator |
+| Altitude-dependent wind profile and multi-pulse emission | deferred, proposal exclusion | `PROJECT_CONTEXT.md` lists both as explicit proposal exclusions. The uniform-wind, single-block source remains the baseline. | Science |
+| Post-2020 Taal activity sources | source blocked | `data/source/taal-activity/manifest.json`: GVP and Bato et al. (2021) returned HTTP 403; the PHIVOLCS page resolved to a 2019 bulletin. | Science |
+| Remaining Taal administrative coverage | source blocked, unchanged | The 52 unresolved Taal-domain records stay as recorded in the dated table. No new matching was attempted in this change. | Science |
+
+## 13 October Taal numerical & contextual extensions implementation
+
+The user requested implementation of the previously deferred features (vertical wind profiles, multi-pulse emission kinetics, and offline contextual reference overlays for Taal).
+
+| Feature / Gap | Status | Evidence and practical consequence | Owner |
+| --- | --- | --- | --- |
+| Altitude-dependent wind profile & multi-pulse emission | implemented | Added `WindLevel` and `EruptionPulse` to backend contracts (`contracts.py`), kernel calculations (`kernel.py`), simulation service (`service.py`), and sequence animation (`eruption.py`). Exact mass balance preserved. Tested across 5 new unit tests in `test_science.py` and regenerated TypeScript contracts. | Science |
+| Static offline contextual datasets | implemented | Curated static local files under `data/source/taal/`: `taal_pdz.geojson`, `taal_earthquakes_2021_2024.json`, `taal_activity_log.json`, `taal_deformation_bato2021.json`, with SHA-256 tracked `manifest.json`. Copied to `frontend/public/` for local runtime viewing. | Science |
+| UI integration of contextual layers & profile inputs | implemented | `Workspace.tsx` provides opt-in Vertical wind profile controls. `GeographicMap.tsx` renders PHIVOLCS PDZ from `taal_pdz.geojson`. `VolcanoScene.tsx` renders 3D subsurface hypocenter spheres from `taal_earthquakes_2021_2024.json`. All contextual overlays clearly labeled as non-model reference data. | Engineering |
+
 This register distinguishes implemented and independently tested changes from source availability and model limitations. A closed software item does not establish eruption prediction accuracy. Owners are the scientific/backend specialist, engineering/3D specialist, independent QA evaluator and orchestrator.
 
 | Gap | Status | Evidence and practical consequence | Owner |

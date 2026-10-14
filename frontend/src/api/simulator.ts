@@ -9,6 +9,8 @@ export type Trajectory = components['schemas']['Trajectory']
 export type EruptionOptions = components['schemas']['EruptionOptions']
 export type EruptionSequence = components['schemas']['EruptionSequence']
 export type EruptionFrame = components['schemas']['EruptionFrame']
+export type WindLevel = components['schemas']['WindLevel']
+export type EruptionPulse = components['schemas']['EruptionPulse']
 type ReportingOptions = Partial<Pick<components['schemas']['SimulationRequest'], 'screening_context' | 'population_year'>>
 
 function record(value: unknown): value is Record<string, unknown> {
@@ -44,6 +46,8 @@ function historicalDetailsValid(value: Record<string, unknown>): boolean {
 }
 function scenarioValid(value: unknown): boolean {
   return record(value) && typeof value.label === 'string' && typeof value.volcano_id === 'string' && ['illustrative', 'user_entered', 'reviewed'].includes(String(value.input_status)) && ['vent_lat', 'vent_lon', 'vent_elevation_m', 'column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg', 'diffusivity_m2_s', 'initial_spread_m', 'bulk_density_kg_m3', 'domain_km', 'cell_km', 'release_layers'].every(key => finite(value[key])) && Array.isArray(value.grains) && value.grains.length >= 3 && value.grains.length <= 5 && value.grains.every(g => record(g) && finite(g.fraction) && finite(g.diameter_um) && finite(g.settling_speed_m_s))
+    && optional(value.wind_profile, levels => levels === null || (Array.isArray(levels) && levels.every(l => record(l) && ['height_above_vent_m', 'speed_m_s', 'wind_from_deg'].every(k => finite(l[k])))))
+    && optional(value.pulses, pulses => pulses === null || (Array.isArray(pulses) && pulses.every(p => record(p) && ['start_s', 'duration_s', 'mass_rate_kg_s', 'column_height_m'].every(k => finite(p[k])))))
 }
 function receptorValid(value: unknown): boolean {
   return record(value) && typeof value.id === 'string' && typeof value.name === 'string' && ['municipality', 'airport', 'water'].includes(String(value.kind)) && finite(value.lat) && finite(value.lon) && nullableNumber(value.population) && nullableNumber(value.population_year)

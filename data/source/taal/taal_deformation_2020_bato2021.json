@@ -1,0 +1,11 @@
+{
+  "citation": "Bato et al. (2021). The 2020 eruption and large lateral dike emplacement at Taal Volcano, Philippines. Geophysical Research Letters, 48, e2021GL092803. doi:10.1029/2021GL092803",
+  "period": "2020-01-12 to 2020-01-14",
+  "max_uplift_cm": 100,
+  "dike_azimuth_deg": 225,
+  "dike_length_km": 5,
+  "subsidence_continues_to": "2021",
+  "method": "Sentinel-1 InSAR interferometry and continuous GPS inversion",
+  "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+  "note": "Derived co-eruptive geodetic parameters from peer-reviewed literature. Provided solely for geological reference and structural context."
+}

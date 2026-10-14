@@ -1,0 +1,101 @@
+[
+  {
+    "date": "2021-03-09",
+    "alert_level": 2,
+    "so2_t_day": 1200,
+    "plume_height_m": 800,
+    "event_type": "post_2020_unrest",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:03",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2021-07-01",
+    "alert_level": 3,
+    "so2_t_day": 13287,
+    "plume_height_m": 1000,
+    "event_type": "phreatomagmatic",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2021-07-03",
+    "alert_level": 3,
+    "so2_t_day": 14699,
+    "plume_height_m": 2500,
+    "event_type": "peak_so2_vog",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2021-07-07",
+    "alert_level": 3,
+    "so2_t_day": 7500,
+    "plume_height_m": 300,
+    "event_type": "phreatomagmatic_burst",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2021-07-23",
+    "alert_level": 2,
+    "so2_t_day": 4763,
+    "plume_height_m": 600,
+    "event_type": "downgraded_alert",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2021-11-15",
+    "alert_level": 2,
+    "so2_t_day": 3500,
+    "plume_height_m": 500,
+    "event_type": "thermal_burst",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 46:12",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2022-03-26",
+    "alert_level": 3,
+    "so2_t_day": 21000,
+    "plume_height_m": 2000,
+    "event_type": "phreatomagmatic",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 47:04",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2022-04-01",
+    "alert_level": 3,
+    "so2_t_day": 8500,
+    "plume_height_m": 700,
+    "event_type": "phreatomagmatic_declining",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 47:05",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2022-07-11",
+    "alert_level": 1,
+    "so2_t_day": 1800,
+    "plume_height_m": 400,
+    "event_type": "downgraded_alert",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 47:07",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2023-01-20",
+    "alert_level": 1,
+    "so2_t_day": 3200,
+    "plume_height_m": 600,
+    "event_type": "tremor_spike",
+    "source": "PHIVOLCS Bulletin / GVP BGVN 48:02",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  },
+  {
+    "date": "2024-04-12",
+    "alert_level": 1,
+    "so2_t_day": 4100,
+    "plume_height_m": 2400,
+    "event_type": "phreatic_new_vent",
+    "source": "PHIVOLCS Bulletin, 12 April 2024",
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+  }
+]

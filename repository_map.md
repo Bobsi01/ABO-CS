@@ -2,7 +2,7 @@
 
 ## Contributor entry points
 
-Current two-agent review (12 October): `docs/CURRENT_QA_DELIVERY.md` is the integrated evidence record. `docs/CURRENT_SCIENCE_QA.md` and `CURRENT_APP_QA.md` are independent reports. `qa/current_review/` contains current defect fixtures, catalog comparisons, browser evidence and 16 actual-Word page renders; `test_current_science.py` runs in the standard full suite. Earlier role assignments and evidence below remain dated history.
+Taal multi-parameter review (14 October): `docs/TAAL_QA_DELIVERY.md` is the integrated evidence record. `qa/taal_review/SCIENCE_QA_REPORT.md`, `UI_A11Y_QA_REPORT.md`, and `GRAPHICS_3D_QA_REPORT.md` are the independent reports from the three authorized specialists. `qa/taal_review/test_taal_data_audit.py` runs in pytest; `frontend/src/taalUiA11y.test.tsx` and `frontend/src/components/volcanoScene3DQA.test.tsx` run in Vitest. Earlier milestones and evidence below remain dated history.
 
 Paths are relative to the repository root. Dated ownership below records previous implementation milestones; new contributors assign ownership for their own change.
 
@@ -21,6 +21,13 @@ Paths are relative to the repository root. Dated ownership below records previou
 | `docs/REPOSITORY_HANDOFF.md` | GitHub scope, Git LFS, source rights and reproducibility boundaries |
 | `frontend/src/components/eruptionVisuals.ts`, `eruptionVisuals.test.ts` | Cloud texture, sparse ash markers, surface lava ribbon and geometry/data-boundary checks |
 | `docs/3D_VISUAL_REVISION.md`, `qa/browser/3d-visual-2026-10-12-*` | Current renderer revision, visual evidence and remaining QA gates |
+| `docs/TAAL_IMPLEMENTATION_PLAN.md` | Implementation roadmap based on TAAL_FOCUS_QA_AND_DATA.md, with 13 October user decisions and status |
+| `docs/TAAL_QA_DELIVERY.md` | 14 October multi-agent QA delivery, integrated findings, corrections, and test evidence |
+| `qa/taal_review/` | Independent QA reports (science, UI/a11y, 3D graphics) and test_taal_data_audit.py |
+| `frontend/src/taalUiA11y.test.tsx` | Independent Vitest accessibility, anti-slop, and contrast test suite (13 tests) |
+| `frontend/src/components/volcanoScene3DQA.test.tsx` | Independent 3D graphics lifecycle, disposal, and camera preset test suite (14 tests) |
+| `frontend/src/scientificScope.ts`, `scientificScope.test.ts` | Taal scientific-focus and Mayon/Kanlaon teaching-illustration wording (no validation claim) |
+| `data/source/taal-activity/` | 13 October post-2020 Taal source attempts; blocked or mismatched, no values curated |
 
 ## QA gap closure — 2026-10-11
 
@@ -53,15 +60,15 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `backend/src/abo_api/main.py` | Backend: API, resource admission, local docs and built UI serving |
 | `backend/tests/` | Backend: numerical and API regressions |
 | `frontend/src/Workspace.tsx` | Frontend: shared workspace, controls, workflows, exports |
-| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration |
+| `frontend/src/components/VolcanoScene.tsx` | Frontend: R3F scientific illustration with instanced subsurface seismicity (with depth stratum filter), PDZ boundary, dike vector, alert ring, TROPOMI plume cue, Tagaytay/cross-wind camera presets, and aviation flight-level altimeter |
 | `frontend/src/components/EruptionEffects.tsx`, `eruptionReplay.ts`, `eruptionReplay.test.ts` | Frontend: batched billows, fountain fragments, timed lava front and backend-coordinate interpolation |
-| `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock and curated mechanism/reference-zone sources |
+| `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock, replay controls, and curated Taal historical activity bookmarks (2021–2024) |
 | `frontend/src/components/Icon.tsx` | Frontend: local SVG navigation/action icons with shared sizing |
 | `frontend/src/components/Select.tsx`, `Select.test.tsx` | Orchestrator: themed keyboard-accessible single-select and viewport placement checks |
 | `frontend/src/components/TerrainBackdrop.tsx`, `terrain.ts`, `terrain.test.ts` | Frontend: source-traced terrain mesh, datum/origin checks, display sampling and labeled Taal close-up relief |
 | `frontend/src/components/settlingReplay.ts`, `settlingReplay.test.ts` | Frontend: common physical clock interpolation of Python paths |
 | `frontend/src/components/GeographicMap.tsx` | Frontend: Leaflet map and offline fallback |
-| `frontend/src/components/HistoricalReferences.tsx`, `Legend.tsx` | Frontend: references and quantitative legend |
+| `frontend/src/components/HistoricalReferences.tsx`, `Legend.tsx` | Frontend: references, quantitative legend, and curated Taal multi-parameter evidence panels (unrest log, WOVOdat, HDX/ARIA) |
 | `frontend/src/components/ScientificViewBoundary.tsx` | Orchestrator recovery: isolate renderer/lazy-view failures from controls and completed results |
 | `frontend/src/components/rendererLifecycle.ts`, `rendererLifecycle.test.ts` | Engineering: retired-renderer wrappers and shared graphics-resource lifetime |
 | `frontend/src/components/leafletAccessibility.ts`, `leafletAccessibility.test.ts` | Engineering: decorative vector paths and equivalent accessible map/table workflows |
@@ -76,6 +83,7 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `data/examples/mayon-eruption-request.json` | Orchestrator: reproducible finite-duration ash/lava teaching request with explicit assumed values |
 | `scripts/build_catalog.py`, `curate_reference_assets.py` | Orchestrator: explicit curation/reproduction |
 | `scripts/curate_gap_inputs.py`, `curate_taal_contours.py`, `build_parameter_register.py`, `export_gap_evidence.py` | Scientific owner: archived wind/inventory curation, frozen contour transforms, evidence-register documentation and reproducible historical evidence export |
+| `scripts/curate_taal_context.py`, `data/source/taal/` | Scientific owner: offline static curation of Taal open-source catalog (USGS seismicity CSV/JSON, PHIVOLCS PDZ, GVP/PHIVOLCS activity & timeline, InSAR deformation, Sentinel-5P TROPOMI, WOVOdat, HDX damage proxy metadata) |
 | `docs/PARAMETER_REGISTER.md`, `docs/EVALUATION_PROTOCOL.md` | Scientific owner: classified input evidence and frozen retrospective methods |
 | `docs/SCIENTIFIC_GAP_CLOSURE.md` | Scientific owner: final curation, numerical/API checks, investigation outcomes and retained source/model limits |
 | `scripts/setup.ps1`, `start.ps1` | Orchestrator: locked Windows installation and single-port startup |

@@ -1,4 +1,4 @@
-"""Loop-free scientific arrays. Axis k flattens grain × release layer."""
+"""Loop-free scientific arrays. Axis k flattens [pulse ×] grain × release layer."""
 
 import numpy as np
 import shapely
@@ -46,10 +46,61 @@ def components(height, mass, fractions, settling, layers, diffusivity, initial_s
     return times, weights, variance
 
 
+def pulse_components(
+    starts, durations, rates, heights, fractions, settling, layers, diffusivity, initial_spread
+):
+    """Axis k flattens pulse × grain × layer. One pulse reproduces components() exactly."""
+    release = heights[:, None] * (np.arange(layers) + 0.5)[None, :] / layers  # [pulse, layer]
+    times = release[:, None, :] / settling[None, :, None]  # [pulse, grain, layer]
+    shape = times.shape
+    mass = rates * durations
+    weights = np.broadcast_to(mass[:, None, None] * fractions[None, :, None] / layers, shape)
+    rate = np.broadcast_to(rates[:, None, None] * fractions[None, :, None] / layers, shape)
+
+    def flat(values):
+        return np.broadcast_to(values, shape).reshape(-1)
+
+    times = times.reshape(-1)
+    return {
+        "times": times,
+        "weights": weights.reshape(-1),
+        "variance": initial_spread**2 + 2 * diffusivity * times,
+        "release_m": flat(release[:, None, :]),
+        "settling_m_s": flat(settling[None, :, None]),
+        "grain": flat(np.arange(fractions.size)[None, :, None]),
+        "start_s": flat(starts[:, None, None]),
+        "duration_s": flat(durations[:, None, None]),
+        "rate_kg_s": rate.reshape(-1),
+    }
+
+
+def layer_winds(release_heights, level_heights, speeds, wind_from_deg):
+    # Interpolate east/north components, not bearings, so 350°/10° do not average to 180°.
+    # np.interp holds the end values beyond the profile: no trend extrapolation.
+    east, north = wind_components(np.asarray(speeds, float), np.asarray(wind_from_deg, float))
+    return (
+        np.interp(release_heights, level_heights, east),
+        np.interp(release_heights, level_heights, north),
+    )
+
+
 def point_load(east, north, times, weights, variance, wind_east, wind_north):
-    # east/north: receptor; winds: direction; return [direction,receptor].
-    dx = east[None, None, :] - np.atleast_1d(wind_east)[:, None, None] * times[None, :, None]
-    dy = north[None, None, :] - np.atleast_1d(wind_north)[:, None, None] * times[None, :, None]
+    # east/north: receptor. Winds: scalar, [direction], or [direction, component]
+    # (or 1D [component] if matching times.size). Returns [direction, receptor].
+    wind_east = np.asarray(wind_east, dtype=float)
+    wind_north = np.asarray(wind_north, dtype=float)
+    if wind_east.ndim == 0:
+        wind_east = wind_east[None, None]
+        wind_north = wind_north[None, None]
+    elif wind_east.ndim == 1:
+        if wind_east.size == times.size:
+            wind_east = wind_east[None, :]
+            wind_north = wind_north[None, :]
+        else:
+            wind_east = wind_east[:, None]
+            wind_north = wind_north[:, None]
+    dx = east[None, None, :] - (wind_east * times)[..., None]
+    dy = north[None, None, :] - (wind_north * times)[..., None]
     exponent = -(dx**2 + dy**2) / (2 * variance[None, :, None])
     return np.sum(np.exp(exponent) * (weights / (2 * np.pi * variance))[None, :, None], axis=1)
 
