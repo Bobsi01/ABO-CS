@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import EruptionTimeline from './components/EruptionTimeline'
 import HistoricalReferences from './components/HistoricalReferences'
 import VolcanoScene from './components/VolcanoScene'
-import type { EruptionSequence, Scenario } from './api/simulator'
+import type { EruptionSequence, Scenario, SimulationResult } from './api/simulator'
 
 // Mock 3D canvas for headless testing
 vi.mock('@react-three/fiber', () => ({
@@ -508,7 +508,7 @@ describe('HistoricalReferences Curated Evidence Accordions & Tables', () => {
     render(
       <VolcanoScene
         scenario={taalScenario}
-        result={mockResult as any}
+        result={mockResult as unknown as SimulationResult}
         selected={null}
         onSelect={vi.fn()}
       />
@@ -557,7 +557,7 @@ describe('HistoricalReferences Curated Evidence Accordions & Tables', () => {
     render(
       <VolcanoScene
         scenario={taalScenario}
-        result={mockResult as any}
+        result={mockResult as unknown as SimulationResult}
         selected="ph-agoncillo"
         onSelect={onSelectSpy}
       />
