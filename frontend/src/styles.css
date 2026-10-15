@@ -132,6 +132,21 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .scene-inspection-card button:hover, .seismicity-hud-card button:hover { background: var(--selected); }
 .seismicity-accessible-select { margin-top: 0.35rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
 .seismicity-accessible-select select { font-size: 0.75rem; padding: 0.25rem 0.4rem; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+.population-accessible-select { margin-top: 0.35rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.population-accessible-select select { font-size: 0.75rem; padding: 0.25rem 0.4rem; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+.scene-impact-hud { position: absolute; z-index: 2; top: 4.8rem; left: 0.75rem; max-width: 250px; display: flex; flex-direction: column; gap: 0.35rem; padding: 0.5rem 0.65rem; border-radius: 6px; background: var(--panel); border: 1px solid var(--control-line); color: var(--text); font-size: 0.75rem; box-shadow: 0 2px 8px #00000018; }
+.impact-hud-title { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.impact-hud-title strong { font-size: 0.75rem; font-weight: 650; color: var(--text); }
+.impact-hud-phase { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; padding: 0.1rem 0.35rem; border-radius: 3px; background: var(--surface); color: var(--secondary); border: 1px solid var(--line); }
+.impact-hud-grid { display: grid; grid-template-columns: 1fr; gap: 0.3rem; margin: 0.2rem 0; }
+.impact-stat { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; border-bottom: 1px solid var(--line); padding-bottom: 0.2rem; }
+.impact-stat:last-child { border-bottom: 0; padding-bottom: 0; }
+.impact-label { color: var(--secondary); font-size: 0.7rem; }
+.impact-value { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); font-size: 0.8rem; }
+.impact-value small { font-weight: 400; color: var(--secondary); }
+.impact-stat.highlight-stat .impact-value { color: #92400e; font-weight: 700; }
+[data-theme="dark"] .impact-stat.highlight-stat .impact-value { color: #fcd34d; }
+.impact-disclaimer { margin: 0.15rem 0 0; font-size: 0.65rem; line-height: 1.35; color: var(--secondary); font-style: italic; }
 .scene-arrow-label { position: absolute; z-index: 1; left: 0; top: 0; padding: 0.25rem 0.45rem; border: 1px solid #c3d2e5; border-radius: 4px; background: #f4f8fdf2; color: #203e68; font: 600 0.75rem/1.4 "Segoe UI", sans-serif; pointer-events: none; white-space: nowrap; }
 .vent-marker { filter: drop-shadow(0 1px 1px #203e6840); }
 .scene-toolbar button { font-size: 0.8rem; }
@@ -272,7 +287,7 @@ main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
   .playback-controls { margin-left: 0; }
   .form-actions { position: static; }
   .manual-winds { grid-template-columns: 1fr; }
-  .scene-inspection-card, .seismicity-hud-card { top: auto; bottom: 2.2rem; left: 0.5rem; right: 0.5rem; max-width: none; width: auto; }
+  .scene-inspection-card, .seismicity-hud-card, .scene-impact-hud { top: auto; bottom: 2.2rem; left: 0.5rem; right: 0.5rem; max-width: none; width: auto; }
   .application .page-footer { padding: 1rem; }
 }
 

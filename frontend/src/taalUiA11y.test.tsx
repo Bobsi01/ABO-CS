@@ -483,4 +483,97 @@ describe('HistoricalReferences Curated Evidence Accordions & Tables', () => {
     )
     expect(screen.queryByText('Curated Taal Multi-Parameter Observation Evidence')).toBeNull()
   })
+
+  it('renders 3D population disclaimer and real-time exposure HUD with accessible contrast', () => {
+    const mockResult = {
+      scenario: taalScenario,
+      illustration: { paths: [] },
+      grid: { thickness_mm: [] },
+      receptors: [
+        {
+          id: 'ph-tanauan',
+          name: 'Tanauan, Batangas',
+          kind: 'municipality',
+          in_domain: true,
+          population: 193936,
+          population_year: 2020,
+          thickness_mm: 2.4,
+          load_kg_m2: 2.4,
+          reported: true,
+          screening: { surface_exposure: 'exceeded' },
+        },
+      ],
+    }
+
+    render(
+      <VolcanoScene
+        scenario={taalScenario}
+        result={mockResult as any}
+        selected={null}
+        onSelect={vi.fn()}
+      />
+    )
+
+    // Disclaimer view note
+    const disclaimer = screen.getByText(/Extruded 3D columns show municipal population and dynamic ash arrival/)
+    expect(disclaimer).toBeTruthy()
+    expect(disclaimer.textContent).toContain('PSA 2020 Region IV-A average of 4.1 persons/household')
+    expect(disclaimer.textContent).toContain('Centroid screening sample, not an evacuation tally')
+
+    // Real-time HUD elements
+    expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
+    expect(screen.getByText('193,936')).toBeTruthy()
+    // 193,936 / 4.1 = 47,301 families
+    expect(screen.getByText('47,301')).toBeTruthy()
+    expect(screen.getByText(/PSA 2020 CPH · 4.1 persons\/family \(Region IV-A\)/)).toBeTruthy()
+
+    // Contrast check on highlight stat text (#92400e on white #ffffff)
+    const ratioLight = contrastRatio('#92400e', '#ffffff')
+    expect(ratioLight).toBeGreaterThan(4.5) // Exceeds WCAG 2.2 Level AA (4.5:1)
+  })
+
+  it('renders selected municipality card with families count and dismisses on Escape key', () => {
+    const onSelectSpy = vi.fn()
+    const mockResult = {
+      scenario: taalScenario,
+      illustration: { paths: [] },
+      grid: { thickness_mm: [] },
+      receptors: [
+        {
+          id: 'ph-agoncillo',
+          name: 'Agoncillo, Batangas',
+          kind: 'municipality',
+          in_domain: true,
+          population: 39101,
+          population_year: 2020,
+          thickness_mm: 3.2,
+          load_kg_m2: 3.2,
+          reported: true,
+          screening: { surface_exposure: 'exceeded' },
+        },
+      ],
+    }
+
+    render(
+      <VolcanoScene
+        scenario={taalScenario}
+        result={mockResult as any}
+        selected="ph-agoncillo"
+        onSelect={onSelectSpy}
+      />
+    )
+
+    // Card should be rendered
+    const card = screen.getByRole('region', { name: 'Selected municipality details' })
+    expect(card).toBeTruthy()
+    expect(screen.getByText('Agoncillo, Batangas')).toBeTruthy()
+    expect(screen.getByText(/Ash thickness: 3.2 mm/)).toBeTruthy()
+    expect(screen.getByText(/Population \(2020\): 39,101/)).toBeTruthy()
+    expect(screen.getByText(/Est. families: 9,537 \(PSA 4.1\/family\)/)).toBeTruthy()
+
+    // Escape key press dismisses card
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(onSelectSpy).toHaveBeenCalledWith('')
+  })
 })
+

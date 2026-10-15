@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import type { EruptionSequence, Scenario, SimulationResult, Trajectory } from '../api/simulator'
-import { depositColor, download, number } from '../presentation'
+import { calculateFamiliesAffected, depositColor, download, number } from '../presentation'
 import Legend from './Legend'
 import Icon from './Icon'
 import { pathPosition, replayDuration, REPLAY_DISPLAY_SECONDS } from './settlingReplay'
@@ -214,29 +214,100 @@ function Ash({ paths, playing, replay, reduced, onDone, onPerformance, onClock }
   return <instancedMesh ref={mesh} args={[undefined, undefined, count]} frustumCulled={false}><sphereGeometry args={[1, reduced ? 4 : 6, reduced ? 3 : 4]} /><meshStandardMaterial /></instancedMesh>
 }
 
-function ReceptorMarkers({ result, terrain, emphasizeTaal, selected, onSelect }: { result: SimulationResult; terrain: TerrainAsset | null; emphasizeTaal: boolean; selected: string | null; onSelect: (id: string) => void }) {
+function ReceptorMarkers({
+  result,
+  terrain,
+  emphasizeTaal,
+  selected,
+  onSelect,
+  showPopulation3D = false,
+}: {
+  result: SimulationResult
+  terrain: TerrainAsset | null
+  emphasizeTaal: boolean
+  selected: string | null
+  onSelect: (id: string) => void
+  showPopulation3D?: boolean
+}) {
   const mesh = useRef<THREE.InstancedMesh>(null)
-  const receptors = useMemo(() => result.receptors.filter(r => r.in_domain && (!terrain || surfaceHeightM(terrain, r.east_m, r.north_m) !== null)), [result, terrain])
+  const receptors = useMemo(
+    () => (result.receptors ?? []).filter(r => r.in_domain && (!terrain || surfaceHeightM(terrain, r.east_m, r.north_m) !== null)),
+    [result, terrain]
+  )
   const { invalidate } = useThree()
+
   useEffect(() => {
     if (!mesh.current) return
     const object = new THREE.Object3D()
     receptors.forEach((r, index) => {
-      object.position.set(r.east_m / 1000, (terrain ? surfaceHeightM(terrain, r.east_m, r.north_m, emphasizeTaal)! / 1000 : 0) + 0.025, -r.north_m / 1000)
-      object.rotation.x = -Math.PI / 2
-      object.scale.setScalar(selected === r.id ? 0.18 : 0.07); object.updateMatrix()
-      mesh.current!.setMatrixAt(index, object.matrix)
-      mesh.current!.setColorAt(index, new THREE.Color(selected === r.id ? '#1b5cad' : '#274863'))
+      const groundM = terrain ? surfaceHeightM(terrain, r.east_m, r.north_m, emphasizeTaal) ?? 0 : 0
+      const groundY = groundM / 1000
+      const thickness = r.thickness_mm ?? 0
+      const isAffected = thickness >= 0.5
+      const pop = r.population ?? 0
+
+      if (showPopulation3D) {
+        // Height scaled logarithmically with population
+        const colHeight = pop > 0 ? Math.max(0.25, Math.log10(Math.max(10, pop)) * 0.28) : 0.2
+        const radius = selected === r.id ? 0.25 : 0.12
+        object.position.set(r.east_m / 1000, groundY + colHeight / 2, -r.north_m / 1000)
+        object.rotation.set(0, 0, 0)
+        object.scale.set(radius, colHeight, radius)
+        object.updateMatrix()
+        mesh.current!.setMatrixAt(index, object.matrix)
+
+        let colorHex = '#475569'
+        if (selected === r.id) {
+          colorHex = '#2563eb'
+        } else if (isAffected) {
+          colorHex = thickness >= 5.0 ? '#dc2626' : thickness >= 2.0 ? '#ea580c' : '#d97706'
+        }
+        mesh.current!.setColorAt(index, new THREE.Color(colorHex))
+      } else {
+        object.position.set(r.east_m / 1000, groundY + 0.025, -r.north_m / 1000)
+        object.rotation.set(-Math.PI / 2, 0, 0)
+        object.scale.setScalar(selected === r.id ? 0.18 : 0.07)
+        object.updateMatrix()
+        mesh.current!.setMatrixAt(index, object.matrix)
+        mesh.current!.setColorAt(index, new THREE.Color(selected === r.id ? '#1b5cad' : isAffected ? '#d97706' : '#274863'))
+      }
     })
     mesh.current.instanceMatrix.needsUpdate = true
     if (mesh.current.instanceColor) mesh.current.instanceColor.needsUpdate = true
     mesh.current.computeBoundingSphere()
     invalidate()
-  }, [receptors, terrain, selected, invalidate, emphasizeTaal])
+  }, [receptors, terrain, selected, invalidate, emphasizeTaal, showPopulation3D])
+
+  useEffect(() => () => {
+    if (mesh.current) {
+      mesh.current.geometry.dispose()
+      if (mesh.current.material instanceof THREE.Material) {
+        mesh.current.material.dispose()
+      }
+    }
+  }, [showPopulation3D])
+
   function select(event: ThreeEvent<MouseEvent>) {
-    if (event.instanceId != null && receptors[event.instanceId]) onSelect(receptors[event.instanceId].id)
+    event.stopPropagation()
+    if (event.instanceId != null && receptors[event.instanceId]) {
+      onSelect(receptors[event.instanceId].id)
+    }
   }
-  return <instancedMesh ref={mesh} args={[undefined, undefined, receptors.length]} onClick={select} frustumCulled={false}><circleGeometry args={[1, 12]} /><meshBasicMaterial side={THREE.DoubleSide} /></instancedMesh>
+
+  if (receptors.length === 0) return null
+
+  return (
+    <instancedMesh
+      key={showPopulation3D ? 'population-columns' : 'receptor-disks'}
+      ref={mesh}
+      args={[undefined, undefined, receptors.length]}
+      onClick={select}
+      frustumCulled={false}
+    >
+      {showPopulation3D ? <cylinderGeometry args={[1, 1, 1, 12]} /> : <circleGeometry args={[1, 12]} />}
+      <meshStandardMaterial roughness={0.4} metalness={0.1} side={THREE.DoubleSide} />
+    </instancedMesh>
+  )
 }
 
 function Wind({ result, height, view }: { result: SimulationResult; height: number; view: View }) {
@@ -675,6 +746,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
   const [showDike, setShowDike] = useState(false)
   const [showAlertRing, setShowAlertRing] = useState(false)
   const [showTropomi, setShowTropomi] = useState(false)
+  const [showPopulation3D, setShowPopulation3D] = useState(true)
   const [inspectedQuake, setInspectedQuake] = useState<Earthquake | null>(null)
   const [availableQuakes, setAvailableQuakes] = useState<Earthquake[]>([])
   const [terrainState, setTerrainState] = useState<{ key: string; asset: TerrainAsset | null; error: string }>({ key: '', asset: null, error: '' })
@@ -771,6 +843,38 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
     return end && Math.hypot(end.east_m, end.north_m) > 0 ? [end.east_m, end.north_m] : null
   }, [eruptionSequence])
   const reportPerformance = useCallback((render: number, pacing: number) => setFps({ render, pacing }), [])
+
+  const inDomainReceptors = useMemo(() => {
+    return (frameResult?.receptors ?? []).filter(r => r.in_domain)
+  }, [frameResult])
+
+  const exposedReceptors = useMemo(() => {
+    return inDomainReceptors.filter(r => (r.thickness_mm ?? 0) >= 0.5)
+  }, [inDomainReceptors])
+
+  const realTimeStats = useMemo(() => {
+    const count = exposedReceptors.length
+    const totalInDomain = inDomainReceptors.length
+    const pop = exposedReceptors.reduce((sum, r) => sum + (r.population ?? 0), 0)
+    const families = calculateFamiliesAffected(pop)
+    return { count, totalInDomain, pop, families }
+  }, [exposedReceptors, inDomainReceptors])
+
+  const selectedReceptor = useMemo(() => {
+    if (!selected || !frameResult?.receptors) return null
+    return frameResult.receptors.find(r => r.id === selected) ?? null
+  }, [selected, frameResult])
+
+  useEffect(() => {
+    if (!selected) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onSelect('')
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selected, onSelect])
   const qaMode = new URLSearchParams(window.location.search).get('qa') === '1'
   return <div className="scene-wrap">
     {qaMode && <button type="button" disabled={!supported} onClick={() => { const raw = canvasElement.current?.getAttribute('data-frame-evidence'); if (raw) download('abo-frame-timing.json', JSON.stringify({ ...JSON.parse(raw), captured_at: new Date().toISOString(), viewport: [window.innerWidth, window.innerHeight], device_pixel_ratio: window.devicePixelRatio, hidden: document.hidden, has_focus: document.hasFocus(), camera: view, reduced_detail: reduced, scenario, eruption_options: eruptionSequence?.options ?? null, assets: [...document.querySelectorAll<HTMLScriptElement>('script[src]')].map(script => script.src) }, null, 2), 'application/json') }}>Download frame timing JSON</button>}
@@ -792,6 +896,47 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           <span>{inspectedQuake.time.slice(0, 10)} {inspectedQuake.time.slice(11, 19)} UTC</span>
           <span>{inspectedQuake.place}</span>
           <button type="button" onClick={() => setInspectedQuake(null)}>Close</button>
+        </div>
+      )}
+      {selectedReceptor && !inspectedQuake && (
+        <div className="scene-inspection-card" role="region" aria-label="Selected municipality details">
+          <strong>{selectedReceptor.name}</strong>
+          <span>{selectedReceptor.kind} · {selectedReceptor.in_domain ? 'In domain' : 'Outside domain'}</span>
+          <span>Ash thickness: {selectedReceptor.thickness_mm != null ? `${number(selectedReceptor.thickness_mm, 2)} mm` : 'Undetected (<0.5 mm)'}</span>
+          {selectedReceptor.population != null ? (
+            <>
+              <span>Population ({selectedReceptor.population_year ?? 2020}): {number(selectedReceptor.population, 0)}</span>
+              <span>Est. families: {number(calculateFamiliesAffected(selectedReceptor.population), 0)} (PSA 4.1/family)</span>
+            </>
+          ) : (
+            <span>Population: Unknown census count</span>
+          )}
+          <button type="button" onClick={() => onSelect('')}>Close</button>
+        </div>
+      )}
+      {!selectedReceptor && !inspectedQuake && showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
+        <div className="scene-impact-hud" role="status" aria-label="Real-time municipal exposure and affected families">
+          <div className="impact-hud-title">
+            <strong>Real-Time Exposure Tally</strong>
+            {sequenceFrame && <span className="impact-hud-phase">{sequenceFrame.phase}</span>}
+          </div>
+          <div className="impact-hud-grid">
+            <div className="impact-stat">
+              <span className="impact-label">Municipalities reached</span>
+              <span className="impact-value">{number(realTimeStats.count, 0)}<small> / {number(realTimeStats.totalInDomain, 0)}</small></span>
+            </div>
+            <div className="impact-stat">
+              <span className="impact-label">Indicative population</span>
+              <span className="impact-value">{number(realTimeStats.pop, 0)}</span>
+            </div>
+            <div className="impact-stat highlight-stat">
+              <span className="impact-label">Est. families affected</span>
+              <span className="impact-value">{number(realTimeStats.families, 0)}</span>
+            </div>
+          </div>
+          <p className="impact-disclaimer">
+            PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation tally.
+          </p>
         </div>
       )}
       {supported && !rendererFailed ? <SceneBoundary key={graphicsAttempt} onFailure={() => { setPlaying(false); setRendererFailed(true) }} onRetry={retryGraphics}><Canvas camera={{ fov: 45, position: [145, 130, 160], near: 0.1, far: 1200 }} dpr={reduced ? 1 : [1, 1.5]} frameloop="demand" gl={{ antialias: true }} onCreated={({ gl }) => {
@@ -820,7 +965,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         <TaalDikeVector3D scenario={scenario} base={base} show={showDike} />
         <TaalAlertLevelRing3D scenario={scenario} base={base} show={showAlertRing} />
         <TaalTropomiPlumeCue scenario={scenario} height={Math.max(0.1, columnTopM / 1000)} show={showTropomi} />
-        {frameResult && <ReceptorMarkers result={frameResult} terrain={terrain} emphasizeTaal={emphasizeTaal} selected={selected} onSelect={onSelect} />}
+        {frameResult && <ReceptorMarkers result={frameResult} terrain={terrain} emphasizeTaal={emphasizeTaal} selected={selected} onSelect={onSelect} showPopulation3D={showPopulation3D} />}
       </Canvas></SceneBoundary> : <div className="fallback" role="alert"><h3>{rendererFailed ? '3D renderer stopped' : '3D needs WebGL 2'}</h3><p>Playback is paused. Run simulations normally, then use the map, stage slider, and location table.</p><button type="button" onClick={retryGraphics}>Retry 3D</button></div>}
       <div className="scene-caption"><span><Icon name="wind" />Wind FROM {number(scenario.wind_from_deg, 0)}° · {number(scenario.wind_speed_m_s)} m/s</span><span>{sequenceFrame ? sequenceFrame.phase === 'before' ? 'Before eruption · clear source' : sequenceFrame.phase === 'erupting' ? `Rising source column ${number(columnTopM / 1000)} km` : sequenceFrame.phase === 'settling' ? 'Source stopped · ash drifts and settles' : 'After eruption · accumulated deposits' : `Column ${number(scenario.column_height_m / 1000)} km above ground`}</span></div>
     </div>
@@ -886,8 +1031,28 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showAlertRing} onChange={event => setShowAlertRing(event.target.checked)} />Show Alert Level ring (GVP/PHIVOLCS)</label>}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showDike} onChange={event => setShowDike(event.target.checked)} />Show 2020 dike intrusion (Bato et al. 2021)</label>}
         {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showTropomi} onChange={event => setShowTropomi(event.target.checked)} />Show Sentinel-5P observed plume bearing</label>}
+        <label><input type="checkbox" checked={showPopulation3D} onChange={event => setShowPopulation3D(event.target.checked)} />Show 3D population columns & affected families</label>
+        {showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
+          <div className="population-accessible-select">
+            <label htmlFor="municipality-inspect-select" className="view-note">Keyboard inspection:</label>
+            <select
+              id="municipality-inspect-select"
+              value={selected ?? ''}
+              onChange={e => onSelect(e.target.value)}
+              aria-label="Select municipality for keyboard inspection"
+            >
+              <option value="">Inspect municipality (keyboard accessible)…</option>
+              {inDomainReceptors.map(r => (
+                <option key={r.id} value={r.id}>
+                  {r.name} · {r.thickness_mm != null ? `${number(r.thickness_mm, 2)} mm` : '0 mm'} · {r.population != null ? `${number(r.population, 0)} pop` : 'no pop'}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
       {showAltimeter && <p className="view-note">Blue vertical ruler marks altitude above vent (5 km ~ FL160, 10 km ~ FL330 commercial jet cruising altitude, 15 km ~ FL490, 20 km ~ FL650 lower stratosphere). Contextual reference overlay.</p>}
+      {showPopulation3D && <p className="view-note">Extruded 3D columns show municipal population and dynamic ash arrival. Column colors indicate deposit intensity (Amber: ≥0.5 mm, Red: ≥5 mm). Families estimated via PSA 2020 Region IV-A average of 4.1 persons/household. Centroid screening sample, not an evacuation tally.</p>}
       {showSeismicity && scenario.volcano_id === 'taal' && <p className="view-note">Subsurface spheres show USGS FDSN catalog context (48 of 49 events represent deep subduction zone earthquakes 47–234 km clamped to 35 km for visual scale; shallow volcanic conduit micro-seismicity is monitored by PHIVOLCS TVN/WOVOdat; click sphere or use keyboard selector for details). Contextual reference overlay - not a computed result of the ash model.</p>}
       {showPDZ3D && scenario.volcano_id === 'taal' && <p className="view-note">Purple dashed line marks official PHIVOLCS Permanent Danger Zone boundary around Volcano Island (15 Feb 2021; distinct from the temporary 14 km radius Level 4 evacuation buffer of January 2020). Contextual reference overlay - not a computed result of the ash model.</p>}
       {showAlertRing && scenario.volcano_id === 'taal' && <p className="view-note">Base ring indicates curated Alert Level (Green: AL1, Amber: AL2, Red: AL3) from GVP/PHIVOLCS bulletin archives. Contextual reference overlay - not a computed result of the ash model.</p>}

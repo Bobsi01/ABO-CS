@@ -24,8 +24,8 @@ Paths are relative to the repository root. Dated ownership below records previou
 | `docs/TAAL_IMPLEMENTATION_PLAN.md` | Implementation roadmap based on TAAL_FOCUS_QA_AND_DATA.md, with 13 October user decisions and status |
 | `docs/TAAL_QA_DELIVERY.md` | 14 October multi-agent QA delivery, integrated findings, corrections, and test evidence |
 | `qa/taal_review/` | Independent QA reports (science, UI/a11y, 3D graphics) and test_taal_data_audit.py |
-| `frontend/src/taalUiA11y.test.tsx` | Independent Vitest accessibility, anti-slop, and contrast test suite (13 tests) |
-| `frontend/src/components/volcanoScene3DQA.test.tsx` | Independent 3D graphics lifecycle, disposal, and camera preset test suite (14 tests) |
+| `frontend/src/taalUiA11y.test.tsx` | Independent Vitest accessibility, anti-slop, and contrast test suite (15 tests) |
+| `frontend/src/components/volcanoScene3DQA.test.tsx` | Independent 3D graphics lifecycle, disposal, camera preset, and 3D population simulation test suite (17 tests) |
 | `frontend/src/scientificScope.ts`, `scientificScope.test.ts` | Taal scientific-focus and Mayon/Kanlaon teaching-illustration wording (no validation claim) |
 | `data/source/taal-activity/` | 13 October post-2020 Taal source attempts; blocked or mismatched, no values curated |
 

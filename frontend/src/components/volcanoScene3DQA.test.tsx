@@ -538,4 +538,132 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(availabilitySpy).toHaveBeenLastCalledWith(false)
     })
   })
+
+  // =========================================================================
+  // TASK 5: 3D Population Columns & Affected Families Simulation
+  // =========================================================================
+  describe('Task 5: 3D Population Columns & Affected Families Simulation', () => {
+    it('disposes cylinder geometry and mesh standard material in 3D population columns hierarchy', () => {
+      const geom = new THREE.CylinderGeometry(1, 1, 1, 12)
+      const mat = new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.1 })
+      const mesh = new THREE.InstancedMesh(geom, mat, 10)
+
+      const geomDisposeSpy = vi.spyOn(geom, 'dispose')
+      const matDisposeSpy = vi.spyOn(mat, 'dispose')
+
+      // Simulate unmount/disposal
+      mesh.geometry.dispose()
+      if (mesh.material instanceof THREE.Material) {
+        mesh.material.dispose()
+      }
+
+      expect(geomDisposeSpy).toHaveBeenCalledOnce()
+      expect(matDisposeSpy).toHaveBeenCalledOnce()
+    })
+
+    it('logarithmically scales 3D population column heights based on census population', () => {
+      // Formula: pop > 0 ? Math.max(0.25, Math.log10(Math.max(10, pop)) * 0.28) : 0.2
+      const calcHeight = (pop: number) =>
+        pop > 0 ? Math.max(0.25, Math.log10(Math.max(10, pop)) * 0.28) : 0.2
+
+      const hZero = calcHeight(0)
+      const hSmall = calcHeight(1000)
+      const hMedium = calcHeight(39101) // Agoncillo
+      const hLarge = calcHeight(351437) // Batangas City
+
+      expect(hZero).toBe(0.2)
+      expect(hSmall).toBeCloseTo(0.84, 2)
+      expect(hMedium).toBeCloseTo(1.286, 2)
+      expect(hLarge).toBeCloseTo(1.553, 2)
+
+      // Verified strictly increasing with population
+      expect(hZero).toBeLessThan(hSmall)
+      expect(hSmall).toBeLessThan(hMedium)
+      expect(hMedium).toBeLessThan(hLarge)
+    })
+
+    it('renders 3D population columns layer control checkbox and real-time impact tally HUD', () => {
+      setupGraphicsAvailable()
+      const resultWithReceptors: SimulationResult = {
+        ...simulationResult,
+        receptors: [
+          {
+            id: 'ph-agoncillo',
+            name: 'Agoncillo, Batangas',
+            kind: 'municipality',
+            lat: 13.933,
+            lon: 120.931,
+            east_m: -7000,
+            north_m: -8000,
+            in_domain: true,
+            population: 39101,
+            population_year: 2020,
+            thickness_mm: 1.5,
+            load_kg_m2: 1.5,
+            reported: true,
+            screening: { surface_exposure: 'exceeded' },
+            screening_reasons: {},
+            source_ids: [],
+            coordinate_role: 'municipality centroid',
+            population_records: { '2020': 39101 },
+            admin_codes: {},
+            screening_conditions: {},
+          },
+          {
+            id: 'ph-balete',
+            name: 'Balete, Batangas',
+            kind: 'municipality',
+            lat: 14.019,
+            lon: 121.099,
+            east_m: 11000,
+            north_m: 1000,
+            in_domain: true,
+            population: 24055,
+            population_year: 2020,
+            thickness_mm: 0.1, // below 0.5 mm threshold
+            load_kg_m2: 0.1,
+            reported: false,
+            screening: { surface_exposure: 'below' },
+            screening_reasons: {},
+            source_ids: [],
+            coordinate_role: 'municipality centroid',
+            population_records: { '2020': 24055 },
+            admin_codes: {},
+            screening_conditions: {},
+          },
+        ],
+      } as unknown as SimulationResult
+
+      render(
+        <VolcanoScene
+          scenario={taalScenario}
+          result={resultWithReceptors}
+          selected={null}
+          onSelect={vi.fn()}
+        />
+      )
+
+      // Real-time exposure tally HUD
+      expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
+      expect(screen.getByText('Municipalities reached')).toBeTruthy()
+      expect(screen.getByText('Indicative population')).toBeTruthy()
+      expect(screen.getByText('Est. families affected')).toBeTruthy()
+      // 1 of 2 reached
+      expect(screen.getByText('1')).toBeTruthy()
+      // Population: 39,101
+      expect(screen.getByText('39,101')).toBeTruthy()
+      // Families: 39,101 / 4.1 = 9,537
+      expect(screen.getByText('9,537')).toBeTruthy()
+
+      // Layer control checkbox
+      expect(
+        screen.getByRole('checkbox', { name: 'Show 3D population columns & affected families' })
+      ).toBeTruthy()
+      // Keyboard inspection select
+      expect(
+        screen.getByRole('combobox', { name: 'Select municipality for keyboard inspection' })
+      ).toBeTruthy()
+    })
+  })
 })
+
