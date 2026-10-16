@@ -71,6 +71,7 @@ def sources(s):
         s.release_layers,
         s.diffusivity_m2_s,
         s.initial_spread_m,
+        s.umbrella_radius_m,
     )
     if s.wind_profile:
         levels = (
@@ -164,7 +165,7 @@ def prepare(request, sweep=False):
 
 
 def source_assumption(scenario):
-    if not scenario.pulses and not scenario.wind_profile:
+    if not scenario.pulses and not scenario.wind_profile and not scenario.umbrella_radius_m:
         return "Steady eruption and uniform wind"
     emission = (
         f"{len(scenario.pulses)} constant-rate emission pulse(s)"
@@ -178,7 +179,11 @@ def source_assumption(scenario):
         if scenario.wind_profile
         else "uniform wind"
     )
-    return f"{emission} and {wind} (opt-in extension beyond the proposal's assumptions)"
+    base = f"{emission} and {wind}"
+    if scenario.umbrella_radius_m:
+        radius_km = scenario.umbrella_radius_m / 1000.0
+        base += f" with radial umbrella cloud expansion up to {radius_km:.1f} km"
+    return f"{base} (opt-in extension beyond the proposal's assumptions)"
 
 
 def provenance(scenario, data, receptors=(), criteria=()):

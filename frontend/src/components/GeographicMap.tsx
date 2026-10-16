@@ -502,42 +502,6 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
               : []),
           ]}
         />
-        <div className="map-layer-toggles" role="group" aria-label="Map visual layer toggles">
-          <label className="map-toggle-pill">
-            <input
-              type="checkbox"
-              checked={showProvinces}
-              onChange={e => setShowProvinces(e.target.checked)}
-            />
-            <span>Provinces</span>
-          </label>
-          <label className="map-toggle-pill">
-            <input
-              type="checkbox"
-              checked={showMunicipalities}
-              onChange={e => setShowMunicipalities(e.target.checked)}
-            />
-            <span>Municipal areas</span>
-          </label>
-          <label className="map-toggle-pill">
-            <input
-              type="checkbox"
-              checked={showCityLabels}
-              onChange={e => setShowCityLabels(e.target.checked)}
-            />
-            <span>City labels</span>
-          </label>
-          {scenario.volcano_id === 'taal' && (
-            <label className="map-toggle-pill historical-toggle-pill">
-              <input
-                type="checkbox"
-                checked={showHistorical}
-                onChange={e => setShowHistorical(e.target.checked)}
-              />
-              <span>Jan 2020 Footprint</span>
-            </label>
-          )}
-        </div>
         <div className="map-view-controls">
           <button
             type="button"
@@ -558,6 +522,46 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
           </button>
         </div>
       </div>
+
+      <fieldset className="map-layers-fieldset" role="group" aria-label="Map visual layer toggles">
+        <legend>Map visual layers</legend>
+        <div className="map-layer-checkboxes">
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={showProvinces}
+              onChange={e => setShowProvinces(e.target.checked)}
+            />
+            <span>Provinces</span>
+          </label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={showMunicipalities}
+              onChange={e => setShowMunicipalities(e.target.checked)}
+            />
+            <span>Municipal areas</span>
+          </label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={showCityLabels}
+              onChange={e => setShowCityLabels(e.target.checked)}
+            />
+            <span>City labels</span>
+          </label>
+          {scenario.volcano_id === 'taal' && (
+            <label className="checkbox-label historical-checkbox-label">
+              <input
+                type="checkbox"
+                checked={showHistorical}
+                onChange={e => setShowHistorical(e.target.checked)}
+              />
+              <span>Jan 2020 Footprint</span>
+            </label>
+          )}
+        </div>
+      </fieldset>
 
       <div className="map-stage" ref={element} aria-label="Geographic ashfall map" />
       {import.meta.env.VITE_MAPTILER_KEY && (

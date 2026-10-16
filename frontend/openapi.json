@@ -2297,6 +2297,19 @@
               }
             ],
             "title": "Pulses"
+          },
+          "umbrella_radius_m": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 50000.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Umbrella Radius M"
           }
         },
         "additionalProperties": false,

@@ -28,6 +28,7 @@ const fields: { key: keyof Scenario; label: string; min?: number; max?: number; 
   { key: 'wind_from_deg', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
   { key: 'diffusivity_m2_s', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
   { key: 'initial_spread_m', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
+  { key: 'umbrella_radius_m', label: 'Umbrella cloud radius (m)', min: 0, max: 50000 },
   { key: 'bulk_density_kg_m3', label: 'Bulk deposit density (kg/m³)', min: 0.001, max: 10000 },
   { key: 'domain_km', label: 'Domain width (km)', min: 1, max: 400 },
   { key: 'cell_km', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
@@ -103,7 +104,7 @@ export default function Workspace() {
     if (next.volcano_id !== draft?.volcano_id) setEruptionOptions({ include_lava: next.volcano_id === 'mayon' })
   }
   function scalar(key: keyof Scenario, value: string) {
-    if (draft) change({ ...draft, [key]: value === '' ? NaN : Number(value) })
+    if (draft) change({ ...draft, [key]: value === '' ? (key === 'umbrella_radius_m' ? null : NaN) : Number(value) })
   }
   function applySweepDirection(bearing: number) {
     if (!sweepResult) return
@@ -164,7 +165,7 @@ export default function Workspace() {
   const receptors = result ? [...result.receptors].sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : (b.thickness_mm ?? -1) - (a.thickness_mm ?? -1)) : []
   const tabs: [Tab, string, IconName][] = [['3d', 'Simulation', 'volcano'], ['comparison', 'Wind comparison', 'compare'], ['sweep', 'Wind sweep', 'compass'], ['history', 'Taal 2020', 'history'], ['help', 'Guide & sources', 'book']]
   const primaryKeys = ['column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg']
-  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}>{field.label}<input required type="number" value={Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
+  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}>{field.label}<input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
   const optionFields: { key: keyof EruptionOptions; label: string; initial: number; min: number; max: number }[] = [
     { key: 'plume_rise_speed_m_s', label: 'Illustrated plume rise (m/s)', initial: 30, min: 1, max: 300 },
     { key: 'lava_effusion_m3_s', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
@@ -206,7 +207,7 @@ export default function Workspace() {
           {scientificScopeNote(draft.volcano_id) && <p className="view-note">{scientificScopeNote(draft.volcano_id)}</p>}
           {inputFields(primaryKeys)}
           <details><summary>Eruption illustration & lava</summary><p className="view-note">Finite-duration ash uses the submitted eruption and wind inputs. Plume shape and fountains are schematic.</p>{draft.volcano_id === 'mayon' ? <label className="checkbox-label"><input type="checkbox" checked={Boolean(eruptionOptions.include_lava)} onChange={event => { setEruptionOptions({ ...eruptionOptions, include_lava: event.target.checked }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} />Include lava-channel teaching model</label> : <p className="view-note">{draft.volcano_id === 'taal' ? 'Taal shows an illustrative lava fountain. A downslope lava flow is not inferred from that mechanism.' : 'Effusive lava is not enabled for this explosive teaching scenario.'}</p>}<div className="field-grid">{optionFields.filter(field => field.key === 'plume_rise_speed_m_s' || eruptionOptions.include_lava).map(field => <label key={field.key}>{field.label}<input type="number" step="any" required min={field.min} max={field.max} value={Number.isNaN(eruptionOptions[field.key]) ? '' : Number(eruptionOptions[field.key] ?? field.initial)} onChange={event => { setEruptionOptions({ ...eruptionOptions, [field.key]: event.target.value === '' ? NaN : Number(event.target.value) }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /></label>)}</div>{eruptionOptions.include_lava && <p className="view-note">These are illustrative fluid inputs, not measured Mayon values. The channel follows the raw DEM with constant viscosity. Cooling, branching and PDCs are not solved.</p>}</details>
-          <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'bulk_density_kg_m3'])}</details>
+          <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'umbrella_radius_m', 'bulk_density_kg_m3'])}</details>
           <details><summary>Vertical wind profile (opt-in extension)</summary>
             <p className="view-note">Optional height-dependent wind levels. Linearly interpolated across column release heights. When disabled, uniform wind is used.</p>
             <label className="checkbox-label"><input type="checkbox" checked={Boolean(draft.wind_profile && draft.wind_profile.length > 0)} onChange={event => {

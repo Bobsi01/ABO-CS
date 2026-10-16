@@ -402,6 +402,7 @@
         "source_ids": [
           "gvp-taal",
           "taal-study",
+          "noaa-igra",
           "assumptions"
         ],
         "vent_lat": 14.0106,
@@ -445,8 +446,35 @@
         "domain_km": 300.0,
         "cell_km": 1.0,
         "release_layers": 16,
-        "wind_profile": null,
-        "pulses": null
+        "wind_profile": [
+          {
+            "height_above_vent_m": 0.0,
+            "speed_m_s": 8.0,
+            "wind_from_deg": 65.0
+          },
+          {
+            "height_above_vent_m": 3000.0,
+            "speed_m_s": 5.0,
+            "wind_from_deg": 90.0
+          },
+          {
+            "height_above_vent_m": 6000.0,
+            "speed_m_s": 6.0,
+            "wind_from_deg": 145.0
+          },
+          {
+            "height_above_vent_m": 10000.0,
+            "speed_m_s": 14.0,
+            "wind_from_deg": 195.0
+          },
+          {
+            "height_above_vent_m": 16600.0,
+            "speed_m_s": 22.0,
+            "wind_from_deg": 215.0
+          }
+        ],
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
       }
     },
     {

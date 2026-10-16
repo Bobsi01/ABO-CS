@@ -876,6 +876,8 @@ export interface components {
             wind_profile?: components["schemas"]["WindLevel"][] | null;
             /** Pulses */
             pulses?: components["schemas"]["EruptionPulse"][] | null;
+            /** Umbrella Radius M */
+            umbrella_radius_m?: number | null;
         };
         /** ScenarioPreset */
         ScenarioPreset: {

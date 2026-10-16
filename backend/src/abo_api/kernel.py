@@ -37,18 +37,38 @@ def wind_components(speed, wind_from_deg):
     return -speed * np.sin(radians), -speed * np.cos(radians)
 
 
-def components(height, mass, fractions, settling, layers, diffusivity, initial_spread):
+def components(
+    height, mass, fractions, settling, layers, diffusivity, initial_spread, umbrella_radius=None
+):
     release = height * (np.arange(layers) + 0.5) / layers
     times = (release[None, :] / settling[:, None]).reshape(-1)
     weights = np.broadcast_to(mass * fractions[:, None] / layers, (fractions.size, layers)).reshape(
         -1
     )
-    variance = initial_spread**2 + 2 * diffusivity * times
+    if umbrella_radius is not None and umbrella_radius > initial_spread:
+        layer_spread = initial_spread + (umbrella_radius - initial_spread) * (
+            (release / height) ** 2
+        )
+        base_variance = np.broadcast_to(
+            layer_spread[None, :] ** 2, (fractions.size, layers)
+        ).reshape(-1)
+        variance = base_variance + 2 * diffusivity * times
+    else:
+        variance = initial_spread**2 + 2 * diffusivity * times
     return times, weights, variance
 
 
 def pulse_components(
-    starts, durations, rates, heights, fractions, settling, layers, diffusivity, initial_spread
+    starts,
+    durations,
+    rates,
+    heights,
+    fractions,
+    settling,
+    layers,
+    diffusivity,
+    initial_spread,
+    umbrella_radius=None,
 ):
     """Axis k flattens pulse × grain × layer. One pulse reproduces components() exactly."""
     release = heights[:, None] * (np.arange(layers) + 0.5)[None, :] / layers  # [pulse, layer]
@@ -62,10 +82,18 @@ def pulse_components(
         return np.broadcast_to(values, shape).reshape(-1)
 
     times = times.reshape(-1)
+    if umbrella_radius is not None and umbrella_radius > initial_spread:
+        fraction_h = (np.arange(layers) + 0.5) / layers  # [layer]
+        layer_spread = initial_spread + (umbrella_radius - initial_spread) * (fraction_h**2)
+        base_variance = np.broadcast_to(layer_spread[None, None, :] ** 2, shape).reshape(-1)
+        variance = base_variance + 2 * diffusivity * times
+    else:
+        variance = initial_spread**2 + 2 * diffusivity * times
+
     return {
         "times": times,
         "weights": weights.reshape(-1),
-        "variance": initial_spread**2 + 2 * diffusivity * times,
+        "variance": variance,
         "release_m": flat(release[:, None, :]),
         "settling_m_s": flat(settling[None, :, None]),
         "grain": flat(np.arange(fractions.size)[None, :, None]),
