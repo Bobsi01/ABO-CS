@@ -58,6 +58,9 @@ class Scenario(StrictModel):
     wind_profile: list[WindLevel] | None = Field(default=None, min_length=2, max_length=32)
     # When pulses are present, the summary fields must describe their envelope (validated).
     pulses: list[EruptionPulse] | None = Field(default=None, min_length=1, max_length=8)
+    # Optional radial umbrella cloud radius in meters at column top.
+    # When provided, initial spread expands with height up to umbrella_radius_m.
+    umbrella_radius_m: float | None = Field(default=None, ge=0, le=50000)
 
     @model_validator(mode="after")
     def coherent(self):
@@ -101,6 +104,8 @@ class Receptor(StrictModel):
     population_records: dict[str, int | None] = Field(default_factory=dict)
     admin_codes: dict[str, str] = Field(default_factory=dict)
     screening_conditions: dict[str, str] = Field(default_factory=dict)
+    province: str | None = None
+    region: str | None = None
 
     @model_validator(mode="after")
     def population_datum(self):

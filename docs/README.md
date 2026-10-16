@@ -2,6 +2,8 @@
 
 ## Start here
 
+- [16 October realistic regional dispersion & caldera deposition QA report](QA_REPORT_REALISTIC_REGIONAL_DISPERSION.md): radial umbrella cloud model ($R_u \approx 20\text{ km}$), Tanay NOAA IGRA atmospheric directional wind shear coupling, 360° proximal caldera deposition, and map toolbar layout alignment.
+- [16 October expanded regional visualization QA report](QA_REPORT_EXPANDED_VISUALIZATION.md): literature-scale regional scenario, provincial exposure explorer, municipal choropleth, trace contours, and dark theme contrast remediation.
 - [15 October remediation plan](QA_REMEDIATION_PLAN_20261015.md) and [remediation results](QA_REMEDIATION_RESULTS_20261015.md): current correction status, acceptance evidence and retained gates. [Comprehensive QA](COMPREHENSIVE_QA_20261015.md) and [independent science review](QA_SCIENCE_20261015.md) record the findings.
 - [12 October two-agent QA and corrections](CURRENT_QA_DELIVERY.md): dated implementation and research evidence; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
 - [Contributor instructions](../CONTRIBUTING.md) and [repository map](../repository_map.md): setup and exact file locations.

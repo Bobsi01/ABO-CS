@@ -71,6 +71,7 @@ def sources(s):
         s.release_layers,
         s.diffusivity_m2_s,
         s.initial_spread_m,
+        s.umbrella_radius_m,
     )
     if s.wind_profile:
         levels = (
@@ -78,13 +79,19 @@ def sources(s):
             [level.speed_m_s for level in s.wind_profile],
             [level.wind_from_deg for level in s.wind_profile],
         )
-        u_e, u_n = kernel.layer_winds(parts["release_m"], *levels)
-        mid_e, mid_n = kernel.layer_winds(np.asarray([s.column_height_m / 2]), *levels)
+        is_regional = bool(s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m)
+        u_e, u_n = kernel.layer_winds(parts["release_m"], *levels, column_integrated=is_regional)
+        mid_e, mid_n = kernel.layer_winds(
+            np.asarray([s.column_height_m / 2]), *levels, column_integrated=is_regional
+        )
         middle = (float(mid_e[0]), float(mid_n[0]))
     else:
         east, north = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
         u_e, u_n = np.full(parts["times"].size, east), np.full(parts["times"].size, north)
         middle = (float(east), float(north))
+    if "canopy_mask" in parts:
+        u_e = np.where(parts["canopy_mask"], 0.0, u_e)
+        u_n = np.where(parts["canopy_mask"], 0.0, u_n)
     parts.update(
         u_e=u_e,
         u_n=u_n,
@@ -127,8 +134,9 @@ def prepare(request, sweep=False):
         raise ValueError("Criterion identifiers must be unique")
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
+    comp_factor = 2 if (s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m) else 1
     budget = kernel.check_budget(
-        len(s.grains) * s.release_layers * len(s.pulses or [None]),
+        len(s.grains) * s.release_layers * len(s.pulses or [None]) * comp_factor,
         n,
         len(receptors),
         kernel.SWEEP_DIRECTION_BATCH if sweep else 1,
@@ -164,7 +172,7 @@ def prepare(request, sweep=False):
 
 
 def source_assumption(scenario):
-    if not scenario.pulses and not scenario.wind_profile:
+    if not scenario.pulses and not scenario.wind_profile and not scenario.umbrella_radius_m:
         return "Steady eruption and uniform wind"
     emission = (
         f"{len(scenario.pulses)} constant-rate emission pulse(s)"
@@ -178,7 +186,11 @@ def source_assumption(scenario):
         if scenario.wind_profile
         else "uniform wind"
     )
-    return f"{emission} and {wind} (opt-in extension beyond the proposal's assumptions)"
+    base = f"{emission} and {wind}"
+    if scenario.umbrella_radius_m:
+        radius_km = scenario.umbrella_radius_m / 1000.0
+        base += f" with radial umbrella cloud expansion up to {radius_km:.1f} km"
+    return f"{base} (opt-in extension beyond the proposal's assumptions)"
 
 
 def provenance(scenario, data, receptors=(), criteria=()):
@@ -235,7 +247,7 @@ def criterion_applicability(criterion, receptor, context):
 def contour_features(centers, thickness, inverse):
     contour = contourpy.contour_generator(x=centers, y=centers, z=thickness)
     features = []
-    for level in (0.5, 1, 5, 10, 50, 100):
+    for level in (0.01, 0.1, 0.5, 1, 5, 10, 50, 100):
         for line in contour.lines(level):
             if line.shape[0] < 2:
                 continue
@@ -419,7 +431,15 @@ def sweep(request: SimulationRequest):
             weights,
             variance,
             request.scenario.wind_speed_m_s,
-            (source["u_e"], source["u_n"]) if request.scenario.wind_profile else None,
+            (source["u_e"], source["u_n"])
+            if (
+                request.scenario.wind_profile
+                or (
+                    request.scenario.umbrella_radius_m
+                    and request.scenario.umbrella_radius_m > request.scenario.initial_spread_m
+                )
+            )
+            else None,
             request.scenario.wind_from_deg,
             np.arange(start, min(start + kernel.SWEEP_DIRECTION_BATCH, 360), dtype=float),
         )

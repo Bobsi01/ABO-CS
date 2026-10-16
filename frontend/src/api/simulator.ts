@@ -11,6 +11,7 @@ export type EruptionSequence = components['schemas']['EruptionSequence']
 export type EruptionFrame = components['schemas']['EruptionFrame']
 export type WindLevel = components['schemas']['WindLevel']
 export type EruptionPulse = components['schemas']['EruptionPulse']
+export type ReceptorResult = components['schemas']['ReceptorResult']
 type ReportingOptions = Partial<Pick<components['schemas']['SimulationRequest'], 'screening_context' | 'population_year'>>
 
 function record(value: unknown): value is Record<string, unknown> {
@@ -54,7 +55,7 @@ function scenarioValid(value: unknown): boolean {
     && optional(value.pulses, pulses => pulses === null || (Array.isArray(pulses) && pulses.every(p => record(p) && ['start_s', 'duration_s', 'mass_rate_kg_s', 'column_height_m'].every(k => finite(p[k])))))
 }
 function receptorValid(value: unknown): boolean {
-  return record(value) && typeof value.id === 'string' && typeof value.name === 'string' && ['municipality', 'airport', 'water'].includes(String(value.kind)) && finite(value.lat) && finite(value.lon) && nullableNumber(value.population) && nullableNumber(value.population_year)
+  return record(value) && typeof value.id === 'string' && typeof value.name === 'string' && ['municipality', 'airport', 'water'].includes(String(value.kind)) && finite(value.lat) && finite(value.lon) && nullableNumber(value.population) && nullableNumber(value.population_year) && optional(value.province, nullableString) && optional(value.region, nullableString)
 }
 function provenanceValid(value: unknown): boolean {
   return record(value) && typeof value.solver_version === 'string' && typeof value.dataset_revision === 'string' && typeof value.input_status === 'string' && strings(value.assumptions) && strings(value.warnings)

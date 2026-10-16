@@ -1,0 +1,45 @@
+{
+  "source": "NOAA Integrated Global Radiosonde Archive (IGRA) v2 Station RPM00098433 (Tanay)",
+  "date": "2020-01-12",
+  "citation": "Archived Tanay upper-air soundings; see data/source/igra/tanay-effective-wind.json",
+  "datum": "WGS84 / Geopotential height ASL",
+  "description": "Multi-tier atmospheric wind profile capturing directional shear during the 12 January 2020 Taal subplinian eruption.",
+  "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+  "levels": [
+    {
+      "height_m": 0.0,
+      "speed_m_s": 8.0,
+      "wind_from_deg": 65.0,
+      "transport_direction_deg": 245.0,
+      "note": "Surface to boundary layer: blows toward WSW across San Nicolas, Agoncillo, and Laurel"
+    },
+    {
+      "height_m": 3000.0,
+      "speed_m_s": 5.0,
+      "wind_from_deg": 90.0,
+      "transport_direction_deg": 270.0,
+      "note": "Lower troposphere: blows toward West across western Batangas caldera rim"
+    },
+    {
+      "height_m": 6000.0,
+      "speed_m_s": 6.0,
+      "wind_from_deg": 145.0,
+      "transport_direction_deg": 325.0,
+      "note": "Mid troposphere: turns toward NW across Tagaytay Ridge and southern Cavite"
+    },
+    {
+      "height_m": 10000.0,
+      "speed_m_s": 14.0,
+      "wind_from_deg": 195.0,
+      "transport_direction_deg": 15.0,
+      "note": "Upper troposphere: strong advection toward NNE across Laguna, Rizal, and eastern Metro Manila"
+    },
+    {
+      "height_m": 16600.0,
+      "speed_m_s": 22.0,
+      "wind_from_deg": 215.0,
+      "transport_direction_deg": 35.0,
+      "note": "Plume umbrella / tropopause: fast advection toward NE across Metro Manila, Bulacan, and Central Luzon"
+    }
+  ]
+}

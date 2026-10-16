@@ -646,10 +646,13 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       // Real-time exposure tally HUD
       expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
       expect(screen.getByText('Municipalities reached')).toBeTruthy()
+      expect(screen.getByText('Peak centroid ash')).toBeTruthy()
       expect(screen.getByText('Indicative population')).toBeTruthy()
       expect(screen.getByText('Est. families affected')).toBeTruthy()
       // 1 of 2 reached
       expect(screen.getByText('1')).toBeTruthy()
+      // Peak ash: 1.5 mm · Agoncillo
+      expect(screen.getByText('· Agoncillo')).toBeTruthy()
       // Population: 39,101
       expect(screen.getByText('39,101')).toBeTruthy()
       // Families: 39,101 / 4.1 = 9,537
@@ -663,6 +666,101 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(
         screen.getByRole('combobox', { name: 'Select municipality for keyboard inspection' })
       ).toBeTruthy()
+    })
+
+    it('falls back to trace exposure (>=0.01 mm) and shows peak centroid ash when all receptors are below 0.5 mm', () => {
+      setupGraphicsAvailable()
+      const traceOnlyResult: SimulationResult = {
+        ...simulationResult,
+        receptors: [
+          {
+            id: 'ph-tanauan',
+            name: 'Tanauan, Batangas',
+            kind: 'municipality',
+            lat: 14.086,
+            lon: 121.15,
+            east_m: 10900,
+            north_m: 9200,
+            in_domain: true,
+            population: 209697,
+            population_year: 2024,
+            thickness_mm: 0.162,
+            load_kg_m2: 0.162,
+            reported: false,
+            screening: { surface_exposure: 'below' },
+            screening_reasons: {},
+            source_ids: [],
+            coordinate_role: 'municipality centroid',
+            population_records: { '2024': 209697 },
+            admin_codes: {},
+            screening_conditions: {},
+          },
+          {
+            id: 'ph-jalajala',
+            name: 'Jala-Jala, Rizal',
+            kind: 'municipality',
+            lat: 14.35,
+            lon: 121.32,
+            east_m: 34000,
+            north_m: 37000,
+            in_domain: true,
+            population: 34901,
+            population_year: 2024,
+            thickness_mm: 0.029,
+            load_kg_m2: 0.029,
+            reported: false,
+            screening: { surface_exposure: 'below' },
+            screening_reasons: {},
+            source_ids: [],
+            coordinate_role: 'municipality centroid',
+            population_records: { '2024': 34901 },
+            admin_codes: {},
+            screening_conditions: {},
+          },
+          {
+            id: 'ph-agoncillo',
+            name: 'Agoncillo, Batangas',
+            kind: 'municipality',
+            lat: 13.933,
+            lon: 120.931,
+            east_m: -7000,
+            north_m: -8000,
+            in_domain: true,
+            population: 40662,
+            population_year: 2024,
+            thickness_mm: 0.0,
+            load_kg_m2: 0.0,
+            reported: false,
+            screening: { surface_exposure: 'below' },
+            screening_reasons: {},
+            source_ids: [],
+            coordinate_role: 'municipality centroid',
+            population_records: { '2024': 40662 },
+            admin_codes: {},
+            screening_conditions: {},
+          },
+        ],
+      } as unknown as SimulationResult
+
+      render(
+        <VolcanoScene
+          scenario={taalScenario}
+          result={traceOnlyResult}
+          selected={null}
+          onSelect={vi.fn()}
+        />
+      )
+
+      expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
+      expect(screen.getByText('2')).toBeTruthy()
+      expect(screen.getByText(/\/ 3 \(trace ≥0\.01 mm\)/)).toBeTruthy()
+      expect(screen.getByText(/0\.162 mm/)).toBeTruthy()
+      expect(screen.getByText('· Tanauan')).toBeTruthy()
+      // 209,697 + 34,901 = 244,598
+      expect(screen.getByText('244,598')).toBeTruthy()
+      // 244,598 / 4.1 = 59,658
+      expect(screen.getByText('59,658')).toBeTruthy()
+      expect(screen.getByText(/0 ≥0\.5 mm reporting cutoff; showing 2 trace \(≥0\.01 mm\)\./)).toBeTruthy()
     })
   })
 })

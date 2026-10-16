@@ -11,6 +11,7 @@ import Icon from './components/Icon'
 import Select from './components/Select'
 import type { IconName } from './components/Icon'
 import EruptionTimeline from './components/EruptionTimeline'
+import ProvincialExposureExplorer from './components/ProvincialExposureExplorer'
 import { ERUPTION_SOURCES } from './components/eruptionResearch'
 
 const VolcanoScene = lazy(() => import('./components/VolcanoScene'))
@@ -27,6 +28,7 @@ const fields: { key: keyof Scenario; label: string; min?: number; max?: number; 
   { key: 'wind_from_deg', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
   { key: 'diffusivity_m2_s', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
   { key: 'initial_spread_m', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
+  { key: 'umbrella_radius_m', label: 'Umbrella cloud radius (m)', min: 0, max: 50000 },
   { key: 'bulk_density_kg_m3', label: 'Bulk deposit density (kg/m³)', min: 0.001, max: 10000 },
   { key: 'domain_km', label: 'Domain width (km)', min: 1, max: 400 },
   { key: 'cell_km', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
@@ -69,7 +71,8 @@ export default function Workspace() {
     const timeout = window.setTimeout(() => controller.abort(), 15000)
     getCatalog(controller.signal).then(data => {
       if (catalogRequest.current !== controller) return
-      setCatalog(data); setDraft(data.scenarios[0]?.scenario ?? null)
+      const initialScenario = data.scenarios.find(s => s.id === 'taal-regional')?.scenario ?? data.scenarios[0]?.scenario ?? null
+      setCatalog(data); setDraft(initialScenario)
       if (!data.scenarios.length) setError('The catalog has no scenario. Add local inputs before running.')
     }).catch(err => {
       if (catalogRequest.current === controller) setError(`${err instanceof Error ? err.message : 'Connection failed.'} Start the local Python backend, then retry the catalog.`)
@@ -81,7 +84,8 @@ export default function Workspace() {
     const timeout = window.setTimeout(() => controller.abort(), 15000)
     getCatalog(controller.signal).then(data => {
       if (catalogRequest.current !== controller) return
-      setCatalog(data); setDraft(data.scenarios[0]?.scenario ?? null)
+      const initialScenario = data.scenarios.find(s => s.id === 'taal-regional')?.scenario ?? data.scenarios[0]?.scenario ?? null
+      setCatalog(data); setDraft(initialScenario)
       if (!data.scenarios.length) setError('The catalog has no runnable scenario. Add local inputs before running.')
     }).catch(err => { if (!controller.signal.aborted) setError(`${err.message} Start the local Python backend, then retry the catalog.`); else if (catalogRequest.current === controller) setError('Catalog request timed out. Start the backend and retry.') }).finally(() => { window.clearTimeout(timeout); if (catalogRequest.current === controller) setLoading('') })
     return () => { catalogRequest.current = null; controller.abort(); window.clearTimeout(timeout); request.current?.abort() }
@@ -102,7 +106,7 @@ export default function Workspace() {
     if (next.volcano_id !== draft?.volcano_id) setEruptionOptions({ include_lava: next.volcano_id === 'mayon' })
   }
   function scalar(key: keyof Scenario, value: string) {
-    if (draft) change({ ...draft, [key]: value === '' ? NaN : Number(value) })
+    if (draft) change({ ...draft, [key]: value === '' ? (key === 'umbrella_radius_m' ? null : NaN) : Number(value) })
   }
   function applySweepDirection(bearing: number) {
     if (!sweepResult) return
@@ -163,7 +167,7 @@ export default function Workspace() {
   const receptors = result ? [...result.receptors].sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : (b.thickness_mm ?? -1) - (a.thickness_mm ?? -1)) : []
   const tabs: [Tab, string, IconName][] = [['3d', 'Simulation', 'volcano'], ['comparison', 'Wind comparison', 'compare'], ['sweep', 'Wind sweep', 'compass'], ['history', 'Taal 2020', 'history'], ['help', 'Guide & sources', 'book']]
   const primaryKeys = ['column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg']
-  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}>{field.label}<input required type="number" value={Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
+  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}>{field.label}<input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
   const optionFields: { key: keyof EruptionOptions; label: string; initial: number; min: number; max: number }[] = [
     { key: 'plume_rise_speed_m_s', label: 'Illustrated plume rise (m/s)', initial: 30, min: 1, max: 300 },
     { key: 'lava_effusion_m3_s', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
@@ -200,12 +204,12 @@ export default function Workspace() {
           setError(`${input.labels?.[0]?.textContent?.trim() || 'Invalid input'}: ${input.validationMessage}`)
           input.focus()
         }} onSubmit={event => { event.preventDefault(); void execute('simulation') }}>
-          <Select label="Scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(draft))?.id ?? ''} onChange={value => { const preset = catalog.scenarios.find(p => p.id === value); if (preset) change(preset.scenario) }} options={[{ value: '', label: `${catalog.volcanoes.find(v => v.id === draft.volcano_id)?.name ?? draft.volcano_id} · custom inputs`, disabled: true }, ...catalog.scenarios.map(p => ({ value: p.id, label: p.status === 'illustrative' ? `${catalog.volcanoes.find(v => v.id === p.scenario.volcano_id)?.name ?? p.scenario.volcano_id} · teaching scenario` : p.name }))]} />
+          <Select label="Scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(draft))?.id ?? ''} onChange={value => { const preset = catalog.scenarios.find(p => p.id === value); if (preset) change(preset.scenario) }} options={[{ value: '', label: `${catalog.volcanoes.find(v => v.id === draft.volcano_id)?.name ?? draft.volcano_id} · custom inputs`, disabled: true }, ...catalog.scenarios.map(p => ({ value: p.id, label: p.name }))]} />
           <p className="input-status">{draft.input_status === 'illustrative' ? 'Illustrative inputs, not a historical eruption.' : draft.input_status === 'reviewed' ? 'Reviewed inputs. See source provenance.' : 'Manual inputs. Review provenance before use.'}</p>
           {scientificScopeNote(draft.volcano_id) && <p className="view-note">{scientificScopeNote(draft.volcano_id)}</p>}
           {inputFields(primaryKeys)}
           <details><summary>Eruption illustration & lava</summary><p className="view-note">Finite-duration ash uses the submitted eruption and wind inputs. Plume shape and fountains are schematic.</p>{draft.volcano_id === 'mayon' ? <label className="checkbox-label"><input type="checkbox" checked={Boolean(eruptionOptions.include_lava)} onChange={event => { setEruptionOptions({ ...eruptionOptions, include_lava: event.target.checked }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} />Include lava-channel teaching model</label> : <p className="view-note">{draft.volcano_id === 'taal' ? 'Taal shows an illustrative lava fountain. A downslope lava flow is not inferred from that mechanism.' : 'Effusive lava is not enabled for this explosive teaching scenario.'}</p>}<div className="field-grid">{optionFields.filter(field => field.key === 'plume_rise_speed_m_s' || eruptionOptions.include_lava).map(field => <label key={field.key}>{field.label}<input type="number" step="any" required min={field.min} max={field.max} value={Number.isNaN(eruptionOptions[field.key]) ? '' : Number(eruptionOptions[field.key] ?? field.initial)} onChange={event => { setEruptionOptions({ ...eruptionOptions, [field.key]: event.target.value === '' ? NaN : Number(event.target.value) }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /></label>)}</div>{eruptionOptions.include_lava && <p className="view-note">These are illustrative fluid inputs, not measured Mayon values. The channel follows the raw DEM with constant viscosity. Cooling, branching and PDCs are not solved.</p>}</details>
-          <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'bulk_density_kg_m3'])}</details>
+          <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'umbrella_radius_m', 'bulk_density_kg_m3'])}</details>
           <details><summary>Vertical wind profile (opt-in extension)</summary>
             <p className="view-note">Optional height-dependent wind levels. Linearly interpolated across column release heights. When disabled, uniform wind is used.</p>
             <label className="checkbox-label"><input type="checkbox" checked={Boolean(draft.wind_profile && draft.wind_profile.length > 0)} onChange={event => {
@@ -272,7 +276,13 @@ export default function Workspace() {
           {tab === 'help' && catalog && <EvidenceDetails catalog={catalog} />}
         </section>
         {result && tab === '3d' && <section className="results-section" aria-labelledby="results-title"><div className="section-heading"><div><h2 id="results-title">Municipal and facility exposure</h2><p>Eventual totals: {result.summary.municipalities_reported} municipal centroids ≥{result.summary.reporting_cutoff_mm} mm · {number(result.summary.indicative_population, 0)} indicative residents · {result.summary.receptors_covered}/{result.summary.receptors_total} locations in domain</p></div></div>
-          <details className="result-table-disclosure"><summary>Location table & exports</summary>
+          <ProvincialExposureExplorer
+            receptors={frame?.receptors ?? result.receptors}
+            selected={selected}
+            onSelect={setSelected}
+            reportingCutoffMm={result.summary.reporting_cutoff_mm}
+          />
+          <details className="result-table-disclosure"><summary>All location data table & exports</summary>
           <div className="result-tools"><Select label="Sort locations" value={sort} onChange={value => setSort(value as typeof sort)} options={[{ value: 'thickness', label: 'Highest thickness first' }, { value: 'name', label: 'Name' }]} /><div className="export-actions"><button type="button" onClick={exportCSV}><Icon name="download" />Final CSV</button><button type="button" onClick={() => download('abo-scenario.json', JSON.stringify({ scenario: result.scenario, ...completedReporting.current.get(result), eruption_options: activeSequence?.options ?? null, provenance: result.provenance }, null, 2), 'application/json')}><Icon name="code" />Scenario JSON</button></div></div>
           <div className="table-scroll"><table><caption>Point samples; indicative populations are not individual exposure estimates.</caption><thead><tr><th>Location</th><th>Thickness (mm)</th><th>Load (kg/m²)</th><th>Population / year</th><th>Screening</th></tr></thead><tbody>{receptors.map(r => <tr key={r.id} className={r.id === selected ? 'selected-row' : ''}><th scope="row"><button className="text-button" type="button" onClick={() => setSelected(r.id)}>{r.name}</button><small>{r.kind} · {r.in_domain ? 'In domain' : 'Outside coverage'}</small></th><td>{number(r.thickness_mm)}</td><td>{number(r.load_kg_m2)}</td><td>{number(r.population, 0)} / {r.population_year ?? 'Unknown'}</td><td>{Object.entries(r.screening).map(([key, state]) => <span className="screening-line" key={key}>{catalog?.criteria.find(criterion => criterion.id === key)?.label ?? key.replaceAll('_', ' ')}: {state}{r.screening_reasons?.[key] && <small>{r.screening_reasons[key]}</small>}</span>)}</td></tr>)}</tbody></table></div>
           </details><details><summary>Result provenance and assumptions</summary><p>{number(result.diagnostics.retained_fraction * 100)}% modeled mass inside domain · {number(result.diagnostics.outside_domain_mass_kg, 0)} kg outside · {result.diagnostics.validation_status.replaceAll('_', ' ')}.</p><p>{result.summary.reported_population_unknown} reported municipalities have unknown population.</p><p>Dataset {result.provenance.dataset_revision} · Solver {result.provenance.solver_version} · Inputs {result.provenance.input_status}</p>{[...result.provenance.assumptions, ...result.provenance.warnings].map((text, i) => <p key={i}>{text}</p>)}{activeSequence && <><h3>Event sequence</h3><p>Solver {activeSequence.solver_version} · lava route: {activeSequence.lava.stop_reason.replaceAll('_', ' ')}</p>{[...activeSequence.assumptions, ...activeSequence.warnings, ...activeSequence.lava.warnings].map((text, i) => <p key={i}>{text}</p>)}</>}</details>

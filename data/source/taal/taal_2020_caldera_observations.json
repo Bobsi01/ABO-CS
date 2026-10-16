@@ -1,0 +1,119 @@
+{
+  "event": "Taal 12-13 January 2020 Eruption Episode",
+  "citation": "Balangue-Tarriela et al. (2022) Table 3 and PHIVOLCS Taal Volcano Bulletins (January 2020)",
+  "description": "Field-observed tephra deposit thickness and proximal caldera impact records for the 12-13 January 2020 eruptive phase.",
+  "units": "millimeters",
+  "datum": "WGS84",
+  "review_status": "curated_literature_reference",
+  "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+  "observations": [
+    {
+      "municipality": "Talisay",
+      "province": "Batangas",
+      "distance_from_vent_km": 8.5,
+      "bearing_from_vent_deg": 12.0,
+      "thickness_range_mm": [150.0, 250.0],
+      "representative_thickness_mm": 200.0,
+      "primary_mechanism": "Phreatomagmatic base surge and proximal umbrella fallout"
+    },
+    {
+      "municipality": "Laurel",
+      "province": "Batangas",
+      "distance_from_vent_km": 11.2,
+      "bearing_from_vent_deg": 320.0,
+      "thickness_range_mm": [100.0, 200.0],
+      "representative_thickness_mm": 140.0,
+      "primary_mechanism": "Caldera base surge and umbrella fallout"
+    },
+    {
+      "municipality": "Agoncillo",
+      "province": "Batangas",
+      "distance_from_vent_km": 10.8,
+      "bearing_from_vent_deg": 265.0,
+      "thickness_range_mm": [60.0, 150.0],
+      "representative_thickness_mm": 100.0,
+      "primary_mechanism": "Proximal radial surge and low-level westerly ash drift"
+    },
+    {
+      "municipality": "San Nicolas",
+      "province": "Batangas",
+      "distance_from_vent_km": 9.4,
+      "bearing_from_vent_deg": 220.0,
+      "thickness_range_mm": [50.0, 120.0],
+      "representative_thickness_mm": 80.0,
+      "primary_mechanism": "Base surge and low-level southerly wind drift"
+    },
+    {
+      "municipality": "Balete",
+      "province": "Batangas",
+      "distance_from_vent_km": 12.1,
+      "bearing_from_vent_deg": 80.0,
+      "thickness_range_mm": [30.0, 80.0],
+      "representative_thickness_mm": 50.0,
+      "primary_mechanism": "Caldera umbrella fallout"
+    },
+    {
+      "municipality": "Cuenca",
+      "province": "Batangas",
+      "distance_from_vent_km": 14.5,
+      "bearing_from_vent_deg": 155.0,
+      "thickness_range_mm": [15.0, 40.0],
+      "representative_thickness_mm": 25.0,
+      "primary_mechanism": "Caldera fringe umbrella fallout"
+    },
+    {
+      "municipality": "Tagaytay",
+      "province": "Cavite",
+      "distance_from_vent_km": 14.2,
+      "bearing_from_vent_deg": 355.0,
+      "thickness_range_mm": [20.0, 60.0],
+      "representative_thickness_mm": 35.0,
+      "primary_mechanism": "Caldera rim umbrella and mid-altitude northerly plume"
+    },
+    {
+      "municipality": "Silang",
+      "province": "Cavite",
+      "distance_from_vent_km": 21.0,
+      "bearing_from_vent_deg": 5.0,
+      "thickness_range_mm": [5.0, 15.0],
+      "representative_thickness_mm": 10.0,
+      "primary_mechanism": "Mid-level downwind plume advection"
+    },
+    {
+      "municipality": "Santa Rosa",
+      "province": "Laguna",
+      "distance_from_vent_km": 28.5,
+      "bearing_from_vent_deg": 25.0,
+      "thickness_range_mm": [2.0, 8.0],
+      "representative_thickness_mm": 4.5,
+      "primary_mechanism": "Downwind plume advection"
+    },
+    {
+      "municipality": "City of Manila",
+      "province": "Metro Manila",
+      "distance_from_vent_km": 65.0,
+      "bearing_from_vent_deg": 2.0,
+      "thickness_range_mm": [0.5, 2.0],
+      "representative_thickness_mm": 1.0,
+      "primary_mechanism": "High-altitude plume advection and fine ash fallout"
+    },
+    {
+      "municipality": "Quezon City",
+      "province": "Metro Manila",
+      "distance_from_vent_km": 75.0,
+      "bearing_from_vent_deg": 5.0,
+      "thickness_range_mm": [0.2, 1.5],
+      "representative_thickness_mm": 0.8,
+      "primary_mechanism": "Distal high-altitude plume transport"
+    },
+    {
+      "municipality": "City of Malolos",
+      "province": "Bulacan",
+      "distance_from_vent_km": 102.0,
+      "bearing_from_vent_deg": 355.0,
+      "thickness_range_mm": [0.05, 0.5],
+      "representative_thickness_mm": 0.2,
+      "primary_mechanism": "Distal fine ash tail transport"
+    }
+  ]
+}
