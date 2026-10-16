@@ -142,16 +142,16 @@ beforeEach(() => {
 
   vi.stubGlobal('fetch', vi.fn((url: string) => {
     if (url.includes('taal_eruption_timeline_2021_2024.json')) {
-      return Promise.resolve(new Response(JSON.stringify(mockTimelineEvents)))
+      return Promise.resolve(new Response(JSON.stringify(mockTimelineEvents.map(entry => ({ ...entry, review_status: 'reviewed' })))))
     }
     if (url.includes('taal_activity_log_2021_2024.json')) {
-      return Promise.resolve(new Response(JSON.stringify(mockActivityLog)))
+      return Promise.resolve(new Response(JSON.stringify(mockActivityLog.map(entry => ({ ...entry, review_status: 'reviewed' })))))
     }
     if (url.includes('taal_wovodat_metadata.json')) {
-      return Promise.resolve(new Response(JSON.stringify(mockWovodat)))
+      return Promise.resolve(new Response(JSON.stringify({ ...mockWovodat, review_status: 'reviewed' })))
     }
     if (url.includes('taal_hdx_damage_proxy_metadata.json')) {
-      return Promise.resolve(new Response(JSON.stringify(mockHdx)))
+      return Promise.resolve(new Response(JSON.stringify({ ...mockHdx, review_status: 'reviewed' })))
     }
     return Promise.resolve(new Response(JSON.stringify({})))
   }))
@@ -306,18 +306,16 @@ describe('VolcanoScene Taal Layer Controls & Radiogroup Accessibility', () => {
 
     // Enable PDZ, Dike, Alert Ring, and Tropomi
     fireEvent.click(screen.getByRole('checkbox', { name: 'Show PHIVOLCS PDZ (3D boundary)' }))
-    fireEvent.click(screen.getByRole('checkbox', { name: 'Show Alert Level ring (GVP/PHIVOLCS)' }))
+    expect((screen.getByRole('checkbox', { name: 'Show Alert Level ring (source review pending)' }) as HTMLInputElement).disabled).toBe(true)
     fireEvent.click(screen.getByRole('checkbox', { name: 'Show 2020 dike intrusion (Bato et al. 2021)' }))
-    fireEvent.click(screen.getByRole('checkbox', { name: 'Show Sentinel-5P observed plume bearing' }))
+    expect((screen.getByRole('checkbox', { name: 'Show Sentinel-5P observed plume bearing (source review pending)' }) as HTMLInputElement).disabled).toBe(true)
 
-    expect(screen.getByText(/Permanent Danger Zone boundary/)).toBeTruthy()
-    expect(screen.getByText(/Alert Level \(Green: AL1, Amber: AL2, Red: AL3\)/)).toBeTruthy()
-    expect(screen.getByText(/2020 lateral dike intrusion/)).toBeTruthy()
-    expect(screen.getByText(/Sentinel-5P TROPOMI/)).toBeTruthy()
+    expect(screen.getByText(/OpenStreetMap shoreline approximation/)).toBeTruthy()
+    expect(screen.getByText(/21 × 8 km modeled dike/)).toBeTruthy()
 
     // Verify all have "Contextual reference overlay - not a computed result of the ash model."
     const disclaimers = screen.getAllByText(/Contextual reference overlay - not a computed result of the ash model\./)
-    expect(disclaimers.length).toBeGreaterThanOrEqual(4)
+    expect(disclaimers.length).toBeGreaterThanOrEqual(2)
   })
 })
 
@@ -428,6 +426,12 @@ describe('EruptionTimeline Bookmarks Accessibility & Interaction', () => {
 })
 
 describe('HistoricalReferences Curated Evidence Accordions & Tables', () => {
+  it('withholds source-blocked context rather than rendering draft numbers', async () => {
+    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve(new Response(JSON.stringify([{ ...mockActivityLog[0], review_status: 'source_blocked' }])))))
+    render(<HistoricalReferences blocked={[]} tables={[]} volcanoId="taal" />)
+    expect(await screen.findByText(/records remain unavailable pending review/)).toBeTruthy()
+    expect(screen.queryByRole('table')).toBeNull()
+  })
   it('renders curated multi-parameter evidence sections for Taal', async () => {
     render(
       <HistoricalReferences

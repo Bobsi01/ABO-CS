@@ -41,6 +41,34 @@ def snapshot_times(duration, max_fall_time, rise_time, count):
     return times
 
 
+def pulse_snapshot_times(baseline, pulses, count):
+    """Retain every emitting pulse's start and interior in the fixed snapshot budget."""
+    active = [pulse for pulse in pulses if pulse.mass_rate_kg_s > 0]
+    interior = [pulse.start_s + pulse.duration_s / 2 for pulse in active]
+    if any(
+        not pulse.start_s < mid < pulse.start_s + pulse.duration_s
+        for pulse, mid in zip(active, interior, strict=True)
+    ):
+        raise ValueError("Pulse duration is below floating-point timeline resolution")
+    chosen = np.unique([0, baseline[-1], *interior, *[pulse.start_s for pulse in active]])
+    candidates = np.unique(
+        np.concatenate(
+            (
+                baseline,
+                np.asarray([pulse.start_s + pulse.duration_s for pulse in pulses]),
+            )
+        )
+    )
+    # Farthest-point insertion preserves coverage of the rest of the event/tail.
+    while chosen.size < count:
+        distances = np.min(np.abs(candidates[:, None] - chosen[None, :]), axis=1)
+        index = int(np.argmax(distances))
+        if distances[index] == 0:
+            raise ValueError("Requested pulse timeline cannot provide distinct snapshots")
+        chosen = np.sort(np.append(chosen, candidates[index]))
+    return chosen
+
+
 def cumulative_weights(
     times, falling_times, weights, duration, pulse_starts=None, pulse_durations=None
 ):
@@ -91,28 +119,38 @@ def airborne_parcels(
     diffusivity,
     initial_spread,
     cohorts=6,
+    source=None,
 ):
     release = np.broadcast_to(
         height * (np.arange(layers) + 0.5) / layers, (settling.size, layers)
     ).reshape(-1)
     speeds = np.repeat(settling, layers)
     falling = release / speeds
-    lower_age = np.maximum(0, times[:, None] - duration)
-    upper_age = np.minimum(times[:, None], falling[None, :])
+    rates = np.repeat(mass_rate * fractions / layers, layers)
+    starts = np.zeros(falling.size)
+    spans = np.full(falling.size, duration)
+    if source is not None:
+        release, speeds, falling = source["release_m"], source["settling_m_s"], source["times"]
+        rates, starts, spans = source["rate_kg_s"], source["start_s"], source["duration_s"]
+        u_e, u_n = source["u_e"][None, :, None], source["u_n"][None, :, None]
+    relative = times[:, None] - starts[None, :]
+    lower_age = np.maximum(0, relative - spans[None, :])
+    upper_age = np.minimum(relative, falling[None, :])
     active_age = np.maximum(0, upper_age - lower_age)
     ages = (
         lower_age[:, :, None]
         + active_age[:, :, None] * ((np.arange(cohorts) + 0.5) / cohorts)[None, None, :]
     )
     masses = np.broadcast_to(
-        active_age[:, :, None]
-        * np.repeat(mass_rate * fractions / layers, layers)[None, :, None]
-        / cohorts,
+        active_age[:, :, None] * rates[None, :, None] / cohorts,
         ages.shape,
     )
     heights = np.maximum(0, release[None, :, None] - speeds[None, :, None] * ages)
     radius = np.sqrt(initial_spread**2 + 2 * diffusivity * ages)
-    grain = np.broadcast_to(np.repeat(np.arange(settling.size), layers)[None, :, None], ages.shape)
+    grain_ids = (
+        source["grain"] if source is not None else np.repeat(np.arange(settling.size), layers)
+    )
+    grain = np.broadcast_to(grain_ids[None, :, None], ages.shape)
     return ages * u_e, ages * u_n, heights, radius, masses, grain
 
 
@@ -446,6 +484,8 @@ def sequence(request: EruptionRequest):
         s.column_height_m / options.plume_rise_speed_m_s,
         frame_count,
     )
+    if s.pulses:
+        times = pulse_snapshot_times(times, s.pulses, frame_count)
     if times.size != frame_count or np.any(np.diff(times) <= 0):
         raise ValueError(
             "Requested timeline cannot be represented at floating-point resolution; "
@@ -500,6 +540,7 @@ def sequence(request: EruptionRequest):
         mid_n,
         s.diffusivity_m2_s,
         s.initial_spread_m,
+        source=source,
     )
     eventual = service.simulate(simulation)
     criterion_by_id = {
@@ -529,7 +570,12 @@ def sequence(request: EruptionRequest):
     frames = []
     for frame_index, elapsed in enumerate(times):
         cumulative_mass = float(np.sum(arrived[frame_index]))
-        emitted = s.mass_rate_kg_s * min(float(elapsed), s.duration_s)
+        emitted = float(
+            np.sum(
+                source["pulse_rate_kg_s"]
+                * np.clip(elapsed - source["pulse_start_s"], 0, source["pulse_duration_s"])
+            )
+        )
         inside_mass = float(np.sum(grids[frame_index]) * (s.cell_km * 1000) ** 2)
         loads = receptor_loads[frame_index]
         thickness = loads * 1000 / s.bulk_density_kg_m3
@@ -585,8 +631,35 @@ def sequence(request: EruptionRequest):
             0,
             1 - max(0, elapsed - s.duration_s) / (s.column_height_m / options.plume_rise_speed_m_s),
         )
+        emitting = np.any(
+            (elapsed >= source["pulse_start_s"])
+            & (elapsed < source["pulse_start_s"] + source["pulse_duration_s"])
+            & (source["pulse_rate_kg_s"] > 0)
+        )
+        if not emitting:
+            column = 0
+        elif s.pulses:
+            pulse_heights = np.asarray([p.column_height_m for p in s.pulses])
+            active_pulses = (
+                (elapsed >= source["pulse_start_s"])
+                & (elapsed < source["pulse_start_s"] + source["pulse_duration_s"])
+                & (source["pulse_rate_kg_s"] > 0)
+            )
+            column = float(
+                np.max(
+                    np.where(
+                        active_pulses,
+                        np.minimum(
+                            pulse_heights,
+                            options.plume_rise_speed_m_s
+                            * np.maximum(0, elapsed - source["pulse_start_s"]),
+                        ),
+                        0,
+                    )
+                )
+            )
         fountain_particles = []
-        if fountain.size and phase == "erupting":
+        if fountain.size and emitting:
             progress = np.remainder(elapsed / flight_time + np.arange(12) / 12, 1)
             slots = np.minimum((progress * 32).astype(int), 31)
             fountain_particles = fountain[np.arange(12) % 4, slots].tolist()
@@ -641,7 +714,7 @@ def sequence(request: EruptionRequest):
             "Lava is an optional illustrative single channel, not a lava hazard forecast",
         ],
         assumptions=[
-            "Finite constant ash emission over the submitted duration",
+            service.source_assumption(s),
             "Each settled component retains its final fall-time Gaussian kernel",
             "Parcel ellipsoids are quantile envelopes, not concentration isosurfaces or tracers",
             f"Conservative working-memory estimate {estimate} bytes; "

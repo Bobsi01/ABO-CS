@@ -6,7 +6,9 @@
     "plume_height_m": 800,
     "event_type": "post_2020_unrest",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:03",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2021-07-01",
@@ -15,7 +17,9 @@
     "plume_height_m": 1000,
     "event_type": "phreatomagmatic",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2021-07-03",
@@ -24,7 +28,9 @@
     "plume_height_m": 2500,
     "event_type": "peak_so2_vog",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2021-07-07",
@@ -33,7 +39,9 @@
     "plume_height_m": 300,
     "event_type": "phreatomagmatic_burst",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2021-07-23",
@@ -42,7 +50,9 @@
     "plume_height_m": 600,
     "event_type": "downgraded_alert",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:08",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2021-11-15",
@@ -51,7 +61,9 @@
     "plume_height_m": 500,
     "event_type": "thermal_burst",
     "source": "PHIVOLCS Bulletin / GVP BGVN 46:12",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2022-03-26",
@@ -60,7 +72,9 @@
     "plume_height_m": 2000,
     "event_type": "phreatomagmatic",
     "source": "PHIVOLCS Bulletin / GVP BGVN 47:04",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2022-04-01",
@@ -69,7 +83,9 @@
     "plume_height_m": 700,
     "event_type": "phreatomagmatic_declining",
     "source": "PHIVOLCS Bulletin / GVP BGVN 47:05",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2022-07-11",
@@ -78,7 +94,9 @@
     "plume_height_m": 400,
     "event_type": "downgraded_alert",
     "source": "PHIVOLCS Bulletin / GVP BGVN 47:07",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2023-01-20",
@@ -87,7 +105,9 @@
     "plume_height_m": 600,
     "event_type": "tremor_spike",
     "source": "PHIVOLCS Bulletin / GVP BGVN 48:02",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date": "2024-04-12",
@@ -96,6 +116,8 @@
     "plume_height_m": 2400,
     "event_type": "phreatic_new_vent",
     "source": "PHIVOLCS Bulletin, 12 April 2024",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   }
 ]

@@ -70,7 +70,9 @@ def curate_pdz():
                 "properties": {
                     "id": "phivolcs-taal-pdz",
                     "name": "Taal Volcano Island Permanent Danger Zone",
-                    "authority": "PHIVOLCS",
+                    "authority": "OpenStreetMap contributors (shoreline approximation)",
+                    "geometry_source": "frontend/public/geography-context.geojson; ODbL1.0",
+                    "review_status": "approximate_context",
                     "date": "2021-02-15",
                     "disclaimer": DISCLAIMER,
                     "note": (
@@ -83,7 +85,7 @@ def curate_pdz():
         ],
     }
     target = OUT_DIR / "taal_pdz.geojson"
-    target.write_text(json.dumps(pdz_geojson, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(pdz_geojson, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target} ({len(coords)} points)")
 
 
@@ -112,45 +114,12 @@ def curate_earthquakes():
                     except (ValueError, TypeError):
                         continue
     else:
-        # Representative fallback events capturing July 2021 and March 2022 swarms
-        earthquakes = [
-            {
-                "id": "usgs_20210701_001",
-                "time": "2021-07-01T07:16:00Z",
-                "latitude": 14.008,
-                "longitude": 120.996,
-                "depth_km": 3.4,
-                "magnitude": 2.8,
-                "place": "Taal Volcano region, Batangas, Philippines",
-                "source": "USGS Earthquake Hazards Program (FDSN)",
-                "disclaimer": DISCLAIMER,
-            },
-            {
-                "id": "usgs_20210701_002",
-                "time": "2021-07-01T08:45:00Z",
-                "latitude": 14.012,
-                "longitude": 120.992,
-                "depth_km": 4.1,
-                "magnitude": 3.2,
-                "place": "Taal Volcano region, Batangas, Philippines",
-                "source": "USGS Earthquake Hazards Program (FDSN)",
-                "disclaimer": DISCLAIMER,
-            },
-            {
-                "id": "usgs_20220326_001",
-                "time": "2022-03-26T03:12:00Z",
-                "latitude": 14.003,
-                "longitude": 120.997,
-                "depth_km": 2.2,
-                "magnitude": 3.0,
-                "place": "Taal Volcano region, Batangas, Philippines",
-                "source": "USGS Earthquake Hazards Program (FDSN)",
-                "disclaimer": DISCLAIMER,
-            },
-        ]
+        raise FileNotFoundError(
+            "Archived USGS CSV is required; no synthetic observations substituted"
+        )
 
     target = OUT_DIR / "taal_earthquakes_2021_2024.json"
-    target.write_text(json.dumps(earthquakes, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(earthquakes, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target} ({len(earthquakes)} events)")
 
 
@@ -256,10 +225,15 @@ def curate_activity_log():
             "disclaimer": DISCLAIMER,
         },
     ]
+    for entry in log:
+        entry["review_status"] = "source_blocked"
+        entry["review_reason"] = (
+            "Exact bulletin snapshots and per-value locators have not been reviewed"
+        )
     target1 = OUT_DIR / "taal_activity_log.json"
-    target1.write_text(json.dumps(log, indent=2), encoding="utf-8")
+    target1.write_text(json.dumps(log, indent=2), encoding="utf-8", newline="\n")
     target2 = OUT_DIR / "taal_activity_log_2021_2024.json"
-    target2.write_text(json.dumps(log, indent=2), encoding="utf-8")
+    target2.write_text(json.dumps(log, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target1} and {target2} ({len(log)} log entries)")
 
 
@@ -271,10 +245,18 @@ def curate_deformation():
             "doi:10.1029/2021GL092803"
         ),
         "period": "2020-01-12 to 2020-01-14",
-        "max_uplift_cm": 100,
+        "max_uplift_cm": None,
         "dike_azimuth_deg": 225,
-        "dike_length_km": 5,
-        "subsidence_continues_to": "2021",
+        "dike_length_km": 21,
+        "dike_width_km": 8,
+        "subsidence_continues_to": None,
+        "review_status": "reviewed_geometry",
+        "source_url": "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/2021-06/010081426.pdf",
+        "source_locator": "Page 8, section 5: 21 x 8 km near-vertical dike extending southwest",
+        "source_sha256": "4c96830465928b5c742ec8a175233ee70bb5ab96ea9b5d9da28f22e179ce9c0e",
+        "azimuth_status": (
+            "225 degrees is schematic southwest, not an independently verified inversion angle"
+        ),
         "method": ("Sentinel-1 InSAR interferometry and continuous GPS inversion"),
         "disclaimer": DISCLAIMER,
         "note": (
@@ -283,9 +265,9 @@ def curate_deformation():
         ),
     }
     target1 = OUT_DIR / "taal_deformation_bato2021.json"
-    target1.write_text(json.dumps(deformation, indent=2), encoding="utf-8")
+    target1.write_text(json.dumps(deformation, indent=2), encoding="utf-8", newline="\n")
     target2 = OUT_DIR / "taal_deformation_2020_bato2021.json"
-    target2.write_text(json.dumps(deformation, indent=2), encoding="utf-8")
+    target2.write_text(json.dumps(deformation, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target1} and {target2}")
 
 
@@ -294,19 +276,20 @@ def curate_tropomi():
         "date": "2021-07-01",
         "satellite": "Sentinel-5P TROPOMI",
         "product": "L2__SO2___",
-        "plume_from_bearing_deg": 225,
-        "plume_length_km": 85,
-        "peak_so2_du": 112,
+        "plume_from_bearing_deg": None,
+        "plume_length_km": None,
+        "peak_so2_du": None,
+        "review_status": "source_blocked",
         "source": ("Copernicus Data Space Ecosystem (https://dataspace.copernicus.eu/)"),
         "access_date": "2026-10-12",
         "disclaimer": DISCLAIMER,
         "note": (
-            "Satellite-observed SO2 plume transport direction for July 2021 unrest. "
-            "Provided as an empirical contextual observation; not coupled to dispersion equations."
+            "Numerical observations withheld: no archived product granule, orbit, QA mask or "
+            "reproducible plume derivation was supplied. Not empirical validation evidence."
         ),
     }
     target = OUT_DIR / "taal_tropomi_july2021.json"
-    target.write_text(json.dumps(tropomi, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(tropomi, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target}")
 
 
@@ -383,8 +366,13 @@ def curate_eruption_timeline():
             "disclaimer": DISCLAIMER,
         },
     ]
+    for entry in timeline:
+        entry["review_status"] = "source_blocked"
+        entry["review_reason"] = (
+            "Exact bulletin snapshots and per-value locators have not been reviewed"
+        )
     target = OUT_DIR / "taal_eruption_timeline_2021_2024.json"
-    target.write_text(json.dumps(timeline, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(timeline, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target} ({len(timeline)} timeline events)")
 
 
@@ -434,8 +422,12 @@ def curate_wovodat():
             "Reference information compiled from WOVOdat and PHIVOLCS monitoring publications."
         ),
     }
+    wovodat["review_status"] = "source_blocked"
+    wovodat["review_reason"] = (
+        "Institutional network and station claims require archived source review"
+    )
     target = OUT_DIR / "taal_wovodat_metadata.json"
-    target.write_text(json.dumps(wovodat, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(wovodat, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target}")
 
 
@@ -475,8 +467,12 @@ def curate_hdx_damage_proxy():
         ],
         "disclaimer": DISCLAIMER,
     }
+    hdx_metadata["review_status"] = "source_blocked"
+    hdx_metadata["review_reason"] = (
+        "Dataset identities and direct artifacts have not been independently verified"
+    )
     target = OUT_DIR / "taal_hdx_damage_proxy_metadata.json"
-    target.write_text(json.dumps(hdx_metadata, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(hdx_metadata, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target}")
 
 
@@ -516,7 +512,7 @@ def curate_manifest():
     ]
     manifest = {
         "dataset_group": "taal-contextual-reference",
-        "curation_date": "2026-10-14",
+        "curation_date": "2026-10-15",
         "purpose": (
             "Static local reference overlays for Taal volcano context "
             "(PDZ, seismicity, activity timeline, InSAR deformation, TROPOMI plumes, WOVOdat, HDX)."
@@ -539,7 +535,7 @@ def curate_manifest():
                 }
             )
     target = OUT_DIR / "manifest.json"
-    target.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    target.write_text(json.dumps(manifest, indent=2), encoding="utf-8", newline="\n")
     print(f"Wrote {target} ({len(manifest['files'])} files tracked)")
 
 

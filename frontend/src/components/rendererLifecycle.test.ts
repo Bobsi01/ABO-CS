@@ -12,6 +12,17 @@ function fixture(texture: THREE.Texture) {
 }
 
 describe('renderer lifecycle', () => {
+  it('releases disposed layer materials before the renderer retires', () => {
+    const value = fixture(new THREE.Texture()), original = value.material.onBeforeCompile
+    const retire = guardRenderer(value.renderer, vi.fn())
+    value.renderer.render(value.scene, value.camera)
+    expect(value.material.onBeforeCompile).not.toBe(original)
+    value.scene.clear()
+    value.material.dispose()
+    expect(value.material.onBeforeCompile).toBe(original)
+    retire()
+    expect(value.material.onBeforeCompile).toBe(original)
+  })
   it('releases shared shader textures and restores hooks and the original render function exactly once', () => {
     const texture = new THREE.Texture(), dispose = vi.spyOn(texture, 'dispose')
     const value = fixture(texture), originalHook = value.material.onBeforeCompile

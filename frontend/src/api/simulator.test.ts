@@ -15,6 +15,15 @@ function sequenceFixture() {
 }
 afterEach(() => vi.unstubAllGlobals())
 describe('Python simulation boundary', () => {
+  it.each([
+    ['blocked inputs', { ...curatedCatalog, historical: { ...curatedCatalog.historical, blocked_inputs: 'bad' } }],
+    ['null reference', { ...curatedCatalog, historical: { ...curatedCatalog.historical, reference_tables: [null] } }],
+    ['parameter object', { ...curatedCatalog, parameter_evidence: [{ ...curatedCatalog.parameter_evidence[0], value: { bad: 1 } }] }],
+    ['criteria', { ...curatedCatalog, criteria: [null] }],
+  ])('rejects malformed %s before rendering', async (_name, value) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(value))))
+    await expect(getCatalog(new AbortController().signal)).rejects.toThrow('Unexpected Python response')
+  })
   it('accepts the curated catalog including its derived GeoJSON Feature reference traces', async () => {
     expect(curatedCatalog.historical.reference_footprints[0].geojson.type).toBe('Feature')
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(curatedCatalog))))

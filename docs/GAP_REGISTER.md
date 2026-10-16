@@ -1,5 +1,15 @@
 # QA gap register — 11 October 2026
 
+## Remediation acceptance, 16 October 2026
+
+[Remediation results](QA_REMEDIATION_RESULTS_20261015.md) record the completed 1,816.522-second, 42-cycle fixed-asset resource run. Its bounded acceptance criteria passed: no JavaScript exceptions, zero draws in all paused samples, one live context/canvas, stable DOM count and about 3.19 MiB post-GC heap growth. This supersedes the previous pending long-soak status for the recorded assets; native VRAM and multi-device behavior remain unestablished. Nine expanded axe workflow states and actual mobile keyboard scrolling pass after the inventory region fix. Independent native Word page review confirms the unchanged 16-page manuscript's recorded render. Full handoff checks cover 212 Python and 101 frontend tests, generated contracts, lint, formatting and production build. Actual hidden-page transitions, native screen-reader/Word checker operation, general numerical convergence and scientific source/agreement gates remain open. Older tables below retain their dated evidence.
+
+## Current comprehensive review, 15 October 2026
+
+See [current QA delivery](COMPREHENSIVE_QA_20261015.md) and [independent science review](QA_SCIENCE_20261015.md). Pulse accounting/parcels/relative columns, profile sweep rotation, bounded sweep admission, comparison wind semantics, malformed-response protection and detached-camera listener cleanup have correction evidence. Bato dimensions are corrected from the archived primary paper; OSM outline attribution is explicit. Unverified activity, timeline, TROPOMI, network and HDX claims are source-blocked and withheld from empirical presentation. Older statements calling all eight contextual datasets curated/verified are superseded by this source review.
+
+The current profile and pulse extensions are opt-in additions beyond the original proposal; uniform wind and one block remain the standard teaching case. Historical accuracy and release-height convergence remain unestablished. Actual hidden-page verification, long soak, native accessibility and full source closure remain open. A brief foreground callback sample and stable ten-cycle listener count do not close those larger gates.
+
 ## Current two-agent review — 12 October
 
 Both requested QA agents completed independent review and correction retests. [Current delivery](CURRENT_QA_DELIVERY.md) records the fixes and evidence. Custom-receptor census selection, interpolated-versus-computed snapshot wording and Windows UTF-8 curation defects are closed. Current checks pass 164 Python / 61 frontend cases. The revised 16-page actual Word manuscript has independent content/font/equation and every-page visual review, closing the previous final manuscript review gap for its recorded hash. The current app has independent scoped workflow/visual review; full performance, cleanup, lifecycle, native accessibility and empirical-source gates remain open.

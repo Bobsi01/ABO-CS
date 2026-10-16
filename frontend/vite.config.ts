@@ -7,6 +7,21 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    build: {
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              // Keep the map and 3D dependencies independently cacheable. Split
+              // Three's core from its WebGL renderer without eager app imports.
+              { name: 'three-core', test: /three[\\/]build[\\/]three\.core\.js/ },
+              { name: 'three-webgl', test: /three[\\/]build[\\/]three\.module\.js/ },
+              { name: 'map-vendor', test: /node_modules[\\/]leaflet[\\/]/ },
+            ],
+          },
+        },
+      },
+    },
     server: {
       host: '127.0.0.1',
       port: 5173,

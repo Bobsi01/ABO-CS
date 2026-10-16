@@ -1,0 +1,38 @@
+{
+  "docx_sha256": "666ce8604ed6acfad35730b9c8330e613b421bd9ba170da2f99c54180ae2da3a",
+  "pdf": "output\\playwright\\remediation-20261015\\manuscript\\ABO_RESEARCH_IMRAD.pdf",
+  "pdf_sha256": "d8773190707326f212e8c1022b4a39f0344031b37a6a460e6a71c2d8052b0da4",
+  "rendered_pages": 16,
+  "checked_prose_and_cell_paragraphs": 162,
+  "missing_from_render": [],
+  "page_footer_prefixes_removed_from_text_comparison": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "rendered_fonts": [
+    "/BCDEEE+ArialMT",
+    "/BCDFEE+Arial-BoldMT",
+    "/BCDGEE+ArialMT"
+  ],
+  "only_arial_rendered": true,
+  "source_contains_evaluation_markings": false,
+  "native_equations": 7,
+  "native_fractions": 13,
+  "pdf_has_structure_tree": true,
+  "pdf_marked": true,
+  "accessibility_limit": "Tagged output is not a native accessibility or screen-reader pass"
+}

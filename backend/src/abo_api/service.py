@@ -131,7 +131,7 @@ def prepare(request, sweep=False):
         len(s.grains) * s.release_layers * len(s.pulses or [None]),
         n,
         len(receptors),
-        360 if sweep else 1,
+        kernel.SWEEP_DIRECTION_BATCH if sweep else 1,
     )
     settling = np.asarray([g.settling_speed_m_s for g in s.grains])
     source = sources(s)
@@ -203,7 +203,9 @@ def provenance(scenario, data, receptors=(), criteria=()):
             "Surface exposure does not establish roof safety, water potability or flight safety",
             "No historical predictive validation has been established",
             "Input status is caller metadata; it does not certify scientific review",
-            "Finite release-height quadrature may require local receptor sensitivity checks",
+            f"Finite release-height quadrature uses {scenario.release_layers} midpoint layers; "
+            "local numerical convergence is not established and receptor values may change "
+            "materially under refinement",
         ]
         + (
             ["Physical inputs are illustrative assumptions, not measured eruption values"]
@@ -404,12 +406,25 @@ def simulate(request: SimulationRequest):
 
 def sweep(request: SimulationRequest):
     started = perf_counter()
-    (data, receptors, _, _, _, times, weights, variance, east, north, inside, _, *_) = prepare(
+    (data, receptors, _, _, _, times, weights, variance, east, north, inside, _, source) = prepare(
         request, sweep=True
     )
-    loads, bearings = kernel.sweep_maxima(
-        east, north, times, weights, variance, request.scenario.wind_speed_m_s
-    )
+    loads, bearings = np.full(east.size, -np.inf), np.zeros(east.size)
+    # Bounded orchestration; each direction/component/receptor batch stays vectorized.
+    for start in range(0, 360, kernel.SWEEP_DIRECTION_BATCH):
+        values, directions = kernel.sweep_maxima(
+            east,
+            north,
+            times,
+            weights,
+            variance,
+            request.scenario.wind_speed_m_s,
+            (source["u_e"], source["u_n"]) if request.scenario.wind_profile else None,
+            request.scenario.wind_from_deg,
+            np.arange(start, min(start + kernel.SWEEP_DIRECTION_BATCH, 360), dtype=float),
+        )
+        better = values > loads
+        loads, bearings = np.where(better, values, loads), np.where(better, directions, bearings)
     return SweepResult(
         scenario=request.scenario,
         receptors=[

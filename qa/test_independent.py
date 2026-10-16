@@ -408,6 +408,17 @@ def test_sweep_maximum_reproduces_selected_single_simulation(client):
 def test_sweep_budget_rejected_before_large_allocation(client):
     payload = request()
     payload["scenario"]["release_layers"] = 32
+    # Eight sources exceed the cap even with bounded direction batches.
+    scenario = payload["scenario"]
+    scenario["pulses"] = [
+        {
+            "start_s": 0,
+            "duration_s": scenario["duration_s"],
+            "column_height_m": scenario["column_height_m"],
+            "mass_rate_kg_s": scenario["mass_rate_kg_s"] / 8,
+        }
+        for _ in range(8)
+    ]
     payload["scenario"]["grains"].extend(
         [
             {"diameter_um": 400, "fraction": 0, "settling_speed_m_s": 4},

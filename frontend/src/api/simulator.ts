@@ -14,13 +14,14 @@ export type EruptionPulse = components['schemas']['EruptionPulse']
 type ReportingOptions = Partial<Pick<components['schemas']['SimulationRequest'], 'screening_context' | 'population_year'>>
 
 function record(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const numbers = (value: unknown): value is number[] => Array.isArray(value) && value.every(finite)
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every(v => typeof v === 'string')
 const nullableNumber = (value: unknown) => value === null || finite(value)
+const nullableString = (value: unknown) => value === null || typeof value === 'string'
 const stringRecord = (value: unknown) => record(value) && Object.values(value).every(entry => typeof entry === 'string')
 const optional = (value: unknown, check: (value: unknown) => boolean) => value === undefined || check(value)
 function referenceGeojsonValid(value: unknown): boolean {
@@ -32,10 +33,13 @@ function referenceGeojsonValid(value: unknown): boolean {
   return depth > 0 && coordinates(value.geometry.coordinates, depth)
 }
 function evidenceValid(value: unknown): boolean {
-  return optional(value, entries => Array.isArray(entries) && entries.every(entry => record(entry) && ['id', 'parameter', 'units', 'datum', 'uncertainty', 'locator', 'license', 'conversions', 'notes'].every(key => typeof entry[key] === 'string') && ['measured', 'derived', 'calibrated', 'assumed'].includes(String(entry.classification)) && ['usable', 'source_blocked', 'illustrative'].includes(String(entry.readiness)) && strings(entry.source_ids) && strings(entry.dependencies)))
+  return optional(value, entries => Array.isArray(entries) && entries.every(entry => record(entry) && ['id', 'parameter', 'units', 'datum', 'uncertainty', 'locator', 'license', 'conversions', 'notes'].every(key => typeof entry[key] === 'string') && ['measured', 'derived', 'calibrated', 'assumed'].includes(String(entry.classification)) && ['usable', 'source_blocked', 'illustrative'].includes(String(entry.readiness)) && strings(entry.source_ids) && strings(entry.dependencies) && (entry.value == null || typeof entry.value === 'string' || finite(entry.value) || numbers(entry.value))))
 }
 function historicalDetailsValid(value: Record<string, unknown>): boolean {
-  return optional(value.protocol, protocol => protocol === null || record(protocol) && ['id', 'frozen_at', 'event_start_utc', 'event_end_utc', 'event_definition', 'acceptance_tolerance', 'review_status'].every(key => typeof protocol[key] === 'string') && finite(protocol.duration_s) && strings(protocol.evaluation_rules))
+  return optional(value.blocked_inputs, strings)
+    && optional(value.reference_tables, entries => Array.isArray(entries) && entries.every(record))
+    && optional(value.observations, entries => Array.isArray(entries) && entries.every(entry => record(entry) && optional(entry.id, nullableString) && optional(entry.spatial_group, nullableString) && optional(entry.dependency_group, nullableString)))
+    && optional(value.protocol, protocol => protocol === null || record(protocol) && ['id', 'frozen_at', 'event_start_utc', 'event_end_utc', 'event_definition', 'acceptance_tolerance', 'review_status'].every(key => typeof protocol[key] === 'string') && finite(protocol.duration_s) && strings(protocol.evaluation_rules))
     && optional(value.dataset_id, id => id === null || typeof id === 'string')
     && optional(value.assessment_reasons, strings)
     && optional(value.source_dependencies, groups => Array.isArray(groups) && groups.every(group => record(group) && typeof group.group_id === 'string' && typeof group.disclosure === 'string' && strings(group.source_ids) && strings(group.dependent_quantities)))
@@ -112,7 +116,9 @@ async function request<T>(path: string, signal: AbortSignal, body?: unknown): Pr
       : path === 'wind-sweeps'
         ? Array.isArray(value.receptors) && value.receptors.every(r => receptorValid(r) && record(r) && typeof r.in_domain === 'boolean' && nullableNumber(r.maximum_thickness_mm) && nullableNumber(r.maximum_load_kg_m2) && nullableNumber(r.wind_from_deg)) && scenarioValid(value.scenario) && value.step_deg === 1 && typeof value.label === 'string'
         : typeof value.available === 'boolean' && typeof value.reason === 'string' && typeof value.validation_status === 'string' && (value.simulation == null || simulationValid(value.simulation)) && record(value.metrics) && Object.values(value.metrics).every(nullableNumber) && historicalDetailsValid(value)
-  if (!valid) throw new Error('Unexpected Python response. Check that the backend and frontend versions match.')
+  const consumedFieldsValid = (path !== 'catalog' || Array.isArray(value.criteria) && value.criteria.every(c => record(c) && typeof c.id === 'string' && typeof c.label === 'string') && strings((value.historical as Record<string, unknown>)?.blocked_inputs) && Array.isArray((value.historical as Record<string, unknown>)?.reference_tables))
+    && optional(value.observation_results, rows => Array.isArray(rows) && rows.every(row => record(row) && optional(row.spatial_group, nullableString) && optional(row.dependency_group, nullableString)))
+  if (!valid || !consumedFieldsValid) throw new Error('Unexpected Python response. Check that the backend and frontend versions match.')
   return value as T
 }
 

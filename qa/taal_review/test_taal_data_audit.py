@@ -230,8 +230,12 @@ def test_tropomi_plume_vector_orientation_and_caption_conventions():
         dir = Vector3(sin(45), 0, -cos(45)) -> points to NE.
     """
     tropomi = json.loads((TAAL_DIR / "taal_tropomi_july2021.json").read_text(encoding="utf-8"))
-    az = tropomi["plume_from_bearing_deg"]
-    assert az == 225, "Plume from bearing should be 225 degrees (SW Habagat)"
+    assert tropomi["review_status"] == "source_blocked"
+    assert tropomi["plume_from_bearing_deg"] is None
+    assert tropomi["plume_length_km"] is None
+    assert tropomi["peak_so2_du"] is None
+    # Synthetic orientation arithmetic, not an observed satellite bearing.
+    az = 225
 
     transport_deg = (az + 180) % 360
     assert transport_deg == 45, "Transport direction must be 45 degrees (North-East)"

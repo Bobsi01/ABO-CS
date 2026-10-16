@@ -6,7 +6,9 @@
       "properties": {
         "id": "phivolcs-taal-pdz",
         "name": "Taal Volcano Island Permanent Danger Zone",
-        "authority": "PHIVOLCS",
+        "authority": "OpenStreetMap contributors (shoreline approximation)",
+        "geometry_source": "frontend/public/geography-context.geojson; ODbL1.0",
+        "review_status": "approximate_context",
         "date": "2021-02-15",
         "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
         "note": "Shoreline approximation of Volcano Island (TVI); official hazard GIS should be consulted for regulatory zoning."
