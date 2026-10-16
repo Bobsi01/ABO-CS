@@ -246,6 +246,7 @@ function ReceptorMarkers({
       const groundY = groundM / 1000
       const thickness = r.thickness_mm ?? 0
       const isAffected = thickness >= 0.5
+      const hasTrace = thickness >= 0.01
       const pop = r.population ?? 0
 
       if (showPopulation3D) {
@@ -263,6 +264,8 @@ function ReceptorMarkers({
           colorHex = '#2563eb'
         } else if (isAffected) {
           colorHex = thickness >= 5.0 ? '#dc2626' : thickness >= 2.0 ? '#ea580c' : '#d97706'
+        } else if (hasTrace) {
+          colorHex = '#ca8a04'
         }
         mesh.current!.setColorAt(index, new THREE.Color(colorHex))
       } else {
@@ -271,7 +274,7 @@ function ReceptorMarkers({
         object.scale.setScalar(selected === r.id ? 0.18 : 0.07)
         object.updateMatrix()
         mesh.current!.setMatrixAt(index, object.matrix)
-        mesh.current!.setColorAt(index, new THREE.Color(selected === r.id ? '#1b5cad' : isAffected ? '#d97706' : '#274863'))
+        mesh.current!.setColorAt(index, new THREE.Color(selected === r.id ? '#1b5cad' : isAffected ? '#d97706' : hasTrace ? '#ca8a04' : '#274863'))
       }
     })
     mesh.current.instanceMatrix.needsUpdate = true
@@ -847,13 +850,30 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
     return inDomainReceptors.filter(r => (r.thickness_mm ?? 0) >= 0.5)
   }, [inDomainReceptors])
 
+  const traceReceptors = useMemo(() => {
+    return inDomainReceptors.filter(r => (r.thickness_mm ?? 0) >= 0.01)
+  }, [inDomainReceptors])
+
   const realTimeStats = useMemo(() => {
-    const count = exposedReceptors.length
+    const active = exposedReceptors.length > 0 ? exposedReceptors : traceReceptors
+    const isTraceOnly = exposedReceptors.length === 0 && traceReceptors.length > 0
+    const count = active.length
+    const reportedCount = exposedReceptors.length
+    const traceCount = traceReceptors.length
     const totalInDomain = inDomainReceptors.length
-    const pop = exposedReceptors.reduce((sum, r) => sum + (r.population ?? 0), 0)
+    const pop = active.reduce((sum, r) => sum + (r.population ?? 0), 0)
     const families = calculateFamiliesAffected(pop)
-    return { count, totalInDomain, pop, families }
-  }, [exposedReceptors, inDomainReceptors])
+    let peakName = ''
+    let peakMm = 0
+    for (const r of inDomainReceptors) {
+      const mm = r.thickness_mm ?? 0
+      if (mm > peakMm) {
+        peakMm = mm
+        peakName = r.name.split(',')[0]
+      }
+    }
+    return { count, reportedCount, traceCount, isTraceOnly, totalInDomain, pop, families, peakName, peakMm }
+  }, [exposedReceptors, traceReceptors, inDomainReceptors])
 
   const selectedReceptor = useMemo(() => {
     if (!selected || !frameResult?.receptors) return null
@@ -918,7 +938,11 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           <div className="impact-hud-grid">
             <div className="impact-stat">
               <span className="impact-label">Municipalities reached</span>
-              <span className="impact-value">{number(realTimeStats.count, 0)}<small> / {number(realTimeStats.totalInDomain, 0)}</small></span>
+              <span className="impact-value">{number(realTimeStats.count, 0)}<small> / {number(realTimeStats.totalInDomain, 0)}{realTimeStats.isTraceOnly ? ' (trace ≥0.01 mm)' : ''}</small></span>
+            </div>
+            <div className="impact-stat">
+              <span className="impact-label">Peak centroid ash</span>
+              <span className="impact-value">{number(realTimeStats.peakMm, 3)} mm{realTimeStats.peakName ? <small> · {realTimeStats.peakName}</small> : null}</span>
             </div>
             <div className="impact-stat">
               <span className="impact-label">Indicative population</span>
@@ -930,7 +954,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
             </div>
           </div>
           <p className="impact-disclaimer">
-            PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation tally.
+            {realTimeStats.isTraceOnly ? `0 ≥0.5 mm reporting cutoff; showing ${realTimeStats.traceCount} trace (≥0.01 mm). ` : ''}PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation tally.
           </p>
         </div>
       )}
