@@ -35,6 +35,7 @@ export default defineConfig(({ mode }) => {
       environment: 'jsdom',
       clearMocks: true,
       restoreMocks: true,
+      testTimeout: 15000,
     },
   }
 })

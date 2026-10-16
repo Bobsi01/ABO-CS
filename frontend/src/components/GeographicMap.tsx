@@ -52,9 +52,9 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     select.current = onSelect
   }, [onSelect])
 
-  const municipalBoundariesRef = useRef<FeatureCollection | null>(null)
-  const provincialBoundariesRef = useRef<FeatureCollection | null>(null)
-  const historicalFootprintRef = useRef<FeatureCollection | null>(null)
+  const [municipalBoundaries, setMunicipalBoundaries] = useState<FeatureCollection | null>(null)
+  const [provincialBoundaries, setProvincialBoundaries] = useState<FeatureCollection | null>(null)
+  const [historicalFootprint, setHistoricalFootprint] = useState<FeatureCollection | null>(null)
 
   useEffect(() => {
     if (!element.current) return
@@ -140,7 +140,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     fetch('/provincial-boundaries.geojson', { signal: controller.signal, cache: 'no-store' })
       .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
       .then(data => {
-        if (data) provincialBoundariesRef.current = data
+        if (data) setProvincialBoundaries(data)
       })
       .catch(() => {})
 
@@ -148,7 +148,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     fetch('/municipal-boundaries.geojson', { signal: controller.signal, cache: 'no-store' })
       .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
       .then(data => {
-        if (data) municipalBoundariesRef.current = data
+        if (data) setMunicipalBoundaries(data)
       })
       .catch(() => {})
 
@@ -156,7 +156,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     fetch('/taal_2020_footprint.geojson', { signal: controller.signal, cache: 'no-store' })
       .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
       .then(data => {
-        if (data) historicalFootprintRef.current = data
+        if (data) setHistoricalFootprint(data)
       })
       .catch(() => {})
 
@@ -226,25 +226,51 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       })
     }
 
+    const sampleGridThickness = (lat: number, lon: number): number | null => {
+      const g = frame?.grid ?? result?.grid
+      if (!g || !g.east_m.length || !g.north_m.length) return null
+      const dy = (lat - scenario.vent_lat) * 111132
+      const dx = (lon - scenario.vent_lon) * 111132 * Math.cos((scenario.vent_lat * Math.PI) / 180)
+      const e0 = g.east_m[0]
+      const n0 = g.north_m[0]
+      const cell = g.cell_m
+      const i = Math.round((dx - e0) / cell)
+      const j = Math.round((dy - n0) / cell)
+      if (j >= 0 && j < g.thickness_mm.length && i >= 0 && i < g.thickness_mm[j].length) {
+        return g.thickness_mm[j][i]
+      }
+      return null
+    }
+
     // 1. Municipal Boundaries Layer
-    if (showMunicipalities && municipalBoundariesRef.current && rows) {
-      L.geoJSON(municipalBoundariesRef.current, {
+    if (showMunicipalities && municipalBoundaries && rows) {
+      L.geoJSON(municipalBoundaries, {
         style: feat => {
           const prop = feat?.properties ?? {}
-          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(String(prop.name).split(',')[0].trim().toLowerCase())
-          const thickness = rec?.thickness_mm ?? 0
-          const hasAsh = thickness >= 0.01
+          const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
+          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
+          let thickness = rec?.thickness_mm
+          if (thickness == null && prop.center_lat && prop.center_lon) {
+            thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
+          }
+          const val = thickness ?? 0
+          const hasAsh = val >= 0.01
           return {
             color: hasAsh ? '#334155' : '#94a3b8',
             weight: hasAsh ? 1.2 : 0.6,
-            fillColor: hasAsh ? depositColor(thickness) : '#f8fafc',
-            fillOpacity: thickness >= 0.5 ? 0.45 : thickness >= 0.01 ? 0.25 : 0.04,
+            fillColor: hasAsh ? depositColor(val) : '#f8fafc',
+            fillOpacity: val >= 0.5 ? 0.45 : val >= 0.01 ? 0.25 : 0.04,
           }
         },
         onEachFeature: (feat, polygon) => {
           const prop = feat.properties ?? {}
-          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(String(prop.name).split(',')[0].trim().toLowerCase())
-          const thicknessStr = rec?.thickness_mm != null ? `${number(rec.thickness_mm)} mm ash` : 'Unmodeled'
+          const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
+          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
+          let thickness = rec?.thickness_mm
+          if (thickness == null && prop.center_lat && prop.center_lon) {
+            thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
+          }
+          const thicknessStr = thickness != null ? `${number(thickness)} mm ash` : 'Unmodeled'
           const provStr = prop.province ? ` (${prop.province})` : ''
           polygon.bindTooltip(`${prop.name}${provStr}: ${thicknessStr}`)
           if (rec) {
@@ -255,8 +281,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     }
 
     // 2. Provincial Boundaries and Regional Labels
-    if (showProvinces && provincialBoundariesRef.current) {
-      L.geoJSON(provincialBoundariesRef.current, {
+    if (showProvinces && provincialBoundaries) {
+      L.geoJSON(provincialBoundaries, {
         style: {
           color: '#475569',
           weight: 1.8,
@@ -267,7 +293,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       }).addTo(layer)
 
       // Add clean province labels at centroid
-      provincialBoundariesRef.current.features.forEach(feat => {
+      provincialBoundaries.features.forEach(feat => {
         const prop = feat.properties ?? {}
         if (prop.center_lat && prop.center_lon && prop.province) {
           const labelHtml = `<span class="province-label-tag">${prop.province}</span>`
@@ -362,6 +388,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     }
 
     // 5. Municipal Centroid Markers & Smart City Badges
+    const labeledPositions = new Set<string>()
     if (rows) {
       rows.forEach(r => {
         const isAffected = (r.thickness_mm ?? 0) >= 0.01
@@ -399,9 +426,37 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
         // Show city label badge for affected localities when enabled
         if (showCityLabels && isAffected && effect === 'ash') {
-          const cityName = r.name.split(',')[0]
+          const cityName = r.name.split(',')[0].replace('City of ', '').trim()
+          labeledPositions.add(cityName.toLowerCase())
           const badgeHtml = `<span class="city-map-badge">${cityName} <strong>${number(r.thickness_mm)} mm</strong></span>`
           L.marker([r.lat, r.lon], {
+            icon: L.divIcon({
+              className: 'city-badge-container',
+              html: badgeHtml,
+              iconSize: [110, 20],
+              iconAnchor: [55, -6],
+            }),
+            interactive: false,
+          }).addTo(layer)
+        }
+      })
+    }
+
+    // Additional badges for major domain municipalities not covered in rows
+    if (showCityLabels && effect === 'ash' && municipalBoundaries) {
+      municipalBoundaries.features.forEach(feat => {
+        const prop = feat.properties ?? {}
+        if (!prop.center_lat || !prop.center_lon) return
+        const rawName = String(prop.name).split(',')[0].replace('City of ', '').trim()
+        const normKey = rawName.toLowerCase()
+        if (labeledPositions.has(normKey)) return
+
+        const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(normKey)
+        const th = rec?.thickness_mm ?? sampleGridThickness(prop.center_lat, prop.center_lon)
+        if (th != null && th >= 0.5) {
+          labeledPositions.add(normKey)
+          const badgeHtml = `<span class="city-map-badge">${rawName} <strong>${number(th)} mm</strong></span>`
+          L.marker([prop.center_lat, prop.center_lon], {
             icon: L.divIcon({
               className: 'city-badge-container',
               html: badgeHtml,
@@ -423,6 +478,9 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     showProvinces,
     showMunicipalities,
     showCityLabels,
+    result,
+    municipalBoundaries,
+    provincialBoundaries,
   ])
 
   // Historical Reference 2020 Footprint Toggle
@@ -433,8 +491,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     if (!layer || !map) return
     layer.clearLayers()
 
-    if (showHistorical && historicalFootprintRef.current && scenario.volcano_id === 'taal') {
-      L.geoJSON(historicalFootprintRef.current, {
+    if (showHistorical && historicalFootprint && scenario.volcano_id === 'taal') {
+      L.geoJSON(historicalFootprint, {
         style: {
           color: '#7c3aed',
           weight: 2.5,
@@ -452,7 +510,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     } else {
       map.removeLayer(layer)
     }
-  }, [showHistorical, scenario])
+  }, [showHistorical, scenario, historicalFootprint])
 
   useEffect(() => {
     referenceVisible.current = showReference

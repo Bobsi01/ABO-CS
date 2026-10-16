@@ -79,13 +79,19 @@ def sources(s):
             [level.speed_m_s for level in s.wind_profile],
             [level.wind_from_deg for level in s.wind_profile],
         )
-        u_e, u_n = kernel.layer_winds(parts["release_m"], *levels)
-        mid_e, mid_n = kernel.layer_winds(np.asarray([s.column_height_m / 2]), *levels)
+        is_regional = bool(s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m)
+        u_e, u_n = kernel.layer_winds(parts["release_m"], *levels, column_integrated=is_regional)
+        mid_e, mid_n = kernel.layer_winds(
+            np.asarray([s.column_height_m / 2]), *levels, column_integrated=is_regional
+        )
         middle = (float(mid_e[0]), float(mid_n[0]))
     else:
         east, north = kernel.wind_components(s.wind_speed_m_s, s.wind_from_deg)
         u_e, u_n = np.full(parts["times"].size, east), np.full(parts["times"].size, north)
         middle = (float(east), float(north))
+    if "canopy_mask" in parts:
+        u_e = np.where(parts["canopy_mask"], 0.0, u_e)
+        u_n = np.where(parts["canopy_mask"], 0.0, u_n)
     parts.update(
         u_e=u_e,
         u_n=u_n,
@@ -128,8 +134,9 @@ def prepare(request, sweep=False):
         raise ValueError("Criterion identifiers must be unique")
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
+    comp_factor = 2 if (s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m) else 1
     budget = kernel.check_budget(
-        len(s.grains) * s.release_layers * len(s.pulses or [None]),
+        len(s.grains) * s.release_layers * len(s.pulses or [None]) * comp_factor,
         n,
         len(receptors),
         kernel.SWEEP_DIRECTION_BATCH if sweep else 1,
@@ -424,7 +431,15 @@ def sweep(request: SimulationRequest):
             weights,
             variance,
             request.scenario.wind_speed_m_s,
-            (source["u_e"], source["u_n"]) if request.scenario.wind_profile else None,
+            (source["u_e"], source["u_n"])
+            if (
+                request.scenario.wind_profile
+                or (
+                    request.scenario.umbrella_radius_m
+                    and request.scenario.umbrella_radius_m > request.scenario.initial_spread_m
+                )
+            )
+            else None,
             request.scenario.wind_from_deg,
             np.arange(start, min(start + kernel.SWEEP_DIRECTION_BATCH, 360), dtype=float),
         )

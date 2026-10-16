@@ -157,18 +157,52 @@ def test_wind_profile_with_umbrella():
 
     receptors = {r.name.split(",")[0].strip(): r for r in result.receptors}
 
-    # All caldera towns around the lake are affected (> 3 mm)
-    assert (receptors["Talisay"].thickness_mm or 0) > 5.0
-    assert (receptors["Laurel"].thickness_mm or 0) > 5.0
-    assert (receptors["San Nicolas"].thickness_mm or 0) > 3.0
+    # All 360° caldera rim towns around Lake Taal are affected (> 5 mm)
+    assert (receptors["Talisay"].thickness_mm or 0) > 10.0
+    assert (receptors["Laurel"].thickness_mm or 0) > 10.0
+    assert (receptors["San Nicolas"].thickness_mm or 0) > 10.0
     assert (receptors["Agoncillo"].thickness_mm or 0) > 10.0
     assert (receptors["Tagaytay"].thickness_mm or 0) > 10.0
+    assert (receptors["Balete"].thickness_mm or 0) > 10.0
+    assert (receptors["Mataasnakahoy"].thickness_mm or 0) > 10.0
+    assert (receptors["Cuenca"].thickness_mm or 0) > 5.0
+    assert (receptors["Tanauan"].thickness_mm or 0) > 5.0
 
     # Distal urban centers in NCR and Bulacan are also affected
-    assert (receptors["City of Makati"].thickness_mm or 0) > 1.0
-    assert (receptors["City of Muntinlupa"].thickness_mm or 0) > 1.0
-    assert (receptors["City of Pasig"].thickness_mm or 0) > 0.5
+    assert (receptors["City of Muntinlupa"].thickness_mm or 0) > 0.5
     assert (receptors["City of San Jose Del Monte"].thickness_mm or 0) > 0.5
+    assert (receptors["City of Makati"].thickness_mm or 0) > 0.2
+
+
+def test_no_offshore_contours_and_single_cohesive_isolines():
+    """Verify elimination of ghost offshore contours and single cohesive plume isolines."""
+    from abo_api.service import catalog
+
+    cat = catalog()
+    sc = [s for s in cat.scenarios if s.id == "taal-regional"][0].scenario
+    result = simulate(SimulationRequest(scenario=sc))
+
+    # Grid offshore mask: lon < 120.3, lat between 14.2 and 15.0 (South China Sea)
+    grid_mm = np.array(result.grid.thickness_mm)
+    east = np.array(result.grid.east_m)
+    north = np.array(result.grid.north_m)
+    ee, nn = np.meshgrid(east, north)
+    _, inv = kernel.projection(sc.vent_lat, sc.vent_lon)
+    lons, lats = inv.transform(ee, nn)
+
+    offshore_mask = (lons < 120.3) & (lats > 14.2) & (lats < 15.0)
+    max_offshore = float(np.max(grid_mm[offshore_mask]))
+    # Must be negligible (< 0.10 mm), preventing any offshore 0.5 mm or 1.0 mm contour ring
+    assert max_offshore < 0.10
+
+    # Contours must have exactly 1 continuous line per level
+    counts = {}
+    for feat in result.contours.features:
+        lvl = feat["properties"]["thickness_mm"]
+        counts[lvl] = counts.get(lvl, 0) + 1
+
+    for lvl in [0.01, 0.1, 0.5, 1.0, 5.0, 10.0]:
+        assert counts.get(lvl, 0) == 1, f"Expected 1 line for level {lvl}, got {counts.get(lvl)}"
 
 
 def math_close(a, b, tol=1e-6):

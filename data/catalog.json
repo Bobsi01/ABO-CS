@@ -336,11 +336,11 @@
   "scenarios": [
     {
       "id": "taal-teaching",
-      "name": "Taal illustrative teaching scenario",
+      "name": "Taal illustrative teaching scenario (5 km column)",
       "status": "illustrative",
       "scenario": {
         "volcano_id": "taal",
-        "label": "Taal illustrative teaching scenario",
+        "label": "Taal illustrative teaching scenario (5 km column)",
         "input_status": "illustrative",
         "source_ids": [
           "gvp-taal",
@@ -388,16 +388,17 @@
         "cell_km": 1.0,
         "release_layers": 16,
         "wind_profile": null,
-        "pulses": null
+        "pulses": null,
+        "umbrella_radius_m": null
       }
     },
     {
       "id": "taal-regional",
-      "name": "Taal regional dispersion scenario (literature scale)",
+      "name": "Taal 2020 regional eruption (17 km column, 20 km umbrella)",
       "status": "illustrative",
       "scenario": {
         "volcano_id": "taal",
-        "label": "Taal regional dispersion scenario (literature scale)",
+        "label": "Taal 2020 regional eruption (17 km column, 20 km umbrella)",
         "input_status": "illustrative",
         "source_ids": [
           "gvp-taal",
@@ -418,29 +419,29 @@
         "bulk_density_kg_m3": 1000.0,
         "grains": [
           {
-            "diameter_um": 16.0,
-            "fraction": 0.2,
-            "settling_speed_m_s": 0.02
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
           },
           {
-            "diameter_um": 32.0,
+            "diameter_um": 350.0,
             "fraction": 0.25,
-            "settling_speed_m_s": 0.05
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
           },
           {
             "diameter_um": 63.0,
-            "fraction": 0.25,
-            "settling_speed_m_s": 0.2
-          },
-          {
-            "diameter_um": 125.0,
             "fraction": 0.2,
-            "settling_speed_m_s": 0.8
+            "settling_speed_m_s": 0.35
           },
           {
-            "diameter_um": 250.0,
-            "fraction": 0.1,
-            "settling_speed_m_s": 3.0
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
           }
         ],
         "domain_km": 300.0,
@@ -531,7 +532,8 @@
         "cell_km": 1.0,
         "release_layers": 16,
         "wind_profile": null,
-        "pulses": null
+        "pulses": null,
+        "umbrella_radius_m": null
       }
     },
     {
@@ -588,7 +590,8 @@
         "cell_km": 1.0,
         "release_layers": 16,
         "wind_profile": null,
-        "pulses": null
+        "pulses": null,
+        "umbrella_radius_m": null
       }
     }
   ],

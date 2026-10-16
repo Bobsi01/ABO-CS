@@ -71,7 +71,8 @@ export default function Workspace() {
     const timeout = window.setTimeout(() => controller.abort(), 15000)
     getCatalog(controller.signal).then(data => {
       if (catalogRequest.current !== controller) return
-      setCatalog(data); setDraft(data.scenarios[0]?.scenario ?? null)
+      const initialScenario = data.scenarios.find(s => s.id === 'taal-regional')?.scenario ?? data.scenarios[0]?.scenario ?? null
+      setCatalog(data); setDraft(initialScenario)
       if (!data.scenarios.length) setError('The catalog has no scenario. Add local inputs before running.')
     }).catch(err => {
       if (catalogRequest.current === controller) setError(`${err instanceof Error ? err.message : 'Connection failed.'} Start the local Python backend, then retry the catalog.`)
@@ -83,7 +84,8 @@ export default function Workspace() {
     const timeout = window.setTimeout(() => controller.abort(), 15000)
     getCatalog(controller.signal).then(data => {
       if (catalogRequest.current !== controller) return
-      setCatalog(data); setDraft(data.scenarios[0]?.scenario ?? null)
+      const initialScenario = data.scenarios.find(s => s.id === 'taal-regional')?.scenario ?? data.scenarios[0]?.scenario ?? null
+      setCatalog(data); setDraft(initialScenario)
       if (!data.scenarios.length) setError('The catalog has no runnable scenario. Add local inputs before running.')
     }).catch(err => { if (!controller.signal.aborted) setError(`${err.message} Start the local Python backend, then retry the catalog.`); else if (catalogRequest.current === controller) setError('Catalog request timed out. Start the backend and retry.') }).finally(() => { window.clearTimeout(timeout); if (catalogRequest.current === controller) setLoading('') })
     return () => { catalogRequest.current = null; controller.abort(); window.clearTimeout(timeout); request.current?.abort() }
@@ -202,7 +204,7 @@ export default function Workspace() {
           setError(`${input.labels?.[0]?.textContent?.trim() || 'Invalid input'}: ${input.validationMessage}`)
           input.focus()
         }} onSubmit={event => { event.preventDefault(); void execute('simulation') }}>
-          <Select label="Scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(draft))?.id ?? ''} onChange={value => { const preset = catalog.scenarios.find(p => p.id === value); if (preset) change(preset.scenario) }} options={[{ value: '', label: `${catalog.volcanoes.find(v => v.id === draft.volcano_id)?.name ?? draft.volcano_id} · custom inputs`, disabled: true }, ...catalog.scenarios.map(p => ({ value: p.id, label: p.status === 'illustrative' ? `${catalog.volcanoes.find(v => v.id === p.scenario.volcano_id)?.name ?? p.scenario.volcano_id} · teaching scenario` : p.name }))]} />
+          <Select label="Scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(draft))?.id ?? ''} onChange={value => { const preset = catalog.scenarios.find(p => p.id === value); if (preset) change(preset.scenario) }} options={[{ value: '', label: `${catalog.volcanoes.find(v => v.id === draft.volcano_id)?.name ?? draft.volcano_id} · custom inputs`, disabled: true }, ...catalog.scenarios.map(p => ({ value: p.id, label: p.name }))]} />
           <p className="input-status">{draft.input_status === 'illustrative' ? 'Illustrative inputs, not a historical eruption.' : draft.input_status === 'reviewed' ? 'Reviewed inputs. See source provenance.' : 'Manual inputs. Review provenance before use.'}</p>
           {scientificScopeNote(draft.volcano_id) && <p className="view-note">{scientificScopeNote(draft.volcano_id)}</p>}
           {inputFields(primaryKeys)}
