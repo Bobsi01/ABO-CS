@@ -101,6 +101,8 @@ class Receptor(StrictModel):
     population_records: dict[str, int | None] = Field(default_factory=dict)
     admin_codes: dict[str, str] = Field(default_factory=dict)
     screening_conditions: dict[str, str] = Field(default_factory=dict)
+    province: str | None = None
+    region: str | None = None
 
     @model_validator(mode="after")
     def population_datum(self):

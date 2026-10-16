@@ -11,6 +11,7 @@ import Icon from './components/Icon'
 import Select from './components/Select'
 import type { IconName } from './components/Icon'
 import EruptionTimeline from './components/EruptionTimeline'
+import ProvincialExposureExplorer from './components/ProvincialExposureExplorer'
 import { ERUPTION_SOURCES } from './components/eruptionResearch'
 
 const VolcanoScene = lazy(() => import('./components/VolcanoScene'))
@@ -272,7 +273,13 @@ export default function Workspace() {
           {tab === 'help' && catalog && <EvidenceDetails catalog={catalog} />}
         </section>
         {result && tab === '3d' && <section className="results-section" aria-labelledby="results-title"><div className="section-heading"><div><h2 id="results-title">Municipal and facility exposure</h2><p>Eventual totals: {result.summary.municipalities_reported} municipal centroids ≥{result.summary.reporting_cutoff_mm} mm · {number(result.summary.indicative_population, 0)} indicative residents · {result.summary.receptors_covered}/{result.summary.receptors_total} locations in domain</p></div></div>
-          <details className="result-table-disclosure"><summary>Location table & exports</summary>
+          <ProvincialExposureExplorer
+            receptors={frame?.receptors ?? result.receptors}
+            selected={selected}
+            onSelect={setSelected}
+            reportingCutoffMm={result.summary.reporting_cutoff_mm}
+          />
+          <details className="result-table-disclosure"><summary>All location data table & exports</summary>
           <div className="result-tools"><Select label="Sort locations" value={sort} onChange={value => setSort(value as typeof sort)} options={[{ value: 'thickness', label: 'Highest thickness first' }, { value: 'name', label: 'Name' }]} /><div className="export-actions"><button type="button" onClick={exportCSV}><Icon name="download" />Final CSV</button><button type="button" onClick={() => download('abo-scenario.json', JSON.stringify({ scenario: result.scenario, ...completedReporting.current.get(result), eruption_options: activeSequence?.options ?? null, provenance: result.provenance }, null, 2), 'application/json')}><Icon name="code" />Scenario JSON</button></div></div>
           <div className="table-scroll"><table><caption>Point samples; indicative populations are not individual exposure estimates.</caption><thead><tr><th>Location</th><th>Thickness (mm)</th><th>Load (kg/m²)</th><th>Population / year</th><th>Screening</th></tr></thead><tbody>{receptors.map(r => <tr key={r.id} className={r.id === selected ? 'selected-row' : ''}><th scope="row"><button className="text-button" type="button" onClick={() => setSelected(r.id)}>{r.name}</button><small>{r.kind} · {r.in_domain ? 'In domain' : 'Outside coverage'}</small></th><td>{number(r.thickness_mm)}</td><td>{number(r.load_kg_m2)}</td><td>{number(r.population, 0)} / {r.population_year ?? 'Unknown'}</td><td>{Object.entries(r.screening).map(([key, state]) => <span className="screening-line" key={key}>{catalog?.criteria.find(criterion => criterion.id === key)?.label ?? key.replaceAll('_', ' ')}: {state}{r.screening_reasons?.[key] && <small>{r.screening_reasons[key]}</small>}</span>)}</td></tr>)}</tbody></table></div>
           </details><details><summary>Result provenance and assumptions</summary><p>{number(result.diagnostics.retained_fraction * 100)}% modeled mass inside domain · {number(result.diagnostics.outside_domain_mass_kg, 0)} kg outside · {result.diagnostics.validation_status.replaceAll('_', ' ')}.</p><p>{result.summary.reported_population_unknown} reported municipalities have unknown population.</p><p>Dataset {result.provenance.dataset_revision} · Solver {result.provenance.solver_version} · Inputs {result.provenance.input_status}</p>{[...result.provenance.assumptions, ...result.provenance.warnings].map((text, i) => <p key={i}>{text}</p>)}{activeSequence && <><h3>Event sequence</h3><p>Solver {activeSequence.solver_version} · lava route: {activeSequence.lava.stop_reason.replaceAll('_', ' ')}</p>{[...activeSequence.assumptions, ...activeSequence.warnings, ...activeSequence.lava.warnings].map((text, i) => <p key={i}>{text}</p>)}</>}</details>

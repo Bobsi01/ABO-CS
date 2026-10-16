@@ -1759,6 +1759,28 @@
             },
             "type": "object",
             "title": "Screening Conditions"
+          },
+          "province": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Province"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
           }
         },
         "additionalProperties": false,
@@ -1870,6 +1892,28 @@
             },
             "type": "object",
             "title": "Screening Conditions"
+          },
+          "province": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Province"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
           },
           "east_m": {
             "type": "number",
@@ -2619,6 +2663,28 @@
             },
             "type": "object",
             "title": "Screening Conditions"
+          },
+          "province": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Province"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
           },
           "in_domain": {
             "type": "boolean",

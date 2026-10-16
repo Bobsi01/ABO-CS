@@ -2,6 +2,8 @@
 
 ## Contributor entry points
 
+Expanded regional visualization (16 October): `docs/QA_REPORT_EXPANDED_VISUALIZATION.md` records scientific and UI/accessibility verification. `frontend/src/components/ProvincialExposureExplorer.tsx` and `frontend/src/components/GeographicMap.tsx` deliver the provincial impact hierarchy, municipal choropleth, and trace contour layers. `frontend/public/municipal-boundaries.geojson`, `provincial-boundaries.geojson`, and `taal_2020_footprint.geojson` supply the local spatial assets.
+
 QA remediation (15 October): `docs/QA_REMEDIATION_PLAN_20261015.md` defines priorities and acceptance; `docs/QA_REMEDIATION_RESULTS_20261015.md` records corrections and retained gates. `qa/browser/remediation-soak.cjs` and `remediation-accessibility.cjs` provide real browser resource/lifecycle and expanded axe workflows; their deliberate evidence is under `output/playwright/remediation-20261015/`. `qa/review_20261015/science/convergence_probe.py` is an independent scalar numerical sensitivity probe, not a production accuracy mode.
 
 Current comprehensive review (15 October): `docs/COMPREHENSIVE_QA_20261015.md` records corrections, integration checks and open gates. `docs/QA_SCIENCE_20261015.md` and `qa/review_20261015/science/` contain the independent source/numerical review; `output/playwright/qa-20261015/` contains current browser workflows, downloads, screenshots and resilience evidence. `frontend/src/components/orbitControlsLifecycle.ts` preserves the original document root during Three r186 camera disposal.

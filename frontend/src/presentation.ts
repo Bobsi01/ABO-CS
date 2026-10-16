@@ -1,4 +1,5 @@
 export const CONTOUR_LEVELS = [0.5, 1, 5, 10, 50, 100]
+export const TRACE_CONTOUR_LEVELS = [0.01, 0.1]
 
 /** Sequential earth tones encode deposit thickness, never hazard severity. */
 export function depositColor(mm: number): string {
@@ -8,6 +9,8 @@ export function depositColor(mm: number): string {
   if (mm >= 5) return '#b78a52'
   if (mm >= 1) return '#d1af78'
   if (mm >= 0.5) return '#e5d1a7'
+  if (mm >= 0.1) return '#f3e8c8'
+  if (mm >= 0.01) return '#faf2dc'
   return '#e9e8de'
 }
 

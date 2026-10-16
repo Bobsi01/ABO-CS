@@ -696,6 +696,10 @@ export interface components {
             screening_conditions?: {
                 [key: string]: string;
             };
+            /** Province */
+            province?: string | null;
+            /** Region */
+            region?: string | null;
         };
         /** ReceptorResult */
         ReceptorResult: {
@@ -736,6 +740,10 @@ export interface components {
             screening_conditions?: {
                 [key: string]: string;
             };
+            /** Province */
+            province?: string | null;
+            /** Region */
+            region?: string | null;
             /** East M */
             east_m: number;
             /** North M */
@@ -998,6 +1006,10 @@ export interface components {
             screening_conditions?: {
                 [key: string]: string;
             };
+            /** Province */
+            province?: string | null;
+            /** Region */
+            region?: string | null;
             /** In Domain */
             in_domain: boolean;
             /** Maximum Thickness Mm */

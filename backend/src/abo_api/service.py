@@ -235,7 +235,7 @@ def criterion_applicability(criterion, receptor, context):
 def contour_features(centers, thickness, inverse):
     contour = contourpy.contour_generator(x=centers, y=centers, z=thickness)
     features = []
-    for level in (0.5, 1, 5, 10, 50, 100):
+    for level in (0.01, 0.1, 0.5, 1, 5, 10, 50, 100):
         for line in contour.lines(level):
             if line.shape[0] < 2:
                 continue

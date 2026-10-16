@@ -308,3 +308,61 @@ button {
 a { color: var(--action); text-underline-offset: 0.2em; }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--action); outline-offset: 4px; }
 .historical-reference-map { min-height: 360px; width: 100%; border: 1px solid var(--border); border-radius: 6px; }
+
+/* Map Layer Toggles */
+.map-layer-toggles { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.map-toggle-pill { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; color: var(--text); user-select: none; }
+.map-toggle-pill:hover { background: var(--hover); }
+.map-toggle-pill:focus-within { outline: 2px solid var(--action); outline-offset: 1px; }
+.map-toggle-pill input { margin: 0; accent-color: var(--action); cursor: pointer; }
+.historical-toggle-pill { border-color: #8b5cf6; color: #6d28d9; }
+[data-theme="dark"] .historical-toggle-pill { border-color: #7c3aed; color: #c4b5fd; }
+
+/* Map Labels and Badges */
+.province-map-label { pointer-events: none; }
+.province-label-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #1e293b; background: rgba(255, 255, 255, 0.85); padding: 0.1rem 0.35rem; border-radius: 3px; border: 1px solid rgba(100, 116, 139, 0.4); white-space: nowrap; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+[data-theme="dark"] .province-label-tag { color: #f1f5f9; background: rgba(15, 23, 42, 0.85); border-color: rgba(148, 163, 184, 0.4); }
+.city-badge-container { pointer-events: none; }
+.city-map-badge { display: inline-block; font-size: 0.65rem; font-weight: 500; color: #0f172a; background: rgba(255, 255, 255, 0.92); border: 1px solid #94a3b8; padding: 0.1rem 0.35rem; border-radius: 4px; white-space: nowrap; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); }
+.city-map-badge strong { color: #195cc2; font-weight: 700; }
+[data-theme="dark"] .city-map-badge { background: rgba(15, 23, 42, 0.92); color: #f8fafc; border-color: #475569; }
+[data-theme="dark"] .city-map-badge strong { color: #60a5fa; }
+
+/* Provincial & City Exposure Explorer */
+.provincial-explorer { margin: 1.25rem 0; padding: 1.25rem; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.provincial-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+.provincial-header h3 { font-size: 1.15rem; margin: 0 0 0.25rem; color: var(--text); }
+.filter-button-group { display: flex; gap: 0.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 2px; }
+.filter-button-group button { min-height: 32px; padding: 0.25rem 0.65rem; font-size: 0.75rem; border: 0; background: transparent; color: var(--secondary); border-radius: 4px; cursor: pointer; }
+.filter-button-group button.active-filter { background: var(--action); color: var(--action-text); font-weight: 600; }
+
+/* Impact KPI Grid */
+.impact-kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+.impact-kpi-card { display: flex; flex-direction: column; padding: 0.75rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.kpi-label { font-size: 0.75rem; color: var(--secondary); margin-bottom: 0.2rem; }
+.kpi-value { font-size: 1.4rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+.kpi-sub { font-size: 0.7rem; color: var(--secondary); margin-top: 0.2rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Province Cards List */
+.province-cards-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.province-card { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; transition: border-color 0.15s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .province-card { transition: none; }
+}
+.province-card-active { border-color: var(--action); box-shadow: 0 0 0 1px var(--action); }
+.province-card-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: transparent; border: 0; cursor: pointer; text-align: left; flex-wrap: wrap; gap: 0.5rem; }
+.province-card-header:hover { background: var(--hover); }
+.province-title-area { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
+.locality-count-badge { font-size: 0.7rem; padding: 0.15rem 0.45rem; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; color: var(--secondary); }
+.province-summary-stats { display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: var(--secondary); }
+.province-peak-stat strong { color: var(--text); }
+.province-cities-table-wrapper { border-top: 1px solid var(--line); max-height: 320px; overflow-y: auto; }
+.province-cities-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.province-cities-table th, .province-cities-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); text-align: left; }
+.selected-city-row { background: var(--selected); }
+.city-name-display { font-weight: 600; color: var(--text); }
+.deposit-swatch-badge { display: inline-block; font-variant-numeric: tabular-nums; }
+.severity-pill { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; }
+.families-sub { display: block; font-size: 0.7rem; color: var(--secondary); }
+.locate-city-button { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 28px; padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; color: var(--action); }
+.locate-city-button:hover { background: var(--hover); }
