@@ -30,3 +30,13 @@ export function download(name: string, content: string, type: string) {
   link.click()
   window.setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
+
+/** Average household size in CALABARZON / Region IV-A (PSA 2020 CPH Report No. 2). */
+export const PSA_REGION4A_HOUSEHOLD_SIZE = 4.1
+
+/** Estimate families / households affected based on PSA 2020 average household size. */
+export function calculateFamiliesAffected(population: number | null | undefined): number {
+  if (population == null || population <= 0) return 0
+  return Math.round(population / PSA_REGION4A_HOUSEHOLD_SIZE)
+}
+
