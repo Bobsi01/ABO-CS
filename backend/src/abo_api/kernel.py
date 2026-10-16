@@ -6,6 +6,7 @@ from pyproj import CRS, Transformer
 from scipy.special import ndtr
 
 MEMORY_LIMIT_BYTES = 512 * 1024 * 1024
+SWEEP_DIRECTION_BATCH = 16
 
 
 def check_budget(kernel_count, cells, receptors, directions=1):
@@ -166,10 +167,34 @@ def exposure(
     }
 
 
-def sweep_maxima(east, north, times, weights, variance, speed):
-    directions = np.arange(360, dtype=float)
-    if speed == 0:
+def sweep_maxima(
+    east, north, times, weights, variance, speed, profile_winds=None, reference=0, directions=None
+):
+    directions = np.arange(360, dtype=float) if directions is None else directions
+    if speed == 0 and profile_winds is None:
         return point_load(east, north, times, weights, variance, 0, 0)[0], np.zeros(east.size)
+    loads = sweep_loads(
+        east, north, times, weights, variance, speed, directions, profile_winds, reference
+    )
+    indices = np.argmax(loads, axis=0)
+    return loads[indices, np.arange(east.size)], directions[indices]
+
+
+def sweep_loads(east, north, times, weights, variance, speed, directions, profile_winds, reference):
+    if profile_winds is not None:
+        radians = np.deg2rad(directions - reference)[:, None]
+        ue, un = profile_winds
+        # Rotate receptors instead of source vectors. At the vent their zero
+        # coordinates stay exact, preserving rotational ties under profile shear.
+        rotated_e = east[None, :] * np.cos(radians) - north[None, :] * np.sin(radians)
+        rotated_n = north[None, :] * np.cos(radians) + east[None, :] * np.sin(radians)
+        dx = rotated_e[:, None, :] - (ue * times)[None, :, None]
+        dy = rotated_n[:, None, :] - (un * times)[None, :, None]
+        return np.sum(
+            np.exp(-(dx**2 + dy**2) / (2 * variance[None, :, None]))
+            * (weights / (2 * np.pi * variance))[None, :, None],
+            axis=1,
+        )
     radians = np.deg2rad(directions)[:, None]
     # Rotate receptors into the wind frame. At the vent, the squared distance
     # is exactly (speed * time)**2 for every bearing: sin/cos norm round-off
@@ -183,8 +208,7 @@ def sweep_maxima(east, north, times, weights, variance, speed):
         * (weights / (2 * np.pi * variance))[None, :, None],
         axis=1,
     )
-    indices = np.argmax(loads, axis=0)
-    return loads[indices, np.arange(east.size)], directions[indices]
+    return loads
 
 
 def observation_metrics(predicted, lower, upper):

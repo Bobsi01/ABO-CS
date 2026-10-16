@@ -1,0 +1,1734 @@
+{
+  "started": "2026-10-15T08:05:36.306Z",
+  "target_seconds": 1800,
+  "completed": true,
+  "machine": {
+    "platform": "win32",
+    "cpu": "AMD Ryzen 7 5800U with Radeon Graphics         ",
+    "ram_bytes": 14877257728
+  },
+  "cases": [
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "restore remains paused",
+      "pass": true
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 0,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 1,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 2,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 3,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 4,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 5,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 6,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 7,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 8,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 9,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 10,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 11,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 12,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 13,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 14,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 15,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 16,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 17,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 18,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 19,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 20,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 21,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 22,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 23,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 24,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 25,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 26,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 27,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 28,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 29,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 30,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 31,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 32,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 33,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 34,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 35,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 36,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 37,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 38,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 39,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 40,
+        "draws": 0
+      }
+    },
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "paused on-demand rendering",
+      "pass": true,
+      "detail": {
+        "cycle": 41,
+        "draws": 0
+      }
+    },
+    {
+      "name": "no JavaScript exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "one canvas and bounded live GL contexts",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "contexts": 1,
+          "outstanding": {
+            "Texture": 9,
+            "Framebuffer": 3,
+            "Buffer": 51,
+            "Program": 13,
+            "Shader": 0,
+            "VertexArray": 18
+          },
+          "canvases": 1,
+          "visible": true,
+          "total_contexts": 3
+        },
+        "final": {
+          "contexts": 1,
+          "outstanding": {
+            "Texture": 9,
+            "Framebuffer": 3,
+            "Buffer": 41,
+            "Program": 11,
+            "Shader": 0,
+            "VertexArray": 13
+          },
+          "canvases": 1,
+          "visible": true,
+          "total_contexts": 45
+        }
+      }
+    },
+    {
+      "name": "post-GC heap bounded",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31294492
+        },
+        "final": {
+          "Documents": 1,
+          "JSEventListeners": 1295,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 34635240
+        }
+      }
+    },
+    {
+      "name": "document listeners bounded",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31294492
+        },
+        "final": {
+          "Documents": 1,
+          "JSEventListeners": 1295,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 34635240
+        }
+      }
+    },
+    {
+      "name": "build unchanged during soak",
+      "pass": true
+    }
+  ],
+  "samples": [
+    {
+      "label": "warmed-baseline",
+      "elapsed_s": 3.386,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 51,
+          "Program": 13,
+          "Shader": 0,
+          "VertexArray": 18
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 3
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1293,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 31294492
+      }
+    },
+    {
+      "label": "cycle-1",
+      "elapsed_s": 46.272,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 4
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 32130896
+      }
+    },
+    {
+      "label": "cycle-2",
+      "elapsed_s": 89.612,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 12,
+          "Shader": 0,
+          "VertexArray": 14
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 5
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11335,
+        "JSHeapUsedSize": 32498040
+      }
+    },
+    {
+      "label": "cycle-3",
+      "elapsed_s": 132.189,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 6
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 33272260
+      }
+    },
+    {
+      "label": "cycle-4",
+      "elapsed_s": 175.115,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 7
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 33375856
+      }
+    },
+    {
+      "label": "cycle-5",
+      "elapsed_s": 218.394,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 8
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 33415896
+      }
+    },
+    {
+      "label": "cycle-6",
+      "elapsed_s": 261.534,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 9
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 33851692
+      }
+    },
+    {
+      "label": "cycle-7",
+      "elapsed_s": 304.409,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 10
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11327,
+        "JSHeapUsedSize": 33897076
+      }
+    },
+    {
+      "label": "cycle-8",
+      "elapsed_s": 347.161,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 11
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11335,
+        "JSHeapUsedSize": 34055388
+      }
+    },
+    {
+      "label": "cycle-9",
+      "elapsed_s": 390.066,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 12
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34074612
+      }
+    },
+    {
+      "label": "cycle-10",
+      "elapsed_s": 433.242,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 12,
+          "Shader": 0,
+          "VertexArray": 14
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 13
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11335,
+        "JSHeapUsedSize": 34064312
+      }
+    },
+    {
+      "label": "cycle-11",
+      "elapsed_s": 476.351,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 14
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34180416
+      }
+    },
+    {
+      "label": "cycle-12",
+      "elapsed_s": 519.25,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 15
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34239044
+      }
+    },
+    {
+      "label": "cycle-13",
+      "elapsed_s": 562.215,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 16
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34264328
+      }
+    },
+    {
+      "label": "cycle-14",
+      "elapsed_s": 607.846,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 17
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34294640
+      }
+    },
+    {
+      "label": "cycle-15",
+      "elapsed_s": 650.576,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 18
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34321492
+      }
+    },
+    {
+      "label": "cycle-16",
+      "elapsed_s": 693.33,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 19
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34284980
+      }
+    },
+    {
+      "label": "cycle-17",
+      "elapsed_s": 736.022,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 20
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34374648
+      }
+    },
+    {
+      "label": "cycle-18",
+      "elapsed_s": 778.734,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 21
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34381180
+      }
+    },
+    {
+      "label": "cycle-19",
+      "elapsed_s": 821.755,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 22
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34428220
+      }
+    },
+    {
+      "label": "cycle-20",
+      "elapsed_s": 864.557,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 23
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34559928
+      }
+    },
+    {
+      "label": "cycle-21",
+      "elapsed_s": 908.051,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 24
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34513660
+      }
+    },
+    {
+      "label": "cycle-22",
+      "elapsed_s": 951.178,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 25
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34579584
+      }
+    },
+    {
+      "label": "cycle-23",
+      "elapsed_s": 994.414,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 26
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34625080
+      }
+    },
+    {
+      "label": "cycle-24",
+      "elapsed_s": 1037.841,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 27
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34614540
+      }
+    },
+    {
+      "label": "cycle-25",
+      "elapsed_s": 1081.184,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 28
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34792788
+      }
+    },
+    {
+      "label": "cycle-26",
+      "elapsed_s": 1124.179,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 29
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34618872
+      }
+    },
+    {
+      "label": "cycle-27",
+      "elapsed_s": 1167.013,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 30
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34644836
+      }
+    },
+    {
+      "label": "cycle-28",
+      "elapsed_s": 1210.107,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 31
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34635612
+      }
+    },
+    {
+      "label": "cycle-29",
+      "elapsed_s": 1253.573,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 32
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34563528
+      }
+    },
+    {
+      "label": "cycle-30",
+      "elapsed_s": 1296.779,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 33
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34642960
+      }
+    },
+    {
+      "label": "cycle-31",
+      "elapsed_s": 1340.056,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 34
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34618080
+      }
+    },
+    {
+      "label": "cycle-32",
+      "elapsed_s": 1383.43,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 35
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34648036
+      }
+    },
+    {
+      "label": "cycle-33",
+      "elapsed_s": 1427.159,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 36
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34652016
+      }
+    },
+    {
+      "label": "cycle-34",
+      "elapsed_s": 1470.87,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 37
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34688136
+      }
+    },
+    {
+      "label": "cycle-35",
+      "elapsed_s": 1514.024,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 38
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34663660
+      }
+    },
+    {
+      "label": "cycle-36",
+      "elapsed_s": 1557.174,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 39
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34695660
+      }
+    },
+    {
+      "label": "cycle-37",
+      "elapsed_s": 1600.471,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 40
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34654980
+      }
+    },
+    {
+      "label": "cycle-38",
+      "elapsed_s": 1643.555,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 41
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34624300
+      }
+    },
+    {
+      "label": "cycle-39",
+      "elapsed_s": 1686.52,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 42
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34599220
+      }
+    },
+    {
+      "label": "cycle-40",
+      "elapsed_s": 1729.727,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 43
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34620760
+      }
+    },
+    {
+      "label": "cycle-41",
+      "elapsed_s": 1773.279,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 44
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34658160
+      }
+    },
+    {
+      "label": "cycle-42",
+      "elapsed_s": 1816.345,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 45
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34635240
+      }
+    },
+    {
+      "label": "final",
+      "elapsed_s": 1816.466,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 41,
+          "Program": 11,
+          "Shader": 0,
+          "VertexArray": 13
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 45
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1295,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 34635240
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "cycles": 42,
+  "browser": "155.0.8059.41",
+  "asset_hashes": {
+    "GeographicMap-BZ0H5LvG.js": "969be6937b406784e62465b7cf8fda62045d7067edb9ae4912820a45d79acd84",
+    "index-Dv72Wat_.js": "14de861fd654de9ca3e2321252baad83d6fffbc16e931f3a650791cea7066aea",
+    "Legend-BK56WIvx.js": "96ea24a75d61ab05c4b27c7836a9dd0a3579e9a96127623274ae4c76620ea0b1",
+    "map-vendor-Bp6DtMNu.js": "89edec63e0c1807c7fd85cf2f859bee839c51b04fc85cd53a23628d03790ac05",
+    "rolldown-runtime-hePW80VL.js": "580ad8c58061a4dde99bde0a56905e382f0568516ee2f5b84dbfb52085709021",
+    "three-core-Dp-eO7LC.js": "10ce628f40c24012f66cb3aeb5fe1533a45dfc4e43d8a4eebfda5f554c9fb7cd",
+    "three-webgl-DEjMVrnk.js": "c48dbac7c382752465df7cf9aa6da567ecf4d79b92cabeac7484b5b254f5b320",
+    "VolcanoScene-DoLMcT7u.js": "09a0877c6e07760d2dbec6de673e166c350b7cb24f64e833d6f052733c6a2692"
+  },
+  "gpu": {
+    "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "WebKit"
+  },
+  "hidden": {
+    "hidden": false,
+    "state": "visible",
+    "slider": "13",
+    "paused": false,
+    "slider_after": "13"
+  },
+  "hidden_status": "unavailable: minimizing this automation window did not change document.hidden",
+  "actual_seconds": 1816.522,
+  "finished": "2026-10-15T08:36:01.216Z"
+}

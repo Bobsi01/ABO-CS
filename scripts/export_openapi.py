@@ -10,5 +10,5 @@ sys.path.insert(0, str(PROJECT_ROOT / "backend" / "src"))
 from abo_api.main import app  # noqa: E402
 
 output_path = PROJECT_ROOT / "frontend" / "openapi.json"
-output_path.write_text(json.dumps(app.openapi(), indent=2) + "\n", encoding="utf-8")
+output_path.write_text(json.dumps(app.openapi(), indent=2) + "\n", encoding="utf-8", newline="\n")
 print(f"Exported {output_path}")

@@ -1,5 +1,13 @@
 # ABO project context
 
+## Remediation handoff, 16 October 2026
+
+The [remediation results](docs/QA_REMEDIATION_RESULTS_20261015.md) supersede the earlier in-progress resource status. The fixed-asset soak passed its bounded criteria over 1,816.522 seconds and 42 cycles, with one live context/canvas, stable DOM counts and no JavaScript exceptions. Nine expanded axe workflow states and real mobile inventory keyboard scrolling pass. The unchanged 16-page native Word render has independent visual review. Full handoff verification covers 212 Python and 101 frontend tests, lint, formatting, generated contracts and production build. Historical agreement, general numerical convergence, source completion, actual hidden-page transitions, native accessibility and multi-device/physical VRAM evidence remain open.
+
+## Comprehensive QA, 15 October 2026
+
+The post-pull review corrected pulse mass/parcels/columns, profile sweep behavior, bounded sweep allocation, uniform comparison inputs, malformed-response handling and detached-camera listener cleanup. An independent evaluator verified numerical counterexamples and offline curation reproduction. Bato dike dimensions are corrected to 21 × 8 km; unsupported contextual observations remain source-blocked and unavailable in the UI. Current evidence and limits are in `docs/COMPREHENSIVE_QA_20261015.md`; earlier dated passes do not certify the current bundle. Historical agreement, actual hidden-page behavior, long soak and native accessibility remain separate open gates.
+
 ## Current two-agent QA — 2026-10-12
 
 Two requested independent QA agents completed review and correction retests. The orchestrator fixed selected-census handling for custom receptors, clarified smooth 3D interpolation versus discrete map snapshots, and repaired platform-default source decoding through explicit UTF-8. Dataset revision is `2026-10-12-gap-evidence-v2-utf8`; an independent comparison confirms only text changed, with scientific numeric inputs preserved. Current checks pass 164 Python / 61 frontend cases. The revised IMRaD Word manuscript is 16 pages, Arial 11/12, seven editable equations, and has independent actual-DOCX and every-page review. Both QA tasks are complete. `docs/CURRENT_QA_DELIVERY.md` routes current evidence; historical accuracy, incomplete input/inventory data and remaining engineering/accessibility gates are still open.

@@ -7,7 +7,9 @@
     "so2_t_day": 13287,
     "alert_level": 3,
     "source": "GVP BGVN 46:08 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2021-07-07 05:18 PHT",
@@ -17,7 +19,9 @@
     "so2_t_day": 7500,
     "alert_level": 3,
     "source": "GVP BGVN 46:08 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2021-11-15 to 2021-11-22",
@@ -27,7 +31,9 @@
     "so2_t_day": 3500,
     "alert_level": 2,
     "source": "GVP BGVN 46:12 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2022-03-26 07:22 PHT",
@@ -37,7 +43,9 @@
     "so2_t_day": 21000,
     "alert_level": 3,
     "source": "GVP BGVN 47:04 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2022-04-01",
@@ -47,7 +55,9 @@
     "so2_t_day": 8500,
     "alert_level": 3,
     "source": "GVP BGVN 47:05 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2022-10-05",
@@ -57,7 +67,9 @@
     "so2_t_day": 2000,
     "alert_level": 1,
     "source": "GVP BGVN 47:11 / PHIVOLCS Bulletin",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   },
   {
     "date_phst": "2024-04-12",
@@ -67,6 +79,8 @@
     "so2_t_day": 4100,
     "alert_level": 1,
     "source": "PHIVOLCS Bulletin, 12 April 2024",
-    "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
+    "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
+    "review_status": "source_blocked",
+    "review_reason": "Exact bulletin snapshots and per-value locators have not been reviewed"
   }
 ]

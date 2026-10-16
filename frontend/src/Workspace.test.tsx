@@ -20,6 +20,20 @@ beforeEach(() => {
 })
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.clearAllMocks() })
 describe('completed-result workflow', () => {
+  it('pauses the shared replay on window focus loss and never resumes automatically', async () => {
+    vi.mocked(getCatalog).mockResolvedValue(catalog)
+    vi.mocked(simulate).mockResolvedValue(result)
+    render(<Workspace />)
+    await screen.findByRole('button', { name: 'Run simulation' })
+    fireEvent.click(screen.getByRole('button', { name: 'Run simulation' }))
+    await screen.findByRole('button', { name: 'Play sequence' })
+    fireEvent.click(screen.getByRole('button', { name: 'Play sequence' }))
+    expect(screen.getByRole('button', { name: 'Pause sequence' })).toBeTruthy()
+    fireEvent.blur(window)
+    expect(screen.getByRole('button', { name: 'Play sequence' })).toBeTruthy()
+    fireEvent.focus(window)
+    expect(screen.getByRole('button', { name: 'Play sequence' })).toBeTruthy()
+  })
   it('keeps previous computed views on parameter edits and backend failure', async () => {
     vi.mocked(getCatalog).mockResolvedValue(catalog)
     vi.mocked(simulate).mockResolvedValueOnce(result).mockRejectedValueOnce(new Error('Backend unavailable'))

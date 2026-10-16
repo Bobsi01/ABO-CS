@@ -2,7 +2,8 @@
 
 ## Start here
 
-- [Current two-agent QA and corrections](CURRENT_QA_DELIVERY.md): latest implementation, research review and retained gates; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
+- [15 October remediation plan](QA_REMEDIATION_PLAN_20261015.md) and [remediation results](QA_REMEDIATION_RESULTS_20261015.md): current correction status, acceptance evidence and retained gates. [Comprehensive QA](COMPREHENSIVE_QA_20261015.md) and [independent science review](QA_SCIENCE_20261015.md) record the findings.
+- [12 October two-agent QA and corrections](CURRENT_QA_DELIVERY.md): dated implementation and research evidence; independent [science](CURRENT_SCIENCE_QA.md) and [app](CURRENT_APP_QA.md) reports.
 - [Contributor instructions](../CONTRIBUTING.md) and [repository map](../repository_map.md): setup and exact file locations.
 - [Gap register](GAP_REGISTER.md) and [gap-closure delivery](GAP_CLOSURE_DELIVERY.md): current status, open source gates and verification limits.
 - [Computation](COMPUTATION.md), [eruption model](ERUPTION_MODEL.md) and [input values](INPUT_VALUES.md): units, equations and physical assumptions.

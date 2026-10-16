@@ -1,13 +1,13 @@
 {
   "dataset_group": "taal-contextual-reference",
-  "curation_date": "2026-10-14",
+  "curation_date": "2026-10-15",
   "purpose": "Static local reference overlays for Taal volcano context (PDZ, seismicity, activity timeline, InSAR deformation, TROPOMI plumes, WOVOdat, HDX).",
   "policy": "Read-only offline files; never called at runtime over the network; never coupled to ash dispersion equations.",
   "files": [
     {
       "file": "taal_pdz.geojson",
-      "bytes": 16500,
-      "sha256": "a851123c23ecdf968133048fac6b1df50b9d2802c458ca1d1f1f50b5d5bc4423",
+      "bytes": 15903,
+      "sha256": "0630d6cf9208aafed1189e9474e7ba8c0acd1873facbe4b8005dc1775dc93442",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
@@ -18,56 +18,56 @@
     },
     {
       "file": "taal_earthquakes_2021_2024.json",
-      "bytes": 18479,
-      "sha256": "b3beec88b8fcbc260cead459d13f126ffc2c680321b1dc5bccaddebcb1877a00",
+      "bytes": 17939,
+      "sha256": "6395824a25df816fa2f3b9a13a34e38303b42e83991a96fa2795e5196f1e09d9",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_activity_log.json",
-      "bytes": 3277,
-      "sha256": "14d833897c2cbac0d5272b38fc9a1963fd2e8cf72e7781623419ed8957435af2",
+      "bytes": 4651,
+      "sha256": "7515eb742b3e832a493609c54c10a238fb35ffbcd87e84915863d8ad31900e73",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_activity_log_2021_2024.json",
-      "bytes": 3277,
-      "sha256": "14d833897c2cbac0d5272b38fc9a1963fd2e8cf72e7781623419ed8957435af2",
+      "bytes": 4651,
+      "sha256": "7515eb742b3e832a493609c54c10a238fb35ffbcd87e84915863d8ad31900e73",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_tropomi_july2021.json",
-      "bytes": 555,
-      "sha256": "ad71c280ae3b19b9b4ef44f2a53e3272c54bee9a5e886fc19989c57dd6516306",
+      "bytes": 587,
+      "sha256": "961d93742bb8d58e536eaecf42ed6e3aa5bdfb5657d5b36af8eed88b9da1dbd8",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_eruption_timeline_2021_2024.json",
-      "bytes": 2406,
-      "sha256": "55de179aaf2c3678984ca8c153c8a8bcdb3aa4d1021b4c36642a1900dccb393c",
+      "bytes": 3273,
+      "sha256": "6b62d48a6ff10b1bcaa1a636a2c8e830add3f0b06eb3a9e3c1d38eb18381771a",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_deformation_bato2021.json",
-      "bytes": 672,
-      "sha256": "c69ead77cdd0175dd532b06e68343327d83b165e085251f5d324003936a1f44a",
+      "bytes": 1107,
+      "sha256": "8a4402577ad2fba3aa85ccfb3ff6f1f587cf06b93feeff095602ddc4bfcd03a0",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_deformation_2020_bato2021.json",
-      "bytes": 672,
-      "sha256": "c69ead77cdd0175dd532b06e68343327d83b165e085251f5d324003936a1f44a",
+      "bytes": 1107,
+      "sha256": "8a4402577ad2fba3aa85ccfb3ff6f1f587cf06b93feeff095602ddc4bfcd03a0",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_wovodat_metadata.json",
-      "bytes": 1456,
-      "sha256": "d20849de4b78c8a5f6f513a162a1a53a77e25ff899975d2ac90adc8405ed0fc3",
+      "bytes": 1553,
+      "sha256": "ab1312f1b7b382d431eacf094faeccfff7c13bdef3690e3df8ea50081a929aae",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     },
     {
       "file": "taal_hdx_damage_proxy_metadata.json",
-      "bytes": 1546,
-      "sha256": "8cbbb2a3fc37f4eb4d6aec0b8f1feddcb4723b72cb6d6f07eb60bdd2a29cf97d",
+      "bytes": 1650,
+      "sha256": "e62bddded8de841e7e52e8024331bbc974708e269c34a0828910f695e150e8d0",
       "disclaimer": "Contextual reference overlay - not a computed result of the ash model."
     }
   ]

@@ -2,6 +2,10 @@
 
 ## Contributor entry points
 
+QA remediation (15 October): `docs/QA_REMEDIATION_PLAN_20261015.md` defines priorities and acceptance; `docs/QA_REMEDIATION_RESULTS_20261015.md` records corrections and retained gates. `qa/browser/remediation-soak.cjs` and `remediation-accessibility.cjs` provide real browser resource/lifecycle and expanded axe workflows; their deliberate evidence is under `output/playwright/remediation-20261015/`. `qa/review_20261015/science/convergence_probe.py` is an independent scalar numerical sensitivity probe, not a production accuracy mode.
+
+Current comprehensive review (15 October): `docs/COMPREHENSIVE_QA_20261015.md` records corrections, integration checks and open gates. `docs/QA_SCIENCE_20261015.md` and `qa/review_20261015/science/` contain the independent source/numerical review; `output/playwright/qa-20261015/` contains current browser workflows, downloads, screenshots and resilience evidence. `frontend/src/components/orbitControlsLifecycle.ts` preserves the original document root during Three r186 camera disposal.
+
 Taal multi-parameter review (14 October): `docs/TAAL_QA_DELIVERY.md` is the integrated evidence record. `qa/taal_review/SCIENCE_QA_REPORT.md`, `UI_A11Y_QA_REPORT.md`, and `GRAPHICS_3D_QA_REPORT.md` are the independent reports from the three authorized specialists. `qa/taal_review/test_taal_data_audit.py` runs in pytest; `frontend/src/taalUiA11y.test.tsx` and `frontend/src/components/volcanoScene3DQA.test.tsx` run in Vitest. Earlier milestones and evidence below remain dated history.
 
 Paths are relative to the repository root. Dated ownership below records previous implementation milestones; new contributors assign ownership for their own change.

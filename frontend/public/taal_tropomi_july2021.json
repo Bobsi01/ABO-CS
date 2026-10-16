@@ -2,11 +2,12 @@
   "date": "2021-07-01",
   "satellite": "Sentinel-5P TROPOMI",
   "product": "L2__SO2___",
-  "plume_from_bearing_deg": 225,
-  "plume_length_km": 85,
-  "peak_so2_du": 112,
+  "plume_from_bearing_deg": null,
+  "plume_length_km": null,
+  "peak_so2_du": null,
+  "review_status": "source_blocked",
   "source": "Copernicus Data Space Ecosystem (https://dataspace.copernicus.eu/)",
   "access_date": "2026-10-12",
   "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
-  "note": "Satellite-observed SO2 plume transport direction for July 2021 unrest. Provided as an empirical contextual observation; not coupled to dispersion equations."
+  "note": "Numerical observations withheld: no archived product granule, orbit, QA mask or reproducible plume derivation was supplied. Not empirical validation evidence."
 }

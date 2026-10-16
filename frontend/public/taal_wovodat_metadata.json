@@ -31,5 +31,7 @@
   },
   "license": "Public institutional monitoring service (PHIVOLCS / WOVOdat)",
   "disclaimer": "Contextual reference overlay - not a computed result of the ash model.",
-  "note": "Catalog of institutional multi-parameter monitoring infrastructure for Taal. Reference information compiled from WOVOdat and PHIVOLCS monitoring publications."
+  "note": "Catalog of institutional multi-parameter monitoring infrastructure for Taal. Reference information compiled from WOVOdat and PHIVOLCS monitoring publications.",
+  "review_status": "source_blocked",
+  "review_reason": "Institutional network and station claims require archived source review"
 }

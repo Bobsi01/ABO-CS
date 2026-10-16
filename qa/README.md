@@ -23,6 +23,14 @@ Start the production app on port 8000 first. Browser helpers target an installed
 
 The two `.heapsnapshot` files use Git LFS. Download them with `git lfs pull` before retained-object analysis. The application, CI numerical tests and frontend build do not require those snapshots.
 
+## 15 October remediation acceptance
+
+`browser/remediation-soak.cjs` records a fixed-asset, 1,800-second Chromium resource run by default. Start the production app, set `ABO_QA_URL` to its loopback URL, then run the script with Node. Optional `ABO_SOAK_SECONDS` and `ABO_QA_OUTPUT` support separate short/lifecycle attempts; output remains inside the checkout. The script does not mock scientific responses or alter curated inputs. Real visibility experiments are distinct from focus-emulated resource continuity.
+
+`browser/remediation-accessibility.cjs` runs axe against nine expanded desktop/mobile workflows and checks actual keyboard scrolling of the inventory table. Set `ABO_AXE_SOURCE` to an installed `axe-core/axe.min.js`; no extra runtime application dependency is needed. The actual campaign used axe-core 4.13.0. Automated accessibility results do not replace native screen-reader testing.
+
+See `docs/QA_REMEDIATION_PLAN_20261015.md` for acceptance criteria and `docs/QA_REMEDIATION_RESULTS_20261015.md` for evidence limits. Deliberate artifacts are in `output/playwright/remediation-20261015/`; browser session caches stay ignored.
+
 ## Optional research tools
 
 Use a separate environment for document tooling; these packages are not application dependencies:

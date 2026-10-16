@@ -1,0 +1,181 @@
+{
+  "started": "2026-10-15T08:09:25.278Z",
+  "target_seconds": 1,
+  "completed": true,
+  "machine": {
+    "platform": "win32",
+    "cpu": "AMD Ryzen 7 5800U with Radeon Graphics         ",
+    "ram_bytes": 14877257728
+  },
+  "cases": [
+    {
+      "name": "sequence HTTP success",
+      "pass": true,
+      "detail": 200
+    },
+    {
+      "name": "restore remains paused",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "one canvas and bounded live GL contexts",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "contexts": 1,
+          "outstanding": {
+            "Texture": 9,
+            "Framebuffer": 3,
+            "Buffer": 51,
+            "Program": 13,
+            "Shader": 0,
+            "VertexArray": 18
+          },
+          "canvases": 1,
+          "visible": true,
+          "total_contexts": 3
+        },
+        "final": {
+          "contexts": 1,
+          "outstanding": {
+            "Texture": 9,
+            "Framebuffer": 3,
+            "Buffer": 51,
+            "Program": 13,
+            "Shader": 0,
+            "VertexArray": 18
+          },
+          "canvases": 1,
+          "visible": true,
+          "total_contexts": 3
+        }
+      }
+    },
+    {
+      "name": "post-GC heap bounded",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31178900
+        },
+        "final": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31179024
+        }
+      }
+    },
+    {
+      "name": "document listeners bounded",
+      "pass": true,
+      "detail": {
+        "initial": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31178900
+        },
+        "final": {
+          "Documents": 1,
+          "JSEventListeners": 1293,
+          "Nodes": 11333,
+          "JSHeapUsedSize": 31179024
+        }
+      }
+    },
+    {
+      "name": "build unchanged during soak",
+      "pass": true
+    }
+  ],
+  "samples": [
+    {
+      "label": "warmed-baseline",
+      "elapsed_s": 3.411,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 51,
+          "Program": 13,
+          "Shader": 0,
+          "VertexArray": 18
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 3
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1293,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 31178900
+      }
+    },
+    {
+      "label": "final",
+      "elapsed_s": 3.467,
+      "resources": {
+        "contexts": 1,
+        "outstanding": {
+          "Texture": 9,
+          "Framebuffer": 3,
+          "Buffer": 51,
+          "Program": 13,
+          "Shader": 0,
+          "VertexArray": 18
+        },
+        "canvases": 1,
+        "visible": true,
+        "total_contexts": 3
+      },
+      "metrics": {
+        "Documents": 1,
+        "JSEventListeners": 1293,
+        "Nodes": 11333,
+        "JSHeapUsedSize": 31179024
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "cycles": 0,
+  "browser": "155.0.8059.41",
+  "asset_hashes": {
+    "GeographicMap-BZ0H5LvG.js": "969be6937b406784e62465b7cf8fda62045d7067edb9ae4912820a45d79acd84",
+    "index-Dv72Wat_.js": "14de861fd654de9ca3e2321252baad83d6fffbc16e931f3a650791cea7066aea",
+    "Legend-BK56WIvx.js": "96ea24a75d61ab05c4b27c7836a9dd0a3579e9a96127623274ae4c76620ea0b1",
+    "map-vendor-Bp6DtMNu.js": "89edec63e0c1807c7fd85cf2f859bee839c51b04fc85cd53a23628d03790ac05",
+    "rolldown-runtime-hePW80VL.js": "580ad8c58061a4dde99bde0a56905e382f0568516ee2f5b84dbfb52085709021",
+    "three-core-Dp-eO7LC.js": "10ce628f40c24012f66cb3aeb5fe1533a45dfc4e43d8a4eebfda5f554c9fb7cd",
+    "three-webgl-DEjMVrnk.js": "c48dbac7c382752465df7cf9aa6da567ecf4d79b92cabeac7484b5b254f5b320",
+    "VolcanoScene-DoLMcT7u.js": "09a0877c6e07760d2dbec6de673e166c350b7cb24f64e833d6f052733c6a2692"
+  },
+  "gpu": {
+    "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "WebKit"
+  },
+  "hidden": {
+    "hidden": false,
+    "state": "visible",
+    "slider": "13",
+    "paused": true,
+    "slider_after": "13"
+  },
+  "hidden_status": "unavailable: minimizing this automation window did not change document.hidden",
+  "soak_scheduling": "Playwright focus emulation enabled during resource soak; real lifecycle tested separately with emulation disabled. Not a native foreground performance benchmark.",
+  "actual_seconds": 3.48,
+  "finished": "2026-10-15T08:09:36.731Z"
+}

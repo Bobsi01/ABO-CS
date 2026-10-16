@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 type ActivityEntry = {
+  review_status?: string
   date: string
   alert_level: number
   so2_t_day: number
@@ -11,6 +12,7 @@ type ActivityEntry = {
 }
 
 type WovodatMetadata = {
+  review_status?: string
   volcano: string
   gvp_volcano_number: string
   observatory: string
@@ -32,6 +34,7 @@ type HdxDataset = {
 }
 
 type HdxMetadata = {
+  review_status?: string
   source: string
   portal_url: string
   datasets: HdxDataset[]
@@ -56,17 +59,17 @@ export default function HistoricalReferences({
     const controller = new AbortController()
     fetch('/taal_activity_log_2021_2024.json', { signal: controller.signal, cache: 'no-store' })
       .then(r => r.ok ? (r.json() as Promise<ActivityEntry[]>) : [])
-      .then(data => setActivity(data))
+      .then(data => setActivity(Array.isArray(data) ? data.filter(entry => entry.review_status === 'reviewed') : []))
       .catch(() => {})
 
     fetch('/taal_wovodat_metadata.json', { signal: controller.signal, cache: 'no-store' })
       .then(r => r.ok ? (r.json() as Promise<WovodatMetadata>) : null)
-      .then(data => setWovodat(data))
+      .then(data => setWovodat(data?.review_status === 'reviewed' ? data : null))
       .catch(() => {})
 
     fetch('/taal_hdx_damage_proxy_metadata.json', { signal: controller.signal, cache: 'no-store' })
       .then(r => r.ok ? (r.json() as Promise<HdxMetadata>) : null)
-      .then(data => setHdx(data))
+      .then(data => setHdx(data?.review_status === 'reviewed' ? data : null))
       .catch(() => {})
 
     return () => controller.abort()
@@ -102,7 +105,7 @@ export default function HistoricalReferences({
             <span className="reference-badge">Reference evidence · non-model</span>
           </div>
           <p className="view-note">
-            The open-source observational records below (PHIVOLCS, GVP, WOVOdat, NASA-JPL ARIA / HDX) provide independent volcanic context and ground-truth bounds for teaching and research. They are decoupled from the Gaussian ash dispersion solver.
+            Activity, monitoring-network and damage-proxy records remain unavailable pending review of exact source artifacts and value locators. Archived drafts are not ground-truth evidence. Context layers are decoupled from the Gaussian ash dispersion solver.
           </p>
 
           {activity.length > 0 && (
