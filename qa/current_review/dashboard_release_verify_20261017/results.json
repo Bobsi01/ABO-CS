@@ -1,0 +1,255 @@
+{
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "sw": 1920,
+      "sh": 1080,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 80,
+          "right": 1095.46875,
+          "width": 1015.46875
+        },
+        {
+          "left": 865.671875,
+          "right": 1065.671875,
+          "width": 200
+        },
+        {
+          "left": 1114.65625,
+          "right": 1839.984375,
+          "width": 725.328125
+        },
+        {
+          "left": 80,
+          "right": 1095.46875,
+          "width": 1015.46875
+        },
+        {
+          "left": 1114.65625,
+          "right": 1839.984375,
+          "width": 725.328125
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "sw": 1366,
+      "sh": 768,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 28,
+          "right": 786.09375,
+          "width": 758.09375
+        },
+        {
+          "left": 569.09375,
+          "right": 769.09375,
+          "width": 200
+        },
+        {
+          "left": 796.484375,
+          "right": 1338,
+          "width": 541.515625
+        },
+        {
+          "left": 28,
+          "right": 786.09375,
+          "width": 758.09375
+        },
+        {
+          "left": 796.484375,
+          "right": 1338,
+          "width": 541.515625
+        }
+      ]
+    },
+    {
+      "width": 701,
+      "height": 900,
+      "sw": 701,
+      "sh": 2152,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 16,
+          "right": 685,
+          "width": 669
+        },
+        {
+          "left": 33,
+          "right": 668,
+          "width": 635
+        },
+        {
+          "left": 16,
+          "right": 685,
+          "width": 669
+        },
+        {
+          "left": 16,
+          "right": 685,
+          "width": 669
+        },
+        {
+          "left": 16,
+          "right": 685,
+          "width": 669
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 900,
+      "sw": 800,
+      "sh": 1859,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 36,
+          "right": 764,
+          "width": 728
+        },
+        {
+          "left": 53,
+          "right": 747,
+          "width": 694
+        },
+        {
+          "left": 36,
+          "right": 764,
+          "width": 728
+        },
+        {
+          "left": 36,
+          "right": 764,
+          "width": 728
+        },
+        {
+          "left": 36,
+          "right": 764,
+          "width": 728
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "sw": 1024,
+      "sh": 1833,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 36,
+          "right": 988,
+          "width": 952
+        },
+        {
+          "left": 53,
+          "right": 971,
+          "width": 918
+        },
+        {
+          "left": 36,
+          "right": 988,
+          "width": 952
+        },
+        {
+          "left": 36,
+          "right": 988,
+          "width": 952
+        },
+        {
+          "left": 36,
+          "right": 988,
+          "width": 952
+        }
+      ]
+    },
+    {
+      "width": 1099,
+      "height": 900,
+      "sw": 1099,
+      "sh": 1833,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 36,
+          "right": 1063,
+          "width": 1027
+        },
+        {
+          "left": 53,
+          "right": 1046,
+          "width": 993
+        },
+        {
+          "left": 36,
+          "right": 1063,
+          "width": 1027
+        },
+        {
+          "left": 36,
+          "right": 1063,
+          "width": 1027
+        },
+        {
+          "left": 36,
+          "right": 1063,
+          "width": 1027
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 800,
+      "sw": 320,
+      "sh": 2358,
+      "canvases": 0,
+      "bounds": [
+        {
+          "left": 16,
+          "right": 304,
+          "width": 288
+        },
+        {
+          "left": 33,
+          "right": 287,
+          "width": 254
+        },
+        {
+          "left": 16,
+          "right": 304,
+          "width": 288
+        },
+        {
+          "left": 16,
+          "right": 304,
+          "width": 288
+        },
+        {
+          "left": 16,
+          "right": 304,
+          "width": 288
+        }
+      ]
+    }
+  ],
+  "scope": [
+    "Run data\n\nTaal 2020 regional eruption (17 km column, 20 km umbrella) · Eventual totals",
+    "Run data\n\nTaal 2020 regional eruption (17 km column, 20 km umbrella) · Computed event snapshots",
+    "Run data\n\nTaal 2020 regional eruption (17 km column, 20 km umbrella) · Eventual totals",
+    "Run data\n\nTaal 2020 regional eruption (17 km column, 20 km umbrella) · Run provenance"
+  ],
+  "reading": "Final sampled deposit\n24.13 mm\n\nTalisay, Batangas\nAt 103.4 h elapsed",
+  "row": "Laurel, Batangas\nmunicipality\n\tIn domain\t19.85\t19.85\t44,791 / 2024\t\nroof: unknown\nNo reviewed applicable roof criterion\ncrop: unknown\nNo reviewed applicable crop criterion",
+  "csv": "id,location,kind,in_domain,thickness_mm,load_kg_m2,population,population_year,screening,screening_reasons,dataset_revision,solver_version,input_status\r\n\"0401011000\",\"Laurel, Batangas\",\"municipality\",\"true\",\"19.85037077245691\",\"19.85037077245691\",\"44791\",\"2024\",\"{\"\"roof\"\":\"\"unknown\"\",\"\"crop\"\":\"\"unknown\"\"}\",\"{\"\"roof\"\":\"\"No reviewed applicable roof criterion\"\",\"\"crop\"\":\"\"No reviewed applicable crop criterion\"\"}\",\"2026-10-12-gap-evidence-v2-utf8\",\"abo-gaussian-1.0\",\"illustrative\"",
+  "focus": "View raw data",
+  "recovery": "Illustrative Inputs\nEventual totals\n0 municipal centroids ≥0.5 mm\n34/320 locations in domain\nPopulation year: 2024",
+  "race": "Illustrative Inputs\nEventual totals\n0 municipal centroids ≥0.5 mm\n34/320 locations in domain\nPopulation year: 2024"
+}

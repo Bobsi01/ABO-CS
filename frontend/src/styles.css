@@ -46,7 +46,7 @@ main.laboratory { width: min(100%, 1900px); display: grid; grid-template-columns
 .application .parameter-disclosure { border: 0; margin: 0; padding: 0; }
 .application .parameter-disclosure > summary { font-size: 1rem; padding-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
 .workspace { min-width: 0; padding: 0 1.25rem 1.25rem; }
-main.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
+main.laboratory.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .inputs-collapsed .parameter-panel { position: static; min-height: 0; max-height: none; border-right: 0; border-bottom: 1px solid var(--line); padding-block: 0.2rem; }
 .inputs-collapsed .parameter-disclosure > summary { padding-bottom: 0; }
 .muted, .view-note { color: var(--secondary); font-size: 0.85rem; }
@@ -430,3 +430,143 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--action); outlin
 .families-sub { display: block; font-size: 0.7rem; color: var(--secondary); }
 .locate-city-button { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 28px; padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; color: var(--action); }
 .locate-city-button:hover { background: var(--hover); }
+
+/* Results lead the opening page; spatial tools live on Simulation. */
+.application [hidden] { display: none !important; }
+.primary-navigation { display: flex; align-items: center; gap: 1.25rem; }
+.application .primary-navigation button { background: transparent; border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: 1rem 0.3rem; font-size: 0.85rem; }
+.application .primary-navigation button[aria-current="page"] { color: var(--action); border-bottom-color: var(--action); font-weight: 650; }
+.masthead { padding-block: 0; min-height: 68px; }
+.application[data-page="dashboard"] .workspace { padding: 1.25rem 1.75rem 1rem; }
+.dashboard { max-width: 1540px; margin: auto; }
+.dashboard-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.dashboard-heading h2, .simulation-heading h2 { font-size: 1.75rem; letter-spacing: -0.035em; margin: 0 0 0.25rem; }
+.dashboard-heading p, .simulation-heading p { color: var(--secondary); font-size: 0.85rem; margin: 0; }
+.dashboard-actions { display: flex; align-items: end; gap: 0.85rem; min-width: 0; }
+.application .dashboard-actions label { margin: 0; width: clamp(230px, 30vw, 460px); }
+.dashboard-actions button { white-space: nowrap; }
+.dashboard-context { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.78rem; color: var(--secondary); padding: 0.85rem 0 1rem; text-transform: none; }
+.dashboard-context span:first-child { text-transform: capitalize; }
+.dashboard-charts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+.chart-panel { min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 1rem 1.15rem 0.8rem; }
+.chart-panel > header { display: flex; align-items: start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.6rem; }
+.chart-panel h3 { font-size: 0.98rem; letter-spacing: -0.015em; margin: 0 0 0.3rem; }
+.chart-panel header p { font-size: 0.75rem; color: var(--secondary); margin: 0; }
+.chart-unit { color: var(--secondary); font-size: 0.8rem; }
+.application .chart-footnote { color: var(--secondary); font-size: 0.73rem; line-height: 1.45; margin: 0.65rem 0 0; }
+.ranking-chart { display: flex; flex-direction: column; gap: 0.2rem; margin: 0.5rem 0; }
+.application .ranking-row { display: grid; grid-template-columns: 20px minmax(75px, 1.1fr) minmax(50px, 1.7fr) minmax(48px, auto); gap: 0.65rem; width: 100%; min-height: 29px; padding: 0.3rem 0; border: 0; border-radius: 2px; background: transparent; text-align: left; font-size: 0.78rem; }
+.ranking-row.is-selected .rank-name { color: var(--action); font-weight: 650; }
+.rank-index { font-size: 0.7rem; color: var(--secondary); }
+.rank-name { overflow-wrap: anywhere; }
+.rank-track { height: 10px; background: var(--surface); border-radius: 2px; }
+.rank-track > span { display: block; height: 100%; background: var(--action); border-radius: 2px; }
+.ranking-row strong { text-align: right; font-variant-numeric: tabular-nums; font-size: 0.76rem; }
+.application .chart-location { width: 135px; flex-shrink: 0; margin: 0; }
+.application .chart-location select { min-height: 34px; padding: 0.35rem; font-size: 0.75rem; }
+.accumulation-chart { display: block; width: 100%; height: 210px; overflow: visible; }
+.line-chart-viewport { overflow-x: auto; }
+.line-chart-viewport:focus-visible { outline: 3px solid var(--action); outline-offset: -3px; }
+.chart-panel svg text { fill: var(--secondary); font-family: inherit; font-size: 12px; }
+.chart-panel .accumulation-chart text { font-size: 16px; }
+.chart-gridline { stroke: var(--line); stroke-width: 0.7; }
+.chart-line { stroke: var(--action); stroke-width: 2.7; fill: none; stroke-linejoin: round; }
+.chart-dot { fill: var(--panel); stroke: var(--action); stroke-width: 1.8; }
+.distribution-body { display: flex; align-items: center; gap: 1.1rem; }
+.deposit-donut { width: 170px; height: 170px; flex-shrink: 0; }
+.chart-panel .donut-total { font-size: 27px; font-weight: 700; fill: var(--text); }
+.distribution-legend { list-style: none; padding: 0; margin: 0; flex: 1; min-width: 0; }
+.distribution-legend li { display: grid; grid-template-columns: 10px minmax(0, 1fr) 24px 42px; align-items: center; gap: 0.5rem; font-size: 0.73rem; padding: 0.35rem 0; }
+.distribution-legend li > span:last-child { text-align: right; color: var(--secondary); }
+.distribution-legend strong { text-align: right; }
+.distribution-swatch { width: 10px; height: 10px; border: 1px solid var(--text); border-radius: 2px; }
+.scenario-ledger { margin: 0.5rem 0; }
+.scenario-ledger > div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); padding: 0.6rem 0; font-size: 0.8rem; }
+.scenario-ledger dt { color: var(--secondary); }
+.scenario-ledger dd { font-weight: 600; margin: 0; font-variant-numeric: tabular-nums; }
+.dashboard-empty { padding: 4rem 1rem; text-align: center; color: var(--secondary); }
+.run-data-dialog { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 10px; width: min(1120px, calc(100vw - 40px)); max-height: calc(100dvh - 60px); padding: 1.5rem; box-shadow: 0 20px 80px #10254440; }
+.run-data-dialog::backdrop { background: #10254480; }
+.dialog-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+.dialog-heading h2 { margin: 0 0 0.3rem; }
+.dialog-heading p { color: var(--secondary); font-size: 0.85rem; }
+.data-tabs { display: flex; gap: 1rem; border-bottom: 1px solid var(--line); margin: 0.5rem 0 1rem; }
+.application .data-tabs button { border: 0; border-radius: 0; border-bottom: 3px solid transparent; background: transparent; }
+.application .data-tabs button[aria-pressed="true"] { color: var(--action); border-bottom-color: var(--action); font-weight: 650; }
+.data-toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: 0.75rem; }
+.application .data-toolbar label { flex: 1; min-width: 140px; margin: 0; }
+.application .data-toolbar label:first-child { flex: 2; }
+.data-context, .application .dialog-note { font-size: 0.75rem; color: var(--secondary); margin: 0.75rem 0; }
+.data-scroll { max-height: 46dvh; overflow: auto; scrollbar-gutter: stable; }
+.data-scroll:focus-visible { outline: 3px solid var(--action); outline-offset: -3px; }
+.data-scroll thead { position: sticky; top: 0; z-index: 1; }
+.data-scroll table { min-width: 730px; }
+.data-scroll th { font-weight: 600; }
+.data-scroll th small, .data-scroll td small { display: block; font-weight: 400; color: var(--secondary); font-size: 0.72rem; }
+.simulation-heading { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 0 0; }
+.simulation-heading > div { margin-right: auto; }
+.application .simulation-heading .run-button { width: auto; flex-shrink: 0; }
+.simulation-heading > button { flex-shrink: 0; white-space: nowrap; }
+.application[data-page="3d"] .scene-stage, .application[data-page="3d"] .map-stage { height: clamp(280px, 34vh, 420px); }
+.application .timeline-explanation { padding: 0.4rem 0 0; margin-top: 0.4rem; }
+.timeline-explanation summary { font-size: 0.75rem; color: var(--secondary); }
+.simulation-data > summary { font-size: 0.85rem; }
+@media (min-width: 1001px) {
+  .application .eruption-timeline { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.4rem 1rem; margin-top: 0.75rem; padding: 0.5rem 0.85rem; }
+  .timeline-top { display: contents; }
+  .timeline-top > button { grid-column: 3; grid-row: 1; }
+  .application .timeline-slider { grid-column: 2; grid-row: 1; margin: 0; font-size: 0.75rem; }
+  .timeline-readout, .timeline-explanation, .historical-bookmarks { grid-column: 1 / -1; }
+  .application .timeline-explanation { border: 0; margin: 0; padding: 0; }
+}
+.application[data-page="3d"] .spatial-view { background: var(--panel); padding: 0.85rem; border: 1px solid var(--line); border-radius: 8px; }
+.application[data-page="3d"] .scene-toolbar, .application[data-page="3d"] .map-toolbar { min-height: 76px; margin-bottom: 0.75rem; }
+.application .map-layer-menu { position: relative; padding: 0; margin: 0; border: 0; }
+.application .map-layer-menu > summary { font-size: 0.8rem; border: 1px solid var(--control-line); border-radius: 6px; padding: 0.65rem; min-height: 44px; }
+.application .map-layer-menu fieldset { position: absolute; right: 0; top: 100%; z-index: 1002; width: min(300px, 75vw); background: var(--panel); box-shadow: 0 8px 20px #10254426; }
+.map-layer-menu .map-layer-checkboxes { flex-direction: column; align-items: start; }
+@media (min-width: 1001px) {
+  .application[data-page="3d"] .spatial-pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (min-width: 1100px) and (max-height: 800px) {
+  .application[data-page="dashboard"] .workspace { padding-top: 0.8rem; }
+  .application[data-page="dashboard"] .workspace { padding-bottom: 0.4rem; }
+  .application[data-page="dashboard"] .page-footer { padding-block: 0.5rem; }
+  .dashboard-context { padding: 0.6rem 0; }
+  .chart-panel { padding: 0.8rem 1rem; }
+  .accumulation-chart { height: 180px; }
+  .deposit-donut { width: 140px; height: 140px; }
+  .application .ranking-row { min-height: 26px; padding-block: 0.2rem; }
+  .rank-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .scenario-ledger > div { padding-block: 0.4rem; }
+  .dashboard-heading h2 { font-size: 1.55rem; }
+  .dashboard-heading p { display: none; }
+  .application .dashboard-actions label { gap: 0.15rem; }
+}
+@media (max-width: 1050px) {
+  .masthead h1 span { display: none; }
+  .primary-navigation { gap: 0.7rem; }
+  .dashboard-heading { align-items: start; }
+  .dashboard-actions { flex-wrap: wrap; justify-content: end; }
+  .distribution-body { gap: 0.5rem; }
+  .deposit-donut { width: 125px; height: 125px; }
+}
+@media (max-width: 760px) {
+  .masthead { flex-wrap: wrap; padding: 0.5rem 1rem 0; }
+  .primary-navigation { order: 3; width: 100%; justify-content: space-between; gap: 0.25rem; }
+  .application .primary-navigation button { padding: 0.6rem 0.2rem; font-size: 0.78rem; }
+  .application[data-page="dashboard"] .workspace { padding: 1rem; }
+  .dashboard-heading, .dashboard-actions { display: block; }
+  .application .dashboard-actions label { width: 100%; margin: 0.75rem 0; }
+  .dashboard-charts { grid-template-columns: minmax(0, 1fr); }
+  .chart-panel { padding: 0.85rem; }
+  .chart-panel > header { flex-wrap: wrap; }
+  .distribution-body { flex-wrap: wrap; justify-content: center; }
+  .distribution-legend { min-width: 200px; }
+  .accumulation-chart { height: auto; min-width: 540px; }
+  .run-data-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); padding: 1rem; }
+  .data-tabs { gap: 0; }
+  .application .data-tabs button { font-size: 0.75rem; padding-inline: 0.5rem; }
+  .simulation-heading { flex-wrap: wrap; }
+  .simulation-heading > div { flex-basis: 100%; }
+}

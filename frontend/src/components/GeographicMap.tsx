@@ -579,8 +579,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             <Icon name="reset" />
           </button>
         </div>
-      </div>
-
+      <details className="map-layer-menu"><summary>Layers</summary>
       <fieldset className="map-layers-fieldset" role="group" aria-label="Map visual layer toggles">
         <legend>Map visual layers</legend>
         <div className="map-layer-checkboxes">
@@ -620,6 +619,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
           )}
         </div>
       </fieldset>
+      </details>
+      </div>
 
       <div className="map-stage" ref={element} aria-label="Geographic ashfall map" />
       {import.meta.env.VITE_MAPTILER_KEY && (
@@ -655,7 +656,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       )}
 
       {result ? (
-        <div className="location-inspector">
+        <details className="location-inspector-disclosure" open={Boolean(chosen)}><summary>Inspect a location</summary><div className="location-inspector">
           <Select
             label="Inspect location"
             value={selected ?? ''}
@@ -725,7 +726,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
               </p>
             </div>
           )}
-        </div>
+        </div></details>
       ) : (
         <p className="view-note">The geographic backdrop is ready. Run a scenario to compute contours and location exposure.</p>
       )}

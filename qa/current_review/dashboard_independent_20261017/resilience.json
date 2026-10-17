@@ -1,0 +1,50 @@
+[
+  {
+    "failure": "Independent QA injected unavailable backend Retry preset",
+    "charts": 0,
+    "rawDisabled": true
+  },
+  {
+    "recovered": "Illustrative Inputs\nEventual totals\n0 municipal centroids ≥0.5 mm\n34/320 locations in domain\nPopulation year: 2024"
+  },
+  {
+    "mobileModal": {
+      "left": 19,
+      "right": 301,
+      "width": 320,
+      "scrollWidth": 280,
+      "clientWidth": 280
+    }
+  },
+  {
+    "spatial": [
+      {
+        "rect": {
+          "x": 44.59375,
+          "y": 325.65625,
+          "width": 890.8125,
+          "height": 367.1875,
+          "top": 325.65625,
+          "right": 935.40625,
+          "bottom": 692.84375,
+          "left": 44.59375
+        }
+      },
+      {
+        "rect": {
+          "x": 984.59375,
+          "y": 325.796875,
+          "width": 890.8125,
+          "height": 367.1875,
+          "top": 325.796875,
+          "right": 1875.40625,
+          "bottom": 692.984375,
+          "left": 984.59375
+        }
+      }
+    ]
+  },
+  {
+    "dashboardCanvasAfterReturn": 0
+  }
+]

@@ -1,5 +1,9 @@
 # ABO repository map
 
+Dashboard redesign (17 October): `frontend/src/components/Dashboard.tsx` provides preset-backed bar/line/doughnut charts and the native raw-data dialog. `dashboardData.ts` defines mutually exclusive deposit bands with unknown/outside-domain exclusions; its tests and `Dashboard.test.tsx` cover boundary and failed-preset behavior. `Workspace.tsx` opens Dashboard and keeps the spatial simulation on a separate page. Browser evidence and limits are recorded in `docs/DASHBOARD_REDESIGN_20261017.md`.
+
+1080p visual refinement: `frontend/src/dashboard.css` provides the asymmetric chart hierarchy, navy plotting surface, typography and height-aware desktop/mobile composition. It loads after shared styles in `frontend/src/main.tsx`; scientific calculations and API contracts are unchanged.
+
 ## Contributor entry points
 
 Realistic regional dispersion & caldera deposition (16 October): `docs/QA_REPORT_REALISTIC_REGIONAL_DISPERSION.md` records scientific mass conservation, radial umbrella cloud physics ($R_u \approx 20\text{ km}$), NOAA IGRA Tanay directional wind shear coupling, 360° proximal caldera deposition (affecting Laurel, Talisay, Agoncillo, San Nicolas, Tagaytay), and UI toolbar alignment. `backend/tests/test_umbrella_dispersion.py` provides numerical regression tests. `data/source/taal/taal_2020_caldera_observations.json` and `taal_2020_sounding_profile.json` supply the curated reference observations and radiosonde profile.

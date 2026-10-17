@@ -1,5 +1,11 @@
 # Approved simulator design
 
+## Dashboard and Simulation pages — 2026-10-17
+
+The subsequent 1080p review replaces the equal-card composition with a dominant navy accumulation plot, a narrower white municipal ranking and secondary distribution/settings panels. Keep cobalt for selection, muted blue for the comparison bars, larger tabular readings and descriptive scientific labels. The selected location's final sampled deposit is a real result, not a decorative KPI. Use the wider plot coordinate space to fill desktop panels. `frontend/src/dashboard.css` owns this presentation layer, including compact-height and mobile adaptations. ENERGY 2 / RHYTHM 3 / MOTION 2; no decorative animation.
+
+The user selected the blue-and-white dashboard/modal references and requested implementation with modern graphs and pie charts. Dashboard is the opening page: preset selection, computed municipal thickness ranking, selected-location accumulation curve, deposit-distribution doughnut and a concise scenario ledger. Simulation is a separate navigation destination with aligned 3D/map panels and shared playback below. Inputs, layers, replay explanations and detailed exposure are disclosed on demand. Keep the one-screen desktop target without clipping mobile or enlarged text. All chart values come from existing Python results; unknown and outside-domain values are excluded explicitly from deposit proportions. A native modal provides searchable raw records, filtered CSV, event snapshots and provenance. The earlier alternative petrol/copper image remains an exploration, not the chosen implementation palette.
+
 ## Scientific flow and texture — 2026-10-12
 
 The user selected a more convincing scientific illustration with clearer flow and texture after rejecting the earlier eruption appearance. Soft cloud edges replace rigid sphere stacks; distinct enlarged ash markers follow supplied cohort centers. Lava uses a surface ribbon with dark edges and a warm core, and an oblique camera reveals its downhill route. Directional relief lighting clarifies the existing geography. No decorative animation, cinematic weather, new hazard physics or implied empirical validation is added. Source-column texture/bend and cooling colors remain explicitly illustrative. Final visual acceptance is separate from performance and functional QA.

@@ -1,0 +1,82 @@
+{
+  "errors": [],
+  "cases": [
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "w": 1920,
+      "h": 1080,
+      "sw": 1920,
+      "sh": 1080,
+      "canvases": 0
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "w": 1440,
+      "h": 900,
+      "sw": 1440,
+      "sh": 900,
+      "canvases": 0
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "w": 1366,
+      "h": 768,
+      "sw": 1366,
+      "sh": 768,
+      "canvases": 0
+    },
+    {
+      "viewport": [
+        320,
+        800
+      ],
+      "w": 320,
+      "h": 800,
+      "sw": 320,
+      "sh": 2358,
+      "canvases": 0
+    },
+    {
+      "selection": "Final sampled deposit\n24.13 mm\n\nTalisay, Batangas\nAt 103.4 h elapsed"
+    },
+    {
+      "filteredRows": 1,
+      "row": "Laurel, Batangas\nmunicipality\n\tIn domain\t19.85\t19.85\t44,791 / 2024\t\nroof: unknown\nNo reviewed applicable roof criterion\ncrop: unknown\nNo reviewed applicable crop criterion"
+    },
+    {
+      "csv": "id,location,kind,in_domain,thickness_mm,load_kg_m2,population,population_year,screening,screening_reasons,dataset_revision,solver_version,input_status\r\n\"0401011000\",\"Laurel, Batangas\",\"municipality\",\"true\",\"19.85037077245691\",\"19.85037077245691\",\"44791\",\"2024\",\"{\"\"roof\"\":\"\"unknown\"\",\"\"crop\"\":\"\"unknown\"\"}\",\"{\"\"roof\"\":\"\"No reviewed applicable roof criterion\"\",\"\"crop\"\":\"\"No reviewed applicable crop criterion\"\"}\",\"2026-10-12-gap-evidence-v2-utf8\",\"abo-gaussian-1.0\",\"illustrative\""
+    },
+    {
+      "snapshotsHeader": "Run data\n\nTaal 2020 regional eruption (17 km column, 20 km umbrella) · Eventual totals",
+      "snapshotRows": 37,
+      "first": "0\t0",
+      "last": "103.411\t24.13"
+    },
+    {
+      "modalClosed": true,
+      "focus": "View raw data"
+    },
+    {
+      "dark": {
+        "w": 1920,
+        "h": 1080,
+        "sw": 1920,
+        "sh": 1080,
+        "canvases": 0
+      }
+    },
+    {
+      "preset": "mayon-teaching",
+      "context": "Illustrative Inputs\nEventual totals\n0 municipal centroids ≥0.5 mm\n34/320 locations in domain\nPopulation year: 2024"
+    }
+  ]
+}

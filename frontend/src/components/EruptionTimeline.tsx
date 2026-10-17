@@ -71,8 +71,9 @@ export default function EruptionTimeline({ sequence, index, playing, onIndex, on
       <button type="button" disabled={!sceneAvailable} onClick={() => { if (!playing && index >= last) onIndex(0); onPlaying(!playing) }}><Icon name={playing ? 'pause' : 'play'} />{playing ? 'Pause sequence' : index >= last ? 'Replay sequence' : 'Play sequence'}</button></div>
     <label className="timeline-slider">{phaseLabel(current.phase)}<input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, map snapshot at ${scenarioClock(current.elapsed_s).replace(' h', ' hours')}`} onChange={event => seek(Number(event.target.value))} /></label>
     <div className="timeline-readout"><span>Map snapshot: {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>
-    <p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay. The 3D illustration interpolates between nonuniform snapshots; the map shows the preceding computed snapshot. Billows and fountains are schematic.</p>
+    <details className="timeline-explanation"><summary>Replay timing & reference notes</summary><p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay. The 3D illustration interpolates between nonuniform snapshots; the map shows the preceding computed snapshot. Billows and fountains are schematic.</p>
     {sequence.scenario.volcano_id === 'taal' && events.length === 0 && <p className="view-note">Historical activity bookmarks are unavailable until their source values are reviewed.</p>}
+    </details>
     {sequence.scenario.volcano_id === 'taal' && events.length > 0 && (
       <div className="historical-bookmarks" aria-label="Historical activity reference">
         <div className="bookmarks-header">

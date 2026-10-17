@@ -5,6 +5,7 @@ import { eruption, getCatalog, simulate } from './api/simulator'
 import type { Catalog, EruptionSequence, Scenario, SimulationResult } from './api/simulator'
 
 vi.mock('./api/simulator', () => ({ eruption: vi.fn(), getCatalog: vi.fn(), simulate: vi.fn(), sweep: vi.fn(), replicate: vi.fn() }))
+vi.mock('./components/Dashboard', () => ({ default: () => <div>Dashboard</div> }))
 vi.mock('./components/VolcanoScene', () => ({ default: ({ scenario }: { scenario: Scenario }) => <div>Completed-view wind: {scenario.wind_from_deg}°</div> }))
 vi.mock('./components/GeographicMap', () => ({ default: () => <div>Computed map</div> }))
 
@@ -24,6 +25,8 @@ describe('completed-result workflow', () => {
     vi.mocked(getCatalog).mockResolvedValue(catalog)
     vi.mocked(simulate).mockResolvedValue(result)
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     await screen.findByRole('button', { name: 'Run simulation' })
     fireEvent.click(screen.getByRole('button', { name: 'Run simulation' }))
     await screen.findByRole('button', { name: 'Play sequence' })
@@ -38,8 +41,11 @@ describe('completed-result workflow', () => {
     vi.mocked(getCatalog).mockResolvedValue(catalog)
     vi.mocked(simulate).mockResolvedValueOnce(result).mockRejectedValueOnce(new Error('Backend unavailable'))
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     await waitFor(() => expect(screen.getByRole('button', { name: 'Run simulation' }).hasAttribute('disabled')).toBe(false))
     fireEvent.click(screen.getByRole('button', { name: 'Run simulation' }))
+    fireEvent.click(await screen.findByText('Detailed exposure & exports'))
     await screen.findByRole('heading', { name: 'Municipal and facility exposure' })
     fireEvent.change(screen.getByLabelText('Wind FROM (° clockwise from N)'), { target: { value: '90' } })
     expect(screen.getByText(/Parameters have changed/)).toBeTruthy()
@@ -54,6 +60,8 @@ describe('completed-result workflow', () => {
     vi.mocked(simulate).mockResolvedValue(result)
     vi.mocked(eruption).mockResolvedValueOnce(sequence).mockRejectedValueOnce(new Error('Event sequence failed'))
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     await screen.findByRole('button', { name: 'Run simulation' })
     fireEvent.click(screen.getByRole('button', { name: 'Run simulation' }))
     await screen.findByRole('slider', { name: 'Eruption timeline' })
@@ -67,6 +75,8 @@ describe('completed-result workflow', () => {
   it('labels Taal as the scientific focus without a validation claim', async () => {
     vi.mocked(getCatalog).mockResolvedValue(catalog)
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     expect(await screen.findByText(/^Scientific focus\./)).toBeTruthy()
     expect(screen.queryByText(/validated/i)).toBeNull()
   })

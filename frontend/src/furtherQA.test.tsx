@@ -5,6 +5,7 @@ import { getCatalog } from './api/simulator'
 import type { Catalog, Scenario } from './api/simulator'
 
 vi.mock('./api/simulator', () => ({ getCatalog: vi.fn(), simulate: vi.fn(), eruption: vi.fn(), sweep: vi.fn(), replicate: vi.fn() }))
+vi.mock('./components/Dashboard', () => ({ default: () => <div>Dashboard</div> }))
 vi.mock('./components/VolcanoScene', () => ({ default: () => <div>QA scene boundary</div> }))
 vi.mock('./components/GeographicMap', () => ({ default: () => <div>QA map boundary</div> }))
 
@@ -32,6 +33,8 @@ afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.clearAllMocks() })
 describe('independent invalid-disclosure recovery', () => {
   it('reveals and names a native-invalid field after its advanced section was closed', async () => {
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     await screen.findByRole('button', { name: 'Run simulation' })
     const input = screen.getByLabelText('Initial spread σ₀ (m)') as HTMLInputElement
     const panel = input.closest('details')!
@@ -47,6 +50,8 @@ describe('independent invalid-disclosure recovery', () => {
 
   it('keeps valid collapsed controls quiet instead of flagging every hidden field', async () => {
     render(<Workspace />)
+    fireEvent.click(screen.getByRole('button', { name: /^Simulation$/ }))
+    fireEvent.click(screen.getByRole('button', { name: 'Edit parameters' }))
     await screen.findByRole('button', { name: 'Run simulation' })
     const input = screen.getByLabelText('Initial spread σ₀ (m)') as HTMLInputElement
     const panel = input.closest('details')!

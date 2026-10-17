@@ -13,10 +13,11 @@ import type { IconName } from './components/Icon'
 import EruptionTimeline from './components/EruptionTimeline'
 import ProvincialExposureExplorer from './components/ProvincialExposureExplorer'
 import { ERUPTION_SOURCES } from './components/eruptionResearch'
+import Dashboard from './components/Dashboard'
 
 const VolcanoScene = lazy(() => import('./components/VolcanoScene'))
 const GeographicMap = lazy(() => import('./components/GeographicMap'))
-type Tab = '3d' | 'comparison' | 'sweep' | 'history' | 'help'
+type Tab = 'dashboard' | '3d' | 'comparison' | 'sweep' | 'history' | 'help'
 const fields: { key: keyof Scenario; label: string; min?: number; max?: number; step?: number }[] = [
   { key: 'vent_lat', label: 'Vent latitude (°)', min: -85, max: 85 },
   { key: 'vent_lon', label: 'Vent longitude (°)', min: -180, max: 180 },
@@ -44,9 +45,9 @@ export default function Workspace() {
   const [sceneAvailable, setSceneAvailable] = useState(true)
   const sceneAvailability = useCallback((available: boolean) => { setSceneAvailable(available); if (!available) setSequencePlaying(false) }, [])
   const [eruptionOptions, setEruptionOptions] = useState<Partial<EruptionOptions>>({ include_lava: false })
-  const [tab, setTab] = useState<Tab>('3d')
+  const [tab, setTab] = useState<Tab>('dashboard')
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
-  const [parametersOpen, setParametersOpen] = useState(() => window.innerWidth > 700)
+  const [parametersOpen, setParametersOpen] = useState(false)
   const [loading, setLoading] = useState('Loading the local scenario catalog…')
   const [error, setError] = useState('')
   const [stale, setStale] = useState(false)
@@ -176,10 +177,11 @@ export default function Workspace() {
     { key: 'lava_density_kg_m3', label: 'Lava density (kg/m³)', initial: 2600, min: 1000, max: 4000 },
   ]
 
-  return <div className="application" data-theme={theme}>
+  return <div className="application" data-theme={theme} data-page={tab}>
     <a className="skip-link" href="#workspace">Skip to results</a>
     <header className="masthead">
       <h1>ABO <span>Eruption laboratory</span></h1>
+      <nav className="primary-navigation" aria-label="Main navigation">{([['dashboard', 'Dashboard'], ['3d', 'Simulation'], ['comparison', 'Analysis'], ['help', 'Sources']] as [Tab, string][]).map(([id, label]) => <button key={id} type="button" aria-current={(id === tab || id === 'comparison' && ['sweep', 'history'].includes(tab)) ? 'page' : undefined} onClick={() => { setTab(id); setSequencePlaying(false) }}>{label}</button>)}</nav>
       <div className="header-actions">
         <details className="model-notes" onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
           <summary><Icon name="info" />Academic model<span className="summary-hint"> · limits</span></summary>
@@ -191,8 +193,8 @@ export default function Workspace() {
         <button className="icon-button" type="button" aria-label={`${theme === 'light' ? 'Dark' : 'Light'} theme`} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><Icon name={theme === 'light' ? 'moon' : 'sun'} /></button>
       </div>
     </header>
-    <main className={`laboratory${parametersOpen ? '' : ' inputs-collapsed'}`}>
-      <aside className="parameter-panel" aria-labelledby="parameters-title">
+    <main className={`laboratory${parametersOpen && tab !== 'dashboard' && tab !== 'help' ? '' : ' inputs-collapsed'}`}>
+      <aside hidden={tab === 'dashboard' || tab === 'help' || !parametersOpen && tab === '3d'} className="parameter-panel" aria-labelledby="parameters-title">
         <details className="parameter-disclosure" open={parametersOpen} onToggle={event => setParametersOpen(event.currentTarget.open)}><summary id="parameters-title"><Icon name="settings" />Simulation inputs</summary>
         {!catalog && <button type="button" onClick={loadCatalog} disabled={Boolean(loading)}>Retry catalog connection</button>}
         {catalog && draft && <form onInvalidCapture={event => {
@@ -255,16 +257,19 @@ export default function Workspace() {
         </form>}</details>
       </aside>
       <div className="workspace" id="workspace" tabIndex={-1}>
-        <nav className="view-tabs" aria-label="Scientific views">{tabs.map(([id, label, icon]) => <button type="button" aria-current={tab === id ? 'page' : undefined} key={id} onClick={() => { setTab(id); setSequencePlaying(false) }}><Icon name={icon} />{label}</button>)}</nav>
-        <div className="status-line" aria-live="polite" role="status">{loading || (result ? `${catalog?.volcanoes.find(v => v.id === result.scenario.volcano_id)?.name ?? result.scenario.volcano_id} result · ${number(result.diagnostics.elapsed_ms, 0)} ms` : 'Choose inputs and run a simulation to view deposition.')}</div>
+        {catalog && <div hidden={tab !== 'dashboard'}><Dashboard catalog={catalog} simulation={result} simulationSequence={activeSequence} /></div>}
+        {tab === 'dashboard' && !catalog && <div className="dashboard-empty"><h2>Dashboard</h2><p role="status">{loading || 'The local scenario catalog is unavailable.'}</p><button type="button" disabled={Boolean(loading)} onClick={loadCatalog}>Retry catalog connection</button></div>}
+        {tab !== 'dashboard' && tab !== '3d' && tab !== 'help' && <nav className="view-tabs" aria-label="Scientific views">{tabs.filter(([id]) => id !== '3d' && id !== 'help').map(([id, label, icon]) => <button type="button" aria-current={tab === id ? 'page' : undefined} key={id} onClick={() => { setTab(id); setSequencePlaying(false) }}><Icon name={icon} />{label}</button>)}</nav>}
+        {tab === '3d' && <div className="simulation-heading"><div><h2>Simulation</h2><p>Illustrative terrain beside computed deposition.</p></div><button type="button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />Edit parameters</button><button hidden={parametersOpen} type="button" className="run-button" disabled={Boolean(loading) || !draft} onClick={() => void execute('simulation')}><Icon name="calculate" />Run simulation</button></div>}
+        {tab !== 'dashboard' && <div className="status-line" aria-live="polite" role="status">{loading || (result ? `${catalog?.volcanoes.find(v => v.id === result.scenario.volcano_id)?.name ?? result.scenario.volcano_id} result · ${number(result.diagnostics.elapsed_ms, 0)} ms` : 'Choose inputs and run a simulation to view deposition.')}</div>}
         {error && <p className="error-message" role="alert">{error}</p>}
-        {stale && <p className="stale-message">Parameters have changed. Views below retain the last completed simulation. Run again to update them.</p>}
-        <section className="visual-panel" aria-label={tabs.find(t => t[0] === tab)?.[1]}>
-          {tab === '3d' && activeSequence && <EruptionTimeline sequence={activeSequence} index={frameIndex} playing={sequencePlaying} onIndex={setFrameIndex} onPlaying={setSequencePlaying} sceneAvailable={sceneAvailable} />}
+        {stale && tab !== 'dashboard' && <p className="stale-message">Parameters have changed. Views below retain the last completed simulation. Run again to update them.</p>}
+        <section hidden={tab === 'dashboard'} className="visual-panel" aria-label={tabs.find(t => t[0] === tab)?.[1]}>
           {tab === '3d' && displayedScenario && <div className="spatial-pair">
             <section className="spatial-view" aria-labelledby="terrain-title"><h2 id="terrain-title">Eruption & terrain</h2><ScientificViewBoundary key={`3d-${JSON.stringify(result?.scenario)}`} onFailure={() => sceneAvailability(false)} onRecovery={() => sceneAvailability(false)}><Suspense fallback={<p className="empty-note">Loading 3D illustration…</p>}><VolcanoScene scenario={displayedScenario} result={result} eruptionSequence={activeSequence} frameIndex={frameIndex} sequencePlaying={sequencePlaying} selected={selected} onSelect={setSelected} onAvailabilityChange={sceneAvailability} /></Suspense></ScientificViewBoundary></section>
             <section className="spatial-view" aria-labelledby="map-title"><h2 id="map-title">Affected locations</h2><ScientificViewBoundary key={`map-${JSON.stringify(result?.scenario)}-${activeSequence?.options.include_lava}`}><Suspense fallback={<p className="empty-note">Loading impact map…</p>}><GeographicMap scenario={displayedScenario} result={result} eruptionSequence={activeSequence} frame={frame} selected={selected} onSelect={setSelected} /></Suspense></ScientificViewBoundary></section>
           </div>}
+          {tab === '3d' && activeSequence && <EruptionTimeline sequence={activeSequence} index={frameIndex} playing={sequencePlaying} onIndex={setFrameIndex} onPlaying={setSequencePlaying} sceneAvailable={sceneAvailable} />}
           {tab === '3d' && !displayedScenario && <p className="empty-note">Connect to Python to load the local scenario catalog. No scientific results have been fabricated.</p>}
           {tab === 'comparison' && catalog?.winds.some(wind => typeof wind.altitude_context === 'string') && <details><summary>Wind altitude & averaging evidence</summary>{catalog.winds.filter(wind => typeof wind.altitude_context === 'string').map(wind => <div key={wind.id}><h3>{wind.name}</h3><p>{String(wind.altitude_context)}</p>{typeof wind.averaging_period === 'string' && <p>{wind.averaging_period}</p>}{typeof wind.reason === 'string' && <p>{wind.reason}</p>}</div>)}</details>}
           {tab === 'comparison' && <><h2>Compare wind profiles</h2><p>Hold eruption inputs fixed. Reviewed seasonal winds are used when available; otherwise enter two manual winds below.</p>{catalog?.winds.map(w => <p key={w.id}><strong>{w.name}</strong> · {w.status} · {w.speed_m_s == null ? 'Effective speed/direction have not been reviewed.' : `${number(w.speed_m_s)} m/s from ${number(w.from_deg)}°`}</p>)}{(catalog?.winds.filter(w => w.status === 'reviewed' && w.speed_m_s != null && w.from_deg != null).length ?? 0) < 2 && <><p className="input-status">Manual comparison is not verified Amihan/Habagat weather.</p><div className="manual-winds">{manualWinds.map((wind, index) => <fieldset key={index}><legend>Manual wind {index + 1}</legend><label>Speed (m/s)<input disabled={Boolean(loading)} type="number" min="0" max="200" step="any" value={wind.speed} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, speed: e.target.value } : w)); setComparison([]) }} /></label><label>Wind FROM (°)<input disabled={Boolean(loading)} type="number" min="0" max="359.999" step="any" value={wind.from} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, from: e.target.value } : w)); setComparison([]) }} /></label></fieldset>)}</div></>}<button type="button" disabled={Boolean(loading) || !draft} onClick={() => void execute('comparison')}>Compute wind comparison</button>{comparison.map(r => <article className="comparison-result" key={r.scenario.label}><h3>{r.scenario.label}</h3><p>{r.summary.municipalities_reported} municipal centroids ≥0.5 mm · {number(r.summary.indicative_population, 0)} indicative residents</p><p>Retained mass {number(r.diagnostics.retained_fraction * 100)}% · Wind {number(r.scenario.wind_speed_m_s)} m/s from {number(r.scenario.wind_from_deg)}°</p><button type="button" onClick={() => { setResult(r); setSelected(null); setStale(true); setTab('3d') }}>Inspect this wind result</button></article>)}</>}
@@ -275,7 +280,8 @@ export default function Workspace() {
           {tab === 'help' && <div className="geography-references"><h3>Geography & picture references</h3><p className="view-note"><a href="https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-01888" target="_blank" rel="noreferrer">Taal island and lake</a> · <a href="https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-01777" target="_blank" rel="noreferrer">Mayon and Albay Gulf</a> · <a href="https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-11191" target="_blank" rel="noreferrer">Kanlaon summit and ridge</a></p><p className="view-note">Historical Smithsonian/USGS/NASA references guide geographic interpretation. <a href="/documentation/GEOGRAPHY_REFERENCES.md" target="_blank" rel="noreferrer">Terrain provenance, photo credits & uncertainty</a></p></div>}
           {tab === 'help' && catalog && <EvidenceDetails catalog={catalog} />}
         </section>
-        {result && tab === '3d' && <section className="results-section" aria-labelledby="results-title"><div className="section-heading"><div><h2 id="results-title">Municipal and facility exposure</h2><p>Eventual totals: {result.summary.municipalities_reported} municipal centroids ≥{result.summary.reporting_cutoff_mm} mm · {number(result.summary.indicative_population, 0)} indicative residents · {result.summary.receptors_covered}/{result.summary.receptors_total} locations in domain</p></div></div>
+        {result && tab === '3d' && <details className="simulation-data"><summary>Detailed exposure & exports</summary><section className="results-section" aria-labelledby="results-title"><div className="section-heading"><div><h2 id="results-title">Municipal and facility exposure</h2><p>Eventual totals: {result.summary.municipalities_reported} municipal centroids ≥{result.summary.reporting_cutoff_mm} mm · {number(result.summary.indicative_population, 0)} indicative residents · {result.summary.receptors_covered}/{result.summary.receptors_total} locations in domain</p></div></div>
+          {frame && <p className="view-note">The breakdown below follows the selected event snapshot; the summary above reports eventual totals.</p>}
           <ProvincialExposureExplorer
             receptors={frame?.receptors ?? result.receptors}
             selected={selected}
@@ -286,8 +292,8 @@ export default function Workspace() {
           <div className="result-tools"><Select label="Sort locations" value={sort} onChange={value => setSort(value as typeof sort)} options={[{ value: 'thickness', label: 'Highest thickness first' }, { value: 'name', label: 'Name' }]} /><div className="export-actions"><button type="button" onClick={exportCSV}><Icon name="download" />Final CSV</button><button type="button" onClick={() => download('abo-scenario.json', JSON.stringify({ scenario: result.scenario, ...completedReporting.current.get(result), eruption_options: activeSequence?.options ?? null, provenance: result.provenance }, null, 2), 'application/json')}><Icon name="code" />Scenario JSON</button></div></div>
           <div className="table-scroll"><table><caption>Point samples; indicative populations are not individual exposure estimates.</caption><thead><tr><th>Location</th><th>Thickness (mm)</th><th>Load (kg/m²)</th><th>Population / year</th><th>Screening</th></tr></thead><tbody>{receptors.map(r => <tr key={r.id} className={r.id === selected ? 'selected-row' : ''}><th scope="row"><button className="text-button" type="button" onClick={() => setSelected(r.id)}>{r.name}</button><small>{r.kind} · {r.in_domain ? 'In domain' : 'Outside coverage'}</small></th><td>{number(r.thickness_mm)}</td><td>{number(r.load_kg_m2)}</td><td>{number(r.population, 0)} / {r.population_year ?? 'Unknown'}</td><td>{Object.entries(r.screening).map(([key, state]) => <span className="screening-line" key={key}>{catalog?.criteria.find(criterion => criterion.id === key)?.label ?? key.replaceAll('_', ' ')}: {state}{r.screening_reasons?.[key] && <small>{r.screening_reasons[key]}</small>}</span>)}</td></tr>)}</tbody></table></div>
           </details><details><summary>Result provenance and assumptions</summary><p>{number(result.diagnostics.retained_fraction * 100)}% modeled mass inside domain · {number(result.diagnostics.outside_domain_mass_kg, 0)} kg outside · {result.diagnostics.validation_status.replaceAll('_', ' ')}.</p><p>{result.summary.reported_population_unknown} reported municipalities have unknown population.</p><p>Dataset {result.provenance.dataset_revision} · Solver {result.provenance.solver_version} · Inputs {result.provenance.input_status}</p>{[...result.provenance.assumptions, ...result.provenance.warnings].map((text, i) => <p key={i}>{text}</p>)}{activeSequence && <><h3>Event sequence</h3><p>Solver {activeSequence.solver_version} · lava route: {activeSequence.lava.stop_reason.replaceAll('_', ' ')}</p>{[...activeSequence.assumptions, ...activeSequence.warnings, ...activeSequence.lava.warnings].map((text, i) => <p key={i}>{text}</p>)}</>}</details>
-        </section>}
+        </section></details>}
       </div>
-    </main><footer className="page-footer"><span>CSE 103 · Computational Science</span><a href="https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un">Project proposal</a></footer>
+    </main><footer className="page-footer"><span>Academic simulation · Not a PHIVOLCS advisory</span><a href="https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un">Project proposal</a></footer>
   </div>
 }
