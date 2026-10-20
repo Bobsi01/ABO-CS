@@ -109,7 +109,8 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `qa/test_further_scientific_qa.py`, `docs/FURTHER_SCIENTIFIC_QA.md` | Further scientific QA agent: 26 independent cases, reproduced defects and primary-source review |
 | `frontend/src/furtherQA.test.tsx`, `frontend/src/components/furtherSceneQA.test.tsx`, `docs/FURTHER_UI_QA.md` | Further UI QA agent: four regression/counterexample cases, independent Chrome workflows and image review |
 | `docs/FURTHER_QA.md`, `qa/browser/further-*` | Orchestrator: nine-finding integration record, final checks and browser screenshots with attribution |
-| `docs/ABO_RESEARCH_IMRAD.md`, `ABO_RESEARCH_IMRAD.docx` | Orchestrator: source manuscript and editable Word IMRaD research, Arial 11 pt body / 12 pt headings |
+| `docs/ABO_RESEARCH_IMRAD.md`, `ABO_RESEARCH_IMRAD.docx` | Volcanic processes and secondary-data IMRaD research; seven authors, two columns, justified Times New Roman 10 pt body / 11 pt bold headings, PDF-reference layout |
+| `scripts/build_volcanic_research_figures.py`, `docs/figures/volcanic-*-evidence.png`, `volcanic-evidence-figures.json` | Reproducible archived wind and published-contour evidence figures for the volcanic manuscript; input hashes and observation limits |
 | `scripts/build_research_document.py` | Orchestrator: manuscript-to-DOCX generation, native equations and exact typography audit |
 | `qa/render_research_document.py`, `audit_research_document.py`, `qa/research/` | Orchestrator: internal actual-DOCX rendering, font/content checks and final page-review evidence |
 | `docs/RESEARCH_DOCUMENT_QA.md` | Orchestrator: research trace, reproducible document commands and renderer/evaluation limitations |

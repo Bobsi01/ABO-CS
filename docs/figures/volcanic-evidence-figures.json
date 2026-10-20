@@ -1,0 +1,18 @@
+{
+  "matplotlib_version": "3.11.2",
+  "font_family": "Times New Roman",
+  "scope": "Archived wind observations and digitizations of one published contour; no scenario outputs",
+  "wind_limit": "Nine retained levels per launch; no extrapolation into the 17-21 km shaded layer",
+  "contour_source": "Balangue-Tarriela et al. (2022), Figure 4a, doi:10.1007/s00445-022-01534-y, CC BY 4.0",
+  "contour_limit": "Two digitizations share one source figure and are not independent field observations",
+  "reference_location": "GVP catalog reference [120.9975 E, 14.0106 N]; not a surveyed 2020 vent",
+  "input_sha256": {
+    "data\\source\\igra\\tanay-effective-wind.json": "c9fbac742e5aa9b6a7f2145696a3e44e303ab327d4bdc3482b4d36c4059ef92a",
+    "data\\source\\taal-study\\trace-science.geojson": "58242adb67c51e2ed5f33d4d11223a13dc452bf8daa1209f0142cc6310712918",
+    "data\\source\\taal-study\\trace-qa.geojson": "de251169ec6daf8acde9b70dda9804ad9ad503706bb2f04eb570d014eab017d1"
+  },
+  "output_sha256": {
+    "docs\\figures\\volcanic-wind-evidence.png": "41e6a3107dfa685797be620011acc8c85f9537394bbab2676ee5bb493ee2da64",
+    "docs\\figures\\volcanic-contour-evidence.png": "43d32559dd798a04b3464aa0691258ed53c2e8fa7f15bf9d84e7595d39ed21e7"
+  }
+}

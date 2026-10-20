@@ -1,0 +1,30 @@
+{
+  "docx_sha256": "d5b89061a111159a98da3516307b6cd4aae83a8abd6dc744f9a0a4745dcc462a",
+  "pdf": "qa\\current_review\\word_saved_20261017\\ABO_RESEARCH_IMRAD.pdf",
+  "pdf_sha256": "bd181edbce57dc086f3dbe208ca550472deb64f1114cd419dc6fce4877badf21",
+  "rendered_pages": 17,
+  "checked_prose_and_cell_paragraphs": 162,
+  "missing_from_render": [
+    "Analytical tephra models provide a practical basis for exploring transport and settling. Tephra2 estimates accumulated tephra mass using eruption and particle inputs and allows wind to vary with height (Geoscience Community Codes, n.d.). ABO adopts the general analytical advection-diffusion approach but uses a simpler release distribution, one effective horizontal wind and prescribed settling speeds. Its equations and implementation are defined independently; equivalence to the complete Tephra2 model is not claimed.",
+    "The coverage audit identifies administrative polygons intersecting each fixed simulation square, including unresolved name/code matches. Taal includes 162 of 214 intersecting records, Mayon 37 of 112, and Kanlaon 109 of 171; the remainder are explicitly unresolved. These domain totals overlap and must not be summed as unique jurisdictions. Twenty-three included domain records have their centroids outside the relevant square, so their point predictions remain unknown even though part of the polygon intersects it. A centroid represents one sample, not every location in a municipality. The inventory remains partial rather than complete national or domain coverage.",
+    "The default response contains 37 snapshots, with nonuniform spacing during emission and its fallout tail. Requests whose extreme values cannot maintain the requested distinct clock samples are rejected. Python supplies representative airborne centers and spreads from the surviving age intervals; React interpolates supplied geometry and renders enlarged billows. The map and location inspector retain the preceding computed snapshot during interpolation; the folded table and CSV contain eventual quantities. The visible hour-based clock identifies the map snapshot, and a separate label identifies emission duration. A 36-second replay compresses the nonuniform intervals and does not imply a constant physical speed. Source rise, condensed-steam appearance and prescribed Taal fountain arcs are illustrations rather than solved buoyancy, condensation or ballistic hazards. Taal close-up relief is enlarged sixfold and fountain geometry fourfold, with visible labels; regional terrain scale returns to one-to-one.",
+    "The default 0.5 mm contour defines a reporting footprint, not a damage threshold. Receptor comparisons use greater-than-or-equal thresholds. Conditional screening requires a reviewed criterion, an explicitly supported receptor type and matching conditions selected for the scenario or recorded for that receptor. An absent type, condition or applicability basis returns unknown with a reason. A municipal roof or crop context is a conditional scenario, not a survey of local buildings or crops. Missing damage criteria or outside-domain receptors retain unknown status. Indicative population totals deduplicate municipality identifiers; whole municipal populations selected by a centroid are not people counted inside a deposit polygon. Airport and water-facility results describe surface deposition only, not airborne aviation safety or water potability. Population years are selected explicitly; a missing 2020 value cannot be replaced with a 2024 count.",
+    "The parameter register classifies measured, derived, calibrated and assumed values and retains units, datum, uncertainty, source locator, license, conversions and dependencies. Deposit-derived volume, inferred plume height, thickness observations and contours from the same study share a dependency family. Distal samples do not independently establish the emitted grain spectrum. Ash mass and bulk deposit density cannot be identified separately from thickness alone because their ratio sets the amplitude.",
+    "A 1,823.6-second resource soak completed 20 volcano/run/view cycles and 38 full replays without JavaScript errors. All 38 sampled paused windows rendered zero additional frames. After corrections to shared graphics-resource listeners and retired renderer wrappers, post-collection heap grew from 29.45 MiB after the first cycle to 35.93 MiB after cycle 20, then 59.69 MiB at the end. DOM nodes and event-listener counts rose during repeated view cycles and subsequently stabilized; the full cleanup gate remains open. The soak disabled background throttling for resource continuity and is separate from the foreground performance measurement. Reduced-motion changes and graphics failures received targeted browser tests. A real hidden-page transition, native browser 200% zoom, screen-reader speech and Word's native accessibility checker remain unestablished; CSS zoom and accessibility-tree checks provide narrower evidence.",
+    "The implemented model connects explicit parameters to accumulated ground load, thickness, sampled locations and reproducible exports. Exact cell integration and separate domain-loss accounting make conservation visible. The finite-emission extension explains why ash continues settling after the source stops, while the shared clock lets learners inspect changes without a second browser solver. Correct handling of wind-from bearings and sweep ties prevents presentation errors from becoming misleading directional conclusions."
+  ],
+  "page_footer_prefixes_removed_from_text_comparison": [],
+  "rendered_fonts": [
+    "/BCDEEE+ArialMT",
+    "/BCDFEE+Arial-ItalicMT",
+    "/BCDGEE+Arial-BoldMT",
+    "/BCDHEE+ArialMT"
+  ],
+  "only_arial_rendered": true,
+  "source_contains_evaluation_markings": false,
+  "native_equations": 7,
+  "native_fractions": 13,
+  "pdf_has_structure_tree": true,
+  "pdf_marked": true,
+  "accessibility_limit": "Tagged output is not a native accessibility or screen-reader pass"
+}

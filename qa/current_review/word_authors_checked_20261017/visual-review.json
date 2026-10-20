@@ -1,0 +1,31 @@
+{
+  "docx_sha256": "cbd81af5f1d22190bb4a433dc15fe6312a57a13742c57ee5ce5c4c81edd3c5ac",
+  "markdown_sha256": "aae4550ca1c2d3b7e8642130e28552c9ded12094a67f4aecc856f08f9b5ef565",
+  "renderer": "Microsoft Word COM, read-only source",
+  "renderer_build": "16.0.20326",
+  "reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "visual_review": "passed",
+  "review_method": "Pages 1-6 visually inspected and verified pixel-identical after the final table-width change; pages 7-11 inspected directly from the final render.",
+  "author_records_exactly_match_source": true,
+  "body_pt": 10,
+  "section_headings_pt": 11,
+  "section_headings_bold": true,
+  "header_footer_preserved": true,
+  "packaged_renderer_limit": "render_docx.py could not find bundled LibreOffice; Microsoft Word rendered the actual DOCX read-only and Poppler rasterized every page.",
+  "evidence_limits": [
+    "Native Word accessibility and screen-reader review not performed",
+    "Independent final-page review not performed"
+  ]
+}
