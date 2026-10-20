@@ -1,0 +1,44 @@
+{
+  "source_docx_sha256": "1e00f055dfdd1fe7bf4e567735b7c1b0ced9c701ea81ad88035ab8e35cfacbbc",
+  "source_markdown_sha256": "b5c4ed8050a7195390b88173931540647a395980498850a376b1271601211274",
+  "renderer": "Microsoft Word COM, read-only source",
+  "renderer_version": "16.0.20326",
+  "rendered_pages": 8,
+  "visually_reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "review_chain": "Pages 1-3 were visually inspected and pixel-identical after the final corrections; final pages 4-8 were directly inspected.",
+  "source_prose_exact_match": true,
+  "prose_paragraphs_checked": 79,
+  "seven_author_records_exact_match": true,
+  "body_pt": 10,
+  "headings_pt": 11,
+  "body_justified": true,
+  "scientific_tables": 2,
+  "observational_figures": 2,
+  "accepted_dataset_summaries_checked": true,
+  "repository_checks": {
+    "ruff_lint": "passed",
+    "ruff_format": "passed",
+    "python_qa_tests": "219 passed",
+    "generated_contracts": "no diff",
+    "frontend_lint": "passed",
+    "frontend_types": "passed",
+    "frontend_tests": "106 passed, 5 failed, 2 unhandled errors in concurrent Dashboard changes",
+    "frontend_build": "not reached after test failure"
+  },
+  "evidence_limits": [
+    "No new field measurements or scientific predictive validation",
+    "Native Word accessibility and screen-reader review not performed",
+    "Independent final-page review not performed",
+    "Bundled LibreOffice renderer unavailable; actual Word used instead",
+    "Concurrent frontend changes are outside this manuscript edit"
+  ]
+}

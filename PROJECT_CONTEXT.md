@@ -1,5 +1,9 @@
 # ABO project context
 
+## Volcanic manuscript revision, 17 October 2026
+
+The user revised the research scope to volcanic processes and the scientific datasets represented in the collection. The IMRaD manuscript now presents a descriptive secondary-data study of Taal, Mayon and Kanlaon, with the main event evidence from Taal. Software implementation, simulation QA and assumed scenario outputs are excluded from the paper. The current Word document has seven pages, seven supplied authors, justified Times New Roman 10 pt body and 11 pt bold headings, two tables and two source-based figures. It follows the user's PDF reference with a 24 pt centered title, inline abstract, Roman-numeral section headings and lettered subsections. University-header and running-footer formatting are retained. All pages were reviewed from the actual Word render; source content is unchanged by the formatting revision. `docs/RESEARCH_DOCUMENT_QA.md` records the exact hashes, Word rendering review and source limits. Historical entries below describe earlier manuscript versions.
+
 ## Remediation handoff, 16 October 2026
 
 The [remediation results](docs/QA_REMEDIATION_RESULTS_20261015.md) supersede the earlier in-progress resource status. The fixed-asset soak passed its bounded criteria over 1,816.522 seconds and 42 cycles, with one live context/canvas, stable DOM counts and no JavaScript exceptions. Nine expanded axe workflow states and real mobile inventory keyboard scrolling pass. The unchanged 16-page native Word render has independent visual review. Full handoff verification covers 212 Python and 101 frontend tests, lint, formatting, generated contracts and production build. Historical agreement, general numerical convergence, source completion, actual hidden-page transitions, native accessibility and multi-device/physical VRAM evidence remain open.

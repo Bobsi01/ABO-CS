@@ -1,0 +1,12 @@
+{
+  "source": "docs/ABO_RESEARCH_IMRAD.docx",
+  "source_sha256": "8821101b9c3574e9a8fb283438e3699b7d4cf4c4b6b85cba903b2b1186b01470",
+  "renderer": "Microsoft Word COM, read-only source",
+  "status": "rendered_all_pages_reviewed",
+  "source_modified": false,
+  "accessibility": "Native accessibility checker and screen-reader review not performed",
+  "version": "16.0",
+  "build": "16.0.20326",
+  "page_count": 7,
+  "pdf_sha256": "bc45eb23b1d7f8e2286bf95c37dd3c3aeed9b03ed09780bb9069efc4113d2dd7"
+}

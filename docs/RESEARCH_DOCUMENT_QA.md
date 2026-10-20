@@ -1,5 +1,46 @@
 # IMRaD research document and formatting record
 
+## Independent recheck - 17 October 2026
+
+At the user's request, a delegated evaluator independently inspected the actual DOCX properties and every one of its seven rendered pages. Requested Times New Roman typography, 10 pt body, 11 pt bold headings/Abstract label, two-column justified IMRaD structure, seven author records and preserved header/footer passed. The orchestrator made a fresh read-only Word render of the same DOCX hash (`8821101b9c3574e9a8fb283438e3699b7d4cf4c4b6b85cba903b2b1186b01470`); all seven raster pages are pixel-identical to the previous final render. All five figure input/output provenance hashes match. The actual document has no tracked insertions/deletions or comment anchors; all 47 long prose paragraphs resolve to justified alignment through their styles.
+
+The independent reviewer identified a moderate Methods reproducibility limitation: the paper does not identify the exact archived earthquake subset/hash or original query selection rules. The local manifest identifies the CSV/hash, but the original download query was not found in the inspected records and must not be invented. NOAA processing/QC records could also be identified more precisely in the paper. A minor sample difference remains: citations use author-date style rather than the sample's bracket-number style. No manuscript changes were made during this recheck.
+
+The generic structural accessibility checker reported one missing-table-header warning on the author layout table; both scientific tables have header flags. This is not a missing scientific header or a native accessibility pass. Native Word accessibility and screen-reader review remain unperformed. Independent final-page review is now completed for this exact hash. Full numerical reconstruction, fresh external scientific-source verification and app/browser QA were outside this document recheck.
+
+Independent findings: `qa/current_review/independent_manuscript_20261017/report.md`. Fresh render and structural audit: `qa/current_review/recheck_word_20261017/`.
+
+## PDF reference formatting revision - 17 October 2026
+
+The current manuscript follows the supplied `Energy-Efficient-Processor-Architectures.pdf` layout: a large centered title, seven author blocks, two columns, indented justified text, an inline bold-italic abstract, centered Roman-numeral section headings and lettered subsections. Editable text and regenerated figure labels use Times New Roman. Body text remains 10 pt; section headings and the Abstract label are 11 pt bold; the title is 24 pt. The university header image and running title/page footer are retained. The scientific Markdown source is byte-identical to the pre-formatting version; only display headings and typography changed.
+
+Microsoft Word 16.0 build 16.0.20326 rendered the saved DOCX read-only into seven pages. All seven pages were visually inspected; after the final Abstract-label adjustment, page 1 was inspected again and pages 2-7 were verified pixel-identical to the reviewed render. The actual DOCX audit reports no typography issues. All 79 source paragraphs, seven author records and both scientific tables match after display-only heading normalization. PDF text resources contain only Times New Roman variants. The two scientific figures retain their original input hashes and now use Times New Roman labels.
+
+- DOCX SHA-256: `8821101b9c3574e9a8fb283438e3699b7d4cf4c4b6b85cba903b2b1186b01470`
+- Markdown SHA-256: `b5c4ed8050a7195390b88173931540647a395980498850a376b1271601211274`
+- Word PDF SHA-256: `bc45eb23b1d7f8e2286bf95c37dd3c3aeed9b03ed09780bb9069efc4113d2dd7`
+- Reference PDF SHA-256: `9bf4f583f5b3b5830ee36ee26844739e52c600bc5f65df9edba2bdada95f3bbe`
+- Internal evidence: `qa/current_review/times_reference_final_20261017/visual-and-content-review.json` and `word-render-audit.json`.
+
+Project checks passed: Ruff lint/format, 219 Python/QA tests, frontend lint/type checks, 115 frontend tests and production build. Generated API files have no diff. These checks do not establish scientific predictive accuracy. Native Word accessibility, screen-reader review and an independent final-page review remain unperformed. The entries below retain earlier formatting and check results as historical records.
+
+## Volcanic research revision - 17 October 2026
+
+The user's revised scope makes the manuscript a descriptive secondary-data study of volcanic processes and hazard evidence from Taal, Mayon and Kanlaon. Taal's January 2020 eruption supplies the principal event case; the other volcanoes provide context without implying equivalent observational coverage. Software tests, implementation details, scenario outputs and numerical kernel formulations were removed from the paper. Earlier sections below describe archived computational-study versions and do not certify this new manuscript.
+
+The current document retains seven supplied author records, the university header, and the running title/page-number footer. The title and footer text now match the volcanic research topic. The user's requested typography is Arial 10 pt body with 11 pt bold section headings. Body paragraphs and references are justified; the manuscript remains in two columns after the title/author block, with balanced final bibliography columns. It contains two scientific tables and two observational/source-digitization figures. No equations are needed for the revised descriptive study; no scenario calculation is presented as a volcanic observation.
+
+Microsoft Word 16.0 build 16.0.20326 rendered the actual DOCX read-only into eight pages. All pages were visually reviewed. The final review verifies an exact match for all 79 source prose/heading/caption paragraphs and all seven author records. Source-derived population, seismicity and atmospheric-coverage summaries were checked against the retained data. The 23 outside-extent centroid records were independently recounted using WGS84 azimuthal-equidistant transforms (12 Taal, 4 Mayon and 7 Kanlaon). Contour areas and repeatability were checked against the archived trace comparison. Native Word accessibility, screen-reader review and an independent final-page review remain unperformed.
+
+- DOCX SHA-256: `1e00f055dfdd1fe7bf4e567735b7c1b0ced9c701ea81ad88035ab8e35cfacbbc`
+- Markdown SHA-256: `b5c4ed8050a7195390b88173931540647a395980498850a376b1271601211274`
+- Word PDF SHA-256: `c868929705ac41604cc32630f318db806c4b01d136e8a11b09f990ee7b930a6e`
+- Detailed internal evidence: `qa/current_review/volcanic_research_final_20261017/visual-and-content-review.json` and `word-render-audit.json`.
+
+The figures are rebuilt with `uv run --no-project --with matplotlib==3.11.2 python scripts/build_volcanic_research_figures.py`. Their input/output hashes and limits are recorded in `docs/figures/volcanic-evidence-figures.json`. Rebuild the DOCX through `scripts/build_research_document.py` using the document runtime, then render with `qa/render_research_word.ps1`. The bundled LibreOffice renderer was attempted but unavailable; actual Microsoft Word and Poppler supplied the final page images.
+
+Project checks: Ruff lint/format and 219 Python/QA tests passed. Generated API files had no diff; frontend lint and type checks passed. The frontend suite recorded 106 passes, five failures and two unhandled errors associated with concurrent Dashboard work outside the manuscript changes; the production build was not reached after those failures. These software results belong to this QA record and are not research findings in the paper.
+
 ## Current two-agent revision — 12 October 2026
 
 The current editable DOCX incorporates census-selection corrections, the 3D/map snapshot distinction, an hour-only presentation example and the scope of the previous renderer benchmark. It retains IMRaD, Arial 11 pt body / 12 pt headings, seven editable equations and three tables/figures. Actual Microsoft Word 16.0 build 20326 rendered it read-only into **16 pages**. The independent scientific evaluator inspected every replacement page and audited the actual DOCX and PDF; all 162 prose/table paragraphs are present, Arial-only rendered fonts and editable equations pass. The orchestrator separately inspected pages 1, 7, 8 and 9.

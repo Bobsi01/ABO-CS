@@ -7,8 +7,10 @@ import re
 from pathlib import Path
 
 from docx import Document
+from docx.enum.section import WD_SECTION
+from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
@@ -17,10 +19,15 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "docs" / "ABO_RESEARCH_IMRAD.md"
 OUTPUT = ROOT / "docs" / "ABO_RESEARCH_IMRAD.docx"
 AUDIT = ROOT / "qa" / "research" / "format-audit.json"
+HEADER_ART = ROOT / "docs" / "figures" / "university-header.png"
+BODY_PT = 10
+HEADING_PT = 11
+TITLE_PT = 24
+FONT_FAMILY = "Times New Roman"
 
 
-def font(target, size=11, bold=None):
-    target.font.name = "Arial"
+def font(target, size=BODY_PT, bold=None):
+    target.font.name = FONT_FAMILY
     target.font.size = Pt(size)
     target.font.color.rgb = RGBColor(0, 0, 0)
     if bold is not None:
@@ -31,13 +38,13 @@ def font(target, size=11, bold=None):
         fonts = OxmlElement("w:rFonts")
         props.insert(0, fonts)
     for attribute in ("ascii", "hAnsi", "eastAsia", "cs"):
-        fonts.set(qn(f"w:{attribute}"), "Arial")
+        fonts.set(qn(f"w:{attribute}"), FONT_FAMILY)
     for attribute in ("asciiTheme", "hAnsiTheme", "eastAsiaTheme", "cstheme"):
         fonts.attrib.pop(qn(f"w:{attribute}"), None)
 
 
 def scientific_text(paragraph, text):
-    """Use true subscripts in prose without changing the 11 pt run size."""
+    """Use true subscripts in prose without changing the body run size."""
     position = 0
     for match in re.finditer(r"_([A-Za-z0-9]+(?:,[A-Za-z0-9]+)?)", text):
         font(paragraph.add_run(text[position : match.start()]))
@@ -58,9 +65,9 @@ def math_run(text):
     props = OxmlElement("w:rPr")
     fonts = OxmlElement("w:rFonts")
     for attribute in ("ascii", "hAnsi", "eastAsia", "cs"):
-        fonts.set(qn(f"w:{attribute}"), "Arial")
+        fonts.set(qn(f"w:{attribute}"), FONT_FAMILY)
     props.append(fonts)
-    for tag, value in (("sz", "22"), ("szCs", "22"), ("color", "000000")):
+    for tag, value in (("sz", "20"), ("szCs", "20"), ("color", "000000")):
         item = OxmlElement(f"w:{tag}")
         item.set(qn("w:val"), value)
         props.append(item)
@@ -163,15 +170,11 @@ def equations():
         ],
         5: [
             sub("P", "ij"),
-            math_run(" = ["),
-            *cdf("b", "E"),
-            math_run(" − "),
-            *cdf("a", "E"),
-            math_run("] ["),
-            *cdf("d", "N"),
-            math_run(" − "),
-            *cdf("c", "N"),
-            math_run("]."),
+            math_run(" = "),
+            sub("ΔΦ", "E"),
+            math_run(" "),
+            sub("ΔΦ", "N"),
+            math_run("."),
         ],
         6: [
             sub("A", "ij"),
@@ -216,9 +219,15 @@ def equation(paragraph, number):
 def table(document, rows):
     result = document.add_table(rows=0, cols=len(rows[0]))
     result.autofit = False
-    widths = (2.45, 1.25, 2.57) if "Input" in rows[0] else (2.05, 1.62, 2.60)
+    widths = (1.42, 0.58, 1.05) if "Input" in rows[0] else (1.07, 0.90, 1.08)
+    if "Quantity" in rows[0]:
+        widths = (0.93, 1.08, 1.08)
     if "Diameter (µm)" in rows[0]:
-        widths = (2.09, 2.09, 2.09)
+        widths = (0.94, 0.94, 1.17)
+    if "Geographic reference" in rows[0]:
+        widths = (0.75, 1.20, 1.10)
+    if "Included / total" in rows[0]:
+        widths = (0.75, 1.20, 1.10)
     props = result._tbl.tblPr
     borders = OxmlElement("w:tblBorders")
     for edge in ("top", "left", "bottom", "right", "insideH", "insideV"):
@@ -247,6 +256,7 @@ def table(document, rows):
             paragraph = cell.paragraphs[0]
             paragraph.paragraph_format.space_after = Pt(0)
             paragraph.paragraph_format.line_spacing = 1.05
+            paragraph.paragraph_format.first_line_indent = Inches(0)
             # The manuscript's short tables should move as a whole. Retain
             # ordinary repeated-header pagination for any future long table.
             paragraph.paragraph_format.keep_with_next = (
@@ -255,7 +265,7 @@ def table(document, rows):
             paragraph.alignment = (
                 WD_ALIGN_PARAGRAPH.CENTER if column == 1 else WD_ALIGN_PARAGRAPH.LEFT
             )
-            font(paragraph.add_run(value), 12 if index == 0 else 11, index == 0)
+            font(paragraph.add_run(value), 10 if index == 0 else 9, index == 0)
             if index == 0:
                 shading = OxmlElement("w:shd")
                 shading.set(qn("w:fill"), "EAEAEA")
@@ -271,63 +281,168 @@ def table(document, rows):
     return result
 
 
+def author_grid(document, rows):
+    """Keep each author's editable name, affiliation and email in one block."""
+    authors = rows[1:]
+    result = document.add_table(rows=(len(authors) + 2) // 3, cols=3)
+    result.autofit = False
+    caption = OxmlElement("w:tblCaption")
+    caption.set(qn("w:val"), "Author affiliations")
+    result._tbl.tblPr.append(caption)
+    borders = OxmlElement("w:tblBorders")
+    for edge in ("top", "left", "bottom", "right", "insideH", "insideV"):
+        item = OxmlElement(f"w:{edge}")
+        item.set(qn("w:val"), "nil")
+        borders.append(item)
+    result._tbl.tblPr.append(borders)
+    for column in result.columns:
+        column.width = Inches(6.5 / 3)
+    for row_index, row in enumerate(result.rows):
+        row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+        for cell in row.cells:
+            cell.width = Inches(6.5 / 3)
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+            margins = OxmlElement("w:tcMar")
+            for edge in ("left", "right"):
+                margin = OxmlElement(f"w:{edge}")
+                margin.set(qn("w:w"), "0")
+                margin.set(qn("w:type"), "dxa")
+                margins.append(margin)
+            cell._tc.get_or_add_tcPr().append(margins)
+            cell.paragraphs[0].paragraph_format.space_after = Pt(0)
+        group = authors[row_index * 3 : row_index * 3 + 3]
+        for column_index, author in enumerate(group):
+            if len(group) == 1:
+                column_index = 1
+            cell = row.cells[column_index]
+            for field_index, value in enumerate(author):
+                paragraph = cell.paragraphs[0] if field_index == 0 else cell.add_paragraph()
+                paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                paragraph.paragraph_format.line_spacing = 1.0
+                paragraph.paragraph_format.first_line_indent = Inches(0)
+                paragraph.paragraph_format.space_after = Pt(0 if field_index < 4 else 8)
+                paragraph.paragraph_format.keep_together = True
+                paragraph.paragraph_format.keep_with_next = field_index < 4
+                text = value.replace("@", "\n@", 1) if field_index == 4 else value
+                run = paragraph.add_run(text)
+                font(run, BODY_PT, False)
+                run.italic = field_index in (1, 2, 3)
+    return result
+
+
+def is_author_grid(item):
+    caption = item._tbl.tblPr.find(qn("w:tblCaption"))
+    return caption is not None and caption.get(qn("w:val")) == "Author affiliations"
+
+
 def audit(document):
     issues = []
     checked = 0
     paragraphs = [
-        (p, 12 if p.style.name in {"Title", "Heading 1", "Heading 2"} else 11)
+        (
+            p,
+            TITLE_PT
+            if p.style.name == "Title"
+            else HEADING_PT
+            if p.style.name in {"Heading 1", "Heading 2"}
+            else BODY_PT,
+        )
         for p in document.paragraphs
     ]
     for item in document.tables:
         paragraphs.extend(
-            (p, 12 if index == 0 else 11)
+            (p, BODY_PT if is_author_grid(item) else 10 if index == 0 else 9)
             for index, row in enumerate(item.rows)
             for cell in row.cells
             for p in cell.paragraphs
         )
     for section in document.sections:
-        paragraphs.extend((p, 11) for p in section.footer.paragraphs)
+        paragraphs.extend((p, 9) for p in section.first_page_footer.paragraphs)
+        paragraphs.extend((p, 9) for p in section.footer.paragraphs)
     for paragraph, expected in paragraphs:
+        if paragraph.style.name == "Caption":
+            expected = 9
         for run in paragraph.runs:
             if not run.text and not run._r.findall(qn("w:fldChar")):
                 continue
             checked += 1
-            if run.font.name != "Arial" or run.font.size.pt != expected:
+            run_expected = (
+                HEADING_PT
+                if paragraph.style.name == "Abstract" and run.text == "Abstract: "
+                else expected
+            )
+            if run.font.name != FONT_FAMILY or run.font.size.pt != run_expected:
                 issues.append(f"Invalid typography: {run.text[:60]}")
+            if paragraph.style.name in {"Heading 1", "Heading 2"} and run.bold is not True:
+                issues.append(f"Heading must be bold: {run.text}")
     headings = [p.text for p in document.paragraphs if p.style.name == "Heading 1"]
+    if any(
+        p.style.name == "Abstract" and p.text.startswith("Abstract: ") for p in document.paragraphs
+    ):
+        headings.insert(0, "Abstract")
     expected_headings = [
         "Abstract",
-        "1. Introduction",
-        "2. Methods",
-        "3. Results",
-        "4. Discussion",
+        "I. Introduction",
+        "II. Methods",
+        "III. Results",
+        "IV. Discussion",
         "References",
     ]
     if headings != expected_headings:
         issues.append(f"Unexpected manuscript structure: {headings}")
     math = document.element.findall(".//" + qn("m:oMath"))
-    if len(math) != 7:
-        issues.append(f"Expected seven native equations, found {len(math)}")
+    expected_equations = sum(
+        bool(re.search(r"\s\(([1-7])\)$", line))
+        for line in SOURCE.read_text(encoding="utf-8").splitlines()
+    )
+    if len(math) != expected_equations:
+        issues.append(f"Expected {expected_equations} native equations, found {len(math)}")
+    body_paragraphs = [
+        p
+        for p in document.paragraphs
+        if p.text.strip()
+        and p.style.name in {"Normal", "Abstract", "Keywords"}
+        and not p.text.startswith("BSCS 4B")
+        and not re.fullmatch(r"\d{1,2} \w+ \d{4}", p.text)
+        and p._p.find(qn("m:oMath")) is None
+    ]
+    for p in body_paragraphs:
+        alignment = p.alignment if p.alignment is not None else p.style.paragraph_format.alignment
+        if alignment != WD_ALIGN_PARAGRAPH.JUSTIFY:
+            issues.append(f"Body paragraph is not justified: {p.text[:60]}")
     for node in math:
         for run in node.findall(".//" + qn("m:r")):
             props = run.find(qn("w:rPr"))
             if props is None or (
-                props.find(qn("w:rFonts")).get(qn("w:ascii")) != "Arial"
-                or props.find(qn("w:sz")).get(qn("w:val")) != "22"
+                props.find(qn("w:rFonts")).get(qn("w:ascii")) != FONT_FAMILY
+                or props.find(qn("w:sz")).get(qn("w:val")) != "20"
             ):
                 issues.append("Invalid equation typography")
             checked += 1
+    author_count = sum(
+        bool(cell.text.strip())
+        for item in document.tables
+        if is_author_grid(item)
+        for row in item.rows
+        for cell in row.cells
+    )
+    if author_count != 7:
+        issues.append(f"Expected seven authors, found {author_count}")
     if issues:
         raise ValueError("\n".join(issues))
     return {
         "file": str(OUTPUT.relative_to(ROOT)),
-        "font": "Arial",
-        "body_pt": 11,
-        "headings_pt": 12,
-        "table_headers_pt": 12,
+        "font": FONT_FAMILY,
+        "title_pt": TITLE_PT,
+        "body_pt": BODY_PT,
+        "headings_pt": HEADING_PT,
+        "body_alignment": "justified",
+        "justified_body_paragraphs": len(body_paragraphs),
+        "table_headers_pt": 10,
         "checked_text_runs": checked,
         "major_sections": headings,
-        "tables": len(document.tables),
+        "tables": sum(not is_author_grid(item) for item in document.tables),
+        "authors": author_count,
         "native_equations": len(math),
         "page_size": "Letter, portrait",
         "issues": issues,
@@ -339,43 +454,81 @@ def main():
     section = document.sections[0]
     section.page_width = Inches(8.5)
     section.page_height = Inches(11)
-    section.top_margin = section.bottom_margin = Inches(1)
+    section.top_margin = Inches(2)
+    section.bottom_margin = Inches(1)
     section.left_margin = section.right_margin = Inches(1)
     section.footer_distance = Inches(0.45)
+    section.different_first_page_header_footer = True
+    header_run = section.first_page_header.paragraphs[0].add_run()
+    header_image = header_run.add_picture(str(HEADER_ART), width=Inches(3.37))
+    header_image._inline.docPr.set(
+        "descr",
+        "University of Caloocan City Congress Campus, Computer Studies Department",
+    )
     for style in document.styles:
         if hasattr(style, "font"):
-            size = 12 if style.name == "Title" or style.name.startswith("Heading") else 11
+            size = (
+                TITLE_PT
+                if style.name == "Title"
+                else HEADING_PT
+                if style.name.startswith("Heading")
+                else BODY_PT
+            )
             font(style, size)
     title_props = document.styles["Title"].element.get_or_add_pPr()
     title_border = title_props.find(qn("w:pBdr"))
     if title_border is not None:
         title_props.remove(title_border)
     normal = document.styles["Normal"].paragraph_format
-    normal.line_spacing = 1.15
-    normal.space_after = Pt(6)
+    normal.line_spacing = 1.0
+    normal.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    normal.first_line_indent = Inches(0.14)
+    normal.space_after = Pt(4)
     normal.widow_control = True
     for name in ("Heading 1", "Heading 2"):
         style = document.styles[name]
-        font(style, 12, True)
-        style.paragraph_format.space_before = Pt(12)
-        style.paragraph_format.space_after = Pt(5)
+        font(style, HEADING_PT, True)
+        style.paragraph_format.alignment = (
+            WD_ALIGN_PARAGRAPH.CENTER if name == "Heading 1" else WD_ALIGN_PARAGRAPH.LEFT
+        )
+        style.paragraph_format.first_line_indent = Inches(0)
+        style.paragraph_format.space_before = Pt(10)
+        style.paragraph_format.space_after = Pt(4)
         style.paragraph_format.keep_with_next = True
         style.paragraph_format.keep_together = True
-    footer = section.footer.paragraphs[0]
-    footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    for tag, text in (("fldChar", "begin"), ("instrText", "PAGE"), ("fldChar", "end")):
-        run = footer.add_run()
-        font(run)
-        field = OxmlElement(f"w:{tag}")
-        if tag == "fldChar":
-            field.set(qn("w:fldCharType"), text)
-        else:
-            field.set(qn("xml:space"), "preserve")
-            field.text = f" {text} "
-        run._r.append(field)
+    document.styles["Heading 1"].font.small_caps = True
+    document.styles["Caption"].paragraph_format.first_line_indent = Inches(0)
+    for name in ("Abstract", "Keywords"):
+        style = document.styles.add_style(name, WD_STYLE_TYPE.PARAGRAPH)
+        style.base_style = document.styles["Normal"]
+        font(style, BODY_PT, True)
+        style.font.italic = True
+        style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    document.styles["Keywords"].paragraph_format.space_before = Pt(5)
     lines = SOURCE.read_text(encoding="utf-8").splitlines()
+    document_title = next(line[2:] for line in lines if line.startswith("# "))
+    for footer in (section.first_page_footer, section.footer):
+        paragraph = footer.paragraphs[0]
+        paragraph.paragraph_format.first_line_indent = Inches(0)
+        paragraph.paragraph_format.tab_stops.add_tab_stop(Inches(6.5), WD_TAB_ALIGNMENT.RIGHT)
+        title_run = paragraph.add_run(document_title)
+        font(title_run, 9)
+        title_run.italic = True
+        font(paragraph.add_run("\tPage "), 9)
+        for tag, text in (("fldChar", "begin"), ("instrText", "PAGE"), ("fldChar", "end")):
+            run = paragraph.add_run()
+            font(run, 9)
+            field = OxmlElement(f"w:{tag}")
+            if tag == "fldChar":
+                field.set(qn("w:fldCharType"), text)
+            else:
+                field.set(qn("xml:space"), "preserve")
+                field.text = text
+            run._r.append(field)
     index = 0
     references = False
+    author_names = []
+    abstract_next = False
     while index < len(lines):
         line = lines[index].strip()
         index += 1
@@ -391,33 +544,75 @@ def main():
                     break
                 line = lines[index].strip()
                 index += 1
-            table(document, rows)
+            if rows[0] == ["Author", "Department", "University", "Location", "Email"]:
+                author_grid(document, rows)
+                author_names = [row[0] for row in rows[1:]]
+            else:
+                table(document, rows)
             continue
         if line.startswith("# "):
             paragraph = document.add_paragraph(style="Title")
             paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
             paragraph.paragraph_format.space_after = Pt(9)
-            font(paragraph.add_run(line[2:]), 12, True)
+            paragraph.paragraph_format.first_line_indent = Inches(0)
+            font(paragraph.add_run(line[2:]), TITLE_PT, False)
         elif line.startswith("## "):
             text = line[3:]
+            if text == "Abstract":
+                section = document.add_section(WD_SECTION.CONTINUOUS)
+                section.page_width = Inches(8.5)
+                section.page_height = Inches(11)
+                section.top_margin = section.bottom_margin = Inches(1)
+                section.left_margin = section.right_margin = Inches(1)
+                section.footer_distance = Inches(0.45)
+                columns = section._sectPr.xpath("./w:cols")[0]
+                columns.set(qn("w:num"), "2")
+                columns.set(qn("w:space"), "360")
+                section.start_type = WD_SECTION.CONTINUOUS
+                abstract_next = True
+                continue
             references = text == "References"
             paragraph = document.add_paragraph(style="Heading 1")
-            font(paragraph.add_run(text), 12, True)
+            font(paragraph.add_run(text), HEADING_PT, True)
         elif line.startswith("### "):
             paragraph = document.add_paragraph(style="Heading 2")
-            font(paragraph.add_run(line[4:]), 12, True)
+            text = line[4:]
+            if match := re.match(r"[2-4]\.([1-9]) (.+)", text):
+                text = f"{chr(64 + int(match.group(1)))}.\t{match.group(2)}"
+            paragraph.paragraph_format.left_indent = Inches(0.18)
+            paragraph.paragraph_format.first_line_indent = Inches(-0.18)
+            paragraph.paragraph_format.tab_stops.add_tab_stop(Inches(0.18))
+            font(paragraph.add_run(text), HEADING_PT, True)
         elif image_match := re.fullmatch(r"!\[([^]]+)\]\(([^)]+)\)", line):
             image_path = (SOURCE.parent / image_match.group(2)).resolve()
             if not image_path.is_relative_to(SOURCE.parent.resolve()):
                 raise ValueError("Manuscript figures must remain within docs/")
             paragraph = document.add_paragraph()
+            paragraph.paragraph_format.first_line_indent = Inches(0)
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
             paragraph.paragraph_format.keep_with_next = True
             picture_run = paragraph.add_run()
-            font(picture_run, 11)
-            picture = picture_run.add_picture(str(image_path), width=Inches(6.27))
+            font(picture_run, BODY_PT)
+            picture = picture_run.add_picture(str(image_path), width=Inches(3.02))
             picture._inline.docPr.set("descr", image_match.group(1))
         else:
             paragraph = document.add_paragraph()
+            if abstract_next:
+                paragraph.style = "Abstract"
+                run = paragraph.add_run("Abstract: ")
+                font(run, HEADING_PT, True)
+                run.italic = True
+                run = paragraph.add_run(line)
+                font(run, BODY_PT, True)
+                run.italic = True
+                abstract_next = False
+                continue
+            if line.startswith("Keywords:"):
+                paragraph.style = "Keywords"
+                run = paragraph.add_run(line.replace("Keywords:", "Keywords—", 1))
+                font(run, BODY_PT, True)
+                run.italic = True
+                continue
             math_match = re.search(r"\(([1-7])\)$", line)
             if math_match and not references:
                 equation(paragraph, int(math_match.group(1)))
@@ -427,28 +622,45 @@ def main():
             else:
                 scientific_text(paragraph, line)
             if re.match(r"Table \d+\.", line):
+                paragraph.style = "Caption"
                 paragraph.paragraph_format.keep_with_next = True
                 paragraph.paragraph_format.space_before = Pt(6)
-                paragraph.runs[0].bold = True
+                caption = paragraph.runs[0].text
+                boundary = caption.index(".") + 1
+                paragraph.runs[0].text = caption[:boundary]
+                font(paragraph.runs[0], 9, True)
+                font(paragraph.add_run(caption[boundary:]), 9, False)
             elif re.match(r"Figure \d+\.", line):
+                paragraph.style = "Caption"
                 paragraph.paragraph_format.keep_together = True
                 paragraph.paragraph_format.space_after = Pt(9)
-                paragraph.runs[0].bold = True
+                caption = paragraph.runs[0].text
+                boundary = caption.index(".") + 1
+                paragraph.runs[0].text = caption[:boundary]
+                font(paragraph.runs[0], 9, True)
+                font(paragraph.add_run(caption[boundary:]), 9, False)
             elif references:
                 paragraph.paragraph_format.left_indent = Inches(0.25)
                 paragraph.paragraph_format.first_line_indent = Inches(-0.25)
+                paragraph.paragraph_format.keep_together = True
             elif line.startswith("BSCS 4B") or re.fullmatch(r"\d{1,2} \w+ \d{4}", line):
                 paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    document.core_properties.title = document.paragraphs[0].text
-    document.core_properties.author = "BSCS 4B"
-    document.core_properties.subject = "CSE 103: IMRaD computational model study"
+                paragraph.paragraph_format.first_line_indent = Inches(0)
+    # A closing continuous section balances the final bibliography columns.
+    closing_section = document.add_section(WD_SECTION.CONTINUOUS)
+    closing_section._sectPr.xpath("./w:cols")[0].set(qn("w:num"), "1")
+    document.core_properties.title = document_title
+    document.core_properties.author = "; ".join(author_names)
+    document.core_properties.subject = (
+        "CSE 103: IMRaD volcanic processes and secondary data research"
+    )
     document.core_properties.keywords = (
-        "ABO, IMRaD, ashfall, Gaussian fallout, educational simulation"
+        "IMRaD, Taal, Mayon, Kanlaon, volcanic hazards, ashfall, wind, seismicity, deformation"
     )
     document.save(OUTPUT)
     result = audit(Document(OUTPUT))
     AUDIT.parent.mkdir(parents=True, exist_ok=True)
-    AUDIT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    AUDIT.write_bytes((json.dumps(result, indent=2) + "\n").encode("utf-8"))
     print(json.dumps(result, indent=2))
 
 
