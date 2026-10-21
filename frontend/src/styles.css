@@ -86,9 +86,12 @@ main.laboratory.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .status-line { padding: 0.85rem 0 0; font-size: 0.8rem; color: var(--secondary); min-height: 2.5rem; }
 .error-message, .stale-message { padding: 0.85rem; background: var(--panel); border: 1px solid var(--line); font-size: 0.9rem; }
 .error-message { color: var(--text); font-weight: 600; }
-.view-tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; border-bottom: 1px solid var(--line); padding: 0.75rem 0; }
+.view-tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; border-bottom: 1px solid var(--line); padding: 0.75rem 0; align-items: center; }
 .application .view-tabs button { font-size: 0.8rem; background: transparent; border-color: transparent; padding: 0.5rem 0.7rem; }
 .application .view-tabs button[aria-current="page"], .application .view-tabs button[aria-current="page"]:hover { background: var(--selected); color: var(--action); }
+.view-tabs-actions { margin-left: auto; display: flex; align-items: center; }
+.application .view-tabs .edit-baseline-button { font-size: 0.8rem; padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--control-line); background: var(--panel); color: var(--text); display: inline-flex; align-items: center; gap: 0.4rem; }
+.application .view-tabs .edit-baseline-button:hover { background: var(--hover); border-color: var(--action); }
 .visual-panel { border: 0; padding: 0.75rem 0 0; }
 .spatial-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; }
 .spatial-view { min-width: 0; }
