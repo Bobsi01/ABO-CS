@@ -34,15 +34,25 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
   const [showReference, setShowReference] = useState(false)
   const [showProvinces, setShowProvinces] = useState(true)
   const [showMunicipalities, setShowMunicipalities] = useState(true)
-  const [showCityLabels, setShowCityLabels] = useState(true)
+  const [showCityLabels, setShowCityLabels] = useState(false)
   const [showHistorical, setShowHistorical] = useState(false)
+  const [prevSelected, setPrevSelected] = useState(selected)
+  const [inspectOpen, setInspectOpen] = useState(Boolean(selected))
+
+  if (prevSelected !== selected) {
+    setPrevSelected(selected)
+    if (selected) {
+      setInspectOpen(true)
+    }
+  }
 
   const referenceVisible = useRef(false)
   const historicalVisible = useRef(false)
 
   const zone = referenceZone(scenario.volcano_id)
-  const rows = frame?.receptors ?? result?.receptors
-  const contours = frame?.contours ?? result?.contours
+  const activeFrame = frame && frame.phase !== 'before' && frame.phase !== 'after' ? frame : null
+  const rows = activeFrame?.receptors ?? result?.receptors
+  const contours = activeFrame?.contours ?? result?.contours
   const [mapState, setMapState] = useState(
     'Offline geographic context. Computed contours and receptors remain available.'
   )
@@ -227,7 +237,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     }
 
     const sampleGridThickness = (lat: number, lon: number): number | null => {
-      const g = frame?.grid ?? result?.grid
+      const g = activeFrame?.grid ?? result?.grid
       if (!g || !g.east_m.length || !g.north_m.length) return null
       const dy = (lat - scenario.vent_lat) * 111132
       const dx = (lon - scenario.vent_lon) * 111132 * Math.cos((scenario.vent_lat * Math.PI) / 180)
@@ -424,8 +434,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
         markers.current.set(r.id, marker)
 
-        // Show city label badge for affected localities when enabled
-        if (showCityLabels && isAffected && effect === 'ash') {
+        // Show city label badge for prominent affected localities when enabled
+        if (showCityLabels && isAffected && effect === 'ash' && ((r.thickness_mm ?? 0) >= 1.0 || r.kind === 'airport')) {
           const cityName = r.name.split(',')[0].replace('City of ', '').trim()
           labeledPositions.add(cityName.toLowerCase())
           const badgeHtml = `<span class="city-map-badge">${cityName} <strong>${number(r.thickness_mm)} mm</strong></span>`
@@ -475,6 +485,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     effect,
     eruptionSequence,
     frame,
+    activeFrame,
     showProvinces,
     showMunicipalities,
     showCityLabels,
@@ -547,8 +558,11 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
   }
 
   return (
-    <div>
-      <div className="map-toolbar">
+    <div className="map-wrap">
+      <div className="map-stage" ref={element} aria-label="Geographic ashfall map" />
+      <div className="spatial-card-sidebar">
+        <h2 id="map-title">Affected locations</h2>
+        <div className="map-toolbar">
         <Select
           label="Map effect"
           value={effect}
@@ -622,7 +636,6 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       </details>
       </div>
 
-      <div className="map-stage" ref={element} aria-label="Geographic ashfall map" />
       {import.meta.env.VITE_MAPTILER_KEY && (
         <a className="maptiler-logo" href="https://www.maptiler.com/" aria-label="MapTiler attribution">
           <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler" />
@@ -643,7 +656,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       )}
 
       {frame && (
-        <p className="map-status">
+        <p className="map-status spatial-sidebar-note">
           Snapshot: {phaseLabel(frame.phase)} · {scenarioClock(frame.elapsed_s)} ·{' '}
           {effect === 'lava'
             ? `${
@@ -656,7 +669,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       )}
 
       {result ? (
-        <details className="location-inspector-disclosure" open={Boolean(chosen)}><summary>Inspect a location</summary><div className="location-inspector">
+        <details className="location-inspector-disclosure" open={inspectOpen} onToggle={e => setInspectOpen(e.currentTarget.open)}><summary>Inspect a location</summary><div className="location-inspector">
           <Select
             label="Inspect location"
             value={selected ?? ''}
@@ -773,6 +786,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
           Boundaries from geoBoundaries gbOpen ADM3 (2020) and PSA. Generalized land/lake geometry is for orientation.
         </p>
       </details>
+      </div>
     </div>
   )
 }

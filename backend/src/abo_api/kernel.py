@@ -47,7 +47,7 @@ def components(
     base_weights = np.broadcast_to(
         mass * fractions[:, None] / layers, (fractions.size, layers)
     ).reshape(-1)
-    if umbrella_radius is not None and umbrella_radius > initial_spread:
+    if umbrella_radius is not None and umbrella_radius > initial_spread and height >= 3000:
         alpha = 0.40
         fraction_h = (np.arange(layers) + 0.5) / layers
         k = 3.0
@@ -67,7 +67,7 @@ def components(
         base_var_dist = np.broadcast_to(
             (umbrella_radius * fraction_dist)[None, :] ** 2, (fractions.size, layers)
         ).reshape(-1)
-        shear_var = 15000.0**2
+        shear_var = (0.75 * umbrella_radius) ** 2
         var_dist = initial_spread**2 + base_var_dist + 2 * diffusivity * times_dist + shear_var
         var_prox = (umbrella_radius / 2.5) ** 2 + 2 * diffusivity * times_prox
         times = np.concatenate([times_prox, times_dist])
@@ -111,7 +111,7 @@ def pulse_components(
     flat_durations = np.broadcast_to(durations[:, None, None], shape).reshape(-1)
     flat_rate = rate.reshape(-1)
 
-    if umbrella_radius is not None and umbrella_radius > initial_spread:
+    if umbrella_radius is not None and umbrella_radius > initial_spread and np.all(heights >= 3000):
         alpha = 0.40
         fraction_h = (np.arange(layers) + 0.5) / layers  # [layer]
         k = 3.0
@@ -133,7 +133,7 @@ def pulse_components(
         base_var_dist = np.broadcast_to(
             (umbrella_radius * fraction_dist)[None, None, :] ** 2, shape
         ).reshape(-1)
-        shear_var = 15000.0**2
+        shear_var = (0.75 * umbrella_radius) ** 2
         var_dist = initial_spread**2 + base_var_dist + 2 * diffusivity * times_dist + shear_var
         var_prox = (umbrella_radius / 2.5) ** 2 + 2 * diffusivity * flat_times
 

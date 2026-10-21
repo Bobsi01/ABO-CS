@@ -248,9 +248,9 @@ main.laboratory.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .application .select-trigger { width: 100%; min-height: 44px; padding: 0.55rem 0.6rem; text-align: left; font-size: 0.8rem; justify-content: space-between; gap: 0.75rem; }
 .select-trigger > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .select-trigger svg { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.8; }
-.application.select-portal { position: fixed; min-height: 0; z-index: 2000; overflow-y: auto; background: var(--panel); color: var(--text); border: 1px solid var(--control-line); border-radius: 6px; box-shadow: 0 5px 16px #10254426; padding: 4px; }
+.application.select-portal { position: fixed; min-height: 0; z-index: 3000; overflow-y: auto; background: var(--panel); color: var(--text); border: 1px solid var(--control-line); border-radius: 6px; box-shadow: 0 5px 16px #10254426; padding: 4px; box-sizing: border-box; }
 .select-portal ul { list-style: none; padding: 0; margin: 0; }
-.select-portal [role="option"] { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.6rem; font-size: 0.8rem; line-height: 1.4; border-radius: 3px; cursor: pointer; overflow-wrap: anywhere; }
+.select-portal [role="option"] { min-height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.35rem 0.55rem; font-size: 0.78rem; line-height: 1.35; border-radius: 3px; cursor: pointer; overflow-wrap: anywhere; }
 .select-portal [role="option"].active-option { background: var(--selected); outline: 1px solid var(--action); outline-offset: -1px; }
 .select-portal [aria-selected="true"] { font-weight: 600; }
 .select-portal [aria-disabled="true"] { color: var(--secondary); cursor: not-allowed; }
@@ -454,8 +454,54 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--action); outlin
 .chart-panel header p { font-size: 0.75rem; color: var(--secondary); margin: 0; }
 .chart-unit { color: var(--secondary); font-size: 0.8rem; }
 .application .chart-footnote { color: var(--secondary); font-size: 0.73rem; line-height: 1.45; margin: 0.65rem 0 0; }
-.ranking-chart { display: flex; flex-direction: column; gap: 0.2rem; margin: 0.5rem 0; }
-.application .ranking-row { display: grid; grid-template-columns: 20px minmax(75px, 1.1fr) minmax(50px, 1.7fr) minmax(48px, auto); gap: 0.65rem; width: 100%; min-height: 29px; padding: 0.3rem 0; border: 0; border-radius: 2px; background: transparent; text-align: left; font-size: 0.78rem; }
+.ranking-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0.5rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 320px;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.ranking-chart:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: -2px;
+}
+.ranking-chart::-webkit-scrollbar {
+  width: 6px;
+}
+.ranking-chart::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: 3px;
+}
+.ranking-chart::-webkit-scrollbar-track {
+  background: transparent;
+}
+.application .ranking-row {
+  display: grid;
+  grid-template-columns: 20px minmax(75px, 1.1fr) minmax(50px, 1.7fr) minmax(48px, auto);
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 29px;
+  padding: 0.3rem 0;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  text-align: left;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.application .ranking-row:hover {
+  background: var(--surface);
+}
+.application .ranking-row:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: -1px;
+}
 .ranking-row.is-selected .rank-name { color: var(--action); font-weight: 650; }
 .rank-index { font-size: 0.7rem; color: var(--secondary); }
 .rank-name { overflow-wrap: anywhere; }
@@ -503,28 +549,114 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--action); outlin
 .data-scroll table { min-width: 730px; }
 .data-scroll th { font-weight: 600; }
 .data-scroll th small, .data-scroll td small { display: block; font-weight: 400; color: var(--secondary); font-size: 0.72rem; }
-.simulation-heading { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 0 0; }
-.simulation-heading > div { margin-right: auto; }
+.simulation-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.45rem 0.9rem; padding: 0.45rem 0 0.25rem; }
+.simulation-title-group { flex: 0 1 auto; margin-right: auto; min-width: 0; }
+.simulation-title-group h2 { font-size: 1.35rem; margin: 0 0 0.05rem; line-height: 1.15; }
+.simulation-title-group .status-line { padding: 0; min-height: 0; font-size: 0.74rem; color: var(--secondary); line-height: 1.3; }
+.simulation-action-group { display: flex; align-items: center; flex-wrap: wrap; gap: 0.45rem; flex-shrink: 0; }
+.application .header-scenario-select { margin: 0; width: clamp(180px, 16vw, 255px); }
+.application .header-scenario-select select { min-height: 36px; padding: 0.25rem 0.5rem; font-size: 0.76rem; }
 .application .simulation-heading .run-button { width: auto; flex-shrink: 0; }
-.simulation-heading > button { flex-shrink: 0; white-space: nowrap; }
-.application[data-page="3d"] .scene-stage, .application[data-page="3d"] .map-stage { height: clamp(280px, 34vh, 420px); }
-.application .timeline-explanation { padding: 0.4rem 0 0; margin-top: 0.4rem; }
-.timeline-explanation summary { font-size: 0.75rem; color: var(--secondary); }
+.simulation-heading button { flex-shrink: 0; white-space: nowrap; min-height: 36px; padding: 0.3rem 0.65rem; font-size: 0.78rem; }
+.application .eruption-timeline.eruption-timeline-compact { display: inline-flex; align-items: center; gap: 0.5rem; flex: 0 1 auto; margin: 0; padding: 0.2rem 0.55rem; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+.application .eruption-timeline.eruption-timeline-compact .timeline-top { display: inline-flex; align-items: center; gap: 0.4rem; }
+.application .eruption-timeline.eruption-timeline-compact .timeline-play-button { order: -1; min-height: 30px; padding: 0.15rem 0.55rem; font-size: 0.75rem; background: var(--selected); border-color: var(--action); color: var(--action); font-weight: 600; }
+.application .eruption-timeline.eruption-timeline-compact .phase-choices { display: inline-flex; gap: 0.15rem; background: var(--surface); padding: 2px; border-radius: 5px; border: 1px solid var(--line); }
+.application .eruption-timeline.eruption-timeline-compact .phase-choices button { min-height: 24px; padding: 0.1rem 0.4rem; font-size: 0.71rem; border-radius: 3px; }
+.application .eruption-timeline.eruption-timeline-compact .timeline-slider { display: inline-flex; flex-direction: row; align-items: center; gap: 0.4rem; margin: 0; font-size: 0.71rem; font-weight: 500; color: var(--secondary); white-space: nowrap; }
+.application .eruption-timeline.eruption-timeline-compact .timeline-slider-label { font-variant-numeric: tabular-nums; min-width: 64px; text-align: right; }
+.application .eruption-timeline.eruption-timeline-compact .timeline-slider input[type="range"] { width: 100px; min-width: 80px; max-width: 115px; min-height: 14px; height: 4px; margin: 0; padding: 0; }
+.simulation-workbench { display: grid; grid-template-columns: minmax(440px, 0.96fr) minmax(500px, 1.24fr); gap: 0.85rem; align-items: stretch; }
+.workbench-spatial-stack { display: flex; flex-direction: column; gap: 0.65rem; min-width: 0; height: 100%; }
+.workbench-spatial-stack > .spatial-view { flex: 1 1 0; min-height: 0; background: var(--panel); padding: 0.55rem 0.65rem; border: 1px solid var(--line); border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; }
+.workbench-spatial-stack > .spatial-view > .view-boundary { width: 100%; height: 100%; min-height: 0; display: flex; flex-direction: column; }
+.workbench-spatial-stack .scene-wrap, .workbench-spatial-stack .map-wrap { display: flex; flex-direction: row; align-items: stretch; gap: 0.65rem; width: 100%; height: 100%; min-height: 0; }
+.workbench-spatial-stack .scene-stage, .workbench-spatial-stack .map-stage { flex: 1 1 0; min-width: 0; height: 100% !important; margin: 0; border-radius: 6px; overflow: hidden; position: relative; }
+.workbench-spatial-stack .spatial-card-sidebar { width: clamp(210px, 28%, 270px); flex: 0 0 clamp(210px, 28%, 270px); min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 0.45rem; overflow-y: auto; overflow-x: hidden; padding-right: 0.35rem; }
+.workbench-spatial-stack .spatial-card-sidebar > * { flex-shrink: 0; width: 100%; min-width: 0; box-sizing: border-box; }
+.workbench-spatial-stack .spatial-card-sidebar > h2 { font-size: 0.95rem; font-weight: 650; margin: 0; line-height: 1.25; flex-shrink: 0; }
+.workbench-spatial-stack .scene-stage .scene-hud { top: 0.5rem; left: 0.5rem; padding: 0.3rem 0.5rem; font-size: 0.68rem; }
+.workbench-spatial-stack .scene-stage .scene-hud strong { font-size: 0.74rem; }
+.workbench-spatial-stack .scene-stage .scene-impact-hud { top: 3.35rem; left: 0.5rem; max-width: 215px; padding: 0.35rem 0.5rem; gap: 0.2rem; font-size: 0.68rem; }
+.workbench-spatial-stack .scene-stage .impact-hud-title strong { font-size: 0.7rem; }
+.workbench-spatial-stack .scene-stage .impact-hud-grid { gap: 0.15rem; margin: 0.1rem 0; }
+.workbench-spatial-stack .scene-stage .impact-stat { padding-bottom: 0.12rem; }
+.workbench-spatial-stack .scene-stage .impact-label { font-size: 0.66rem; }
+.workbench-spatial-stack .scene-stage .impact-value { font-size: 0.72rem; }
+.workbench-spatial-stack .scene-stage .impact-disclaimer { font-size: 0.6rem; line-height: 1.2; margin: 0.05rem 0 0; }
+.workbench-spatial-stack .scene-stage .scene-caption { padding: 0.35rem 0.6rem; font-size: 0.68rem; }
+.workbench-analytics-pane { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+.workbench-fullwidth-results { width: 100%; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+@media (min-width: 1150px) and (min-height: 700px) {
+  .application[data-page="3d"] .masthead { min-height: 48px; padding: 0.25rem 1.25rem; }
+  .application[data-page="3d"] .masthead h1 { font-size: 1.4rem; }
+  .application[data-page="3d"] .masthead h1 span { font-size: 0.85rem; }
+  .application[data-page="3d"] .primary-navigation button { padding: 0.55rem 0.3rem; font-size: 0.82rem; }
+  .application[data-page="3d"] .visual-panel { padding-top: 0.35rem; }
+  .application[data-page="3d"] .simulation-workbench { height: calc(100dvh - 108px); min-height: 580px; max-height: 920px; }
+}
+@media (min-width: 1200px) {
+  .workbench-fullwidth-results .province-cards-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 0.85rem; align-items: start; }
+}
+.application .timeline-explanation { padding: 0.35rem 0 0; margin-top: 0.35rem; }
+.timeline-explanation summary { font-size: 0.75rem; color: var(--secondary); min-height: 28px; padding: 0.2rem 0; }
 .simulation-data > summary { font-size: 0.85rem; }
 @media (min-width: 1001px) {
-  .application .eruption-timeline { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.4rem 1rem; margin-top: 0.75rem; padding: 0.5rem 0.85rem; }
-  .timeline-top { display: contents; }
-  .timeline-top > button { grid-column: 3; grid-row: 1; }
-  .application .timeline-slider { grid-column: 2; grid-row: 1; margin: 0; font-size: 0.75rem; }
-  .timeline-readout, .timeline-explanation, .historical-bookmarks { grid-column: 1 / -1; }
+  .application .eruption-timeline:not(.eruption-timeline-compact) { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.35rem 0.85rem; margin-top: 0; padding: 0.5rem 0.85rem; align-items: center; }
+  .eruption-timeline:not(.eruption-timeline-compact) .timeline-top { display: contents; }
+  .eruption-timeline:not(.eruption-timeline-compact) .timeline-top > button { grid-column: 3; grid-row: 1; background: var(--selected); border-color: var(--action); color: var(--action); font-weight: 600; }
+  .application .eruption-timeline:not(.eruption-timeline-compact) .timeline-slider { grid-column: 2; grid-row: 1; margin: 0; font-size: 0.75rem; }
+  .eruption-timeline:not(.eruption-timeline-compact) .timeline-readout, .eruption-timeline:not(.eruption-timeline-compact) .timeline-explanation, .eruption-timeline:not(.eruption-timeline-compact) .historical-bookmarks { grid-column: 1 / -1; }
   .application .timeline-explanation { border: 0; margin: 0; padding: 0; }
 }
-.application[data-page="3d"] .spatial-view { background: var(--panel); padding: 0.85rem; border: 1px solid var(--line); border-radius: 8px; }
-.application[data-page="3d"] .scene-toolbar, .application[data-page="3d"] .map-toolbar { min-height: 76px; margin-bottom: 0.75rem; }
-.application .map-layer-menu { position: relative; padding: 0; margin: 0; border: 0; }
-.application .map-layer-menu > summary { font-size: 0.8rem; border: 1px solid var(--control-line); border-radius: 6px; padding: 0.65rem; min-height: 44px; }
-.application .map-layer-menu fieldset { position: absolute; right: 0; top: 100%; z-index: 1002; width: min(300px, 75vw); background: var(--panel); box-shadow: 0 8px 20px #10254426; }
-.map-layer-menu .map-layer-checkboxes { flex-direction: column; align-items: start; }
+@media (max-width: 1149px) {
+  .simulation-workbench { grid-template-columns: minmax(0, 1fr); }
+  .workbench-spatial-stack, .workbench-analytics-pane { height: auto; }
+  .workbench-spatial-stack .scene-wrap, .workbench-spatial-stack .map-wrap { flex-direction: column; }
+  .workbench-spatial-stack .scene-stage, .workbench-spatial-stack .map-stage { height: 320px !important; flex: none; }
+  .workbench-spatial-stack .spatial-card-sidebar { width: 100%; flex: none; height: auto; }
+}
+.workbench-spatial-stack .scene-toolbar, .workbench-spatial-stack .map-toolbar { min-height: fit-content; margin-bottom: 0; padding-bottom: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0.35rem; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .scene-view-controls { display: flex; flex-direction: row; align-items: flex-end; gap: 0.35rem; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .scene-view-controls > .select-control { flex: 1 1 0; min-width: 0; width: auto; margin: 0; }
+.workbench-spatial-stack .scene-view-controls > button.icon-button { flex: 0 0 28px; width: 28px; min-width: 28px; height: 28px; min-height: 28px; padding: 0; margin: 0; }
+.workbench-spatial-stack .scene-toolbar .select-control, .workbench-spatial-stack .map-toolbar .select-control, .workbench-spatial-stack .select-control { display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; width: 100%; margin: 0; flex-shrink: 0; }
+.workbench-spatial-stack .scene-toolbar .select-control > label, .workbench-spatial-stack .map-toolbar .select-control > label, .workbench-spatial-stack .select-control > label { margin: 0; font-size: 0.71rem; line-height: 1.2; white-space: nowrap; color: var(--secondary); display: block; }
+.workbench-spatial-stack .scene-toolbar .select-trigger, .workbench-spatial-stack .map-toolbar .select-trigger, .workbench-spatial-stack .select-trigger { min-height: 28px; height: 28px; padding: 0.15rem 0.45rem; font-size: 0.74rem; width: 100%; box-sizing: border-box; }
+.workbench-spatial-stack .scene-toolbar button:not(.select-trigger), .workbench-spatial-stack .map-toolbar button:not(.select-trigger), .workbench-spatial-stack button:not(.select-trigger):not(.timeline-play-button) { min-height: 28px; height: 28px; padding: 0.15rem 0.45rem; font-size: 0.72rem; }
+.workbench-spatial-stack .scene-toolbar button.icon-button, .workbench-spatial-stack .map-toolbar button.icon-button, .workbench-spatial-stack button.icon-button { width: 28px; min-width: 28px; height: 28px; min-height: 28px; padding: 0; }
+.workbench-spatial-stack .map-view-controls { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 0.3rem; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .map-view-controls > button:first-child { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.workbench-spatial-stack .map-view-controls > button.icon-button { flex: 0 0 28px; }
+.application .map-layer-menu { position: relative; padding: 0; margin: 0; border: 0; width: 100%; flex-shrink: 0; }
+.application .map-layer-menu > summary { font-size: 0.73rem; border: 1px solid var(--control-line); border-radius: 6px; padding: 0.2rem 0.5rem; min-height: 28px; display: inline-flex; align-items: center; width: 100%; justify-content: center; cursor: pointer; }
+.application .map-layer-menu[open] > summary { background: var(--selected); border-color: var(--action); }
+.workbench-spatial-stack .map-layer-menu fieldset { position: static; width: 100%; box-sizing: border-box; background: var(--surface); box-shadow: none; border: 1px solid var(--control-line); border-radius: 6px; margin: 0.3rem 0 0; padding: 0.35rem 0.55rem; z-index: auto; }
+.workbench-spatial-stack .map-layer-menu fieldset legend { font-size: 0.68rem; color: var(--secondary); padding: 0 0.2rem; }
+.workbench-spatial-stack .map-layer-checkboxes { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; margin-top: 0.15rem; }
+.workbench-spatial-stack .map-layer-checkboxes .checkbox-label { font-size: 0.72rem; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; min-height: 24px; }
+.workbench-spatial-stack .spatial-card-sidebar .spatial-sidebar-note, .workbench-spatial-stack .spatial-card-sidebar > p.view-note { margin: 0.25rem 0 0.15rem; font-size: 0.68rem; line-height: 1.35; display: block; width: 100%; clear: both; flex-shrink: 0; }
+.workbench-spatial-stack .spatial-card-sidebar > p.view-note + p.view-note { display: none; }
+.workbench-spatial-stack .scene-details { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.25rem; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .spatial-card-sidebar details { border-top: 1px solid var(--line); padding: 0.15rem 0 0; margin: 0; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .spatial-card-sidebar summary { min-height: 24px; padding: 0.15rem 0; font-size: 0.72rem; cursor: pointer; }
+.workbench-spatial-stack .legend { margin: 0.1rem 0; gap: 0.2rem 0.4rem; font-size: 0.67rem; display: flex; flex-wrap: wrap; align-items: center; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .legend-title { flex-basis: 100%; margin: 0; font-size: 0.69rem; font-weight: 600; }
+.workbench-spatial-stack .legend small { display: none; }
+.workbench-spatial-stack .legend i { height: 9px; width: 12px; }
+.workbench-spatial-stack .map-status { margin: 0.15rem 0; font-size: 0.67rem; line-height: 1.25; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .location-inspector-disclosure { border-top: 1px solid var(--line); padding: 0.15rem 0 0; margin-top: 0.2rem; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .location-inspector-disclosure > summary { min-height: 24px; padding: 0.15rem 0; font-size: 0.72rem; cursor: pointer; }
+.workbench-spatial-stack .location-inspector { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.2rem 0; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .location-inspector .select-control { width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .impact-quantities { display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; margin: 0.2rem 0; width: 100%; flex-shrink: 0; }
+.workbench-spatial-stack .impact-quantities strong { font-size: 0.88rem; }
+.workbench-spatial-stack .impact-quantities span { font-size: 0.68rem; }
+.workbench-spatial-stack .impact-detail p { font-size: 0.7rem; line-height: 1.3; margin: 0.15rem 0; }
+.workbench-spatial-stack .impact-detail dl { margin: 0.25rem 0; width: 100%; }
+.workbench-spatial-stack .impact-detail dl > div { display: flex; flex-direction: column; gap: 0.1rem; border-top: 1px solid var(--line); padding: 0.25rem 0; font-size: 0.72rem; width: 100%; }
+.workbench-spatial-stack .impact-detail dt { font-weight: 600; color: var(--text); font-size: 0.7rem; }
+.workbench-spatial-stack .impact-detail dd { margin: 0; color: var(--secondary); font-size: 0.7rem; }
 @media (min-width: 1001px) {
   .application[data-page="3d"] .spatial-pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }

@@ -16,7 +16,17 @@
 .chart-panel h3 { font-size: 1.1rem; font-weight: 650; }
 .chart-panel header p { font-size: 0.82rem; }
 .accumulation-panel { grid-column: 1; grid-row: 1; }
-.ranking-panel { grid-column: 2; grid-row: 1; }
+.ranking-panel {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.ranking-panel > header,
+.ranking-panel > .chart-footnote {
+  flex-shrink: 0;
+}
 .distribution-panel { grid-column: 1; }
 .scenario-panel { grid-column: 2; }
 .dashboard .accumulation-panel {
@@ -58,11 +68,98 @@
 .application[data-theme="dark"] .rank-track > span { background: #718fae; }
 .application[data-theme="dark"] .ranking-row.is-selected .rank-track > span { background: var(--action); }
 
+/* Split-screen workbench right-column analytics overrides */
+.workbench-analytics-pane .dashboard { max-width: none; width: 100%; height: 100%; margin: 0; display: flex; flex-direction: column; min-height: 0; }
+.workbench-analytics-pane .dashboard-heading { padding-bottom: 0.25rem; flex-wrap: wrap; }
+.workbench-analytics-pane .dashboard-heading h2 { font-size: 1.35rem; margin-bottom: 0.15rem; }
+.workbench-analytics-pane .dashboard-heading .dashboard-eyebrow { margin-bottom: 0.2rem; }
+.workbench-analytics-pane .dashboard-heading p { font-size: 0.8rem; }
+.workbench-analytics-pane .dashboard-actions label { width: clamp(200px, 22vw, 320px); }
+.workbench-analytics-pane .dashboard-context { padding: 0.5rem 0 0.75rem; font-size: 0.75rem; gap: 0.4rem 0.9rem; }
+.workbench-analytics-pane .dashboard-context span + span { padding-left: 0.9rem; }
+.workbench-analytics-pane .dashboard-charts { flex: 1 1 0; min-height: 0; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); grid-template-rows: minmax(0, 1.12fr) minmax(0, 1fr) auto; gap: 0.65rem; }
+.workbench-analytics-pane .dashboard-charts .chart-panel { padding: 0.7rem 0.95rem 0.6rem; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.workbench-analytics-pane .chart-panel > header { margin-bottom: 0.35rem; flex-shrink: 0; }
+.workbench-analytics-pane .chart-panel > .chart-footnote { flex-shrink: 0; }
+.workbench-analytics-pane .chart-panel h3 { font-size: 0.92rem; margin: 0 0 0.15rem; }
+.workbench-analytics-pane .chart-panel header p { font-size: 0.72rem; }
+.workbench-analytics-pane .accumulation-panel { grid-column: 1 / -1; grid-row: 1; }
+.workbench-analytics-pane .ranking-panel { grid-column: 1; grid-row: 2; }
+.workbench-analytics-pane .distribution-panel { grid-column: 2; grid-row: 2; }
+.workbench-analytics-pane .scenario-panel { grid-column: 1 / -1; grid-row: 3; }
+.workbench-analytics-pane .line-chart-viewport { flex: 1 1 0; min-height: 0; display: flex; align-items: center; }
+.workbench-analytics-pane .accumulation-chart { height: 100%; max-height: 170px; min-height: 105px; }
+.workbench-analytics-pane .chart-reading { margin: 0.25rem 0 0.15rem; align-items: baseline; }
+.workbench-analytics-pane .chart-reading > div { display: flex; align-items: baseline; gap: 0.5rem; }
+.workbench-analytics-pane .chart-reading > div > span { margin-bottom: 0; font-size: 0.72rem; }
+.workbench-analytics-pane .chart-reading strong { font-size: 1.65rem; }
+.workbench-analytics-pane .chart-reading strong small { font-size: 0.85rem; }
+.workbench-analytics-pane .chart-reading > p { font-size: 0.72rem; line-height: 1.25; }
+.workbench-analytics-pane .chart-reading br { display: none; }
+.workbench-analytics-pane .ranking-chart {
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: flex-start;
+  gap: 0.12rem;
+  margin: 0.2rem 0;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.workbench-analytics-pane .ranking-chart::-webkit-scrollbar {
+  width: 5px;
+}
+.workbench-analytics-pane .ranking-chart::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: 3px;
+}
+.workbench-analytics-pane .ranking-chart::-webkit-scrollbar-track {
+  background: transparent;
+}
+.workbench-analytics-pane .ranking-row {
+  min-height: 25px;
+  padding: 0.12rem 0;
+  font-size: 0.75rem;
+  grid-template-columns: 20px minmax(80px, 1fr) minmax(45px, 1fr) 48px;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+.workbench-analytics-pane .ranking-row:hover {
+  background: var(--surface);
+}
+.workbench-analytics-pane .ranking-row strong { font-size: 0.75rem; }
+.workbench-analytics-pane .distribution-body { flex: 1 1 0; min-height: 0; gap: 0.85rem; }
+.workbench-analytics-pane .deposit-donut { width: clamp(100px, 12.5dvh, 136px); height: clamp(100px, 12.5dvh, 136px); }
+.workbench-analytics-pane .distribution-legend li { font-size: 0.72rem; padding: 0.16rem 0; gap: 0.4rem; }
+.workbench-analytics-pane .chart-footnote { font-size: 0.68rem; margin-top: 0.3rem; line-height: 1.3; }
+.workbench-analytics-pane .scenario-panel { padding: 0.55rem 0.95rem 0.5rem; }
+.workbench-analytics-pane .scenario-panel > header { margin-bottom: 0.2rem; }
+.workbench-analytics-pane .scenario-ledger { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.65rem; margin: 0.15rem 0; }
+.workbench-analytics-pane .scenario-ledger > div { flex-direction: column; justify-content: flex-start; gap: 0.1rem; border-bottom: 0; border-right: 1px solid var(--line); padding: 0.15rem 0.55rem 0.15rem 0; font-size: 0.75rem; }
+.workbench-analytics-pane .scenario-ledger > div:last-child { border-right: 0; padding-right: 0; }
+.workbench-analytics-pane .scenario-panel .chart-footnote { margin-top: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.workbench-analytics-pane .results-section { border-top: 0; padding-top: 0; margin-top: 0.25rem; }
+.workbench-analytics-pane .provincial-explorer { margin: 0.65rem 0; padding: 1rem; }
+
+/* Live timeline synchronization: faded eventual curve, playhead, growing bars. */
+.chart-line-reference { opacity: 0.3; stroke-dasharray: 6 5; }
+.chart-dot-future { opacity: 0.3; }
+.chart-playhead { stroke: var(--action); stroke-width: 2; stroke-dasharray: 5 4; }
+.rank-track > span { transition: width 0.25s ease; }
+.scenario-live-phase { font-weight: 650; color: var(--action); }
+@media (prefers-reduced-motion: reduce) {
+  .rank-track > span { transition: none; }
+}
+
 @media (min-width: 1600px) and (min-height: 950px) {
   .application[data-page="dashboard"] .workspace { padding-top: 1.4rem; }
   .dashboard-charts .chart-panel { padding: 1.3rem 1.8rem 1rem; }
   .accumulation-chart { height: 235px; }
   .application .ranking-row { min-height: 46px; }
+  .dashboard .ranking-chart { max-height: 350px; }
   .deposit-donut { width: 170px; height: 170px; }
   .chart-panel h3 { font-size: 1.2rem; }
   .chart-panel header p { font-size: 0.88rem; }
@@ -74,6 +171,7 @@
   .dashboard-charts .chart-panel { padding: 1rem 1.2rem 0.85rem; }
   .accumulation-chart { height: 185px; }
   .application .ranking-row { min-height: 39px; font-size: 0.8rem; }
+  .dashboard .ranking-chart { max-height: 290px; }
   .chart-reading { margin-top: 0.8rem; }
   .chart-reading strong { font-size: 2.2rem; }
   .deposit-donut { width: 155px; height: 155px; }
@@ -99,6 +197,7 @@
   .chart-reading > p { font-size: 0.72rem; }
   .accumulation-chart { height: 160px; }
   .application .ranking-row { min-height: 33px; font-size: 0.76rem; }
+  .dashboard .ranking-chart { max-height: 240px; }
   .ranking-row strong { font-size: 0.78rem; }
   .deposit-donut { width: 135px; height: 135px; }
   .distribution-legend li { font-size: 0.73rem; gap: 0.5rem; padding-block: 0.25rem; }

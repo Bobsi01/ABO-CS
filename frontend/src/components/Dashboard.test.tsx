@@ -51,3 +51,71 @@ describe('preset dashboard', () => {
     expect(vi.mocked(simulate).mock.calls.at(-1)?.[0].label).toBe('Synthetic B')
   })
 })
+
+describe('live timeline synchronization', () => {
+  const twoTowns = { ...result, summary: { ...result.summary, reporting_cutoff_mm: 0.5 }, receptors: [
+    { id: 'one', name: 'Town One', kind: 'municipality', in_domain: true, thickness_mm: 2, population_year: 2024, screening: {}, screening_reasons: {} },
+    { id: 'two', name: 'Town Two', kind: 'municipality', in_domain: true, thickness_mm: 1, population_year: 2024, screening: {}, screening_reasons: {} },
+  ] } as SimulationResult
+  const live = { scenario, frames: [
+    { phase: 'before', elapsed_s: 0, receptors: [{ id: 'one', thickness_mm: 0 }, { id: 'two', thickness_mm: 0 }] },
+    { phase: 'erupting', elapsed_s: 1800, receptors: [{ id: 'one', thickness_mm: 0.2 }, { id: 'two', thickness_mm: 0.6 }] },
+    { phase: 'after', elapsed_s: 3600, receptors: [{ id: 'one', thickness_mm: 2 }, { id: 'two', thickness_mm: 1 }] },
+  ] } as unknown as EruptionSequence
+  function show(frame: EruptionSequence['frames'][number] | null) {
+    vi.mocked(simulate).mockResolvedValue(twoTowns)
+    vi.mocked(eruption).mockResolvedValue(live)
+    return render(<Dashboard catalog={catalog} simulation={twoTowns} simulationSequence={live} frame={frame} embedded />)
+  }
+
+  it('shows no deposits before the eruption starts', () => {
+    show(live.frames[0])
+    expect(screen.getByText('No ash deposited yet at this snapshot.')).toBeTruthy()
+    expect(screen.queryByRole('button', { name: /Town One, 2 millimeters/ })).toBeNull()
+    expect(screen.getByRole('img', { name: /Current snapshot Before eruption · 0 h: 0 millimeters/ })).toBeTruthy()
+    expect(screen.getByRole('img', { name: /Deposit distribution\. Below trace \(<0\.01 mm\): 2/ })).toBeTruthy()
+  })
+
+  it('re-ranks and recounts from the current snapshot during the eruption', () => {
+    show(live.frames[1])
+    const rows = screen.getAllByRole('button', { name: /millimeters, select time series/ })
+    expect(rows[0].getAttribute('aria-label')).toMatch(/^Town Two, 0\.6 millimeters/)
+    expect(rows[1].getAttribute('aria-label')).toMatch(/^Town One, 0\.2 millimeters/)
+    expect(screen.getByText('Top 2 at During · 0.5 h')).toBeTruthy()
+    expect(screen.getByRole('img', { name: /Trace \(0\.01–<0\.5 mm\): 1; 0\.5–<1 mm: 1/ })).toBeTruthy()
+  })
+
+  it('keeps eventual totals when no shared frame is supplied', () => {
+    show(null)
+    expect(screen.getByText('Top 2 municipal centroids · eventual totals')).toBeTruthy()
+    expect(screen.getByRole('button', { name: /Town One, 2 millimeters/ })).toBeTruthy()
+  })
+
+  it('renders all affected municipalities beyond top 6 in a scrollable ranking container', () => {
+    const eightTowns = {
+      ...result,
+      summary: { ...result.summary, reporting_cutoff_mm: 0.5 },
+      receptors: Array.from({ length: 8 }, (_, i) => ({
+        id: `town-${i + 1}`,
+        name: `Town ${i + 1}`,
+        kind: 'municipality',
+        in_domain: true,
+        thickness_mm: 10 - i,
+        population_year: 2024,
+        screening: {},
+        screening_reasons: {},
+      })),
+    } as SimulationResult
+    vi.mocked(simulate).mockResolvedValue(eightTowns)
+    vi.mocked(eruption).mockResolvedValue(live)
+    render(<Dashboard catalog={catalog} simulation={eightTowns} simulationSequence={live} frame={null} embedded />)
+
+    const scrollRegion = screen.getByRole('region', { name: 'Affected municipalities ranked by deposit thickness' })
+    expect(scrollRegion).toBeTruthy()
+    expect(scrollRegion.getAttribute('tabindex')).toBe('0')
+
+    const rows = within(scrollRegion).getAllByRole('button', { name: /millimeters, select time series/ })
+    expect(rows).toHaveLength(8)
+    expect(screen.getByText('Top 8 municipal centroids · eventual totals')).toBeTruthy()
+  })
+})

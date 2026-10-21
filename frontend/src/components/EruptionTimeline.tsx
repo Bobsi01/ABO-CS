@@ -18,8 +18,8 @@ type TaalTimelineEvent = {
   disclaimer: string
 }
 
-export default function EruptionTimeline({ sequence, index, playing, onIndex, onPlaying, sceneAvailable = true }: {
-  sequence: EruptionSequence; index: number; playing: boolean; onIndex: (index: number) => void; onPlaying: (playing: boolean) => void; sceneAvailable?: boolean
+export default function EruptionTimeline({ sequence, index, playing, onIndex, onPlaying, sceneAvailable = true, compact = false }: {
+  sequence: EruptionSequence; index: number; playing: boolean; onIndex: (index: number) => void; onPlaying: (playing: boolean) => void; sceneAvailable?: boolean; compact?: boolean
 }) {
   const [events, setEvents] = useState<TaalTimelineEvent[]>([])
   const [selectedEvent, setSelectedEvent] = useState<TaalTimelineEvent | null>(null)
@@ -66,15 +66,15 @@ export default function EruptionTimeline({ sequence, index, playing, onIndex, on
   const during = frames.reduce((best, frame, i) => Math.abs(frame.elapsed_s - sequence.scenario.duration_s / 2) < Math.abs(frames[best].elapsed_s - sequence.scenario.duration_s / 2) ? i : best, 0)
   const after = frames.findIndex(f => f.phase === 'settling')
   const stage = current.phase === 'before' ? 0 : current.phase === 'erupting' ? 1 : 2
-  return <section className="eruption-timeline" aria-label="Eruption sequence">
+  return <section className={`eruption-timeline${compact ? ' eruption-timeline-compact' : ''}`} aria-label="Eruption sequence">
     <div className="timeline-top"><div className="phase-choices" aria-label="Jump to eruption stage">{['Before', 'During', 'After'].map((label, i) => <button type="button" aria-pressed={stage === i} key={label} onClick={() => seek(i === 0 ? 0 : i === 1 ? during : after >= 0 ? after : last)}>{label}</button>)}</div>
-      <button type="button" disabled={!sceneAvailable} onClick={() => { if (!playing && index >= last) onIndex(0); onPlaying(!playing) }}><Icon name={playing ? 'pause' : 'play'} />{playing ? 'Pause sequence' : index >= last ? 'Replay sequence' : 'Play sequence'}</button></div>
-    <label className="timeline-slider">{phaseLabel(current.phase)}<input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, map snapshot at ${scenarioClock(current.elapsed_s).replace(' h', ' hours')}`} onChange={event => seek(Number(event.target.value))} /></label>
-    <div className="timeline-readout"><span>Map snapshot: {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>
-    <details className="timeline-explanation"><summary>Replay timing & reference notes</summary><p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay. The 3D illustration interpolates between nonuniform snapshots; the map shows the preceding computed snapshot. Billows and fountains are schematic.</p>
+      <button type="button" className="timeline-play-button" disabled={!sceneAvailable} onClick={() => { if (!playing && index >= last) onIndex(0); onPlaying(!playing) }}><Icon name={playing ? 'pause' : 'play'} />{playing ? 'Pause sequence' : index >= last ? 'Replay sequence' : 'Play sequence'}</button></div>
+    <label className="timeline-slider"><span className="timeline-slider-label">{compact ? `${scenarioClock(current.elapsed_s)} / ${scenarioClock(frames[last].elapsed_s)}` : phaseLabel(current.phase)}</span><input type="range" min="0" max={last} step="1" value={Math.floor(index)} aria-label="Eruption timeline" aria-valuetext={`${phaseLabel(current.phase)}, map snapshot at ${scenarioClock(current.elapsed_s).replace(' h', ' hours')}`} onChange={event => seek(Number(event.target.value))} /></label>
+    {!compact && <div className="timeline-readout"><span>Map snapshot: {scenarioClock(current.elapsed_s)} / {scenarioClock(frames[last].elapsed_s)}</span><span>Emission duration: {scenarioClock(sequence.scenario.duration_s)}</span></div>}
+    {!compact && <details className="timeline-explanation"><summary>Replay timing & reference notes</summary><p className="view-note">{SEQUENCE_DISPLAY_SECONDS}-second accelerated replay. The 3D illustration interpolates between nonuniform snapshots; the map shows the preceding computed snapshot. Billows and fountains are schematic.</p>
     {sequence.scenario.volcano_id === 'taal' && events.length === 0 && <p className="view-note">Historical activity bookmarks are unavailable until their source values are reviewed.</p>}
-    </details>
-    {sequence.scenario.volcano_id === 'taal' && events.length > 0 && (
+    </details>}
+    {!compact && sequence.scenario.volcano_id === 'taal' && events.length > 0 && (
       <div className="historical-bookmarks" aria-label="Historical activity reference">
         <div className="bookmarks-header">
           <span className="bookmarks-title"><Icon name="history" />Historical Activity Bookmarks (2021–2024)</span>
