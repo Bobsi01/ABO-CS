@@ -343,11 +343,11 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         },
       }).addTo(layer)
 
-      // Distal trace contours (0.01 mm and 0.1 mm) with amber dashed styling
+      // Distal trace contours (0.01 mm and 0.1 mm) with amber/gold dashed styling
       L.geoJSON(geojson, {
         filter: feat => Number(feat.properties?.thickness_mm) < 0.5,
         style: feat => ({
-          color: Number(feat?.properties?.thickness_mm) >= 0.1 ? '#ca8a04' : '#eab308',
+          color: Number(feat?.properties?.thickness_mm) >= 0.1 ? '#d97706' : '#eab308',
           weight: 2,
           dashArray: '5 4',
           opacity: 0.9,

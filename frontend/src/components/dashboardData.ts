@@ -1,11 +1,11 @@
 import type { ReceptorResult } from '../api/simulator'
 
 const bands = [
-  { label: 'Below trace (<0.01 mm)', color: '#60758f', min: 0, max: 0.01 },
-  { label: 'Trace (0.01–<0.5 mm)', color: '#007e87', min: 0.01, max: 0.5 },
-  { label: '0.5–<1 mm', color: '#195cc2', min: 0.5, max: 1 },
-  { label: '1–<5 mm', color: '#44638b', min: 1, max: 5 },
-  { label: '≥5 mm', color: '#b45124', min: 5, max: Infinity },
+  { label: 'Below trace (<0.01 mm)', color: '#64748b', min: 0, max: 0.01 },
+  { label: 'Trace (0.01–<0.5 mm)', color: '#facc15', min: 0.01, max: 0.5 },
+  { label: '0.5–<1 mm', color: '#f59e0b', min: 0.5, max: 1 },
+  { label: '1–<5 mm', color: '#f97316', min: 1, max: 5 },
+  { label: '≥5 mm', color: '#dc2626', min: 5, max: Infinity },
 ]
 
 export function depositDistribution(receptors: ReceptorResult[]) {
