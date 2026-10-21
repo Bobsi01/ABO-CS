@@ -234,7 +234,492 @@ main.laboratory.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .sort-control { max-width: 230px; }
 .selected-receptor { font-size: 0.85rem; }
 .comparison-result { border-top: 1px solid var(--line); padding: 1rem 0; }
-.manual-winds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.manual-winds { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem; }
+
+/* Scientific Workbench: Analysis & Sources Modern Layout */
+.analysis-page-header {
+  margin-bottom: 1.25rem;
+}
+.analysis-page-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: var(--text);
+}
+.analysis-page-header p {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Baseline Context Ribbon */
+.analysis-baseline-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+.baseline-ribbon-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.baseline-ribbon-title {
+  font-weight: 700;
+  color: var(--text);
+}
+.baseline-ribbon-preset {
+  font-weight: 600;
+  color: var(--action);
+}
+.baseline-ribbon-sep {
+  color: var(--secondary);
+}
+.baseline-ribbon-action {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--control-line);
+  background: transparent;
+  color: var(--action);
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+.baseline-ribbon-action:hover {
+  background: var(--hover);
+  border-color: var(--action);
+}
+
+/* Side-by-side Wind Condition Cards */
+.comparison-wind-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.wind-profile-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.wind-profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.6rem;
+}
+.wind-profile-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+.wind-profile-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wind-indicator-a { background: #2563eb; }
+.wind-indicator-b { background: #d97706; }
+.wind-profile-badge {
+  font-size: 0.7rem;
+  font-family: monospace;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--secondary);
+}
+.wind-profile-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+.wind-profile-inputs label {
+  margin-bottom: 0;
+}
+.wind-profile-summary {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Action Bar */
+.analysis-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+.analysis-action-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+/* Comparative Exposure Readout Matrix */
+.comparison-matrix-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.comparison-matrix-header {
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--surface);
+}
+.comparison-matrix-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.comparison-matrix-note {
+  font-size: 0.75rem;
+  color: var(--secondary);
+}
+.comparison-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.comparison-matrix-table th,
+.comparison-matrix-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.comparison-matrix-table thead th {
+  background: var(--surface);
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+.comparison-matrix-table tbody tr:last-child th,
+.comparison-matrix-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.delta-val-pos {
+  color: #047857;
+  font-weight: 700;
+}
+.delta-val-neg {
+  color: #b91c1c;
+  font-weight: 700;
+}
+.delta-val-neutral {
+  color: var(--secondary);
+  font-weight: 600;
+}
+.application[data-theme="dark"] .delta-val-pos { color: #34d399; }
+.application[data-theme="dark"] .delta-val-neg { color: #f87171; }
+
+.comparison-results-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.comparison-result-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.comparison-result-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.comparison-result-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+.comparison-result-card button {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
+
+/* 360 Sweep Container */
+.sweep-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.sweep-kpi-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+.sweep-kpi-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+.sweep-kpi-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.sweep-cardinal-badge {
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Scientific Methodology & Sources */
+.scientific-methods-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.scientific-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+.scientific-card-header h2,
+.scientific-card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.scientific-kernel-badge {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  font-family: monospace;
+}
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.formula-stage-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.formula-stage-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.formula-display {
+  font-family: "Cambria Math", "Latin Modern Math", "STIX Two Math", Georgia, serif;
+  font-size: 1rem;
+  padding: 0.65rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--action);
+}
+.formula-stage-note {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Technical Documentation Links Hub */
+.docs-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.doc-hub-tile {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.doc-hub-tile:hover {
+  border-color: var(--action);
+  background: var(--hover);
+}
+.doc-hub-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--action);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.doc-hub-desc {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Citations & Source Cards */
+.citation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.citation-entry-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  background: var(--panel);
+  transition: border-color 0.15s;
+}
+.citation-entry-card:hover {
+  border-color: var(--action);
+}
+.citation-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.citation-author {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+}
+.citation-title-link {
+  font-size: 0.8rem;
+  color: var(--action);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  line-height: 1.4;
+}
+.citation-meta {
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--secondary);
+  margin-top: 0.25rem;
+}
+.authority-badge {
+  font-size: 0.68rem;
+  font-family: monospace;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.badge-peer-reviewed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.badge-official-agency {
+  background: #d1fae5;
+  color: #065f46;
+}
+.badge-institutional {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+.badge-open-dataset {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+.application[data-theme="dark"] .badge-peer-reviewed {
+  background: #1e3a8a;
+  color: #bfdbfe;
+}
+.application[data-theme="dark"] .badge-official-agency {
+  background: #064e3b;
+  color: #a7f3d0;
+}
+.application[data-theme="dark"] .badge-institutional {
+  background: #4c1d95;
+  color: #e9d5ff;
+}
+.application[data-theme="dark"] .badge-open-dataset {
+  background: #312e81;
+  color: #c7d2fe;
+}
+.citation-usage-box {
+  margin-top: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  line-height: 1.45;
+}
+.citation-usage-box strong {
+  color: var(--text);
+}
 .historical-references ul { padding-left: 1.25rem; line-height: 1.7; }
 .historical-references article { border-top: 1px solid var(--line); margin-top: 1rem; }
 .historical-references dl div { display: grid; grid-template-columns: minmax(120px, 1fr) 2fr; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--line); font-size: 0.85rem; }
