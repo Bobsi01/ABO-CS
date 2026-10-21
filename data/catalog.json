@@ -335,70 +335,12 @@
   ],
   "scenarios": [
     {
-      "id": "taal-teaching",
-      "name": "Taal illustrative teaching scenario (5 km column)",
-      "status": "illustrative",
-      "scenario": {
-        "volcano_id": "taal",
-        "label": "Taal illustrative teaching scenario (5 km column)",
-        "input_status": "illustrative",
-        "source_ids": [
-          "gvp-taal",
-          "assumptions"
-        ],
-        "vent_lat": 14.0106,
-        "vent_lon": 120.9975,
-        "vent_elevation_m": 311.0,
-        "column_height_m": 5000.0,
-        "mass_rate_kg_s": 250000.0,
-        "duration_s": 14400.0,
-        "wind_speed_m_s": 10.0,
-        "wind_from_deg": 225.0,
-        "diffusivity_m2_s": 500.0,
-        "initial_spread_m": 250.0,
-        "bulk_density_kg_m3": 1000.0,
-        "grains": [
-          {
-            "diameter_um": 32.0,
-            "fraction": 0.1,
-            "settling_speed_m_s": 0.05
-          },
-          {
-            "diameter_um": 63.0,
-            "fraction": 0.15,
-            "settling_speed_m_s": 0.2
-          },
-          {
-            "diameter_um": 125.0,
-            "fraction": 0.25,
-            "settling_speed_m_s": 0.8
-          },
-          {
-            "diameter_um": 250.0,
-            "fraction": 0.3,
-            "settling_speed_m_s": 3.0
-          },
-          {
-            "diameter_um": 500.0,
-            "fraction": 0.2,
-            "settling_speed_m_s": 10.0
-          }
-        ],
-        "domain_km": 200.0,
-        "cell_km": 1.0,
-        "release_layers": 16,
-        "wind_profile": null,
-        "pulses": null,
-        "umbrella_radius_m": 12000.0
-      }
-    },
-    {
       "id": "taal-regional",
-      "name": "Taal 2020 regional eruption (17 km column, 20 km umbrella)",
+      "name": "Taal 2020 regional eruption (12–13 Jan actual event)",
       "status": "illustrative",
       "scenario": {
         "volcano_id": "taal",
-        "label": "Taal 2020 regional eruption (17 km column, 20 km umbrella)",
+        "label": "Taal 2020 regional eruption (12–13 Jan actual event)",
         "input_status": "illustrative",
         "source_ids": [
           "gvp-taal",
@@ -476,6 +418,418 @@
         ],
         "pulses": null,
         "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-north",
+      "name": "Taal outcome: Wind blowing North (Southerly · 15 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing North (Southerly · 15 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 15.0,
+        "wind_from_deg": 180.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-south",
+      "name": "Taal outcome: Wind blowing South (Amihan / Northerly · 12 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing South (Amihan / Northerly · 12 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 12.0,
+        "wind_from_deg": 0.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-east",
+      "name": "Taal outcome: Wind blowing East (Westerly · 12 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing East (Westerly · 12 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 12.0,
+        "wind_from_deg": 270.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-west",
+      "name": "Taal outcome: Wind blowing West (Easterly trade · 10 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing West (Easterly trade · 10 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 10.0,
+        "wind_from_deg": 90.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-northeast",
+      "name": "Taal outcome: Wind blowing Northeast (Habagat · 14 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing Northeast (Habagat · 14 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 14.0,
+        "wind_from_deg": 225.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-wind-northwest",
+      "name": "Taal outcome: Wind blowing Northwest (Southeasterly · 12 m/s)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal outcome: Wind blowing Northwest (Southeasterly · 12 m/s)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "taal-study",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 17000.0,
+        "mass_rate_kg_s": 1500000.0,
+        "duration_s": 36000.0,
+        "wind_speed_m_s": 12.0,
+        "wind_from_deg": 135.0,
+        "diffusivity_m2_s": 1000.0,
+        "initial_spread_m": 500.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 1000.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 4.0
+          },
+          {
+            "diameter_um": 350.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 2.0
+          },
+          {
+            "diameter_um": 150.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 1.0
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 0.35
+          },
+          {
+            "diameter_um": 20.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.05
+          }
+        ],
+        "domain_km": 300.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 20000.0
+      }
+    },
+    {
+      "id": "taal-teaching",
+      "name": "Taal illustrative teaching scenario (5 km column)",
+      "status": "illustrative",
+      "scenario": {
+        "volcano_id": "taal",
+        "label": "Taal illustrative teaching scenario (5 km column)",
+        "input_status": "illustrative",
+        "source_ids": [
+          "gvp-taal",
+          "assumptions"
+        ],
+        "vent_lat": 14.0106,
+        "vent_lon": 120.9975,
+        "vent_elevation_m": 311.0,
+        "column_height_m": 5000.0,
+        "mass_rate_kg_s": 250000.0,
+        "duration_s": 14400.0,
+        "wind_speed_m_s": 10.0,
+        "wind_from_deg": 225.0,
+        "diffusivity_m2_s": 500.0,
+        "initial_spread_m": 250.0,
+        "bulk_density_kg_m3": 1000.0,
+        "grains": [
+          {
+            "diameter_um": 32.0,
+            "fraction": 0.1,
+            "settling_speed_m_s": 0.05
+          },
+          {
+            "diameter_um": 63.0,
+            "fraction": 0.15,
+            "settling_speed_m_s": 0.2
+          },
+          {
+            "diameter_um": 125.0,
+            "fraction": 0.25,
+            "settling_speed_m_s": 0.8
+          },
+          {
+            "diameter_um": 250.0,
+            "fraction": 0.3,
+            "settling_speed_m_s": 3.0
+          },
+          {
+            "diameter_um": 500.0,
+            "fraction": 0.2,
+            "settling_speed_m_s": 10.0
+          }
+        ],
+        "domain_km": 200.0,
+        "cell_km": 1.0,
+        "release_layers": 16,
+        "wind_profile": null,
+        "pulses": null,
+        "umbrella_radius_m": 12000.0
       }
     },
     {

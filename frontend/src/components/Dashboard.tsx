@@ -163,7 +163,12 @@ export default function Dashboard({
     {!embedded && <>
       <div className="dashboard-heading"><div><p className="dashboard-eyebrow">ASHFALL · SCENARIO RESULTS</p><h2 id="dashboard-title">Dashboard</h2><p>{catalog.volcanoes?.find(v => v.id === result?.scenario.volcano_id)?.name ?? 'Local model'} · Regional deposit analysis</p></div>
         <div className="dashboard-actions"><label>Scenario<select value={preset} onChange={e => { setPreset(e.target.value); setError('') }}>
-          {catalog.scenarios.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+          <optgroup label="Taal 2020 Event & Directional Outcomes">
+            {catalog.scenarios.filter(s => s.scenario.volcano_id === 'taal' && s.id !== 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+          </optgroup>
+          <optgroup label="Other Volcano Baselines">
+            {catalog.scenarios.filter(s => s.scenario.volcano_id !== 'taal' || s.id === 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+          </optgroup>
           {simulation && <option value="last-run">Last completed simulation · {simulation.scenario.label}</option>}
         </select></label><button className="raw-data-action" type="button" disabled={!result} onClick={() => dialog.current?.showModal()}><Icon name="calculate" />View raw data</button></div>
       </div>
