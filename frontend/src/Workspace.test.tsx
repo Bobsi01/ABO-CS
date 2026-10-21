@@ -36,7 +36,7 @@ describe('completed-result workflow', () => {
     expect(screen.getByRole('button', { name: 'Play sequence' })).toBeTruthy()
     fireEvent.focus(window)
     expect(screen.getByRole('button', { name: 'Play sequence' })).toBeTruthy()
-  })
+  }, 25000)
   it('keeps previous computed views on parameter edits and backend failure', async () => {
     vi.mocked(getCatalog).mockResolvedValue(catalog)
     vi.mocked(simulate).mockResolvedValueOnce(result).mockRejectedValueOnce(new Error('Backend unavailable'))

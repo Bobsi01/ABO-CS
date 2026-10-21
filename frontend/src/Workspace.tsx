@@ -22,15 +22,15 @@ const fields: { key: keyof Scenario; name: string; unit: string; label: string; 
   { key: 'vent_lat', name: 'Vent latitude', unit: '(°)', label: 'Vent latitude (°)', min: -85, max: 85 },
   { key: 'vent_lon', name: 'Vent longitude', unit: '(°)', label: 'Vent longitude (°)', min: -180, max: 180 },
   { key: 'vent_elevation_m', name: 'Vent elevation', unit: '(m ASL)', label: 'Vent elevation (m ASL)', min: 0, max: 10000 },
-  { key: 'column_height_m', name: 'Column above ground', unit: '(m)', label: 'Column above ground (m)', min: 0.001, max: 50000 },
-  { key: 'mass_rate_kg_s', name: 'Modeled ash rate', unit: '(kg/s)', label: 'Modeled ash rate (kg/s)', min: 0, max: 1e12 },
+  { key: 'column_height_m', name: 'Column height', unit: '(m)', label: 'Column height (m)', min: 0.001, max: 50000 },
+  { key: 'mass_rate_kg_s', name: 'Ash mass rate', unit: '(kg/s)', label: 'Ash mass rate (kg/s)', min: 0, max: 1e12 },
   { key: 'duration_s', name: 'Duration', unit: '(s)', label: 'Duration (s)', min: 0.001, max: 31536000 },
   { key: 'wind_speed_m_s', name: 'Wind speed', unit: '(m/s)', label: 'Wind speed (m/s)', min: 0, max: 200 },
   { key: 'wind_from_deg', name: 'Wind FROM', unit: '(° clockwise from N)', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
   { key: 'diffusivity_m2_s', name: 'Diffusivity', unit: '(m²/s)', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
   { key: 'initial_spread_m', name: 'Initial spread σ₀', unit: '(m)', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
-  { key: 'umbrella_radius_m', name: 'Umbrella cloud radius', unit: '(m)', label: 'Umbrella cloud radius (m)', min: 0, max: 50000 },
-  { key: 'bulk_density_kg_m3', name: 'Bulk deposit density', unit: '(kg/m³)', label: 'Bulk deposit density (kg/m³)', min: 0.001, max: 10000 },
+  { key: 'umbrella_radius_m', name: 'Umbrella radius', unit: '(m)', label: 'Umbrella radius (m)', min: 0, max: 50000 },
+  { key: 'bulk_density_kg_m3', name: 'Deposit density', unit: '(kg/m³)', label: 'Deposit density (kg/m³)', min: 0.001, max: 10000 },
   { key: 'domain_km', name: 'Domain width', unit: '(km)', label: 'Domain width (km)', min: 1, max: 400 },
   { key: 'cell_km', name: 'Cell size', unit: '(km)', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
 ]
@@ -179,7 +179,7 @@ export default function Workspace() {
   const primaryKeys = ['column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg']
   const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
   const optionFields: { key: keyof EruptionOptions; name: string; unit: string; label: string; initial: number; min: number; max: number }[] = [
-    { key: 'plume_rise_speed_m_s', name: 'Illustrated plume rise', unit: '(m/s)', label: 'Illustrated plume rise (m/s)', initial: 30, min: 1, max: 300 },
+    { key: 'plume_rise_speed_m_s', name: 'Plume rise speed', unit: '(m/s)', label: 'Plume rise speed (m/s)', initial: 30, min: 1, max: 300 },
     { key: 'lava_effusion_m3_s', name: 'Lava effusion', unit: '(m³/s)', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
     { key: 'lava_width_m', name: 'Channel width', unit: '(m)', label: 'Channel width (m)', initial: 20, min: 1, max: 1000 },
     { key: 'lava_viscosity_pa_s', name: 'Viscosity', unit: '(Pa·s)', label: 'Viscosity (Pa·s)', initial: 1000, min: 1, max: 1e12 },
