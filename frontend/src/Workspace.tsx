@@ -18,21 +18,21 @@ import Dashboard from './components/Dashboard'
 const VolcanoScene = lazy(() => import('./components/VolcanoScene'))
 const GeographicMap = lazy(() => import('./components/GeographicMap'))
 type Tab = 'dashboard' | '3d' | 'comparison' | 'sweep' | 'history' | 'help'
-const fields: { key: keyof Scenario; label: string; min?: number; max?: number; step?: number }[] = [
-  { key: 'vent_lat', label: 'Vent latitude (°)', min: -85, max: 85 },
-  { key: 'vent_lon', label: 'Vent longitude (°)', min: -180, max: 180 },
-  { key: 'vent_elevation_m', label: 'Vent elevation (m ASL)', min: 0, max: 10000 },
-  { key: 'column_height_m', label: 'Column above ground (m)', min: 0.001, max: 50000 },
-  { key: 'mass_rate_kg_s', label: 'Modeled ash rate (kg/s)', min: 0, max: 1e12 },
-  { key: 'duration_s', label: 'Duration (s)', min: 0.001, max: 31536000 },
-  { key: 'wind_speed_m_s', label: 'Wind speed (m/s)', min: 0, max: 200 },
-  { key: 'wind_from_deg', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
-  { key: 'diffusivity_m2_s', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
-  { key: 'initial_spread_m', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
-  { key: 'umbrella_radius_m', label: 'Umbrella cloud radius (m)', min: 0, max: 50000 },
-  { key: 'bulk_density_kg_m3', label: 'Bulk deposit density (kg/m³)', min: 0.001, max: 10000 },
-  { key: 'domain_km', label: 'Domain width (km)', min: 1, max: 400 },
-  { key: 'cell_km', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
+const fields: { key: keyof Scenario; name: string; unit: string; label: string; min?: number; max?: number; step?: number }[] = [
+  { key: 'vent_lat', name: 'Vent latitude', unit: '(°)', label: 'Vent latitude (°)', min: -85, max: 85 },
+  { key: 'vent_lon', name: 'Vent longitude', unit: '(°)', label: 'Vent longitude (°)', min: -180, max: 180 },
+  { key: 'vent_elevation_m', name: 'Vent elevation', unit: '(m ASL)', label: 'Vent elevation (m ASL)', min: 0, max: 10000 },
+  { key: 'column_height_m', name: 'Column above ground', unit: '(m)', label: 'Column above ground (m)', min: 0.001, max: 50000 },
+  { key: 'mass_rate_kg_s', name: 'Modeled ash rate', unit: '(kg/s)', label: 'Modeled ash rate (kg/s)', min: 0, max: 1e12 },
+  { key: 'duration_s', name: 'Duration', unit: '(s)', label: 'Duration (s)', min: 0.001, max: 31536000 },
+  { key: 'wind_speed_m_s', name: 'Wind speed', unit: '(m/s)', label: 'Wind speed (m/s)', min: 0, max: 200 },
+  { key: 'wind_from_deg', name: 'Wind FROM', unit: '(° clockwise from N)', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
+  { key: 'diffusivity_m2_s', name: 'Diffusivity', unit: '(m²/s)', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
+  { key: 'initial_spread_m', name: 'Initial spread σ₀', unit: '(m)', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
+  { key: 'umbrella_radius_m', name: 'Umbrella cloud radius', unit: '(m)', label: 'Umbrella cloud radius (m)', min: 0, max: 50000 },
+  { key: 'bulk_density_kg_m3', name: 'Bulk deposit density', unit: '(kg/m³)', label: 'Bulk deposit density (kg/m³)', min: 0.001, max: 10000 },
+  { key: 'domain_km', name: 'Domain width', unit: '(km)', label: 'Domain width (km)', min: 1, max: 400 },
+  { key: 'cell_km', name: 'Cell size', unit: '(km)', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
 ]
 
 export default function Workspace() {
@@ -177,13 +177,13 @@ export default function Workspace() {
   const receptors = result ? [...result.receptors].sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : (b.thickness_mm ?? -1) - (a.thickness_mm ?? -1)) : []
   const tabs: [Tab, string, IconName][] = [['3d', 'Simulation', 'volcano'], ['comparison', 'Wind comparison', 'compare'], ['sweep', 'Wind sweep', 'compass'], ['history', 'Taal 2020', 'history'], ['help', 'Guide & sources', 'book']]
   const primaryKeys = ['column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg']
-  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}>{field.label}<input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
-  const optionFields: { key: keyof EruptionOptions; label: string; initial: number; min: number; max: number }[] = [
-    { key: 'plume_rise_speed_m_s', label: 'Illustrated plume rise (m/s)', initial: 30, min: 1, max: 300 },
-    { key: 'lava_effusion_m3_s', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
-    { key: 'lava_width_m', label: 'Channel width (m)', initial: 20, min: 1, max: 1000 },
-    { key: 'lava_viscosity_pa_s', label: 'Viscosity (Pa·s)', initial: 1000, min: 1, max: 1e12 },
-    { key: 'lava_density_kg_m3', label: 'Lava density (kg/m³)', initial: 2600, min: 1000, max: 4000 },
+  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
+  const optionFields: { key: keyof EruptionOptions; name: string; unit: string; label: string; initial: number; min: number; max: number }[] = [
+    { key: 'plume_rise_speed_m_s', name: 'Illustrated plume rise', unit: '(m/s)', label: 'Illustrated plume rise (m/s)', initial: 30, min: 1, max: 300 },
+    { key: 'lava_effusion_m3_s', name: 'Lava effusion', unit: '(m³/s)', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
+    { key: 'lava_width_m', name: 'Channel width', unit: '(m)', label: 'Channel width (m)', initial: 20, min: 1, max: 1000 },
+    { key: 'lava_viscosity_pa_s', name: 'Viscosity', unit: '(Pa·s)', label: 'Viscosity (Pa·s)', initial: 1000, min: 1, max: 1e12 },
+    { key: 'lava_density_kg_m3', name: 'Lava density', unit: '(kg/m³)', label: 'Lava density (kg/m³)', initial: 2600, min: 1000, max: 4000 },
   ]
 
   return <div className="application" data-theme={theme} data-page={tab}>
@@ -219,7 +219,7 @@ export default function Workspace() {
           <p className="input-status">{draft.input_status === 'illustrative' ? 'Illustrative inputs, not a historical eruption.' : draft.input_status === 'reviewed' ? 'Reviewed inputs. See source provenance.' : 'Manual inputs. Review provenance before use.'}</p>
           {scientificScopeNote(draft.volcano_id) && <p className="view-note">{scientificScopeNote(draft.volcano_id)}</p>}
           {inputFields(primaryKeys)}
-          <details><summary>Eruption illustration & lava</summary><p className="view-note">Finite-duration ash uses the submitted eruption and wind inputs. Plume shape and fountains are schematic.</p>{draft.volcano_id === 'mayon' ? <label className="checkbox-label"><input type="checkbox" checked={Boolean(eruptionOptions.include_lava)} onChange={event => { setEruptionOptions({ ...eruptionOptions, include_lava: event.target.checked }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} />Include lava-channel teaching model</label> : <p className="view-note">{draft.volcano_id === 'taal' ? 'Taal shows an illustrative lava fountain. A downslope lava flow is not inferred from that mechanism.' : 'Effusive lava is not enabled for this explosive teaching scenario.'}</p>}<div className="field-grid">{optionFields.filter(field => field.key === 'plume_rise_speed_m_s' || eruptionOptions.include_lava).map(field => <label key={field.key}>{field.label}<input type="number" step="any" required min={field.min} max={field.max} value={Number.isNaN(eruptionOptions[field.key]) ? '' : Number(eruptionOptions[field.key] ?? field.initial)} onChange={event => { setEruptionOptions({ ...eruptionOptions, [field.key]: event.target.value === '' ? NaN : Number(event.target.value) }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /></label>)}</div>{eruptionOptions.include_lava && <p className="view-note">These are illustrative fluid inputs, not measured Mayon values. The channel follows the raw DEM with constant viscosity. Cooling, branching and PDCs are not solved.</p>}</details>
+          <details><summary>Eruption illustration & lava</summary><p className="view-note">Finite-duration ash uses the submitted eruption and wind inputs. Plume shape and fountains are schematic.</p>{draft.volcano_id === 'mayon' ? <label className="checkbox-label"><input type="checkbox" checked={Boolean(eruptionOptions.include_lava)} onChange={event => { setEruptionOptions({ ...eruptionOptions, include_lava: event.target.checked }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /><span>Include lava-channel teaching model</span></label> : <p className="view-note">{draft.volcano_id === 'taal' ? 'Taal shows an illustrative lava fountain. A downslope lava flow is not inferred from that mechanism.' : 'Effusive lava is not enabled for this explosive teaching scenario.'}</p>}<div className="field-grid">{optionFields.filter(field => field.key === 'plume_rise_speed_m_s' || eruptionOptions.include_lava).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input type="number" step="any" required min={field.min} max={field.max} value={Number.isNaN(eruptionOptions[field.key]) ? '' : Number(eruptionOptions[field.key] ?? field.initial)} onChange={event => { setEruptionOptions({ ...eruptionOptions, [field.key]: event.target.value === '' ? NaN : Number(event.target.value) }); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} /></label>)}</div>{eruptionOptions.include_lava && <p className="view-note">These are illustrative fluid inputs, not measured Mayon values. The channel follows the raw DEM with constant viscosity. Cooling, branching and PDCs are not solved.</p>}</details>
           <details><summary>Dispersion & density</summary>{inputFields(['diffusivity_m2_s', 'initial_spread_m', 'umbrella_radius_m', 'bulk_density_kg_m3'])}</details>
           <details><summary>Vertical wind profile (opt-in extension)</summary>
             <p className="view-note">Optional height-dependent wind levels. Linearly interpolated across column release heights. When disabled, uniform wind is used.</p>
@@ -235,19 +235,19 @@ export default function Workspace() {
               } else {
                 change({ ...draft, wind_profile: null })
               }
-            }} />Enable vertical wind profile</label>
+            }} /><span>Enable vertical wind profile</span></label>
             {draft.wind_profile && draft.wind_profile.length > 0 && <div className="wind-levels">
               {draft.wind_profile.map((level, i) => <fieldset key={i}><legend>Profile level {i + 1}</legend>
                 <div className="field-grid">
-                  <label>Height above vent (m)<input type="number" min={0} required value={Number.isNaN(level.height_above_vent_m) ? '' : level.height_above_vent_m} onChange={e => {
+                  <label><span className="field-label-text"><span className="field-name">Height above vent</span>{' '}<span className="field-unit">(m)</span></span><input type="number" min={0} required value={Number.isNaN(level.height_above_vent_m) ? '' : level.height_above_vent_m} onChange={e => {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, height_above_vent_m: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
-                  <label>Speed (m/s)<input type="number" min={0} max={150} required value={Number.isNaN(level.speed_m_s) ? '' : level.speed_m_s} onChange={e => {
+                  <label><span className="field-label-text"><span className="field-name">Wind speed</span>{' '}<span className="field-unit">(m/s)</span></span><input type="number" min={0} max={150} required value={Number.isNaN(level.speed_m_s) ? '' : level.speed_m_s} onChange={e => {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, speed_m_s: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
-                  <label>Wind FROM (°)<input type="number" min={0} max={359.999} step="any" required value={Number.isNaN(level.wind_from_deg) ? '' : level.wind_from_deg} onChange={e => {
+                  <label><span className="field-label-text"><span className="field-name">Wind FROM</span>{' '}<span className="field-unit">(°)</span></span><input type="number" min={0} max={359.999} step="any" required value={Number.isNaN(level.wind_from_deg) ? '' : level.wind_from_deg} onChange={e => {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, wind_from_deg: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
@@ -259,7 +259,11 @@ export default function Workspace() {
           <details><summary>Location & grid</summary>{inputFields(['vent_lat', 'vent_lon', 'vent_elevation_m', 'domain_km', 'cell_km'])}</details>
           <details><summary>Grain classes and release layers</summary><label>Release layers<input type="number" min="1" max="32" required value={draft.release_layers} onChange={e => scalar('release_layers', e.target.value)} /></label><Select label="Class count" value={String(draft.grains.length)} onChange={value => { const length = Number(value); const grains = Array.from({ length }, (_, i) => ({ ...(draft.grains[i] ?? { diameter_um: 1, settling_speed_m_s: 1 }), fraction: 1 / length })); change({ ...draft, grains }) }} options={[3, 4, 5].map(count => ({ value: String(count), label: `${count} classes` }))} /><p className="muted">Changing count resets fractions equally; new class sizes/speeds require your entry. Fractions must sum to 1.</p>
             <p className="view-note">Release layers approximate a continuous height distribution. Local convergence is not established; 16 and 32 layers can give materially different receptor values. More layers do not establish historical accuracy.</p>
-            {draft.grains.map((grain, index) => <fieldset key={index}><legend>Class {index + 1}</legend>{(['diameter_um', 'fraction', 'settling_speed_m_s'] as const).map((key, i) => <label key={key}>{['Diameter (µm)', 'Mass fraction', 'Settling speed (m/s)'][i]}<input required type="number" step="any" min={key === 'fraction' ? 0 : 0.000001} max={key === 'fraction' ? 1 : undefined} value={Number.isNaN(grain[key]) ? '' : grain[key]} onChange={e => change({ ...draft, grains: draft.grains.map((g, j) => j === index ? { ...g, [key]: e.target.value === '' ? NaN : Number(e.target.value) } : g) })} /></label>)}</fieldset>)}
+            {draft.grains.map((grain, index) => <fieldset key={index}><legend>Class {index + 1}</legend><div className="grain-grid">{([
+              { key: 'diameter_um', name: 'Diameter', unit: '(µm)' },
+              { key: 'fraction', name: 'Mass fraction', unit: '(0–1)' },
+              { key: 'settling_speed_m_s', name: 'Settling speed', unit: '(m/s)' }
+            ] as const).map(gField => <label key={gField.key}><span className="field-label-text"><span className="field-name">{gField.name}</span>{' '}<span className="field-unit">{gField.unit}</span></span><input required type="number" step="any" min={gField.key === 'fraction' ? 0 : 0.000001} max={gField.key === 'fraction' ? 1 : undefined} value={Number.isNaN(grain[gField.key]) ? '' : grain[gField.key]} onChange={e => change({ ...draft, grains: draft.grains.map((g, j) => j === index ? { ...g, [gField.key]: e.target.value === '' ? NaN : Number(e.target.value) } : g) })} /></label>)}</div></fieldset>)}
           </details>
           <div className="form-actions"><button className="run-button" type="submit" disabled={Boolean(loading)}><Icon name="calculate" />Run simulation</button>
           {loading && <button type="button" onClick={() => request.current?.abort()}><Icon name="close" />Cancel calculation</button>}</div>

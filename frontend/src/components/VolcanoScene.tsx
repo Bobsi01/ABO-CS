@@ -1005,12 +1005,12 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
       {eruptionSequence && eruptionSequence.fountain_paths_m.length > 0 && <p className="view-note">Fountain arcs are enlarged 4× with 100 m display fragments for visibility. These assumed paths do not predict ballistic ranges.</p>}
       {ventSurface !== null && Math.abs(scenario.vent_elevation_m - ventSurface) > 25 && <p className="view-note">The column starts at the submitted {number(scenario.vent_elevation_m, 0)} m ASL model datum; the sampled vent surface is {number(ventSurface, 0)} m. The dashed connector shows this display offset, without changing the model.</p>}
       <div className="scene-layer-controls">
-        <label><input type="checkbox" checked={showDeposit} disabled={!result} onChange={event => setShowDeposit(event.target.checked)} />Show detached deposit layer</label>
-        {eruptionSequence && <label><input type="checkbox" checked={showGrains} disabled={!result} onChange={event => setShowGrains(event.target.checked)} />Show final grain-class paths</label>}
-        <label><input type="checkbox" checked={showAltimeter} onChange={event => setShowAltimeter(event.target.checked)} />Show vertical altitude scale (flight levels)</label>
+        <label className="checkbox-label"><input type="checkbox" checked={showDeposit} disabled={!result} onChange={event => setShowDeposit(event.target.checked)} /><span>Show detached deposit layer</span></label>
+        {eruptionSequence && <label className="checkbox-label"><input type="checkbox" checked={showGrains} disabled={!result} onChange={event => setShowGrains(event.target.checked)} /><span>Show final grain-class paths</span></label>}
+        <label className="checkbox-label"><input type="checkbox" checked={showAltimeter} onChange={event => setShowAltimeter(event.target.checked)} /><span>Show vertical altitude scale (flight levels)</span></label>
         {scenario.volcano_id === 'taal' && (
           <div className="seismicity-layer-wrap">
-            <label><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} />Show 2021-2024 hypocenters (USGS context)</label>
+            <label className="checkbox-label"><input type="checkbox" checked={showSeismicity} onChange={event => setShowSeismicity(event.target.checked)} /><span>Show 2021-2024 hypocenters (USGS context)</span></label>
             {showSeismicity && (
               <>
                 <div className="sublayer-filter" role="radiogroup" aria-label="Seismicity depth filter">
@@ -1052,11 +1052,11 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
             )}
           </div>
         )}
-        {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showPDZ3D} onChange={event => setShowPDZ3D(event.target.checked)} />Show PHIVOLCS PDZ (3D boundary)</label>}
-        {scenario.volcano_id === 'taal' && <label><input type="checkbox" disabled checked={showAlertRing} onChange={event => setShowAlertRing(event.target.checked)} />Show Alert Level ring (source review pending)</label>}
-        {scenario.volcano_id === 'taal' && <label><input type="checkbox" checked={showDike} onChange={event => setShowDike(event.target.checked)} />Show 2020 dike intrusion (Bato et al. 2021)</label>}
-        {scenario.volcano_id === 'taal' && <label><input type="checkbox" disabled checked={showTropomi} onChange={event => setShowTropomi(event.target.checked)} />Show Sentinel-5P observed plume bearing (source review pending)</label>}
-        <label><input type="checkbox" checked={showPopulation3D} onChange={event => setShowPopulation3D(event.target.checked)} />Show 3D population columns & affected families</label>
+        {scenario.volcano_id === 'taal' && <label className="checkbox-label"><input type="checkbox" checked={showPDZ3D} onChange={event => setShowPDZ3D(event.target.checked)} /><span>Show PHIVOLCS PDZ (3D boundary)</span></label>}
+        {scenario.volcano_id === 'taal' && <label className="checkbox-label"><input type="checkbox" disabled checked={showAlertRing} onChange={event => setShowAlertRing(event.target.checked)} /><span>Show Alert Level ring (source review pending)</span></label>}
+        {scenario.volcano_id === 'taal' && <label className="checkbox-label"><input type="checkbox" checked={showDike} onChange={event => setShowDike(event.target.checked)} /><span>Show 2020 dike intrusion (Bato et al. 2021)</span></label>}
+        {scenario.volcano_id === 'taal' && <label className="checkbox-label"><input type="checkbox" disabled checked={showTropomi} onChange={event => setShowTropomi(event.target.checked)} /><span>Show Sentinel-5P observed plume bearing (source review pending)</span></label>}
+        <label className="checkbox-label"><input type="checkbox" checked={showPopulation3D} onChange={event => setShowPopulation3D(event.target.checked)} /><span>Show 3D population columns & affected families</span></label>
         {showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
           <div className="population-accessible-select">
             <label htmlFor="municipality-inspect-select" className="view-note">Keyboard inspection:</label>
