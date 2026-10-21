@@ -272,7 +272,7 @@ export default function Workspace() {
       <div className="workspace" id="workspace" tabIndex={-1}>
         {tab !== 'dashboard' && tab !== '3d' && tab !== 'help' && <nav className="view-tabs" aria-label="Scientific views">{tabs.filter(([id]) => id !== '3d' && id !== 'help').map(([id, label, icon]) => <button type="button" aria-current={tab === id ? 'page' : undefined} key={id} onClick={() => { setTab(id); setSequencePlaying(false) }}><Icon name={icon} />{label}</button>)}<div className="view-tabs-actions"><button type="button" className="edit-baseline-button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />{parametersOpen ? 'Close baseline inputs' : 'Edit baseline eruption'}</button></div></nav>}
         {tab === '3d' && <div className="simulation-heading"><div className="simulation-title-group"><h2>Simulation</h2><div className="status-line" aria-live="polite" role="status">{loading || (result ? `${catalog?.volcanoes.find(v => v.id === result.scenario.volcano_id)?.name ?? result.scenario.volcano_id} result · ${number(result.diagnostics.elapsed_ms, 0)} ms · ${result.scenario.input_status.replaceAll('_', ' ')} inputs · ${result.summary.municipalities_reported} centroids ≥${result.summary.reporting_cutoff_mm} mm · ${result.summary.receptors_covered}/${result.summary.receptors_total} in domain` : 'Choose inputs and run a simulation to view deposition.')}</div></div>{activeSequence && <EruptionTimeline sequence={activeSequence} index={frameIndex} playing={sequencePlaying} onIndex={setFrameIndex} onPlaying={setSequencePlaying} sceneAvailable={sceneAvailable} compact />}<div className="simulation-action-group">{catalog && <label className="header-scenario-select"><span className="sr-only">Preset scenario</span><select aria-label="Preset scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(displayedScenario))?.id ?? 'last-run'} onChange={e => { const preset = catalog.scenarios.find(p => p.id === e.target.value); if (preset) { change(preset.scenario); setActivePresetId(preset.id) } }}><optgroup label="Taal 2020 Event & Directional Outcomes">{catalog.scenarios.filter(s => s.scenario.volcano_id === 'taal' && s.id !== 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup><optgroup label="Other Volcano Baselines">{catalog.scenarios.filter(s => s.scenario.volcano_id !== 'taal' || s.id === 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup>{result && !catalog.scenarios.some(p => JSON.stringify(p.scenario) === JSON.stringify(result.scenario)) && <option value="last-run">Custom · {result.scenario.label}</option>}</select></label>}<button type="button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />Edit parameters</button><button hidden={parametersOpen} type="button" className="run-button" disabled={Boolean(loading) || !draft} onClick={() => void execute('simulation')}><Icon name="calculate" />Run simulation</button><button className="raw-data-action" type="button" disabled={!result} onClick={() => setRawDataOpenCount(n => n + 1)}><Icon name="calculate" />View raw data</button></div></div>}
-        {tab !== 'dashboard' && tab !== '3d' && <div className="status-line" aria-live="polite" role="status">{loading || (result ? `${catalog?.volcanoes.find(v => v.id === result.scenario.volcano_id)?.name ?? result.scenario.volcano_id} result · ${number(result.diagnostics.elapsed_ms, 0)} ms` : 'Choose inputs and run a simulation to view deposition.')}</div>}
+        {tab !== 'dashboard' && tab !== '3d' && loading && <div className="status-line" aria-live="polite" role="status">{loading}</div>}
         {error && <p className="error-message" role="alert">{error}</p>}
         {stale && tab !== 'dashboard' && <p className="stale-message">Parameters have changed. Views below retain the last completed simulation. Run again to update them.</p>}
         <section hidden={tab === 'dashboard'} className="visual-panel" aria-label={tabs.find(t => t[0] === tab)?.[1]}>
@@ -343,71 +343,104 @@ export default function Workspace() {
                   <span className="baseline-ribbon-sep">·</span>
                   <span>Total Mass: <strong>{displayedScenario?.mass_rate_kg_s != null && displayedScenario?.duration_s != null ? `${number((displayedScenario.mass_rate_kg_s * displayedScenario.duration_s) / 1e10, 2)}×10¹⁰ kg` : '—'}</strong></span>
                 </div>
-                <button type="button" className="baseline-ribbon-action" onClick={() => setParametersOpen(open => !open)}>
-                  <Icon name="settings" />
-                  {parametersOpen ? 'Close baseline inputs' : 'Edit baseline eruption'}
-                </button>
               </div>
 
-              {catalog?.winds.some(wind => typeof wind.altitude_context === 'string') && (
-                <details className="evidence-accordion" style={{ marginBottom: '1.25rem' }}>
-                  <summary>Wind altitude & averaging evidence</summary>
-                  {catalog.winds.filter(wind => typeof wind.altitude_context === 'string').map(wind => (
-                    <div key={wind.id} style={{ marginTop: '0.5rem' }}>
-                      <h3 style={{ fontSize: '0.9rem', margin: '0 0 0.25rem' }}>{wind.name}</h3>
-                      <p className="view-note">{String(wind.altitude_context)}</p>
-                      {typeof wind.averaging_period === 'string' && <p className="view-note">{wind.averaging_period}</p>}
-                      {typeof wind.reason === 'string' && <p className="view-note">{wind.reason}</p>}
+              {catalog?.winds && catalog.winds.length > 0 && (
+                <details className="evidence-accordion seasonal-catalog-drawer">
+                  <summary>
+                    <span>Seasonal wind catalog & altitude evidence ({catalog.winds.length} reference profiles)</span>
+                    <span className="summary-count">Contextual</span>
+                  </summary>
+                  <div className="seasonal-catalog-body">
+                    <p className="view-note" style={{ margin: '0 0 0.75rem' }}>
+                      Reviewed seasonal soundings remain unvalidated for historical forecasting. The profiles below represent cataloged seasonal references.
+                    </p>
+                    <div className="table-scroll">
+                      <table className="seasonal-winds-table">
+                        <thead>
+                          <tr>
+                            <th>Wind Profile</th>
+                            <th>Review Status</th>
+                            <th>Speed & Heading</th>
+                            <th>Altitude Context & Source Notes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {catalog.winds.map(w => (
+                            <tr key={w.id}>
+                              <th scope="row"><strong>{w.name}</strong></th>
+                              <td><span className="badge-status">{w.status.replaceAll('_', ' ')}</span></td>
+                              <td>{w.speed_m_s == null ? 'Not reviewed' : `${number(w.speed_m_s)} m/s from ${number(w.from_deg)}°`}</td>
+                              <td className="view-note">{typeof w.altitude_context === 'string' ? w.altitude_context : typeof w.reason === 'string' ? w.reason : '—'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
-                  ))}
+                    <p className="input-status" style={{ marginTop: '0.75rem' }}>
+                      Manual comparison profiles below are user-defined simulations, not verified Amihan/Habagat forecasts.
+                    </p>
+                  </div>
                 </details>
               )}
 
-              {catalog?.winds.map(w => (
-                <p key={w.id} className="view-note">
-                  <strong>{w.name}</strong> · {w.status} · {w.speed_m_s == null ? 'Effective speed/direction have not been reviewed.' : `${number(w.speed_m_s)} m/s from ${number(w.from_deg)}°`}
-                </p>
-              ))}
-
               {(catalog?.winds.filter(w => w.status === 'reviewed' && w.speed_m_s != null && w.from_deg != null).length ?? 0) < 2 && (
-                <>
-                  <p className="input-status">Manual comparison is not verified Amihan/Habagat weather.</p>
-                  <div className="manual-winds comparison-wind-grid">
-                    {manualWinds.map((wind, index) => {
-                      const isA = index === 0
-                      const fromDeg = Number(wind.from)
-                      const destBearing = !isNaN(fromDeg) ? (fromDeg + 180) % 360 : null
-                      return (
-                        <fieldset key={index} className="wind-profile-card">
-                          <legend className="sr-only">Manual wind {index + 1}</legend>
-                          <div className="wind-profile-card-header">
-                            <h3 className="wind-profile-card-title">
-                              <span className={`wind-profile-indicator ${isA ? 'wind-indicator-a' : 'wind-indicator-b'}`} />
-                              Wind Profile {isA ? 'A' : 'B'} {isA ? '(Condition 1)' : '(Condition 2)'}
-                            </h3>
-                            <span className="wind-profile-badge">{isA ? 'Northeast Flow Reference' : 'Southwest Flow Reference'}</span>
-                          </div>
-                          <div className="wind-profile-inputs">
-                            <label>Speed (m/s)
-                              <input disabled={Boolean(loading)} type="number" min="0" max="200" step="any" value={wind.speed} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, speed: e.target.value } : w)); setComparison([]) }} />
-                            </label>
-                            <label>Wind FROM (°)
-                              <input disabled={Boolean(loading)} type="number" min="0" max="359.999" step="any" value={wind.from} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, from: e.target.value } : w)); setComparison([]) }} />
-                            </label>
-                          </div>
-                          <p className="wind-profile-summary">
-                            Wind blowing from {cardinalDirection(wind.from)} ({wind.from}°). Disperses ash towards {destBearing != null ? cardinalDirection(destBearing) : '—'} downwind.
-                          </p>
-                        </fieldset>
-                      )
-                    })}
-                  </div>
-                </>
+                <div className="manual-winds comparison-wind-grid">
+                  {manualWinds.map((wind, index) => {
+                    const isA = index === 0
+                    const fromVal = wind.from.trim()
+                    const fromNum = fromVal !== '' ? Number(fromVal) : NaN
+                    const hasValidFrom = !Number.isNaN(fromNum) && fromNum >= 0 && fromNum < 360
+                    const destBearing = hasValidFrom ? (fromNum + 180) % 360 : null
+                    const speedVal = wind.speed.trim()
+                    const speedNum = speedVal !== '' ? Number(speedVal) : NaN
+                    const hasValidSpeed = !Number.isNaN(speedNum) && speedNum >= 0
+
+                    return (
+                      <fieldset key={index} className="wind-profile-card">
+                        <legend className="sr-only">Manual wind {index + 1}</legend>
+                        <div className="wind-profile-card-header">
+                          <h3 className="wind-profile-card-title">
+                            <span className={`wind-profile-indicator ${isA ? 'wind-indicator-a' : 'wind-indicator-b'}`} />
+                            Wind Profile {isA ? 'A' : 'B'}
+                          </h3>
+                          <span className="wind-profile-badge">
+                            {hasValidFrom ? `${cardinalDirection(fromNum)} Flow (${fromNum}°)` : isA ? 'Profile A (045° Default)' : 'Profile B (225° Default)'}
+                          </span>
+                        </div>
+                        <div className="wind-profile-inputs">
+                          <label>Speed (m/s)
+                            <input disabled={Boolean(loading)} type="number" min="0" max="200" step="any" placeholder="12" value={wind.speed} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, speed: e.target.value } : w)); setComparison([]) }} />
+                          </label>
+                          <label>Wind FROM (°)
+                            <input disabled={Boolean(loading)} type="number" min="0" max="359.999" step="any" placeholder="45" value={wind.from} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, from: e.target.value } : w)); setComparison([]) }} />
+                          </label>
+                        </div>
+                        <p className="wind-profile-summary">
+                          {hasValidFrom && hasValidSpeed ? (
+                            <>Wind blowing from <strong>{cardinalDirection(fromNum)}</strong> ({fromNum}°). Disperses ash towards <strong>{cardinalDirection(destBearing)}</strong> ({destBearing}°) downwind.</>
+                          ) : hasValidFrom ? (
+                            <>Wind blowing from <strong>{cardinalDirection(fromNum)}</strong> ({fromNum}°). Enter wind speed.</>
+                          ) : (
+                            <>Enter wind speed in m/s and direction in degrees (0–359.9° from North).</>
+                          )}
+                        </p>
+                      </fieldset>
+                    )
+                  })}
+                </div>
               )}
 
               <div className="analysis-action-bar">
-                <p className="analysis-action-note">Hold eruption parameters fixed and evaluate spatial sensitivity across both atmospheric regimes.</p>
-                <button className="run-button" style={{ maxWidth: '320px', margin: 0 }} type="button" disabled={Boolean(loading) || !draft} onClick={() => void execute('comparison')}>
+                <div className="analysis-action-info">
+                  <span className="analysis-action-title">Atmospheric Sensitivity Run</span>
+                  <p className="analysis-action-note">
+                    {draft?.wind_profile
+                      ? 'Comparison uses the two uniform winds entered above (vertical wind profile is disabled for these runs).'
+                      : 'Computes parallel spatial ash deposition under both wind profiles with identical eruption source dynamics.'}
+                  </p>
+                </div>
+                <button className="run-button" style={{ maxWidth: '300px', margin: 0 }} type="button" disabled={Boolean(loading) || !draft} onClick={() => void execute('comparison')}>
                   <Icon name="calculate" />Compute wind comparison
                 </button>
               </div>
@@ -511,12 +544,6 @@ export default function Workspace() {
                   </article>
                 ))}
               </div>
-
-              {draft?.wind_profile && (
-                <p className="view-note" style={{ marginTop: '1rem' }}>
-                  Comparison uses the two uniform winds entered here. The vertical wind profile is disabled for these comparison results.
-                </p>
-              )}
             </>
           )}
           {tab === 'sweep' && (
@@ -529,7 +556,10 @@ export default function Workspace() {
                 <p className="view-note">The whole vertical profile rotates together. Wind FROM reports the rotated reference bearing from the primary wind input; each level retains its relative direction and speed.</p>
               )}
               <div className="analysis-action-bar">
-                <p className="analysis-action-note">Evaluates full azimuthal sensitivity at 1° resolution across all regional receptors.</p>
+                <div className="analysis-action-info">
+                  <span className="analysis-action-title">Azimuthal Sensitivity Sweep</span>
+                  <p className="analysis-action-note">Evaluates full azimuthal sensitivity at 1° resolution across all regional receptors.</p>
+                </div>
                 <button className="run-button" style={{ maxWidth: '320px', margin: 0 }} type="button" disabled={Boolean(loading) || !draft} onClick={() => void execute('sweep')}>
                   <Icon name="calculate" />Evaluate all wind directions
                 </button>
@@ -591,7 +621,25 @@ export default function Workspace() {
               )}
             </>
           )}
-          {tab === 'history' && <><h2>12–13 January 2020 Taal fallout</h2>{!historical && <p>{catalog?.historical.reason}</p>}<button className="run-button" style={{ maxWidth: '300px', margin: '0.85rem 0' }} type="button" disabled={Boolean(loading) || !catalog} onClick={() => void execute('history')}><Icon name="history" />Check historical reference</button>{historical && <HistoricalEvaluation result={historical} onInspect={() => { setResult(historical.simulation ?? null); setSequence(null); setSequencePlaying(false); setStale(true); setTab('3d') }} />}<HistoricalReferences blocked={historical?.blocked_inputs ?? catalog?.historical.blocked_inputs ?? []} tables={historical?.reference_tables ?? catalog?.historical.reference_tables ?? []} volcanoId={draft?.volcano_id ?? 'taal'} /></>}
+          {tab === 'history' && (
+            <>
+              <div className="analysis-page-header">
+                <h2>12–13 January 2020 Taal Fallout Reference</h2>
+                <p>{catalog?.historical.reason ?? 'Replication benchmark comparing published field isopach measurements with numerical dispersion outputs.'}</p>
+              </div>
+              <div className="analysis-action-bar">
+                <div className="analysis-action-info">
+                  <span className="analysis-action-title">Historical Benchmark Replication</span>
+                  <p className="analysis-action-note">Evaluates numerical agreement against 2020 field data without altering historical fixed inputs.</p>
+                </div>
+                <button className="run-button" style={{ maxWidth: '300px', margin: 0 }} type="button" disabled={Boolean(loading) || !catalog} onClick={() => void execute('history')}>
+                  <Icon name="history" />Check historical reference
+                </button>
+              </div>
+              {historical && <HistoricalEvaluation result={historical} onInspect={() => { setResult(historical.simulation ?? null); setSequence(null); setSequencePlaying(false); setStale(true); setTab('3d') }} />}
+              <HistoricalReferences blocked={historical?.blocked_inputs ?? catalog?.historical.blocked_inputs ?? []} tables={historical?.reference_tables ?? catalog?.historical.reference_tables ?? []} volcanoId={draft?.volcano_id ?? 'taal'} />
+            </>
+          )}
           {tab === 'help' && (
             <>
               <div className="analysis-page-header">
