@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Icon from './Icon'
 
 type ActivityEntry = {
   review_status?: string
@@ -111,35 +112,42 @@ export default function HistoricalReferences({
           {activity.length > 0 && (
             <details className="evidence-accordion">
               <summary>
-                <strong>Recent Volcanic Unrest Activity Log (2021–2024 · PHIVOLCS / GVP)</strong>
-                <span className="summary-count">{activity.length} logged events</span>
+                <span className="evidence-accordion-title">
+                  <Icon name="history" />
+                  <strong>Recent Volcanic Unrest Activity Log (2021–2024 · PHIVOLCS / GVP)</strong>
+                </span>
+                <span className="evidence-accordion-meta">
+                  <span className="summary-count">{activity.length} logged events</span>
+                </span>
               </summary>
-              <div className="table-scroll">
-                <table>
-                  <thead>
-                    <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Alert Level</th>
-                      <th scope="col">SO₂ Flux (t/day)</th>
-                      <th scope="col">Plume Height (m)</th>
-                      <th scope="col">Event Type</th>
-                      <th scope="col">Source</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {activity.map((entry, idx) => (
-                      <tr key={idx}>
-                        <td><strong>{entry.date}</strong></td>
-                        <td><span className={`pill-alert alert-${entry.alert_level}`}>AL{entry.alert_level}</span></td>
-                        <td>{entry.so2_t_day.toLocaleString()}</td>
-                        <td>{entry.plume_height_m.toLocaleString()}</td>
-                        <td>{entry.event_type.replace(/_/g, ' ')}</td>
-                        <td><small>{entry.source}</small></td>
+              <div className="evidence-accordion-body">
+                <div className="table-scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Alert Level</th>
+                        <th scope="col">SO₂ Flux (t/day)</th>
+                        <th scope="col">Plume Height (m)</th>
+                        <th scope="col">Event Type</th>
+                        <th scope="col">Source</th>
                       </tr>
-                    ))}
-                  </tbody>
-                  <caption>Observational chronology from PHIVOLCS bulletins and Smithsonian GVP reports. SI units: metric tonnes/day, meters above vent. Non-model reference.</caption>
-                </table>
+                    </thead>
+                    <tbody>
+                      {activity.map((entry, idx) => (
+                        <tr key={idx}>
+                          <td><strong>{entry.date}</strong></td>
+                          <td><span className={`pill-alert alert-${entry.alert_level}`}>AL{entry.alert_level}</span></td>
+                          <td>{entry.so2_t_day.toLocaleString()}</td>
+                          <td>{entry.plume_height_m.toLocaleString()}</td>
+                          <td>{entry.event_type.replace(/_/g, ' ')}</td>
+                          <td><small>{entry.source}</small></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                    <caption>Observational chronology from PHIVOLCS bulletins and Smithsonian GVP reports. SI units: metric tonnes/day, meters above vent. Non-model reference.</caption>
+                  </table>
+                </div>
               </div>
             </details>
           )}
@@ -147,61 +155,75 @@ export default function HistoricalReferences({
           {wovodat && (
             <details className="evidence-accordion">
               <summary>
-                <strong>Observatory Monitoring Infrastructure (WOVOdat / PHIVOLCS)</strong>
-                <span className="summary-count">GVP #{wovodat.gvp_volcano_number}</span>
+                <span className="evidence-accordion-title">
+                  <Icon name="info" />
+                  <strong>Observatory Monitoring Infrastructure (WOVOdat / PHIVOLCS)</strong>
+                </span>
+                <span className="evidence-accordion-meta">
+                  <span className="summary-count">GVP #{wovodat.gvp_volcano_number}</span>
+                </span>
               </summary>
-              <dl>
-                <div>
-                  <dt>Observatory</dt>
-                  <dd>{wovodat.observatory}</dd>
-                </div>
-                <div>
-                  <dt>Portal References</dt>
-                  <dd>
-                    <a href={wovodat.portal_urls.wovodat} target="_blank" rel="noopener noreferrer">WOVOdat Global Database<span className="sr-only"> (opens in a new tab)</span></a> ·{' '}
-                    <a href={wovodat.portal_urls.phivolcs_lava} target="_blank" rel="noopener noreferrer">PHIVOLCS LAVA Portal<span className="sr-only"> (opens in a new tab)</span></a>
-                  </dd>
-                </div>
-                {Object.entries(wovodat.monitoring_networks).map(([netKey, net]) => (
-                  <div key={netKey}>
-                    <dt>{netKey.replaceAll('_', ' ').toUpperCase()}</dt>
+              <div className="evidence-accordion-body">
+                <dl>
+                  <div>
+                    <dt>Observatory</dt>
+                    <dd>{wovodat.observatory}</dd>
+                  </div>
+                  <div>
+                    <dt>Portal References</dt>
                     <dd>
-                      <span className="badge-status">{net.status}</span> {net.description}
-                      {net.stations && (
-                        <div className="station-pills">
-                          <span className="muted">Stations:</span> {net.stations.join(', ')}
-                        </div>
-                      )}
+                      <a href={wovodat.portal_urls.wovodat} target="_blank" rel="noopener noreferrer">WOVOdat Global Database<span className="sr-only"> (opens in a new tab)</span></a> ·{' '}
+                      <a href={wovodat.portal_urls.phivolcs_lava} target="_blank" rel="noopener noreferrer">PHIVOLCS LAVA Portal<span className="sr-only"> (opens in a new tab)</span></a>
                     </dd>
                   </div>
-                ))}
-              </dl>
-              <p className="reference-disclaimer">{wovodat.disclaimer}</p>
+                  {Object.entries(wovodat.monitoring_networks).map(([netKey, net]) => (
+                    <div key={netKey}>
+                      <dt>{netKey.replaceAll('_', ' ').toUpperCase()}</dt>
+                      <dd>
+                        <span className="badge-status">{net.status}</span> {net.description}
+                        {net.stations && (
+                          <div className="station-pills">
+                            <span className="muted">Stations:</span> {net.stations.join(', ')}
+                          </div>
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="reference-disclaimer">{wovodat.disclaimer}</p>
+              </div>
             </details>
           )}
 
           {hdx && (
             <details className="evidence-accordion">
               <summary>
-                <strong>Exposure & Damage Proxy Datasets (HDX / NASA-JPL ARIA / Copernicus)</strong>
-                <span className="summary-count">{hdx.datasets.length} datasets</span>
+                <span className="evidence-accordion-title">
+                  <Icon name="map" />
+                  <strong>Exposure & Damage Proxy Datasets (HDX / NASA-JPL ARIA / Copernicus)</strong>
+                </span>
+                <span className="evidence-accordion-meta">
+                  <span className="summary-count">{hdx.datasets.length} datasets</span>
+                </span>
               </summary>
-              <dl>
-                <div>
-                  <dt>Repository</dt>
-                  <dd><a href={hdx.portal_url} target="_blank" rel="noopener noreferrer">{hdx.source}<span className="sr-only"> (opens in a new tab)</span></a></dd>
-                </div>
-                {hdx.datasets.map((ds) => (
-                  <div key={ds.id}>
-                    <dt>{ds.format}</dt>
-                    <dd>
-                      <strong><a href={ds.url} target="_blank" rel="noopener noreferrer">{ds.title}<span className="sr-only"> (opens in a new tab)</span></a></strong>
-                      <div><small className="muted">Publisher: {ds.publisher}{ds.date ? ` · Date: ${ds.date}` : ''}</small></div>
-                    </dd>
+              <div className="evidence-accordion-body">
+                <dl>
+                  <div>
+                    <dt>Repository</dt>
+                    <dd><a href={hdx.portal_url} target="_blank" rel="noopener noreferrer">{hdx.source}<span className="sr-only"> (opens in a new tab)</span></a></dd>
                   </div>
-                ))}
-              </dl>
-              <p className="reference-disclaimer">{hdx.disclaimer}</p>
+                  {hdx.datasets.map((ds) => (
+                    <div key={ds.id}>
+                      <dt>{ds.format}</dt>
+                      <dd>
+                        <strong><a href={ds.url} target="_blank" rel="noopener noreferrer">{ds.title}<span className="sr-only"> (opens in a new tab)</span></a></strong>
+                        <div><small className="muted">Publisher: {ds.publisher}{ds.date ? ` · Date: ${ds.date}` : ''}</small></div>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="reference-disclaimer">{hdx.disclaimer}</p>
+              </div>
             </details>
           )}
         </section>

@@ -348,10 +348,15 @@ export default function Workspace() {
               {catalog?.winds && catalog.winds.length > 0 && (
                 <details className="evidence-accordion seasonal-catalog-drawer">
                   <summary>
-                    <span>Seasonal wind catalog & altitude evidence ({catalog.winds.length} reference profiles)</span>
-                    <span className="summary-count">Contextual</span>
+                    <span className="evidence-accordion-title">
+                      <Icon name="wind" />
+                      Seasonal wind catalog & altitude evidence
+                    </span>
+                    <span className="evidence-accordion-meta">
+                      <span className="summary-count">{catalog.winds.length} reference profiles</span>
+                    </span>
                   </summary>
-                  <div className="seasonal-catalog-body">
+                  <div className="evidence-accordion-body">
                     <p className="view-note" style={{ margin: '0 0 0.75rem' }}>
                       Reviewed seasonal soundings remain unvalidated for historical forecasting. The profiles below represent cataloged seasonal references.
                     </p>
@@ -780,45 +785,69 @@ export default function Workspace() {
                   </div>
                 </div>
 
-                <details className="evidence-accordion" style={{ marginTop: '1.25rem' }}>
-                  <summary>Eruption mechanisms & reference zones ({ERUPTION_SOURCES.length} sources)</summary>
-                  <div className="citation-list" style={{ marginTop: '0.75rem' }}>
-                    {ERUPTION_SOURCES.map(source => (
-                      <div key={source.id} className="citation-entry-card">
-                        <div className="citation-top-row">
-                          <div>
-                            <p className="citation-author">{source.publisher} ({source.date})</p>
-                            <a href={source.url} target="_blank" rel="noreferrer" className="citation-title-link">{source.title}</a>
-                            <p className="citation-meta">{source.note}</p>
+                <details className="evidence-accordion">
+                  <summary>
+                    <span className="evidence-accordion-title">
+                      <Icon name="book" />
+                      Eruption mechanisms & reference zones
+                    </span>
+                    <span className="evidence-accordion-meta">
+                      <span className="summary-count">{ERUPTION_SOURCES.length} sources</span>
+                    </span>
+                  </summary>
+                  <div className="evidence-accordion-body">
+                    <div className="citation-list">
+                      {ERUPTION_SOURCES.map(source => (
+                        <div key={source.id} className="citation-entry-card">
+                          <div className="citation-top-row">
+                            <div>
+                              <p className="citation-author">{source.publisher} ({source.date})</p>
+                              <a href={source.url} target="_blank" rel="noreferrer" className="citation-title-link">{source.title}</a>
+                              <p className="citation-meta">{source.note}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                    <p className="evidence-accordion-footer">
+                      <a href="/documentation/ERUPTION_RESEARCH.md" target="_blank" rel="noreferrer">
+                        Research registry and evidence limits →
+                      </a>
+                    </p>
                   </div>
-                  <p style={{ marginTop: '0.75rem' }}><a href="/documentation/ERUPTION_RESEARCH.md" target="_blank" rel="noreferrer">Research registry and evidence limits</a></p>
                 </details>
 
                 {catalog?.sources && catalog.sources.length > 0 && (
-                  <details className="evidence-accordion" style={{ marginTop: '0.75rem' }}>
-                    <summary>Complete repository source registry ({catalog.sources.length} sources)</summary>
-                    <div className="citation-list" style={{ marginTop: '0.75rem' }}>
-                      {catalog.sources.map(source => {
-                        const publisher = typeof source.publisher === 'string' ? source.publisher : null
-                        const accessed = typeof source.accessed_at === 'string' ? source.accessed_at : null
-                        const status = typeof source.review_status === 'string' ? source.review_status : null
-                        const notes = typeof source.notes === 'string' ? source.notes : null
-                        return (
-                          <div key={source.id} className="citation-entry-card">
-                            <a href={source.url} target="_blank" rel="noreferrer" className="citation-title-link">{source.title}</a>
-                            {(publisher || accessed || status) && (
-                              <p className="citation-meta">
-                                {[publisher, accessed ? `Accessed: ${accessed}` : null, status ? `Status: ${status}` : null].filter(Boolean).join(' · ')}
-                              </p>
-                            )}
-                            {notes && <p className="citation-meta">{notes}</p>}
-                          </div>
-                        )
-                      })}
+                  <details className="evidence-accordion">
+                    <summary>
+                      <span className="evidence-accordion-title">
+                        <Icon name="history" />
+                        Complete repository source registry
+                      </span>
+                      <span className="evidence-accordion-meta">
+                        <span className="summary-count">{catalog.sources.length} sources</span>
+                      </span>
+                    </summary>
+                    <div className="evidence-accordion-body">
+                      <div className="citation-list">
+                        {catalog.sources.map(source => {
+                          const publisher = typeof source.publisher === 'string' ? source.publisher : null
+                          const accessed = typeof source.accessed_at === 'string' ? source.accessed_at : null
+                          const status = typeof source.review_status === 'string' ? source.review_status : null
+                          const notes = typeof source.notes === 'string' ? source.notes : null
+                          return (
+                            <div key={source.id} className="citation-entry-card">
+                              <a href={source.url} target="_blank" rel="noreferrer" className="citation-title-link">{source.title}</a>
+                              {(publisher || accessed || status) && (
+                                <p className="citation-meta">
+                                  {[publisher, accessed ? `Accessed: ${accessed}` : null, status ? `Status: ${status}` : null].filter(Boolean).join(' · ')}
+                                </p>
+                              )}
+                              {notes && <p className="citation-meta">{notes}</p>}
+                            </div>
+                          )
+                        })}
+                      </div>
                     </div>
                   </details>
                 )}
