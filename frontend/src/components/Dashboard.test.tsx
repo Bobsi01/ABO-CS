@@ -90,4 +90,32 @@ describe('live timeline synchronization', () => {
     expect(screen.getByText('Top 2 municipal centroids · eventual totals')).toBeTruthy()
     expect(screen.getByRole('button', { name: /Town One, 2 millimeters/ })).toBeTruthy()
   })
+
+  it('renders all affected municipalities beyond top 6 in a scrollable ranking container', () => {
+    const eightTowns = {
+      ...result,
+      summary: { ...result.summary, reporting_cutoff_mm: 0.5 },
+      receptors: Array.from({ length: 8 }, (_, i) => ({
+        id: `town-${i + 1}`,
+        name: `Town ${i + 1}`,
+        kind: 'municipality',
+        in_domain: true,
+        thickness_mm: 10 - i,
+        population_year: 2024,
+        screening: {},
+        screening_reasons: {},
+      })),
+    } as SimulationResult
+    vi.mocked(simulate).mockResolvedValue(eightTowns)
+    vi.mocked(eruption).mockResolvedValue(live)
+    render(<Dashboard catalog={catalog} simulation={eightTowns} simulationSequence={live} frame={null} embedded />)
+
+    const scrollRegion = screen.getByRole('region', { name: 'Affected municipalities ranked by deposit thickness' })
+    expect(scrollRegion).toBeTruthy()
+    expect(scrollRegion.getAttribute('tabindex')).toBe('0')
+
+    const rows = within(scrollRegion).getAllByRole('button', { name: /millimeters, select time series/ })
+    expect(rows).toHaveLength(8)
+    expect(screen.getByText('Top 8 municipal centroids · eventual totals')).toBeTruthy()
+  })
 })

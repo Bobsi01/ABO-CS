@@ -106,11 +106,26 @@ export default function Dashboard({
   }, [result, liveFrame])
   const distribution = depositDistribution(liveReceptors)
   const ranked = (result?.receptors ?? []).filter(r => r.kind === 'municipality' && r.in_domain && r.thickness_mm !== null).sort((a, b) => b.thickness_mm! - a.thickness_mm!)
-  const liveRanked = liveFrame ? liveReceptors.filter(r => r.kind === 'municipality' && r.in_domain && (r.thickness_mm ?? 0) >= 0.01).sort((a, b) => b.thickness_mm! - a.thickness_mm!) : ranked
-  const top = liveRanked.slice(0, 6)
+  const liveRanked = (liveFrame ? liveReceptors : (result?.receptors ?? []))
+    .filter(r => r.kind === 'municipality' && r.in_domain && (r.thickness_mm ?? 0) >= 0.01)
+    .sort((a, b) => (b.thickness_mm ?? 0) - (a.thickness_mm ?? 0))
+  const top = liveRanked
   const barScale = Math.max(0.001, ranked[0]?.thickness_mm ?? top[0]?.thickness_mm ?? 1)
   const activeLocationId = selectedId && ranked.some(r => r.id === selectedId) ? selectedId : location
   const selected = ranked.find(r => r.id === activeLocationId) ?? ranked[0]
+  const selectedRowRef = useRef<HTMLButtonElement | null>(null)
+  useEffect(() => {
+    if (selected && selectedRowRef.current) {
+      const prefersReducedMotion =
+        typeof window !== 'undefined' &&
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      selectedRowRef.current.scrollIntoView?.({
+        block: 'nearest',
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      })
+    }
+  }, [selected])
   function chooseLocation(id: string) {
     setLocation(id)
     onSelectLocation?.(id)
@@ -170,7 +185,7 @@ export default function Dashboard({
           </svg></div> : <p className="empty-note">No event snapshots are available for this location. Eventual totals remain available in raw data.</p>}
         </article>
         <article className="chart-panel ranking-panel"><header><div><h3>Deposit thickness by municipality</h3><p>{liveFrame ? `Top ${top.length} at ${scopeLabel}` : `Top ${top.length} municipal centroids · eventual totals`}</p></div><span className="chart-unit">mm</span></header>
-          <div className="ranking-chart">{!top.length && <p className="empty-note">{liveFrame ? 'No ash deposited yet at this snapshot.' : 'No municipal thickness values are available in this domain.'}</p>}{top.map((r, i) => <button type="button" className={`ranking-row${r.id === selected?.id ? ' is-selected' : ''}`} key={r.id} onClick={() => chooseLocation(r.id)} aria-pressed={r.id === selected?.id} aria-label={`${r.name}, ${number(r.thickness_mm)} millimeters, select time series`}><span className="rank-index">{String(i + 1).padStart(2, '0')}</span><span className="rank-name">{r.name}</span><span className="rank-track"><span style={{ width: `${Math.min(100, Math.max(0, r.thickness_mm! / barScale * 100))}%` }} /></span><strong>{number(r.thickness_mm)}</strong></button>)}</div>
+          <div className="ranking-chart" tabIndex={0} role="region" aria-label="Affected municipalities ranked by deposit thickness">{!top.length && <p className="empty-note">{liveFrame ? 'No ash deposited yet at this snapshot.' : 'No municipal thickness values are available in this domain.'}</p>}{top.map((r, i) => <button ref={r.id === selected?.id ? selectedRowRef : undefined} type="button" className={`ranking-row${r.id === selected?.id ? ' is-selected' : ''}`} key={r.id} onClick={() => chooseLocation(r.id)} aria-pressed={r.id === selected?.id} aria-label={`${r.name}, ${number(r.thickness_mm)} millimeters, select time series`}><span className="rank-index">{String(i + 1).padStart(2, '0')}</span><span className="rank-name">{r.name}</span><span className="rank-track"><span style={{ width: `${Math.min(100, Math.max(0, (r.thickness_mm ?? 0) / barScale * 100))}%` }} /></span><strong>{number(r.thickness_mm)}</strong></button>)}</div>
           <p className="chart-footnote">{liveFrame ? 'Bars share the eventual maximum as scale. Select a municipality to inspect its curve.' : 'Select a municipality to inspect its accumulation curve.'}</p>
         </article>
         <article className="chart-panel distribution-panel"><header><div><h3>Municipal deposit distribution</h3><p>{distribution.known} centroids with known deposits · {scopeLabel}</p></div></header>

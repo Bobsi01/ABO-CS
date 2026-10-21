@@ -454,8 +454,54 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--action); outlin
 .chart-panel header p { font-size: 0.75rem; color: var(--secondary); margin: 0; }
 .chart-unit { color: var(--secondary); font-size: 0.8rem; }
 .application .chart-footnote { color: var(--secondary); font-size: 0.73rem; line-height: 1.45; margin: 0.65rem 0 0; }
-.ranking-chart { display: flex; flex-direction: column; gap: 0.2rem; margin: 0.5rem 0; }
-.application .ranking-row { display: grid; grid-template-columns: 20px minmax(75px, 1.1fr) minmax(50px, 1.7fr) minmax(48px, auto); gap: 0.65rem; width: 100%; min-height: 29px; padding: 0.3rem 0; border: 0; border-radius: 2px; background: transparent; text-align: left; font-size: 0.78rem; }
+.ranking-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0.5rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 320px;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.ranking-chart:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: -2px;
+}
+.ranking-chart::-webkit-scrollbar {
+  width: 6px;
+}
+.ranking-chart::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: 3px;
+}
+.ranking-chart::-webkit-scrollbar-track {
+  background: transparent;
+}
+.application .ranking-row {
+  display: grid;
+  grid-template-columns: 20px minmax(75px, 1.1fr) minmax(50px, 1.7fr) minmax(48px, auto);
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 29px;
+  padding: 0.3rem 0;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  text-align: left;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.application .ranking-row:hover {
+  background: var(--surface);
+}
+.application .ranking-row:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: -1px;
+}
 .ranking-row.is-selected .rank-name { color: var(--action); font-weight: 650; }
 .rank-index { font-size: 0.7rem; color: var(--secondary); }
 .rank-name { overflow-wrap: anywhere; }
