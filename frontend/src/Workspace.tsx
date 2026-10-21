@@ -239,7 +239,7 @@ export default function Workspace() {
             {draft.wind_profile && draft.wind_profile.length > 0 && <div className="wind-levels">
               {draft.wind_profile.map((level, i) => <fieldset key={i}><legend>Profile level {i + 1}</legend>
                 <div className="field-grid">
-                  <label><span className="field-label-text"><span className="field-name">Height above vent</span>{' '}<span className="field-unit">(m)</span></span><input type="number" min={0} required value={Number.isNaN(level.height_above_vent_m) ? '' : level.height_above_vent_m} onChange={e => {
+                  <label><span className="field-label-text"><span className="field-name">Level height</span>{' '}<span className="field-unit">(m)</span></span><input type="number" min={0} required value={Number.isNaN(level.height_above_vent_m) ? '' : level.height_above_vent_m} onChange={e => {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, height_above_vent_m: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
@@ -261,8 +261,8 @@ export default function Workspace() {
             <p className="view-note">Release layers approximate a continuous height distribution. Local convergence is not established; 16 and 32 layers can give materially different receptor values. More layers do not establish historical accuracy.</p>
             {draft.grains.map((grain, index) => <fieldset key={index}><legend>Class {index + 1}</legend><div className="grain-grid">{([
               { key: 'diameter_um', name: 'Diameter', unit: '(µm)' },
-              { key: 'fraction', name: 'Mass fraction', unit: '(0–1)' },
-              { key: 'settling_speed_m_s', name: 'Settling speed', unit: '(m/s)' }
+              { key: 'fraction', name: 'Fraction', unit: '(0–1)' },
+              { key: 'settling_speed_m_s', name: 'Settling', unit: '(m/s)' }
             ] as const).map(gField => <label key={gField.key}><span className="field-label-text"><span className="field-name">{gField.name}</span>{' '}<span className="field-unit">{gField.unit}</span></span><input required type="number" step="any" min={gField.key === 'fraction' ? 0 : 0.000001} max={gField.key === 'fraction' ? 1 : undefined} value={Number.isNaN(grain[gField.key]) ? '' : grain[gField.key]} onChange={e => change({ ...draft, grains: draft.grains.map((g, j) => j === index ? { ...g, [gField.key]: e.target.value === '' ? NaN : Number(e.target.value) } : g) })} /></label>)}</div></fieldset>)}
           </details>
           <div className="form-actions"><button className="run-button" type="submit" disabled={Boolean(loading)}><Icon name="calculate" />Run simulation</button>

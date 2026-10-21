@@ -63,17 +63,17 @@ main.laboratory.inputs-collapsed { grid-template-columns: minmax(0, 1fr); }
 .application .run-button:hover:not(:disabled) { background: var(--action); filter: brightness(1.08); }
 .field-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem 0.7rem; }
 .field-grid label:first-child:last-child, .field-grid label:nth-last-child(1):nth-child(odd) { grid-column: 1 / -1; }
-.application .field-grid > label { display: flex; flex-direction: column; justify-content: flex-start; height: 100%; margin-bottom: 0; }
-.application .field-grid > label > .field-label-text { display: flex; flex-direction: column; justify-content: flex-end; gap: 0.1rem; margin-bottom: 0.25rem; min-height: 2.35rem; }
+.application .field-grid > label { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; margin-bottom: 0; }
+.application .field-grid > label > .field-label-text { display: flex; flex-direction: column; justify-content: flex-end; gap: 0.1rem; margin-bottom: 0.25rem; flex: 1 1 auto; }
 .application .field-name { font-size: 0.8rem; font-weight: 550; color: var(--text); line-height: 1.25; }
 .application .field-unit { font-size: 0.72rem; color: var(--secondary); font-variant-numeric: tabular-nums; line-height: 1.2; }
-.application .field-grid > label > input, .application .field-grid > label > select { width: 100%; }
+.application .field-grid > label > input, .application .field-grid > label > select { width: 100%; flex-shrink: 0; }
 .application .grain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem 0.5rem; margin-top: 0.25rem; }
-.application .grain-grid > label { display: flex; flex-direction: column; justify-content: flex-start; height: 100%; margin-bottom: 0; }
-.application .grain-grid > label > .field-label-text { display: flex; flex-direction: column; justify-content: flex-end; gap: 0.1rem; margin-bottom: 0.25rem; min-height: 2.35rem; }
+.application .grain-grid > label { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; margin-bottom: 0; }
+.application .grain-grid > label > .field-label-text { display: flex; flex-direction: column; justify-content: flex-end; gap: 0.1rem; margin-bottom: 0.25rem; flex: 1 1 auto; }
 .application .grain-grid > label > .field-label-text > .field-name { font-weight: 600; line-height: 1.25; color: var(--text); font-size: 0.75rem; }
 .application .grain-grid > label > .field-label-text > .field-unit { font-size: 0.7rem; line-height: 1.2; color: var(--secondary); font-weight: 400; }
-.application .grain-grid > label > input { width: 100%; }
+.application .grain-grid > label > input { width: 100%; flex-shrink: 0; }
 .input-status { padding: 0; font-size: 0.8rem; color: var(--secondary); }
 .form-actions { position: sticky; bottom: -1.25rem; background: var(--panel); padding: 0.75rem 0; border-top: 1px solid var(--line); margin-top: 0.5rem; display: grid; gap: 0.5rem; }
 .application details { border-top: 1px solid var(--line); padding: 0.75rem 0; margin-top: 0.75rem; }
