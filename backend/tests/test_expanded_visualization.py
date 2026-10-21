@@ -47,3 +47,24 @@ def test_taal_regional_scenario_preset_exists_and_computes():
     # Verify contours include trace levels 0.01 and 0.1 mm
     thickness_levels = {f["properties"]["thickness_mm"] for f in result.contours.features}
     assert 0.01 in thickness_levels or 0.1 in thickness_levels or 0.5 in thickness_levels
+
+
+def test_all_catalog_presets_include_surrounding_and_downwind_dispersion():
+    data = service.catalog()
+    assert len(data.scenarios) >= 4
+    for preset in data.scenarios:
+        assert preset.scenario.umbrella_radius_m is not None
+        assert preset.scenario.umbrella_radius_m >= 12000.0
+        result = service.simulate(SimulationRequest(scenario=preset.scenario))
+        assert result.summary.municipalities_reported >= 2
+        proximal = [
+            r
+            for r in result.receptors
+            if r.in_domain
+            and r.thickness_mm is not None
+            and r.thickness_mm >= 0.1
+            and r.east_m is not None
+            and r.north_m is not None
+            and (r.east_m**2 + r.north_m**2) ** 0.5 <= 25000.0
+        ]
+        assert len(proximal) >= 8, f"{preset.id} should affect surrounding proximal municipalities"

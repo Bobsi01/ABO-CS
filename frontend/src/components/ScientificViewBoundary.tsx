@@ -6,7 +6,7 @@ export default class ScientificViewBoundary extends Component<{ children: ReactN
   static getDerivedStateFromError() { return { failed: true } }
   componentDidCatch() { this.props.onFailure?.() }
   render() {
-    if (!this.state.failed) return <div key={this.state.attempt}>{this.props.children}</div>
+    if (!this.state.failed) return <div className="view-boundary" key={this.state.attempt}>{this.props.children}</div>
     return <div className="fallback" role="alert">
       <h3>This view could not load</h3>
       <p>The local server may have stopped or its assets changed during a rebuild. Completed results, the other view, and exports remain available. Playback has paused.</p>

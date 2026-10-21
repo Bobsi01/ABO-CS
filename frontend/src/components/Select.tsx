@@ -22,7 +22,9 @@ export default function Select({ label, value, onChange, options, id, disabled =
     const below = window.innerHeight - bounds.bottom - 12, above = bounds.top - 12
     const up = below < Math.min(280, options.length * 44 + 10) && above > below
     const height = Math.max(0, Math.min(280, up ? above : below))
-    setPosition({ left: Math.max(8, Math.min(bounds.left, window.innerWidth - bounds.width - 8)), ...(up ? { bottom: window.innerHeight - bounds.top + 4 } : { top: bounds.bottom + 4 }), width: Math.min(bounds.width, window.innerWidth - 16), height })
+    const width = Math.max(bounds.width, Math.min(220, window.innerWidth - 16))
+    const left = Math.max(8, Math.min(bounds.left, window.innerWidth - width - 8))
+    setPosition({ left, ...(up ? { bottom: window.innerHeight - bounds.top + 4 } : { top: bounds.bottom + 4 }), width, height })
     setTheme(trigger.current?.closest('[data-theme]')?.getAttribute('data-theme') ?? 'light')
   }
   function reveal(index = current >= 0 && !options[current].disabled ? current : options.findIndex(o => !o.disabled)) {

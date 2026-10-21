@@ -79,7 +79,11 @@ def sources(s):
             [level.speed_m_s for level in s.wind_profile],
             [level.wind_from_deg for level in s.wind_profile],
         )
-        is_regional = bool(s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m)
+        is_regional = bool(
+            s.umbrella_radius_m
+            and s.umbrella_radius_m > s.initial_spread_m
+            and s.column_height_m >= 3000
+        )
         u_e, u_n = kernel.layer_winds(parts["release_m"], *levels, column_integrated=is_regional)
         mid_e, mid_n = kernel.layer_winds(
             np.asarray([s.column_height_m / 2]), *levels, column_integrated=is_regional
@@ -134,7 +138,15 @@ def prepare(request, sweep=False):
         raise ValueError("Criterion identifiers must be unique")
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
-    comp_factor = 2 if (s.umbrella_radius_m and s.umbrella_radius_m > s.initial_spread_m) else 1
+    comp_factor = (
+        2
+        if (
+            s.umbrella_radius_m
+            and s.umbrella_radius_m > s.initial_spread_m
+            and s.column_height_m >= 3000
+        )
+        else 1
+    )
     budget = kernel.check_budget(
         len(s.grains) * s.release_layers * len(s.pulses or [None]) * comp_factor,
         n,
@@ -172,7 +184,12 @@ def prepare(request, sweep=False):
 
 
 def source_assumption(scenario):
-    if not scenario.pulses and not scenario.wind_profile and not scenario.umbrella_radius_m:
+    has_umbrella = bool(
+        scenario.umbrella_radius_m
+        and scenario.umbrella_radius_m > scenario.initial_spread_m
+        and scenario.column_height_m >= 3000
+    )
+    if not scenario.pulses and not scenario.wind_profile and not has_umbrella:
         return "Steady eruption and uniform wind"
     emission = (
         f"{len(scenario.pulses)} constant-rate emission pulse(s)"
@@ -187,7 +204,7 @@ def source_assumption(scenario):
         else "uniform wind"
     )
     base = f"{emission} and {wind}"
-    if scenario.umbrella_radius_m:
+    if has_umbrella:
         radius_km = scenario.umbrella_radius_m / 1000.0
         base += f" with radial umbrella cloud expansion up to {radius_km:.1f} km"
     return f"{base} (opt-in extension beyond the proposal's assumptions)"
@@ -437,6 +454,7 @@ def sweep(request: SimulationRequest):
                 or (
                     request.scenario.umbrella_radius_m
                     and request.scenario.umbrella_radius_m > request.scenario.initial_spread_m
+                    and request.scenario.column_height_m >= 3000
                 )
             )
             else None,

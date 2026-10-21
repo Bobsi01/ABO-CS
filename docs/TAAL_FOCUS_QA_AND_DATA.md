@@ -14,7 +14,7 @@
 4. [Open-Source Taal Data (2021–Present)](#4-open-source-taal-data-2021present)
    - [What Each Dataset Shows Visually in the Simulation](#41-what-each-dataset-shows-visually-in-the-simulation)
    - [Dataset 1 — USGS Earthquake Catalog](#42-dataset-1--usgs-earthquake-catalog-fdsn)
-   - [Dataset 2 — SO₂ Flux & Alert Level History](#43-dataset-2--so2-flux--alert-level-history-gvp--phivolcs-bulletins)
+   - [Dataset 2 — SO₂ Flux & Alert Level History](#43-dataset-2--so2-flux--alert-level-history-gvp--phivolcs-bu   lletins)
    - [Dataset 3 — PHIVOLCS Permanent Danger Zone](#44-dataset-3--phivolcs-permanent-danger-zone-hazard-map)
    - [Dataset 4 — Sentinel-5P TROPOMI SO₂ Plumes](#45-dataset-4--sentinel-5p-tropomi-so2-copernicus-free)
    - [Dataset 5 — Taal Eruption Event Timeline](#46-dataset-5--taal-eruption-event-timeline-2021-2024)
