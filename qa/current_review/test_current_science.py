@@ -16,7 +16,9 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def request(**changes):
-    scenario = service.catalog().scenarios[0].scenario.model_dump()
+    scenario = next(
+        s for s in service.catalog().scenarios if s.id == "taal-teaching"
+    ).scenario.model_dump()
     scenario.update(
         column_height_m=1000,
         wind_speed_m_s=0,
@@ -27,6 +29,8 @@ def request(**changes):
         domain_km=4,
         cell_km=1,
         release_layers=2,
+        wind_profile=None,
+        umbrella_radius_m=None,
     )
     scenario.update(changes)
     return SimulationRequest(scenario=scenario, receptors=[])

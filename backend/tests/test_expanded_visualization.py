@@ -68,3 +68,52 @@ def test_all_catalog_presets_include_surrounding_and_downwind_dispersion():
             and (r.east_m**2 + r.north_m**2) ** 0.5 <= 25000.0
         ]
         assert len(proximal) >= 8, f"{preset.id} should affect surrounding proximal municipalities"
+
+
+def test_directional_wind_outcome_scenarios():
+    data = service.catalog()
+    scenarios_by_id = {s.id: s for s in data.scenarios}
+
+    # Verify all 6 directional scenarios exist
+    expected_scenarios = [
+        ("taal-wind-north", 180.0, 15.0),
+        ("taal-wind-south", 0.0, 12.0),
+        ("taal-wind-east", 270.0, 12.0),
+        ("taal-wind-west", 90.0, 10.0),
+        ("taal-wind-northeast", 225.0, 14.0),
+        ("taal-wind-northwest", 135.0, 12.0),
+    ]
+
+    for scenario_id, wind_from_deg, wind_speed in expected_scenarios:
+        assert scenario_id in scenarios_by_id, f"Missing scenario preset: {scenario_id}"
+        preset = scenarios_by_id[scenario_id]
+        sc = preset.scenario
+        assert sc.wind_from_deg == wind_from_deg
+        assert sc.wind_speed_m_s == wind_speed
+        assert sc.column_height_m == 17000.0
+        assert sc.duration_s == 36000.0
+        assert sc.mass_rate_kg_s == 1500000.0
+        assert sc.umbrella_radius_m == 20000.0
+        assert sum(g.fraction for g in sc.grains) == 1.0
+
+    # Test North outcome: wind from South (180 deg) blows ash to North (north_m > 0)
+    sc_north = scenarios_by_id["taal-wind-north"].scenario
+    res_north = service.simulate(SimulationRequest(scenario=sc_north))
+    assert res_north.diagnostics.total_ash_mass_kg == 1500000.0 * 36000.0
+    north_receptors = [
+        r
+        for r in res_north.receptors
+        if r.in_domain and (r.thickness_mm or 0) >= 0.5 and (r.north_m or 0) > 30000.0
+    ]
+    assert len(north_receptors) > 0, "Wind blowing North should deposit ash north of Taal"
+
+    # Test South outcome: wind from North (0 deg) blows ash to South (north_m < 0)
+    sc_south = scenarios_by_id["taal-wind-south"].scenario
+    res_south = service.simulate(SimulationRequest(scenario=sc_south))
+    assert res_south.diagnostics.total_ash_mass_kg == 1500000.0 * 36000.0
+    south_receptors = [
+        r
+        for r in res_south.receptors
+        if r.in_domain and (r.thickness_mm or 0) >= 0.5 and (r.north_m or 0) < -15000.0
+    ]
+    assert len(south_receptors) > 0, "Wind blowing South should deposit ash south of Taal"

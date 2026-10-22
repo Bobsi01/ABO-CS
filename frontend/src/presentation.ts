@@ -1,17 +1,17 @@
 export const CONTOUR_LEVELS = [0.5, 1, 5, 10, 50, 100]
 export const TRACE_CONTOUR_LEVELS = [0.01, 0.1]
 
-/** Sequential earth tones encode deposit thickness, never hazard severity. */
+/** Sequential warm chromatic spectrum (yellow to red) encodes deposit thickness; academic simulation not a PHIVOLCS hazard advisory. */
 export function depositColor(mm: number): string {
-  if (mm >= 100) return '#432818'
-  if (mm >= 50) return '#6f4329'
-  if (mm >= 10) return '#986c3f'
-  if (mm >= 5) return '#b78a52'
-  if (mm >= 1) return '#d1af78'
-  if (mm >= 0.5) return '#e5d1a7'
-  if (mm >= 0.1) return '#f3e8c8'
-  if (mm >= 0.01) return '#faf2dc'
-  return '#e9e8de'
+  if (mm >= 100) return '#4c0519'
+  if (mm >= 50) return '#991b1b'
+  if (mm >= 10) return '#dc2626'
+  if (mm >= 5) return '#ef4444'
+  if (mm >= 1) return '#f97316'
+  if (mm >= 0.5) return '#f59e0b'
+  if (mm >= 0.1) return '#facc15'
+  if (mm >= 0.01) return '#fef08a'
+  return '#e2e8f0'
 }
 
 export function number(value: number | null | undefined, digits = 2): string {
@@ -41,5 +41,19 @@ export const PSA_REGION4A_HOUSEHOLD_SIZE = 4.1
 export function calculateFamiliesAffected(population: number | null | undefined): number {
   if (population == null || population <= 0) return 0
   return Math.round(population / PSA_REGION4A_HOUSEHOLD_SIZE)
+}
+
+/** Cardinal compass direction from azimuth degrees (0-360) using wind-from convention. */
+export function cardinalDirection(deg: number | string | null | undefined): string {
+  if (deg == null || deg === '') return '—'
+  const d = ((Number(deg) % 360) + 360) % 360
+  if (d >= 337.5 || d < 22.5) return 'N'
+  if (d < 67.5) return 'NE'
+  if (d < 112.5) return 'E'
+  if (d < 157.5) return 'SE'
+  if (d < 202.5) return 'S'
+  if (d < 247.5) return 'SW'
+  if (d < 292.5) return 'W'
+  return 'NW'
 }
 
