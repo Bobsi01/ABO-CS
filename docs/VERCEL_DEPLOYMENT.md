@@ -37,6 +37,11 @@ eruption sequence, bundled geography and the actual UI after publishing.
 The initial CLI attempt could not connect the private GitHub repository to Vercel.
 Deployments currently use CLI uploads; Git pushes alone do not publish a new version.
 
+Vercel also checks the Git commit author against project access. With the user's
+approval, this checkout now uses the signed-in GitHub account `Bobsi01` for new
+commits. The previous inherited `Coopsiee` identity caused a follow-up deployment
+to be blocked. Existing commits were retained without rewriting history.
+
 ## Evidence and limits — 22 October 2026
 
 See `MOBILE_UI_20261022.md` for mobile/tablet and desktop layout checks. A Vercel
