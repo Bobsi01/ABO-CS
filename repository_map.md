@@ -77,6 +77,10 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock, replay controls, and curated Taal historical activity bookmarks (2021–2024) |
 | `frontend/src/components/Icon.tsx` | Frontend: local SVG navigation/action icons with shared sizing |
 | `frontend/src/components/SpatialDetails.tsx` | Shared terrain/map disclosure panels; open beside desktop sidebars with viewport bounds, Close and Escape controls |
+| `frontend/src/mobile.css` | Tablet and phone layout overrides; imported after desktop styles and limited to narrow viewports |
+| `docs/MOBILE_UI_20261022.md` | Built-in-browser mobile/tablet and desktop layout evidence, fixes and physical-device limitations |
+| `app.py`, `vercel.json`, `requirements.txt`, `.python-version`, `.vercelignore` | Vercel entry point, Python runtime pins, frontend build and bounded deployment asset selection |
+| `docs/VERCEL_DEPLOYMENT.md` | Production URL, deploy commands, Python streaming/compression evidence and Git integration limits |
 | `frontend/src/components/Select.tsx`, `Select.test.tsx` | Orchestrator: themed keyboard-accessible single-select and viewport placement checks |
 | `frontend/src/components/TerrainBackdrop.tsx`, `terrain.ts`, `terrain.test.ts` | Frontend: source-traced terrain mesh, datum/origin checks, display sampling and labeled Taal close-up relief |
 | `frontend/src/components/settlingReplay.ts`, `settlingReplay.test.ts` | Frontend: common physical clock interpolation of Python paths |
