@@ -8,6 +8,7 @@ import type { EruptionSequence, Scenario, SimulationResult, Trajectory } from '.
 import { calculateFamiliesAffected, depositColor, download, number } from '../presentation'
 import Legend from './Legend'
 import Icon from './Icon'
+import SpatialDetails from './SpatialDetails'
 import { pathPosition, replayDuration, REPLAY_DISPLAY_SECONDS } from './settlingReplay'
 import TerrainBackdrop from './TerrainBackdrop'
 import { isTerrainAsset, matchesTerrainOrigin, maximumTerrainHeightM, surfaceHeightM } from './terrain'
@@ -920,35 +921,6 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
           <button type="button" onClick={() => onSelect('')}>Close</button>
         </div>
       )}
-      {!selectedReceptor && !inspectedQuake && showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
-        <div className="scene-impact-hud" role="status" aria-label="Real-time municipal exposure and affected families">
-          <div className="impact-hud-title">
-            <strong>Real-Time Exposure Tally</strong>
-            {sequenceFrame && <span className="impact-hud-phase">{sequenceFrame.phase}</span>}
-          </div>
-          <div className="impact-hud-grid">
-            <div className="impact-stat">
-              <span className="impact-label">Municipalities reached</span>
-              <span className="impact-value">{number(realTimeStats.count, 0)}<small> / {number(realTimeStats.totalInDomain, 0)}{realTimeStats.isTraceOnly ? ' (trace ≥0.01 mm)' : ''}</small></span>
-            </div>
-            <div className="impact-stat">
-              <span className="impact-label">Peak centroid ash</span>
-              <span className="impact-value">{number(realTimeStats.peakMm, 3)} mm{realTimeStats.peakName ? <small> · {realTimeStats.peakName}</small> : null}</span>
-            </div>
-            <div className="impact-stat">
-              <span className="impact-label">Indicative population</span>
-              <span className="impact-value">{number(realTimeStats.pop, 0)}</span>
-            </div>
-            <div className="impact-stat highlight-stat">
-              <span className="impact-label">Est. families affected</span>
-              <span className="impact-value">{number(realTimeStats.families, 0)}</span>
-            </div>
-          </div>
-          <p className="impact-disclaimer">
-            {realTimeStats.isTraceOnly ? `0 ≥0.5 mm reporting cutoff; showing ${realTimeStats.traceCount} trace (≥0.01 mm). ` : ''}PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation tally.
-          </p>
-        </div>
-      )}
       {supported && !rendererFailed ? <SceneBoundary key={graphicsAttempt} onFailure={() => { setPlaying(false); setRendererFailed(true) }} onRetry={retryGraphics}><Canvas camera={{ fov: 45, position: [145, 130, 160], near: 0.1, far: 1200 }} dpr={reduced ? 1 : [1, 1.5]} frameloop="demand" gl={{ antialias: true }} onCreated={({ gl }) => {
         canvasElement.current?.removeEventListener('webglcontextlost', contextLost)
         canvasElement.current = gl.domElement
@@ -998,7 +970,7 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
       {showDeposit && <><Legend /><p className="view-note spatial-sidebar-note">The flat quantitative layer floats {number(depositHeight)} km above sea level for visibility; its height is a display offset, not airborne ash.</p></>}
       <p className="view-note spatial-sidebar-note" role="status">{terrainStatus} · {eruptionSequence ? 'qualitative ash / condensed-steam cloud' : 'enlarged class markers'}{result && !eruptionSequence && <> · clock {number(physicalElapsed, 0)}/{number(replayDuration(result.illustration.paths), 0)} physical seconds in {REPLAY_DISPLAY_SECONDS} display seconds</>}.</p>
       {terrain?.source.attribution && <p className="view-note"><small>{terrain.source.attribution}</small></p>}
-      <div className="scene-details"><details><summary>Illustration guide</summary>
+      <div className="scene-details"><SpatialDetails title="Illustration guide">
       <p className="view-note">Drag to orbit. Focus the canvas for arrow keys and +/− zoom. The N/E compass rotates with the scene. Wind arrows show transport direction; their length is a display cue.</p>
       {eruptionSequence ? <><p className="view-note">The 3D illustration interpolates between Python snapshots; the map and its location inspector show the preceding computed snapshot. The folded table and CSV show eventual deposition. Python supplies ash-cloud centers and spread, fountain positions, and timed ground deposition. Gray billows and white condensed steam are qualitative shapes; volcanic gas itself is not rendered as a measured concentration. Cloud edges, opacity and vertical billow shape are artistic, not a CFD solution.</p><p className="view-note">{eruptionSequence.fountain_paths_m.length > 0 && <>{eruptionSequence.fountain_label} </>}{eruptionSequence.lava.enabled ? 'The lava front follows Python arrival times along the actual DEM route. Its width is enlarged to at least 130 m for visibility; hot and cooled colors are schematic, not temperature predictions. The close-up faces the routed slope.' : 'No downslope lava channel is enabled for this scenario.'}</p></> : <p className="view-note">Python supplies representative class centerlines and falling times; all classes share one physical clock. The adjacent map shows eventual deposition, not animated accumulation.</p>}
       <p className="view-note">Terrain does not change ash transport in the flat-ground solver. The optional class paths describe final representative settling paths.</p>
@@ -1083,8 +1055,37 @@ export default function VolcanoScene({ scenario, result, selected, onSelect, eru
       {showAlertRing && scenario.volcano_id === 'taal' && <p className="view-note">Base ring indicates curated Alert Level (Green: AL1, Amber: AL2, Red: AL3) from GVP/PHIVOLCS bulletin archives. Contextual reference overlay - not a computed result of the ash model.</p>}
       {showDike && scenario.volcano_id === 'taal' && <p className="view-note">Amber vector shows the 21 km length of the 21 × 8 km modeled dike (Bato et al. 2021, page 8, section 5). Southwest azimuth 225°, origin and display depth are schematic, not the fitted intrusion geometry. Contextual reference overlay - not a computed result of the ash model.</p>}
       {showTropomi && scenario.volcano_id === 'taal' && <p className="view-note">Blue arrow indicates satellite-observed plume transport towards 45° NE (wind from 225° SW) from Copernicus Sentinel-5P TROPOMI (July 2021). Contextual reference overlay - not a computed result of the ash model.</p>}
-      {result && <ul aria-label="Grain-class legend">{result.illustration.paths.map(path => <li key={path.grain_index}><span aria-hidden="true" style={{ display: 'inline-block', width: '1.5rem', height: '0.2rem', background: GRAIN_COLORS[path.grain_index % GRAIN_COLORS.length], verticalAlign: 'middle', marginRight: '0.5rem' }} />Class {path.grain_index + 1} · {number(path.diameter_um)} µm · {number(scenario.grains[path.grain_index]?.settling_speed_m_s)} m/s · representative fall {number(path.settling_time_s)} s</li>)}</ul>}</details>
-    <details><summary>Terrain source & graphics</summary>{terrain ? <><p>{terrain.source.title} · {terrain.source.resolution_m} m display sampling · {terrain.source.datum}. {emphasizeTaal ? 'Volcano Island relief is enlarged 6× for visibility, tapering to normal scale outside the island. Water levels and horizontal geography retain their source scale. Regional overview restores true relief; the simulation and eruption column height are unchanged.' : 'No vertical exaggeration.'}</p><p>Asset origin: {number(terrain.origin.lat, 5)}° N, {number(terrain.origin.lon, 5)}° E. Geographic coverage: 100 × 100 km. Outside it, the neutral plane indicates unavailable terrain. Ash paths use a flat datum translated by {scenario.vent_elevation_m} m ASL; they are not bent to terrain. The optional lava route uses raw terrain elevations.</p>{Math.abs(scenario.vent_elevation_m - terrain.vent_ground_m) > 0.01 && <p>Submitted vent elevation differs from the {terrain.vent_ground_m} m source-profile reference. The illustration uses your submitted datum.</p>}<a href={terrain.source.url} target="_blank" rel="noreferrer">Terrain source</a></> : <p>{!['taal', 'mayon', 'kanlaon'].includes(scenario.volcano_id) ? 'No geographic terrain asset is registered for this custom volcano.' : terrainState.key === terrainKey ? terrainState.error : 'Loading the local geographic terrain asset…'}</p>}<button type="button" aria-pressed={reduced} disabled={!supported} onClick={() => setReduced(v => !v)}>{reduced ? 'Restore visual detail' : 'Reduce visual detail'}</button>{fps !== null && <p className="performance-note">Replay: {number(fps.render, 0)} fps · browser callbacks: {number(fps.pacing, 0)}/s (recent two-second window). {fps.render < 30 ? 'Below the 30 fps target. Reduce detail or use a foreground browser with hardware acceleration.' : ''}</p>}</details></div>
+      {result && <ul aria-label="Grain-class legend">{result.illustration.paths.map(path => <li key={path.grain_index}><span aria-hidden="true" style={{ display: 'inline-block', width: '1.5rem', height: '0.2rem', background: GRAIN_COLORS[path.grain_index % GRAIN_COLORS.length], verticalAlign: 'middle', marginRight: '0.5rem' }} />Class {path.grain_index + 1} · {number(path.diameter_um)} µm · {number(scenario.grains[path.grain_index]?.settling_speed_m_s)} m/s · representative fall {number(path.settling_time_s)} s</li>)}</ul>}</SpatialDetails>
+    <SpatialDetails title="Terrain source & graphics">{terrain ? <><p>{terrain.source.title} · {terrain.source.resolution_m} m display sampling · {terrain.source.datum}. {emphasizeTaal ? 'Volcano Island relief is enlarged 6× for visibility, tapering to normal scale outside the island. Water levels and horizontal geography retain their source scale. Regional overview restores true relief; the simulation and eruption column height are unchanged.' : 'No vertical exaggeration.'}</p><p>Asset origin: {number(terrain.origin.lat, 5)}° N, {number(terrain.origin.lon, 5)}° E. Geographic coverage: 100 × 100 km. Outside it, the neutral plane indicates unavailable terrain. Ash paths use a flat datum translated by {scenario.vent_elevation_m} m ASL; they are not bent to terrain. The optional lava route uses raw terrain elevations.</p>{Math.abs(scenario.vent_elevation_m - terrain.vent_ground_m) > 0.01 && <p>Submitted vent elevation differs from the {terrain.vent_ground_m} m source-profile reference. The illustration uses your submitted datum.</p>}<a href={terrain.source.url} target="_blank" rel="noreferrer">Terrain source</a></> : <p>{!['taal', 'mayon', 'kanlaon'].includes(scenario.volcano_id) ? 'No geographic terrain asset is registered for this custom volcano.' : terrainState.key === terrainKey ? terrainState.error : 'Loading the local geographic terrain asset…'}</p>}<button type="button" aria-pressed={reduced} disabled={!supported} onClick={() => setReduced(v => !v)}>{reduced ? 'Restore visual detail' : 'Reduce visual detail'}</button>{fps !== null && <p className="performance-note">Replay: {number(fps.render, 0)} fps · browser callbacks: {number(fps.pacing, 0)}/s (recent two-second window). {fps.render < 30 ? 'Below the 30 fps target. Reduce detail or use a foreground browser with hardware acceleration.' : ''}</p>}</SpatialDetails></div>
+      {showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
+        <div className="scene-impact-hud sidebar-exposure-tally" role="status" aria-label="Real-time municipal exposure and affected families">
+          <div className="impact-hud-title">
+            <strong>Real-Time Exposure Tally</strong>
+            {sequenceFrame && <span className="impact-hud-phase">{sequenceFrame.phase}</span>}
+          </div>
+          <div className="impact-hud-grid">
+            <div className="impact-stat">
+              <span className="impact-label">Municipalities reached</span>
+              <span className="impact-value">{number(realTimeStats.count, 0)}<small> / {number(realTimeStats.totalInDomain, 0)}{realTimeStats.isTraceOnly ? ' (trace ≥0.01 mm)' : ''}</small></span>
+            </div>
+            <div className="impact-stat">
+              <span className="impact-label">Peak centroid ash</span>
+              <span className="impact-value">{number(realTimeStats.peakMm, 3)} mm{realTimeStats.peakName ? <small> · {realTimeStats.peakName}</small> : null}</span>
+            </div>
+            <div className="impact-stat">
+              <span className="impact-label">Indicative population</span>
+              <span className="impact-value">{number(realTimeStats.pop, 0)}</span>
+            </div>
+            <div className="impact-stat highlight-stat">
+              <span className="impact-label">Est. families affected</span>
+              <span className="impact-value">{number(realTimeStats.families, 0)}</span>
+            </div>
+          </div>
+          <p className="impact-disclaimer">
+            {realTimeStats.isTraceOnly ? `0 ≥0.5 mm reporting cutoff; showing ${realTimeStats.traceCount} trace (≥0.01 mm). ` : ''}PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation tally.
+          </p>
+        </div>
+      )}
     </div>
   </div>
 }

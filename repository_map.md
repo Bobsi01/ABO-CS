@@ -76,6 +76,7 @@ During this milestone, the scientific specialist owns backend source/tests, scie
 | `frontend/src/components/EruptionEffects.tsx`, `eruptionReplay.ts`, `eruptionReplay.test.ts` | Frontend: batched billows, fountain fragments, timed lava front and backend-coordinate interpolation |
 | `frontend/src/components/EruptionTimeline.tsx`, `eruptionResearch.ts` | Orchestrator: one shared sequence clock, replay controls, and curated Taal historical activity bookmarks (2021–2024) |
 | `frontend/src/components/Icon.tsx` | Frontend: local SVG navigation/action icons with shared sizing |
+| `frontend/src/components/SpatialDetails.tsx` | Shared terrain/map disclosure panels; open beside desktop sidebars with viewport bounds, Close and Escape controls |
 | `frontend/src/components/Select.tsx`, `Select.test.tsx` | Orchestrator: themed keyboard-accessible single-select and viewport placement checks |
 | `frontend/src/components/TerrainBackdrop.tsx`, `terrain.ts`, `terrain.test.ts` | Frontend: source-traced terrain mesh, datum/origin checks, display sampling and labeled Taal close-up relief |
 | `frontend/src/components/settlingReplay.ts`, `settlingReplay.test.ts` | Frontend: common physical clock interpolation of Python paths |

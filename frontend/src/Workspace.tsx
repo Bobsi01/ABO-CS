@@ -167,8 +167,8 @@ export default function Workspace() {
 
   function exportCSV() {
     if (!result) return
-    const header = ['id', 'name', 'kind', 'population', 'population_year', 'in_domain', 'load_kg_m2', 'thickness_mm', 'reported_ge_0_5_mm', 'screening', 'screening_reasons', 'dataset_revision', 'solver_version', 'input_status']
-    const rows = result.receptors.map(r => [r.id, r.name, r.kind, r.population, r.population_year, r.in_domain, r.load_kg_m2, r.thickness_mm, r.reported, JSON.stringify(r.screening), JSON.stringify(r.screening_reasons ?? {}), result.provenance.dataset_revision, result.provenance.solver_version, result.provenance.input_status].map(csvCell).join(','))
+    const header = ['id', 'name', 'kind', 'population', 'population_year', 'in_domain', 'load_kg_m2', 'thickness_mm', 'reported_ge_0_5_mm', 'dataset_revision', 'solver_version', 'input_status']
+    const rows = result.receptors.map(r => [r.id, r.name, r.kind, r.population, r.population_year, r.in_domain, r.load_kg_m2, r.thickness_mm, r.reported, result.provenance.dataset_revision, result.provenance.solver_version, result.provenance.input_status].map(csvCell).join(','))
     download('abo-receptor-results.csv', [header.join(','), ...rows].join('\r\n'), 'text/csv;charset=utf-8')
   }
   const displayedScenario = result?.scenario ?? draft
@@ -255,7 +255,7 @@ export default function Workspace() {
               </fieldset>)}
             </div>}
           </details>
-          <details><summary>Screening & population</summary><Select label="Population year" value={String(populationYear)} onChange={value => { setPopulationYear(Number(value) as 2020 | 2024); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '2024', label: '2024 · current scenarios' }, { value: '2020', label: '2020 · historical reporting' }]} /><Select label="Screening conditions" value={screeningContextId} onChange={value => { setScreeningContextId(value); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '', label: 'Unspecified · applicability unknown' }, ...(catalog.screening_contexts ?? []).filter(context => context.id !== 'unspecified').map(context => ({ value: String(context.id), label: String(context.label ?? context.id) }))]} /><p className="view-note">A damage criterion applies only when the location type and documented conditions match. Missing conditions produce unknown. The 0.5 mm cutoff reports ash presence, not damage or safety.</p></details>
+          <details><summary>{catalog.criteria.length > 0 ? 'Screening & population' : 'Population year'}</summary><Select label="Population year" value={String(populationYear)} onChange={value => { setPopulationYear(Number(value) as 2020 | 2024); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '2024', label: '2024 · current scenarios' }, { value: '2020', label: '2020 · historical reporting' }]} />{catalog.criteria.length > 0 && <><Select label="Screening conditions" value={screeningContextId} onChange={value => { setScreeningContextId(value); inputRevision.current++; setStale(Boolean(result)); setSequencePlaying(false) }} options={[{ value: '', label: 'Unspecified · applicability unknown' }, ...(catalog.screening_contexts ?? []).filter(context => context.id !== 'unspecified').map(context => ({ value: String(context.id), label: String(context.label ?? context.id) }))]} /><p className="view-note">A damage criterion applies only when the location type and documented conditions match. Missing conditions produce unknown. The 0.5 mm cutoff reports ash presence, not damage or safety.</p></>}</details>
           <details><summary>Location & grid</summary>{inputFields(['vent_lat', 'vent_lon', 'vent_elevation_m', 'domain_km', 'cell_km'])}</details>
           <details><summary>Grain classes and release layers</summary><label>Release layers<input type="number" min="1" max="32" required value={draft.release_layers} onChange={e => scalar('release_layers', e.target.value)} /></label><Select label="Class count" value={String(draft.grains.length)} onChange={value => { const length = Number(value); const grains = Array.from({ length }, (_, i) => ({ ...(draft.grains[i] ?? { diameter_um: 1, settling_speed_m_s: 1 }), fraction: 1 / length })); change({ ...draft, grains }) }} options={[3, 4, 5].map(count => ({ value: String(count), label: `${count} classes` }))} /><p className="muted">Changing count resets fractions equally; new class sizes/speeds require your entry. Fractions must sum to 1.</p>
             <p className="view-note">Release layers approximate a continuous height distribution. Local convergence is not established; 16 and 32 layers can give materially different receptor values. More layers do not establish historical accuracy.</p>
@@ -317,7 +317,7 @@ export default function Workspace() {
               <details className="simulation-data"><summary>Detailed exposure & exports</summary>
                 <details className="result-table-disclosure"><summary>All location data table & exports</summary>
                 <div className="result-tools"><Select label="Sort locations" value={sort} onChange={value => setSort(value as typeof sort)} options={[{ value: 'thickness', label: 'Highest thickness first' }, { value: 'name', label: 'Name' }]} /><div className="export-actions"><button type="button" onClick={exportCSV}><Icon name="download" />Final CSV</button><button type="button" onClick={() => download('abo-scenario.json', JSON.stringify({ scenario: result.scenario, ...completedReporting.current.get(result), eruption_options: activeSequence?.options ?? null, provenance: result.provenance }, null, 2), 'application/json')}><Icon name="code" />Scenario JSON</button></div></div>
-                <div className="table-scroll"><table><caption>Point samples; indicative populations are not individual exposure estimates.</caption><thead><tr><th>Location</th><th>Thickness (mm)</th><th>Load (kg/m²)</th><th>Population / year</th><th>Screening</th></tr></thead><tbody>{receptors.map(r => <tr key={r.id} className={r.id === selected ? 'selected-row' : ''}><th scope="row"><button className="text-button" type="button" onClick={() => setSelected(r.id)}>{r.name}</button><small>{r.kind} · {r.in_domain ? 'In domain' : 'Outside coverage'}</small></th><td>{number(r.thickness_mm)}</td><td>{number(r.load_kg_m2)}</td><td>{number(r.population, 0)} / {r.population_year ?? 'Unknown'}</td><td>{Object.entries(r.screening).map(([key, state]) => <span className="screening-line" key={key}>{catalog?.criteria.find(criterion => criterion.id === key)?.label ?? key.replaceAll('_', ' ')}: {state}{r.screening_reasons?.[key] && <small>{r.screening_reasons[key]}</small>}</span>)}</td></tr>)}</tbody></table></div>
+                <div className="table-scroll"><table><caption>Point samples; indicative populations are not individual exposure estimates.</caption><thead><tr><th>Location</th><th>Thickness (mm)</th><th>Load (kg/m²)</th><th>Population / year</th></tr></thead><tbody>{receptors.map(r => <tr key={r.id} className={r.id === selected ? 'selected-row' : ''}><th scope="row"><button className="text-button" type="button" onClick={() => setSelected(r.id)}>{r.name}</button><small>{r.kind} · {r.in_domain ? 'In domain' : 'Outside coverage'}</small></th><td>{number(r.thickness_mm)}</td><td>{number(r.load_kg_m2)}</td><td>{number(r.population, 0)} / {r.population_year ?? 'Unknown'}</td></tr>)}</tbody></table></div>
                 </details><details><summary>Result provenance and assumptions</summary><p>{number(result.diagnostics.retained_fraction * 100)}% modeled mass inside domain · {number(result.diagnostics.outside_domain_mass_kg, 0)} kg outside · {result.diagnostics.validation_status.replaceAll('_', ' ')}.</p><p>{result.summary.reported_population_unknown} reported municipalities have unknown population.</p><p>Dataset {result.provenance.dataset_revision} · Solver {result.provenance.solver_version} · Inputs {result.provenance.input_status}</p>{[...result.provenance.assumptions, ...result.provenance.warnings].map((text, i) => <p key={i}>{text}</p>)}{activeSequence && <><h3>Event sequence</h3><p>Solver {activeSequence.solver_version} · lava route: {activeSequence.lava.stop_reason.replaceAll('_', ' ')}</p>{[...activeSequence.assumptions, ...activeSequence.warnings, ...activeSequence.lava.warnings].map((text, i) => <p key={i}>{text}</p>)}</>}</details>
               </details>
             </section>}
@@ -712,8 +712,8 @@ export default function Workspace() {
                 </a>
               </div>
 
-              {/* Curated Literature Provenance & Data Registry */}
-              <section className="scientific-methods-card" aria-labelledby="sources-title">
+              <div className="sources-content-grid">
+                <section className="scientific-methods-card" aria-labelledby="sources-title">
                 <div className="scientific-card-header">
                   <h3 id="sources-title">Curated Literature Provenance & Data Registry</h3>
                   <span className="scientific-kernel-badge">All values local; zero synthetic placeholders</span>
@@ -851,10 +851,11 @@ export default function Workspace() {
                     </div>
                   </details>
                 )}
-              </section>
+                </section>
 
-              {/* Geography & Picture References */}
-              <div className="geography-references scientific-methods-card">
+                <div className="sources-reference-column">
+                  {/* Geography & Picture References */}
+                  <div className="geography-references scientific-methods-card">
                 <div className="scientific-card-header">
                   <h3>Geography & Picture References</h3>
                 </div>
@@ -864,10 +865,12 @@ export default function Workspace() {
                 <p className="view-note">
                   Historical Smithsonian/USGS/NASA references guide geographic interpretation. <a href="/documentation/GEOGRAPHY_REFERENCES.md" target="_blank" rel="noreferrer">Terrain provenance, photo credits & uncertainty</a>
                 </p>
-              </div>
+                  </div>
 
-              {/* Parameter Evidence Register & Admin Coverage */}
-              {catalog && <EvidenceDetails catalog={catalog} />}
+                  {/* Parameter Evidence Register & Admin Coverage */}
+                  {catalog && <EvidenceDetails catalog={catalog} />}
+                </div>
+              </div>
             </>
           )}
         </section>

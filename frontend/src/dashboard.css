@@ -9,6 +9,8 @@
 .dashboard-heading p { font-size: 0.88rem; }
 .application .dashboard-actions label { font-size: 0.75rem; width: clamp(260px, 28vw, 470px); }
 .application .raw-data-action { background: var(--action); border-color: var(--action); color: var(--action-text); padding-inline: 1.1rem; }
+.application .raw-data-action:hover:not(:disabled) { background: var(--action); border-color: var(--action); color: var(--action-text); filter: brightness(1.08); }
+.application .raw-data-action:disabled { background: var(--surface); border-color: var(--line); color: var(--secondary); opacity: 1; }
 .dashboard-context { padding: 0.85rem 0 1.15rem; gap: 0.6rem 1.15rem; font-size: 0.78rem; }
 .dashboard-context span + span { border-left: 1px solid var(--line); padding-left: 1.15rem; }
 .dashboard-charts { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.2rem; }

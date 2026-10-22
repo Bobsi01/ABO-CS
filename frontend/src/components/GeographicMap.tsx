@@ -7,6 +7,7 @@ import { depositColor, number } from '../presentation'
 import Legend from './Legend'
 import Select from './Select'
 import Icon from './Icon'
+import SpatialDetails from './SpatialDetails'
 import { phaseLabel, referenceZone } from './eruptionResearch'
 import { hideLeafletVectors } from './leafletAccessibility'
 import { scenarioClock } from './eruptionReplay'
@@ -593,7 +594,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             <Icon name="reset" />
           </button>
         </div>
-      <details className="map-layer-menu"><summary>Layers</summary>
+      <SpatialDetails title="Layers" className="map-layer-menu">
       <fieldset className="map-layers-fieldset" role="group" aria-label="Map visual layer toggles">
         <legend>Map visual layers</legend>
         <div className="map-layer-checkboxes">
@@ -633,7 +634,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
           )}
         </div>
       </fieldset>
-      </details>
+      </SpatialDetails>
       </div>
 
       {import.meta.env.VITE_MAPTILER_KEY && (
@@ -669,7 +670,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       )}
 
       {result ? (
-        <details className="location-inspector-disclosure" open={inspectOpen} onToggle={e => setInspectOpen(e.currentTarget.open)}><summary>Inspect a location</summary><div className="location-inspector">
+        <SpatialDetails title="Inspect a location" className="location-inspector-disclosure" open={inspectOpen} onToggle={e => setInspectOpen(e.currentTarget.open)}><div className="location-inspector">
           <Select
             label="Inspect location"
             value={selected ?? ''}
@@ -712,40 +713,18 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
                     : 'This point does not intersect the illustrative channel at this time. Other areas of its municipality may differ.'}
                 </p>
               )}
-              <dl>
-                {Object.entries(chosen.screening).map(([key, state]) => (
-                  <div key={key}>
-                    <dt>
-                      {({
-                        roof: 'Roof load',
-                        crop: 'Crop deposit',
-                        surface_exposure: 'Surface ash exposure',
-                      } as Record<string, string>)[key] ?? key.replaceAll('_', ' ')}
-                    </dt>
-                    <dd>
-                      {state === 'unknown'
-                        ? 'Unknown'
-                        : state === 'exceeded'
-                        ? 'At or above screening threshold'
-                        : 'Below screening threshold'}
-                      {chosen.screening_reasons?.[key] && <small>{chosen.screening_reasons[key]}</small>}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
               <p className="view-note">
                 Population: {number(chosen.population, 0)} ({chosen.population_year ?? 'year unknown'}).
                 {chosen.province && ` Province: ${chosen.province}.`} A centroid sample does not describe every resident or building.
               </p>
             </div>
           )}
-        </div></details>
+        </div></SpatialDetails>
       ) : (
         <p className="view-note">The geographic backdrop is ready. Run a scenario to compute contours and location exposure.</p>
       )}
 
-      <details>
-        <summary>Effects, reference zones & sources</summary>
+      <SpatialDetails title="Effects, reference zones & sources">
         <p className="view-note">
           Ash contours are wind-dependent, not circular hazard radii. Points sample accumulated ash at the selected snapshot.
           Deposits can load roofs, cover crops and contaminate exposed water, but this model has no reviewed damage or potability criteria.
@@ -785,7 +764,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         <p className="view-note">
           Boundaries from geoBoundaries gbOpen ADM3 (2020) and PSA. Generalized land/lake geometry is for orientation.
         </p>
-      </details>
+      </SpatialDetails>
       </div>
     </div>
   )
