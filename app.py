@@ -1,4 +1,5 @@
 """Vercel entry point; retain the existing backend source and curated asset paths."""
+# Production deployment entry point under authorized owner account Bobsi01.
 
 import sys
 from importlib import import_module

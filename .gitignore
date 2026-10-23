@@ -25,3 +25,5 @@ playwright-report/
 .DS_Store
 Thumbs.db
 ~$*.docx
+.vercel
+.env*
