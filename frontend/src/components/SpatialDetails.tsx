@@ -28,7 +28,7 @@ export default function SpatialDetails({ title, children, className = '', open, 
     const place = () => {
       const sidebar = disclosure.current?.closest('.spatial-card-sidebar')?.getBoundingClientRect()
       if (!sidebar) return
-      const beside = window.innerWidth >= 1150
+      const beside = window.innerWidth >= 1024
       const left = beside ? sidebar.right + 16 : 16
       const width = Math.min(480, window.innerWidth - left - 16)
       const height = Math.min(520, window.innerHeight - 24)

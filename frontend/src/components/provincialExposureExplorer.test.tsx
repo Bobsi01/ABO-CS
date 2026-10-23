@@ -99,21 +99,18 @@ describe('ProvincialExposureExplorer', () => {
       />
     )
 
-    // Heading and KPI metrics
+    // Heading
     expect(screen.getByText('Provincial & City Impact Breakdown')).toBeDefined()
-    expect(screen.getByText('Provinces Affected')).toBeDefined()
-    expect(screen.getByText('Localities Affected')).toBeDefined()
 
-    // Provinces present
+    // Provinces with localities >= 0.5 mm present
     expect(screen.getByText('Cavite')).toBeDefined()
     expect(screen.getByText('Batangas')).toBeDefined()
-    expect(screen.getByText('Metro Manila (NCR)')).toBeDefined()
 
     // Peak ash value
     expect(screen.getAllByText(/4.8/).length).toBeGreaterThan(0)
   })
 
-  it('filters between trace (≥0.01 mm) and standard cutoff (≥0.5 mm)', () => {
+  it('filters out sub-cutoff localities (<0.5 mm) under standard reporting cutoff', () => {
     const receptors = createSampleReceptors()
     const onSelect = vi.fn()
 
@@ -126,14 +123,7 @@ describe('ProvincialExposureExplorer', () => {
       />
     )
 
-    // Initially in trace mode (all 3 provinces should be present)
-    expect(screen.getAllByText('Metro Manila (NCR)').length).toBeGreaterThan(0)
-
-    // Switch to standard cutoff
-    const standardBtn = screen.getByRole('button', { name: /Standard Cutoff/i })
-    fireEvent.click(standardBtn)
-
-    // Quezon City (0.12 mm) is <0.5 mm, so Metro Manila should no longer be listed as affected in standard cutoff mode
+    // Quezon City (0.12 mm) is <0.5 mm, so Metro Manila should not be listed as affected in standard cutoff mode
     expect(screen.queryAllByText('Metro Manila (NCR)').length).toBe(0)
     expect(screen.getByText('Cavite')).toBeDefined()
     expect(screen.getByText('Batangas')).toBeDefined()

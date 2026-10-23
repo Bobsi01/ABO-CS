@@ -1,5 +1,5 @@
 /* Content-sized panels replace the desktop viewport fit on tablets and phones. */
-@media (max-width: 1149px) {
+@media (max-width: 1023px) {
   .simulation-workbench, .workbench-spatial-stack,
   .workbench-analytics-pane, .workbench-analytics-pane .dashboard {
     height: auto;

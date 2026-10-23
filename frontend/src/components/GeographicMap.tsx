@@ -564,17 +564,17 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       <div className="spatial-card-sidebar">
         <h2 id="map-title">Affected locations</h2>
         <div className="map-toolbar">
-        <Select
-          label="Map effect"
-          value={effect}
-          onChange={value => setEffect(value as typeof effect)}
-          options={[
-            { value: 'ash', label: 'Accumulated ash' },
-            ...(eruptionSequence?.lava.enabled
-              ? [{ value: 'lava', label: 'Lava channel · teaching model' }]
-              : []),
-          ]}
-        />
+        {eruptionSequence?.lava.enabled && (
+          <Select
+            label="Map effect"
+            value={effect}
+            onChange={value => setEffect(value as typeof effect)}
+            options={[
+              { value: 'ash', label: 'Accumulated ash' },
+              { value: 'lava', label: 'Lava channel · teaching model' },
+            ]}
+          />
+        )}
         <div className="map-view-controls">
           <button
             type="button"

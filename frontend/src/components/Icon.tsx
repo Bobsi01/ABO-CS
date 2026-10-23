@@ -19,6 +19,7 @@ const shapes = {
   wind: <><path d="M3 8h12a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h6" /></>,
   info: <><circle cx="12" cy="12" r="9" /><path d="M12 11v6m0-10v.5" /></>,
   close: <path d="m6 6 12 12M6 18 18 6" />,
+  menu: <path d="M4 6h16M4 12h16M4 18h16" />,
   chevronDown: <path d="m6 9 6 6 6-6" />,
   chevronRight: <path d="m9 18 6-6-6-6" />,
 } satisfies Record<string, ReactNode>

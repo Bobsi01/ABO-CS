@@ -3,7 +3,7 @@ import { eruption, simulate } from '../api/simulator'
 import type { Catalog, EruptionFrame, EruptionSequence, SimulationResult } from '../api/simulator'
 import { csvCell, download, number } from '../presentation'
 import Icon from './Icon'
-import { depositDistribution } from './dashboardData'
+import { calculateExecutiveKpis, depositDistribution } from './dashboardData'
 
 type Run = { result: SimulationResult; sequence: EruptionSequence | null }
 const PHASE_TEXT: Record<string, string> = { before: 'Before eruption', erupting: 'During', settling: 'Settling', after: 'After' }
@@ -105,6 +105,10 @@ export default function Dashboard({
     })
   }, [result, liveFrame])
   const distribution = depositDistribution(liveReceptors)
+  const kpiThreshold = result?.summary.reporting_cutoff_mm ?? 0.5
+  const kpiSummary = useMemo(() => {
+    return calculateExecutiveKpis(liveReceptors, kpiThreshold)
+  }, [liveReceptors, kpiThreshold])
   const ranked = (result?.receptors ?? []).filter(r => r.kind === 'municipality' && r.in_domain && r.thickness_mm !== null).sort((a, b) => b.thickness_mm! - a.thickness_mm!)
   const liveRanked = (liveFrame ? liveReceptors : (result?.receptors ?? []))
     .filter(r => r.kind === 'municipality' && r.in_domain && (r.thickness_mm ?? 0) >= 0.01)
@@ -177,6 +181,32 @@ export default function Dashboard({
     {error && <div className="error-message" role="alert">{error} <button type="button" onClick={() => setRetry(n => n + 1)}>Retry preset</button></div>}
     {!result ? <div className="dashboard-empty"><Icon name="compare" /><h3>{pending ? 'Preparing scenario data' : 'Results are unavailable'}</h3><p>{pending ? 'Charts will appear when deposition and event snapshots are calculated.' : 'Choose a preset or retry the calculation. No results have been invented.'}</p></div> : <>
       <div className="dashboard-charts">
+        <div className="dashboard-kpi-grid" role="region" aria-label="Executive exposure summary">
+          <div className="impact-kpi-card">
+            <span className="kpi-label">Provinces Affected</span>
+            <strong className="kpi-value">{kpiSummary.provincesCount}</strong>
+            <span className="kpi-sub">Across regional domain</span>
+          </div>
+          <div className="impact-kpi-card">
+            <span className="kpi-label">Localities Affected</span>
+            <strong className="kpi-value">{kpiSummary.localitiesCount}</strong>
+            <span className="kpi-sub">Cities & towns (≥{result.summary.reporting_cutoff_mm ?? 0.5} mm)</span>
+          </div>
+          <div className="impact-kpi-card">
+            <span className="kpi-label">Peak Modeled Ash</span>
+            <strong className="kpi-value">
+              {kpiSummary.peakThickness > 0 ? `${number(kpiSummary.peakThickness)} mm` : '0 mm'}
+            </strong>
+            <span className="kpi-sub">
+              {kpiSummary.peakLocality ? `${kpiSummary.peakLocality}, ${kpiSummary.peakProvince}` : 'None'}
+            </span>
+          </div>
+          <div className="impact-kpi-card">
+            <span className="kpi-label">Indicative Families</span>
+            <strong className="kpi-value">{number(kpiSummary.totalFamilies, 0)}</strong>
+            <span className="kpi-sub">~{number(kpiSummary.totalPopulation, 0)} residents</span>
+          </div>
+        </div>
         <article className="chart-panel accumulation-panel"><header><div><h3>Accumulation over event time</h3><p>Computed snapshots · {selected?.name ?? 'No location'}</p></div><label className="chart-location"><span className="sr-only">Chart location</span><select value={selected?.id ?? ''} onChange={e => chooseLocation(e.target.value)}>{ranked.map(r => <option key={r.id} value={r.id}>{r.name}</option>)}</select></label></header>
           <div className="chart-reading"><div><span>{currentTime !== null ? `Deposit at ${number(currentTime, 1)} h` : samples.length ? 'Final sampled deposit' : 'Eventual centroid deposit'}</span><strong>{number(currentTime !== null ? currentValue : finalValue)}<small> mm</small></strong></div><p>{selected?.name ?? 'No location selected'}{currentTime !== null ? <>{embedded ? ' · ' : <br />}Eventual {number(finalValue)} mm</> : samples.length > 0 && <>{embedded ? ' · ' : <br />}At {number(samples.at(-1)!.time, 1)} h elapsed</>}</p></div>
           {samples.some(s => s.value !== null) ? <div className="line-chart-viewport" role="region" tabIndex={0} aria-label="Accumulation chart, scroll horizontally on small screens"><svg className="accumulation-chart" viewBox="0 0 920 235" role="img" aria-label={`Deposit thickness over event time for ${selected?.name}.${currentTime !== null ? ` Current snapshot ${scopeLabel}: ${number(currentValue)} millimeters.` : ''} Final sampled thickness ${number(samples.at(-1)?.value ?? null)} millimeters. Raw snapshot values are in View raw data.`}>
