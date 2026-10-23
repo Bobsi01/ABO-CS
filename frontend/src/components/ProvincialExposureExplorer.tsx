@@ -25,19 +25,13 @@ function ProvincialExposureExplorer({
   onSelect,
   reportingCutoffMm = 0.5,
 }: Props) {
-  const [filterMode, setFilterMode] = useState<'trace' | 'standard'>('trace')
   const [expandedProvinces, setExpandedProvinces] = useState<Record<string, boolean>>({})
 
-  const threshold = filterMode === 'standard' ? reportingCutoffMm : 0.01
+  const threshold = reportingCutoffMm
 
-  const { provinces, summary } = useMemo(() => {
+  const provinces = useMemo(() => {
     const inDomain = receptors.filter(r => r.in_domain && r.kind === 'municipality')
     const affected = inDomain.filter(r => (r.thickness_mm ?? 0) >= threshold)
-
-    let maxMm = 0
-    let peakName = ''
-    let peakProv = ''
-    let totalPop = 0
 
     const groups: Record<
       string,
@@ -56,15 +50,6 @@ function ProvincialExposureExplorer({
       const mm = r.thickness_mm ?? 0
       const prov = r.province || 'Other Province'
       const reg = r.region || 'Other Region'
-
-      if (mm > maxMm) {
-        maxMm = mm
-        peakName = r.name.split(',')[0]
-        peakProv = prov
-      }
-      if (r.population) {
-        totalPop += r.population
-      }
 
       if (!groups[prov]) {
         groups[prov] = {
@@ -95,18 +80,7 @@ function ProvincialExposureExplorer({
       g.items.sort((a, b) => (b.thickness_mm ?? 0) - (a.thickness_mm ?? 0))
     })
 
-    return {
-      provinces: sortedProvinces,
-      summary: {
-        affectedProvincesCount: sortedProvinces.length,
-        affectedCitiesCount: affected.length,
-        peakThickness: maxMm,
-        peakLocality: peakName,
-        peakProvince: peakProv,
-        totalPopulation: totalPop,
-        totalFamilies: calculateFamiliesAffected(totalPop),
-      },
-    }
+    return sortedProvinces
   }, [receptors, threshold])
 
   const toggleProvince = (prov: string) => {
@@ -124,51 +98,6 @@ function ProvincialExposureExplorer({
           <p className="view-note">
             Regional footprint analysis showing which provinces and municipalities receive deposited ash.
           </p>
-        </div>
-        <div className="filter-button-group" role="group" aria-label="Ashfall threshold filter">
-          <button
-            type="button"
-            className={filterMode === 'trace' ? 'active-filter' : ''}
-            onClick={() => setFilterMode('trace')}
-            aria-pressed={filterMode === 'trace'}
-          >
-            All Affected (≥0.01 mm trace)
-          </button>
-          <button
-            type="button"
-            className={filterMode === 'standard' ? 'active-filter' : ''}
-            onClick={() => setFilterMode('standard')}
-            aria-pressed={filterMode === 'standard'}
-          >
-            Standard Cutoff (≥{reportingCutoffMm} mm)
-          </button>
-        </div>
-      </div>
-
-      <div className="impact-kpi-grid">
-        <div className="impact-kpi-card">
-          <span className="kpi-label">Provinces Affected</span>
-          <strong className="kpi-value">{summary.affectedProvincesCount}</strong>
-          <span className="kpi-sub">Across regional domain</span>
-        </div>
-        <div className="impact-kpi-card">
-          <span className="kpi-label">Localities Affected</span>
-          <strong className="kpi-value">{summary.affectedCitiesCount}</strong>
-          <span className="kpi-sub">Cities & municipalities</span>
-        </div>
-        <div className="impact-kpi-card">
-          <span className="kpi-label">Peak Modeled Ash</span>
-          <strong className="kpi-value">
-            {summary.peakThickness > 0 ? `${number(summary.peakThickness)} mm` : '0 mm'}
-          </strong>
-          <span className="kpi-sub">
-            {summary.peakLocality ? `${summary.peakLocality}, ${summary.peakProvince}` : 'None'}
-          </span>
-        </div>
-        <div className="impact-kpi-card">
-          <span className="kpi-label">Indicative Families</span>
-          <strong className="kpi-value">{number(summary.totalFamilies, 0)}</strong>
-          <span className="kpi-sub">~{number(summary.totalPopulation, 0)} residents</span>
         </div>
       </div>
 

@@ -48,6 +48,23 @@ export default function Workspace() {
   const [tab, setTab] = useState<Tab>('3d')
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [parametersOpen, setParametersOpen] = useState(false)
+  const [navHovered, setNavHovered] = useState(false)
+  const [navPinned, setNavPinned] = useState(false)
+  const isNavVisible = navHovered || navPinned
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (parametersOpen) setParametersOpen(false)
+        if (navHovered || navPinned) {
+          setNavHovered(false)
+          setNavPinned(false)
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [parametersOpen, navHovered, navPinned])
   const [loading, setLoading] = useState('Loading the local scenario catalog…')
   const [error, setError] = useState('')
   const [stale, setStale] = useState(false)
@@ -107,6 +124,8 @@ export default function Workspace() {
     setDraft({ ...next, input_status: next.input_status === 'illustrative' ? 'illustrative' : 'user_entered' })
     setStale(Boolean(result)); setComparison([]); setSweepResult(null); setSequencePlaying(false)
     if (next.volcano_id !== draft?.volcano_id) setEruptionOptions({ include_lava: next.volcano_id === 'mayon' })
+    const matched = catalog?.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(next))
+    setActivePresetId(matched?.id ?? 'last-run')
   }
   function scalar(key: keyof Scenario, value: string) {
     if (!draft) return
@@ -114,6 +133,16 @@ export default function Workspace() {
     if (key === 'wind_from_deg' && draft.wind_profile?.length && Number.isFinite(nextValue) && Number.isFinite(draft.wind_from_deg)) {
       const shift = Number(nextValue) - draft.wind_from_deg
       change({ ...draft, wind_from_deg: Number(nextValue), wind_profile: draft.wind_profile.map(level => ({ ...level, wind_from_deg: ((level.wind_from_deg + shift) % 360 + 360) % 360 })) })
+      return
+    }
+    if (key === 'wind_speed_m_s' && draft.wind_profile?.length && Number.isFinite(nextValue) && Number.isFinite(draft.wind_speed_m_s) && draft.wind_speed_m_s > 0) {
+      const ratio = Number(nextValue) / draft.wind_speed_m_s
+      change({ ...draft, wind_speed_m_s: Number(nextValue), wind_profile: draft.wind_profile.map(level => ({ ...level, speed_m_s: Math.max(0, level.speed_m_s * ratio) })) })
+      return
+    }
+    if (key === 'column_height_m' && draft.wind_profile?.length && Number.isFinite(nextValue) && Number.isFinite(draft.column_height_m) && draft.column_height_m > 0) {
+      const ratio = Number(nextValue) / draft.column_height_m
+      change({ ...draft, column_height_m: Number(nextValue), wind_profile: draft.wind_profile.map(level => ({ ...level, height_above_vent_m: Math.max(0, level.height_above_vent_m * ratio) })) })
       return
     }
     change({ ...draft, [key]: nextValue })
@@ -143,6 +172,7 @@ export default function Workspace() {
         if (JSON.stringify(computed.scenario) !== JSON.stringify(event.scenario)) throw new Error('The event sequence and deposition scenarios do not match. Retry the simulation.')
         completedReporting.current.set(computed, reporting)
         setResult(computed); setSequence(event); setFrameIndex(0); setSequencePlaying(false); setSelected(null); setStale(inputRevision.current !== revision)
+        setActivePresetId(catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(computed.scenario))?.id ?? 'last-run')
         if (window.innerWidth <= 700) setParametersOpen(false)
       } else if (kind === 'sweep') {
         const computed = await sweep(draft, controller.signal)
@@ -177,7 +207,16 @@ export default function Workspace() {
   const receptors = result ? [...result.receptors].sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : (b.thickness_mm ?? -1) - (a.thickness_mm ?? -1)) : []
   const tabs: [Tab, string, IconName][] = [['3d', 'Simulation', 'volcano'], ['comparison', 'Wind comparison', 'compare'], ['sweep', 'Wind sweep', 'compass'], ['history', 'Taal 2020', 'history'], ['help', 'Guide & sources', 'book']]
   const primaryKeys = ['column_height_m', 'mass_rate_kg_s', 'duration_s', 'wind_speed_m_s', 'wind_from_deg']
-  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={field.min} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
+  const getFieldMin = (key: keyof Scenario) => {
+    // 2020 Taal eruption parameters are the standard realistic minimums for eruption configuration
+    if (draft?.column_height_m && draft.column_height_m >= 17000) {
+      if (key === 'column_height_m') return 17000
+      if (key === 'mass_rate_kg_s') return 1500000
+      if (key === 'duration_s') return 36000
+    }
+    return fields.find(field => field.key === key)?.min
+  }
+  const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={getFieldMin(field.key)} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
   const optionFields: { key: keyof EruptionOptions; name: string; unit: string; label: string; initial: number; min: number; max: number }[] = [
     { key: 'plume_rise_speed_m_s', name: 'Plume rise speed', unit: '(m/s)', label: 'Plume rise speed (m/s)', initial: 30, min: 1, max: 300 },
     { key: 'lava_effusion_m3_s', name: 'Lava effusion', unit: '(m³/s)', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
@@ -188,23 +227,97 @@ export default function Workspace() {
 
   return <div className="application" data-theme={theme} data-page={tab}>
     <a className="skip-link" href="#workspace">Skip to results</a>
-    <header className="masthead">
-      <h1>ABO <span>Eruption laboratory</span></h1>
-      <nav className="primary-navigation" aria-label="Main navigation">{([['3d', 'Simulation'], ['comparison', 'Analysis'], ['help', 'Sources']] as [Tab, string][]).map(([id, label]) => <button key={id} type="button" aria-current={(id === tab || id === 'comparison' && ['sweep', 'history'].includes(tab)) ? 'page' : undefined} onClick={() => { setTab(id); setSequencePlaying(false) }}>{label}</button>)}</nav>
-      <div className="header-actions">
-        <details className="model-notes" onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
-          <summary><Icon name="info" />Academic model<span className="summary-hint"> · limits</span></summary>
-          <div className="model-notes-content">
-            <p>Not a PHIVOLCS hazard advisory. Surface deposition does not establish building safety, water potability, or flight safety.</p>
-            {catalog && typeof catalog.coverage_notes === 'string' && <p>{catalog.coverage_notes}</p>}
+
+    {/* Left-edge hover trigger for Navigation Bar */}
+    <div
+      className="navbar-edge-trigger"
+      onMouseEnter={() => setNavHovered(true)}
+      title="Hover left edge to open navigation menu"
+      aria-hidden="true"
+    >
+      <div className="navbar-edge-tab">
+        <Icon name="menu" />
+        <span>Menu</span>
+      </div>
+    </div>
+    {isNavVisible && (
+      <div
+        className="navbar-drawer-backdrop"
+        onClick={() => { setNavHovered(false); setNavPinned(false) }}
+        aria-hidden="true"
+      />
+    )}
+    <header
+      className={`masthead masthead-drawer${isNavVisible ? ' open' : ''}`}
+      onMouseEnter={() => setNavHovered(true)}
+      onMouseLeave={() => { if (!navPinned) setNavHovered(false) }}
+    >
+      <div className="masthead-drawer-content">
+        <div className="masthead-brand-group">
+          <div className="brand-text">
+            <h1>ABO</h1>
+            <span>Eruption laboratory</span>
           </div>
-        </details>
-        <button className="icon-button" type="button" aria-label={`${theme === 'light' ? 'Dark' : 'Light'} theme`} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><Icon name={theme === 'light' ? 'moon' : 'sun'} /></button>
+          <button
+            type="button"
+            className="nav-drawer-close"
+            title="Close navigation"
+            aria-label="Close navigation"
+            onClick={() => { setNavHovered(false); setNavPinned(false) }}
+          >
+            <Icon name="close" />
+          </button>
+        </div>
+        <nav className="primary-navigation" aria-label="Main navigation">{([['3d', 'Simulation'], ['comparison', 'Analysis'], ['help', 'Sources']] as [Tab, string][]).map(([id, label]) => <button key={id} type="button" aria-current={(id === tab || id === 'comparison' && ['sweep', 'history'].includes(tab)) ? 'page' : undefined} onClick={() => { setTab(id); setSequencePlaying(false); setNavHovered(false); setNavPinned(false) }}>{label}</button>)}</nav>
+        <div className="header-actions">
+          <details className="model-notes" onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
+            <summary><Icon name="info" />Academic model<span className="summary-hint"> · limits</span></summary>
+            <div className="model-notes-content">
+              <p>Not a PHIVOLCS hazard advisory. Surface deposition does not establish building safety, water potability, or flight safety.</p>
+              {catalog && typeof catalog.coverage_notes === 'string' && <p>{catalog.coverage_notes}</p>}
+            </div>
+          </details>
+          <div className="theme-toggle-row">
+            <span>Dark mode</span>
+            <button className="icon-button" type="button" aria-label={`${theme === 'light' ? 'Dark' : 'Light'} theme`} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><Icon name={theme === 'light' ? 'moon' : 'sun'} /></button>
+          </div>
+        </div>
       </div>
     </header>
-    <main className={`laboratory${parametersOpen && tab !== 'dashboard' && tab !== 'help' ? '' : ' inputs-collapsed'}`}>
-      <aside hidden={tab === 'dashboard' || tab === 'help' || !parametersOpen} className="parameter-panel" aria-labelledby="parameters-title">
-        <details className="parameter-disclosure" open={parametersOpen} onToggle={event => setParametersOpen(event.currentTarget.open)}><summary id="parameters-title"><Icon name="settings" />Simulation inputs</summary>
+
+    <main className="laboratory inputs-collapsed">
+      {parametersOpen && (
+        <div
+          className="parameter-drawer-backdrop"
+          onClick={() => setParametersOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      <aside
+        hidden={tab === 'dashboard' || tab === 'help' || !parametersOpen}
+        className={`parameter-panel parameter-drawer${parametersOpen ? ' open' : ''}`}
+        aria-labelledby="parameters-title"
+      >
+        <details className="parameter-disclosure" open={true} onToggle={event => {
+          if (!event.currentTarget.open) {
+            setParametersOpen(false)
+          }
+        }}>
+          <summary id="parameters-title">
+            <span className="summary-title-wrap"><Icon name="settings" />Simulation inputs</span>
+            <button
+              type="button"
+              className="drawer-close-btn"
+              title="Close drawer"
+              aria-label="Close parameters drawer"
+              onClick={e => {
+                e.stopPropagation()
+                setParametersOpen(false)
+              }}
+            >
+              <Icon name="close" />
+            </button>
+          </summary>
         {!catalog && <button type="button" onClick={loadCatalog} disabled={Boolean(loading)}>Retry catalog connection</button>}
         {catalog && draft && <form onInvalidCapture={event => {
           const input = event.target
@@ -270,8 +383,8 @@ export default function Workspace() {
         </form>}</details>
       </aside>
       <div className="workspace" id="workspace" tabIndex={-1}>
-        {tab !== 'dashboard' && tab !== '3d' && tab !== 'help' && <nav className="view-tabs" aria-label="Scientific views">{tabs.filter(([id]) => id !== '3d' && id !== 'help').map(([id, label, icon]) => <button type="button" aria-current={tab === id ? 'page' : undefined} key={id} onClick={() => { setTab(id); setSequencePlaying(false) }}><Icon name={icon} />{label}</button>)}<div className="view-tabs-actions"><button type="button" className="edit-baseline-button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />{parametersOpen ? 'Close baseline inputs' : 'Edit baseline eruption'}</button></div></nav>}
-        {tab === '3d' && <div className="simulation-heading"><div className="simulation-title-group"><h2>Simulation</h2><div className="status-line" aria-live="polite" role="status">{loading || (result ? `${catalog?.volcanoes.find(v => v.id === result.scenario.volcano_id)?.name ?? result.scenario.volcano_id} result · ${number(result.diagnostics.elapsed_ms, 0)} ms · ${result.scenario.input_status.replaceAll('_', ' ')} inputs · ${result.summary.municipalities_reported} centroids ≥${result.summary.reporting_cutoff_mm} mm · ${result.summary.receptors_covered}/${result.summary.receptors_total} in domain` : 'Choose inputs and run a simulation to view deposition.')}</div></div>{activeSequence && <EruptionTimeline sequence={activeSequence} index={frameIndex} playing={sequencePlaying} onIndex={setFrameIndex} onPlaying={setSequencePlaying} sceneAvailable={sceneAvailable} compact />}<div className="simulation-action-group">{catalog && <label className="header-scenario-select"><span className="sr-only">Preset scenario</span><select aria-label="Preset scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(displayedScenario))?.id ?? 'last-run'} onChange={e => { const preset = catalog.scenarios.find(p => p.id === e.target.value); if (preset) { change(preset.scenario); setActivePresetId(preset.id) } }}><optgroup label="Taal 2020 Event & Directional Outcomes">{catalog.scenarios.filter(s => s.scenario.volcano_id === 'taal' && s.id !== 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup><optgroup label="Other Volcano Baselines">{catalog.scenarios.filter(s => s.scenario.volcano_id !== 'taal' || s.id === 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup>{result && !catalog.scenarios.some(p => JSON.stringify(p.scenario) === JSON.stringify(result.scenario)) && <option value="last-run">Custom · {result.scenario.label}</option>}</select></label>}<button type="button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />Edit parameters</button><button hidden={parametersOpen} type="button" className="run-button" disabled={Boolean(loading) || !draft} onClick={() => void execute('simulation')}><Icon name="calculate" />Run simulation</button><button className="raw-data-action" type="button" disabled={!result} onClick={() => setRawDataOpenCount(n => n + 1)}><Icon name="calculate" />View raw data</button></div></div>}
+        {tab !== 'dashboard' && tab !== '3d' && tab !== 'help' && <nav className="view-tabs" aria-label="Scientific views"><button type="button" className="nav-hamburger-btn" title="Open navigation menu (or hover left edge)" aria-label="Open navigation menu" aria-expanded={isNavVisible} onClick={() => setNavPinned(p => !p)}><Icon name="menu" /></button>{tabs.filter(([id]) => id !== '3d' && id !== 'help').map(([id, label, icon]) => <button type="button" aria-current={tab === id ? 'page' : undefined} key={id} onClick={() => { setTab(id); setSequencePlaying(false) }}><Icon name={icon} />{label}</button>)}<div className="view-tabs-actions"><button type="button" className="edit-baseline-button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />{parametersOpen ? 'Close baseline inputs' : 'Edit baseline eruption'}</button></div></nav>}
+        {tab === '3d' && <div className="simulation-heading"><div className="simulation-title-group"><div className="title-with-nav-btn"><button type="button" className="nav-hamburger-btn" title="Open navigation menu (or hover left edge)" aria-label="Open navigation menu" aria-expanded={isNavVisible} onClick={() => setNavPinned(p => !p)}><Icon name="menu" /></button><h2>Simulation</h2></div>{loading && <div className="status-line" aria-live="polite" role="status">{loading}</div>}</div>{activeSequence && <EruptionTimeline sequence={activeSequence} index={frameIndex} playing={sequencePlaying} onIndex={setFrameIndex} onPlaying={setSequencePlaying} sceneAvailable={sceneAvailable} compact />}<div className="simulation-action-group">{catalog && <label className="header-scenario-select"><span className="sr-only">Preset scenario</span><select aria-label="Preset scenario" value={catalog.scenarios.find(p => JSON.stringify(p.scenario) === JSON.stringify(displayedScenario))?.id ?? 'last-run'} onChange={e => { const preset = catalog.scenarios.find(p => p.id === e.target.value); if (preset) { change(preset.scenario); setActivePresetId(preset.id) } }}><optgroup label="Taal 2020 Event & Directional Outcomes">{catalog.scenarios.filter(s => s.scenario.volcano_id === 'taal' && s.id !== 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup><optgroup label="Other Volcano Baselines">{catalog.scenarios.filter(s => s.scenario.volcano_id !== 'taal' || s.id === 'taal-teaching').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</optgroup>{result && !catalog.scenarios.some(p => JSON.stringify(p.scenario) === JSON.stringify(result.scenario)) && <option value="last-run">Custom · {result.scenario.label}</option>}</select></label>}<button type="button" onClick={() => setParametersOpen(open => !open)} aria-expanded={parametersOpen}><Icon name="settings" />Edit parameters</button><button hidden={parametersOpen} type="button" className="run-button" disabled={Boolean(loading) || !draft} onClick={() => void execute('simulation')}><Icon name="calculate" />Run simulation</button><button className="raw-data-action" type="button" disabled={!result} onClick={() => setRawDataOpenCount(n => n + 1)}><Icon name="calculate" />View raw data</button></div></div>}
         {tab !== 'dashboard' && tab !== '3d' && loading && <div className="status-line" aria-live="polite" role="status">{loading}</div>}
         {error && <p className="error-message" role="alert">{error}</p>}
         {stale && tab !== 'dashboard' && <p className="stale-message">Parameters have changed. Views below retain the last completed simulation. Run again to update them.</p>}
@@ -280,7 +393,7 @@ export default function Workspace() {
             <div className="simulation-workbench">
               <div className="workbench-spatial-stack">
                 <section className="spatial-view" aria-labelledby="terrain-title"><ScientificViewBoundary key={`3d-${JSON.stringify(result?.scenario)}`} onFailure={() => sceneAvailability(false)} onRecovery={() => sceneAvailability(false)}><Suspense fallback={<p className="empty-note">Loading 3D illustration…</p>}><VolcanoScene scenario={displayedScenario} result={result} eruptionSequence={activeSequence} frameIndex={frameIndex} sequencePlaying={sequencePlaying} selected={selected} onSelect={setSelected} onAvailabilityChange={sceneAvailability} /></Suspense></ScientificViewBoundary></section>
-                <section className="spatial-view" aria-labelledby="map-title"><ScientificViewBoundary key={`map-${JSON.stringify(result?.scenario)}-${activeSequence?.options.include_lava}`}><Suspense fallback={<p className="empty-note">Loading impact map…</p>}><GeographicMap scenario={displayedScenario} result={result} eruptionSequence={activeSequence} frame={frame} selected={selected} onSelect={setSelected} /></Suspense></ScientificViewBoundary></section>
+                <section className="spatial-view" aria-labelledby="map-title"><ScientificViewBoundary key={`map-${JSON.stringify(result?.scenario)}-${activeSequence?.options.include_lava}`}><Suspense fallback={<p className="empty-note">Loading impact map…</p>}><GeographicMap scenario={displayedScenario} result={result} eruptionSequence={activeSequence} frame={sequencePlaying || frameIndex > 0 ? frame : null} selected={selected} onSelect={setSelected} /></Suspense></ScientificViewBoundary></section>
               </div>
               <div className="workbench-analytics-pane">
                 {catalog && <Dashboard
@@ -292,7 +405,7 @@ export default function Workspace() {
                   embedded
                   presetOverride={activePresetId}
                   openDialogCount={rawDataOpenCount}
-                  frame={frame}
+                  frame={sequencePlaying || frameIndex > 0 ? frame : null}
                   onPresetCalculated={(computed, seq) => {
                     completedReporting.current.set(computed, { screening_context: {}, population_year: populationYear })
                     setResult(computed)
@@ -307,9 +420,8 @@ export default function Workspace() {
               </div>
             </div>
             {result && <section className="results-section workbench-fullwidth-results" aria-labelledby="results-title"><div className="section-heading"><div><h2 id="results-title">Municipal and facility exposure</h2><p>Eventual totals: {result.summary.municipalities_reported} municipal centroids ≥{result.summary.reporting_cutoff_mm} mm · {number(result.summary.indicative_population, 0)} indicative residents · {result.summary.receptors_covered}/{result.summary.receptors_total} locations in domain</p></div></div>
-              {frame && <p className="view-note">The breakdown below follows the selected event snapshot ({({ before: 'before eruption', erupting: 'during', settling: 'settling', after: 'after' } as Record<string, string>)[frame.phase] ?? frame.phase} · {number(frame.elapsed_s / 3600, 1)} h); the summary above reports eventual totals.</p>}
               <ProvincialExposureExplorer
-                receptors={frame?.receptors ?? result.receptors}
+                receptors={result.receptors}
                 selected={selected}
                 onSelect={setSelected}
                 reportingCutoffMm={result.summary.reporting_cutoff_mm}
