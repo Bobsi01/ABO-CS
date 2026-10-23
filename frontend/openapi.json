@@ -543,7 +543,6 @@
           },
           "lava_max_distance_m": {
             "type": "number",
-            "maximum": 50000.0,
             "minimum": 250.0,
             "title": "Lava Max Distance M",
             "default": 20000
@@ -557,25 +556,21 @@
         "properties": {
           "start_s": {
             "type": "number",
-            "maximum": 31536000.0,
             "minimum": 0.0,
             "title": "Start S"
           },
           "duration_s": {
             "type": "number",
-            "maximum": 31536000.0,
             "exclusiveMinimum": 0.0,
             "title": "Duration S"
           },
           "mass_rate_kg_s": {
             "type": "number",
-            "maximum": 1000000000000.0,
             "minimum": 0.0,
             "title": "Mass Rate Kg S"
           },
           "column_height_m": {
             "type": "number",
-            "maximum": 50000.0,
             "exclusiveMinimum": 0.0,
             "title": "Column Height M"
           }
@@ -2184,31 +2179,26 @@
           },
           "vent_elevation_m": {
             "type": "number",
-            "maximum": 10000.0,
             "minimum": 0.0,
             "title": "Vent Elevation M"
           },
           "column_height_m": {
             "type": "number",
-            "maximum": 50000.0,
             "exclusiveMinimum": 0.0,
             "title": "Column Height M"
           },
           "mass_rate_kg_s": {
             "type": "number",
-            "maximum": 1000000000000.0,
             "minimum": 0.0,
             "title": "Mass Rate Kg S"
           },
           "duration_s": {
             "type": "number",
-            "maximum": 31536000.0,
             "exclusiveMinimum": 0.0,
             "title": "Duration S"
           },
           "wind_speed_m_s": {
             "type": "number",
-            "maximum": 200.0,
             "minimum": 0.0,
             "title": "Wind Speed M S"
           },
@@ -2220,19 +2210,16 @@
           },
           "diffusivity_m2_s": {
             "type": "number",
-            "maximum": 10000000.0,
             "minimum": 0.0,
             "title": "Diffusivity M2 S"
           },
           "initial_spread_m": {
             "type": "number",
-            "maximum": 100000.0,
             "minimum": 0.001,
             "title": "Initial Spread M"
           },
           "bulk_density_kg_m3": {
             "type": "number",
-            "maximum": 10000.0,
             "minimum": 0.001,
             "title": "Bulk Density Kg M3"
           },
@@ -2302,7 +2289,6 @@
             "anyOf": [
               {
                 "type": "number",
-                "maximum": 50000.0,
                 "minimum": 0.0
               },
               {
@@ -2921,13 +2907,11 @@
         "properties": {
           "height_above_vent_m": {
             "type": "number",
-            "maximum": 50000.0,
             "minimum": 0.0,
             "title": "Height Above Vent M"
           },
           "speed_m_s": {
             "type": "number",
-            "maximum": 200.0,
             "minimum": 0.0,
             "title": "Speed M S"
           },

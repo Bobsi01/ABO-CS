@@ -19,18 +19,18 @@ class Grain(StrictModel):
 class WindLevel(StrictModel):
     """One level of an opt-in wind profile; heights are above the vent like release heights."""
 
-    height_above_vent_m: float = Field(ge=0, le=50000)
-    speed_m_s: float = Field(ge=0, le=200)
+    height_above_vent_m: float = Field(ge=0)
+    speed_m_s: float = Field(ge=0)
     wind_from_deg: float = Field(ge=0, lt=360)
 
 
 class EruptionPulse(StrictModel):
     """One constant-rate emission block of an opt-in multi-pulse source."""
 
-    start_s: float = Field(ge=0, le=31536000)
-    duration_s: float = Field(gt=0, le=31536000)
-    mass_rate_kg_s: float = Field(ge=0, le=1e12)
-    column_height_m: float = Field(gt=0, le=50000)
+    start_s: float = Field(ge=0)
+    duration_s: float = Field(gt=0)
+    mass_rate_kg_s: float = Field(ge=0)
+    column_height_m: float = Field(gt=0)
 
 
 class Scenario(StrictModel):
@@ -40,15 +40,15 @@ class Scenario(StrictModel):
     source_ids: list[str] = Field(default_factory=list)
     vent_lat: float = Field(ge=-85, le=85)
     vent_lon: float = Field(ge=-180, le=180)
-    vent_elevation_m: float = Field(ge=0, le=10000)
-    column_height_m: float = Field(gt=0, le=50000)
-    mass_rate_kg_s: float = Field(ge=0, le=1e12)
-    duration_s: float = Field(gt=0, le=31536000)
-    wind_speed_m_s: float = Field(ge=0, le=200)
+    vent_elevation_m: float = Field(ge=0)
+    column_height_m: float = Field(gt=0)
+    mass_rate_kg_s: float = Field(ge=0)
+    duration_s: float = Field(gt=0)
+    wind_speed_m_s: float = Field(ge=0)
     wind_from_deg: float = Field(ge=0, lt=360)
-    diffusivity_m2_s: float = Field(ge=0, le=1e7)
-    initial_spread_m: float = Field(ge=0.001, le=100000)
-    bulk_density_kg_m3: float = Field(ge=0.001, le=10000)
+    diffusivity_m2_s: float = Field(ge=0)
+    initial_spread_m: float = Field(ge=0.001)
+    bulk_density_kg_m3: float = Field(ge=0.001)
     grains: list[Grain] = Field(min_length=3, max_length=5)
     domain_km: float = Field(default=200, gt=0, le=400)
     cell_km: float = Field(default=1, ge=0.25, le=10)
@@ -60,7 +60,7 @@ class Scenario(StrictModel):
     pulses: list[EruptionPulse] | None = Field(default=None, min_length=1, max_length=8)
     # Optional radial umbrella cloud radius in meters at column top.
     # When provided, initial spread expands with height up to umbrella_radius_m.
-    umbrella_radius_m: float | None = Field(default=None, ge=0, le=50000)
+    umbrella_radius_m: float | None = Field(default=None, ge=0)
 
     @model_validator(mode="after")
     def coherent(self):
@@ -415,7 +415,7 @@ class EruptionOptions(StrictModel):
     lava_width_m: float = Field(default=20, ge=1, le=1000)
     lava_viscosity_pa_s: float = Field(default=1000, ge=1, le=1e12)
     lava_density_kg_m3: float = Field(default=2600, ge=1000, le=4000)
-    lava_max_distance_m: float = Field(default=20000, ge=250, le=50000)
+    lava_max_distance_m: float = Field(default=20000, ge=250)
 
 
 class EruptionRequest(StrictModel):

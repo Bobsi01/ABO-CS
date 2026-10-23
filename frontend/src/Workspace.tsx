@@ -21,16 +21,16 @@ type Tab = 'dashboard' | '3d' | 'comparison' | 'sweep' | 'history' | 'help'
 const fields: { key: keyof Scenario; name: string; unit: string; label: string; min?: number; max?: number; step?: number }[] = [
   { key: 'vent_lat', name: 'Vent latitude', unit: '(°)', label: 'Vent latitude (°)', min: -85, max: 85 },
   { key: 'vent_lon', name: 'Vent longitude', unit: '(°)', label: 'Vent longitude (°)', min: -180, max: 180 },
-  { key: 'vent_elevation_m', name: 'Vent elevation', unit: '(m ASL)', label: 'Vent elevation (m ASL)', min: 0, max: 10000 },
-  { key: 'column_height_m', name: 'Column height', unit: '(m)', label: 'Column height (m)', min: 0.001, max: 50000 },
-  { key: 'mass_rate_kg_s', name: 'Ash mass rate', unit: '(kg/s)', label: 'Ash mass rate (kg/s)', min: 0, max: 1e12 },
-  { key: 'duration_s', name: 'Duration', unit: '(s)', label: 'Duration (s)', min: 0.001, max: 31536000 },
-  { key: 'wind_speed_m_s', name: 'Wind speed', unit: '(m/s)', label: 'Wind speed (m/s)', min: 0, max: 200 },
+  { key: 'vent_elevation_m', name: 'Vent elevation', unit: '(m ASL)', label: 'Vent elevation (m ASL)', min: 0 },
+  { key: 'column_height_m', name: 'Column height', unit: '(m)', label: 'Column height (m)', min: 0.001 },
+  { key: 'mass_rate_kg_s', name: 'Ash mass rate', unit: '(kg/s)', label: 'Ash mass rate (kg/s)', min: 0 },
+  { key: 'duration_s', name: 'Duration', unit: '(s)', label: 'Duration (s)', min: 0.001 },
+  { key: 'wind_speed_m_s', name: 'Wind speed', unit: '(m/s)', label: 'Wind speed (m/s)', min: 0 },
   { key: 'wind_from_deg', name: 'Wind FROM', unit: '(° clockwise from N)', label: 'Wind FROM (° clockwise from N)', min: 0, max: 359.999 },
-  { key: 'diffusivity_m2_s', name: 'Diffusivity', unit: '(m²/s)', label: 'Diffusivity (m²/s)', min: 0, max: 1e7 },
-  { key: 'initial_spread_m', name: 'Initial spread σ₀', unit: '(m)', label: 'Initial spread σ₀ (m)', min: 0.001, max: 100000 },
-  { key: 'umbrella_radius_m', name: 'Umbrella radius', unit: '(m)', label: 'Umbrella radius (m)', min: 0, max: 50000 },
-  { key: 'bulk_density_kg_m3', name: 'Deposit density', unit: '(kg/m³)', label: 'Deposit density (kg/m³)', min: 0.001, max: 10000 },
+  { key: 'diffusivity_m2_s', name: 'Diffusivity', unit: '(m²/s)', label: 'Diffusivity (m²/s)', min: 0 },
+  { key: 'initial_spread_m', name: 'Initial spread σ₀', unit: '(m)', label: 'Initial spread σ₀ (m)', min: 0.001 },
+  { key: 'umbrella_radius_m', name: 'Umbrella radius', unit: '(m)', label: 'Umbrella radius (m)', min: 0 },
+  { key: 'bulk_density_kg_m3', name: 'Deposit density', unit: '(kg/m³)', label: 'Deposit density (kg/m³)', min: 0.001 },
   { key: 'domain_km', name: 'Domain width', unit: '(km)', label: 'Domain width (km)', min: 1, max: 400 },
   { key: 'cell_km', name: 'Cell size', unit: '(km)', label: 'Cell size (km)', min: 0.25, max: 10, step: 0.25 },
 ]
@@ -217,12 +217,12 @@ export default function Workspace() {
     return fields.find(field => field.key === key)?.min
   }
   const inputFields = (keys: string[]) => <div className="field-grid">{fields.filter(field => keys.includes(field.key)).map(field => <label key={field.key}><span className="field-label-text"><span className="field-name">{field.name}</span>{' '}<span className="field-unit">{field.unit}</span></span><input required={field.key !== 'umbrella_radius_m'} type="number" value={draft?.[field.key] == null || Number.isNaN(draft?.[field.key]) ? '' : Number(draft?.[field.key])} min={getFieldMin(field.key)} max={field.max} step={field.step ?? 'any'} placeholder={field.key === 'umbrella_radius_m' ? 'Optional (e.g. 20000)' : undefined} onChange={e => scalar(field.key, e.target.value)} /></label>)}</div>
-  const optionFields: { key: keyof EruptionOptions; name: string; unit: string; label: string; initial: number; min: number; max: number }[] = [
-    { key: 'plume_rise_speed_m_s', name: 'Plume rise speed', unit: '(m/s)', label: 'Plume rise speed (m/s)', initial: 30, min: 1, max: 300 },
-    { key: 'lava_effusion_m3_s', name: 'Lava effusion', unit: '(m³/s)', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001, max: 1000 },
-    { key: 'lava_width_m', name: 'Channel width', unit: '(m)', label: 'Channel width (m)', initial: 20, min: 1, max: 1000 },
-    { key: 'lava_viscosity_pa_s', name: 'Viscosity', unit: '(Pa·s)', label: 'Viscosity (Pa·s)', initial: 1000, min: 1, max: 1e12 },
-    { key: 'lava_density_kg_m3', name: 'Lava density', unit: '(kg/m³)', label: 'Lava density (kg/m³)', initial: 2600, min: 1000, max: 4000 },
+  const optionFields: { key: keyof EruptionOptions; name: string; unit: string; label: string; initial: number; min: number; max?: number }[] = [
+    { key: 'plume_rise_speed_m_s', name: 'Plume rise speed', unit: '(m/s)', label: 'Plume rise speed (m/s)', initial: 30, min: 1 },
+    { key: 'lava_effusion_m3_s', name: 'Lava effusion', unit: '(m³/s)', label: 'Lava effusion (m³/s)', initial: 5, min: 0.001 },
+    { key: 'lava_width_m', name: 'Channel width', unit: '(m)', label: 'Channel width (m)', initial: 20, min: 1 },
+    { key: 'lava_viscosity_pa_s', name: 'Viscosity', unit: '(Pa·s)', label: 'Viscosity (Pa·s)', initial: 1000, min: 1 },
+    { key: 'lava_density_kg_m3', name: 'Lava density', unit: '(kg/m³)', label: 'Lava density (kg/m³)', initial: 2600, min: 1000 },
   ]
 
   return <div className="application" data-theme={theme} data-page={tab}>
@@ -356,7 +356,7 @@ export default function Workspace() {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, height_above_vent_m: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
-                  <label><span className="field-label-text"><span className="field-name">Wind speed</span>{' '}<span className="field-unit">(m/s)</span></span><input type="number" min={0} max={150} required value={Number.isNaN(level.speed_m_s) ? '' : level.speed_m_s} onChange={e => {
+                  <label><span className="field-label-text"><span className="field-name">Wind speed</span>{' '}<span className="field-unit">(m/s)</span></span><input type="number" min={0} required value={Number.isNaN(level.speed_m_s) ? '' : level.speed_m_s} onChange={e => {
                     const next = draft.wind_profile!.map((lvl, idx) => idx === i ? { ...lvl, speed_m_s: e.target.value === '' ? NaN : Number(e.target.value) } : lvl)
                     change({ ...draft, wind_profile: next })
                   }} /></label>
@@ -527,7 +527,7 @@ export default function Workspace() {
                         </div>
                         <div className="wind-profile-inputs">
                           <label>Speed (m/s)
-                            <input disabled={Boolean(loading)} type="number" min="0" max="200" step="any" placeholder="12" value={wind.speed} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, speed: e.target.value } : w)); setComparison([]) }} />
+                            <input disabled={Boolean(loading)} type="number" min="0" step="any" placeholder="12" value={wind.speed} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, speed: e.target.value } : w)); setComparison([]) }} />
                           </label>
                           <label>Wind FROM (°)
                             <input disabled={Boolean(loading)} type="number" min="0" max="359.999" step="any" placeholder="45" value={wind.from} onChange={e => { setManualWinds(manualWinds.map((w, i) => i === index ? { ...w, from: e.target.value } : w)); setComparison([]) }} />
