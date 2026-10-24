@@ -1,6 +1,6 @@
-"""Curate directional wind outcome scenarios for Taal 2020 simulation suite.
+"""Curate illustrative directional wind outcomes inspired by Taal.
 
-Reorders catalog scenarios so that Taal 2020 Regional Eruption is primary (1st),
+Reorders catalog scenarios so that the illustrative regional scenario is primary,
 followed by 6 directional wind outcome presets (North, South, East, West, Northeast, Northwest),
 retaining the illustrative baseline scenarios (Taal 5 km, Mayon, Kanlaon) at the end.
 """
@@ -21,8 +21,8 @@ def main() -> None:
 
     # 1. Update and prioritize taal-regional as 1st scenario
     taal_regional = existing_scenarios["taal-regional"]
-    taal_regional["name"] = "Taal 2020 regional eruption (12–13 Jan actual event)"
-    taal_regional["scenario"]["label"] = "Taal 2020 regional eruption (12–13 Jan actual event)"
+    taal_regional["name"] = "Taal-inspired regional illustrative scenario"
+    taal_regional["scenario"]["label"] = "Taal-inspired regional illustrative scenario"
 
     # Base parameters for directional outcomes (inherit from taal-regional source geometry)
     base_scenario = deepcopy(taal_regional["scenario"])

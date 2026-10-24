@@ -1,5 +1,27 @@
 # Input values and source policy
 
+## Current scenario and coverage notes — 24 October 2026
+
+The opening preset is **Taal-inspired regional illustrative scenario**, not an actual-event
+reconstruction. It assumes a 17 km above-model-ground column, 1.5 million kg/s for
+10 hours, density 1000 kg/m³ and a 20 km umbrella spread parameter. Neither the
+prescribed wind levels nor these physical inputs are certified historical measurements.
+The separate frozen Taal historical interval is 55,680 s, and its empirical evaluation
+remains unavailable. See [current branch equations and heuristic coefficients](COMPUTATION.md#current-branch-distinctions--24-october-2026).
+
+The three baseline teaching presets currently assume 250,000 kg/s for 14,400 s
+(3.6 billion kg), replacing the smaller earlier teaching values retained below as
+historical documentation. The Sources page displays the current selected inputs.
+Population year is selected separately and is not inferred from the scenario title.
+
+Municipal map overlays now join only explicit reviewed receptor IDs, matching source
+centroid coordinates within 0.00001 degrees and a unique normalized name. Unmatched
+Taal-domain boundaries retain their raw source names and unresolved province/region;
+no population or deposit is invented. Reviewed polygons outside that domain remain
+available for the other volcanoes. Province overlays are partial unions of reviewed
+municipal polygons, not complete regional administrative coverage. Family estimates
+and damage-like severity labels are not outputs of the model.
+
 The app runs with **illustrative teaching scenarios**. Their physical values are assumptions, not measured eruption or weather inputs. Source-reviewed geography does not upgrade physical assumptions to reviewed status.
 
 ## Added event and lava values

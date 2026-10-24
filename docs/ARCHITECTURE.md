@@ -1,5 +1,22 @@
 # ABO architecture and stack
 
+## Data interpretation remediation — 24 October 2026
+
+`scenarioSemantics.ts` describes the active profile and weighting; `ScenarioEvidence.tsx`
+shows actual scenario inputs and backend assumptions. Sources uses catalog records,
+not a second hard-coded bibliography. Selected time snapshots, including Before/0 h,
+feed the map, scene HUD and dashboard. Eventual exports remain separate.
+`curate_expanded_visualization.py` permits numeric municipal joins only through a
+unique reviewed source centroid/name match with the actual receptor ID. Unmatched
+boundaries remain unresolved and are excluded from population summaries. Browser-side
+approximate grid sampling and bare-name numeric joins were removed. Province geometry
+is an explicitly partial union of reviewed municipal polygons.
+
+Kernel/provenance versions 1.1 include constant endpoint wind below the first supplied
+profile level, active-branch weighting descriptions and the uncalibrated umbrella
+coefficients. See `COMPUTATION.md` for equations and `QA_REMEDIATION_PLAN_20261024.md`
+for the acceptance checklist. Archived descriptions below may describe earlier defaults.
+
 ## Eruption extension, 2026-10-10
 
 `eruption.py` adds `POST /api/eruption-sequences` using the same ash scenario and explicit illustration/lava options. Python produces finite-emission deposition frames, diagnostic mass accounting, native contours, receptor values, cloud parcels, fountain coordinates and optional raw-DEM lava coordinates/arrival times/actual-width footprints. The eventual `kernel.py` solver is unchanged. The sequence response has its own solver version; generated types and runtime validation cover the new boundary. Single-computation admission and a pre-allocation 512 MiB estimate still apply.

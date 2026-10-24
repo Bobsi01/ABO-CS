@@ -10,7 +10,9 @@ def text(value):
     if value is None:
         return "Unavailable"
     if isinstance(value, list):
-        return ", ".join(str(v) for v in value)
+        return ", ".join(text(v) for v in value)
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
     return str(value).replace("|", "\\|").replace("\n", " ")
 
 
@@ -30,6 +32,11 @@ def main():
         "not empirical validation. A missing measured value is a required measurement "
         "category with no accepted value. **Illustrative** values are assumptions or "
         "engineering choices. No parameter is currently calibrated.",
+        "",
+        "This frozen evidence register includes earlier teaching assumptions; its numeric "
+        "entries are not the current defaults for every scenario. Active presets live in "
+        "`data/catalog.json` under `scenarios`, and Sources shows the selected inputs and "
+        "completed-run assumptions. See INPUT_VALUES.md for the current preset distinction.",
         "",
         "Frozen retrospective case: 12 January 2020 13:00 to 13 January 04:28 local (UTC+8), "
         "55,680 s. The numerical solver is available; historical agreement is not established. "

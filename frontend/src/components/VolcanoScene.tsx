@@ -5,8 +5,9 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import type { EruptionSequence, Scenario, SimulationResult, Trajectory } from '../api/simulator'
-import { calculateFamiliesAffected, depositColor, download, number } from '../presentation'
+import { depositColor, download, number } from '../presentation'
 import Legend from './Legend'
+import { activeWindLabel } from '../scenarioSemantics'
 import Icon from './Icon'
 import SpatialDetails from './SpatialDetails'
 import { pathPosition, replayDuration, REPLAY_DISPLAY_SECONDS } from './settlingReplay'
@@ -1578,11 +1579,11 @@ export default function VolcanoScene({
   const frameResult = useMemo(() => {
 
     if (!result) return null
-    if (!sequenceFrame || (sequenceFrame.phase === 'before' && !sequencePlaying)) return result
+    if (!sequenceFrame) return result
 
     return { ...result, grid: sequenceFrame.grid, receptors: sequenceFrame.receptors }
 
-  }, [result, sequenceFrame, sequencePlaying])
+  }, [result, sequenceFrame])
   const columnTopM = framePair
     ? framePair.current.column_top_m +
       (framePair.next.column_top_m - framePair.current.column_top_m) * framePair.blend
@@ -1620,14 +1621,14 @@ export default function VolcanoScene({
 
   const realTimeStats = useMemo(() => {
 
-    const active = exposedReceptors.length > 0 ? exposedReceptors : traceReceptors
+    const active = exposedReceptors
     const isTraceOnly = exposedReceptors.length === 0 && traceReceptors.length > 0
     const count = active.length
     const reportedCount = exposedReceptors.length
     const traceCount = traceReceptors.length
     const totalInDomain = inDomainReceptors.length
     const pop = active.reduce((sum, r) => sum + (r.population ?? 0), 0)
-    const families = calculateFamiliesAffected(pop)
+    const unknownPopulationCount = active.filter((r) => r.population == null).length
     let peakName = ''
     let peakMm = 0
 
@@ -1647,7 +1648,7 @@ export default function VolcanoScene({
       isTraceOnly,
       totalInDomain,
       pop,
-      families,
+      unknownPopulationCount,
       peakName,
       peakMm,
     }
@@ -1774,17 +1775,13 @@ export default function VolcanoScene({
               Ash thickness:{' '}
               {selectedReceptor.thickness_mm != null
                 ? `${number(selectedReceptor.thickness_mm, 2)} mm`
-                : 'Undetected (<0.5 mm)'}
+                : 'Unknown / outside modeled coverage'}
             </span>
             {selectedReceptor.population != null ? (
               <>
                 <span>
                   Population ({selectedReceptor.population_year ?? 2020}):{' '}
                   {number(selectedReceptor.population, 0)}
-                </span>
-                <span>
-                  Est. families: {number(calculateFamiliesAffected(selectedReceptor.population), 0)}{' '}
-                  (PSA 4.1/family)
                 </span>
               </>
             ) : (
@@ -1966,7 +1963,7 @@ export default function VolcanoScene({
         <div className="scene-caption">
           <span>
             <Icon name="wind" />
-            Wind FROM {number(scenario.wind_from_deg, 0)}° · {number(scenario.wind_speed_m_s)} m/s
+            {activeWindLabel(scenario)}
           </span>
           <span>
             {sequenceFrame
@@ -2050,28 +2047,18 @@ export default function VolcanoScene({
           <div
             className="scene-impact-hud sidebar-exposure-tally"
             role="status"
-            aria-label="Real-time municipal exposure and affected families"
+            aria-label="Snapshot municipal exposure and indicative population"
           >
             <div className="impact-hud-title">
-              <strong>Real-Time Exposure Tally</strong>
-              {sequenceFrame && (
-                <span className="impact-hud-phase">
-                  {sequenceFrame.phase === 'before' && !sequencePlaying
-                    ? 'EVENTUAL'
-                    : sequenceFrame.phase}
-                </span>
-              )}
+              <strong>Snapshot exposure tally</strong>
+              {sequenceFrame && <span className="impact-hud-phase">{sequenceFrame.phase}</span>}
             </div>
             <div className="impact-hud-grid">
               <div className="impact-stat">
                 <span className="impact-label">Municipalities reached</span>
                 <span className="impact-value">
                   {number(realTimeStats.count, 0)}
-                  <small>
-                    {' '}
-                    / {number(realTimeStats.totalInDomain, 0)}
-                    {realTimeStats.isTraceOnly ? ' (trace ≥0.01 mm)' : ''}
-                  </small>
+                  <small> / {number(realTimeStats.totalInDomain, 0)}</small>
                 </span>
               </div>
               <div className="impact-stat">
@@ -2086,16 +2073,20 @@ export default function VolcanoScene({
                 <span className="impact-value">{number(realTimeStats.pop, 0)}</span>
               </div>
               <div className="impact-stat highlight-stat">
-                <span className="impact-label">Est. families affected</span>
-                <span className="impact-value">{number(realTimeStats.families, 0)}</span>
+                <span className="impact-label">Unknown population records</span>
+                <span className="impact-value">
+                  {number(realTimeStats.unknownPopulationCount, 0)}
+                </span>
               </div>
             </div>
             <p className="impact-disclaimer">
               {realTimeStats.isTraceOnly
                 ? `0 ≥0.5 mm reporting cutoff; showing ${realTimeStats.traceCount} trace (≥0.01 mm). `
                 : ''}
-              PSA 2020 CPH · 4.1 persons/family (Region IV-A). Centroid screening, not evacuation
-              tally.
+              Whole municipal populations at centroids ≥0.5 mm; not people within an ash polygon.
+              Census year:{' '}
+              {inDomainReceptors.find((r) => r.population_year)?.population_year ?? 'unknown'}.
+              Missing populations remain unknown.
             </p>
           </div>
         )}
@@ -2367,7 +2358,7 @@ export default function VolcanoScene({
                   checked={showPopulation3D}
                   onChange={(event) => setShowPopulation3D(event.target.checked)}
                 />
-                <span>Show 3D population columns & affected families</span>
+                <span>Show 3D population columns & centroid exposure</span>
               </label>
               {showPopulation3D && frameResult && inDomainReceptors.length > 0 && (
                 <div className="population-accessible-select">
@@ -2402,9 +2393,9 @@ export default function VolcanoScene({
             {showPopulation3D && (
               <p className="view-note">
                 Extruded 3D columns show municipal population and dynamic ash arrival. Column colors
-                indicate deposit intensity (Amber: ≥0.5 mm, Red: ≥5 mm). Families estimated via PSA
-                2020 Region IV-A average of 4.1 persons/household. Centroid screening sample, not an
-                evacuation tally.
+                indicate deposit thickness (Amber: ≥0.5 mm, Red: ≥5 mm). Population reference years
+                remain attached to each record; no household or family estimate is inferred.
+                Centroid screening sample, not an evacuation tally.
               </p>
             )}
             {showSeismicity && scenario.volcano_id === 'taal' && (

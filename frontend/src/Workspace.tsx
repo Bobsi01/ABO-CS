@@ -22,6 +22,8 @@ import EruptionTimeline from './components/EruptionTimeline'
 import ProvincialExposureExplorer from './components/ProvincialExposureExplorer'
 import { ERUPTION_SOURCES } from './components/eruptionResearch'
 import Dashboard from './components/Dashboard'
+import ScenarioEvidence from './components/ScenarioEvidence'
+import { releaseWeightLabel } from './scenarioSemantics'
 
 const VolcanoScene = lazy(() => import('./components/VolcanoScene'))
 const GeographicMap = lazy(() => import('./components/GeographicMap'))
@@ -368,16 +370,16 @@ export default function Workspace() {
       draft.wind_profile?.length &&
       Number.isFinite(nextValue) &&
       Number.isFinite(draft.wind_speed_m_s) &&
-      draft.wind_speed_m_s > 0
+      draft.wind_speed_m_s >= 0
     ) {
-      const ratio = Number(nextValue) / draft.wind_speed_m_s
+      const ratio = draft.wind_speed_m_s > 0 ? Number(nextValue) / draft.wind_speed_m_s : null
 
       change({
         ...draft,
         wind_speed_m_s: Number(nextValue),
         wind_profile: draft.wind_profile.map((level) => ({
           ...level,
-          speed_m_s: Math.max(0, level.speed_m_s * ratio),
+          speed_m_s: ratio === null ? Number(nextValue) : Math.max(0, level.speed_m_s * ratio),
         })),
       })
 
@@ -655,7 +657,13 @@ export default function Workspace() {
         .map((field) => (
           <label key={field.key}>
             <span className="field-label-text">
-              <span className="field-name">{field.name}</span>{' '}
+              <span className="field-name">
+                {draft?.wind_profile?.length && field.key === 'wind_from_deg'
+                  ? 'Profile rotation reference'
+                  : draft?.wind_profile?.length && field.key === 'wind_speed_m_s'
+                    ? 'Profile speed reference'
+                    : field.name}
+              </span>{' '}
               <span className="field-unit">{field.unit}</span>
             </span>
             <input
@@ -1059,6 +1067,11 @@ export default function Workspace() {
                 </details>
                 <details>
                   <summary>Vertical wind profile (opt-in extension)</summary>
+                  <p className="view-note">
+                    When enabled, the active wind comes from these levels. Profile rotation and
+                    speed references rotate or scale every level; they are not a uniform operative
+                    wind.
+                  </p>
                   <p className="view-note">
                     Optional height-dependent wind levels. Linearly interpolated across column
                     release heights. When disabled, uniform wind is used.
@@ -1566,7 +1579,7 @@ export default function Workspace() {
                             scenario={displayedScenario}
                             result={result}
                             eruptionSequence={activeSequence}
-                            frame={sequencePlaying || frameIndex > 0 ? frame : null}
+                            frame={frame}
                             selected={selected}
                             onSelect={setSelected}
                           />
@@ -1585,7 +1598,7 @@ export default function Workspace() {
                         embedded
                         presetOverride={activePresetId}
                         openDialogCount={rawDataOpenCount}
-                        frame={sequencePlaying || frameIndex > 0 ? frame : null}
+                        frame={frame}
                         onPresetCalculated={(computed, seq) => {
 
                           completedReporting.current.set(computed, {
@@ -2412,7 +2425,7 @@ export default function Workspace() {
                   <div className="scientific-card-header">
                     <h2 id="formulation-title">Mathematical Formulation & Computational Kernel</h2>
                     <span className="scientific-kernel-badge">
-                      Solver: Suzuki-Gaussian advection-diffusion kernel
+                      Solver: Gaussian deposition with optional teaching extensions
                     </span>
                   </div>
 
@@ -2428,7 +2441,7 @@ export default function Workspace() {
                       <div className="formula-display">M_T = ṁ × Δt [kg]</div>
                       <p className="formula-stage-note">
                         Mass is apportioned across grain fractions f_k (∑ f_k = 1) and release
-                        layers with Suzuki vertical weighting.
+                        layers using the active scenario's weighting, disclosed below.
                       </p>
                     </div>
 
@@ -2442,15 +2455,20 @@ export default function Workspace() {
                       </p>
                       <div className="formula-display">T(x,y) = [L(x,y) / ρ_bulk] × 1000 [mm]</div>
                       <p className="formula-stage-note">
-                        Model uses bulk tephra density ρ_bulk = 1000 kg/m³ and horizontal diffusion
-                        coefficient K = 1000 m²/s.
+                        Bulk deposit density and horizontal diffusivity are editable scenario
+                        inputs, shown below with their units.
                       </p>
                     </div>
                   </div>
 
                   <ol className="computation-steps">
                     <li>Multiply modeled ash rate by duration to obtain total ash mass.</li>
-                    <li>Split mass across grain fractions and equally weighted release heights.</li>
+                    <li>
+                      {displayedScenario
+                        ? releaseWeightLabel(displayedScenario)
+                        : 'Split mass across grain fractions and prescribed release heights'}
+                      .
+                    </li>
                     <li>
                       Divide release height by settling speed to obtain falling time; wind moves
                       each Gaussian center during that time.
@@ -2475,6 +2493,10 @@ export default function Workspace() {
                   </p>
                 </section>
 
+                {displayedScenario && (
+                  <ScenarioEvidence scenario={displayedScenario} provenance={result?.provenance} />
+                )}
+
                 {/* Technical Documentation Hub */}
                 <div className="docs-hub-grid">
                   <a
@@ -2488,7 +2510,7 @@ export default function Workspace() {
                       Computation Documentation
                     </span>
                     <span className="doc-hub-desc">
-                      Numerical Gaussian dispersion, Suzuki release weighting, and coordinate
+                      Numerical Gaussian dispersion, release assumptions, and coordinate
                       transformations.
                     </span>
                   </a>
@@ -2543,127 +2565,15 @@ export default function Workspace() {
                     <div className="scientific-card-header">
                       <h3 id="sources-title">Curated Literature Provenance & Data Registry</h3>
                       <span className="scientific-kernel-badge">
-                        All values local; zero synthetic placeholders
+                        Local sources and explicitly assumed teaching inputs
                       </span>
                     </div>
 
-                    <div className="citation-list">
-                      <div className="citation-entry-card">
-                        <div className="citation-top-row">
-                          <div>
-                            <p className="citation-author">
-                              Balangue-Tarriela, M. L., et al. (2022)
-                            </p>
-                            <a
-                              href="https://doi.org/10.1007/s00445-022-01552-3"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="citation-title-link"
-                            >
-                              "Analysis of the 2020 Taal Eruption Tephra Fallout: Column Dynamics,
-                              Grain Size Distribution, and Dispersal Modeling."
-                            </a>
-                            <p className="citation-meta">
-                              Bulletin of Volcanology, 84(5), 45 · DOI: 10.1007/s00445-022-01552-3
-                            </p>
-                          </div>
-                          <span className="authority-badge badge-peer-reviewed">
-                            Peer-Reviewed Paper
-                          </span>
-                        </div>
-                        <div className="citation-usage-box">
-                          <strong>Model Usage:</strong> Literature basis for Taal regional teaching
-                          scenario: 17 km column height, 1.5×10⁶ kg/s mass rate, 10-hour duration,
-                          and 5-class grain size distribution.
-                        </div>
-                      </div>
-
-                      <div className="citation-entry-card">
-                        <div className="citation-top-row">
-                          <div>
-                            <p className="citation-author">DOST-PHIVOLCS (2020)</p>
-                            <a
-                              href="https://www.phivolcs.dost.gov.ph/"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="citation-title-link"
-                            >
-                              "Taal Volcano Eruption Bulletins and Isopach Field Measurements: 12–15
-                              January 2020 Phreatomagmatic Phase."
-                            </a>
-                            <p className="citation-meta">
-                              Department of Science and Technology · Philippine Institute of
-                              Volcanology and Seismology
-                            </p>
-                          </div>
-                          <span className="authority-badge badge-official-agency">
-                            Official Agency Data
-                          </span>
-                        </div>
-                        <div className="citation-usage-box">
-                          <strong>Model Usage:</strong> Field isopach ground-truth contours (100 mm,
-                          50 mm, 10 mm, 0.5 mm) for spatial residual auditing.
-                        </div>
-                      </div>
-
-                      <div className="citation-entry-card">
-                        <div className="citation-top-row">
-                          <div>
-                            <p className="citation-author">
-                              USGS / Global Volcanism Program (Smithsonian)
-                            </p>
-                            <a
-                              href="https://volcano.si.edu/volcano.cfm?vn=273070"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="citation-title-link"
-                            >
-                              "Taal Volcano (Volcano #273070) Bulletin Archive, FDSN Subsurface
-                              Hypocenter Catalog."
-                            </a>
-                            <p className="citation-meta">
-                              Smithsonian Institution Global Volcanism Program · USGS Earthquake
-                              Hazards Program
-                            </p>
-                          </div>
-                          <span className="authority-badge badge-institutional">
-                            Institutional Catalog
-                          </span>
-                        </div>
-                        <div className="citation-usage-box">
-                          <strong>Model Usage:</strong> Verified crater coordinates, elevation datum
-                          (SRTM 30 m), and 2021–2024 regional seismic hypocenter depths.
-                        </div>
-                      </div>
-
-                      <div className="citation-entry-card">
-                        <div className="citation-top-row">
-                          <div>
-                            <p className="citation-author">geoBoundaries / NAMRIA / PSA (2020)</p>
-                            <a
-                              href="https://www.geoboundaries.org/"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="citation-title-link"
-                            >
-                              "Philippines Municipal Boundaries (gbOpen ADM3) and 2020 Census of
-                              Population."
-                            </a>
-                            <p className="citation-meta">
-                              Open Geospatial Data · Philippine Statistics Authority
-                            </p>
-                          </div>
-                          <span className="authority-badge badge-open-dataset">
-                            Open Geospatial Dataset
-                          </span>
-                        </div>
-                        <div className="citation-usage-box">
-                          <strong>Model Usage:</strong> Standard administrative municipal
-                          boundaries, EPSG:6933 centroid calculation, and indicative residential
-                          population baseline.
-                        </div>
-                      </div>
-                    </div>
+                    <p className="view-note">
+                      The complete catalog registry below is the source authority. Measured,
+                      derived, assumed and source-blocked parameters remain distinct in the
+                      parameter evidence register. A source citation does not validate a preset.
+                    </p>
 
                     <details className="evidence-accordion">
                       <summary>

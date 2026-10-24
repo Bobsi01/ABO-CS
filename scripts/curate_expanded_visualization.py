@@ -85,6 +85,11 @@ def norm(n: str) -> str:
 def main():
     catalog_path = ROOT / "data/catalog.json"
     catalog_dict = json.loads(catalog_path.read_text(encoding="utf-8-sig"))
+    catalog_dict["revision"] = "2026-10-24-realism-disclosure-v3"
+    for preset in catalog_dict["scenarios"]:
+        if preset["id"] == "taal-regional":
+            preset["name"] = "Taal-inspired regional illustrative scenario"
+            preset["scenario"]["label"] = preset["name"]
 
     raw_boundaries = json.loads(
         (ROOT / "data/source/municipal-boundaries.geojson").read_text(encoding="utf-8")
@@ -110,19 +115,18 @@ def main():
         ):
             r["name"] = f"{r['name']}, {prov}"
 
-    # Receptors list stays exactly 318 municipalities + 2 airports to maintain
-    # the frozen 2020/2024 census audit gates in test_gap_evidence.py
+    # Geographic context never invents population records for unmatched boundaries.
 
     # 2. Add regional scenario preset `taal-regional` if not present
     scenarios = catalog_dict["scenarios"]
     if not any(s["id"] == "taal-regional" for s in scenarios):
         taal_regional = {
             "id": "taal-regional",
-            "name": "Taal regional dispersion scenario (literature scale)",
+            "name": "Taal-inspired regional illustrative scenario",
             "status": "illustrative",
             "scenario": {
                 "volcano_id": "taal",
-                "label": "Taal regional dispersion scenario (literature scale)",
+                "label": "Taal-inspired regional illustrative scenario",
                 "input_status": "illustrative",
                 "source_ids": ["gvp-taal", "taal-study", "assumptions"],
                 "vent_lat": 14.0106,
@@ -191,179 +195,14 @@ def main():
         if r.get("kind") == "municipality":
             receptors_by_norm.setdefault(norm(r["name"].split(",")[0]), []).append(r)
 
-    def resolve_feature(raw_name: str, lat: float, lon: float) -> tuple[str, str, str] | None:
-        k = norm(raw_name)
-        candidates = receptors_by_norm.get(k, [])
-        if len(candidates) == 1:
-            c = candidates[0]
-            dist_sq = (c["lat"] - lat) ** 2 + (c["lon"] - lon) ** 2
-            if dist_sq < 0.15:
-                return c["name"], c["province"], c["region"]
-        elif len(candidates) > 1:
-            closest = min(candidates, key=lambda c: (c["lat"] - lat) ** 2 + (c["lon"] - lon) ** 2)
-            dist_sq = (closest["lat"] - lat) ** 2 + (closest["lon"] - lon) ** 2
-            if dist_sq < 0.15:
-                return closest["name"], closest["province"], closest["region"]
-
-        # Manila districts
-        if k in (
-            "binondo",
-            "ermita",
-            "intramuros",
-            "malate",
-            "paco",
-            "pandacan",
-            "portarea",
-            "quiapo",
-            "sampaloc",
-            "santaana",
-            "sanmiguel",
-            "tondoi",
-            "tondo",
-            "sannicolas",
-        ) and (14.55 < lat < 14.65 and 120.94 < lon < 121.02):
-            return f"City of Manila ({raw_name})", "Metro Manila (NCR)", "National Capital Region"
-        if k == "quezon" and lat > 14.5 and lon < 121.15:
-            return "Quezon City", "Metro Manila (NCR)", "National Capital Region"
-        if (k == "sanjuan" or k == "cityofsanjuan") and (lat > 14.55 and lon < 121.08):
-            return "San Juan City", "Metro Manila (NCR)", "National Capital Region"
-        if k == "pateros":
-            return "Pateros", "Metro Manila (NCR)", "National Capital Region"
-
-        # Laguna
-        if k == "calamba":
-            return "City of Calamba, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "santarosa" and lat < 14.4:
-            return "City of Santa Rosa, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "sanpablo":
-            return "San Pablo City, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "alaminos" and lat < 14.2:
-            return "Alaminos, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "victoria" and lat < 14.3:
-            return "Victoria, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "kalayaan" and lat < 14.4:
-            return "Kalayaan, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "rizal" and lat < 14.2:
-            return "Rizal, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "santacruz" and (14.2 < lat < 14.35 and lon > 121.3):
-            return "Santa Cruz, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-        if k == "santamaria" and (14.45 < lat < 14.55 and lon > 121.35):
-            return "Santa Maria, Laguna", "Laguna", "Region IV-A (CALABARZON)"
-
-        # Pampanga
-        if k in (
-            "sanfernando",
-            "angeles",
-            "guagua",
-            "lubao",
-            "floridablanca",
-            "macabebe",
-            "masantol",
-            "mexico",
-            "minalin",
-            "apalit",
-            "bacolor",
-            "porac",
-            "santarita",
-            "santotomas",
-            "sansimon",
-            "arayat",
-            "candaba",
-            "mabalacat",
-            "magalang",
-            "sanluis",
-        ) and (lat > 14.80 and lon < 120.90):
-            return f"{raw_name}, Pampanga", "Pampanga", "Region III (Central Luzon)"
-
-        # Bulacan
-        if k in (
-            "baliuag",
-            "hagonoy",
-            "plaridel",
-            "santamaria",
-            "sanildefonso",
-            "sanmiguel",
-            "sanrafael",
-        ) and (14.7 < lat < 15.2 and lon > 120.7):
-            return f"{raw_name}, Bulacan", "Bulacan", "Region III (Central Luzon)"
-
-        # Rizal
-        if k in ("baras", "morong", "sanmateo", "taytay") and (14.45 < lat < 14.75 and lon > 121.1):
-            return f"{raw_name}, Rizal", "Rizal", "Region IV-A (CALABARZON)"
-
-        # Bataan
-        if k == "pilar" and lon < 120.6:
-            return "Pilar, Bataan", "Bataan", "Region III (Central Luzon)"
-        if k == "morong" and lon < 120.35:
-            return "Morong, Bataan", "Bataan", "Region III (Central Luzon)"
-
-        # Tarlac
-        if k in ("bamban", "capas", "concepcion") and (lat > 15.2 and lon < 120.75):
-            return f"{raw_name}, Tarlac", "Tarlac", "Region III (Central Luzon)"
-
-        # Nueva Ecija
-        if k in ("cabiao", "gapan", "generaltinio", "sanisidro", "sanleonardo", "sanantonio") and (
-            lat > 15.2 and lon > 120.75
-        ):
-            return f"{raw_name}, Nueva Ecija", "Nueva Ecija", "Region III (Central Luzon)"
-
-        # Zambales
-        if (
-            k in ("botolan", "cabangan", "sanfelipe", "sanmarcelino", "sannarciso", "sanantonio")
-            and lon < 120.35
-        ):
-            return f"{raw_name}, Zambales", "Zambales", "Region III (Central Luzon)"
-
-        # Quezon
-        if (
-            k
-            in (
-                "candelaria",
-                "dolores",
-                "infanta",
-                "padreburgos",
-                "buenavista",
-                "alabat",
-                "calauag",
-                "catanauan",
-                "generalluna",
-                "gumaca",
-                "lopez",
-                "macalelon",
-                "patnanungan",
-                "pitogo",
-                "unisan",
-                "jomalig",
-                "quezon",
-                "plaridel",
-            )
-            and lon > 121.2
-        ):
-            return f"{raw_name}, Quezon", "Quezon", "Region IV-A (CALABARZON)"
-        if k == "sanantonio" and (13.85 < lat < 14.05 and lon > 121.25):
-            return "San Antonio, Quezon", "Quezon", "Region IV-A (CALABARZON)"
-
-        # Mindoro / Marinduque / Romblon
-        if k in ("bansud", "bongabong", "gloria", "socorro") and (lat < 13.2 and lon > 121.1):
-            return f"{raw_name}, Oriental Mindoro", "Oriental Mindoro", "MIMAROPA"
-        if k == "torrijos":
-            return "Torrijos, Marinduque", "Marinduque", "MIMAROPA"
-        if k == "santacruz" and (lat < 13.55 and lon > 121.8):
-            return "Santa Cruz, Marinduque", "Marinduque", "MIMAROPA"
-        if k == "santacruz" and (lat < 13.2 and lon < 120.95):
-            return "Santa Cruz, Occidental Mindoro", "Occidental Mindoro", "MIMAROPA"
-        if k == "concepcion" and (lat < 13.0 and lon > 121.6):
-            return "Concepcion, Romblon", "Romblon", "MIMAROPA"
-        if k in ("banton", "corcuera") and lat < 13.0:
-            return f"{raw_name}, Romblon", "Romblon", "MIMAROPA"
-        if k == "looc" and (lat < 13.8 and lon < 120.4):
-            return "Looc, Occidental Mindoro", "Occidental Mindoro", "MIMAROPA"
-        if k == "dingalan":
-            return "Dingalan, Aurora", "Aurora", "Region III (Central Luzon)"
-        if k == "santaelena":
-            return "Santa Elena, Camarines Norte", "Camarines Norte", "Region V (Bicol Region)"
-
-        return None
+    def resolve_feature(raw_name: str, lat: float, lon: float) -> dict | None:
+        # Match the reviewed source centroid, not merely a repeated municipality name.
+        candidates = [
+            r
+            for r in receptors_by_norm.get(norm(raw_name), [])
+            if abs(r["lat"] - lat) <= 0.00001 and abs(r["lon"] - lon) <= 0.00001
+        ]
+        return candidates[0] if len(candidates) == 1 else None
 
     for feat in raw_boundaries:
         prop = feat["properties"]
@@ -382,9 +221,9 @@ def main():
             continue
 
         if resolved:
-            muni_name, prov, reg = resolved
+            muni_name, prov, reg = resolved["name"], resolved["province"], resolved["region"]
         else:
-            muni_name, prov, reg = raw_name, "Other", "Other"
+            muni_name, prov, reg = raw_name, "Unresolved province", "Unresolved region"
 
         geom = shapely.geometry.shape(feat["geometry"])
         simplified = geom.simplify(0.002, preserve_topology=True)
@@ -396,7 +235,8 @@ def main():
             "properties": {
                 "shapeID": shape_id,
                 "name": muni_name,
-                "receptor_id": shape_id,
+                "receptor_id": resolved["id"] if resolved else None,
+                "coverage_status": "reviewed receptor" if resolved else "no reviewed receptor",
                 "province": prov,
                 "region": reg,
                 "center_lat": round(lat, 5),
@@ -405,7 +245,7 @@ def main():
             "geometry": shapely.geometry.mapping(simplified),
         }
         muni_features.append(feature_entry)
-        if prov not in ("Other", "Unknown"):
+        if resolved and prov not in ("Other", "Unknown"):
             prov_geometries.setdefault(prov, []).append(simplified)
 
     muni_geojson = {"type": "FeatureCollection", "features": muni_features}
@@ -429,6 +269,7 @@ def main():
                     "type": "Feature",
                     "properties": {
                         "province": prov_name,
+                        "coverage_status": "partial union of reviewed receptor polygons",
                         "center_lon": round(prov_simple.centroid.x, 5),
                         "center_lat": round(prov_simple.centroid.y, 5),
                     },

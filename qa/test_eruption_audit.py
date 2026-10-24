@@ -283,7 +283,7 @@ def test_api_sequence_contract_and_final_state():
     response = client.post("/api/eruption-sequences", json=payload())
     assert response.status_code == 200, response.text
     result = response.json()
-    assert result["solver_version"] == "abo-finite-pulse-1.0"
+    assert result["solver_version"] == "abo-finite-pulse-1.1"
     assert result["frames"][0]["phase"] == "before"
     assert result["frames"][-1]["phase"] == "after"
     assert any("not CFD" in warning for warning in result["warnings"])

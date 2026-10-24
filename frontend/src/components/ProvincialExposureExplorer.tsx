@@ -1,6 +1,6 @@
 import { memo, useMemo, useState } from 'react'
 import type { ReceptorResult } from '../api/simulator'
-import { calculateFamiliesAffected, depositColor, number } from '../presentation'
+import { depositColor, number } from '../presentation'
 import Icon from './Icon'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   reportingCutoffMm?: number
 }
 
-function severityBadge(mm: number | null | undefined): {
+function depositBand(mm: number | null | undefined): {
   label: string
   color: string
   bg: string
@@ -18,12 +18,12 @@ function severityBadge(mm: number | null | undefined): {
 
   const val = mm ?? 0
 
-  if (val >= 10) return { label: 'Heavy (≥10 mm)', color: '#7f1d1d', bg: '#fee2e2' }
-  if (val >= 1) return { label: 'Moderate (1–10 mm)', color: '#9a3412', bg: '#ffedd5' }
-  if (val >= 0.5) return { label: 'Light (0.5–1 mm)', color: '#854d0e', bg: '#fef9c3' }
-  if (val >= 0.01) return { label: 'Trace (0.01–0.5 mm)', color: '#713f12', bg: '#fef08a' }
+  if (val >= 10) return { label: '≥10 mm', color: '#7f1d1d', bg: '#fee2e2' }
+  if (val >= 1) return { label: '1–<10 mm', color: '#9a3412', bg: '#ffedd5' }
+  if (val >= 0.5) return { label: '0.5–<1 mm', color: '#854d0e', bg: '#fef9c3' }
+  if (val >= 0.01) return { label: 'Trace (0.01–<0.5 mm)', color: '#713f12', bg: '#fef08a' }
 
-  return { label: 'None (<0.01 mm)', color: '#475569', bg: '#f1f5f9' }
+  return { label: 'Below trace (<0.01 mm)', color: '#475569', bg: '#f1f5f9' }
 
 }
 
@@ -52,7 +52,7 @@ function ProvincialExposureExplorer({
         peakMm: number
         peakName: string
         totalPop: number
-        totalFamilies: number
+        unknownPopulationCount: number
       }
     > = {}
 
@@ -70,7 +70,7 @@ function ProvincialExposureExplorer({
           peakMm: 0,
           peakName: '',
           totalPop: 0,
-          totalFamilies: 0,
+          unknownPopulationCount: 0,
         }
       }
 
@@ -81,10 +81,8 @@ function ProvincialExposureExplorer({
         g.peakMm = mm
         g.peakName = r.name.split(',')[0]
       }
-      if (r.population) {
-        g.totalPop += r.population
-        g.totalFamilies += calculateFamiliesAffected(r.population)
-      }
+      if (r.population != null) g.totalPop += r.population
+      else g.unknownPopulationCount += 1
 
     })
 
@@ -110,13 +108,13 @@ function ProvincialExposureExplorer({
   }
 
   return (
-    <div className="provincial-explorer" aria-labelledby="provincial-explorer-title">
+    <div className="provincial-explorer" role="region" aria-labelledby="provincial-explorer-title">
       <div className="provincial-header">
         <div>
           <h3 id="provincial-explorer-title">Provincial & City Impact Breakdown</h3>
           <p className="view-note">
-            Regional footprint analysis showing which provinces and municipalities receive deposited
-            ash.
+            Eventual centroid deposit bands and indicative populations in the incomplete receptor
+            inventory. Bands are thickness ranges, not hazard or damage severity.
           </p>
         </div>
       </div>
@@ -155,7 +153,10 @@ function ProvincialExposureExplorer({
                     <span className="province-peak-stat">
                       Peak: <strong>{number(p.peakMm)} mm</strong> ({p.peakName})
                     </span>
-                    <span className="province-pop-stat">{number(p.totalFamilies, 0)} families</span>
+                    <span className="province-pop-stat">
+                      {number(p.totalPop, 0)} indicative residents · {p.unknownPopulationCount}{' '}
+                      unknown
+                    </span>
                   </div>
                 </button>
 
@@ -166,9 +167,9 @@ function ProvincialExposureExplorer({
                         <tr>
                           <th scope="col">City / Municipality</th>
                           <th scope="col">Modeled Ash</th>
-                          <th scope="col">Severity Tier</th>
+                          <th scope="col">Deposit band</th>
                           <th scope="col">Ground Load</th>
-                          <th scope="col">Population / Families</th>
+                          <th scope="col">Population / year</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -176,8 +177,7 @@ function ProvincialExposureExplorer({
                         {p.items.map((r) => {
 
                           const isSelected = r.id === selected
-                          const badge = severityBadge(r.thickness_mm)
-                          const families = calculateFamiliesAffected(r.population)
+                          const badge = depositBand(r.thickness_mm)
 
                           return (
                             <tr key={r.id} className={isSelected ? 'selected-city-row' : ''}>
@@ -205,11 +205,11 @@ function ProvincialExposureExplorer({
                               </td>
                               <td>{number(r.load_kg_m2)} kg/m²</td>
                               <td>
-                                {r.population ? (
+                                {r.population != null ? (
                                   <>
                                     <span>{number(r.population, 0)}</span>
                                     <small className="families-sub">
-                                      ({number(families, 0)} fam.)
+                                      ({r.population_year ?? 'Unknown year'})
                                     </small>
                                   </>
                                 ) : (

@@ -296,7 +296,7 @@ export interface components {
             provenance: components["schemas"]["Provenance"];
             /**
              * Solver Version
-             * @default abo-finite-pulse-1.0
+             * @default abo-finite-pulse-1.1
              */
             solver_version: string;
             /** Warnings */
@@ -643,7 +643,7 @@ export interface components {
         Provenance: {
             /**
              * Solver Version
-             * @default abo-gaussian-1.0
+             * @default abo-gaussian-1.1
              */
             solver_version: string;
             /** Dataset Revision */

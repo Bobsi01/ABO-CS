@@ -1,0 +1,3025 @@
+### Page
+- Page URL: http://127.0.0.1:8069/
+- Page Title: ABO · Eruption laboratory
+- Console: 0 errors, 2 warnings
+### Snapshot
+```yaml
+- generic [ref=e3]:
+  - link "Skip to results" [ref=e4] [cursor=pointer]:
+    - /url: "#workspace"
+  - generic [ref=e6] [cursor=pointer]: Menu
+  - banner [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - heading "ABO" [level=1] [ref=e14]
+          - text: Eruption laboratory
+        - button "Close navigation" [ref=e15] [cursor=pointer]
+      - navigation "Main navigation" [ref=e18]:
+        - button "Simulation" [ref=e19] [cursor=pointer]
+        - button "Analysis" [ref=e20] [cursor=pointer]
+        - button "Sources" [ref=e21] [cursor=pointer]
+      - generic [ref=e22]:
+        - group [ref=e23]:
+          - generic "Academic model · limits" [ref=e24] [cursor=pointer]:
+            - text: Academic model
+            - generic [ref=e27]: · limits
+        - generic [ref=e28]:
+          - generic [ref=e29]: Dark mode
+          - button "Dark theme" [ref=e30] [cursor=pointer]
+  - main [ref=e33]:
+    - complementary [ref=e3358]:
+      - group [ref=e3359]:
+        - generic [ref=e3360] [cursor=pointer]:
+          - generic [ref=e3361]: Simulation inputs
+          - button "Close parameters drawer" [ref=e3365]
+        - generic [ref=e3368]:
+          - generic [ref=e3369]:
+            - generic [ref=e3370]: Scenario
+            - combobox "Scenario Taal · custom inputs" [ref=e3516] [cursor=pointer]:
+              - generic [ref=e3372]: Taal · custom inputs
+          - paragraph [ref=e3375]: Illustrative inputs, not a historical eruption.
+          - paragraph [ref=e3376]: Scientific focus. The published 2020 contour is available for reference in Taal 2020; historical agreement is not established.
+          - generic [ref=e3377]:
+            - generic [ref=e3378]:
+              - generic [ref=e3379]:
+                - generic [ref=e3380]: Column height
+                - generic [ref=e3381]: (m)
+              - spinbutton "Column height (m)" [ref=e3382]: "17000"
+            - generic [ref=e3383]:
+              - generic [ref=e3384]:
+                - generic [ref=e3385]: Ash mass rate
+                - generic [ref=e3386]: (kg/s)
+              - spinbutton "Ash mass rate (kg/s)" [ref=e3387]: "1500000"
+            - generic [ref=e3388]:
+              - generic [ref=e3389]:
+                - generic [ref=e3390]: Duration
+                - generic [ref=e3391]: (s)
+              - spinbutton "Duration (s)" [ref=e3392]: "36000"
+            - generic [ref=e3393]:
+              - generic [ref=e3394]:
+                - generic [ref=e3395]: Profile speed reference
+                - generic [ref=e3396]: (m/s)
+              - spinbutton "Profile speed reference (m/s)" [ref=e3397]: "18"
+            - generic [ref=e3398]:
+              - generic [ref=e3399]:
+                - generic [ref=e3400]: Profile rotation reference
+                - generic [ref=e3401]: (° clockwise from N)
+              - spinbutton "Profile rotation reference (° clockwise from N)" [ref=e3402]: "205"
+          - group [ref=e3403]:
+            - generic "Eruption illustration & lava" [ref=e3404] [cursor=pointer]
+          - group [ref=e3405]:
+            - generic "Dispersion & density" [ref=e3406] [cursor=pointer]
+          - group [ref=e3407]:
+            - generic "Vertical wind profile (opt-in extension)" [ref=e3408] [cursor=pointer]
+            - paragraph [ref=e3420]: When enabled, the active wind comes from these levels. Profile rotation and speed references rotate or scale every level; they are not a uniform operative wind.
+            - paragraph [ref=e3421]: Optional height-dependent wind levels. Linearly interpolated across column release heights. When disabled, uniform wind is used.
+            - generic [ref=e3422] [cursor=pointer]:
+              - checkbox "Enable vertical wind profile" [checked] [ref=e3423]
+              - generic [ref=e3424]: Enable vertical wind profile
+            - generic [ref=e3425]:
+              - group "Profile level 1" [ref=e3426]:
+                - generic [ref=e3428]:
+                  - generic [ref=e3429]:
+                    - generic [ref=e3430]:
+                      - generic [ref=e3431]: Level height
+                      - generic [ref=e3432]: (m)
+                    - spinbutton "Level height (m)" [ref=e3433]: "0"
+                  - generic [ref=e3434]:
+                    - generic [ref=e3435]:
+                      - generic [ref=e3436]: Wind speed
+                      - generic [ref=e3437]: (m/s)
+                    - spinbutton "Wind speed (m/s)" [ref=e3438]: "18"
+                  - generic [ref=e3439]:
+                    - generic [ref=e3440]:
+                      - generic [ref=e3441]: Wind FROM
+                      - generic [ref=e3442]: (°)
+                    - spinbutton "Wind FROM (°)" [ref=e3443]: "65"
+              - group "Profile level 2" [ref=e3444]:
+                - generic [ref=e3446]:
+                  - generic [ref=e3447]:
+                    - generic [ref=e3448]:
+                      - generic [ref=e3449]: Level height
+                      - generic [ref=e3450]: (m)
+                    - spinbutton "Level height (m)" [ref=e3451]: "3000"
+                  - generic [ref=e3452]:
+                    - generic [ref=e3453]:
+                      - generic [ref=e3454]: Wind speed
+                      - generic [ref=e3455]: (m/s)
+                    - spinbutton "Wind speed (m/s)" [ref=e3456]: "18"
+                  - generic [ref=e3457]:
+                    - generic [ref=e3458]:
+                      - generic [ref=e3459]: Wind FROM
+                      - generic [ref=e3460]: (°)
+                    - spinbutton "Wind FROM (°)" [ref=e3461]: "90"
+              - group "Profile level 3" [ref=e3462]:
+                - generic [ref=e3464]:
+                  - generic [ref=e3465]:
+                    - generic [ref=e3466]:
+                      - generic [ref=e3467]: Level height
+                      - generic [ref=e3468]: (m)
+                    - spinbutton "Level height (m)" [ref=e3469]: "6000"
+                  - generic [ref=e3470]:
+                    - generic [ref=e3471]:
+                      - generic [ref=e3472]: Wind speed
+                      - generic [ref=e3473]: (m/s)
+                    - spinbutton "Wind speed (m/s)" [ref=e3474]: "18"
+                  - generic [ref=e3475]:
+                    - generic [ref=e3476]:
+                      - generic [ref=e3477]: Wind FROM
+                      - generic [ref=e3478]: (°)
+                    - spinbutton "Wind FROM (°)" [ref=e3479]: "145"
+              - group "Profile level 4" [ref=e3480]:
+                - generic [ref=e3482]:
+                  - generic [ref=e3483]:
+                    - generic [ref=e3484]:
+                      - generic [ref=e3485]: Level height
+                      - generic [ref=e3486]: (m)
+                    - spinbutton "Level height (m)" [ref=e3487]: "10000"
+                  - generic [ref=e3488]:
+                    - generic [ref=e3489]:
+                      - generic [ref=e3490]: Wind speed
+                      - generic [ref=e3491]: (m/s)
+                    - spinbutton "Wind speed (m/s)" [ref=e3492]: "18"
+                  - generic [ref=e3493]:
+                    - generic [ref=e3494]:
+                      - generic [ref=e3495]: Wind FROM
+                      - generic [ref=e3496]: (°)
+                    - spinbutton "Wind FROM (°)" [ref=e3497]: "195"
+              - group "Profile level 5" [ref=e3498]:
+                - generic [ref=e3500]:
+                  - generic [ref=e3501]:
+                    - generic [ref=e3502]:
+                      - generic [ref=e3503]: Level height
+                      - generic [ref=e3504]: (m)
+                    - spinbutton "Level height (m)" [ref=e3505]: "16600"
+                  - generic [ref=e3506]:
+                    - generic [ref=e3507]:
+                      - generic [ref=e3508]: Wind speed
+                      - generic [ref=e3509]: (m/s)
+                    - spinbutton "Wind speed (m/s)" [ref=e3510]: "18"
+                  - generic [ref=e3511]:
+                    - generic [ref=e3512]:
+                      - generic [ref=e3513]: Wind FROM
+                      - generic [ref=e3514]: (°)
+                    - spinbutton "Wind FROM (°)" [ref=e3515]: "215"
+          - group [ref=e3409]:
+            - generic "Population year" [active] [ref=e3410] [cursor=pointer]
+            - generic [ref=e3517]:
+              - generic [ref=e3518]: Population year
+              - combobox "Population year 2024 · current scenarios" [ref=e3519] [cursor=pointer]:
+                - generic [ref=e3520]: 2024 · current scenarios
+          - group [ref=e3411]:
+            - generic "Location & grid" [ref=e3412] [cursor=pointer]
+          - group [ref=e3413]:
+            - generic "Grain classes and release layers" [ref=e3414] [cursor=pointer]
+          - button "Run simulation" [ref=e3416] [cursor=pointer]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e37]:
+          - button "Open navigation menu" [ref=e38] [cursor=pointer]
+          - heading "Simulation" [level=2] [ref=e41]
+        - region "Eruption sequence" [ref=e61]:
+          - generic [ref=e62]:
+            - generic "Jump to eruption stage" [ref=e63]:
+              - button "Before" [ref=e64] [cursor=pointer]
+              - button "During" [pressed] [ref=e65] [cursor=pointer]
+              - button "After" [ref=e66] [cursor=pointer]
+            - button "Play sequence" [ref=e67] [cursor=pointer]
+          - generic [ref=e70]:
+            - generic [ref=e71]: 5.1 h / 103.4 h
+            - slider "Eruption timeline" [ref=e72] [cursor=pointer]: "13"
+        - generic [ref=e43]:
+          - generic [ref=e73]:
+            - generic [ref=e74]: Preset scenario
+            - combobox "Preset scenario" [ref=e75]:
+              - option "Taal-inspired regional illustrative scenario" [selected]
+              - 'option "Taal outcome: Wind blowing North (Southerly · 15 m/s)"'
+              - 'option "Taal outcome: Wind blowing South (Amihan / Northerly · 12 m/s)"'
+              - 'option "Taal outcome: Wind blowing East (Westerly · 12 m/s)"'
+              - 'option "Taal outcome: Wind blowing West (Easterly trade · 10 m/s)"'
+              - 'option "Taal outcome: Wind blowing Northeast (Habagat · 14 m/s)"'
+              - 'option "Taal outcome: Wind blowing Northwest (Southeasterly · 12 m/s)"'
+              - option "Taal illustrative teaching scenario (5 km column)"
+              - option "Mayon illustrative teaching scenario"
+              - option "Kanlaon illustrative teaching scenario"
+          - button "Edit parameters" [expanded] [ref=e44] [cursor=pointer]
+          - button "View raw data" [ref=e52] [cursor=pointer]
+      - paragraph [ref=e3523]: Parameters have changed. Views below retain the last completed simulation. Run again to update them.
+      - region "Simulation" [ref=e56]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - region [ref=e78]:
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - generic:
+                    - strong: Taal · Volcano Island
+                    - generic: Island relief ×6 · horizontal 1:1
+                    - generic: Fountain illustration ×4
+                  - generic [ref=e83]:
+                    - generic "Volcano illustration. Arrow keys rotate and raise the camera, plus and minus zoom. Drag to orbit." [ref=e84]
+                    - generic: Wind / ash transport
+                  - generic:
+                    - generic: Height-dependent wind · 5 levels
+                    - generic: Rising source column 17 km
+                - generic [ref=e85]:
+                  - heading "Eruption & terrain" [level=2] [ref=e86]
+                  - generic [ref=e88]:
+                    - generic [ref=e89]:
+                      - generic [ref=e90]: Camera view
+                      - combobox "Camera view Volcano close-up" [ref=e91] [cursor=pointer]:
+                        - generic [ref=e92]: Volcano close-up
+                    - button "Reset camera" [ref=e95] [cursor=pointer]
+                  - status "Snapshot municipal exposure and indicative population" [ref=e98]:
+                    - generic [ref=e99]:
+                      - strong [ref=e100]: Snapshot exposure tally
+                      - generic [ref=e101]: erupting
+                    - generic [ref=e102]:
+                      - generic [ref=e103]:
+                        - generic [ref=e104]: Municipalities reached
+                        - generic [ref=e105]:
+                          - text: "62"
+                          - generic [ref=e106]: / 162
+                      - generic [ref=e107]:
+                        - generic [ref=e108]: Peak centroid ash
+                        - generic [ref=e109]:
+                          - text: 9.274 mm
+                          - generic [ref=e2338]: · San Nicolas
+                      - generic [ref=e110]:
+                        - generic [ref=e111]: Indicative population
+                        - generic [ref=e112]: 17,249,141
+                      - generic [ref=e113]:
+                        - generic [ref=e114]: Unknown population records
+                        - generic [ref=e115]: "0"
+                    - paragraph [ref=e116]: "Whole municipal populations at centroids ≥0.5 mm; not people within an ash polygon. Census year: 2024. Missing populations remain unknown."
+                  - status [ref=e117]: Geographic terrain · ash uses flat model ground · qualitative ash / condensed-steam cloud.
+                  - generic [ref=e118]:
+                    - group [ref=e119]:
+                      - generic "Illustration guide" [ref=e120] [cursor=pointer]
+                      - option "Inspect municipality (keyboard accessible)…" [selected]
+                      - option "Agoncillo, Batangas · 6.97 mm · 40,662 pop"
+                      - option "Alitagtag, Batangas · 2.08 mm · 28,033 pop"
+                      - option "Balayan, Batangas · 0.21 mm · 96,939 pop"
+                      - option "Balete, Batangas · 5.14 mm · 24,202 pop"
+                      - option "Batangas, Batangas · 0.02 mm · 358,267 pop"
+                      - option "Bauan, Batangas · 0.35 mm · 94,016 pop"
+                      - option "Calaca, Batangas · 1.19 mm · 92,281 pop"
+                      - option "Calatagan, Batangas · 0.05 mm · 60,420 pop"
+                      - option "Cuenca, Batangas · 3.75 mm · 36,453 pop"
+                      - option "Ibaan, Batangas · 0.17 mm · 58,673 pop"
+                      - option "Laurel, Batangas · 5.67 mm · 44,791 pop"
+                      - option "Lemery, Batangas · 3.43 mm · 94,736 pop"
+                      - option "Lian, Batangas · 0.12 mm · 56,788 pop"
+                      - option "Lipa, Batangas · 0.85 mm · 387,392 pop"
+                      - option "Lobo, Batangas · 0.01 mm · 41,251 pop"
+                      - option "Mabini, Batangas · 0.04 mm · 49,876 pop"
+                      - option "Malvar, Batangas · 2.09 mm · 74,565 pop"
+                      - option "Mataasnakahoy, Batangas · 4.56 mm · 31,912 pop"
+                      - option "Nasugbu, Batangas · 0.31 mm · 141,063 pop"
+                      - option "Padre Garcia, Batangas · 0.09 mm · 53,526 pop"
+                      - option "Rosario, Batangas · 0.03 mm · 131,365 pop"
+                      - option "San Jose, Batangas · 1.46 mm · 81,170 pop"
+                      - option "San Juan, Batangas · 0.01 mm · 115,118 pop"
+                      - option "San Luis, Batangas · 0.8 mm · 36,841 pop"
+                      - option "San Nicolas, Batangas · 9.27 mm · 24,392 pop"
+                      - option "San Pascual, Batangas · 0.54 mm · 69,419 pop"
+                      - option "Santa Teresita, Batangas · 2.61 mm · 21,742 pop"
+                      - option "Santo Tomas, Batangas · 0.87 mm · 226,772 pop"
+                      - option "Taal, Batangas · 2.54 mm · 61,559 pop"
+                      - option "Talisay, Batangas · 7.06 mm · 46,477 pop"
+                      - option "Tanauan, Batangas · 3.36 mm · 209,697 pop"
+                      - option "Taysan, Batangas · 0.02 mm · 41,332 pop"
+                      - option "Tingloy, Batangas · 0.01 mm · 15,866 pop"
+                      - option "Tuy, Batangas · 0.33 mm · 47,199 pop"
+                      - option "Alfonso, Cavite · 1.24 mm · 60,583 pop"
+                      - option "Amadeo, Cavite · 1.66 mm · 44,190 pop"
+                      - option "General Emilio Aguinaldo, Cavite · 0.74 mm · 24,264 pop"
+                      - option "Indang, Cavite · 1.08 mm · 70,092 pop"
+                      - option "Kawit, Cavite · 1.05 mm · 123,631 pop"
+                      - option "Magallanes, Cavite · 0.53 mm · 25,826 pop"
+                      - option "Maragondon, Cavite · 0.55 mm · 41,977 pop"
+                      - option "Mendez, Cavite · 2.32 mm · 36,518 pop"
+                      - option "Naic, Cavite · 0.82 mm · 236,978 pop"
+                      - option "Noveleta, Cavite · 1.01 mm · 46,172 pop"
+                      - option "Rosario, Cavite · 1 mm · 112,572 pop"
+                      - option "Silang, Cavite · 1.35 mm · 313,145 pop"
+                      - option "Tagaytay, Cavite · 4.64 mm · 87,811 pop"
+                      - option "Tanza, Cavite · 0.97 mm · 339,308 pop"
+                      - option "Ternate, Cavite · 0.42 mm · 24,891 pop"
+                      - option "Trece Martires, Cavite · 1.02 mm · 227,892 pop"
+                      - option "Abra De Ilog, Occidental Mindoro · 0 mm · 31,910 pop"
+                      - option "Abucay, Bataan · 0.06 mm · 44,846 pop"
+                      - option "Agdangan, Quezon · 0 mm · 13,316 pop"
+                      - option "Angat, Bulacan · 0.25 mm · 67,862 pop"
+                      - option "Angono, Rizal · 0.61 mm · 134,975 pop"
+                      - option "Atimonan, Quezon · 0 mm · 65,552 pop"
+                      - option "Baco, Oriental Mindoro · 0 mm · 40,159 pop"
+                      - option "City of Bacoor, Cavite · 1.12 mm · 661,381 pop"
+                      - option "Bagac, Bataan · 0.04 mm · 32,799 pop"
+                      - option "Balagtas, Bulacan · 0.36 mm · 80,221 pop"
+                      - option "Bay, Laguna · 0.33 mm · 69,802 pop"
+                      - option "Binangonan, Rizal · 0.61 mm · 321,281 pop"
+                      - option "Boac, Marinduque · 0 mm · 54,365 pop"
+                      - option "Bocaue, Bulacan · 0.41 mm · 147,755 pop"
+                      - option "Bulacan · 0.42 mm · 83,101 pop"
+                      - option "Burdeos, Quezon · 0 mm · 22,742 pop"
+                      - option "Bustos, Bulacan · 0.25 mm · 80,565 pop"
+                      - option "City of Cabuyao, Laguna · 0.89 mm · 365,202 pop"
+                      - option "Cainta, Rizal · 0.66 mm · 386,321 pop"
+                      - option "Calauan, Laguna · 0.24 mm · 89,670 pop"
+                      - option "City of Caloocan, Metro Manila (NCR) · 0.5 mm · 1,712,945 pop"
+                      - option "Calumpit, Bulacan · 0.19 mm · 122,187 pop"
+                      - option "Cardona, Rizal · 0.54 mm · 51,493 pop"
+                      - option "City of Carmona, Cavite · 1.08 mm · 112,140 pop"
+                      - option "Castillejos, Zambales · 0 mm · 70,105 pop"
+                      - option "Cavinti, Laguna · 0.03 mm · 24,740 pop"
+                      - option "City of Cavite · 0.65 mm · 98,673 pop"
+                      - option "City of Antipolo, Rizal · 0.34 mm · 913,712 pop"
+                      - option "City of Balanga, Bataan · 0.07 mm · 109,931 pop"
+                      - option "City of Biñan, Laguna · 1.02 mm · 584,479 pop"
+                      - option "City of Calapan, Oriental Mindoro · 0 mm · 148,558 pop"
+                      - option "City of Dasmariñas, Cavite · 1.15 mm · 744,511 pop"
+                      - option "City of General Trias, Cavite · 1.1 mm · 482,453 pop"
+                      - option "City of Las Piñas, Metro Manila (NCR) · 1.08 mm · 615,549 pop"
+                      - option "City of Makati, Metro Manila (NCR) · 0.85 mm · 309,770 pop"
+                      - option "City of Malabon, Metro Manila (NCR) · 0.63 mm · 389,929 pop"
+                      - option "City of Malolos, Bulacan · 0.3 mm · 269,809 pop"
+                      - option "City of Mandaluyong, Metro Manila (NCR) · 0.78 mm · 465,902 pop"
+                      - option "City of Marikina, Metro Manila (NCR) · 0.57 mm · 471,323 pop"
+                      - option "City of Meycauayan, Bulacan · 0.48 mm · 228,023 pop"
+                      - option "City of Muntinlupa, Metro Manila (NCR) · 1.08 mm · 552,225 pop"
+                      - option "City of Navotas, Metro Manila (NCR) · 0.62 mm · 252,878 pop"
+                      - option "City of Parañaque, Metro Manila (NCR) · 1 mm · 703,245 pop"
+                      - option "City of Pasig, Metro Manila (NCR) · 0.73 mm · 853,050 pop"
+                      - option "City of San Jose Del Monte, Bulacan · 0.34 mm · 685,688 pop"
+                      - option "City of San Pedro, Laguna · 1.09 mm · 348,968 pop"
+                      - option "City of Tayabas, Quezon · 0.01 mm · 115,318 pop"
+                      - option "City of Valenzuela, Metro Manila (NCR) · 0.56 mm · 725,173 pop"
+                      - option "Dinalupihan, Bataan · 0.02 mm · 124,188 pop"
+                      - option "Doña Remedios Trinidad, Bulacan · 0.11 mm · 30,064 pop"
+                      - option "Famy, Laguna · 0.08 mm · 17,668 pop"
+                      - option "Gasan, Marinduque · 0 mm · 35,315 pop"
+                      - option "Gen. Mariano Alvarez, Cavite · 1.12 mm · 176,927 pop"
+                      - option "General Nakar, Quezon · 0.04 mm · 34,982 pop"
+                      - option "Guiguinto, Bulacan · 0.32 mm · 118,173 pop"
+                      - option "Hermosa, Bataan · 0.02 mm · 80,557 pop"
+                      - option "City of Imus, Cavite · 1.12 mm · 481,949 pop"
+                      - option "Jala-Jala, Rizal · 0.27 mm · 34,901 pop"
+                      - option "Liliw, Laguna · 0.07 mm · 39,976 pop"
+                      - option "Limay, Bataan · 0.17 mm · 81,960 pop"
+                      - option "Los Baños, Laguna · 0.44 mm · 117,030 pop"
+                      - option "Lubang, Occidental Mindoro · 0 mm · 18,761 pop"
+                      - option "Lucban, Quezon · 0.01 mm · 54,134 pop"
+                      - option "City of Lucena, Quezon · 0 mm · 280,331 pop"
+                      - option "Luisiana, Laguna · 0.03 mm · 21,824 pop"
+                      - option "Lumban, Laguna · 0.05 mm · 32,793 pop"
+                      - option "Mabitac, Laguna · 0.16 mm · 21,748 pop"
+                      - option "Magdalena, Laguna · 0.09 mm · 28,131 pop"
+                      - option "Majayjay, Laguna · 0.05 mm · 28,504 pop"
+                      - option "Mamburao, Occidental Mindoro · 0 mm · 44,554 pop"
+                      - option "Marilao, Bulacan · 0.45 mm · 263,507 pop"
+                      - option "Mariveles, Bataan · 0.11 mm · 156,200 pop"
+                      - option "Mauban, Quezon · 0 mm · 70,135 pop"
+                      - option "Mogpog, Marinduque · 0 mm · 32,577 pop"
+                      - option "Nagcarlan, Laguna · 0.1 mm · 66,351 pop"
+                      - option "Naujan, Oriental Mindoro · 0 mm · 109,122 pop"
+                      - option "Norzagaray, Bulacan · 0.21 mm · 140,697 pop"
+                      - option "Obando, Bulacan · 0.53 mm · 61,073 pop"
+                      - option "City of Olongapo, Zambales · 0 mm · 264,903 pop"
+                      - option "Orani, Bataan · 0.05 mm · 72,941 pop"
+                      - option "Orion, Bataan · 0.12 mm · 63,044 pop"
+                      - option "Paete, Laguna · 0.04 mm · 25,254 pop"
+                      - option "Pagbilao, Quezon · 0 mm · 82,132 pop"
+                      - option "Pagsanjan, Laguna · 0.09 mm · 45,602 pop"
+                      - option "Pakil, Laguna · 0.11 mm · 23,972 pop"
+                      - option "Paluan, Occidental Mindoro · 0 mm · 19,461 pop"
+                      - option "Pandi, Bulacan · 0.3 mm · 162,725 pop"
+                      - option "Pangil, Laguna · 0.07 mm · 25,318 pop"
+                      - option "Panukulan, Quezon · 0 mm · 17,118 pop"
+                      - option "Paombong, Bulacan · 0.29 mm · 58,453 pop"
+                      - option "Pasay City, Metro Manila (NCR) · 0.92 mm · 453,186 pop"
+                      - option "Perez, Quezon · 0 mm · 13,052 pop"
+                      - option "Pila, Laguna · 0.19 mm · 57,776 pop"
+                      - option "Pililla, Rizal · 0.26 mm · 72,503 pop"
+                      - option "Pinamalayan, Oriental Mindoro · 0 mm · 90,420 pop"
+                      - option "Pola, Oriental Mindoro · 0 mm · 35,771 pop"
+                      - option "Polillo, Quezon · 0 mm · 31,737 pop"
+                      - option "Puerto Galera, Oriental Mindoro · 0 mm · 42,301 pop"
+                      - option "Pulilan, Bulacan · 0.22 mm · 111,384 pop"
+                      - option "Real, Quezon · 0.03 mm · 39,969 pop"
+                      - option "Rodriguez, Rizal · 0.26 mm · 451,383 pop"
+                      - option "Sablayan, Occidental Mindoro · 0 mm · 91,406 pop"
+                      - option "Samal, Bataan · 0.05 mm · 40,843 pop"
+                      - option "San Teodoro, Oriental Mindoro · 0 mm · 19,650 pop"
+                      - option "Sariaya, Quezon · 0.01 mm · 172,018 pop"
+                      - option "Sasmuan, Pampanga · 0.09 mm · 32,081 pop"
+                      - option "Siniloan, Laguna · 0.07 mm · 42,533 pop"
+                      - option "Subic, Zambales · 0 mm · 116,788 pop"
+                      - option "City of Taguig, Metro Manila (NCR) · 0.88 mm · 1,308,085 pop"
+                      - option "Tanay, Rizal · 0.19 mm · 145,597 pop"
+                      - option "Teresa, Rizal · 0.47 mm · 67,454 pop"
+                      - option "Tiaong, Quezon · 0.06 mm · 107,666 pop"
+                    - group [ref=e121]:
+                      - generic "Terrain source & graphics" [ref=e122] [cursor=pointer]
+            - region [ref=e123]:
+              - generic [ref=e125]:
+                - generic "Geographic ashfall map" [ref=e126]:
+                  - generic:
+                    - generic:
+                      - img [aria-hidden]:
+                        - generic:
+                          - generic [ref=e2339] [cursor=pointer]
+                          - generic [ref=e2340] [cursor=pointer]
+                          - generic [ref=e2341] [cursor=pointer]
+                          - generic [ref=e2342] [cursor=pointer]
+                          - generic [ref=e2343] [cursor=pointer]
+                          - generic [ref=e2344] [cursor=pointer]
+                          - generic [ref=e2345] [cursor=pointer]
+                          - generic [ref=e2346] [cursor=pointer]
+                          - generic [ref=e2347] [cursor=pointer]
+                          - generic [ref=e2348] [cursor=pointer]
+                          - generic [ref=e2349] [cursor=pointer]
+                          - generic [ref=e2350] [cursor=pointer]
+                          - generic [ref=e2351] [cursor=pointer]
+                          - generic [ref=e2352] [cursor=pointer]
+                          - generic [ref=e2353] [cursor=pointer]
+                          - generic [ref=e2354] [cursor=pointer]
+                          - generic [ref=e2355] [cursor=pointer]
+                          - generic [ref=e2356] [cursor=pointer]
+                          - generic [ref=e2357] [cursor=pointer]
+                          - generic [ref=e2358] [cursor=pointer]
+                          - generic [ref=e2359] [cursor=pointer]
+                          - generic [ref=e2360] [cursor=pointer]
+                          - generic [ref=e2361] [cursor=pointer]
+                          - generic [ref=e2362] [cursor=pointer]
+                          - generic [ref=e2363] [cursor=pointer]
+                          - generic [ref=e2364] [cursor=pointer]
+                          - generic [ref=e2365] [cursor=pointer]
+                          - generic [ref=e2366] [cursor=pointer]
+                          - generic [ref=e2367] [cursor=pointer]
+                          - generic [ref=e2368] [cursor=pointer]
+                          - generic [ref=e2369] [cursor=pointer]
+                          - generic [ref=e2370] [cursor=pointer]
+                          - generic [ref=e2371] [cursor=pointer]
+                          - generic [ref=e2372] [cursor=pointer]
+                          - generic [ref=e2373] [cursor=pointer]
+                          - generic [ref=e2374] [cursor=pointer]
+                          - generic [ref=e2375] [cursor=pointer]
+                          - generic [ref=e2376] [cursor=pointer]
+                          - generic [ref=e2377] [cursor=pointer]
+                          - generic [ref=e2378] [cursor=pointer]
+                          - generic [ref=e2379] [cursor=pointer]
+                          - generic [ref=e2380] [cursor=pointer]
+                          - generic [ref=e2381] [cursor=pointer]
+                          - generic [ref=e2382] [cursor=pointer]
+                          - generic [ref=e2383] [cursor=pointer]
+                          - generic [ref=e2384] [cursor=pointer]
+                          - generic [ref=e2385] [cursor=pointer]
+                          - generic [ref=e2386] [cursor=pointer]
+                          - generic [ref=e2387] [cursor=pointer]
+                          - generic [ref=e2388] [cursor=pointer]
+                          - generic [ref=e2389] [cursor=pointer]
+                          - generic [ref=e2390] [cursor=pointer]
+                          - generic [ref=e2391] [cursor=pointer]
+                          - generic [ref=e2392] [cursor=pointer]
+                          - generic [ref=e2393] [cursor=pointer]
+                          - generic [ref=e2394] [cursor=pointer]
+                          - generic [ref=e2395] [cursor=pointer]
+                          - generic [ref=e2396] [cursor=pointer]
+                          - generic [ref=e2397] [cursor=pointer]
+                          - generic [ref=e2398] [cursor=pointer]
+                          - generic [ref=e2399] [cursor=pointer]
+                          - generic [ref=e2400] [cursor=pointer]
+                          - generic [ref=e2401] [cursor=pointer]
+                          - generic [ref=e2402] [cursor=pointer]
+                          - generic [ref=e2403] [cursor=pointer]
+                          - generic [ref=e2404] [cursor=pointer]
+                          - generic [ref=e2405] [cursor=pointer]
+                          - generic [ref=e2406] [cursor=pointer]
+                          - generic [ref=e2407] [cursor=pointer]
+                          - generic [ref=e2408] [cursor=pointer]
+                          - generic [ref=e2409] [cursor=pointer]
+                          - generic [ref=e2410] [cursor=pointer]
+                          - generic [ref=e2411] [cursor=pointer]
+                          - generic [ref=e2412] [cursor=pointer]
+                          - generic [ref=e2413] [cursor=pointer]
+                          - generic [ref=e2414] [cursor=pointer]
+                          - generic [ref=e2415] [cursor=pointer]
+                          - generic [ref=e2416] [cursor=pointer]
+                          - generic [ref=e2417] [cursor=pointer]
+                          - generic [ref=e2418] [cursor=pointer]
+                          - generic [ref=e2419] [cursor=pointer]
+                          - generic [ref=e2420] [cursor=pointer]
+                          - generic [ref=e2421] [cursor=pointer]
+                          - generic [ref=e2422] [cursor=pointer]
+                          - generic [ref=e2423] [cursor=pointer]
+                          - generic [ref=e2424] [cursor=pointer]
+                          - generic [ref=e2425] [cursor=pointer]
+                          - generic [ref=e2426] [cursor=pointer]
+                          - generic [ref=e2427] [cursor=pointer]
+                          - generic [ref=e2428] [cursor=pointer]
+                          - generic [ref=e2429] [cursor=pointer]
+                          - generic [ref=e2430] [cursor=pointer]
+                          - generic [ref=e2431] [cursor=pointer]
+                          - generic [ref=e2432] [cursor=pointer]
+                          - generic [ref=e2433] [cursor=pointer]
+                          - generic [ref=e2434] [cursor=pointer]
+                          - generic [ref=e2435] [cursor=pointer]
+                          - generic [ref=e2436] [cursor=pointer]
+                          - generic [ref=e2437] [cursor=pointer]
+                          - generic [ref=e2438] [cursor=pointer]
+                          - generic [ref=e2439] [cursor=pointer]
+                          - generic [ref=e2440] [cursor=pointer]
+                          - generic [ref=e2441] [cursor=pointer]
+                          - generic [ref=e2442] [cursor=pointer]
+                          - generic [ref=e2443] [cursor=pointer]
+                          - generic [ref=e2444] [cursor=pointer]
+                          - generic [ref=e2445] [cursor=pointer]
+                          - generic [ref=e2446] [cursor=pointer]
+                          - generic [ref=e2447] [cursor=pointer]
+                          - generic [ref=e2448] [cursor=pointer]
+                          - generic [ref=e2449] [cursor=pointer]
+                          - generic [ref=e2450] [cursor=pointer]
+                          - generic [ref=e2451] [cursor=pointer]
+                          - generic [ref=e2452] [cursor=pointer]
+                          - generic [ref=e2453] [cursor=pointer]
+                          - generic [ref=e2454] [cursor=pointer]
+                          - generic [ref=e2455] [cursor=pointer]
+                          - generic [ref=e2456] [cursor=pointer]
+                          - generic [ref=e2457] [cursor=pointer]
+                          - generic [ref=e2458] [cursor=pointer]
+                          - generic [ref=e2459] [cursor=pointer]
+                          - generic [ref=e2460] [cursor=pointer]
+                          - generic [ref=e2461] [cursor=pointer]
+                          - generic [ref=e2462] [cursor=pointer]
+                          - generic [ref=e2463] [cursor=pointer]
+                          - generic [ref=e2464] [cursor=pointer]
+                          - generic [ref=e2465] [cursor=pointer]
+                          - generic [ref=e2466] [cursor=pointer]
+                          - generic [ref=e2467] [cursor=pointer]
+                          - generic [ref=e2468] [cursor=pointer]
+                          - generic [ref=e2469] [cursor=pointer]
+                          - generic [ref=e2470] [cursor=pointer]
+                          - generic [ref=e2471] [cursor=pointer]
+                          - generic [ref=e2472] [cursor=pointer]
+                          - generic [ref=e2473] [cursor=pointer]
+                          - generic [ref=e2474] [cursor=pointer]
+                          - generic [ref=e2475] [cursor=pointer]
+                          - generic [ref=e2476] [cursor=pointer]
+                          - generic [ref=e2477] [cursor=pointer]
+                          - generic [ref=e2478] [cursor=pointer]
+                          - generic [ref=e2479] [cursor=pointer]
+                          - generic [ref=e2480] [cursor=pointer]
+                          - generic [ref=e2481] [cursor=pointer]
+                          - generic [ref=e2482] [cursor=pointer]
+                          - generic [ref=e2483] [cursor=pointer]
+                          - generic [ref=e2484] [cursor=pointer]
+                          - generic [ref=e2485] [cursor=pointer]
+                          - generic [ref=e2486] [cursor=pointer]
+                          - generic [ref=e2487] [cursor=pointer]
+                          - generic [ref=e2488] [cursor=pointer]
+                          - generic [ref=e2489] [cursor=pointer]
+                          - generic [ref=e2490] [cursor=pointer]
+                          - generic [ref=e2491] [cursor=pointer]
+                          - generic [ref=e2492] [cursor=pointer]
+                          - generic [ref=e2493] [cursor=pointer]
+                          - generic [ref=e2494] [cursor=pointer]
+                          - generic [ref=e2495] [cursor=pointer]
+                          - generic [ref=e2496] [cursor=pointer]
+                          - generic [ref=e2497] [cursor=pointer]
+                          - generic [ref=e2498] [cursor=pointer]
+                          - generic [ref=e2499] [cursor=pointer]
+                          - generic [ref=e2500] [cursor=pointer]
+                          - generic [ref=e2501] [cursor=pointer]
+                          - generic [ref=e2502] [cursor=pointer]
+                          - generic [ref=e2503] [cursor=pointer]
+                          - generic [ref=e2504] [cursor=pointer]
+                          - generic [ref=e2505] [cursor=pointer]
+                          - generic [ref=e2506] [cursor=pointer]
+                          - generic [ref=e2507] [cursor=pointer]
+                          - generic [ref=e2508] [cursor=pointer]
+                          - generic [ref=e2509] [cursor=pointer]
+                          - generic [ref=e2510] [cursor=pointer]
+                          - generic [ref=e2511] [cursor=pointer]
+                          - generic [ref=e2512] [cursor=pointer]
+                          - generic [ref=e2513] [cursor=pointer]
+                          - generic [ref=e2514] [cursor=pointer]
+                          - generic [ref=e2515] [cursor=pointer]
+                          - generic [ref=e2516] [cursor=pointer]
+                          - generic [ref=e2517] [cursor=pointer]
+                          - generic [ref=e2518] [cursor=pointer]
+                          - generic [ref=e2519] [cursor=pointer]
+                          - generic [ref=e2520] [cursor=pointer]
+                          - generic [ref=e2521] [cursor=pointer]
+                          - generic [ref=e2522] [cursor=pointer]
+                          - generic [ref=e2523] [cursor=pointer]
+                          - generic [ref=e2524] [cursor=pointer]
+                          - generic [ref=e2525] [cursor=pointer]
+                          - generic [ref=e2526] [cursor=pointer]
+                          - generic [ref=e2527] [cursor=pointer]
+                          - generic [ref=e2528] [cursor=pointer]
+                          - generic [ref=e2529] [cursor=pointer]
+                          - generic [ref=e2530] [cursor=pointer]
+                          - generic [ref=e2531] [cursor=pointer]
+                          - generic [ref=e2532] [cursor=pointer]
+                          - generic [ref=e2533] [cursor=pointer]
+                          - generic [ref=e2534] [cursor=pointer]
+                          - generic [ref=e2535] [cursor=pointer]
+                          - generic [ref=e2536] [cursor=pointer]
+                          - generic [ref=e2537] [cursor=pointer]
+                          - generic [ref=e2538] [cursor=pointer]
+                          - generic [ref=e2539] [cursor=pointer]
+                          - generic [ref=e2540] [cursor=pointer]
+                          - generic [ref=e2541] [cursor=pointer]
+                          - generic [ref=e2542] [cursor=pointer]
+                          - generic [ref=e2543] [cursor=pointer]
+                          - generic [ref=e2544] [cursor=pointer]
+                          - generic [ref=e2545] [cursor=pointer]
+                          - generic [ref=e2546] [cursor=pointer]
+                          - generic [ref=e2547] [cursor=pointer]
+                          - generic [ref=e2548] [cursor=pointer]
+                          - generic [ref=e2549] [cursor=pointer]
+                          - generic [ref=e2550] [cursor=pointer]
+                          - generic [ref=e2551] [cursor=pointer]
+                          - generic [ref=e2552] [cursor=pointer]
+                          - generic [ref=e2553] [cursor=pointer]
+                          - generic [ref=e2554] [cursor=pointer]
+                          - generic [ref=e2555] [cursor=pointer]
+                          - generic [ref=e2556] [cursor=pointer]
+                    - generic:
+                      - button "taal model vent" [ref=e339] [cursor=pointer]
+                      - button "Occidental Mindoro · partial inventory"
+                      - button "Bataan · partial inventory"
+                      - button "Quezon · partial inventory"
+                      - button "Batangas · partial inventory"
+                      - button "Bohol · partial inventory"
+                      - button "Cebu · partial inventory"
+                      - button "Cavite · partial inventory"
+                      - button "Negros Oriental · partial inventory"
+                      - button "Bulacan · partial inventory"
+                      - button "Rizal · partial inventory"
+                      - button "Camarines Sur · partial inventory"
+                      - button "Albay · partial inventory"
+                      - button "Oriental Mindoro · partial inventory"
+                      - button "Negros Occidental · partial inventory"
+                      - button "Camarines Norte · partial inventory"
+                      - button "Laguna · partial inventory"
+                      - button "Marinduque · partial inventory"
+                      - button "Metro Manila (NCR) · partial inventory"
+                      - button "Zambales · partial inventory"
+                      - button "Masbate · partial inventory"
+                      - button "Iloilo · partial inventory"
+                      - button "Sorsogon · partial inventory"
+                      - button "Guimaras · partial inventory"
+                      - button "Pampanga · partial inventory"
+                  - generic:
+                    - generic [ref=e342]:
+                      - button "Zoom in" [ref=e343] [cursor=pointer]: +
+                      - button "Zoom out" [ref=e344] [cursor=pointer]: −
+                    - generic: 20 km
+                    - generic [ref=e347]:
+                      - link "Leaflet" [ref=e348] [cursor=pointer]:
+                        - /url: https://leafletjs.com
+                      - text: "| Land/lakes: Natural Earth; Boundaries: geoBoundaries/PSA; Taal Lake ©"
+                      - link "OpenStreetMap contributors · ODbL" [ref=e353] [cursor=pointer]:
+                        - /url: https://www.openstreetmap.org/copyright
+                - generic [ref=e354]:
+                  - heading "Affected locations" [level=2] [ref=e355]
+                  - generic [ref=e356]:
+                    - generic [ref=e357]:
+                      - button "Deposit extent" [ref=e358] [cursor=pointer]
+                      - button "Reset map to volcano region" [ref=e362] [cursor=pointer]
+                    - group [ref=e365]:
+                      - generic "Layers" [ref=e366] [cursor=pointer]
+                  - generic "Deposit thickness color legend" [ref=e367]:
+                    - generic [ref=e368]: Deposit thickness · mm
+                    - generic [ref=e369]: "0"
+                    - generic [ref=e371]: 0.01–0.49 (trace)
+                    - generic [ref=e373]: 0.5+
+                    - generic [ref=e375]: 1+
+                    - generic [ref=e377]: 5+
+                    - generic [ref=e379]: 10+
+                    - generic [ref=e381]: 50+
+                    - generic [ref=e383]: 100+
+                  - paragraph [ref=e385]: Municipal shading uses reviewed receptor IDs only. Unmatched boundaries have no numeric deposit or population tally. Contours describe the modeled field; colored polygons are centroid samples, not area averages.
+                  - paragraph [ref=e386]: "Snapshot: During eruption · 5.1 h · 132 municipal centroids with ash ≥0.01 mm (62 with ≥0.5 mm)"
+                  - group [ref=e387]:
+                    - generic "Inspect a location" [ref=e388] [cursor=pointer]
+                  - group [ref=e389]:
+                    - generic "Effects, reference zones & sources" [ref=e390] [cursor=pointer]
+          - region "Scenario analytics" [ref=e392]:
+            - generic [ref=e393]:
+              - region "Executive exposure summary" [ref=e394]:
+                - generic [ref=e395]:
+                  - generic [ref=e396]: Provinces Affected
+                  - strong [ref=e397]: "6"
+                  - generic [ref=e398]: Across regional domain
+                - generic [ref=e399]:
+                  - generic [ref=e400]: Localities Affected
+                  - strong [ref=e401]: "62"
+                  - generic [ref=e402]: Cities & towns (≥0.5 mm)
+                - generic [ref=e403]:
+                  - generic [ref=e404]: Peak Modeled Ash
+                  - strong [ref=e405]: 9.27 mm
+                  - generic [ref=e406]: San Nicolas, Batangas
+                - generic [ref=e407]:
+                  - generic [ref=e408]: Indicative residents
+                  - strong [ref=e409]: 17,249,141
+                  - generic [ref=e410]: 0 unknown population records · 2024
+              - article [ref=e411]:
+                - generic [ref=e412]:
+                  - generic [ref=e413]:
+                    - heading "Accumulation over event time" [level=3] [ref=e414]
+                    - paragraph [ref=e415]: Computed snapshots · San Nicolas, Batangas
+                  - generic [ref=e416]:
+                    - generic [ref=e417]: Chart location
+                    - combobox "Chart location" [ref=e418]:
+                      - option "San Nicolas, Batangas" [selected]
+                      - option "Talisay, Batangas"
+                      - option "Agoncillo, Batangas"
+                      - option "Laurel, Batangas"
+                      - option "Balete, Batangas"
+                      - option "Tagaytay, Cavite"
+                      - option "Mataasnakahoy, Batangas"
+                      - option "Cuenca, Batangas"
+                      - option "Lemery, Batangas"
+                      - option "Tanauan, Batangas"
+                      - option "Santa Teresita, Batangas"
+                      - option "Taal, Batangas"
+                      - option "Mendez, Cavite"
+                      - option "Alitagtag, Batangas"
+                      - option "Malvar, Batangas"
+                      - option "San Jose, Batangas"
+                      - option "Amadeo, Cavite"
+                      - option "Calaca, Batangas"
+                      - option "Silang, Cavite"
+                      - option "Alfonso, Cavite"
+                      - option "Lipa, Batangas"
+                      - option "Indang, Cavite"
+                      - option "San Luis, Batangas"
+                      - option "Santo Tomas, Batangas"
+                      - option "City of Dasmariñas, Cavite"
+                      - option "Gen. Mariano Alvarez, Cavite"
+                      - option "City of Imus, Cavite"
+                      - option "City of Bacoor, Cavite"
+                      - option "City of General Trias, Cavite"
+                      - option "City of Carmona, Cavite"
+                      - option "City of Las Piñas, Metro Manila (NCR)"
+                      - option "Kawit, Cavite"
+                      - option "City of San Pedro, Laguna"
+                      - option "City of Muntinlupa, Metro Manila (NCR)"
+                      - option "Noveleta, Cavite"
+                      - option "Trece Martires, Cavite"
+                      - option "City of Parañaque, Metro Manila (NCR)"
+                      - option "City of Biñan, Laguna"
+                      - option "Rosario, Cavite"
+                      - option "Pasay City, Metro Manila (NCR)"
+                      - option "City of Cabuyao, Laguna"
+                      - option "Tanza, Cavite"
+                      - option "City of Makati, Metro Manila (NCR)"
+                      - option "San Pascual, Batangas"
+                      - option "City of Taguig, Metro Manila (NCR)"
+                      - option "City of Mandaluyong, Metro Manila (NCR)"
+                      - option "General Emilio Aguinaldo, Cavite"
+                      - option "City of Malabon, Metro Manila (NCR)"
+                      - option "City of Navotas, Metro Manila (NCR)"
+                      - option "Naic, Cavite"
+                      - option "City of Pasig, Metro Manila (NCR)"
+                      - option "City of Valenzuela, Metro Manila (NCR)"
+                      - option "Obando, Bulacan"
+                      - option "Cainta, Rizal"
+                      - option "City of Meycauayan, Bulacan"
+                      - option "City of Caloocan, Metro Manila (NCR)"
+                      - option "Marilao, Bulacan"
+                      - option "City of Marikina, Metro Manila (NCR)"
+                      - option "City of Cavite"
+                      - option "Bocaue, Bulacan"
+                      - option "Bauan, Batangas"
+                      - option "Bulacan"
+                      - option "Angono, Rizal"
+                      - option "Balagtas, Bulacan"
+                      - option "Binangonan, Rizal"
+                      - option "Guiguinto, Bulacan"
+                      - option "Pandi, Bulacan"
+                      - option "Magallanes, Cavite"
+                      - option "City of San Jose Del Monte, Bulacan"
+                      - option "Maragondon, Cavite"
+                      - option "Los Baños, Laguna"
+                      - option "Angat, Bulacan"
+                      - option "City of Malolos, Bulacan"
+                      - option "Bustos, Bulacan"
+                      - option "Cardona, Rizal"
+                      - option "Teresa, Rizal"
+                      - option "Paombong, Bulacan"
+                      - option "Tuy, Batangas"
+                      - option "Pulilan, Bulacan"
+                      - option "Ternate, Cavite"
+                      - option "City of Antipolo, Rizal"
+                      - option "Ibaan, Batangas"
+                      - option "Norzagaray, Bulacan"
+                      - option "Bay, Laguna"
+                      - option "Calumpit, Bulacan"
+                      - option "Rodriguez, Rizal"
+                      - option "Nasugbu, Batangas"
+                      - option "Balayan, Batangas"
+                      - option "Doña Remedios Trinidad, Bulacan"
+                      - option "Calauan, Laguna"
+                      - option "Jala-Jala, Rizal"
+                      - option "Pililla, Rizal"
+                      - option "Padre Garcia, Batangas"
+                      - option "Limay, Bataan"
+                      - option "Tanay, Rizal"
+                      - option "Pila, Laguna"
+                      - option "Sasmuan, Pampanga"
+                      - option "Lian, Batangas"
+                      - option "Orion, Bataan"
+                      - option "Mabitac, Laguna"
+                      - option "Mabini, Batangas"
+                      - option "Mariveles, Bataan"
+                      - option "Tiaong, Quezon"
+                      - option "Nagcarlan, Laguna"
+                      - option "Pakil, Laguna"
+                      - option "Batangas, Batangas"
+                      - option "City of Balanga, Bataan"
+                      - option "Magdalena, Laguna"
+                      - option "Abucay, Bataan"
+                      - option "Rosario, Batangas"
+                      - option "Pagsanjan, Laguna"
+                      - option "Samal, Bataan"
+                      - option "Calatagan, Batangas"
+                      - option "Taysan, Batangas"
+                      - option "Famy, Laguna"
+                      - option "Liliw, Laguna"
+                      - option "Orani, Bataan"
+                      - option "General Nakar, Quezon"
+                      - option "Pangil, Laguna"
+                      - option "Siniloan, Laguna"
+                      - option "Majayjay, Laguna"
+                      - option "Tingloy, Batangas"
+                      - option "Bagac, Bataan"
+                      - option "Lumban, Laguna"
+                      - option "Paete, Laguna"
+                      - option "Hermosa, Bataan"
+                      - option "Dinalupihan, Bataan"
+                      - option "Luisiana, Laguna"
+                      - option "Cavinti, Laguna"
+                      - option "Lobo, Batangas"
+                      - option "Real, Quezon"
+                      - option "San Juan, Batangas"
+                      - option "Sariaya, Quezon"
+                      - option "Lucban, Quezon"
+                      - option "City of Olongapo, Zambales"
+                      - option "City of Tayabas, Quezon"
+                      - option "Puerto Galera, Oriental Mindoro"
+                      - option "City of Lucena, Quezon"
+                      - option "Subic, Zambales"
+                      - option "Mauban, Quezon"
+                      - option "San Teodoro, Oriental Mindoro"
+                      - option "Castillejos, Zambales"
+                      - option "Abra De Ilog, Occidental Mindoro"
+                      - option "Pagbilao, Quezon"
+                      - option "City of Calapan, Oriental Mindoro"
+                      - option "Panukulan, Quezon"
+                      - option "Baco, Oriental Mindoro"
+                      - option "Paluan, Occidental Mindoro"
+                      - option "Naujan, Oriental Mindoro"
+                      - option "Polillo, Quezon"
+                      - option "Burdeos, Quezon"
+                      - option "Mamburao, Occidental Mindoro"
+                      - option "Atimonan, Quezon"
+                      - option "Lubang, Occidental Mindoro"
+                      - option "Perez, Quezon"
+                      - option "Agdangan, Quezon"
+                      - option "Pola, Oriental Mindoro"
+                      - option "Mogpog, Marinduque"
+                      - option "Pinamalayan, Oriental Mindoro"
+                      - option "Boac, Marinduque"
+                      - option "Gasan, Marinduque"
+                      - option "Sablayan, Occidental Mindoro"
+                - generic [ref=e419]:
+                  - generic [ref=e420]:
+                    - generic [ref=e421]: Deposit at 5.1 h
+                    - strong [ref=e422]: 9.27 mm
+                  - paragraph [ref=e423]: San Nicolas, Batangas · Eventual 30.99 mm
+                - region "Accumulation chart, scroll horizontally on small screens" [ref=e424]:
+                  - 'img "Deposit thickness over event time for San Nicolas, Batangas. Current snapshot During · 5.1 h: 9.27 millimeters. Final sampled thickness 30.99 millimeters. Raw snapshot values are in View raw data." [ref=e2557]':
+                    - generic [ref=e426]: "0"
+                    - generic [ref=e428]: "15.5"
+                    - generic [ref=e430]: "30.99"
+                    - generic [ref=e432]: "0"
+                    - generic [ref=e433]: "25.9"
+                    - generic [ref=e434]: "51.7"
+                    - generic [ref=e435]: "77.6"
+                    - generic [ref=e436]: "103.4"
+                    - 'generic "0 h: 0 mm" [ref=e438]'
+                    - 'generic "0.02 h: 0 mm" [ref=e439]'
+                    - 'generic "0.04 h: 0 mm" [ref=e440]'
+                    - 'generic "0.06 h: 0 mm" [ref=e441]'
+                    - 'generic "0.08 h: 0 mm" [ref=e442]'
+                    - 'generic "0.1 h: 0 mm" [ref=e443]'
+                    - 'generic "0.12 h: 0 mm" [ref=e444]'
+                    - 'generic "0.14 h: 0.01 mm" [ref=e445]'
+                    - 'generic "0.16 h: 0.01 mm" [ref=e446]'
+                    - 'generic "1.14 h: 0.64 mm" [ref=e447]'
+                    - 'generic "2.13 h: 2.22 mm" [ref=e448]'
+                    - 'generic "3.11 h: 4.33 mm" [ref=e449]'
+                    - 'generic "4.09 h: 6.71 mm" [ref=e450]'
+                    - 'generic "5.08 h: 9.27 mm" [ref=e451]'
+                    - 'generic "6.06 h: 11.89 mm" [ref=e452]'
+                    - 'generic "7.05 h: 14.56 mm" [ref=e453]'
+                    - 'generic "8.03 h: 17.27 mm" [ref=e454]'
+                    - 'generic "9.02 h: 20.03 mm" [ref=e455]'
+                    - 'generic "10 h: 22.85 mm" [ref=e456]'
+                    - 'generic "10 h: 22.85 mm" [ref=e457]'
+                    - 'generic "10 h: 22.85 mm" [ref=e458]'
+                    - 'generic "10 h: 22.86 mm" [ref=e459]'
+                    - 'generic "10 h: 22.86 mm" [ref=e460]'
+                    - 'generic "10.01 h: 22.88 mm" [ref=e461]'
+                    - 'generic "10.02 h: 22.91 mm" [ref=e462]'
+                    - 'generic "10.04 h: 22.96 mm" [ref=e463]'
+                    - 'generic "10.08 h: 23.08 mm" [ref=e464]'
+                    - 'generic "10.16 h: 23.31 mm" [ref=e465]'
+                    - 'generic "10.33 h: 23.76 mm" [ref=e466]'
+                    - 'generic "10.66 h: 24.59 mm" [ref=e467]'
+                    - 'generic "11.34 h: 25.86 mm" [ref=e468]'
+                    - 'generic "12.72 h: 27.38 mm" [ref=e469]'
+                    - 'generic "15.52 h: 28.76 mm" [ref=e470]'
+                    - 'generic "21.2 h: 29.87 mm" [ref=e471]'
+                    - 'generic "32.72 h: 30.14 mm" [ref=e472]'
+                    - 'generic "56.06 h: 30.53 mm" [ref=e473]'
+                    - 'generic "103.41 h: 30.99 mm" [ref=e474]'
+                    - generic [ref=e475]: Elapsed time (h)
+                    - generic [ref=e476]: Thickness (mm)
+              - article [ref=e477]:
+                - generic [ref=e478]:
+                  - generic [ref=e479]:
+                    - heading "Deposit thickness by municipality" [level=3] [ref=e480]
+                    - paragraph [ref=e481]: Top 132 at During · 5.1 h
+                  - generic [ref=e482]: mm
+                - region "Affected municipalities ranked by deposit thickness" [ref=e483]:
+                  - button "San Nicolas, Batangas, 9.27 millimeters, select time series" [pressed] [ref=e2559] [cursor=pointer]:
+                    - generic [ref=e2560]: "01"
+                    - generic [ref=e2561]: San Nicolas, Batangas
+                    - strong [ref=e2564]: "9.27"
+                  - button "Talisay, Batangas, 7.06 millimeters, select time series" [ref=e2565] [cursor=pointer]:
+                    - generic [ref=e2566]: "02"
+                    - generic [ref=e2567]: Talisay, Batangas
+                    - strong [ref=e2570]: "7.06"
+                  - button "Agoncillo, Batangas, 6.97 millimeters, select time series" [ref=e2571] [cursor=pointer]:
+                    - generic [ref=e2572]: "03"
+                    - generic [ref=e2573]: Agoncillo, Batangas
+                    - strong [ref=e2576]: "6.97"
+                  - button "Laurel, Batangas, 5.67 millimeters, select time series" [ref=e2577] [cursor=pointer]:
+                    - generic [ref=e2578]: "04"
+                    - generic [ref=e2579]: Laurel, Batangas
+                    - strong [ref=e2582]: "5.67"
+                  - button "Balete, Batangas, 5.14 millimeters, select time series" [ref=e2583] [cursor=pointer]:
+                    - generic [ref=e2584]: "05"
+                    - generic [ref=e2585]: Balete, Batangas
+                    - strong [ref=e2588]: "5.14"
+                  - button "Tagaytay, Cavite, 4.64 millimeters, select time series" [ref=e2589] [cursor=pointer]:
+                    - generic [ref=e2590]: "06"
+                    - generic [ref=e2591]: Tagaytay, Cavite
+                    - strong [ref=e2594]: "4.64"
+                  - button "Mataasnakahoy, Batangas, 4.56 millimeters, select time series" [ref=e2595] [cursor=pointer]:
+                    - generic [ref=e2596]: "07"
+                    - generic [ref=e2597]: Mataasnakahoy, Batangas
+                    - strong [ref=e2600]: "4.56"
+                  - button "Cuenca, Batangas, 3.75 millimeters, select time series" [ref=e2601] [cursor=pointer]:
+                    - generic [ref=e2602]: "08"
+                    - generic [ref=e2603]: Cuenca, Batangas
+                    - strong [ref=e2606]: "3.75"
+                  - button "Lemery, Batangas, 3.43 millimeters, select time series" [ref=e2607] [cursor=pointer]:
+                    - generic [ref=e2608]: "09"
+                    - generic [ref=e2609]: Lemery, Batangas
+                    - strong [ref=e2612]: "3.43"
+                  - button "Tanauan, Batangas, 3.36 millimeters, select time series" [ref=e2613] [cursor=pointer]:
+                    - generic [ref=e2614]: "10"
+                    - generic [ref=e2615]: Tanauan, Batangas
+                    - strong [ref=e2618]: "3.36"
+                  - button "Santa Teresita, Batangas, 2.61 millimeters, select time series" [ref=e2619] [cursor=pointer]:
+                    - generic [ref=e2620]: "11"
+                    - generic [ref=e2621]: Santa Teresita, Batangas
+                    - strong [ref=e2624]: "2.61"
+                  - button "Taal, Batangas, 2.54 millimeters, select time series" [ref=e2625] [cursor=pointer]:
+                    - generic [ref=e2626]: "12"
+                    - generic [ref=e2627]: Taal, Batangas
+                    - strong [ref=e2630]: "2.54"
+                  - button "Mendez, Cavite, 2.32 millimeters, select time series" [ref=e2631] [cursor=pointer]:
+                    - generic [ref=e2632]: "13"
+                    - generic [ref=e2633]: Mendez, Cavite
+                    - strong [ref=e2636]: "2.32"
+                  - button "Malvar, Batangas, 2.09 millimeters, select time series" [ref=e2637] [cursor=pointer]:
+                    - generic [ref=e2638]: "14"
+                    - generic [ref=e2639]: Malvar, Batangas
+                    - strong [ref=e2642]: "2.09"
+                  - button "Alitagtag, Batangas, 2.08 millimeters, select time series" [ref=e2643] [cursor=pointer]:
+                    - generic [ref=e2644]: "15"
+                    - generic [ref=e2645]: Alitagtag, Batangas
+                    - strong [ref=e2648]: "2.08"
+                  - button "Amadeo, Cavite, 1.66 millimeters, select time series" [ref=e2649] [cursor=pointer]:
+                    - generic [ref=e2650]: "16"
+                    - generic [ref=e2651]: Amadeo, Cavite
+                    - strong [ref=e2654]: "1.66"
+                  - button "San Jose, Batangas, 1.46 millimeters, select time series" [ref=e2655] [cursor=pointer]:
+                    - generic [ref=e2656]: "17"
+                    - generic [ref=e2657]: San Jose, Batangas
+                    - strong [ref=e2660]: "1.46"
+                  - button "Silang, Cavite, 1.35 millimeters, select time series" [ref=e2661] [cursor=pointer]:
+                    - generic [ref=e2662]: "18"
+                    - generic [ref=e2663]: Silang, Cavite
+                    - strong [ref=e2666]: "1.35"
+                  - button "Alfonso, Cavite, 1.24 millimeters, select time series" [ref=e2667] [cursor=pointer]:
+                    - generic [ref=e2668]: "19"
+                    - generic [ref=e2669]: Alfonso, Cavite
+                    - strong [ref=e2672]: "1.24"
+                  - button "Calaca, Batangas, 1.19 millimeters, select time series" [ref=e2673] [cursor=pointer]:
+                    - generic [ref=e2674]: "20"
+                    - generic [ref=e2675]: Calaca, Batangas
+                    - strong [ref=e2678]: "1.19"
+                  - button "City of Dasmariñas, Cavite, 1.15 millimeters, select time series" [ref=e2679] [cursor=pointer]:
+                    - generic [ref=e2680]: "21"
+                    - generic [ref=e2681]: City of Dasmariñas, Cavite
+                    - strong [ref=e2684]: "1.15"
+                  - button "City of Imus, Cavite, 1.12 millimeters, select time series" [ref=e2685] [cursor=pointer]:
+                    - generic [ref=e2686]: "22"
+                    - generic [ref=e2687]: City of Imus, Cavite
+                    - strong [ref=e2690]: "1.12"
+                  - button "Gen. Mariano Alvarez, Cavite, 1.12 millimeters, select time series" [ref=e2691] [cursor=pointer]:
+                    - generic [ref=e2692]: "23"
+                    - generic [ref=e2693]: Gen. Mariano Alvarez, Cavite
+                    - strong [ref=e2696]: "1.12"
+                  - button "City of Bacoor, Cavite, 1.12 millimeters, select time series" [ref=e2697] [cursor=pointer]:
+                    - generic [ref=e2698]: "24"
+                    - generic [ref=e2699]: City of Bacoor, Cavite
+                    - strong [ref=e2702]: "1.12"
+                  - button "City of General Trias, Cavite, 1.1 millimeters, select time series" [ref=e2703] [cursor=pointer]:
+                    - generic [ref=e2704]: "25"
+                    - generic [ref=e2705]: City of General Trias, Cavite
+                    - strong [ref=e2708]: "1.1"
+                  - button "City of San Pedro, Laguna, 1.09 millimeters, select time series" [ref=e2709] [cursor=pointer]:
+                    - generic [ref=e2710]: "26"
+                    - generic [ref=e2711]: City of San Pedro, Laguna
+                    - strong [ref=e2714]: "1.09"
+                  - button "City of Carmona, Cavite, 1.08 millimeters, select time series" [ref=e2715] [cursor=pointer]:
+                    - generic [ref=e2716]: "27"
+                    - generic [ref=e2717]: City of Carmona, Cavite
+                    - strong [ref=e2720]: "1.08"
+                  - button "City of Las Piñas, Metro Manila (NCR), 1.08 millimeters, select time series" [ref=e2721] [cursor=pointer]:
+                    - generic [ref=e2722]: "28"
+                    - generic [ref=e2723]: City of Las Piñas, Metro Manila (NCR)
+                    - strong [ref=e2726]: "1.08"
+                  - button "City of Muntinlupa, Metro Manila (NCR), 1.08 millimeters, select time series" [ref=e2727] [cursor=pointer]:
+                    - generic [ref=e2728]: "29"
+                    - generic [ref=e2729]: City of Muntinlupa, Metro Manila (NCR)
+                    - strong [ref=e2732]: "1.08"
+                  - button "Indang, Cavite, 1.08 millimeters, select time series" [ref=e2733] [cursor=pointer]:
+                    - generic [ref=e2734]: "30"
+                    - generic [ref=e2735]: Indang, Cavite
+                    - strong [ref=e2738]: "1.08"
+                  - button "Kawit, Cavite, 1.05 millimeters, select time series" [ref=e2739] [cursor=pointer]:
+                    - generic [ref=e2740]: "31"
+                    - generic [ref=e2741]: Kawit, Cavite
+                    - strong [ref=e2744]: "1.05"
+                  - button "City of Biñan, Laguna, 1.02 millimeters, select time series" [ref=e2745] [cursor=pointer]:
+                    - generic [ref=e2746]: "32"
+                    - generic [ref=e2747]: City of Biñan, Laguna
+                    - strong [ref=e2750]: "1.02"
+                  - button "Trece Martires, Cavite, 1.02 millimeters, select time series" [ref=e2751] [cursor=pointer]:
+                    - generic [ref=e2752]: "33"
+                    - generic [ref=e2753]: Trece Martires, Cavite
+                    - strong [ref=e2756]: "1.02"
+                  - button "Noveleta, Cavite, 1.01 millimeters, select time series" [ref=e2757] [cursor=pointer]:
+                    - generic [ref=e2758]: "34"
+                    - generic [ref=e2759]: Noveleta, Cavite
+                    - strong [ref=e2762]: "1.01"
+                  - button "Rosario, Cavite, 1 millimeters, select time series" [ref=e2763] [cursor=pointer]:
+                    - generic [ref=e2764]: "35"
+                    - generic [ref=e2765]: Rosario, Cavite
+                    - strong [ref=e2768]: "1"
+                  - button "City of Parañaque, Metro Manila (NCR), 1 millimeters, select time series" [ref=e2769] [cursor=pointer]:
+                    - generic [ref=e2770]: "36"
+                    - generic [ref=e2771]: City of Parañaque, Metro Manila (NCR)
+                    - strong [ref=e2774]: "1"
+                  - button "Tanza, Cavite, 0.97 millimeters, select time series" [ref=e2775] [cursor=pointer]:
+                    - generic [ref=e2776]: "37"
+                    - generic [ref=e2777]: Tanza, Cavite
+                    - strong [ref=e2780]: "0.97"
+                  - button "Pasay City, Metro Manila (NCR), 0.92 millimeters, select time series" [ref=e2781] [cursor=pointer]:
+                    - generic [ref=e2782]: "38"
+                    - generic [ref=e2783]: Pasay City, Metro Manila (NCR)
+                    - strong [ref=e2786]: "0.92"
+                  - button "City of Cabuyao, Laguna, 0.89 millimeters, select time series" [ref=e2787] [cursor=pointer]:
+                    - generic [ref=e2788]: "39"
+                    - generic [ref=e2789]: City of Cabuyao, Laguna
+                    - strong [ref=e2792]: "0.89"
+                  - button "City of Taguig, Metro Manila (NCR), 0.88 millimeters, select time series" [ref=e2793] [cursor=pointer]:
+                    - generic [ref=e2794]: "40"
+                    - generic [ref=e2795]: City of Taguig, Metro Manila (NCR)
+                    - strong [ref=e2798]: "0.88"
+                  - button "Santo Tomas, Batangas, 0.87 millimeters, select time series" [ref=e2799] [cursor=pointer]:
+                    - generic [ref=e2800]: "41"
+                    - generic [ref=e2801]: Santo Tomas, Batangas
+                    - strong [ref=e2804]: "0.87"
+                  - button "City of Makati, Metro Manila (NCR), 0.85 millimeters, select time series" [ref=e2805] [cursor=pointer]:
+                    - generic [ref=e2806]: "42"
+                    - generic [ref=e2807]: City of Makati, Metro Manila (NCR)
+                    - strong [ref=e2810]: "0.85"
+                  - button "Lipa, Batangas, 0.85 millimeters, select time series" [ref=e2811] [cursor=pointer]:
+                    - generic [ref=e2812]: "43"
+                    - generic [ref=e2813]: Lipa, Batangas
+                    - strong [ref=e2816]: "0.85"
+                  - button "Naic, Cavite, 0.82 millimeters, select time series" [ref=e2817] [cursor=pointer]:
+                    - generic [ref=e2818]: "44"
+                    - generic [ref=e2819]: Naic, Cavite
+                    - strong [ref=e2822]: "0.82"
+                  - button "San Luis, Batangas, 0.8 millimeters, select time series" [ref=e2823] [cursor=pointer]:
+                    - generic [ref=e2824]: "45"
+                    - generic [ref=e2825]: San Luis, Batangas
+                    - strong [ref=e2828]: "0.8"
+                  - button "City of Mandaluyong, Metro Manila (NCR), 0.78 millimeters, select time series" [ref=e2829] [cursor=pointer]:
+                    - generic [ref=e2830]: "46"
+                    - generic [ref=e2831]: City of Mandaluyong, Metro Manila (NCR)
+                    - strong [ref=e2834]: "0.78"
+                  - button "General Emilio Aguinaldo, Cavite, 0.74 millimeters, select time series" [ref=e2835] [cursor=pointer]:
+                    - generic [ref=e2836]: "47"
+                    - generic [ref=e2837]: General Emilio Aguinaldo, Cavite
+                    - strong [ref=e2840]: "0.74"
+                  - button "City of Pasig, Metro Manila (NCR), 0.73 millimeters, select time series" [ref=e2841] [cursor=pointer]:
+                    - generic [ref=e2842]: "48"
+                    - generic [ref=e2843]: City of Pasig, Metro Manila (NCR)
+                    - strong [ref=e2846]: "0.73"
+                  - button "Cainta, Rizal, 0.66 millimeters, select time series" [ref=e2847] [cursor=pointer]:
+                    - generic [ref=e2848]: "49"
+                    - generic [ref=e2849]: Cainta, Rizal
+                    - strong [ref=e2852]: "0.66"
+                  - button "City of Cavite, 0.65 millimeters, select time series" [ref=e2853] [cursor=pointer]:
+                    - generic [ref=e2854]: "50"
+                    - generic [ref=e2855]: City of Cavite
+                    - strong [ref=e2858]: "0.65"
+                  - button "City of Malabon, Metro Manila (NCR), 0.63 millimeters, select time series" [ref=e2859] [cursor=pointer]:
+                    - generic [ref=e2860]: "51"
+                    - generic [ref=e2861]: City of Malabon, Metro Manila (NCR)
+                    - strong [ref=e2864]: "0.63"
+                  - button "City of Navotas, Metro Manila (NCR), 0.62 millimeters, select time series" [ref=e2865] [cursor=pointer]:
+                    - generic [ref=e2866]: "52"
+                    - generic [ref=e2867]: City of Navotas, Metro Manila (NCR)
+                    - strong [ref=e2870]: "0.62"
+                  - button "Angono, Rizal, 0.61 millimeters, select time series" [ref=e2871] [cursor=pointer]:
+                    - generic [ref=e2872]: "53"
+                    - generic [ref=e2873]: Angono, Rizal
+                    - strong [ref=e2876]: "0.61"
+                  - button "Binangonan, Rizal, 0.61 millimeters, select time series" [ref=e2877] [cursor=pointer]:
+                    - generic [ref=e2878]: "54"
+                    - generic [ref=e2879]: Binangonan, Rizal
+                    - strong [ref=e2882]: "0.61"
+                  - button "City of Marikina, Metro Manila (NCR), 0.57 millimeters, select time series" [ref=e2883] [cursor=pointer]:
+                    - generic [ref=e2884]: "55"
+                    - generic [ref=e2885]: City of Marikina, Metro Manila (NCR)
+                    - strong [ref=e2888]: "0.57"
+                  - button "City of Valenzuela, Metro Manila (NCR), 0.56 millimeters, select time series" [ref=e2889] [cursor=pointer]:
+                    - generic [ref=e2890]: "56"
+                    - generic [ref=e2891]: City of Valenzuela, Metro Manila (NCR)
+                    - strong [ref=e2894]: "0.56"
+                  - button "Maragondon, Cavite, 0.55 millimeters, select time series" [ref=e2895] [cursor=pointer]:
+                    - generic [ref=e2896]: "57"
+                    - generic [ref=e2897]: Maragondon, Cavite
+                    - strong [ref=e2900]: "0.55"
+                  - button "Cardona, Rizal, 0.54 millimeters, select time series" [ref=e2901] [cursor=pointer]:
+                    - generic [ref=e2902]: "58"
+                    - generic [ref=e2903]: Cardona, Rizal
+                    - strong [ref=e2906]: "0.54"
+                  - button "San Pascual, Batangas, 0.54 millimeters, select time series" [ref=e2907] [cursor=pointer]:
+                    - generic [ref=e2908]: "59"
+                    - generic [ref=e2909]: San Pascual, Batangas
+                    - strong [ref=e2912]: "0.54"
+                  - button "Magallanes, Cavite, 0.53 millimeters, select time series" [ref=e2913] [cursor=pointer]:
+                    - generic [ref=e2914]: "60"
+                    - generic [ref=e2915]: Magallanes, Cavite
+                    - strong [ref=e2918]: "0.53"
+                  - button "Obando, Bulacan, 0.53 millimeters, select time series" [ref=e2919] [cursor=pointer]:
+                    - generic [ref=e2920]: "61"
+                    - generic [ref=e2921]: Obando, Bulacan
+                    - strong [ref=e2924]: "0.53"
+                  - button "City of Caloocan, Metro Manila (NCR), 0.5 millimeters, select time series" [ref=e2925] [cursor=pointer]:
+                    - generic [ref=e2926]: "62"
+                    - generic [ref=e2927]: City of Caloocan, Metro Manila (NCR)
+                    - strong [ref=e2930]: "0.5"
+                  - button "City of Meycauayan, Bulacan, 0.48 millimeters, select time series" [ref=e2931] [cursor=pointer]:
+                    - generic [ref=e2932]: "63"
+                    - generic [ref=e2933]: City of Meycauayan, Bulacan
+                    - strong [ref=e2936]: "0.48"
+                  - button "Teresa, Rizal, 0.47 millimeters, select time series" [ref=e2937] [cursor=pointer]:
+                    - generic [ref=e2938]: "64"
+                    - generic [ref=e2939]: Teresa, Rizal
+                    - strong [ref=e2942]: "0.47"
+                  - button "Marilao, Bulacan, 0.45 millimeters, select time series" [ref=e2943] [cursor=pointer]:
+                    - generic [ref=e2944]: "65"
+                    - generic [ref=e2945]: Marilao, Bulacan
+                    - strong [ref=e2948]: "0.45"
+                  - button "Los Baños, Laguna, 0.44 millimeters, select time series" [ref=e2949] [cursor=pointer]:
+                    - generic [ref=e2950]: "66"
+                    - generic [ref=e2951]: Los Baños, Laguna
+                    - strong [ref=e2954]: "0.44"
+                  - button "Ternate, Cavite, 0.42 millimeters, select time series" [ref=e2955] [cursor=pointer]:
+                    - generic [ref=e2956]: "67"
+                    - generic [ref=e2957]: Ternate, Cavite
+                    - strong [ref=e2960]: "0.42"
+                  - button "Bulacan, 0.42 millimeters, select time series" [ref=e2961] [cursor=pointer]:
+                    - generic [ref=e2962]: "68"
+                    - generic [ref=e2963]: Bulacan
+                    - strong [ref=e2966]: "0.42"
+                  - button "Bocaue, Bulacan, 0.41 millimeters, select time series" [ref=e2967] [cursor=pointer]:
+                    - generic [ref=e2968]: "69"
+                    - generic [ref=e2969]: Bocaue, Bulacan
+                    - strong [ref=e2972]: "0.41"
+                  - button "Balagtas, Bulacan, 0.36 millimeters, select time series" [ref=e2973] [cursor=pointer]:
+                    - generic [ref=e2974]: "70"
+                    - generic [ref=e2975]: Balagtas, Bulacan
+                    - strong [ref=e2978]: "0.36"
+                  - button "Bauan, Batangas, 0.35 millimeters, select time series" [ref=e2979] [cursor=pointer]:
+                    - generic [ref=e2980]: "71"
+                    - generic [ref=e2981]: Bauan, Batangas
+                    - strong [ref=e2984]: "0.35"
+                  - button "City of Antipolo, Rizal, 0.34 millimeters, select time series" [ref=e2985] [cursor=pointer]:
+                    - generic [ref=e2986]: "72"
+                    - generic [ref=e2987]: City of Antipolo, Rizal
+                    - strong [ref=e2990]: "0.34"
+                  - button "City of San Jose Del Monte, Bulacan, 0.34 millimeters, select time series" [ref=e2991] [cursor=pointer]:
+                    - generic [ref=e2992]: "73"
+                    - generic [ref=e2993]: City of San Jose Del Monte, Bulacan
+                    - strong [ref=e2996]: "0.34"
+                  - button "Tuy, Batangas, 0.33 millimeters, select time series" [ref=e2997] [cursor=pointer]:
+                    - generic [ref=e2998]: "74"
+                    - generic [ref=e2999]: Tuy, Batangas
+                    - strong [ref=e3002]: "0.33"
+                  - button "Bay, Laguna, 0.33 millimeters, select time series" [ref=e3003] [cursor=pointer]:
+                    - generic [ref=e3004]: "75"
+                    - generic [ref=e3005]: Bay, Laguna
+                    - strong [ref=e3008]: "0.33"
+                  - button "Guiguinto, Bulacan, 0.32 millimeters, select time series" [ref=e3009] [cursor=pointer]:
+                    - generic [ref=e3010]: "76"
+                    - generic [ref=e3011]: Guiguinto, Bulacan
+                    - strong [ref=e3014]: "0.32"
+                  - button "Nasugbu, Batangas, 0.31 millimeters, select time series" [ref=e3015] [cursor=pointer]:
+                    - generic [ref=e3016]: "77"
+                    - generic [ref=e3017]: Nasugbu, Batangas
+                    - strong [ref=e3020]: "0.31"
+                  - button "Pandi, Bulacan, 0.3 millimeters, select time series" [ref=e3021] [cursor=pointer]:
+                    - generic [ref=e3022]: "78"
+                    - generic [ref=e3023]: Pandi, Bulacan
+                    - strong [ref=e3026]: "0.3"
+                  - button "City of Malolos, Bulacan, 0.3 millimeters, select time series" [ref=e3027] [cursor=pointer]:
+                    - generic [ref=e3028]: "79"
+                    - generic [ref=e3029]: City of Malolos, Bulacan
+                    - strong [ref=e3032]: "0.3"
+                  - button "Paombong, Bulacan, 0.29 millimeters, select time series" [ref=e3033] [cursor=pointer]:
+                    - generic [ref=e3034]: "80"
+                    - generic [ref=e3035]: Paombong, Bulacan
+                    - strong [ref=e3038]: "0.29"
+                  - button "Jala-Jala, Rizal, 0.27 millimeters, select time series" [ref=e3039] [cursor=pointer]:
+                    - generic [ref=e3040]: "81"
+                    - generic [ref=e3041]: Jala-Jala, Rizal
+                    - strong [ref=e3044]: "0.27"
+                  - button "Pililla, Rizal, 0.26 millimeters, select time series" [ref=e3045] [cursor=pointer]:
+                    - generic [ref=e3046]: "82"
+                    - generic [ref=e3047]: Pililla, Rizal
+                    - strong [ref=e3050]: "0.26"
+                  - button "Rodriguez, Rizal, 0.26 millimeters, select time series" [ref=e3051] [cursor=pointer]:
+                    - generic [ref=e3052]: "83"
+                    - generic [ref=e3053]: Rodriguez, Rizal
+                    - strong [ref=e3056]: "0.26"
+                  - button "Angat, Bulacan, 0.25 millimeters, select time series" [ref=e3057] [cursor=pointer]:
+                    - generic [ref=e3058]: "84"
+                    - generic [ref=e3059]: Angat, Bulacan
+                    - strong [ref=e3062]: "0.25"
+                  - button "Bustos, Bulacan, 0.25 millimeters, select time series" [ref=e3063] [cursor=pointer]:
+                    - generic [ref=e3064]: "85"
+                    - generic [ref=e3065]: Bustos, Bulacan
+                    - strong [ref=e3068]: "0.25"
+                  - button "Calauan, Laguna, 0.24 millimeters, select time series" [ref=e3069] [cursor=pointer]:
+                    - generic [ref=e3070]: "86"
+                    - generic [ref=e3071]: Calauan, Laguna
+                    - strong [ref=e3074]: "0.24"
+                  - button "Pulilan, Bulacan, 0.22 millimeters, select time series" [ref=e3075] [cursor=pointer]:
+                    - generic [ref=e3076]: "87"
+                    - generic [ref=e3077]: Pulilan, Bulacan
+                    - strong [ref=e3080]: "0.22"
+                  - button "Balayan, Batangas, 0.21 millimeters, select time series" [ref=e3081] [cursor=pointer]:
+                    - generic [ref=e3082]: "88"
+                    - generic [ref=e3083]: Balayan, Batangas
+                    - strong [ref=e3086]: "0.21"
+                  - button "Norzagaray, Bulacan, 0.21 millimeters, select time series" [ref=e3087] [cursor=pointer]:
+                    - generic [ref=e3088]: "89"
+                    - generic [ref=e3089]: Norzagaray, Bulacan
+                    - strong [ref=e3092]: "0.21"
+                  - button "Calumpit, Bulacan, 0.19 millimeters, select time series" [ref=e3093] [cursor=pointer]:
+                    - generic [ref=e3094]: "90"
+                    - generic [ref=e3095]: Calumpit, Bulacan
+                    - strong [ref=e3098]: "0.19"
+                  - button "Pila, Laguna, 0.19 millimeters, select time series" [ref=e3099] [cursor=pointer]:
+                    - generic [ref=e3100]: "91"
+                    - generic [ref=e3101]: Pila, Laguna
+                    - strong [ref=e3104]: "0.19"
+                  - button "Tanay, Rizal, 0.19 millimeters, select time series" [ref=e3105] [cursor=pointer]:
+                    - generic [ref=e3106]: "92"
+                    - generic [ref=e3107]: Tanay, Rizal
+                    - strong [ref=e3110]: "0.19"
+                  - button "Limay, Bataan, 0.17 millimeters, select time series" [ref=e3111] [cursor=pointer]:
+                    - generic [ref=e3112]: "93"
+                    - generic [ref=e3113]: Limay, Bataan
+                    - strong [ref=e3116]: "0.17"
+                  - button "Ibaan, Batangas, 0.17 millimeters, select time series" [ref=e3117] [cursor=pointer]:
+                    - generic [ref=e3118]: "94"
+                    - generic [ref=e3119]: Ibaan, Batangas
+                    - strong [ref=e3122]: "0.17"
+                  - button "Mabitac, Laguna, 0.16 millimeters, select time series" [ref=e3123] [cursor=pointer]:
+                    - generic [ref=e3124]: "95"
+                    - generic [ref=e3125]: Mabitac, Laguna
+                    - strong [ref=e3128]: "0.16"
+                  - button "Lian, Batangas, 0.12 millimeters, select time series" [ref=e3129] [cursor=pointer]:
+                    - generic [ref=e3130]: "96"
+                    - generic [ref=e3131]: Lian, Batangas
+                    - strong [ref=e3134]: "0.12"
+                  - button "Orion, Bataan, 0.12 millimeters, select time series" [ref=e3135] [cursor=pointer]:
+                    - generic [ref=e3136]: "97"
+                    - generic [ref=e3137]: Orion, Bataan
+                    - strong [ref=e3140]: "0.12"
+                  - button "Mariveles, Bataan, 0.11 millimeters, select time series" [ref=e3141] [cursor=pointer]:
+                    - generic [ref=e3142]: "98"
+                    - generic [ref=e3143]: Mariveles, Bataan
+                    - strong [ref=e3146]: "0.11"
+                  - button "Doña Remedios Trinidad, Bulacan, 0.11 millimeters, select time series" [ref=e3147] [cursor=pointer]:
+                    - generic [ref=e3148]: "99"
+                    - generic [ref=e3149]: Doña Remedios Trinidad, Bulacan
+                    - strong [ref=e3152]: "0.11"
+                  - button "Pakil, Laguna, 0.11 millimeters, select time series" [ref=e3153] [cursor=pointer]:
+                    - generic [ref=e3154]: "100"
+                    - generic [ref=e3155]: Pakil, Laguna
+                    - strong [ref=e3158]: "0.11"
+                  - button "Nagcarlan, Laguna, 0.1 millimeters, select time series" [ref=e3159] [cursor=pointer]:
+                    - generic [ref=e3160]: "101"
+                    - generic [ref=e3161]: Nagcarlan, Laguna
+                    - strong [ref=e3164]: "0.1"
+                  - button "Sasmuan, Pampanga, 0.09 millimeters, select time series" [ref=e3165] [cursor=pointer]:
+                    - generic [ref=e3166]: "102"
+                    - generic [ref=e3167]: Sasmuan, Pampanga
+                    - strong [ref=e3170]: "0.09"
+                  - button "Magdalena, Laguna, 0.09 millimeters, select time series" [ref=e3171] [cursor=pointer]:
+                    - generic [ref=e3172]: "103"
+                    - generic [ref=e3173]: Magdalena, Laguna
+                    - strong [ref=e3176]: "0.09"
+                  - button "Pagsanjan, Laguna, 0.09 millimeters, select time series" [ref=e3177] [cursor=pointer]:
+                    - generic [ref=e3178]: "104"
+                    - generic [ref=e3179]: Pagsanjan, Laguna
+                    - strong [ref=e3182]: "0.09"
+                  - button "Padre Garcia, Batangas, 0.09 millimeters, select time series" [ref=e3183] [cursor=pointer]:
+                    - generic [ref=e3184]: "105"
+                    - generic [ref=e3185]: Padre Garcia, Batangas
+                    - strong [ref=e3188]: "0.09"
+                  - button "Famy, Laguna, 0.08 millimeters, select time series" [ref=e3189] [cursor=pointer]:
+                    - generic [ref=e3190]: "106"
+                    - generic [ref=e3191]: Famy, Laguna
+                    - strong [ref=e3194]: "0.08"
+                  - button "Pangil, Laguna, 0.07 millimeters, select time series" [ref=e3195] [cursor=pointer]:
+                    - generic [ref=e3196]: "107"
+                    - generic [ref=e3197]: Pangil, Laguna
+                    - strong [ref=e3200]: "0.07"
+                  - button "Liliw, Laguna, 0.07 millimeters, select time series" [ref=e3201] [cursor=pointer]:
+                    - generic [ref=e3202]: "108"
+                    - generic [ref=e3203]: Liliw, Laguna
+                    - strong [ref=e3206]: "0.07"
+                  - button "Siniloan, Laguna, 0.07 millimeters, select time series" [ref=e3207] [cursor=pointer]:
+                    - generic [ref=e3208]: "109"
+                    - generic [ref=e3209]: Siniloan, Laguna
+                    - strong [ref=e3212]: "0.07"
+                  - button "City of Balanga, Bataan, 0.07 millimeters, select time series" [ref=e3213] [cursor=pointer]:
+                    - generic [ref=e3214]: "110"
+                    - generic [ref=e3215]: City of Balanga, Bataan
+                    - strong [ref=e3218]: "0.07"
+                  - button "Tiaong, Quezon, 0.06 millimeters, select time series" [ref=e3219] [cursor=pointer]:
+                    - generic [ref=e3220]: "111"
+                    - generic [ref=e3221]: Tiaong, Quezon
+                    - strong [ref=e3224]: "0.06"
+                  - button "Abucay, Bataan, 0.06 millimeters, select time series" [ref=e3225] [cursor=pointer]:
+                    - generic [ref=e3226]: "112"
+                    - generic [ref=e3227]: Abucay, Bataan
+                    - strong [ref=e3230]: "0.06"
+                  - button "Samal, Bataan, 0.05 millimeters, select time series" [ref=e3231] [cursor=pointer]:
+                    - generic [ref=e3232]: "113"
+                    - generic [ref=e3233]: Samal, Bataan
+                    - strong [ref=e3236]: "0.05"
+                  - button "Lumban, Laguna, 0.05 millimeters, select time series" [ref=e3237] [cursor=pointer]:
+                    - generic [ref=e3238]: "114"
+                    - generic [ref=e3239]: Lumban, Laguna
+                    - strong [ref=e3242]: "0.05"
+                  - button "Majayjay, Laguna, 0.05 millimeters, select time series" [ref=e3243] [cursor=pointer]:
+                    - generic [ref=e3244]: "115"
+                    - generic [ref=e3245]: Majayjay, Laguna
+                    - strong [ref=e3248]: "0.05"
+                  - button "Calatagan, Batangas, 0.05 millimeters, select time series" [ref=e3249] [cursor=pointer]:
+                    - generic [ref=e3250]: "116"
+                    - generic [ref=e3251]: Calatagan, Batangas
+                    - strong [ref=e3254]: "0.05"
+                  - button "Orani, Bataan, 0.05 millimeters, select time series" [ref=e3255] [cursor=pointer]:
+                    - generic [ref=e3256]: "117"
+                    - generic [ref=e3257]: Orani, Bataan
+                    - strong [ref=e3260]: "0.05"
+                  - button "Paete, Laguna, 0.04 millimeters, select time series" [ref=e3261] [cursor=pointer]:
+                    - generic [ref=e3262]: "118"
+                    - generic [ref=e3263]: Paete, Laguna
+                    - strong [ref=e3266]: "0.04"
+                  - button "Mabini, Batangas, 0.04 millimeters, select time series" [ref=e3267] [cursor=pointer]:
+                    - generic [ref=e3268]: "119"
+                    - generic [ref=e3269]: Mabini, Batangas
+                    - strong [ref=e3272]: "0.04"
+                  - button "General Nakar, Quezon, 0.04 millimeters, select time series" [ref=e3273] [cursor=pointer]:
+                    - generic [ref=e3274]: "120"
+                    - generic [ref=e3275]: General Nakar, Quezon
+                    - strong [ref=e3278]: "0.04"
+                  - button "Bagac, Bataan, 0.04 millimeters, select time series" [ref=e3279] [cursor=pointer]:
+                    - generic [ref=e3280]: "121"
+                    - generic [ref=e3281]: Bagac, Bataan
+                    - strong [ref=e3284]: "0.04"
+                  - button "Luisiana, Laguna, 0.03 millimeters, select time series" [ref=e3285] [cursor=pointer]:
+                    - generic [ref=e3286]: "122"
+                    - generic [ref=e3287]: Luisiana, Laguna
+                    - strong [ref=e3290]: "0.03"
+                  - button "Cavinti, Laguna, 0.03 millimeters, select time series" [ref=e3291] [cursor=pointer]:
+                    - generic [ref=e3292]: "123"
+                    - generic [ref=e3293]: Cavinti, Laguna
+                    - strong [ref=e3296]: "0.03"
+                  - button "Rosario, Batangas, 0.03 millimeters, select time series" [ref=e3297] [cursor=pointer]:
+                    - generic [ref=e3298]: "124"
+                    - generic [ref=e3299]: Rosario, Batangas
+                    - strong [ref=e3302]: "0.03"
+                  - button "Real, Quezon, 0.03 millimeters, select time series" [ref=e3303] [cursor=pointer]:
+                    - generic [ref=e3304]: "125"
+                    - generic [ref=e3305]: Real, Quezon
+                    - strong [ref=e3308]: "0.03"
+                  - button "Batangas, Batangas, 0.02 millimeters, select time series" [ref=e3309] [cursor=pointer]:
+                    - generic [ref=e3310]: "126"
+                    - generic [ref=e3311]: Batangas, Batangas
+                    - strong [ref=e3314]: "0.02"
+                  - button "Hermosa, Bataan, 0.02 millimeters, select time series" [ref=e3315] [cursor=pointer]:
+                    - generic [ref=e3316]: "127"
+                    - generic [ref=e3317]: Hermosa, Bataan
+                    - strong [ref=e3320]: "0.02"
+                  - button "Taysan, Batangas, 0.02 millimeters, select time series" [ref=e3321] [cursor=pointer]:
+                    - generic [ref=e3322]: "128"
+                    - generic [ref=e3323]: Taysan, Batangas
+                    - strong [ref=e3326]: "0.02"
+                  - button "Dinalupihan, Bataan, 0.02 millimeters, select time series" [ref=e3327] [cursor=pointer]:
+                    - generic [ref=e3328]: "129"
+                    - generic [ref=e3329]: Dinalupihan, Bataan
+                    - strong [ref=e3332]: "0.02"
+                  - button "Lucban, Quezon, 0.01 millimeters, select time series" [ref=e3333] [cursor=pointer]:
+                    - generic [ref=e3334]: "130"
+                    - generic [ref=e3335]: Lucban, Quezon
+                    - strong [ref=e3338]: "0.01"
+                  - button "Sariaya, Quezon, 0.01 millimeters, select time series" [ref=e3339] [cursor=pointer]:
+                    - generic [ref=e3340]: "131"
+                    - generic [ref=e3341]: Sariaya, Quezon
+                    - strong [ref=e3344]: "0.01"
+                  - button "Tingloy, Batangas, 0.01 millimeters, select time series" [ref=e3345] [cursor=pointer]:
+                    - generic [ref=e3346]: "132"
+                    - generic [ref=e3347]: Tingloy, Batangas
+                    - strong [ref=e3350]: "0.01"
+                - paragraph [ref=e485]: Bars share the eventual maximum as scale. Select a municipality to inspect its curve.
+              - article [ref=e486]:
+                - generic [ref=e488]:
+                  - heading "Municipal deposit distribution" [level=3] [ref=e489]
+                  - paragraph [ref=e490]: 162 centroids with known deposits · During · 5.1 h
+                - generic [ref=e491]:
+                  - 'img "Deposit distribution. Below trace (<0.01 mm): 30; Trace (0.01–<0.5 mm): 70; 0.5–<1 mm: 27; 1–<5 mm: 30; ≥5 mm: 5. 156 outside domain and 0 unknown excluded." [ref=e3351]':
+                    - 'generic "Below trace (<0.01 mm): 30" [ref=e3352]'
+                    - 'generic "Trace (0.01–<0.5 mm): 70" [ref=e3353]'
+                    - 'generic "0.5–<1 mm: 27" [ref=e3354]'
+                    - 'generic "1–<5 mm: 30" [ref=e3355]'
+                    - 'generic "≥5 mm: 5" [ref=e3356]'
+                    - generic [ref=e499]: "162"
+                    - generic [ref=e500]: centroids
+                  - list [ref=e501]:
+                    - listitem [ref=e502]:
+                      - generic [ref=e504]: Below trace (<0.01 mm)
+                      - strong [ref=e505]: "30"
+                      - generic [ref=e506]: 18.5%
+                    - listitem [ref=e507]:
+                      - generic [ref=e509]: Trace (0.01–<0.5 mm)
+                      - strong [ref=e510]: "70"
+                      - generic [ref=e511]: 43.2%
+                    - listitem [ref=e512]:
+                      - generic [ref=e514]: 0.5–<1 mm
+                      - strong [ref=e515]: "27"
+                      - generic [ref=e516]: 16.7%
+                    - listitem [ref=e517]:
+                      - generic [ref=e519]: 1–<5 mm
+                      - strong [ref=e520]: "30"
+                      - generic [ref=e521]: 18.5%
+                    - listitem [ref=e522]:
+                      - generic [ref=e524]: ≥5 mm
+                      - strong [ref=e525]: "5"
+                      - generic [ref=e526]: 3.1%
+                - paragraph [ref=e527]: "Excluded: 156 outside domain · 0 unknown. Bands describe deposits, not hazard severity."
+              - article [ref=e528]:
+                - generic [ref=e530]:
+                  - heading "Scenario at a glance" [level=3] [ref=e531]
+                  - paragraph [ref=e532]: During · 5.1 h · 132 municipal centroids ≥0.01 mm · 62 ≥0.5 mm
+                - generic [ref=e535]:
+                  - generic [ref=e536]:
+                    - term [ref=e537]: Column above ground
+                    - definition [ref=e538]: 17 km
+                  - generic [ref=e539]:
+                    - term [ref=e540]: Active wind
+                    - definition [ref=e541]: Height-dependent wind · 5 levels
+                  - generic [ref=e542]:
+                    - term [ref=e543]: Emission duration
+                    - definition [ref=e544]: 10 h
+                  - generic [ref=e545]:
+                    - term [ref=e546]: Modeled mass in domain
+                    - definition [ref=e547]: 78%
+                - paragraph [ref=e548]: Centroid samples are not municipality-wide averages. Historical agreement is not established.
+        - region [ref=e549]:
+          - generic [ref=e551]:
+            - heading "Municipal and facility exposure" [level=2] [ref=e552]
+            - paragraph [ref=e553]: "Eventual totals: 100 municipal centroids ≥0.5 mm · 22,691,111 indicative residents · 163/320 locations in domain"
+          - generic [ref=e554]:
+            - generic [ref=e556]:
+              - heading "Provincial & City Impact Breakdown" [level=3] [ref=e557]
+              - paragraph [ref=e558]: Eventual centroid deposit bands and indicative populations in the incomplete receptor inventory. Bands are thickness ranges, not hazard or damage severity.
+            - generic [ref=e559]:
+              - generic [ref=e560]:
+                - 'button "Batangas 26 cities/towns Peak: 30.99 mm (San Nicolas) 2,181,300 indicative residents · 0 unknown" [expanded] [ref=e561] [cursor=pointer]':
+                  - generic [ref=e562]:
+                    - strong [ref=e565]: Batangas
+                    - generic [ref=e566]: 26 cities/towns
+                  - generic [ref=e567]:
+                    - generic [ref=e568]:
+                      - text: "Peak:"
+                      - strong [ref=e569]: 30.99 mm
+                      - text: (San Nicolas)
+                    - generic [ref=e570]: 2,181,300 indicative residents · 0 unknown
+                - table [ref=e572]:
+                  - rowgroup [ref=e573]:
+                    - row [ref=e574]:
+                      - columnheader "City / Municipality" [ref=e575]
+                      - columnheader "Modeled Ash" [ref=e576]
+                      - columnheader "Deposit band" [ref=e577]
+                      - columnheader "Ground Load" [ref=e578]
+                      - columnheader "Population / year" [ref=e579]
+                      - columnheader "Action" [ref=e580]
+                  - rowgroup [ref=e581]:
+                    - row [ref=e582]:
+                      - rowheader "San Nicolas" [ref=e583]
+                      - cell [ref=e584]:
+                        - generic [ref=e585]:
+                          - strong [ref=e586]: "30.99"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e587]
+                      - cell "30.99 kg/m²" [ref=e589]
+                      - cell "24,392 (2024)" [ref=e590]:
+                        - text: 24,392
+                        - generic [ref=e591]: (2024)
+                      - cell [ref=e592]:
+                        - button "Locate" [ref=e593] [cursor=pointer]
+                    - row [ref=e598]:
+                      - rowheader "Talisay" [ref=e599]
+                      - cell [ref=e600]:
+                        - generic [ref=e601]:
+                          - strong [ref=e602]: "24.13"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e603]
+                      - cell "24.13 kg/m²" [ref=e605]
+                      - cell "46,477 (2024)" [ref=e606]:
+                        - text: 46,477
+                        - generic [ref=e607]: (2024)
+                      - cell [ref=e608]:
+                        - button "Locate" [ref=e609] [cursor=pointer]
+                    - row [ref=e614]:
+                      - rowheader "Agoncillo" [ref=e615]
+                      - cell [ref=e616]:
+                        - generic [ref=e617]:
+                          - strong [ref=e618]: "23.99"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e619]
+                      - cell "23.99 kg/m²" [ref=e621]
+                      - cell "40,662 (2024)" [ref=e622]:
+                        - text: 40,662
+                        - generic [ref=e623]: (2024)
+                      - cell [ref=e624]:
+                        - button "Locate" [ref=e625] [cursor=pointer]
+                    - row [ref=e630]:
+                      - rowheader "Laurel" [ref=e631]
+                      - cell [ref=e632]:
+                        - generic [ref=e633]:
+                          - strong [ref=e634]: "19.85"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e635]
+                      - cell "19.85 kg/m²" [ref=e637]
+                      - cell "44,791 (2024)" [ref=e638]:
+                        - text: 44,791
+                        - generic [ref=e639]: (2024)
+                      - cell [ref=e640]:
+                        - button "Locate" [ref=e641] [cursor=pointer]
+                    - row [ref=e646]:
+                      - rowheader "Balete" [ref=e647]
+                      - cell [ref=e648]:
+                        - generic [ref=e649]:
+                          - strong [ref=e650]: "18.27"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e651]
+                      - cell "18.27 kg/m²" [ref=e653]
+                      - cell "24,202 (2024)" [ref=e654]:
+                        - text: 24,202
+                        - generic [ref=e655]: (2024)
+                      - cell [ref=e656]:
+                        - button "Locate" [ref=e657] [cursor=pointer]
+                    - row [ref=e662]:
+                      - rowheader "Mataasnakahoy" [ref=e663]
+                      - cell [ref=e664]:
+                        - generic [ref=e665]:
+                          - strong [ref=e666]: "16.48"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e667]
+                      - cell "16.48 kg/m²" [ref=e669]
+                      - cell "31,912 (2024)" [ref=e670]:
+                        - text: 31,912
+                        - generic [ref=e671]: (2024)
+                      - cell [ref=e672]:
+                        - button "Locate" [ref=e673] [cursor=pointer]
+                    - row [ref=e678]:
+                      - rowheader "Cuenca" [ref=e679]
+                      - cell [ref=e680]:
+                        - generic [ref=e681]:
+                          - strong [ref=e682]: "13.95"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e683]
+                      - cell "13.95 kg/m²" [ref=e685]
+                      - cell "36,453 (2024)" [ref=e686]:
+                        - text: 36,453
+                        - generic [ref=e687]: (2024)
+                      - cell [ref=e688]:
+                        - button "Locate" [ref=e689] [cursor=pointer]
+                    - row [ref=e694]:
+                      - rowheader "Lemery" [ref=e695]
+                      - cell [ref=e696]:
+                        - generic [ref=e697]:
+                          - strong [ref=e698]: "12.86"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e699]
+                      - cell "12.86 kg/m²" [ref=e701]
+                      - cell "94,736 (2024)" [ref=e702]:
+                        - text: 94,736
+                        - generic [ref=e703]: (2024)
+                      - cell [ref=e704]:
+                        - button "Locate" [ref=e705] [cursor=pointer]
+                    - row [ref=e710]:
+                      - rowheader "Tanauan" [ref=e711]
+                      - cell [ref=e712]:
+                        - generic [ref=e713]:
+                          - strong [ref=e714]: "12.44"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e715]
+                      - cell "12.44 kg/m²" [ref=e717]
+                      - cell "209,697 (2024)" [ref=e718]:
+                        - text: 209,697
+                        - generic [ref=e719]: (2024)
+                      - cell [ref=e720]:
+                        - button "Locate" [ref=e721] [cursor=pointer]
+                    - row [ref=e726]:
+                      - rowheader "Santa Teresita" [ref=e727]
+                      - cell [ref=e728]:
+                        - generic [ref=e729]:
+                          - strong [ref=e730]: "10.25"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e731]
+                      - cell "10.25 kg/m²" [ref=e733]
+                      - cell "21,742 (2024)" [ref=e734]:
+                        - text: 21,742
+                        - generic [ref=e735]: (2024)
+                      - cell [ref=e736]:
+                        - button "Locate" [ref=e737] [cursor=pointer]
+                    - row [ref=e742]:
+                      - rowheader "Taal" [ref=e743]
+                      - cell [ref=e744]:
+                        - generic [ref=e745]:
+                          - strong [ref=e746]: "9.98"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e747]
+                      - cell "9.98 kg/m²" [ref=e749]
+                      - cell "61,559 (2024)" [ref=e750]:
+                        - text: 61,559
+                        - generic [ref=e751]: (2024)
+                      - cell [ref=e752]:
+                        - button "Locate" [ref=e753] [cursor=pointer]
+                    - row [ref=e758]:
+                      - rowheader "Alitagtag" [ref=e759]
+                      - cell [ref=e760]:
+                        - generic [ref=e761]:
+                          - strong [ref=e762]: "8.46"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e763]
+                      - cell "8.46 kg/m²" [ref=e765]
+                      - cell "28,033 (2024)" [ref=e766]:
+                        - text: 28,033
+                        - generic [ref=e767]: (2024)
+                      - cell [ref=e768]:
+                        - button "Locate" [ref=e769] [cursor=pointer]
+                    - row [ref=e774]:
+                      - rowheader "Malvar" [ref=e775]
+                      - cell [ref=e776]:
+                        - generic [ref=e777]:
+                          - strong [ref=e778]: "8.31"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e779]
+                      - cell "8.31 kg/m²" [ref=e781]
+                      - cell "74,565 (2024)" [ref=e782]:
+                        - text: 74,565
+                        - generic [ref=e783]: (2024)
+                      - cell [ref=e784]:
+                        - button "Locate" [ref=e785] [cursor=pointer]
+                    - row [ref=e790]:
+                      - rowheader "San Jose" [ref=e791]
+                      - cell [ref=e792]:
+                        - generic [ref=e793]:
+                          - strong [ref=e794]: "6.32"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e795]
+                      - cell "6.32 kg/m²" [ref=e797]
+                      - cell "81,170 (2024)" [ref=e798]:
+                        - text: 81,170
+                        - generic [ref=e799]: (2024)
+                      - cell [ref=e800]:
+                        - button "Locate" [ref=e801] [cursor=pointer]
+                    - row [ref=e806]:
+                      - rowheader "Calaca" [ref=e807]
+                      - cell [ref=e808]:
+                        - generic [ref=e809]:
+                          - strong [ref=e810]: "5.17"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e811]
+                      - cell "5.17 kg/m²" [ref=e813]
+                      - cell "92,281 (2024)" [ref=e814]:
+                        - text: 92,281
+                        - generic [ref=e815]: (2024)
+                      - cell [ref=e816]:
+                        - button "Locate" [ref=e817] [cursor=pointer]
+                    - row [ref=e822]:
+                      - rowheader "Lipa" [ref=e823]
+                      - cell [ref=e824]:
+                        - generic [ref=e825]:
+                          - strong [ref=e826]: "4.01"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e827]
+                      - cell "4.01 kg/m²" [ref=e829]
+                      - cell "387,392 (2024)" [ref=e830]:
+                        - text: 387,392
+                        - generic [ref=e831]: (2024)
+                      - cell [ref=e832]:
+                        - button "Locate" [ref=e833] [cursor=pointer]
+                    - row [ref=e838]:
+                      - rowheader "San Luis" [ref=e839]
+                      - cell [ref=e840]:
+                        - generic [ref=e841]:
+                          - strong [ref=e842]: "3.91"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e843]
+                      - cell "3.91 kg/m²" [ref=e845]
+                      - cell "36,841 (2024)" [ref=e846]:
+                        - text: 36,841
+                        - generic [ref=e847]: (2024)
+                      - cell [ref=e848]:
+                        - button "Locate" [ref=e849] [cursor=pointer]
+                    - row [ref=e854]:
+                      - rowheader "Santo Tomas" [ref=e855]
+                      - cell [ref=e856]:
+                        - generic [ref=e857]:
+                          - strong [ref=e858]: "3.86"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e859]
+                      - cell "3.86 kg/m²" [ref=e861]
+                      - cell "226,772 (2024)" [ref=e862]:
+                        - text: 226,772
+                        - generic [ref=e863]: (2024)
+                      - cell [ref=e864]:
+                        - button "Locate" [ref=e865] [cursor=pointer]
+                    - row [ref=e870]:
+                      - rowheader "San Pascual" [ref=e871]
+                      - cell [ref=e872]:
+                        - generic [ref=e873]:
+                          - strong [ref=e874]: "2.92"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e875]
+                      - cell "2.92 kg/m²" [ref=e877]
+                      - cell "69,419 (2024)" [ref=e878]:
+                        - text: 69,419
+                        - generic [ref=e879]: (2024)
+                      - cell [ref=e880]:
+                        - button "Locate" [ref=e881] [cursor=pointer]
+                    - row [ref=e886]:
+                      - rowheader "Bauan" [ref=e887]
+                      - cell [ref=e888]:
+                        - generic [ref=e889]:
+                          - strong [ref=e890]: "2.11"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e891]
+                      - cell "2.11 kg/m²" [ref=e893]
+                      - cell "94,016 (2024)" [ref=e894]:
+                        - text: 94,016
+                        - generic [ref=e895]: (2024)
+                      - cell [ref=e896]:
+                        - button "Locate" [ref=e897] [cursor=pointer]
+                    - row [ref=e902]:
+                      - rowheader "Tuy" [ref=e903]
+                      - cell [ref=e904]:
+                        - generic [ref=e905]:
+                          - strong [ref=e906]: "1.5"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e907]
+                      - cell "1.5 kg/m²" [ref=e909]
+                      - cell "47,199 (2024)" [ref=e910]:
+                        - text: 47,199
+                        - generic [ref=e911]: (2024)
+                      - cell [ref=e912]:
+                        - button "Locate" [ref=e913] [cursor=pointer]
+                    - row [ref=e918]:
+                      - rowheader "Ibaan" [ref=e919]
+                      - cell [ref=e920]:
+                        - generic [ref=e921]:
+                          - strong [ref=e922]: "1.25"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e923]
+                      - cell "1.25 kg/m²" [ref=e925]
+                      - cell "58,673 (2024)" [ref=e926]:
+                        - text: 58,673
+                        - generic [ref=e927]: (2024)
+                      - cell [ref=e928]:
+                        - button "Locate" [ref=e929] [cursor=pointer]
+                    - row [ref=e934]:
+                      - rowheader "Nasugbu" [ref=e935]
+                      - cell [ref=e936]:
+                        - generic [ref=e937]:
+                          - strong [ref=e938]: "1.11"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e939]
+                      - cell "1.11 kg/m²" [ref=e941]
+                      - cell "141,063 (2024)" [ref=e942]:
+                        - text: 141,063
+                        - generic [ref=e943]: (2024)
+                      - cell [ref=e944]:
+                        - button "Locate" [ref=e945] [cursor=pointer]
+                    - row [ref=e950]:
+                      - rowheader "Balayan" [ref=e951]
+                      - cell [ref=e952]:
+                        - generic [ref=e953]:
+                          - strong [ref=e954]: "1.1"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e955]
+                      - cell "1.1 kg/m²" [ref=e957]
+                      - cell "96,939 (2024)" [ref=e958]:
+                        - text: 96,939
+                        - generic [ref=e959]: (2024)
+                      - cell [ref=e960]:
+                        - button "Locate" [ref=e961] [cursor=pointer]
+                    - row [ref=e966]:
+                      - rowheader "Padre Garcia" [ref=e967]
+                      - cell [ref=e968]:
+                        - generic [ref=e969]:
+                          - strong [ref=e970]: "0.72"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e971]
+                      - cell "0.72 kg/m²" [ref=e973]
+                      - cell "53,526 (2024)" [ref=e974]:
+                        - text: 53,526
+                        - generic [ref=e975]: (2024)
+                      - cell [ref=e976]:
+                        - button "Locate" [ref=e977] [cursor=pointer]
+                    - row [ref=e982]:
+                      - rowheader "Lian" [ref=e983]
+                      - cell [ref=e984]:
+                        - generic [ref=e985]:
+                          - strong [ref=e986]: "0.53"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e987]
+                      - cell "0.53 kg/m²" [ref=e989]
+                      - cell "56,788 (2024)" [ref=e990]:
+                        - text: 56,788
+                        - generic [ref=e991]: (2024)
+                      - cell [ref=e992]:
+                        - button "Locate" [ref=e993] [cursor=pointer]
+              - generic [ref=e998]:
+                - 'button "Cavite 23 cities/towns Peak: 16.51 mm (Tagaytay) 4,573,884 indicative residents · 0 unknown" [expanded] [ref=e999] [cursor=pointer]':
+                  - generic [ref=e1000]:
+                    - strong [ref=e1003]: Cavite
+                    - generic [ref=e1004]: 23 cities/towns
+                  - generic [ref=e1005]:
+                    - generic [ref=e1006]:
+                      - text: "Peak:"
+                      - strong [ref=e1007]: 16.51 mm
+                      - text: (Tagaytay)
+                    - generic [ref=e1008]: 4,573,884 indicative residents · 0 unknown
+                - table [ref=e1010]:
+                  - rowgroup [ref=e1011]:
+                    - row [ref=e1012]:
+                      - columnheader "City / Municipality" [ref=e1013]
+                      - columnheader "Modeled Ash" [ref=e1014]
+                      - columnheader "Deposit band" [ref=e1015]
+                      - columnheader "Ground Load" [ref=e1016]
+                      - columnheader "Population / year" [ref=e1017]
+                      - columnheader "Action" [ref=e1018]
+                  - rowgroup [ref=e1019]:
+                    - row [ref=e1020]:
+                      - rowheader "Tagaytay" [ref=e1021]
+                      - cell [ref=e1022]:
+                        - generic [ref=e1023]:
+                          - strong [ref=e1024]: "16.51"
+                          - text: mm
+                      - cell "≥10 mm" [ref=e1025]
+                      - cell "16.51 kg/m²" [ref=e1027]
+                      - cell "87,811 (2024)" [ref=e1028]:
+                        - text: 87,811
+                        - generic [ref=e1029]: (2024)
+                      - cell [ref=e1030]:
+                        - button "Locate" [ref=e1031] [cursor=pointer]
+                    - row [ref=e1036]:
+                      - rowheader "Mendez" [ref=e1037]
+                      - cell [ref=e1038]:
+                        - generic [ref=e1039]:
+                          - strong [ref=e1040]: "8.81"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1041]
+                      - cell "8.81 kg/m²" [ref=e1043]
+                      - cell "36,518 (2024)" [ref=e1044]:
+                        - text: 36,518
+                        - generic [ref=e1045]: (2024)
+                      - cell [ref=e1046]:
+                        - button "Locate" [ref=e1047] [cursor=pointer]
+                    - row [ref=e1052]:
+                      - rowheader "Amadeo" [ref=e1053]
+                      - cell [ref=e1054]:
+                        - generic [ref=e1055]:
+                          - strong [ref=e1056]: "6.3"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1057]
+                      - cell "6.3 kg/m²" [ref=e1059]
+                      - cell "44,190 (2024)" [ref=e1060]:
+                        - text: 44,190
+                        - generic [ref=e1061]: (2024)
+                      - cell [ref=e1062]:
+                        - button "Locate" [ref=e1063] [cursor=pointer]
+                    - row [ref=e1068]:
+                      - rowheader "Silang" [ref=e1069]
+                      - cell [ref=e1070]:
+                        - generic [ref=e1071]:
+                          - strong [ref=e1072]: "4.99"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1073]
+                      - cell "4.99 kg/m²" [ref=e1075]
+                      - cell "313,145 (2024)" [ref=e1076]:
+                        - text: 313,145
+                        - generic [ref=e1077]: (2024)
+                      - cell [ref=e1078]:
+                        - button "Locate" [ref=e1079] [cursor=pointer]
+                    - row [ref=e1084]:
+                      - rowheader "Alfonso" [ref=e1085]
+                      - cell [ref=e1086]:
+                        - generic [ref=e1087]:
+                          - strong [ref=e1088]: "4.98"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1089]
+                      - cell "4.98 kg/m²" [ref=e1091]
+                      - cell "60,583 (2024)" [ref=e1092]:
+                        - text: 60,583
+                        - generic [ref=e1093]: (2024)
+                      - cell [ref=e1094]:
+                        - button "Locate" [ref=e1095] [cursor=pointer]
+                    - row [ref=e1100]:
+                      - rowheader "Indang" [ref=e1101]
+                      - cell [ref=e1102]:
+                        - generic [ref=e1103]:
+                          - strong [ref=e1104]: "3.97"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1105]
+                      - cell "3.97 kg/m²" [ref=e1107]
+                      - cell "70,092 (2024)" [ref=e1108]:
+                        - text: 70,092
+                        - generic [ref=e1109]: (2024)
+                      - cell [ref=e1110]:
+                        - button "Locate" [ref=e1111] [cursor=pointer]
+                    - row [ref=e1116]:
+                      - rowheader "City of Dasmariñas" [ref=e1117]
+                      - cell [ref=e1118]:
+                        - generic [ref=e1119]:
+                          - strong [ref=e1120]: "3.62"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1121]
+                      - cell "3.62 kg/m²" [ref=e1123]
+                      - cell "744,511 (2024)" [ref=e1124]:
+                        - text: 744,511
+                        - generic [ref=e1125]: (2024)
+                      - cell [ref=e1126]:
+                        - button "Locate" [ref=e1127] [cursor=pointer]
+                    - row [ref=e1132]:
+                      - rowheader "Gen. Mariano Alvarez" [ref=e1133]
+                      - cell [ref=e1134]:
+                        - generic [ref=e1135]:
+                          - strong [ref=e1136]: "3.53"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1137]
+                      - cell "3.53 kg/m²" [ref=e1139]
+                      - cell "176,927 (2024)" [ref=e1140]:
+                        - text: 176,927
+                        - generic [ref=e1141]: (2024)
+                      - cell [ref=e1142]:
+                        - button "Locate" [ref=e1143] [cursor=pointer]
+                    - row [ref=e1148]:
+                      - rowheader "City of Imus" [ref=e1149]
+                      - cell [ref=e1150]:
+                        - generic [ref=e1151]:
+                          - strong [ref=e1152]: "3.53"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1153]
+                      - cell "3.53 kg/m²" [ref=e1155]
+                      - cell "481,949 (2024)" [ref=e1156]:
+                        - text: 481,949
+                        - generic [ref=e1157]: (2024)
+                      - cell [ref=e1158]:
+                        - button "Locate" [ref=e1159] [cursor=pointer]
+                    - row [ref=e1164]:
+                      - rowheader "City of Bacoor" [ref=e1165]
+                      - cell [ref=e1166]:
+                        - generic [ref=e1167]:
+                          - strong [ref=e1168]: "3.52"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1169]
+                      - cell "3.52 kg/m²" [ref=e1171]
+                      - cell "661,381 (2024)" [ref=e1172]:
+                        - text: 661,381
+                        - generic [ref=e1173]: (2024)
+                      - cell [ref=e1174]:
+                        - button "Locate" [ref=e1175] [cursor=pointer]
+                    - row [ref=e1180]:
+                      - rowheader "City of General Trias" [ref=e1181]
+                      - cell [ref=e1182]:
+                        - generic [ref=e1183]:
+                          - strong [ref=e1184]: "3.45"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1185]
+                      - cell "3.45 kg/m²" [ref=e1187]
+                      - cell "482,453 (2024)" [ref=e1188]:
+                        - text: 482,453
+                        - generic [ref=e1189]: (2024)
+                      - cell [ref=e1190]:
+                        - button "Locate" [ref=e1191] [cursor=pointer]
+                    - row [ref=e1196]:
+                      - rowheader "City of Carmona" [ref=e1197]
+                      - cell [ref=e1198]:
+                        - generic [ref=e1199]:
+                          - strong [ref=e1200]: "3.43"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1201]
+                      - cell "3.43 kg/m²" [ref=e1203]
+                      - cell "112,140 (2024)" [ref=e1204]:
+                        - text: 112,140
+                        - generic [ref=e1205]: (2024)
+                      - cell [ref=e1206]:
+                        - button "Locate" [ref=e1207] [cursor=pointer]
+                    - row [ref=e1212]:
+                      - rowheader "Kawit" [ref=e1213]
+                      - cell [ref=e1214]:
+                        - generic [ref=e1215]:
+                          - strong [ref=e1216]: "3.37"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1217]
+                      - cell "3.37 kg/m²" [ref=e1219]
+                      - cell "123,631 (2024)" [ref=e1220]:
+                        - text: 123,631
+                        - generic [ref=e1221]: (2024)
+                      - cell [ref=e1222]:
+                        - button "Locate" [ref=e1223] [cursor=pointer]
+                    - row [ref=e1228]:
+                      - rowheader "Noveleta" [ref=e1229]
+                      - cell [ref=e1230]:
+                        - generic [ref=e1231]:
+                          - strong [ref=e1232]: "3.27"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1233]
+                      - cell "3.27 kg/m²" [ref=e1235]
+                      - cell "46,172 (2024)" [ref=e1236]:
+                        - text: 46,172
+                        - generic [ref=e1237]: (2024)
+                      - cell [ref=e1238]:
+                        - button "Locate" [ref=e1239] [cursor=pointer]
+                    - row [ref=e1244]:
+                      - rowheader "Trece Martires" [ref=e1245]
+                      - cell [ref=e1246]:
+                        - generic [ref=e1247]:
+                          - strong [ref=e1248]: "3.26"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1249]
+                      - cell "3.26 kg/m²" [ref=e1251]
+                      - cell "227,892 (2024)" [ref=e1252]:
+                        - text: 227,892
+                        - generic [ref=e1253]: (2024)
+                      - cell [ref=e1254]:
+                        - button "Locate" [ref=e1255] [cursor=pointer]
+                    - row [ref=e1260]:
+                      - rowheader "Rosario" [ref=e1261]
+                      - cell [ref=e1262]:
+                        - generic [ref=e1263]:
+                          - strong [ref=e1264]: "3.2"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1265]
+                      - cell "3.2 kg/m²" [ref=e1267]
+                      - cell "112,572 (2024)" [ref=e1268]:
+                        - text: 112,572
+                        - generic [ref=e1269]: (2024)
+                      - cell [ref=e1270]:
+                        - button "Locate" [ref=e1271] [cursor=pointer]
+                    - row [ref=e1276]:
+                      - rowheader "Tanza" [ref=e1277]
+                      - cell [ref=e1278]:
+                        - generic [ref=e1279]:
+                          - strong [ref=e1280]: "3.02"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1281]
+                      - cell "3.02 kg/m²" [ref=e1283]
+                      - cell "339,308 (2024)" [ref=e1284]:
+                        - text: 339,308
+                        - generic [ref=e1285]: (2024)
+                      - cell [ref=e1286]:
+                        - button "Locate" [ref=e1287] [cursor=pointer]
+                    - row [ref=e1292]:
+                      - rowheader "General Emilio Aguinaldo" [ref=e1293]
+                      - cell [ref=e1294]:
+                        - generic [ref=e1295]:
+                          - strong [ref=e1296]: "2.63"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1297]
+                      - cell "2.63 kg/m²" [ref=e1299]
+                      - cell "24,264 (2024)" [ref=e1300]:
+                        - text: 24,264
+                        - generic [ref=e1301]: (2024)
+                      - cell [ref=e1302]:
+                        - button "Locate" [ref=e1303] [cursor=pointer]
+                    - row [ref=e1308]:
+                      - rowheader "Naic" [ref=e1309]
+                      - cell [ref=e1310]:
+                        - generic [ref=e1311]:
+                          - strong [ref=e1312]: "2.58"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1313]
+                      - cell "2.58 kg/m²" [ref=e1315]
+                      - cell "236,978 (2024)" [ref=e1316]:
+                        - text: 236,978
+                        - generic [ref=e1317]: (2024)
+                      - cell [ref=e1318]:
+                        - button "Locate" [ref=e1319] [cursor=pointer]
+                    - row [ref=e1324]:
+                      - rowheader "City of Cavite" [ref=e1325]
+                      - cell [ref=e1326]:
+                        - generic [ref=e1327]:
+                          - strong [ref=e1328]: "2.17"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1329]
+                      - cell "2.17 kg/m²" [ref=e1331]
+                      - cell "98,673 (2024)" [ref=e1332]:
+                        - text: 98,673
+                        - generic [ref=e1333]: (2024)
+                      - cell [ref=e1334]:
+                        - button "Locate" [ref=e1335] [cursor=pointer]
+                    - row [ref=e1340]:
+                      - rowheader "Magallanes" [ref=e1341]
+                      - cell [ref=e1342]:
+                        - generic [ref=e1343]:
+                          - strong [ref=e1344]: "1.85"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1345]
+                      - cell "1.85 kg/m²" [ref=e1347]
+                      - cell "25,826 (2024)" [ref=e1348]:
+                        - text: 25,826
+                        - generic [ref=e1349]: (2024)
+                      - cell [ref=e1350]:
+                        - button "Locate" [ref=e1351] [cursor=pointer]
+                    - row [ref=e1356]:
+                      - rowheader "Maragondon" [ref=e1357]
+                      - cell [ref=e1358]:
+                        - generic [ref=e1359]:
+                          - strong [ref=e1360]: "1.76"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1361]
+                      - cell "1.76 kg/m²" [ref=e1363]
+                      - cell "41,977 (2024)" [ref=e1364]:
+                        - text: 41,977
+                        - generic [ref=e1365]: (2024)
+                      - cell [ref=e1366]:
+                        - button "Locate" [ref=e1367] [cursor=pointer]
+                    - row [ref=e1372]:
+                      - rowheader "Ternate" [ref=e1373]
+                      - cell [ref=e1374]:
+                        - generic [ref=e1375]:
+                          - strong [ref=e1376]: "1.33"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1377]
+                      - cell "1.33 kg/m²" [ref=e1379]
+                      - cell "24,891 (2024)" [ref=e1380]:
+                        - text: 24,891
+                        - generic [ref=e1381]: (2024)
+                      - cell [ref=e1382]:
+                        - button "Locate" [ref=e1383] [cursor=pointer]
+              - generic [ref=e1388]:
+                - 'button "Metro Manila (NCR) 13 cities/towns Peak: 3.42 mm (City of Las Piñas) 8,813,260 indicative residents · 0 unknown" [expanded] [ref=e1389] [cursor=pointer]':
+                  - generic [ref=e1390]:
+                    - strong [ref=e1393]: Metro Manila (NCR)
+                    - generic [ref=e1394]: 13 cities/towns
+                  - generic [ref=e1395]:
+                    - generic [ref=e1396]:
+                      - text: "Peak:"
+                      - strong [ref=e1397]: 3.42 mm
+                      - text: (City of Las Piñas)
+                    - generic [ref=e1398]: 8,813,260 indicative residents · 0 unknown
+                - table [ref=e1400]:
+                  - rowgroup [ref=e1401]:
+                    - row [ref=e1402]:
+                      - columnheader "City / Municipality" [ref=e1403]
+                      - columnheader "Modeled Ash" [ref=e1404]
+                      - columnheader "Deposit band" [ref=e1405]
+                      - columnheader "Ground Load" [ref=e1406]
+                      - columnheader "Population / year" [ref=e1407]
+                      - columnheader "Action" [ref=e1408]
+                  - rowgroup [ref=e1409]:
+                    - row [ref=e1410]:
+                      - rowheader "City of Las Piñas" [ref=e1411]
+                      - cell [ref=e1412]:
+                        - generic [ref=e1413]:
+                          - strong [ref=e1414]: "3.42"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1415]
+                      - cell "3.42 kg/m²" [ref=e1417]
+                      - cell "615,549 (2024)" [ref=e1418]:
+                        - text: 615,549
+                        - generic [ref=e1419]: (2024)
+                      - cell [ref=e1420]:
+                        - button "Locate" [ref=e1421] [cursor=pointer]
+                    - row [ref=e1426]:
+                      - rowheader "City of Muntinlupa" [ref=e1427]
+                      - cell [ref=e1428]:
+                        - generic [ref=e1429]:
+                          - strong [ref=e1430]: "3.35"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1431]
+                      - cell "3.35 kg/m²" [ref=e1433]
+                      - cell "552,225 (2024)" [ref=e1434]:
+                        - text: 552,225
+                        - generic [ref=e1435]: (2024)
+                      - cell [ref=e1436]:
+                        - button "Locate" [ref=e1437] [cursor=pointer]
+                    - row [ref=e1442]:
+                      - rowheader "City of Parañaque" [ref=e1443]
+                      - cell [ref=e1444]:
+                        - generic [ref=e1445]:
+                          - strong [ref=e1446]: "3.25"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1447]
+                      - cell "3.25 kg/m²" [ref=e1449]
+                      - cell "703,245 (2024)" [ref=e1450]:
+                        - text: 703,245
+                        - generic [ref=e1451]: (2024)
+                      - cell [ref=e1452]:
+                        - button "Locate" [ref=e1453] [cursor=pointer]
+                    - row [ref=e1458]:
+                      - rowheader "Pasay City" [ref=e1459]
+                      - cell [ref=e1460]:
+                        - generic [ref=e1461]:
+                          - strong [ref=e1462]: "3.12"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1463]
+                      - cell "3.12 kg/m²" [ref=e1465]
+                      - cell "453,186 (2024)" [ref=e1466]:
+                        - text: 453,186
+                        - generic [ref=e1467]: (2024)
+                      - cell [ref=e1468]:
+                        - button "Locate" [ref=e1469] [cursor=pointer]
+                    - row [ref=e1474]:
+                      - rowheader "City of Makati" [ref=e1475]
+                      - cell [ref=e1476]:
+                        - generic [ref=e1477]:
+                          - strong [ref=e1478]: "2.93"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1479]
+                      - cell "2.93 kg/m²" [ref=e1481]
+                      - cell "309,770 (2024)" [ref=e1482]:
+                        - text: 309,770
+                        - generic [ref=e1483]: (2024)
+                      - cell [ref=e1484]:
+                        - button "Locate" [ref=e1485] [cursor=pointer]
+                    - row [ref=e1490]:
+                      - rowheader "City of Taguig" [ref=e1491]
+                      - cell [ref=e1492]:
+                        - generic [ref=e1493]:
+                          - strong [ref=e1494]: "2.91"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1495]
+                      - cell "2.91 kg/m²" [ref=e1497]
+                      - cell "1,308,085 (2024)" [ref=e1498]:
+                        - text: 1,308,085
+                        - generic [ref=e1499]: (2024)
+                      - cell [ref=e1500]:
+                        - button "Locate" [ref=e1501] [cursor=pointer]
+                    - row [ref=e1506]:
+                      - rowheader "City of Mandaluyong" [ref=e1507]
+                      - cell [ref=e1508]:
+                        - generic [ref=e1509]:
+                          - strong [ref=e1510]: "2.77"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1511]
+                      - cell "2.77 kg/m²" [ref=e1513]
+                      - cell "465,902 (2024)" [ref=e1514]:
+                        - text: 465,902
+                        - generic [ref=e1515]: (2024)
+                      - cell [ref=e1516]:
+                        - button "Locate" [ref=e1517] [cursor=pointer]
+                    - row [ref=e1522]:
+                      - rowheader "City of Malabon" [ref=e1523]
+                      - cell [ref=e1524]:
+                        - generic [ref=e1525]:
+                          - strong [ref=e1526]: "2.6"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1527]
+                      - cell "2.6 kg/m²" [ref=e1529]
+                      - cell "389,929 (2024)" [ref=e1530]:
+                        - text: 389,929
+                        - generic [ref=e1531]: (2024)
+                      - cell [ref=e1532]:
+                        - button "Locate" [ref=e1533] [cursor=pointer]
+                    - row [ref=e1538]:
+                      - rowheader "City of Navotas" [ref=e1539]
+                      - cell [ref=e1540]:
+                        - generic [ref=e1541]:
+                          - strong [ref=e1542]: "2.59"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1543]
+                      - cell "2.59 kg/m²" [ref=e1545]
+                      - cell "252,878 (2024)" [ref=e1546]:
+                        - text: 252,878
+                        - generic [ref=e1547]: (2024)
+                      - cell [ref=e1548]:
+                        - button "Locate" [ref=e1549] [cursor=pointer]
+                    - row [ref=e1554]:
+                      - rowheader "City of Pasig" [ref=e1555]
+                      - cell [ref=e1556]:
+                        - generic [ref=e1557]:
+                          - strong [ref=e1558]: "2.55"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1559]
+                      - cell "2.55 kg/m²" [ref=e1561]
+                      - cell "853,050 (2024)" [ref=e1562]:
+                        - text: 853,050
+                        - generic [ref=e1563]: (2024)
+                      - cell [ref=e1564]:
+                        - button "Locate" [ref=e1565] [cursor=pointer]
+                    - row [ref=e1570]:
+                      - rowheader "City of Valenzuela" [ref=e1571]
+                      - cell [ref=e1572]:
+                        - generic [ref=e1573]:
+                          - strong [ref=e1574]: "2.43"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1575]
+                      - cell "2.43 kg/m²" [ref=e1577]
+                      - cell "725,173 (2024)" [ref=e1578]:
+                        - text: 725,173
+                        - generic [ref=e1579]: (2024)
+                      - cell [ref=e1580]:
+                        - button "Locate" [ref=e1581] [cursor=pointer]
+                    - row [ref=e1586]:
+                      - rowheader "City of Caloocan" [ref=e1587]
+                      - cell [ref=e1588]:
+                        - generic [ref=e1589]:
+                          - strong [ref=e1590]: "2.24"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1591]
+                      - cell "2.24 kg/m²" [ref=e1593]
+                      - cell "1,712,945 (2024)" [ref=e1594]:
+                        - text: 1,712,945
+                        - generic [ref=e1595]: (2024)
+                      - cell [ref=e1596]:
+                        - button "Locate" [ref=e1597] [cursor=pointer]
+                    - row [ref=e1602]:
+                      - rowheader "City of Marikina" [ref=e1603]
+                      - cell [ref=e1604]:
+                        - generic [ref=e1605]:
+                          - strong [ref=e1606]: "2.18"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1607]
+                      - cell "2.18 kg/m²" [ref=e1609]
+                      - cell "471,323 (2024)" [ref=e1610]:
+                        - text: 471,323
+                        - generic [ref=e1611]: (2024)
+                      - cell [ref=e1612]:
+                        - button "Locate" [ref=e1613] [cursor=pointer]
+              - generic [ref=e1618]:
+                - 'button "Laguna 8 cities/towns Peak: 3.36 mm (City of San Pedro) 1,654,675 indicative residents · 0 unknown" [expanded] [ref=e1619] [cursor=pointer]':
+                  - generic [ref=e1620]:
+                    - strong [ref=e1623]: Laguna
+                    - generic [ref=e1624]: 8 cities/towns
+                  - generic [ref=e1625]:
+                    - generic [ref=e1626]:
+                      - text: "Peak:"
+                      - strong [ref=e1627]: 3.36 mm
+                      - text: (City of San Pedro)
+                    - generic [ref=e1628]: 1,654,675 indicative residents · 0 unknown
+                - table [ref=e1630]:
+                  - rowgroup [ref=e1631]:
+                    - row [ref=e1632]:
+                      - columnheader "City / Municipality" [ref=e1633]
+                      - columnheader "Modeled Ash" [ref=e1634]
+                      - columnheader "Deposit band" [ref=e1635]
+                      - columnheader "Ground Load" [ref=e1636]
+                      - columnheader "Population / year" [ref=e1637]
+                      - columnheader "Action" [ref=e1638]
+                  - rowgroup [ref=e1639]:
+                    - row [ref=e1640]:
+                      - rowheader "City of San Pedro" [ref=e1641]
+                      - cell [ref=e1642]:
+                        - generic [ref=e1643]:
+                          - strong [ref=e1644]: "3.36"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1645]
+                      - cell "3.36 kg/m²" [ref=e1647]
+                      - cell "348,968 (2024)" [ref=e1648]:
+                        - text: 348,968
+                        - generic [ref=e1649]: (2024)
+                      - cell [ref=e1650]:
+                        - button "Locate" [ref=e1651] [cursor=pointer]
+                    - row [ref=e1656]:
+                      - rowheader "City of Biñan" [ref=e1657]
+                      - cell [ref=e1658]:
+                        - generic [ref=e1659]:
+                          - strong [ref=e1660]: "3.21"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1661]
+                      - cell "3.21 kg/m²" [ref=e1663]
+                      - cell "584,479 (2024)" [ref=e1664]:
+                        - text: 584,479
+                        - generic [ref=e1665]: (2024)
+                      - cell [ref=e1666]:
+                        - button "Locate" [ref=e1667] [cursor=pointer]
+                    - row [ref=e1672]:
+                      - rowheader "City of Cabuyao" [ref=e1673]
+                      - cell [ref=e1674]:
+                        - generic [ref=e1675]:
+                          - strong [ref=e1676]: "3.06"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1677]
+                      - cell "3.06 kg/m²" [ref=e1679]
+                      - cell "365,202 (2024)" [ref=e1680]:
+                        - text: 365,202
+                        - generic [ref=e1681]: (2024)
+                      - cell [ref=e1682]:
+                        - button "Locate" [ref=e1683] [cursor=pointer]
+                    - row [ref=e1688]:
+                      - rowheader "Los Baños" [ref=e1689]
+                      - cell [ref=e1690]:
+                        - generic [ref=e1691]:
+                          - strong [ref=e1692]: "1.73"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1693]
+                      - cell "1.73 kg/m²" [ref=e1695]
+                      - cell "117,030 (2024)" [ref=e1696]:
+                        - text: 117,030
+                        - generic [ref=e1697]: (2024)
+                      - cell [ref=e1698]:
+                        - button "Locate" [ref=e1699] [cursor=pointer]
+                    - row [ref=e1704]:
+                      - rowheader "Bay" [ref=e1705]
+                      - cell [ref=e1706]:
+                        - generic [ref=e1707]:
+                          - strong [ref=e1708]: "1.25"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1709]
+                      - cell "1.25 kg/m²" [ref=e1711]
+                      - cell "69,802 (2024)" [ref=e1712]:
+                        - text: 69,802
+                        - generic [ref=e1713]: (2024)
+                      - cell [ref=e1714]:
+                        - button "Locate" [ref=e1715] [cursor=pointer]
+                    - row [ref=e1720]:
+                      - rowheader "Calauan" [ref=e1721]
+                      - cell [ref=e1722]:
+                        - generic [ref=e1723]:
+                          - strong [ref=e1724]: "0.91"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e1725]
+                      - cell "0.91 kg/m²" [ref=e1727]
+                      - cell "89,670 (2024)" [ref=e1728]:
+                        - text: 89,670
+                        - generic [ref=e1729]: (2024)
+                      - cell [ref=e1730]:
+                        - button "Locate" [ref=e1731] [cursor=pointer]
+                    - row [ref=e1736]:
+                      - rowheader "Pila" [ref=e1737]
+                      - cell [ref=e1738]:
+                        - generic [ref=e1739]:
+                          - strong [ref=e1740]: "0.6"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e1741]
+                      - cell "0.6 kg/m²" [ref=e1743]
+                      - cell "57,776 (2024)" [ref=e1744]:
+                        - text: 57,776
+                        - generic [ref=e1745]: (2024)
+                      - cell [ref=e1746]:
+                        - button "Locate" [ref=e1747] [cursor=pointer]
+                    - row [ref=e1752]:
+                      - rowheader "Mabitac" [ref=e1753]
+                      - cell [ref=e1754]:
+                        - generic [ref=e1755]:
+                          - strong [ref=e1756]: "0.51"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e1757]
+                      - cell "0.51 kg/m²" [ref=e1759]
+                      - cell "21,748 (2024)" [ref=e1760]:
+                        - text: 21,748
+                        - generic [ref=e1761]: (2024)
+                      - cell [ref=e1762]:
+                        - button "Locate" [ref=e1763] [cursor=pointer]
+              - generic [ref=e1768]:
+                - 'button "Bulacan 17 cities/towns Peak: 2.4 mm (Obando) 2,711,287 indicative residents · 0 unknown" [expanded] [ref=e1769] [cursor=pointer]':
+                  - generic [ref=e1770]:
+                    - strong [ref=e1773]: Bulacan
+                    - generic [ref=e1774]: 17 cities/towns
+                  - generic [ref=e1775]:
+                    - generic [ref=e1776]:
+                      - text: "Peak:"
+                      - strong [ref=e1777]: 2.4 mm
+                      - text: (Obando)
+                    - generic [ref=e1778]: 2,711,287 indicative residents · 0 unknown
+                - table [ref=e1780]:
+                  - rowgroup [ref=e1781]:
+                    - row [ref=e1782]:
+                      - columnheader "City / Municipality" [ref=e1783]
+                      - columnheader "Modeled Ash" [ref=e1784]
+                      - columnheader "Deposit band" [ref=e1785]
+                      - columnheader "Ground Load" [ref=e1786]
+                      - columnheader "Population / year" [ref=e1787]
+                      - columnheader "Action" [ref=e1788]
+                  - rowgroup [ref=e1789]:
+                    - row [ref=e1790]:
+                      - rowheader "Obando" [ref=e1791]
+                      - cell [ref=e1792]:
+                        - generic [ref=e1793]:
+                          - strong [ref=e1794]: "2.4"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1795]
+                      - cell "2.4 kg/m²" [ref=e1797]
+                      - cell "61,073 (2024)" [ref=e1798]:
+                        - text: 61,073
+                        - generic [ref=e1799]: (2024)
+                      - cell [ref=e1800]:
+                        - button "Locate" [ref=e1801] [cursor=pointer]
+                    - row [ref=e1806]:
+                      - rowheader "City of Meycauayan" [ref=e1807]
+                      - cell [ref=e1808]:
+                        - generic [ref=e1809]:
+                          - strong [ref=e1810]: "2.29"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1811]
+                      - cell "2.29 kg/m²" [ref=e1813]
+                      - cell "228,023 (2024)" [ref=e1814]:
+                        - text: 228,023
+                        - generic [ref=e1815]: (2024)
+                      - cell [ref=e1816]:
+                        - button "Locate" [ref=e1817] [cursor=pointer]
+                    - row [ref=e1822]:
+                      - rowheader "Marilao" [ref=e1823]
+                      - cell [ref=e1824]:
+                        - generic [ref=e1825]:
+                          - strong [ref=e1826]: "2.21"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1827]
+                      - cell "2.21 kg/m²" [ref=e1829]
+                      - cell "263,507 (2024)" [ref=e1830]:
+                        - text: 263,507
+                        - generic [ref=e1831]: (2024)
+                      - cell [ref=e1832]:
+                        - button "Locate" [ref=e1833] [cursor=pointer]
+                    - row [ref=e1838]:
+                      - rowheader "Bocaue" [ref=e1839]
+                      - cell [ref=e1840]:
+                        - generic [ref=e1841]:
+                          - strong [ref=e1842]: "2.12"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1843]
+                      - cell "2.12 kg/m²" [ref=e1845]
+                      - cell "147,755 (2024)" [ref=e1846]:
+                        - text: 147,755
+                        - generic [ref=e1847]: (2024)
+                      - cell [ref=e1848]:
+                        - button "Locate" [ref=e1849] [cursor=pointer]
+                    - row [ref=e1854]:
+                      - rowheader "Bulacan" [ref=e1855]
+                      - cell [ref=e1856]:
+                        - generic [ref=e1857]:
+                          - strong [ref=e1858]: "2.11"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1859]
+                      - cell "2.11 kg/m²" [ref=e1861]
+                      - cell "83,101 (2024)" [ref=e1862]:
+                        - text: 83,101
+                        - generic [ref=e1863]: (2024)
+                      - cell [ref=e1864]:
+                        - button "Locate" [ref=e1865] [cursor=pointer]
+                    - row [ref=e1870]:
+                      - rowheader "Balagtas" [ref=e1871]
+                      - cell [ref=e1872]:
+                        - generic [ref=e1873]:
+                          - strong [ref=e1874]: "1.98"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1875]
+                      - cell "1.98 kg/m²" [ref=e1877]
+                      - cell "80,221 (2024)" [ref=e1878]:
+                        - text: 80,221
+                        - generic [ref=e1879]: (2024)
+                      - cell [ref=e1880]:
+                        - button "Locate" [ref=e1881] [cursor=pointer]
+                    - row [ref=e1886]:
+                      - rowheader "Guiguinto" [ref=e1887]
+                      - cell [ref=e1888]:
+                        - generic [ref=e1889]:
+                          - strong [ref=e1890]: "1.86"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1891]
+                      - cell "1.86 kg/m²" [ref=e1893]
+                      - cell "118,173 (2024)" [ref=e1894]:
+                        - text: 118,173
+                        - generic [ref=e1895]: (2024)
+                      - cell [ref=e1896]:
+                        - button "Locate" [ref=e1897] [cursor=pointer]
+                    - row [ref=e1902]:
+                      - rowheader "Pandi" [ref=e1903]
+                      - cell [ref=e1904]:
+                        - generic [ref=e1905]:
+                          - strong [ref=e1906]: "1.86"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1907]
+                      - cell "1.86 kg/m²" [ref=e1909]
+                      - cell "162,725 (2024)" [ref=e1910]:
+                        - text: 162,725
+                        - generic [ref=e1911]: (2024)
+                      - cell [ref=e1912]:
+                        - button "Locate" [ref=e1913] [cursor=pointer]
+                    - row [ref=e1918]:
+                      - rowheader "City of San Jose Del Monte" [ref=e1919]
+                      - cell [ref=e1920]:
+                        - generic [ref=e1921]:
+                          - strong [ref=e1922]: "1.79"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1923]
+                      - cell "1.79 kg/m²" [ref=e1925]
+                      - cell "685,688 (2024)" [ref=e1926]:
+                        - text: 685,688
+                        - generic [ref=e1927]: (2024)
+                      - cell [ref=e1928]:
+                        - button "Locate" [ref=e1929] [cursor=pointer]
+                    - row [ref=e1934]:
+                      - rowheader "Angat" [ref=e1935]
+                      - cell [ref=e1936]:
+                        - generic [ref=e1937]:
+                          - strong [ref=e1938]: "1.72"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1939]
+                      - cell "1.72 kg/m²" [ref=e1941]
+                      - cell "67,862 (2024)" [ref=e1942]:
+                        - text: 67,862
+                        - generic [ref=e1943]: (2024)
+                      - cell [ref=e1944]:
+                        - button "Locate" [ref=e1945] [cursor=pointer]
+                    - row [ref=e1950]:
+                      - rowheader "City of Malolos" [ref=e1951]
+                      - cell [ref=e1952]:
+                        - generic [ref=e1953]:
+                          - strong [ref=e1954]: "1.7"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1955]
+                      - cell "1.7 kg/m²" [ref=e1957]
+                      - cell "269,809 (2024)" [ref=e1958]:
+                        - text: 269,809
+                        - generic [ref=e1959]: (2024)
+                      - cell [ref=e1960]:
+                        - button "Locate" [ref=e1961] [cursor=pointer]
+                    - row [ref=e1966]:
+                      - rowheader "Bustos" [ref=e1967]
+                      - cell [ref=e1968]:
+                        - generic [ref=e1969]:
+                          - strong [ref=e1970]: "1.69"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1971]
+                      - cell "1.69 kg/m²" [ref=e1973]
+                      - cell "80,565 (2024)" [ref=e1974]:
+                        - text: 80,565
+                        - generic [ref=e1975]: (2024)
+                      - cell [ref=e1976]:
+                        - button "Locate" [ref=e1977] [cursor=pointer]
+                    - row [ref=e1982]:
+                      - rowheader "Paombong" [ref=e1983]
+                      - cell [ref=e1984]:
+                        - generic [ref=e1985]:
+                          - strong [ref=e1986]: "1.59"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e1987]
+                      - cell "1.59 kg/m²" [ref=e1989]
+                      - cell "58,453 (2024)" [ref=e1990]:
+                        - text: 58,453
+                        - generic [ref=e1991]: (2024)
+                      - cell [ref=e1992]:
+                        - button "Locate" [ref=e1993] [cursor=pointer]
+                    - row [ref=e1998]:
+                      - rowheader "Pulilan" [ref=e1999]
+                      - cell [ref=e2000]:
+                        - generic [ref=e2001]:
+                          - strong [ref=e2002]: "1.47"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2003]
+                      - cell "1.47 kg/m²" [ref=e2005]
+                      - cell "111,384 (2024)" [ref=e2006]:
+                        - text: 111,384
+                        - generic [ref=e2007]: (2024)
+                      - cell [ref=e2008]:
+                        - button "Locate" [ref=e2009] [cursor=pointer]
+                    - row [ref=e2014]:
+                      - rowheader "Norzagaray" [ref=e2015]
+                      - cell [ref=e2016]:
+                        - generic [ref=e2017]:
+                          - strong [ref=e2018]: "1.25"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2019]
+                      - cell "1.25 kg/m²" [ref=e2021]
+                      - cell "140,697 (2024)" [ref=e2022]:
+                        - text: 140,697
+                        - generic [ref=e2023]: (2024)
+                      - cell [ref=e2024]:
+                        - button "Locate" [ref=e2025] [cursor=pointer]
+                    - row [ref=e2030]:
+                      - rowheader "Calumpit" [ref=e2031]
+                      - cell [ref=e2032]:
+                        - generic [ref=e2033]:
+                          - strong [ref=e2034]: "1.21"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2035]
+                      - cell "1.21 kg/m²" [ref=e2037]
+                      - cell "122,187 (2024)" [ref=e2038]:
+                        - text: 122,187
+                        - generic [ref=e2039]: (2024)
+                      - cell [ref=e2040]:
+                        - button "Locate" [ref=e2041] [cursor=pointer]
+                    - row [ref=e2046]:
+                      - rowheader "Doña Remedios Trinidad" [ref=e2047]
+                      - cell [ref=e2048]:
+                        - generic [ref=e2049]:
+                          - strong [ref=e2050]: "1.06"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2051]
+                      - cell "1.06 kg/m²" [ref=e2053]
+                      - cell "30,064 (2024)" [ref=e2054]:
+                        - text: 30,064
+                        - generic [ref=e2055]: (2024)
+                      - cell [ref=e2056]:
+                        - button "Locate" [ref=e2057] [cursor=pointer]
+              - generic [ref=e2062]:
+                - 'button "Rizal 10 cities/towns Peak: 2.31 mm (Cainta) 2,579,620 indicative residents · 0 unknown" [expanded] [ref=e2063] [cursor=pointer]':
+                  - generic [ref=e2064]:
+                    - strong [ref=e2067]: Rizal
+                    - generic [ref=e2068]: 10 cities/towns
+                  - generic [ref=e2069]:
+                    - generic [ref=e2070]:
+                      - text: "Peak:"
+                      - strong [ref=e2071]: 2.31 mm
+                      - text: (Cainta)
+                    - generic [ref=e2072]: 2,579,620 indicative residents · 0 unknown
+                - table [ref=e2074]:
+                  - rowgroup [ref=e2075]:
+                    - row [ref=e2076]:
+                      - columnheader "City / Municipality" [ref=e2077]
+                      - columnheader "Modeled Ash" [ref=e2078]
+                      - columnheader "Deposit band" [ref=e2079]
+                      - columnheader "Ground Load" [ref=e2080]
+                      - columnheader "Population / year" [ref=e2081]
+                      - columnheader "Action" [ref=e2082]
+                  - rowgroup [ref=e2083]:
+                    - row [ref=e2084]:
+                      - rowheader "Cainta" [ref=e2085]
+                      - cell [ref=e2086]:
+                        - generic [ref=e2087]:
+                          - strong [ref=e2088]: "2.31"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2089]
+                      - cell "2.31 kg/m²" [ref=e2091]
+                      - cell "386,321 (2024)" [ref=e2092]:
+                        - text: 386,321
+                        - generic [ref=e2093]: (2024)
+                      - cell [ref=e2094]:
+                        - button "Locate" [ref=e2095] [cursor=pointer]
+                    - row [ref=e2100]:
+                      - rowheader "Angono" [ref=e2101]
+                      - cell [ref=e2102]:
+                        - generic [ref=e2103]:
+                          - strong [ref=e2104]: "2.05"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2105]
+                      - cell "2.05 kg/m²" [ref=e2107]
+                      - cell "134,975 (2024)" [ref=e2108]:
+                        - text: 134,975
+                        - generic [ref=e2109]: (2024)
+                      - cell [ref=e2110]:
+                        - button "Locate" [ref=e2111] [cursor=pointer]
+                    - row [ref=e2116]:
+                      - rowheader "Binangonan" [ref=e2117]
+                      - cell [ref=e2118]:
+                        - generic [ref=e2119]:
+                          - strong [ref=e2120]: "1.91"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2121]
+                      - cell "1.91 kg/m²" [ref=e2123]
+                      - cell "321,281 (2024)" [ref=e2124]:
+                        - text: 321,281
+                        - generic [ref=e2125]: (2024)
+                      - cell [ref=e2126]:
+                        - button "Locate" [ref=e2127] [cursor=pointer]
+                    - row [ref=e2132]:
+                      - rowheader "Cardona" [ref=e2133]
+                      - cell [ref=e2134]:
+                        - generic [ref=e2135]:
+                          - strong [ref=e2136]: "1.68"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2137]
+                      - cell "1.68 kg/m²" [ref=e2139]
+                      - cell "51,493 (2024)" [ref=e2140]:
+                        - text: 51,493
+                        - generic [ref=e2141]: (2024)
+                      - cell [ref=e2142]:
+                        - button "Locate" [ref=e2143] [cursor=pointer]
+                    - row [ref=e2148]:
+                      - rowheader "Teresa" [ref=e2149]
+                      - cell [ref=e2150]:
+                        - generic [ref=e2151]:
+                          - strong [ref=e2152]: "1.59"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2153]
+                      - cell "1.59 kg/m²" [ref=e2155]
+                      - cell "67,454 (2024)" [ref=e2156]:
+                        - text: 67,454
+                        - generic [ref=e2157]: (2024)
+                      - cell [ref=e2158]:
+                        - button "Locate" [ref=e2159] [cursor=pointer]
+                    - row [ref=e2164]:
+                      - rowheader "City of Antipolo" [ref=e2165]
+                      - cell [ref=e2166]:
+                        - generic [ref=e2167]:
+                          - strong [ref=e2168]: "1.29"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2169]
+                      - cell "1.29 kg/m²" [ref=e2171]
+                      - cell "913,712 (2024)" [ref=e2172]:
+                        - text: 913,712
+                        - generic [ref=e2173]: (2024)
+                      - cell [ref=e2174]:
+                        - button "Locate" [ref=e2175] [cursor=pointer]
+                    - row [ref=e2180]:
+                      - rowheader "Rodriguez" [ref=e2181]
+                      - cell [ref=e2182]:
+                        - generic [ref=e2183]:
+                          - strong [ref=e2184]: "1.19"
+                          - text: mm
+                      - cell "1–<10 mm" [ref=e2185]
+                      - cell "1.19 kg/m²" [ref=e2187]
+                      - cell "451,383 (2024)" [ref=e2188]:
+                        - text: 451,383
+                        - generic [ref=e2189]: (2024)
+                      - cell [ref=e2190]:
+                        - button "Locate" [ref=e2191] [cursor=pointer]
+                    - row [ref=e2196]:
+                      - rowheader "Jala-Jala" [ref=e2197]
+                      - cell [ref=e2198]:
+                        - generic [ref=e2199]:
+                          - strong [ref=e2200]: "0.84"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2201]
+                      - cell "0.84 kg/m²" [ref=e2203]
+                      - cell "34,901 (2024)" [ref=e2204]:
+                        - text: 34,901
+                        - generic [ref=e2205]: (2024)
+                      - cell [ref=e2206]:
+                        - button "Locate" [ref=e2207] [cursor=pointer]
+                    - row [ref=e2212]:
+                      - rowheader "Pililla" [ref=e2213]
+                      - cell [ref=e2214]:
+                        - generic [ref=e2215]:
+                          - strong [ref=e2216]: "0.81"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2217]
+                      - cell "0.81 kg/m²" [ref=e2219]
+                      - cell "72,503 (2024)" [ref=e2220]:
+                        - text: 72,503
+                        - generic [ref=e2221]: (2024)
+                      - cell [ref=e2222]:
+                        - button "Locate" [ref=e2223] [cursor=pointer]
+                    - row [ref=e2228]:
+                      - rowheader "Tanay" [ref=e2229]
+                      - cell [ref=e2230]:
+                        - generic [ref=e2231]:
+                          - strong [ref=e2232]: "0.65"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2233]
+                      - cell "0.65 kg/m²" [ref=e2235]
+                      - cell "145,597 (2024)" [ref=e2236]:
+                        - text: 145,597
+                        - generic [ref=e2237]: (2024)
+                      - cell [ref=e2238]:
+                        - button "Locate" [ref=e2239] [cursor=pointer]
+              - generic [ref=e2244]:
+                - 'button "Bataan 2 cities/towns Peak: 0.69 mm (Limay) 145,004 indicative residents · 0 unknown" [expanded] [ref=e2245] [cursor=pointer]':
+                  - generic [ref=e2246]:
+                    - strong [ref=e2249]: Bataan
+                    - generic [ref=e2250]: 2 cities/towns
+                  - generic [ref=e2251]:
+                    - generic [ref=e2252]:
+                      - text: "Peak:"
+                      - strong [ref=e2253]: 0.69 mm
+                      - text: (Limay)
+                    - generic [ref=e2254]: 145,004 indicative residents · 0 unknown
+                - table [ref=e2256]:
+                  - rowgroup [ref=e2257]:
+                    - row [ref=e2258]:
+                      - columnheader "City / Municipality" [ref=e2259]
+                      - columnheader "Modeled Ash" [ref=e2260]
+                      - columnheader "Deposit band" [ref=e2261]
+                      - columnheader "Ground Load" [ref=e2262]
+                      - columnheader "Population / year" [ref=e2263]
+                      - columnheader "Action" [ref=e2264]
+                  - rowgroup [ref=e2265]:
+                    - row [ref=e2266]:
+                      - rowheader "Limay" [ref=e2267]
+                      - cell [ref=e2268]:
+                        - generic [ref=e2269]:
+                          - strong [ref=e2270]: "0.69"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2271]
+                      - cell "0.69 kg/m²" [ref=e2273]
+                      - cell "81,960 (2024)" [ref=e2274]:
+                        - text: 81,960
+                        - generic [ref=e2275]: (2024)
+                      - cell [ref=e2276]:
+                        - button "Locate" [ref=e2277] [cursor=pointer]
+                    - row [ref=e2282]:
+                      - rowheader "Orion" [ref=e2283]
+                      - cell [ref=e2284]:
+                        - generic [ref=e2285]:
+                          - strong [ref=e2286]: "0.52"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2287]
+                      - cell "0.52 kg/m²" [ref=e2289]
+                      - cell "63,044 (2024)" [ref=e2290]:
+                        - text: 63,044
+                        - generic [ref=e2291]: (2024)
+                      - cell [ref=e2292]:
+                        - button "Locate" [ref=e2293] [cursor=pointer]
+              - generic [ref=e2298]:
+                - 'button "Pampanga 1 city/town Peak: 0.59 mm (Sasmuan) 32,081 indicative residents · 0 unknown" [expanded] [ref=e2299] [cursor=pointer]':
+                  - generic [ref=e2300]:
+                    - strong [ref=e2303]: Pampanga
+                    - generic [ref=e2304]: 1 city/town
+                  - generic [ref=e2305]:
+                    - generic [ref=e2306]:
+                      - text: "Peak:"
+                      - strong [ref=e2307]: 0.59 mm
+                      - text: (Sasmuan)
+                    - generic [ref=e2308]: 32,081 indicative residents · 0 unknown
+                - table [ref=e2310]:
+                  - rowgroup [ref=e2311]:
+                    - row [ref=e2312]:
+                      - columnheader "City / Municipality" [ref=e2313]
+                      - columnheader "Modeled Ash" [ref=e2314]
+                      - columnheader "Deposit band" [ref=e2315]
+                      - columnheader "Ground Load" [ref=e2316]
+                      - columnheader "Population / year" [ref=e2317]
+                      - columnheader "Action" [ref=e2318]
+                  - rowgroup [ref=e2319]:
+                    - row [ref=e2320]:
+                      - rowheader "Sasmuan" [ref=e2321]
+                      - cell [ref=e2322]:
+                        - generic [ref=e2323]:
+                          - strong [ref=e2324]: "0.59"
+                          - text: mm
+                      - cell "0.5–<1 mm" [ref=e2325]
+                      - cell "0.59 kg/m²" [ref=e2327]
+                      - cell "32,081 (2024)" [ref=e2328]:
+                        - text: 32,081
+                        - generic [ref=e2329]: (2024)
+                      - cell [ref=e2330]:
+                        - button "Locate" [ref=e2331] [cursor=pointer]
+          - group [ref=e2336]:
+            - generic "Detailed exposure & exports" [ref=e2337] [cursor=pointer]
+  - contentinfo [ref=e58]:
+    - generic [ref=e59]: Academic simulation · Not a PHIVOLCS advisory
+    - link "Project proposal" [ref=e60] [cursor=pointer]:
+      - /url: https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un
+```

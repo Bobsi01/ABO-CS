@@ -3,7 +3,7 @@ import { CONTOUR_LEVELS, depositColor } from '../presentation'
 export default function Legend() {
 
   return (
-    <div className="legend" aria-label="Deposit thickness color legend">
+    <div className="legend" role="group" aria-label="Deposit thickness color legend">
       <span className="legend-title">Deposit thickness · mm</span>
       <span>
         <i style={{ background: depositColor(0) }} />0

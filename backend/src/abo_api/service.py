@@ -34,6 +34,19 @@ class CatalogUnavailableError(RuntimeError):
     pass
 
 
+def umbrella_active(scenario):
+    heights = (
+        [p.column_height_m for p in scenario.pulses]
+        if scenario.pulses
+        else [scenario.column_height_m]
+    )
+    return bool(
+        scenario.umbrella_radius_m
+        and scenario.umbrella_radius_m > scenario.initial_spread_m
+        and min(heights) >= 3000
+    )
+
+
 def catalog():
     try:
         return Catalog.model_validate_json(DATA_FILE.read_text(encoding="utf-8-sig"))
@@ -79,11 +92,7 @@ def sources(s):
             [level.speed_m_s for level in s.wind_profile],
             [level.wind_from_deg for level in s.wind_profile],
         )
-        is_regional = bool(
-            s.umbrella_radius_m
-            and s.umbrella_radius_m > s.initial_spread_m
-            and s.column_height_m >= 3000
-        )
+        is_regional = umbrella_active(s)
         u_e, u_n = kernel.layer_winds(parts["release_m"], *levels, column_integrated=is_regional)
         mid_e, mid_n = kernel.layer_winds(
             np.asarray([s.column_height_m / 2]), *levels, column_integrated=is_regional
@@ -138,15 +147,7 @@ def prepare(request, sweep=False):
         raise ValueError("Criterion identifiers must be unique")
     s = request.scenario
     n = int(round(s.domain_km / s.cell_km))
-    comp_factor = (
-        2
-        if (
-            s.umbrella_radius_m
-            and s.umbrella_radius_m > s.initial_spread_m
-            and s.column_height_m >= 3000
-        )
-        else 1
-    )
+    comp_factor = 2 if umbrella_active(s) else 1
     budget = kernel.check_budget(
         len(s.grains) * s.release_layers * len(s.pulses or [None]) * comp_factor,
         n,
@@ -184,11 +185,7 @@ def prepare(request, sweep=False):
 
 
 def source_assumption(scenario):
-    has_umbrella = bool(
-        scenario.umbrella_radius_m
-        and scenario.umbrella_radius_m > scenario.initial_spread_m
-        and scenario.column_height_m >= 3000
-    )
+    has_umbrella = umbrella_active(scenario)
     if not scenario.pulses and not scenario.wind_profile and not has_umbrella:
         return "Steady eruption and uniform wind"
     emission = (
@@ -206,7 +203,12 @@ def source_assumption(scenario):
     base = f"{emission} and {wind}"
     if has_umbrella:
         radius_km = scenario.umbrella_radius_m / 1000.0
-        base += f" with radial umbrella cloud expansion up to {radius_km:.1f} km"
+        base += (
+            f" with a heuristic two-component umbrella deposit, spread parameter {radius_km:.1f} km"
+            " (Gaussian tails extend beyond this parameter; no physical cloud edge is solved)"
+        )
+    if scenario.wind_profile and has_umbrella:
+        base += "; component winds are height-integrated profile means"
     return f"{base} (opt-in extension beyond the proposal's assumptions)"
 
 
@@ -224,7 +226,19 @@ def provenance(scenario, data, receptors=(), criteria=()):
             source_assumption(scenario),
             "Flat ground at vent datum",
             "Constant class settling speeds",
-            "Uniform release-height weights",
+            (
+                f"Assumed Suzuki-style release weights, k={kernel.UMBRELLA_SUZUKI_K}; "
+                f"stationary proximal mass fraction={kernel.UMBRELLA_PROXIMAL_FRACTION}; "
+                f"distal fraction={1 - kernel.UMBRELLA_PROXIMAL_FRACTION}; "
+                f"distal release heights={kernel.UMBRELLA_DISTAL_HEIGHT_FRACTION} "
+                "to 1 times column; "
+                f"extra distal spread={kernel.UMBRELLA_SHEAR_SPREAD_FACTOR} "
+                "times umbrella parameter; "
+                f"proximal spread=umbrella parameter/{kernel.UMBRELLA_PROXIMAL_SPREAD_DIVISOR}. "
+                "Coefficients are uncalibrated teaching assumptions, not measured plume dynamics."
+                if umbrella_active(scenario)
+                else "Uniform release-height weights"
+            ),
             "Centroids are point samples; population counts are indicative",
         ],
         warnings=[
@@ -449,14 +463,7 @@ def sweep(request: SimulationRequest):
             variance,
             request.scenario.wind_speed_m_s,
             (source["u_e"], source["u_n"])
-            if (
-                request.scenario.wind_profile
-                or (
-                    request.scenario.umbrella_radius_m
-                    and request.scenario.umbrella_radius_m > request.scenario.initial_spread_m
-                    and request.scenario.column_height_m >= 3000
-                )
-            )
+            if request.scenario.wind_profile or umbrella_active(request.scenario)
             else None,
             request.scenario.wind_from_deg,
             np.arange(start, min(start + kernel.SWEEP_DIRECTION_BATCH, 360), dtype=float),

@@ -1,0 +1,106 @@
+{
+  "catalog": {
+    "revision": "2026-10-24-realism-disclosure-v3",
+    "scenarios": 10,
+    "receptors": 320,
+    "municipalities": 318,
+    "population_2020": 34,
+    "unknown_source_ids": []
+  },
+  "regional_refinement": {
+    "largest_absolute_changes": [
+      {
+        "name": "San Nicolas, Batangas",
+        "mm16": 30.991120507631422,
+        "mm32": 31.000714631003763,
+        "relative_percent": 0.030948071638150203,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Talisay, Batangas",
+        "mm16": 24.134051868932225,
+        "mm32": 24.139719607075193,
+        "relative_percent": 0.02347888971049511,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Agoncillo, Batangas",
+        "mm16": 23.99471309574361,
+        "mm32": 24.000236921863834,
+        "relative_percent": 0.023015714962349897,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Laurel, Batangas",
+        "mm16": 19.85037077245691,
+        "mm32": 19.854120614092825,
+        "relative_percent": 0.018886969152660037,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Tagaytay, Cavite",
+        "mm16": 16.507269766210747,
+        "mm32": 16.509760156446827,
+        "relative_percent": 0.015084351392635547,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Balete, Batangas",
+        "mm16": 18.268674759734836,
+        "mm32": 18.27115924967438,
+        "relative_percent": 0.013597877975850131,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Trece Martires, Cavite",
+        "mm16": 3.2560593901998476,
+        "mm32": 3.258329783374406,
+        "relative_percent": 0.06967966183604613,
+        "crosses_0_5": false
+      },
+      {
+        "name": "City of General Trias, Cavite",
+        "mm16": 3.445279963499298,
+        "mm32": 3.4475371837301436,
+        "relative_percent": 0.06547341219401971,
+        "crosses_0_5": false
+      }
+    ],
+    "threshold_crossings": [],
+    "reported16": 100,
+    "reported32": 100
+  },
+  "sequence": {
+    "frames": 37,
+    "end_h": 103.41145833333333,
+    "first_max_mm": 0.0,
+    "final_grid_max_difference": 0.0,
+    "max_emitted_balance_error_kg": 0.0,
+    "monotone_receptors": true
+  },
+  "umbrella": {
+    "stationary_mass_fraction": 0.4,
+    "provenance_assumptions": [
+      "Steady eruption and height-dependent wind linearly interpolated between 5 levels above the vent and held constant beyond the end levels; the single wind fields are not used by the deposit solver with a heuristic two-component umbrella deposit, spread parameter 20.0 km (Gaussian tails extend beyond this parameter; no physical cloud edge is solved); component winds are height-integrated profile means (opt-in extension beyond the proposal's assumptions)",
+      "Flat ground at vent datum",
+      "Constant class settling speeds",
+      "Assumed Suzuki-style release weights, k=3.0; stationary proximal mass fraction=0.4; distal fraction=0.6; distal release heights=0.65 to 1 times column; extra distal spread=0.75 times umbrella parameter; proximal spread=umbrella parameter/2.5. Coefficients are uncalibrated teaching assumptions, not measured plume dynamics.",
+      "Centroids are point samples; population counts are indicative"
+    ],
+    "source_wind_m_s": [
+      -4.014359419489476,
+      2.5074433458211116
+    ]
+  },
+  "uniform_profile_test": {
+    "expected_10_m_s": 10,
+    "actual_at_1000m": 10.0
+  },
+  "scalar_wind_edit_max_grid_difference_mm": 0.0,
+  "map_boundaries": {
+    "features": 427,
+    "not_matched_by_ui_lookup": 109,
+    "calamba_records": []
+  }
+}
+All preset summaries saved to output/playwright/remediation-20261024-data.json

@@ -788,11 +788,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       )
 
       // Real-time exposure tally HUD
-      expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
+      expect(screen.getByText('Snapshot exposure tally')).toBeTruthy()
       expect(screen.getByText('Municipalities reached')).toBeTruthy()
       expect(screen.getByText('Peak centroid ash')).toBeTruthy()
       expect(screen.getByText('Indicative population')).toBeTruthy()
-      expect(screen.getByText('Est. families affected')).toBeTruthy()
+      expect(screen.getByText('Unknown population records')).toBeTruthy()
       // 1 of 2 reached
       expect(screen.getByText('1')).toBeTruthy()
       // Peak ash: 1.5 mm · Agoncillo
@@ -800,11 +800,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       // Population: 39,101
       expect(screen.getByText('39,101')).toBeTruthy()
       // Families: 39,101 / 4.1 = 9,537
-      expect(screen.getByText('9,537')).toBeTruthy()
+      expect(screen.queryByText('9,537')).toBeNull()
 
       // Layer control checkbox
       expect(
-        screen.getByRole('checkbox', { name: 'Show 3D population columns & affected families' }),
+        screen.getByRole('checkbox', { name: 'Show 3D population columns & centroid exposure' }),
       ).toBeTruthy()
       // Keyboard inspection select
       expect(
@@ -813,7 +813,7 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
     })
 
-    it('falls back to trace exposure (>=0.01 mm) and shows peak centroid ash when all receptors are below 0.5 mm', () => {
+    it('keeps reporting population at zero for trace-only deposits and shows peak centroid ash when all receptors are below 0.5 mm', () => {
 
       setupGraphicsAvailable()
       const traceOnlyResult: SimulationResult = {
@@ -897,15 +897,15 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
         />,
       )
 
-      expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
-      expect(screen.getByText('2')).toBeTruthy()
-      expect(screen.getByText(/\/ 3 \(trace ≥0\.01 mm\)/)).toBeTruthy()
+      expect(screen.getByText('Snapshot exposure tally')).toBeTruthy()
+      expect(screen.getByText('Unknown population records')).toBeTruthy()
+      expect(screen.getByText(/\/ 3/)).toBeTruthy()
       expect(screen.getByText(/0\.162 mm/)).toBeTruthy()
       expect(screen.getByText('· Tanauan')).toBeTruthy()
       // 209,697 + 34,901 = 244,598
-      expect(screen.getByText('244,598')).toBeTruthy()
+      expect(screen.queryByText('244,598')).toBeNull()
       // 244,598 / 4.1 = 59,658
-      expect(screen.getByText('59,658')).toBeTruthy()
+      expect(screen.queryByText('59,658')).toBeNull()
       expect(
         screen.getByText(/0 ≥0\.5 mm reporting cutoff; showing 2 trace \(≥0\.01 mm\)\./),
       ).toBeTruthy()

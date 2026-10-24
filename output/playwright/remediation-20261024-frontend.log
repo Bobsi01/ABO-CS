@@ -1,0 +1,52 @@
+
+> abo-frontend@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck && npm test && npm run build
+
+
+> abo-frontend@0.1.0 format:check
+> node scripts/format.mjs --check
+
+86 files checked; 0 need formatting.
+
+> abo-frontend@0.1.0 lint
+> eslint .
+
+
+> abo-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+
+> abo-frontend@0.1.0 test
+> vitest run
+
+
+ RUN  v4.1.11 C:/Workspace/ABO-CS/frontend
+
+
+ Test Files  24 passed (24)
+      Tests  123 passed (123)
+   Start at  14:51:02
+   Duration  6.81s (transform 5.47s, setup 0ms, import 13.95s, tests 16.59s, environment 46.51s)
+
+
+> abo-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 65 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.88 kB │ gzip:   0.45 kB
+dist/assets/map-vendor-vh-t_kPv.css        15.09 kB │ gzip:   6.36 kB
+dist/assets/index-w38OapwW.css             91.05 kB │ gzip:  15.51 kB
+dist/assets/rolldown-runtime-hePW80VL.js    0.71 kB │ gzip:   0.42 kB
+dist/assets/SpatialDetails-DoSDG5Dx.js      2.51 kB │ gzip:   1.12 kB
+dist/assets/GeographicMap-Dt_J1dAp.js      16.82 kB │ gzip:   5.91 kB
+dist/assets/map-vendor-Bp6DtMNu.js        148.61 kB │ gzip:  43.33 kB
+dist/assets/VolcanoScene-ChhG8lbZ.js      252.22 kB │ gzip:  77.52 kB
+dist/assets/index-C3V_J07n.js             355.08 kB │ gzip: 105.28 kB
+dist/assets/three-webgl-DEjMVrnk.js       364.96 kB │ gzip:  89.38 kB
+dist/assets/three-core-Dp-eO7LC.js        377.28 kB │ gzip: 100.66 kB
+
+✓ built in 448ms

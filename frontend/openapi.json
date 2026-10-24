@@ -650,7 +650,7 @@
           "solver_version": {
             "type": "string",
             "title": "Solver Version",
-            "default": "abo-finite-pulse-1.0"
+            "default": "abo-finite-pulse-1.1"
           },
           "warnings": {
             "items": {
@@ -1612,7 +1612,7 @@
           "solver_version": {
             "type": "string",
             "title": "Solver Version",
-            "default": "abo-gaussian-1.0"
+            "default": "abo-gaussian-1.1"
           },
           "dataset_revision": {
             "type": "string",

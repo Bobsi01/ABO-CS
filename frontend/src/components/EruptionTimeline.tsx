@@ -133,7 +133,7 @@ export default function EruptionTimeline({
       aria-label="Eruption sequence"
     >
       <div className="timeline-top">
-        <div className="phase-choices" aria-label="Jump to eruption stage">
+        <div className="phase-choices" role="group" aria-label="Jump to eruption stage">
           {['Before', 'During', 'After'].map((label, i) => (
             <button
               type="button"

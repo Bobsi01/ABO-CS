@@ -1,11 +1,28 @@
 import { describe, expect, it } from 'vitest'
 import type { ReceptorResult } from '../api/simulator'
-import { depositDistribution } from './dashboardData'
+import { calculateExecutiveKpis, depositDistribution } from './dashboardData'
 
 const point = (thickness: number | null, inDomain = true, kind = 'municipality') =>
   ({ thickness_mm: thickness, in_domain: inDomain, kind }) as ReceptorResult
 
 describe('dashboard distribution semantics', () => {
+
+  it('retains missing population counts instead of inventing families or treating missing as known zero', () => {
+
+    const kpis = calculateExecutiveKpis(
+      [
+        { ...point(1), population: 41000, province: 'A', name: 'Known' } as ReceptorResult,
+        { ...point(2), population: null, province: 'B', name: 'Unknown' } as ReceptorResult,
+        { ...point(0.1), population: 100, province: 'A', name: 'Below' } as ReceptorResult,
+      ],
+      0.5,
+    )
+
+    expect(kpis.totalPopulation).toBe(41000)
+    expect(kpis.unknownPopulationCount).toBe(1)
+    expect(kpis.localitiesCount).toBe(2)
+
+  })
 
   it('assigns boundary values exactly once and excludes unknown, outside and facilities', () => {
 

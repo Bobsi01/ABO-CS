@@ -334,7 +334,7 @@ class Illustration(StrictModel):
 
 
 class Provenance(StrictModel):
-    solver_version: str = "abo-gaussian-1.0"
+    solver_version: str = "abo-gaussian-1.1"
     dataset_revision: str
     source_ids: list[str]
     input_status: str
@@ -487,6 +487,6 @@ class EruptionSequence(StrictModel):
     fountain_flight_time_s: float
     fountain_label: str
     provenance: Provenance
-    solver_version: str = "abo-finite-pulse-1.0"
+    solver_version: str = "abo-finite-pulse-1.1"
     warnings: list[str]
     assumptions: list[str]

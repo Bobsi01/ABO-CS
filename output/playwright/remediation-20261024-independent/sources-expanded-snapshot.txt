@@ -1,0 +1,268 @@
+### Page
+- Page URL: http://127.0.0.1:8069/
+- Page Title: ABO · Eruption laboratory
+- Console: 0 errors, 2 warnings
+### Snapshot
+```yaml
+- generic [ref=f1e3]:
+  - link "Skip to results" [ref=f1e4] [cursor=pointer]:
+    - /url: "#workspace"
+  - generic [ref=f1e6] [cursor=pointer]: Menu
+  - banner [ref=f1e10]:
+    - generic [ref=f1e11]:
+      - generic [ref=f1e12]:
+        - generic [ref=f1e13]:
+          - heading "ABO" [level=1] [ref=f1e14]
+          - text: Eruption laboratory
+        - button "Close navigation" [ref=f1e15] [cursor=pointer]
+      - navigation "Main navigation" [ref=f1e18]:
+        - button "Simulation" [ref=f1e19] [cursor=pointer]
+        - button "Analysis" [ref=f1e20] [cursor=pointer]
+        - button "Sources" [ref=f1e21] [cursor=pointer]
+      - generic [ref=f1e22]:
+        - group [ref=f1e23]:
+          - generic "Academic model" [ref=f1e2431] [cursor=pointer]
+        - generic [ref=f1e27]:
+          - generic [ref=f1e28]: Dark mode
+          - button "Dark theme" [ref=f1e29] [cursor=pointer]
+  - main [ref=f1e32]:
+    - region "Guide & sources" [ref=f1e2437]:
+      - generic [ref=f1e2438]:
+        - heading "Scientific Methodology & Computational Architecture" [level=2] [ref=f1e2439]
+        - paragraph [ref=f1e2440]: Mathematical foundations, governing physical equations, literature provenance, and academic data registry for the ABO eruption laboratory.
+      - region [ref=f1e2441]:
+        - generic [ref=f1e2442]:
+          - heading "Mathematical Formulation & Computational Kernel" [level=2] [ref=f1e2443]
+          - generic [ref=f1e2444]: "Solver: Gaussian deposition with optional teaching extensions"
+        - generic [ref=f1e2445]:
+          - generic [ref=f1e2446]:
+            - heading "1. Total Mass & Release Layer Discretization" [level=3] [ref=f1e2447]
+            - paragraph [ref=f1e2448]: "Total eruptive ash mass M_T is conserved by integrating mass effusion rate over the duration:"
+            - generic [ref=f1e2449]: M_T = ṁ × Δt [kg]
+            - paragraph [ref=f1e2450]: Mass is apportioned across grain fractions f_k (∑ f_k = 1) and release layers using the active scenario's weighting, disclosed below.
+          - generic [ref=f1e2451]:
+            - heading "2. Advection, Diffusion & Deposit Thickness" [level=3] [ref=f1e2452]
+            - paragraph [ref=f1e2453]: "For layer height h_j and settling speed v_s, falling time is t_f = h_j / v_s. Surface ash load L(x,y) converts to deposit thickness:"
+            - generic [ref=f1e2454]: T(x,y) = [L(x,y) / ρ_bulk] × 1000 [mm]
+            - paragraph [ref=f1e2455]: Bulk deposit density and horizontal diffusivity are editable scenario inputs, shown below with their units.
+        - list [ref=f1e2456]:
+          - listitem [ref=f1e2457]: Multiply modeled ash rate by duration to obtain total ash mass.
+          - listitem [ref=f1e2458]: Assumed Suzuki-style weights · heuristic stationary proximal and advected distal components.
+          - listitem [ref=f1e2459]: Divide release height by settling speed to obtain falling time; wind moves each Gaussian center during that time.
+          - listitem [ref=f1e2460]: Integrate Gaussian mass over grid cells; evaluate municipality centroids as point samples.
+          - listitem [ref=f1e2461]: Divide load by bulk deposit density to obtain thickness, then evaluate sourced screening criteria.
+        - paragraph [ref=f1e2462]: The event sequence limits ash emission to the selected duration and accumulates each component after its falling time. It uses instant release at prescribed heights, not eruption-column CFD. Ash, steam and gas form volcanic plumes; the visible billows and fountain are schematic. Optional lava uses terrain slope, effusion, channel width, density and fixed viscosity, without cooling or branching.
+      - region "Active scenario assumptions" [ref=f1e2463]:
+        - heading "Active scenario assumptions" [level=3] [ref=f1e2464]
+        - paragraph [ref=f1e2465]: Taal-inspired regional illustrative scenario · illustrative inputs
+        - paragraph [ref=f1e2466]: Physical inputs are scenario assumptions unless individually established by the parameter evidence register. Source links provide context and do not certify these values.
+        - generic [ref=f1e2467]:
+          - generic [ref=f1e2468]:
+            - term [ref=f1e2469]: Column above model ground
+            - definition [ref=f1e2470]: 17,000 m
+          - generic [ref=f1e2471]:
+            - term [ref=f1e2472]: Modeled ash rate
+            - definition [ref=f1e2473]: 1,500,000 kg/s
+          - generic [ref=f1e2474]:
+            - term [ref=f1e2475]: Emission duration
+            - definition [ref=f1e2476]: 10 h
+          - generic [ref=f1e2477]:
+            - term [ref=f1e2478]: Deposit bulk density
+            - definition [ref=f1e2479]: 1,000 kg/m³
+          - generic [ref=f1e2480]:
+            - term [ref=f1e2481]: Diffusivity
+            - definition [ref=f1e2482]: 1,000 m²/s
+          - generic [ref=f1e2483]:
+            - term [ref=f1e2484]: Active wind
+            - definition [ref=f1e2485]: Height-dependent wind · 5 levels
+        - paragraph [ref=f1e2486]: Assumed Suzuki-style weights · heuristic stationary proximal and advected distal components.
+        - group [ref=f1e2487]:
+          - generic "Active wind levels and transport interpretation" [ref=f1e2488] [cursor=pointer]
+          - paragraph [ref=f1e2550]: Heights are above the vent. Endpoint winds extend beyond supplied levels. Advected component winds use height-integrated profile means. Scalar wind fields are profile rotation/speed references, not a uniform operative wind.
+          - list [ref=f1e2551]:
+            - listitem [ref=f1e2552]: "0 m: 8 m/s FROM 65°"
+            - listitem [ref=f1e2553]: "3,000 m: 5 m/s FROM 90°"
+            - listitem [ref=f1e2554]: "6,000 m: 6 m/s FROM 145°"
+            - listitem [ref=f1e2555]: "10,000 m: 14 m/s FROM 195°"
+            - listitem [ref=f1e2556]: "16,600 m: 22 m/s FROM 215°"
+        - paragraph [ref=f1e2489]: "Umbrella spread parameter: 20,000 m. This is an uncalibrated two-component Gaussian teaching heuristic, not solved umbrella-current dynamics or a maximum cloud radius. The stationary proximal fraction and other assumed coefficients are disclosed in the completed run assumptions below."
+        - group [ref=f1e2490]:
+          - generic "Completed run assumptions and warnings" [ref=f1e2491] [cursor=pointer]
+          - list [ref=f1e2557]:
+            - listitem [ref=f1e2558]: Steady eruption and height-dependent wind linearly interpolated between 5 levels above the vent and held constant beyond the end levels; the single wind fields are not used by the deposit solver with a heuristic two-component umbrella deposit, spread parameter 20.0 km (Gaussian tails extend beyond this parameter; no physical cloud edge is solved); component winds are height-integrated profile means (opt-in extension beyond the proposal's assumptions)
+            - listitem [ref=f1e2559]: Flat ground at vent datum
+            - listitem [ref=f1e2560]: Constant class settling speeds
+            - listitem [ref=f1e2561]: Assumed Suzuki-style release weights, k=3.0; stationary proximal mass fraction=0.4; distal fraction=0.6; distal release heights=0.65 to 1 times column; extra distal spread=0.75 times umbrella parameter; proximal spread=umbrella parameter/2.5. Coefficients are uncalibrated teaching assumptions, not measured plume dynamics.
+            - listitem [ref=f1e2562]: Centroids are point samples; population counts are indicative
+            - listitem [ref=f1e2563]: Academic simulation, not a PHIVOLCS advisory
+            - listitem [ref=f1e2564]: Surface exposure does not establish roof safety, water potability or flight safety
+            - listitem [ref=f1e2565]: No historical predictive validation has been established
+            - listitem [ref=f1e2566]: Input status is caller metadata; it does not certify scientific review
+            - listitem [ref=f1e2567]: Finite release-height quadrature uses 16 midpoint layers; local numerical convergence is not established and receptor values may change materially under refinement
+            - listitem [ref=f1e2568]: Physical inputs are illustrative assumptions, not measured eruption values
+        - paragraph [ref=f1e2492]: Historical predictive agreement remains unestablished. The emission interval and population reference year do not reconstruct a historical event.
+      - generic [ref=f1e2493]:
+        - link "Computation Documentation Numerical Gaussian dispersion, release assumptions, and coordinate transformations." [ref=f1e2494] [cursor=pointer]:
+          - /url: /documentation/COMPUTATION.md
+          - generic [ref=f1e2495]: Computation Documentation
+          - generic [ref=f1e2498]: Numerical Gaussian dispersion, release assumptions, and coordinate transformations.
+        - link "Eruption & Lava Equations Finite-duration temporal release and Jeffreys single-channel slope formulations." [ref=f1e2499] [cursor=pointer]:
+          - /url: /documentation/ERUPTION_MODEL.md
+          - generic [ref=f1e2500]: Eruption & Lava Equations
+          - generic [ref=f1e2503]: Finite-duration temporal release and Jeffreys single-channel slope formulations.
+        - link "Required Input Values Physical parameter bounds, explicit SI units, and datum conversions." [ref=f1e2504] [cursor=pointer]:
+          - /url: /documentation/INPUT_VALUES.md
+          - generic [ref=f1e2505]: Required Input Values
+          - generic [ref=f1e2509]: Physical parameter bounds, explicit SI units, and datum conversions.
+        - link "Research Registry Literature sources, historical evidence limits, and non-validation disclosures." [ref=f1e2510] [cursor=pointer]:
+          - /url: /documentation/ERUPTION_RESEARCH.md
+          - generic [ref=f1e2511]: Research Registry
+          - generic [ref=f1e2514]: Literature sources, historical evidence limits, and non-validation disclosures.
+      - generic [ref=f1e2515]:
+        - region [ref=f1e2516]:
+          - generic [ref=f1e2517]:
+            - heading "Curated Literature Provenance & Data Registry" [level=3] [ref=f1e2518]
+            - generic [ref=f1e2519]: Local sources and explicitly assumed teaching inputs
+          - paragraph [ref=f1e2520]: The complete catalog registry below is the source authority. Measured, derived, assumed and source-blocked parameters remain distinct in the parameter evidence register. A source citation does not validate a preset.
+          - group [ref=f1e2521]:
+            - generic "Eruption mechanisms & reference zones 10 sources" [ref=f1e2522] [cursor=pointer]:
+              - generic [ref=f1e2523]: Eruption mechanisms & reference zones
+              - generic [ref=f1e2526]: 10 sources
+          - group [ref=f1e2528]:
+            - generic "Complete repository source registry 22 sources" [active] [ref=f1e2529] [cursor=pointer]:
+              - generic [ref=f1e2530]: Complete repository source registry
+              - generic [ref=f1e2533]: 22 sources
+            - generic [ref=f1e2570]:
+              - generic [ref=f1e2571]:
+                - link "Taal volcano profile" [ref=f1e2572] [cursor=pointer]:
+                  - /url: https://volcano.si.edu/volcano.cfm?vn=273070
+                - paragraph [ref=f1e2573]: "Smithsonian GVP · Accessed: 2026-10-09 · Status: transcribed"
+              - generic [ref=f1e2574]:
+                - link "Mayon volcano profile" [ref=f1e2575] [cursor=pointer]:
+                  - /url: https://volcano.si.edu/volcano.cfm?vn=273030
+                - paragraph [ref=f1e2576]: "Smithsonian GVP · Accessed: 2026-10-09 · Status: transcribed"
+              - generic [ref=f1e2577]:
+                - link "Kanlaon volcano profile" [ref=f1e2578] [cursor=pointer]:
+                  - /url: https://volcano.si.edu/volcano.cfm?vn=272020
+                - paragraph [ref=f1e2579]: "Smithsonian GVP · Accessed: 2026-10-09 · Status: transcribed"
+              - generic [ref=f1e2580]:
+                - link "Philippines municipal boundaries, gbOpen ADM3" [ref=f1e2581] [cursor=pointer]:
+                  - /url: https://www.geoboundaries.org/
+                - paragraph [ref=f1e2582]: "geoBoundaries; original NAMRIA/PSA/OCHA · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2583]: CC BY 3.0 IGO. Centroids calculated in EPSG:6933, returned in WGS84. These are polygon centroids, not municipal halls. Snapshot hashes in data/source/manifest.json.
+              - generic [ref=f1e2584]:
+                - link "Illustrative teaching assumptions" [ref=f1e2585] [cursor=pointer]:
+                  - /url: /documentation/INPUT_VALUES.md
+                - paragraph [ref=f1e2586]: "ABO project · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2587]: Assumed teaching values, not measured eruption or weather data; unreviewed physics.
+              - generic [ref=f1e2588]:
+                - link "Analysis of the 2020 Taal Volcano tephra fall deposits from crowdsourced information and field data" [ref=f1e2589] [cursor=pointer]:
+                  - /url: https://link.springer.com/article/10.1007/s00445-022-01534-y
+                - paragraph [ref=f1e2590]: "Balangue-Tarriela et al., Springer Bulletin of Volcanology · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2591]: Published 2022; CC BY 4.0. Table 3 and narrative footprint areas disagree; do not treat area values as spatial polygons.
+              - generic [ref=f1e2592]:
+                - link "Climate data" [ref=f1e2593] [cursor=pointer]:
+                  - /url: https://www.pagasa.dost.gov.ph/climate/climate-data
+                - paragraph [ref=f1e2594]: "DOST-PAGASA · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2595]: Season alone does not specify effective plume wind speed, direction, altitude or averaging period.
+              - generic [ref=f1e2596]:
+                - link "Official Tephra2 implementation" [ref=f1e2597] [cursor=pointer]:
+                  - /url: https://github.com/geoscience-community-codes/tephra2
+                - paragraph [ref=f1e2598]: "geoscience-community-codes · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2599]: ABO is a simplified independent model, not equivalent to full Tephra2.
+              - generic [ref=f1e2600]:
+                - link "Natural Earth 1:50m coastline" [ref=f1e2601] [cursor=pointer]:
+                  - /url: https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-coastline/
+                - paragraph [ref=f1e2602]: "Natural Earth · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2603]: Public domain, clipped for offline presentation only; not numerical terrain.
+              - generic [ref=f1e2604]:
+                - link "Incident RP-C6198 final report" [ref=f1e2605] [cursor=pointer]:
+                  - /url: https://caap.gov.ph/wp-content/uploads/2025/05/Incident-RP-C6198.pdf
+                - paragraph [ref=f1e2606]: "Civil Aviation Authority of the Philippines · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2607]: ARP 14 deg 30 min 35.78 sec N, 121 deg 00 min 49.892 sec E; surface exposure only.
+              - generic [ref=f1e2608]:
+                - link "Accident RP-C2080 final report" [ref=f1e2609] [cursor=pointer]:
+                  - /url: https://caap.gov.ph/wp-content/uploads/2024/12/RP-C2080-Accident.pdf
+                - paragraph [ref=f1e2610]: "Civil Aviation Authority of the Philippines · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2611]: ARP 13 deg 06 min 46 sec N, 123 deg 40 min 40 sec E; surface exposure only.
+              - generic [ref=f1e2612]:
+                - 'link "PSGC Batangas: cities and municipalities" [ref=f1e2613] [cursor=pointer]':
+                  - /url: https://psa.gov.ph/classification/psgc/citimuni/0401000000
+                - paragraph [ref=f1e2614]: "Philippine Statistics Authority · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2615]: Manual transcription. Current administrative codes can differ from 2020 codes, especially Negros Island Region.
+              - generic [ref=f1e2616]:
+                - 'link "PSGC Cavite: cities and municipalities" [ref=f1e2617] [cursor=pointer]':
+                  - /url: https://psa.gov.ph/classification/psgc/citimuni/0402100000
+                - paragraph [ref=f1e2618]: "Philippine Statistics Authority · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2619]: Manual transcription. Current administrative codes can differ from 2020 codes, especially Negros Island Region.
+              - generic [ref=f1e2620]:
+                - 'link "PSGC Albay: cities and municipalities" [ref=f1e2621] [cursor=pointer]':
+                  - /url: https://psa.gov.ph/classification/psgc/citimuni/0500500000
+                - paragraph [ref=f1e2622]: "Philippine Statistics Authority · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2623]: Manual transcription. Current administrative codes can differ from 2020 codes, especially Negros Island Region.
+              - generic [ref=f1e2624]:
+                - 'link "PSGC Negros Occidental: cities and municipalities" [ref=f1e2625] [cursor=pointer]':
+                  - /url: https://psa.gov.ph/classification/psgc/citimuni/1804500000
+                - paragraph [ref=f1e2626]: "Philippine Statistics Authority · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2627]: Manual transcription. Current administrative codes can differ from 2020 codes, especially Negros Island Region.
+              - generic [ref=f1e2628]:
+                - 'link "PSGC Negros Oriental: cities and municipalities" [ref=f1e2629] [cursor=pointer]':
+                  - /url: https://psa.gov.ph/classification/psgc/citimuni/1804600000
+                - paragraph [ref=f1e2630]: "Philippine Statistics Authority · Accessed: 2026-10-09 · Status: transcribed"
+                - paragraph [ref=f1e2631]: Manual transcription. Current administrative codes can differ from 2020 codes, especially Negros Island Region.
+              - generic [ref=f1e2632]:
+                - link "IGRA 2.2 Tanay radiosonde observations" [ref=f1e2633] [cursor=pointer]:
+                  - /url: https://www.ncei.noaa.gov/products/weather-balloon/integrated-global-radiosonde-archive
+                - paragraph [ref=f1e2634]: "NOAA NCEI · Accessed: 2026-10-11 · Status: reviewed_with_limits"
+                - paragraph [ref=f1e2635]: Original ZIP, selected records and hashes in data/source/igra/manifest.json. Missing and QA-removed data retained.
+              - generic [ref=f1e2636]:
+                - link "PSGC municipalities and cities with current/correspondence codes" [ref=f1e2637] [cursor=pointer]:
+                  - /url: https://psa.gov.ph/classification/psgc/municipalities
+                - paragraph [ref=f1e2638]: "Philippine Statistics Authority · Accessed: 2026-10-11 · Status: reviewed_with_limits"
+                - paragraph [ref=f1e2639]: Archived retrieved page extracts, not original HTML; matching/exclusions in domain-inventory.json.
+              - generic [ref=f1e2640]:
+                - link "Batangas QuickSTAT 2020 and 2024 population counts" [ref=f1e2641] [cursor=pointer]:
+                  - /url: https://rsso04a.psa.gov.ph/sites/default/files/infographics/26R0410-QS-005.pdf
+                - paragraph [ref=f1e2642]: "PSA Batangas · Accessed: 2026-10-11 · Status: reviewed_with_limits"
+                - paragraph [ref=f1e2643]: Values manually transcribed from accessible primary indexed PDF. Direct download returns access challenge; original PDF not archived. Municipality total inconsistency in 2015 column is not imported.
+              - generic [ref=f1e2644]:
+                - link "Ash impacts on buildings" [ref=f1e2645] [cursor=pointer]:
+                  - /url: https://volcanoes.usgs.gov/volcanic_ash/buildings.html
+                - paragraph [ref=f1e2646]: "USGS · Accessed: 2026-10-11 · Status: reviewed_with_limits"
+                - paragraph [ref=f1e2647]: Qualitative applicability evidence; no universal roof load capacity or assessed local roofs. Numerical threshold withheld.
+              - generic [ref=f1e2648]:
+                - link "Ash impacts on agriculture" [ref=f1e2649] [cursor=pointer]:
+                  - /url: https://volcanoes.usgs.gov/volcanic_ash/agriculture.html
+                - paragraph [ref=f1e2650]: "USGS · Accessed: 2026-10-11 · Status: reviewed_with_limits"
+                - paragraph [ref=f1e2651]: Broad 100–150 mm statement is not a condition-specific local crop damage criterion. Threshold withheld.
+              - generic [ref=f1e2652]:
+                - link "Public water-inventory source investigation" [ref=f1e2653] [cursor=pointer]:
+                  - /url: https://eia.emb.gov.ph/wp-content/uploads/2022/09/AWTIP-T5-EPRMP.pdf
+                - paragraph [ref=f1e2654]: "DENR EMB / MWSS · Accessed: 2026-10-11 · Status: source_blocked"
+                - paragraph [ref=f1e2655]: Indexed candidate concerns a monitoring point near Ipo intakes, not a surveyed treatment plant; original PDF access is blocked. No receptor imported.
+        - generic [ref=f1e2535]:
+          - generic [ref=f1e2536]:
+            - heading "Geography & Picture References" [level=3] [ref=f1e2538]
+            - paragraph [ref=f1e2539]:
+              - link "Taal island and lake" [ref=f1e2540] [cursor=pointer]:
+                - /url: https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-01888
+              - text: ·
+              - link "Mayon and Albay Gulf" [ref=f1e2541] [cursor=pointer]:
+                - /url: https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-01777
+              - text: ·
+              - link "Kanlaon summit and ridge" [ref=f1e2542] [cursor=pointer]:
+                - /url: https://volcano.si.edu/gallery/ShowImage.cfm?photo=GVP-11191
+            - paragraph [ref=f1e2543]:
+              - text: Historical Smithsonian/USGS/NASA references guide geographic interpretation.
+              - link "Terrain provenance, photo credits & uncertainty" [ref=f1e2544] [cursor=pointer]:
+                - /url: /documentation/GEOGRAPHY_REFERENCES.md
+          - generic [ref=f1e2545]:
+            - group [ref=f1e2546]:
+              - generic "Parameter evidence register" [ref=f1e2547] [cursor=pointer]
+            - group [ref=f1e2548]:
+              - generic "Administrative inventory coverage" [ref=f1e2549] [cursor=pointer]
+  - contentinfo [ref=f1e57]:
+    - generic [ref=f1e58]: Academic simulation · Not a PHIVOLCS advisory
+    - link "Project proposal" [ref=f1e59] [cursor=pointer]:
+      - /url: https://docs.google.com/document/d/1dH4wl1l9PFE1Xj4CuJtWXPDA4vmmEpcGoh9cSXctCxg/edit?tab=t.if8cv8e8e5un
+```

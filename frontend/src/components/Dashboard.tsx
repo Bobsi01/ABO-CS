@@ -3,6 +3,7 @@ import { eruption, simulate } from '../api/simulator'
 import type { Catalog, EruptionFrame, EruptionSequence, SimulationResult } from '../api/simulator'
 import { csvCell, download, number } from '../presentation'
 import Icon from './Icon'
+import { activeWindLabel } from '../scenarioSemantics'
 import { calculateExecutiveKpis, depositDistribution } from './dashboardData'
 
 type Run = { result: SimulationResult; sequence: EruptionSequence | null }
@@ -140,10 +141,7 @@ export default function Dashboard({
         : null
   const result = run?.result
   // Live snapshot only when the shared frame belongs to the run shown here.
-  const liveFrame =
-    frame && run?.sequence?.frames.some((f) => f === frame || f.elapsed_s === frame.elapsed_s)
-      ? frame
-      : null
+  const liveFrame = frame && run?.sequence?.frames.some((f) => f === frame) ? frame : null
   const scopeLabel = liveFrame
     ? `${PHASE_TEXT[liveFrame.phase] ?? liveFrame.phase} · ${number(liveFrame.elapsed_s / 3600, 1)} h`
     : 'Eventual totals'
@@ -451,9 +449,13 @@ export default function Dashboard({
                 </span>
               </div>
               <div className="impact-kpi-card">
-                <span className="kpi-label">Indicative Families</span>
-                <strong className="kpi-value">{number(kpiSummary.totalFamilies, 0)}</strong>
-                <span className="kpi-sub">~{number(kpiSummary.totalPopulation, 0)} residents</span>
+                <span className="kpi-label">Indicative residents</span>
+                <strong className="kpi-value">{number(kpiSummary.totalPopulation, 0)}</strong>
+                <span className="kpi-sub">
+                  {kpiSummary.unknownPopulationCount} unknown population records ·{' '}
+                  {result.receptors.find((r) => r.population_year)?.population_year ??
+                    'Unknown year'}
+                </span>
               </div>
             </div>
             <article className="chart-panel accumulation-panel">
@@ -740,11 +742,8 @@ export default function Dashboard({
                   <dd>{number(result.scenario.column_height_m / 1000)} km</dd>
                 </div>
                 <div>
-                  <dt>Wind FROM</dt>
-                  <dd>
-                    {number(result.scenario.wind_from_deg, 0)}° ·{' '}
-                    {number(result.scenario.wind_speed_m_s)} m/s
-                  </dd>
+                  <dt>Active wind</dt>
+                  <dd>{activeWindLabel(result.scenario)}</dd>
                 </div>
                 <div>
                   <dt>Emission duration</dt>

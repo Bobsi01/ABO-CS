@@ -1,5 +1,5 @@
 {
-  "revision": "2026-10-12-gap-evidence-v2-utf8",
+  "revision": "2026-10-24-realism-disclosure-v3",
   "sources": [
     {
       "id": "gvp-taal",
@@ -336,11 +336,11 @@
   "scenarios": [
     {
       "id": "taal-regional",
-      "name": "Taal 2020 regional eruption (12–13 Jan actual event)",
+      "name": "Taal-inspired regional illustrative scenario",
       "status": "illustrative",
       "scenario": {
         "volcano_id": "taal",
-        "label": "Taal 2020 regional eruption (12–13 Jan actual event)",
+        "label": "Taal-inspired regional illustrative scenario",
         "input_status": "illustrative",
         "source_ids": [
           "gvp-taal",

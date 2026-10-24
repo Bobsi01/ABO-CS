@@ -338,9 +338,8 @@
 .dashboard-kpi-grid .kpi-sub {
   font-size: 0.64rem;
   color: var(--secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
   text-align: left;
   width: 100%;
 }

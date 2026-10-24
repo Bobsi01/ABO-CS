@@ -1,0 +1,44 @@
+### Result
+{
+  "badCitation": false,
+  "syntheticClaim": false,
+  "text": "Skip to results\nMENU\nABO\nEruption laboratory\nSimulation\nAnalysis\nSources\nAcademic model\n· limits\nDark mode\nScientific Methodology & Computational Architecture\n\nMathematical foundations, governing physical equations, literature provenance, and academic data registry for the ABO eruption laboratory.\n\nMathematical Formulation & Computational Kernel\nSolver: Gaussian deposition with optional teaching extensions\n1. Total Mass & Release Layer Discretization\n\nTotal eruptive ash mass M_T is conserved by integrating mass effusion rate over the duration:\n\nM_T = ṁ × Δt [kg]\n\nMass is apportioned across grain fractions f_k (∑ f_k = 1) and release layers using the active scenario's weighting, disclosed below.\n\n2. Advection, Diffusion & Deposit Thickness\n\nFor layer height h_j and settling speed v_s, falling time is t_f = h_j / v_s. Surface ash load L(x,y) converts to deposit thickness:\n\nT(x,y) = [L(x,y) / ρ_bulk] × 1000 [mm]\n\nBulk deposit density and horizontal diffusivity are editable scenario inputs, shown below with their units.\n\nMultiply modeled ash rate by duration to obtain total ash mass.\nAssumed Suzuki-style weights · heuristic stationary proximal and advected distal components.\nDivide release height by settling speed to obtain falling time; wind moves each Gaussian center during that time.\nIntegrate Gaussian mass over grid cells; evaluate municipality centroids as point samples.\nDivide load by bulk deposit density to obtain thickness, then evaluate sourced screening criteria.\n\nThe event sequence limits ash emission to the selected duration and accumulates each component after its falling time. It uses instant release at prescribed heights, not eruption-column CFD. Ash, steam and gas form volcanic plumes; the visible billows and fountain are schematic. Optional lava uses terrain slope, effusion, channel width, density and fixed viscosity, without cooling or branching.\n\nActive scenario assumptions\n\nTaal-inspired regional illustrative scenario · illustrative inputs\n\nPhysical inputs are scenario assumptions unless individually established by the parameter evidence register. Source links provide context and do not certify these values.\n\nColumn above model ground\n17,000 m\nModeled ash rate\n1,500,000 kg/s\nEmission duration\n10 h\nDeposit bulk density\n1,000 kg/m³\nDiffusivity\n1,000 m²/s\nActive wind\nHeight-dependent wind · 5 levels\n\nAssumed Suzuki-style weights · heuristic stationary proximal and advected distal components.\n\nActive wind levels and transport interpretation\n\nUmbrella spread parameter: 20,000 m. This is an uncalibrated two-component Gaussian teaching heuristic, not solved umbrella-current dynamics or a maximum cloud radius. The stationary proximal fraction and other assumed coefficients are disclosed in the completed run assumptions below.\n\nCompleted run assumptions and warnings\n\nHistorical predictive agreement remains unestablished. The emission interval and population reference year do not reconstruct a historical event.\n\nComputation Documentation\nNumerical Gaussian dispersion, release assumptions, and coordinate transformations.\nEruption & Lava Equations\nFinite-duration temporal release and Jeffreys single-channel slope formulations.\nRequired Input Values\nPhysical parameter bounds, explicit SI units, and datum conversions.\nResearch Registry\nLiterature sources, historical evidence limits, and non-validation disclosures.\nCurated Literature Provenance & Data Registry\nLocal sources and explicitly assumed teaching inputs\n\nThe complete catalog registry below is the source authority. Measured, derived, assumed and source-blocked parameters remain distinct in the parameter evidence register. A source citation does not validate a preset.\n\nEruption mechanisms & reference zones\n10 sources\nComplete repository source registry\n22 sources\nGeography & Picture References\n\nTaal island and lake · Mayon and Albay Gulf · Kanlaon summit and ridge\n\nHistorical Smithsonian/USGS/NASA references guide geographic interpretation. Terrain provenance, photo credits & uncertainty\n\nParameter evidence register\nAdministrative inventory coverage\nAcademic simulation · Not a PHIVOLCS advisory\nProject proposal",
+  "sourceLinks": [
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    },
+    {
+      "label": "",
+      "href": "https://link.springer.com/article/10.1007/s00445-022-01534-y"
+    }
+  ]
+}
+### Ran Playwright code
+```js
+await page.evaluate('() => ({badCitation:document.body.innerText.includes(\'01552-3\'),syntheticClaim:document.body.innerText.includes(\'zero synthetic placeholders\'),text:document.body.innerText.slice(0,7000),sourceLinks:[...document.querySelectorAll(\'a\')].filter(x=>x.href.includes(\'01534\')).map(x=>({label:x.innerText,href:x.href}))})');
+```

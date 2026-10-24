@@ -1,0 +1,13 @@
+
+> abo-frontend@0.1.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v4.1.11 C:/Workspace/ABO-CS/frontend
+
+···························································································································
+
+ Test Files  24 passed (24)
+      Tests  123 passed (123)
+   Start at  14:48:04
+   Duration  7.32s (transform 5.66s, setup 0ms, import 15.84s, tests 19.21s, environment 45.49s)

@@ -7,6 +7,11 @@ from scipy.special import ndtr
 
 MEMORY_LIMIT_BYTES = 512 * 1024 * 1024
 SWEEP_DIRECTION_BATCH = 16
+UMBRELLA_PROXIMAL_FRACTION = 0.40
+UMBRELLA_SUZUKI_K = 3.0
+UMBRELLA_DISTAL_HEIGHT_FRACTION = 0.65
+UMBRELLA_SHEAR_SPREAD_FACTOR = 0.75
+UMBRELLA_PROXIMAL_SPREAD_DIVISOR = 2.5
 
 
 def check_budget(kernel_count, cells, receptors, directions=1):
@@ -48,16 +53,18 @@ def components(
         mass * fractions[:, None] / layers, (fractions.size, layers)
     ).reshape(-1)
     if umbrella_radius is not None and umbrella_radius > initial_spread and height >= 3000:
-        alpha = 0.40
+        alpha = UMBRELLA_PROXIMAL_FRACTION
         fraction_h = (np.arange(layers) + 0.5) / layers
-        k = 3.0
+        k = UMBRELLA_SUZUKI_K
         suzuki_raw = (1.0 - fraction_h) * np.exp(k * (fraction_h - 1.0))
         layer_w = suzuki_raw / np.sum(suzuki_raw)
 
         mat = (fractions[:, None] * layer_w[None, :]).copy()
         flat_w = (mat.reshape(-1)) * mass
 
-        fraction_dist = 0.65 + 0.35 * fraction_h
+        fraction_dist = (
+            UMBRELLA_DISTAL_HEIGHT_FRACTION + (1 - UMBRELLA_DISTAL_HEIGHT_FRACTION) * fraction_h
+        )
         release_dist = height * fraction_dist
         times_dist = (release_dist[None, :] / settling[:, None]).reshape(-1)
 
@@ -67,9 +74,11 @@ def components(
         base_var_dist = np.broadcast_to(
             (umbrella_radius * fraction_dist)[None, :] ** 2, (fractions.size, layers)
         ).reshape(-1)
-        shear_var = (0.75 * umbrella_radius) ** 2
+        shear_var = (UMBRELLA_SHEAR_SPREAD_FACTOR * umbrella_radius) ** 2
         var_dist = initial_spread**2 + base_var_dist + 2 * diffusivity * times_dist + shear_var
-        var_prox = (umbrella_radius / 2.5) ** 2 + 2 * diffusivity * times_prox
+        var_prox = (
+            umbrella_radius / UMBRELLA_PROXIMAL_SPREAD_DIVISOR
+        ) ** 2 + 2 * diffusivity * times_prox
         times = np.concatenate([times_prox, times_dist])
         variance = np.concatenate([var_prox, var_dist])
     else:
@@ -112,9 +121,9 @@ def pulse_components(
     flat_rate = rate.reshape(-1)
 
     if umbrella_radius is not None and umbrella_radius > initial_spread and np.all(heights >= 3000):
-        alpha = 0.40
+        alpha = UMBRELLA_PROXIMAL_FRACTION
         fraction_h = (np.arange(layers) + 0.5) / layers  # [layer]
-        k = 3.0
+        k = UMBRELLA_SUZUKI_K
         suzuki_raw = (1.0 - fraction_h) * np.exp(k * (fraction_h - 1.0))
         layer_w = suzuki_raw / np.sum(suzuki_raw)
 
@@ -125,7 +134,9 @@ def pulse_components(
         flat_w = pulse_weights.reshape(-1)
         flat_r = pulse_rates.reshape(-1)
 
-        fraction_dist = 0.65 + 0.35 * fraction_h
+        fraction_dist = (
+            UMBRELLA_DISTAL_HEIGHT_FRACTION + (1 - UMBRELLA_DISTAL_HEIGHT_FRACTION) * fraction_h
+        )
         release_dist = heights[:, None, None] * fraction_dist[None, None, :]  # [pulse, 1, layer]
         times_dist = (release_dist / settling[None, :, None]).reshape(-1)
         flat_release_dist = np.broadcast_to(release_dist, shape).reshape(-1)
@@ -133,9 +144,11 @@ def pulse_components(
         base_var_dist = np.broadcast_to(
             (umbrella_radius * fraction_dist)[None, None, :] ** 2, shape
         ).reshape(-1)
-        shear_var = (0.75 * umbrella_radius) ** 2
+        shear_var = (UMBRELLA_SHEAR_SPREAD_FACTOR * umbrella_radius) ** 2
         var_dist = initial_spread**2 + base_var_dist + 2 * diffusivity * times_dist + shear_var
-        var_prox = (umbrella_radius / 2.5) ** 2 + 2 * diffusivity * flat_times
+        var_prox = (
+            umbrella_radius / UMBRELLA_PROXIMAL_SPREAD_DIVISOR
+        ) ** 2 + 2 * diffusivity * flat_times
 
         out_times = np.concatenate([flat_times, times_dist])
         out_weights = np.concatenate([flat_w * alpha, flat_w * (1.0 - alpha)])
@@ -191,8 +204,13 @@ def layer_winds(release_heights, level_heights, speeds, wind_from_deg, column_in
     n_lev = np.asarray(north)[order]
 
     dz = np.diff(z_lev)
-    cum_e = np.concatenate([[0.0], np.cumsum(0.5 * (e_lev[:-1] + e_lev[1:]) * dz)])
-    cum_n = np.concatenate([[0.0], np.cumsum(0.5 * (n_lev[:-1] + n_lev[1:]) * dz)])
+    # Constant endpoint extrapolation also applies from the vent to the first level.
+    cum_e = e_lev[0] * z_lev[0] + np.concatenate(
+        [[0.0], np.cumsum(0.5 * (e_lev[:-1] + e_lev[1:]) * dz)]
+    )
+    cum_n = n_lev[0] * z_lev[0] + np.concatenate(
+        [[0.0], np.cumsum(0.5 * (n_lev[:-1] + n_lev[1:]) * dz)]
+    )
 
     h = np.asarray(release_heights, float)
     h_safe = np.maximum(h, 1e-6)

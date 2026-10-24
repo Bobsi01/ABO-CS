@@ -1,0 +1,283 @@
+{
+  "catalog": {
+    "revision": "2026-10-12-gap-evidence-v2-utf8",
+    "scenarios": 10,
+    "receptors": 320,
+    "municipalities": 318,
+    "population_2020": 34,
+    "unknown_source_ids": []
+  },
+  "presets": [
+    {
+      "id": "taal-regional",
+      "label": "Taal 2020 regional eruption (12\u201313 Jan actual event)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.7801735023425951,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 100,
+      "population": 22691111,
+      "peak_centroid_mm": 30.991120507631422
+    },
+    {
+      "id": "taal-wind-north",
+      "label": "Taal outcome: Wind blowing North (Southerly \u00b7 15 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.636662739455116,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 7.62939453125e-06,
+      "grid_finite_nonnegative": true,
+      "reported": 88,
+      "population": 21869089,
+      "peak_centroid_mm": 30.227192054002153
+    },
+    {
+      "id": "taal-wind-south",
+      "label": "Taal outcome: Wind blowing South (Amihan / Northerly \u00b7 12 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.6777813573752379,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 47,
+      "population": 4267901,
+      "peak_centroid_mm": 30.58672914416289
+    },
+    {
+      "id": "taal-wind-east",
+      "label": "Taal outcome: Wind blowing East (Westerly \u00b7 12 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.6777813573752379,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 60,
+      "population": 5600442,
+      "peak_centroid_mm": 30.377843308631377
+    },
+    {
+      "id": "taal-wind-west",
+      "label": "Taal outcome: Wind blowing West (Easterly trade \u00b7 10 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.7337337344043836,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 46,
+      "population": 5325860,
+      "peak_centroid_mm": 30.74645355537773
+    },
+    {
+      "id": "taal-wind-northeast",
+      "label": "Taal outcome: Wind blowing Northeast (Habagat \u00b7 14 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.7088200325736165,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 74,
+      "population": 10218227,
+      "peak_centroid_mm": 30.25005498740453
+    },
+    {
+      "id": "taal-wind-northwest",
+      "label": "Taal outcome: Wind blowing Northwest (Southeasterly \u00b7 12 m/s)",
+      "status": "illustrative",
+      "mass_kg": 54000000000.0,
+      "retained_fraction": 0.7550868187160359,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 7.62939453125e-06,
+      "grid_finite_nonnegative": true,
+      "reported": 68,
+      "population": 10597742,
+      "peak_centroid_mm": 30.39957840237094
+    },
+    {
+      "id": "taal-teaching",
+      "label": "Taal illustrative teaching scenario (5 km column)",
+      "status": "illustrative",
+      "mass_kg": 3600000000.0,
+      "retained_fraction": 0.8500410488243796,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 12,
+      "population": 942470,
+      "peak_centroid_mm": 4.614834654418731
+    },
+    {
+      "id": "mayon-teaching",
+      "label": "Mayon illustrative teaching scenario",
+      "status": "illustrative",
+      "mass_kg": 3600000000.0,
+      "retained_fraction": 0.8500410488243796,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 6,
+      "population": 414386,
+      "peak_centroid_mm": 3.8142836392804615
+    },
+    {
+      "id": "kanlaon-teaching",
+      "label": "Kanlaon illustrative teaching scenario",
+      "status": "illustrative",
+      "mass_kg": 3600000000.0,
+      "retained_fraction": 0.8500410488243796,
+      "mass_balance_error_kg": 0.0,
+      "grid_mass_error_kg": 0.0,
+      "grid_finite_nonnegative": true,
+      "reported": 4,
+      "population": 306691,
+      "peak_centroid_mm": 2.3172558357482593
+    }
+  ],
+  "regional_refinement": {
+    "largest_absolute_changes": [
+      {
+        "name": "San Nicolas, Batangas",
+        "mm16": 30.991120507631422,
+        "mm32": 31.000714631003763,
+        "relative_percent": 0.030948071638150203,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Talisay, Batangas",
+        "mm16": 24.134051868932225,
+        "mm32": 24.139719607075193,
+        "relative_percent": 0.02347888971049511,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Agoncillo, Batangas",
+        "mm16": 23.99471309574361,
+        "mm32": 24.000236921863834,
+        "relative_percent": 0.023015714962349897,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Laurel, Batangas",
+        "mm16": 19.85037077245691,
+        "mm32": 19.854120614092825,
+        "relative_percent": 0.018886969152660037,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Tagaytay, Cavite",
+        "mm16": 16.507269766210747,
+        "mm32": 16.509760156446827,
+        "relative_percent": 0.015084351392635547,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Balete, Batangas",
+        "mm16": 18.268674759734836,
+        "mm32": 18.27115924967438,
+        "relative_percent": 0.013597877975850131,
+        "crosses_0_5": false
+      },
+      {
+        "name": "Trece Martires, Cavite",
+        "mm16": 3.2560593901998476,
+        "mm32": 3.258329783374406,
+        "relative_percent": 0.06967966183604613,
+        "crosses_0_5": false
+      },
+      {
+        "name": "City of General Trias, Cavite",
+        "mm16": 3.445279963499298,
+        "mm32": 3.4475371837301436,
+        "relative_percent": 0.06547341219401971,
+        "crosses_0_5": false
+      }
+    ],
+    "threshold_crossings": [],
+    "reported16": 100,
+    "reported32": 100
+  },
+  "sequence": {
+    "frames": 37,
+    "end_h": 103.41145833333333,
+    "first_max_mm": 0.0,
+    "final_grid_max_difference": 0.0,
+    "max_emitted_balance_error_kg": 0.0,
+    "monotone_receptors": true
+  },
+  "historical_status": {
+    "available": false,
+    "reason": "The frozen Taal protocol and derived reference contours are available. Empirical evaluation remains source blocked by insufficient sounding coverage, active-vent datum, independent ash inputs and unquantified observation uncertainty.",
+    "simulation": null,
+    "metrics": {},
+    "observations": [],
+    "validation_status": "unavailable",
+    "blocked_inputs": [
+      "Tanay selected-launch coverage 71.43% below frozen 75% requirement",
+      "Reviewed active 2020 vent height datum (the GVP 311 m profile is not an active-vent survey)",
+      "Independent ash mass and dry bulk density",
+      "Whole-event grain fractions and settling speeds",
+      "Raw geolocated thickness observations and defensible original measurement/interpolation uncertainty",
+      "2020 census coverage beyond 34 Batangas records and historical boundary crosswalk review",
+      "Condition-specific roof/crop thresholds and water-facility coordinates",
+      "Resolve/report published footprint area definitions without target selection"
+    ],
+    "dataset_id": "taal-published-evidence-v1",
+    "observation_results": [],
+    "assessment_reasons": [
+      "Independent QA approved frozen methodology; scientific input gate remains blocked",
+      "Published 8,605 km\u00b2 narrative and 3,864.89 km\u00b2 Table 3 area statements remain distinct unresolved references",
+      "No participant or classroom empirical study was performed",
+      "Numerical verification does not establish empirical accuracy",
+      "Both target Tanay launches cover 15/21 height-grid levels (71.43%); 75% gate failed"
+    ]
+  },
+  "umbrella": {
+    "stationary_mass_fraction": 0.4,
+    "provenance_assumptions": [
+      "Steady eruption and height-dependent wind linearly interpolated between 5 levels above the vent and held constant beyond the end levels; the single wind fields are not used by the deposit solver with radial umbrella cloud expansion up to 20.0 km (opt-in extension beyond the proposal's assumptions)",
+      "Flat ground at vent datum",
+      "Constant class settling speeds",
+      "Uniform release-height weights",
+      "Centroids are point samples; population counts are indicative"
+    ],
+    "source_wind_m_s": [
+      -4.014359419489476,
+      2.5074433458211116
+    ]
+  },
+  "uniform_profile_test": {
+    "expected_10_m_s": 10,
+    "actual_at_1000m": 5.0
+  },
+  "scalar_wind_edit_max_grid_difference_mm": 0.0,
+  "map_boundaries": {
+    "features": 460,
+    "not_matched_by_ui_lookup": 138,
+    "calamba_records": [
+      {
+        "shapeID": "30758251B38454925088266",
+        "name": "City of Calamba, Laguna",
+        "receptor_id": "30758251B38454925088266",
+        "province": "Laguna",
+        "region": "Region IV-A (CALABARZON)",
+        "center_lat": 8.52096,
+        "center_lon": 123.64016
+      },
+      {
+        "shapeID": "30758251B25562993690796",
+        "name": "City of Calamba, Laguna",
+        "receptor_id": "30758251B25562993690796",
+        "province": "Laguna",
+        "region": "Region IV-A (CALABARZON)",
+        "center_lat": 14.18722,
+        "center_lon": 121.12041
+      }
+    ]
+  }
+}

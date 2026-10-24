@@ -1,5 +1,4 @@
 import type { ReceptorResult } from '../api/simulator'
-import { calculateFamiliesAffected } from '../presentation'
 
 const bands = [
   { label: 'Below trace (<0.01 mm)', color: '#64748b', min: 0, max: 0.01 },
@@ -34,7 +33,7 @@ export type ExecutiveKpis = {
   peakLocality: string
   peakProvince: string
   totalPopulation: number
-  totalFamilies: number
+  unknownPopulationCount: number
 }
 
 // The dashboard counts affected places at the selected thickness threshold.
@@ -76,7 +75,7 @@ export function calculateExecutiveKpis(
     peakLocality: peakName,
     peakProvince: peakProv,
     totalPopulation: totalPop,
-    totalFamilies: calculateFamiliesAffected(totalPop),
+    unknownPopulationCount: affected.filter((r) => r.population == null).length,
   }
 
 }

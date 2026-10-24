@@ -1,8 +1,10 @@
 # Parameter evidence register
 
-Revision: `2026-10-12-gap-evidence-v2-utf8`. Reproduce with `uv run python ../scripts/build_parameter_register.py` from `backend/` after the catalog build.
+Revision: `2026-10-24-realism-disclosure-v3`. Reproduce with `uv run python ../scripts/build_parameter_register.py` from `backend/` after the catalog build.
 
 The authoritative records are `data/source/gap-evidence-register.json`, exposed through `GET /api/catalog`. **Usable** means usable for the explicitly stated purpose, not empirical validation. A missing measured value is a required measurement category with no accepted value. **Illustrative** values are assumptions or engineering choices. No parameter is currently calibrated.
+
+This frozen evidence register includes earlier teaching assumptions; its numeric entries are not the current defaults for every scenario. Active presets live in `data/catalog.json` under `scenarios`, and Sources shows the selected inputs and completed-run assumptions. See INPUT_VALUES.md for the current preset distinction.
 
 Frozen retrospective case: 12 January 2020 13:00 to 13 January 04:28 local (UTC+8), 55,680 s. The numerical solver is available; historical agreement is not established. Methodological approval of `taal-main-plume-2020-v1` does not approve missing physical inputs.
 

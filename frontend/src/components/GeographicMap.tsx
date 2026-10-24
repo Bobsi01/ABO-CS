@@ -58,7 +58,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
   const historicalVisible = useRef(false)
 
   const zone = referenceZone(scenario.volcano_id)
-  const activeFrame = frame && frame.phase !== 'before' && frame.phase !== 'after' ? frame : null
+  const activeFrame = frame ?? null
   const rows = activeFrame?.receptors ?? result?.receptors
   const contours = activeFrame?.contours ?? result?.contours
   const [mapState, setMapState] = useState(
@@ -270,33 +270,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       rows.forEach((r) => {
 
         receptorsMap.set(r.id, r)
-        // Match records that omit the administrative suffix.
-        const baseName = r.name.split(',')[0].trim().toLowerCase()
-
-        if (!receptorsMap.has(baseName)) receptorsMap.set(baseName, r)
 
       })
-    }
-
-    const sampleGridThickness = (lat: number, lon: number): number | null => {
-
-      const g = activeFrame?.grid ?? result?.grid
-
-      if (!g || !g.east_m.length || !g.north_m.length) return null
-      const dy = (lat - scenario.vent_lat) * 111132
-      const dx = (lon - scenario.vent_lon) * 111132 * Math.cos((scenario.vent_lat * Math.PI) / 180)
-      const e0 = g.east_m[0]
-      const n0 = g.north_m[0]
-      const cell = g.cell_m
-      const i = Math.round((dx - e0) / cell)
-      const j = Math.round((dy - n0) / cell)
-
-      if (j >= 0 && j < g.thickness_mm.length && i >= 0 && i < g.thickness_mm[j].length) {
-        return g.thickness_mm[j][i]
-      }
-
-      return null
-
     }
 
     if (showMunicipalities && municipalBoundaries && rows) {
@@ -304,13 +279,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         style: (feat) => {
 
           const prop = feat?.properties ?? {}
-          const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
-          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
-          let thickness = rec?.thickness_mm
-
-          if (thickness == null && prop.center_lat && prop.center_lon) {
-            thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
-          }
+          const rec = receptorsMap.get(prop.receptor_id)
+          const thickness = rec?.thickness_mm
           const val = thickness ?? 0
           const hasAsh = val >= 0.01
 
@@ -325,17 +295,17 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         onEachFeature: (feat, polygon) => {
 
           const prop = feat.properties ?? {}
-          const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
-          const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
-          let thickness = rec?.thickness_mm
-
-          if (thickness == null && prop.center_lat && prop.center_lon) {
-            thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
-          }
-          const thicknessStr = thickness != null ? `${number(thickness)} mm ash` : 'Unmodeled'
+          const rec = receptorsMap.get(prop.receptor_id)
+          const thickness = rec?.thickness_mm
+          const thicknessStr =
+            thickness != null
+              ? `${number(thickness)} mm ash`
+              : 'No reviewed receptor value · excluded from population tally'
           const provStr = prop.province ? ` (${prop.province})` : ''
 
-          polygon.bindTooltip(`${prop.name}${provStr}: ${thicknessStr}`)
+          polygon.bindTooltip(
+            `${prop.name}${provStr}: ${thicknessStr}${thickness != null ? ' · centroid point sample, not a municipal average' : ''}`,
+          )
           if (rec) {
             polygon.on('click', () => select.current(rec.id))
           }
@@ -360,7 +330,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         const prop = feat.properties ?? {}
 
         if (prop.center_lat && prop.center_lon && prop.province) {
-          const labelHtml = `<span class="province-label-tag">${prop.province}</span>`
+          const labelHtml = `<span class="province-label-tag">${prop.province} · partial inventory</span>`
 
           L.marker([prop.center_lat, prop.center_lon], {
             icon: L.divIcon({
@@ -539,8 +509,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
         if (labeledPositions.has(normKey)) return
 
-        const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(normKey)
-        const th = rec?.thickness_mm ?? sampleGridThickness(prop.center_lat, prop.center_lon)
+        const rec = receptorsMap.get(prop.receptor_id)
+        const th = rec?.thickness_mm
 
         if (th != null && th >= 0.5) {
           labeledPositions.add(normKey)
@@ -656,7 +626,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
   return (
     <div className="map-wrap">
-      <div className="map-stage" ref={element} aria-label="Geographic ashfall map" />
+      <div className="map-stage" role="region" ref={element} aria-label="Geographic ashfall map" />
       <div className="spatial-card-sidebar">
         <h2 id="map-title">Affected locations</h2>
         <div className="map-toolbar">
@@ -768,6 +738,12 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             </small>
           </div>
         )}
+
+        <p className="map-status spatial-sidebar-note">
+          Municipal shading uses reviewed receptor IDs only. Unmatched boundaries have no numeric
+          deposit or population tally. Contours describe the modeled field; colored polygons are
+          centroid samples, not area averages.
+        </p>
 
         {frame && (
           <p className="map-status spatial-sidebar-note">

@@ -1,5 +1,14 @@
 # Finite-duration eruption sequence and lava teaching model
 
+As of 24 October 2026, baseline and optional umbrella branches have different release
+weights and spatial kernels; see [current computation distinctions](COMPUTATION.md#current-branch-distinctions--24-october-2026).
+The two-component umbrella option prescribes final Gaussian spreads and a stationary
+40% proximal mass fraction. Visible parcels/billows use schematic spreads; their edges
+and opacity do not quantitatively reproduce that final deposit kernel or solve physical
+umbrella expansion. Timeline Before/0 h now displays the zero-deposit first snapshot,
+with eventual table/export totals separately labeled. The replay horizon includes the
+post-emission settling tail and is not the duration of eruptive activity.
+
 Implemented 2026-10-10 in `backend/src/abo_api/eruption.py`, through `POST /api/eruption-sequences`. `contracts.py` defines inputs and responses; generated OpenAPI supplies the TypeScript boundary. This is an educational finite-source extension of the existing analytical ashfall model. Plume formation, fountain geometry and hot/cool colors are schematic. No eruption-column CFD, gas chemistry, pyroclastic density current, lahar, rainfall or thermal lava solver is implemented.
 
 ## Ash before, during and after emission

@@ -1,5 +1,40 @@
 # How ABO computes ground ash deposition
 
+## Current branch distinctions — 24 October 2026
+
+The baseline formulas below use uniform midpoint release weights. The optional
+umbrella spread parameter activates a separate **uncalibrated two-component teaching
+heuristic** only when it exceeds the initial spread and every pulse height is at
+least 3000 m. It does not solve a physical umbrella current or a maximum cloud edge.
+Suzuki-style normalized weights use `(1-f) exp(3(f-1))`. An assumed 40% of mass is
+stationary horizontally, with spread parameter `R/2.5`; 60% uses advected release
+heights `H(0.65 + 0.35f)` and variance
+`sigma0² + (R(0.65 + 0.35f))² + 2K tau + (0.75R)²`.
+The proximal variance is `(R/2.5)² + 2K tau`. Gaussian tails extend beyond R.
+These coefficients are exposed in completed-run provenance, not calibrated to
+independent observations. A smooth footprint is not evidence of predictive skill.
+
+With a wind profile, baseline components use the interpolated release-height wind.
+Umbrella advected components use the mean vector integrated from zero to their
+release height. Winds extend constantly below/above the supplied endpoints, including
+the interval from the vent to an elevated first level. The stationary component
+remains explicitly windless. Scalar wind controls rotate/scale the profile in the
+UI; scalar-only API edits do not override a supplied profile.
+
+Solver versions `abo-gaussian-1.1` and `abo-finite-pulse-1.1` identify the corrected
+elevated-profile integration. No historical validation is implied by versioning.
+The main preset is a Taal-inspired illustrative scenario. Its assumed 10-hour
+emission interval differs from the historical protocol's 55,680-second mapped
+interval. Current catalog inputs and their units are shown on the Sources page.
+
+Timeline views use the selected snapshot even at zero time. Eventual tables and
+exports are labeled separately. Municipal shading uses explicit reviewed receptor
+IDs, not browser-estimated point calculations or name-only joins. Unmatched
+boundaries remain without numeric values. Province overlays are partial unions of
+reviewed municipal polygons; they are not complete provincial boundaries.
+Population values classify whole municipalities by their centroids and retain the
+requested year and missingness. No family counts or damage severity are inferred.
+
 ABO is an academic, reduced analytical fallout model. Python computes scientific quantities; React displays them. The solver is implemented, but agreement with a historical eruption has **not** been established. A realistic-looking scene is not evidence of scientific validity.
 
 The equations below define eventual ash deposition. The finite-duration extension in [ERUPTION_MODEL.md](ERUPTION_MODEL.md) evaluates accumulated deposition before, during and after emission, with separate emitted/aloft/deposited/domain-loss accounting. It also documents the optional terrain-guided lava teaching model. This extension does not change the eventual Gaussian kernel or solve plume buoyancy, gas concentration, variable eruption pulses, wet removal or thermal lava cooling.
