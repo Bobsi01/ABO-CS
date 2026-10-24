@@ -1,8 +1,9 @@
 export const CONTOUR_LEVELS = [0.5, 1, 5, 10, 50, 100]
 export const TRACE_CONTOUR_LEVELS = [0.01, 0.1]
 
-/** Sequential warm chromatic spectrum (yellow to red) encodes deposit thickness; academic simulation not a PHIVOLCS hazard advisory. */
+/** Yellow to red shows deposit thickness; this is not a PHIVOLCS advisory. */
 export function depositColor(mm: number): string {
+
   if (mm >= 100) return '#4c0519'
   if (mm >= 50) return '#991b1b'
   if (mm >= 10) return '#dc2626'
@@ -11,27 +12,42 @@ export function depositColor(mm: number): string {
   if (mm >= 0.5) return '#f59e0b'
   if (mm >= 0.1) return '#facc15'
   if (mm >= 0.01) return '#fef08a'
+
   return '#e2e8f0'
+
 }
 
+// App labels keep missing values visible as "Unknown".
 export function number(value: number | null | undefined, digits = 2): string {
-  return value == null ? 'Unknown' : value.toLocaleString(undefined, { maximumFractionDigits: digits })
+
+  return value == null
+    ? 'Unknown'
+    : value.toLocaleString(undefined, { maximumFractionDigits: digits })
+
 }
 
+// For CSV exports that may be opened in a spreadsheet.
 export function csvCell(value: unknown): string {
+
   const raw = String(value ?? '')
-  // Spreadsheet applications must not execute municipality labels as formulas.
+  // Keep spreadsheet labels from running as formulas.
   const safe = /^[=+\-@\t\r]/.test(raw) ? `'${raw}` : raw
+
   return `"${safe.replaceAll('"', '""')}"`
+
 }
 
+// We release the temporary file URL after the browser starts the download.
 export function download(name: string, content: string, type: string) {
+
   const url = URL.createObjectURL(new Blob([content], { type }))
   const link = document.createElement('a')
+
   link.href = url
   link.download = name
   link.click()
   window.setTimeout(() => URL.revokeObjectURL(url), 1000)
+
 }
 
 /** Average household size in CALABARZON / Region IV-A (PSA 2020 CPH Report No. 2). */
@@ -39,14 +55,19 @@ export const PSA_REGION4A_HOUSEHOLD_SIZE = 4.1
 
 /** Estimate families / households affected based on PSA 2020 average household size. */
 export function calculateFamiliesAffected(population: number | null | undefined): number {
+
   if (population == null || population <= 0) return 0
+
   return Math.round(population / PSA_REGION4A_HOUSEHOLD_SIZE)
+
 }
 
 /** Cardinal compass direction from azimuth degrees (0-360) using wind-from convention. */
 export function cardinalDirection(deg: number | string | null | undefined): string {
+
   if (deg == null || deg === '') return '—'
   const d = ((Number(deg) % 360) + 360) % 360
+
   if (d >= 337.5 || d < 22.5) return 'N'
   if (d < 67.5) return 'NE'
   if (d < 112.5) return 'E'
@@ -54,6 +75,7 @@ export function cardinalDirection(deg: number | string | null | undefined): stri
   if (d < 202.5) return 'S'
   if (d < 247.5) return 'SW'
   if (d < 292.5) return 'W'
-  return 'NW'
-}
 
+  return 'NW'
+
+}

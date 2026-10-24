@@ -20,6 +20,8 @@ Git LFS stores two retained browser heap snapshots. A full evidence checkout nee
 
 ## Verify a change
 
+Follow [the code style guide](docs/CODE_STYLE.md) for readable spacing and short comments. From `frontend/`, run `npm run format` before checking your changes; `npm run check` verifies the same formatting without writing files.
+
 Run from the repository root:
 
 ```powershell

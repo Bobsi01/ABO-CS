@@ -6,13 +6,18 @@ import type { Scenario, SimulationResult } from '../api/simulator'
 
 // Mock R3F Canvas to allow testing component logic in jsdom
 const rendererMock = vi.hoisted(() => ({
-  created: undefined as undefined | ((state: { gl: { domElement: HTMLCanvasElement; render: () => void } }) => void),
+  created: undefined as
+    | undefined
+    | ((state: { gl: { domElement: HTMLCanvasElement; render: () => void } }) => void),
 }))
 
 vi.mock('@react-three/fiber', () => ({
   Canvas: ({ onCreated }: { onCreated: typeof rendererMock.created }) => {
+
     rendererMock.created = onCreated
+
     return null
+
   },
   useThree: () => ({
     camera: new THREE.PerspectiveCamera(45, 1, 0.1, 1000),
@@ -39,19 +44,33 @@ const taalScenario = {
 const simulationResult = {
   scenario: taalScenario,
   illustration: {
-    paths: [{ grain_index: 0, diameter_um: 100, settling_time_s: 750, points_m: [[0, 0, 3000], [1000, 1000, 0]] }],
+    paths: [
+      {
+        grain_index: 0,
+        diameter_um: 100,
+        settling_time_s: 750,
+        points_m: [
+          [0, 0, 3000],
+          [1000, 1000, 0],
+        ],
+      },
+    ],
     wind_east_m_s: 0,
     wind_north_m_s: 10,
   },
   grid: {
     east_m: [-1000, 1000],
     north_m: [-1000, 1000],
-    thickness_mm: [[1, 2], [3, 4]],
+    thickness_mm: [
+      [1, 2],
+      [3, 4],
+    ],
   },
   receptors: [],
 } as unknown as SimulationResult
 
 function setupGraphicsAvailable() {
+
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({
     getExtension: () => null,
   } as unknown as WebGL2RenderingContext)
@@ -61,22 +80,33 @@ function setupGraphicsAvailable() {
     addEventListener: vi.fn(changes.addEventListener.bind(changes)),
     removeEventListener: vi.fn(changes.removeEventListener.bind(changes)),
   }
-  vi.stubGlobal('matchMedia', vi.fn(() => media))
+
+  vi.stubGlobal(
+    'matchMedia',
+    vi.fn(() => media),
+  )
+
   return { media, changes }
+
 }
 
 afterEach(() => {
+
   cleanup()
   vi.restoreAllMocks()
   vi.unstubAllGlobals()
+
 })
 
 describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verification', () => {
+
   // =========================================================================
   // TASK 1: WebGL & Three.js Resource Disposal
   // =========================================================================
   describe('Task 1: Resource Disposal & GPU Memory Lifecycle', () => {
+
     it('disposes Line and Sprite resources in ColumnAltimeter hierarchy upon unmount / hide', () => {
+
       // Simulate ColumnAltimeter creation logic
       const base = 0.311
       const height = 3.0
@@ -90,10 +120,12 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       ])
       const axisMat = new THREE.LineBasicMaterial({ color: '#2563eb' })
       const axisLine = new THREE.Line(axisGeom, axisMat)
+
       group.add(axisLine)
 
       // Tick segments
       const tickPoints: THREE.Vector3[] = []
+
       for (let h = 5; h <= maxHeight; h += 5) {
         tickPoints.push(new THREE.Vector3(-1.5, base + h, 0))
         tickPoints.push(new THREE.Vector3(-1.9, base + h, 0))
@@ -101,15 +133,18 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       const tickGeom = new THREE.BufferGeometry().setFromPoints(tickPoints)
       const tickMat = new THREE.LineBasicMaterial({ color: '#2563eb' })
       const tickSegments = new THREE.LineSegments(tickGeom, tickMat)
+
       group.add(tickSegments)
 
       // Sprites with cloned geometry and canvas textures
       const canvas = document.createElement('canvas')
+
       canvas.width = 64
       canvas.height = 32
       const texture = new THREE.CanvasTexture(canvas)
       const spriteMat = new THREE.SpriteMaterial({ map: texture })
       const sprite = new THREE.Sprite(spriteMat)
+
       sprite.geometry = sprite.geometry.clone()
       group.add(sprite)
 
@@ -123,7 +158,8 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       const textureDispose = vi.spyOn(texture, 'dispose')
 
       // Perform cleanup iteration as implemented in VolcanoScene line 601-608
-      group.children.forEach(child => {
+      group.children.forEach((child) => {
+
         if (child instanceof THREE.Line || child instanceof THREE.LineSegments) {
           child.geometry.dispose()
           if (child.material instanceof THREE.Material) child.material.dispose()
@@ -132,6 +168,7 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
           child.material.map?.dispose()
           child.material.dispose()
         }
+
       })
 
       expect(axisGeomDispose).toHaveBeenCalledTimes(1)
@@ -141,23 +178,30 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(spriteGeomDispose).toHaveBeenCalledTimes(1)
       expect(spriteMatDispose).toHaveBeenCalledTimes(1)
       expect(textureDispose).toHaveBeenCalledTimes(1)
+
     })
 
     it('identifies that InstancedMesh does not auto-dispose instanceMatrix and instanceColor buffers on mesh.dispose()', () => {
+
       const geom = new THREE.SphereGeometry(1, 8, 8)
       const mat = new THREE.MeshStandardMaterial()
       const instMesh = new THREE.InstancedMesh(geom, mat, 10)
+
       instMesh.setColorAt(0, new THREE.Color('#ff0000'))
 
       let matrixDisposed = false
       let colorDisposed = false
 
       instMesh.instanceMatrix.addEventListener('dispose', () => {
+
         matrixDisposed = true
+
       })
       if (instMesh.instanceColor) {
         instMesh.instanceColor.addEventListener('dispose', () => {
+
           colorDisposed = true
+
         })
       }
 
@@ -176,9 +220,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
       geom.dispose()
       mat.dispose()
+
     })
 
     it('verifies ArrowHelper disposal releases internal line and cone geometries and materials', () => {
+
       const dir = new THREE.Vector3(0, 1, 0)
       const origin = new THREE.Vector3(0, 0, 0)
       const arrow = new THREE.ArrowHelper(dir, origin, 5, '#d97706', 1, 0.5)
@@ -194,9 +240,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(lineMatDispose).toHaveBeenCalledTimes(1)
       expect(coneGeomDispose).toHaveBeenCalledTimes(1)
       expect(coneMatDispose).toHaveBeenCalledTimes(1)
+
     })
 
     it('documents resource retention when sublayer is toggled off or volcano switched without unmounting', () => {
+
       // Demonstrates the memoization lifecycle in TaalPDZ3D / TaalDikeVector3D:
       // When show toggles from true to false, if the memoized object is not cleared,
       // useEffect(() => () => line.dispose(), [line]) does NOT trigger because line reference did not change.
@@ -206,7 +254,9 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       const line = new THREE.Line(geom, mat)
 
       geom.addEventListener('dispose', () => {
+
         lineDisposed = true
+
       })
 
       // Simulating toggle of show: true -> false with static [points]
@@ -224,13 +274,16 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       geom.dispose()
       mat.dispose()
       expect(lineDisposed).toBe(true)
+
     })
+
   })
 
   // =========================================================================
   // TASK 2: Raycasting & Hit-Testing
   // =========================================================================
   describe('Task 2: Raycasting, Seismicity Coordinates & Hit-Testing', () => {
+
     const mockEarthquakes = [
       {
         id: 'us7000nzpf',
@@ -265,10 +318,12 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
     ]
 
     it('verifies coordinate transformation: geographic (lat, lon, depth) to ABO 3D world coordinates', () => {
+
       const ventLat = 14.002
       const ventLon = 120.993
 
-      mockEarthquakes.forEach(q => {
+      mockEarthquakes.forEach((q) => {
+
         const dLat = (q.latitude - ventLat) * 111.0
         const dLon = (q.longitude - ventLon) * 111.0 * Math.cos((ventLat * Math.PI) / 180)
         const displayDepth = Math.min(35, q.depth_km)
@@ -282,12 +337,15 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
           expect(dLat).toBeCloseTo(0)
           expect(dLon).toBeCloseTo(0)
         }
+
       })
+
     })
 
     it('verifies depthFilter subsets and exact instanceId-to-earthquake mapping', () => {
-      const shallow = mockEarthquakes.filter(q => q.depth_km <= 15)
-      const deep = mockEarthquakes.filter(q => q.depth_km > 15)
+
+      const shallow = mockEarthquakes.filter((q) => q.depth_km <= 15)
+      const deep = mockEarthquakes.filter((q) => q.depth_km > 15)
 
       expect(shallow.length).toBe(2)
       expect(deep.length).toBe(1)
@@ -295,22 +353,29 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       // Test hit-testing mapping: instanceId must index into filteredQuakes
       const hitInstanceId = 1
       const selectedQuake = shallow[hitInstanceId]
+
       expect(selectedQuake.id).toBe('us6000p6st')
       expect(selectedQuake.magnitude).toBe(2.8)
+
     })
 
     it('verifies Raycaster intersection on InstancedMesh with bounding sphere calculation', () => {
+
       const geom = new THREE.SphereGeometry(1, 8, 8)
       const mat = new THREE.MeshBasicMaterial()
       const instMesh = new THREE.InstancedMesh(geom, mat, mockEarthquakes.length)
 
       const dummy = new THREE.Object3D()
+
       mockEarthquakes.forEach((q, idx) => {
+
         const displayDepth = Math.min(35, q.depth_km)
+
         dummy.position.set(idx * 5, -displayDepth, 0)
         dummy.scale.setScalar(1)
         dummy.updateMatrix()
         instMesh.setMatrixAt(idx, dummy.matrix)
+
       })
       instMesh.instanceMatrix.needsUpdate = true
       instMesh.computeBoundingSphere()
@@ -320,22 +385,26 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       // Raycast from above targeting instance index 1 (at x=5, y=-12.3, z=0)
       const raycaster = new THREE.Raycaster(
         new THREE.Vector3(5, 10, 0),
-        new THREE.Vector3(0, -1, 0) // pointing down
+        new THREE.Vector3(0, -1, 0), // pointing down
       )
       const intersects: THREE.Intersection[] = []
+
       instMesh.raycast(raycaster, intersects)
 
       expect(intersects.length).toBeGreaterThan(0)
       const hit = intersects[0]
+
       expect(hit.instanceId).toBe(1)
       expect(mockEarthquakes[hit.instanceId!].id).toBe('us7000nwn8')
 
       geom.dispose()
       mat.dispose()
       instMesh.dispose()
+
     })
 
     it('evaluates Subsurface Occlusion: depth testing against opaque ground surface', () => {
+
       // Ground plane is at y = -0.05 km, earthquakes are at y <= -1.0 km
       const groundY = -0.05
       const quakeY = -5.0
@@ -346,18 +415,23 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       const quakeDepthTest = true
 
       const isOccludedByGround = quakeY < groundY && groundDepthWrite && quakeDepthTest
+
       expect(isOccludedByGround).toBe(true)
 
       // Finding: Earthquake hypocenters render underground but lack depthTest: false or a cutaway,
       // resulting in complete visual occlusion from above-ground camera angles.
+
     })
+
   })
 
   // =========================================================================
   // TASK 3: Camera & Rendering Mechanics
   // =========================================================================
   describe('Task 3: Camera Presets, Lighting, Fog & Fallback Behavior', () => {
+
     it('verifies Tagaytay Ridge camera preset: coordinates, target, elevation and non-inversion', () => {
+
       const height = 3.0 // 3 km column height
       const base = 0.311 // 311 m vent elevation ASL
       const dist = Math.max(16, height * 1.8) // 16 km
@@ -382,28 +456,57 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
       // Looking direction vector (camera to target):
       const lookDir = new THREE.Vector3().subVectors(controlsTarget, cameraPos).normalize()
+
       expect(lookDir.z).toBeGreaterThan(0) // Looking South (+Z) towards Volcano Island
 
       // Azimuth check:
       // Looking South (+Z) with up=(0,1,0):
       // Right vector is lookDir x up = (0, 0, 1) x (0, 1, 0) = (-1, 0, 0) [West is right, East is left].
       // This matches real-world observation from Tagaytay ridge looking south over Lake Taal.
+
     })
 
     it('verifies Cross-wind Plume Profile across all 4 cardinal wind bearings', () => {
+
       const height = 5.0
       const base = 0.311
       const dist = Math.max(14, height * 2.2)
 
       const cases = [
-        { windFrom: 180, expectedTransportDeg: 0, expectedCameraPosName: 'East (+X)', expectXPos: true, expectZZero: true },
-        { windFrom: 0, expectedTransportDeg: 180, expectedCameraPosName: 'West (-X)', expectXNeg: true, expectZZero: true },
-        { windFrom: 90, expectedTransportDeg: 270, expectedCameraPosName: 'North (-Z)', expectZNeg: true, expectXZero: true },
-        { windFrom: 270, expectedTransportDeg: 90, expectedCameraPosName: 'South (+Z)', expectZPos: true, expectXZero: true },
+        {
+          windFrom: 180,
+          expectedTransportDeg: 0,
+          expectedCameraPosName: 'East (+X)',
+          expectXPos: true,
+          expectZZero: true,
+        },
+        {
+          windFrom: 0,
+          expectedTransportDeg: 180,
+          expectedCameraPosName: 'West (-X)',
+          expectXNeg: true,
+          expectZZero: true,
+        },
+        {
+          windFrom: 90,
+          expectedTransportDeg: 270,
+          expectedCameraPosName: 'North (-Z)',
+          expectZNeg: true,
+          expectXZero: true,
+        },
+        {
+          windFrom: 270,
+          expectedTransportDeg: 90,
+          expectedCameraPosName: 'South (+Z)',
+          expectZPos: true,
+          expectXZero: true,
+        },
       ]
 
       cases.forEach(({ windFrom, expectedTransportDeg }) => {
+
         const transportDeg = (windFrom + 180) % 360
+
         expect(transportDeg).toBe(expectedTransportDeg)
 
         const crossDeg = (transportDeg + 90) % 360
@@ -412,7 +515,7 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
         const cameraPos = new THREE.Vector3(
           dist * Math.sin(rad),
           base + height * 0.7,
-          -dist * Math.cos(rad)
+          -dist * Math.cos(rad),
         )
         const target = new THREE.Vector3(0, base + height * 0.4, 0)
 
@@ -422,24 +525,35 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
         // Camera distance to vent center in horizontal plane
         const horizontalDist = Math.hypot(cameraPos.x, cameraPos.z)
+
         expect(horizontalDist).toBeCloseTo(dist)
 
         // Vector pointing from camera to target
         const lookDir = new THREE.Vector3().subVectors(target, cameraPos).normalize()
-        const rightDir = new THREE.Vector3().crossVectors(lookDir, new THREE.Vector3(0, 1, 0)).normalize()
+        const rightDir = new THREE.Vector3()
+          .crossVectors(lookDir, new THREE.Vector3(0, 1, 0))
+          .normalize()
 
         // Transport direction vector (downwind)
         const transportRad = (transportDeg * Math.PI) / 180
-        const transportVec = new THREE.Vector3(Math.sin(transportRad), 0, -Math.cos(transportRad)).normalize()
+        const transportVec = new THREE.Vector3(
+          Math.sin(transportRad),
+          0,
+          -Math.cos(transportRad),
+        ).normalize()
 
         // In cross-wind view, the downwind vector must project positively along the camera's right direction
         // so the plume appears to travel from left-to-right across the screen.
         const dotRight = rightDir.dot(transportVec)
+
         expect(dotRight).toBeGreaterThan(0.99)
+
       })
+
     })
 
     it('detects inverted azimuth calculation in TaalDikeVector3D vs correct TaalTropomiPlumeCue', () => {
+
       const dikeAzimuthDeg = 225 // SW dike intrusion (Bato et al. 2021)
       const rad = (dikeAzimuthDeg * Math.PI) / 180
 
@@ -464,9 +578,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       // BUT in TaalDikeVector3D:
       expect(dikeDir.x).toBeCloseTo(-0.7071)
       expect(dikeDir.z).toBeCloseTo(-0.7071) // Points North (-Z)! Inverted by 180 degrees on North-South axis!
+
     })
 
     it('verifies distance fog range and contrast preservation for close-up inspection', () => {
+
       // In VolcanoScene line 747:
       // <fog attach="fog" args={['#e8f0fa', 180, 650]} />
       const fogNear = 180
@@ -474,44 +590,55 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
       // Close-up camera distance is typically 14 - 30 km
       const closeUpDist = 25
+
       expect(closeUpDist).toBeLessThan(fogNear)
       // Close-up terrain and plume have 0% fog blend, maintaining 100% contrast
 
       // Regional overview distance is ~230 km
       const regionalDist = 230
+
       expect(regionalDist).toBeGreaterThan(fogNear)
       expect(regionalDist).toBeLessThan(fogFar)
       // Regional view has partial fog, smoothly obscuring the sharp cut-off of the 100 km terrain mesh
+
     })
 
     it('pauses replay and unhooks listeners when prefers-reduced-motion becomes active', () => {
+
       const { media, changes } = setupGraphicsAvailable()
+
       render(
         <VolcanoScene
           scenario={taalScenario}
           result={simulationResult}
           selected={null}
           onSelect={vi.fn()}
-        />
+        />,
       )
 
       const playBtn = screen.getByRole('button', { name: 'Play settling' })
+
       fireEvent.click(playBtn)
       expect(screen.getByRole('button', { name: 'Pause' })).toBeTruthy()
 
       // Trigger prefers-reduced-motion
       media.matches = true
       act(() => {
+
         changes.dispatchEvent(new Event('change'))
+
       })
 
       // Must be paused automatically
       expect(screen.getByRole('button', { name: 'Play settling' })).toBeTruthy()
+
     })
 
     it('handles WebGL context loss gracefully and exposes 2D fallback controls', () => {
+
       setupGraphicsAvailable()
       const availabilitySpy = vi.fn()
+
       render(
         <VolcanoScene
           scenario={taalScenario}
@@ -519,31 +646,44 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
           selected={null}
           onSelect={vi.fn()}
           onAvailabilityChange={availabilitySpy}
-        />
+        />,
       )
 
       const canvas = document.createElement('canvas')
+
       act(() => {
+
         rendererMock.created?.({ gl: { domElement: canvas, render: vi.fn() } })
+
       })
 
       // Simulate context loss
       act(() => {
+
         canvas.dispatchEvent(new Event('webglcontextlost', { cancelable: true }))
+
       })
 
       // 3D canvas disabled, fallback alert shown
       expect(screen.getByRole('heading', { name: '3D needs WebGL 2' })).toBeTruthy()
-      expect(screen.getByText(/Run simulations normally, then use the map, stage slider, and location table/)).toBeTruthy()
+      expect(
+        screen.getByText(
+          /Run simulations normally, then use the map, stage slider, and location table/,
+        ),
+      ).toBeTruthy()
       expect(availabilitySpy).toHaveBeenLastCalledWith(false)
+
     })
+
   })
 
   // =========================================================================
   // TASK 5: 3D Population Columns & Affected Families Simulation
   // =========================================================================
   describe('Task 5: 3D Population Columns & Affected Families Simulation', () => {
+
     it('disposes cylinder geometry and mesh standard material in 3D population columns hierarchy', () => {
+
       const geom = new THREE.CylinderGeometry(1, 1, 1, 12)
       const mat = new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.1 })
       const mesh = new THREE.InstancedMesh(geom, mat, 10)
@@ -559,9 +699,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
       expect(geomDisposeSpy).toHaveBeenCalledOnce()
       expect(matDisposeSpy).toHaveBeenCalledOnce()
+
     })
 
     it('logarithmically scales 3D population column heights based on census population', () => {
+
       // Formula: pop > 0 ? Math.max(0.25, Math.log10(Math.max(10, pop)) * 0.28) : 0.2
       const calcHeight = (pop: number) =>
         pop > 0 ? Math.max(0.25, Math.log10(Math.max(10, pop)) * 0.28) : 0.2
@@ -580,9 +722,11 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(hZero).toBeLessThan(hSmall)
       expect(hSmall).toBeLessThan(hMedium)
       expect(hMedium).toBeLessThan(hLarge)
+
     })
 
     it('renders 3D population columns layer control checkbox and real-time impact tally HUD', () => {
+
       setupGraphicsAvailable()
       const resultWithReceptors: SimulationResult = {
         ...simulationResult,
@@ -640,7 +784,7 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
           result={resultWithReceptors}
           selected={null}
           onSelect={vi.fn()}
-        />
+        />,
       )
 
       // Real-time exposure tally HUD
@@ -660,15 +804,17 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
 
       // Layer control checkbox
       expect(
-        screen.getByRole('checkbox', { name: 'Show 3D population columns & affected families' })
+        screen.getByRole('checkbox', { name: 'Show 3D population columns & affected families' }),
       ).toBeTruthy()
       // Keyboard inspection select
       expect(
-        screen.getByRole('combobox', { name: 'Select municipality for keyboard inspection' })
+        screen.getByRole('combobox', { name: 'Select municipality for keyboard inspection' }),
       ).toBeTruthy()
+
     })
 
     it('falls back to trace exposure (>=0.01 mm) and shows peak centroid ash when all receptors are below 0.5 mm', () => {
+
       setupGraphicsAvailable()
       const traceOnlyResult: SimulationResult = {
         ...simulationResult,
@@ -748,7 +894,7 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
           result={traceOnlyResult}
           selected={null}
           onSelect={vi.fn()}
-        />
+        />,
       )
 
       expect(screen.getByText('Real-Time Exposure Tally')).toBeTruthy()
@@ -760,8 +906,12 @@ describe('volcanoScene3DQA - 3D Graphics, WebGL Lifecycle & Performance Verifica
       expect(screen.getByText('244,598')).toBeTruthy()
       // 244,598 / 4.1 = 59,658
       expect(screen.getByText('59,658')).toBeTruthy()
-      expect(screen.getByText(/0 ≥0\.5 mm reporting cutoff; showing 2 trace \(≥0\.01 mm\)\./)).toBeTruthy()
-    })
-  })
-})
+      expect(
+        screen.getByText(/0 ≥0\.5 mm reporting cutoff; showing 2 trace \(≥0\.01 mm\)\./),
+      ).toBeTruthy()
 
+    })
+
+  })
+
+})

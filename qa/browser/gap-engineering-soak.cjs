@@ -5,43 +5,129 @@ const { chromium } = require('./playwright-runtime.cjs')
 const installTelemetry = require('./gap-engineering-telemetry.cjs')
 const output = path.join(__dirname, 'gap-engineering-soak.json')
 const seconds = Number(process.env.ABO_SOAK_SECONDS ?? 1800)
-const evidence = { started: new Date().toISOString(), duration_target_s: seconds, scheduling_mode: 'Background/occlusion throttling disabled for resource-soak continuity; separate default-flag foreground benchmark owns performance gate', machine: { platform: os.platform(), release: os.release(), cpu: os.cpus()[0].model, ram_bytes: os.totalmem() }, cycles: [], replays: [], snapshots: [], errors: [] }
+const evidence = {
+  started: new Date().toISOString(),
+  duration_target_s: seconds,
+  scheduling_mode:
+    'Background/occlusion throttling disabled for resource-soak continuity; separate default-flag foreground benchmark owns performance gate',
+  machine: {
+    platform: os.platform(),
+    release: os.release(),
+    cpu: os.cpus()[0].model,
+    ram_bytes: os.totalmem(),
+  },
+  cycles: [],
+  replays: [],
+  snapshots: [],
+  errors: [],
+}
 const save = () => fs.writeFileSync(output, JSON.stringify(evidence, null, 2))
 let browser, page
-;(async () => {
-  browser = await chromium.launch({ channel: 'chrome', headless: false, args: ['--disable-background-timer-throttling', '--disable-backgrounding-occluded-windows', '--disable-renderer-backgrounding', '--disable-features=CalculateNativeWinOcclusion'] })
-  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'no-preference' })
+;
+(async () => {
+
+  browser = await chromium.launch({
+    channel: 'chrome',
+    headless: false,
+    args: [
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding',
+      '--disable-features=CalculateNativeWinOcclusion',
+    ],
+  })
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 1000 },
+    deviceScaleFactor: 1,
+    reducedMotion: 'no-preference',
+  })
+
   await context.addInitScript(installTelemetry)
   page = await context.newPage()
-  page.on('pageerror', error => { evidence.errors.push(error.message); save() })
+  page.on('pageerror', (error) => {
+
+    evidence.errors.push(error.message)
+    save()
+
+  })
   const cdp = await context.newCDPSession(page)
+
   await cdp.send('Performance.enable')
   await page.goto('http://127.0.0.1:8000/?qa=1', { waitUntil: 'domcontentloaded' })
-  await page.getByRole('button', { name: 'Run simulation', exact: true }).waitFor({ timeout: 30000 })
+  await page
+    .getByRole('button', { name: 'Run simulation', exact: true })
+    .waitFor({ timeout: 30000 })
   evidence.initial_accessibility_snapshot = await page.locator('body').ariaSnapshot()
-  evidence.build_assets = await page.locator('script[src]').evaluateAll(elements => elements.map(element => element.src))
+  evidence.build_assets = await page
+    .locator('script[src]')
+    .evaluateAll((elements) => elements.map((element) => element.src))
   evidence.browser = browser.version()
   evidence.viewport = page.viewportSize()
   evidence.gpu = await page.evaluate(() => {
+
     const gl = document.querySelector('.scene-stage canvas')?.getContext('webgl2')
     const ext = gl?.getExtension('WEBGL_debug_renderer_info')
-    return ext ? { renderer: gl.getParameter(ext.UNMASKED_RENDERER_WEBGL), vendor: gl.getParameter(ext.UNMASKED_VENDOR_WEBGL) } : null
+
+    return ext
+      ? {
+          renderer: gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),
+          vendor: gl.getParameter(ext.UNMASKED_VENDOR_WEBGL),
+        }
+      : null
+
   })
   const beginning = Date.now()
+
   async function snapshot(label) {
-    const telemetry = await page.evaluate(() => ({ ...window.aboEngineeringTelemetry, callbackTimes: window.aboEngineeringTelemetry.callbackTimes.length, renderTimes: window.aboEngineeringTelemetry.renderTimes.length, hidden: document.hidden, heap: performance.memory?.usedJSHeapSize ?? null, canvases: document.querySelectorAll('canvas').length, playback: document.querySelector('.timeline-top button:last-child')?.textContent ?? null }))
+
+    const telemetry = await page.evaluate(() => ({
+      ...window.aboEngineeringTelemetry,
+      callbackTimes: window.aboEngineeringTelemetry.callbackTimes.length,
+      renderTimes: window.aboEngineeringTelemetry.renderTimes.length,
+      hidden: document.hidden,
+      heap: performance.memory?.usedJSHeapSize ?? null,
+      canvases: document.querySelectorAll('canvas').length,
+      playback: document.querySelector('.timeline-top button:last-child')?.textContent ?? null,
+    }))
     const metrics = await cdp.send('Performance.getMetrics')
-    evidence.snapshots.push({ label, elapsed_s: (Date.now() - beginning) / 1000, telemetry, metrics: Object.fromEntries(metrics.metrics.filter(metric => ['JSHeapUsedSize', 'JSHeapTotalSize', 'Nodes', 'Documents', 'JSEventListeners'].includes(metric.name)).map(metric => [metric.name, metric.value])) })
+
+    evidence.snapshots.push({
+      label,
+      elapsed_s: (Date.now() - beginning) / 1000,
+      telemetry,
+      metrics: Object.fromEntries(
+        metrics.metrics
+          .filter((metric) =>
+            [
+              'JSHeapUsedSize',
+              'JSHeapTotalSize',
+              'Nodes',
+              'Documents',
+              'JSEventListeners',
+            ].includes(metric.name),
+          )
+          .map((metric) => [metric.name, metric.value]),
+      ),
+    })
     save()
+
   }
+
   await snapshot('initial')
-  const choices = ['Taal · teaching scenario', 'Mayon · teaching scenario', 'Kanlaon · teaching scenario']
+  const choices = [
+    'Taal · teaching scenario',
+    'Mayon · teaching scenario',
+    'Kanlaon · teaching scenario',
+  ]
+
   for (let cycle = 0; cycle < 20; cycle++) {
     await page.bringToFront()
     await page.getByRole('combobox', { name: /^Scenario/ }).click()
     await page.getByRole('option', { name: choices[cycle % 3], exact: true }).click()
     await page.getByRole('button', { name: 'Run simulation', exact: true }).click()
-    await page.getByRole('button', { name: 'Play sequence', exact: true }).waitFor({ timeout: 120000 })
+    await page
+      .getByRole('button', { name: 'Play sequence', exact: true })
+      .waitFor({ timeout: 120000 })
     await page.getByRole('button', { name: 'During', exact: true }).click()
     await page.getByRole('button', { name: 'Play sequence', exact: true }).click()
     await page.waitForTimeout(250)
@@ -51,25 +137,52 @@ let browser, page
     await page.locator('.scene-stage canvas').waitFor({ timeout: 30000 })
     await page.waitForTimeout(250)
     await cdp.send('HeapProfiler.collectGarbage')
-    evidence.cycles.push({ number: cycle + 1, scenario: choices[cycle % 3], elapsed_s: (Date.now() - beginning) / 1000 })
+    evidence.cycles.push({
+      number: cycle + 1,
+      scenario: choices[cycle % 3],
+      elapsed_s: (Date.now() - beginning) / 1000,
+    })
     await snapshot(`cycle-${cycle + 1}`)
     process.stdout.write(`Cycle ${cycle + 1}/20 recorded\n`)
   }
   while (Date.now() - beginning < seconds * 1000) {
     await page.getByRole('button', { name: 'Before', exact: true }).click()
     await page.getByRole('button', { name: 'Play sequence', exact: true }).click()
-    await page.getByRole('button', { name: 'Replay sequence', exact: true }).waitFor({ timeout: 120000 })
-    const frameEvidence = await page.locator('.scene-stage canvas').getAttribute('data-frame-evidence')
-    evidence.replays.push(frameEvidence ? JSON.parse(frameEvidence) : { reason: 'No frame-evidence attribute' })
+    await page
+      .getByRole('button', { name: 'Replay sequence', exact: true })
+      .waitFor({ timeout: 120000 })
+    const frameEvidence = await page
+      .locator('.scene-stage canvas')
+      .getAttribute('data-frame-evidence')
+
+    evidence.replays.push(
+      frameEvidence ? JSON.parse(frameEvidence) : { reason: 'No frame-evidence attribute' },
+    )
     await cdp.send('HeapProfiler.collectGarbage')
     await snapshot('full-replay-after')
-    const renderBefore = await page.evaluate(() => window.aboEngineeringTelemetry.renderTimes.length)
-    await page.evaluate(() => { window.aboEngineeringTelemetry.capture = true })
-    await page.waitForTimeout(Math.min(10000, Math.max(1, seconds * 1000 - (Date.now() - beginning))))
-    const renderAfter = await page.evaluate(() => { window.aboEngineeringTelemetry.capture = false; return window.aboEngineeringTelemetry.renderTimes.length })
+    const renderBefore = await page.evaluate(
+      () => window.aboEngineeringTelemetry.renderTimes.length,
+    )
+
+    await page.evaluate(() => {
+
+      window.aboEngineeringTelemetry.capture = true
+
+    })
+    await page.waitForTimeout(
+      Math.min(10000, Math.max(1, seconds * 1000 - (Date.now() - beginning))),
+    )
+    const renderAfter = await page.evaluate(() => {
+
+      window.aboEngineeringTelemetry.capture = false
+
+      return window.aboEngineeringTelemetry.renderTimes.length
+
+    })
+
     evidence.replays.at(-1).paused_render_count = renderAfter - renderBefore
     await snapshot('paused-demand-window')
-    process.stdout.write(`Soak ${(Date.now() - beginning) / 1000 | 0}/${seconds} seconds\n`)
+    process.stdout.write(`Soak ${((Date.now() - beginning) / 1000) | 0}/${seconds} seconds\n`)
   }
   await cdp.send('HeapProfiler.collectGarbage')
   await snapshot('final')
@@ -78,4 +191,19 @@ let browser, page
   evidence.actual_duration_s = (Date.now() - beginning) / 1000
   save()
   await browser.close()
-})().catch(async error => { evidence.errors.push(error.stack); evidence.completed = false; if (page && !page.isClosed()) evidence.failure_snapshot = await page.locator('body').ariaSnapshot().catch(() => 'Snapshot unavailable'); save(); process.stderr.write(error.stack + '\n'); await browser?.close(); process.exitCode = 1 })
+
+})().catch(async (error) => {
+
+  evidence.errors.push(error.stack)
+  evidence.completed = false
+  if (page && !page.isClosed())
+    evidence.failure_snapshot = await page
+      .locator('body')
+      .ariaSnapshot()
+      .catch(() => 'Snapshot unavailable')
+  save()
+  process.stderr.write(error.stack + '\n')
+  await browser?.close()
+  process.exitCode = 1
+
+})

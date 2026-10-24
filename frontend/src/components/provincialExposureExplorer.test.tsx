@@ -4,11 +4,14 @@ import ProvincialExposureExplorer from './ProvincialExposureExplorer'
 import type { ReceptorResult } from '../api/simulator'
 
 afterEach(() => {
+
   cleanup()
   vi.clearAllMocks()
+
 })
 
 function createSampleReceptors(): ReceptorResult[] {
+
   return [
     {
       id: '0401001000',
@@ -83,10 +86,13 @@ function createSampleReceptors(): ReceptorResult[] {
       screening_reasons: {},
     },
   ]
+
 }
 
 describe('ProvincialExposureExplorer', () => {
+
   it('renders provincial KPI summary and groups localities by province', () => {
+
     const receptors = createSampleReceptors()
     const onSelect = vi.fn()
 
@@ -96,7 +102,7 @@ describe('ProvincialExposureExplorer', () => {
         selected={null}
         onSelect={onSelect}
         reportingCutoffMm={0.5}
-      />
+      />,
     )
 
     // Heading
@@ -108,9 +114,11 @@ describe('ProvincialExposureExplorer', () => {
 
     // Peak ash value
     expect(screen.getAllByText(/4.8/).length).toBeGreaterThan(0)
+
   })
 
   it('filters out sub-cutoff localities (<0.5 mm) under standard reporting cutoff', () => {
+
     const receptors = createSampleReceptors()
     const onSelect = vi.fn()
 
@@ -120,16 +128,18 @@ describe('ProvincialExposureExplorer', () => {
         selected={null}
         onSelect={onSelect}
         reportingCutoffMm={0.5}
-      />
+      />,
     )
 
     // Quezon City (0.12 mm) is <0.5 mm, so Metro Manila should not be listed as affected in standard cutoff mode
     expect(screen.queryAllByText('Metro Manila (NCR)').length).toBe(0)
     expect(screen.getByText('Cavite')).toBeDefined()
     expect(screen.getByText('Batangas')).toBeDefined()
+
   })
 
   it('triggers onSelect when Locate button is clicked', () => {
+
     const receptors = createSampleReceptors()
     const onSelect = vi.fn()
 
@@ -139,13 +149,16 @@ describe('ProvincialExposureExplorer', () => {
         selected={null}
         onSelect={onSelect}
         reportingCutoffMm={0.5}
-      />
+      />,
     )
 
     const locateButtons = screen.getAllByTitle(/Inspect/i)
+
     expect(locateButtons.length).toBeGreaterThan(0)
     fireEvent.click(locateButtons[0])
 
     expect(onSelect).toHaveBeenCalled()
+
   })
+
 })

@@ -2,9 +2,12 @@ import type { components } from './schema'
 
 export type HealthResponse = components['schemas']['HealthResponse']
 
+// The connection indicator only accepts the expected API response.
 function isHealthResponse(value: unknown): value is HealthResponse {
+
   if (typeof value !== 'object' || value === null) return false
   const candidate = value as Record<string, unknown>
+
   return (
     candidate.status === 'ok' &&
     candidate.service === 'ABO' &&
@@ -13,13 +16,21 @@ function isHealthResponse(value: unknown): value is HealthResponse {
     candidate.model_status === 'implemented' &&
     candidate.validation_status === 'not_historically_validated'
   )
+
 }
 
+// This is for checking connectivity; it does not verify the science.
 export async function getHealth(signal?: AbortSignal): Promise<HealthResponse> {
+
   const response = await fetch('/api/health', { signal })
+
   if (!response.ok) throw new Error(`Python API returned HTTP ${response.status}.`)
 
   const value: unknown = await response.json()
-  if (!isHealthResponse(value)) throw new Error('Python API returned an unexpected health response.')
+
+  if (!isHealthResponse(value))
+    throw new Error('Python API returned an unexpected health response.')
+
   return value
+
 }

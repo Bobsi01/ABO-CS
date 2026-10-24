@@ -3,6 +3,7 @@ import { loadEnv } from 'vite'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig(({ mode }) => {
+
   const environment = loadEnv(mode, process.cwd(), '')
 
   return {
@@ -38,4 +39,5 @@ export default defineConfig(({ mode }) => {
       testTimeout: 30000,
     },
   }
+
 })

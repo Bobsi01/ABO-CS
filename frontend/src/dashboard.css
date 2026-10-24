@@ -1,23 +1,85 @@
 /* A large time-series plot leads the reading order; the ledger stays secondary. */
-.application[data-page="dashboard"] { --surface: #edf2f8; }
-.application[data-page="dashboard"][data-theme="dark"] { --surface: #0c1728; }
-.application[data-page="dashboard"] .workspace { padding: 1.6rem 2.25rem 1.1rem; }
-.dashboard { max-width: 1760px; }
-.dashboard-heading { padding-bottom: 0.5rem; }
-.dashboard-heading h2 { font-size: 2.35rem; font-weight: 700; letter-spacing: -0.045em; line-height: 1.12; }
-.dashboard-heading .dashboard-eyebrow { font-size: 0.65rem; font-weight: 650; letter-spacing: 0.12em; color: var(--action); margin-bottom: 0.4rem; }
-.dashboard-heading p { font-size: 0.88rem; }
-.application .dashboard-actions label { font-size: 0.75rem; width: clamp(260px, 28vw, 470px); }
-.application .raw-data-action { background: var(--action); border-color: var(--action); color: var(--action-text); padding-inline: 1.1rem; }
-.application .raw-data-action:hover:not(:disabled) { background: var(--action); border-color: var(--action); color: var(--action-text); filter: brightness(1.08); }
-.application .raw-data-action:disabled { background: var(--surface); border-color: var(--line); color: var(--secondary); opacity: 1; }
-.dashboard-context { padding: 0.85rem 0 1.15rem; gap: 0.6rem 1.15rem; font-size: 0.78rem; }
-.dashboard-context span + span { border-left: 1px solid var(--line); padding-left: 1.15rem; }
-.dashboard-charts { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.2rem; }
-.dashboard-charts .chart-panel { padding: 1.4rem 1.6rem 1.1rem; border-radius: 10px; }
-.chart-panel h3 { font-size: 1.1rem; font-weight: 650; }
-.chart-panel header p { font-size: 0.82rem; }
-.accumulation-panel { grid-column: 1; grid-row: 1; }
+.application[data-page='dashboard'] {
+  --surface: #edf2f8;
+}
+.application[data-page='dashboard'][data-theme='dark'] {
+  --surface: #0c1728;
+}
+.application[data-page='dashboard'] .workspace {
+  padding: 1.6rem 2.25rem 1.1rem;
+}
+.dashboard {
+  max-width: 1760px;
+}
+.dashboard-heading {
+  padding-bottom: 0.5rem;
+}
+.dashboard-heading h2 {
+  font-size: 2.35rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+.dashboard-heading .dashboard-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  color: var(--action);
+  margin-bottom: 0.4rem;
+}
+.dashboard-heading p {
+  font-size: 0.88rem;
+}
+.application .dashboard-actions label {
+  font-size: 0.75rem;
+  width: clamp(260px, 28vw, 470px);
+}
+.application .raw-data-action {
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--action-text);
+  padding-inline: 1.1rem;
+}
+.application .raw-data-action:hover:not(:disabled) {
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--action-text);
+  filter: brightness(1.08);
+}
+.application .raw-data-action:disabled {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--secondary);
+  opacity: 1;
+}
+.dashboard-context {
+  padding: 0.85rem 0 1.15rem;
+  gap: 0.6rem 1.15rem;
+  font-size: 0.78rem;
+}
+.dashboard-context span + span {
+  border-left: 1px solid var(--line);
+  padding-left: 1.15rem;
+}
+.dashboard-charts {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.2rem;
+}
+.dashboard-charts .chart-panel {
+  padding: 1.4rem 1.6rem 1.1rem;
+  border-radius: 10px;
+}
+.chart-panel h3 {
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+.chart-panel header p {
+  font-size: 0.82rem;
+}
+.accumulation-panel {
+  grid-column: 1;
+  grid-row: 1;
+}
 .ranking-panel {
   grid-column: 2;
   grid-row: 1;
@@ -29,8 +91,12 @@
 .ranking-panel > .chart-footnote {
   flex-shrink: 0;
 }
-.distribution-panel { grid-column: 1; }
-.scenario-panel { grid-column: 2; }
+.distribution-panel {
+  grid-column: 1;
+}
+.scenario-panel {
+  grid-column: 2;
+}
 .dashboard .accumulation-panel {
   --panel: #112b4b;
   --text: #f1f6ff;
@@ -42,43 +108,155 @@
   color: var(--text);
   border-color: #112b4b;
 }
-.application .chart-location { width: 200px; }
-.application .chart-location select { min-height: 38px; font-size: 0.8rem; }
-.chart-reading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin: 1.25rem 0 0.35rem; }
-.chart-reading > div > span { display: block; color: var(--secondary); font-size: 0.78rem; margin-bottom: 0.2rem; }
-.chart-reading strong { font-size: 2.8rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
-.chart-reading strong small { font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--secondary); }
-.chart-reading > p { color: var(--secondary); font-size: 0.8rem; text-align: right; margin: 0; line-height: 1.5; }
-.accumulation-chart { height: 245px; }
-.chart-panel .accumulation-chart text { font-size: 18px; }
-.chart-line { stroke-width: 3; }
-.chart-dot { stroke-width: 1.7; }
-.application .ranking-row { grid-template-columns: 24px minmax(110px, 1fr) minmax(65px, 1fr) 60px; min-height: 47px; gap: 0.7rem; font-size: 0.88rem; border-bottom: 1px solid var(--line); border-radius: 0; }
-.ranking-row strong { font-size: 0.9rem; font-weight: 600; }
-.rank-index { font-size: 0.75rem; }
-.rank-track { height: 7px; }
-.rank-track > span { background: #6b84a7; }
-.ranking-row.is-selected .rank-track > span { background: var(--action); }
-.ranking-row.is-selected .rank-index { color: var(--action); font-weight: 700; }
-.application .chart-footnote { font-size: 0.78rem; margin-top: 0.9rem; }
-.distribution-body { gap: 1.5rem; }
-.deposit-donut { width: 205px; height: 205px; }
-.distribution-legend { max-width: 510px; }
-.distribution-legend li { font-size: 0.84rem; gap: 0.75rem; padding: 0.4rem 0; grid-template-columns: 10px minmax(0, 1fr) 30px 52px; }
-.scenario-ledger > div { padding-block: 0.75rem; font-size: 0.86rem; }
-.scenario-ledger dd { font-weight: 650; }
-.application[data-theme="dark"] .rank-track > span { background: #718fae; }
-.application[data-theme="dark"] .ranking-row.is-selected .rank-track > span { background: var(--action); }
+.application .chart-location {
+  width: 200px;
+}
+.application .chart-location select {
+  min-height: 38px;
+  font-size: 0.8rem;
+}
+.chart-reading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.25rem 0 0.35rem;
+}
+.chart-reading > div > span {
+  display: block;
+  color: var(--secondary);
+  font-size: 0.78rem;
+  margin-bottom: 0.2rem;
+}
+.chart-reading strong {
+  font-size: 2.8rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.chart-reading strong small {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--secondary);
+}
+.chart-reading > p {
+  color: var(--secondary);
+  font-size: 0.8rem;
+  text-align: right;
+  margin: 0;
+  line-height: 1.5;
+}
+.accumulation-chart {
+  height: 245px;
+}
+.chart-panel .accumulation-chart text {
+  font-size: 18px;
+}
+.chart-line {
+  stroke-width: 3;
+}
+.chart-dot {
+  stroke-width: 1.7;
+}
+.application .ranking-row {
+  grid-template-columns: 24px minmax(110px, 1fr) minmax(65px, 1fr) 60px;
+  min-height: 47px;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+.ranking-row strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.rank-index {
+  font-size: 0.75rem;
+}
+.rank-track {
+  height: 7px;
+}
+.rank-track > span {
+  background: #6b84a7;
+}
+.ranking-row.is-selected .rank-track > span {
+  background: var(--action);
+}
+.ranking-row.is-selected .rank-index {
+  color: var(--action);
+  font-weight: 700;
+}
+.application .chart-footnote {
+  font-size: 0.78rem;
+  margin-top: 0.9rem;
+}
+.distribution-body {
+  gap: 1.5rem;
+}
+.deposit-donut {
+  width: 205px;
+  height: 205px;
+}
+.distribution-legend {
+  max-width: 510px;
+}
+.distribution-legend li {
+  font-size: 0.84rem;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  grid-template-columns: 10px minmax(0, 1fr) 30px 52px;
+}
+.scenario-ledger > div {
+  padding-block: 0.75rem;
+  font-size: 0.86rem;
+}
+.scenario-ledger dd {
+  font-weight: 650;
+}
+.application[data-theme='dark'] .rank-track > span {
+  background: #718fae;
+}
+.application[data-theme='dark'] .ranking-row.is-selected .rank-track > span {
+  background: var(--action);
+}
 
-/* Split-screen workbench right-column analytics overrides */
-.workbench-analytics-pane .dashboard { max-width: none; width: 100%; height: 100%; margin: 0; display: flex; flex-direction: column; min-height: 0; }
-.workbench-analytics-pane .dashboard-heading { padding-bottom: 0.25rem; flex-wrap: wrap; }
-.workbench-analytics-pane .dashboard-heading h2 { font-size: 1.35rem; margin-bottom: 0.15rem; }
-.workbench-analytics-pane .dashboard-heading .dashboard-eyebrow { margin-bottom: 0.2rem; }
-.workbench-analytics-pane .dashboard-heading p { font-size: 0.8rem; }
-.workbench-analytics-pane .dashboard-actions label { width: clamp(200px, 22vw, 320px); }
-.workbench-analytics-pane .dashboard-context { padding: 0.5rem 0 0.75rem; font-size: 0.75rem; gap: 0.4rem 0.9rem; }
-.workbench-analytics-pane .dashboard-context span + span { padding-left: 0.9rem; }
+/* Workbench analytics */
+.workbench-analytics-pane .dashboard {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.workbench-analytics-pane .dashboard-heading {
+  padding-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+.workbench-analytics-pane .dashboard-heading h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.15rem;
+}
+.workbench-analytics-pane .dashboard-heading .dashboard-eyebrow {
+  margin-bottom: 0.2rem;
+}
+.workbench-analytics-pane .dashboard-heading p {
+  font-size: 0.8rem;
+}
+.workbench-analytics-pane .dashboard-actions label {
+  width: clamp(200px, 22vw, 320px);
+}
+.workbench-analytics-pane .dashboard-context {
+  padding: 0.5rem 0 0.75rem;
+  font-size: 0.75rem;
+  gap: 0.4rem 0.9rem;
+}
+.workbench-analytics-pane .dashboard-context span + span {
+  padding-left: 0.9rem;
+}
 .workbench-analytics-pane .dashboard-charts {
   display: grid;
   flex: 1 1 0;
@@ -94,10 +272,20 @@
   min-height: 0;
   overflow: hidden;
 }
-.workbench-analytics-pane .chart-panel > header { margin-bottom: 0.2rem; flex-shrink: 0; }
-.workbench-analytics-pane .chart-panel > .chart-footnote { flex-shrink: 0; }
-.workbench-analytics-pane .chart-panel h3 { font-size: 0.85rem; margin: 0 0 0.1rem; }
-.workbench-analytics-pane .chart-panel header p { font-size: 0.68rem; }
+.workbench-analytics-pane .chart-panel > header {
+  margin-bottom: 0.2rem;
+  flex-shrink: 0;
+}
+.workbench-analytics-pane .chart-panel > .chart-footnote {
+  flex-shrink: 0;
+}
+.workbench-analytics-pane .chart-panel h3 {
+  font-size: 0.85rem;
+  margin: 0 0 0.1rem;
+}
+.workbench-analytics-pane .chart-panel header p {
+  font-size: 0.68rem;
+}
 .workbench-analytics-pane .dashboard-kpi-grid {
   grid-column: 1 / -1;
   grid-row: 1;
@@ -121,7 +309,7 @@
   text-align: left;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
-.application[data-theme="dark"] .dashboard-kpi-grid .impact-kpi-card {
+.application[data-theme='dark'] .dashboard-kpi-grid .impact-kpi-card {
   background: var(--surface);
 }
 .dashboard-kpi-grid .kpi-label {
@@ -144,7 +332,7 @@
   text-align: left;
   width: 100%;
 }
-.application[data-theme="dark"] .dashboard-kpi-grid .kpi-value {
+.application[data-theme='dark'] .dashboard-kpi-grid .kpi-value {
   color: #f8fafc;
 }
 .dashboard-kpi-grid .kpi-sub {
@@ -156,19 +344,58 @@
   text-align: left;
   width: 100%;
 }
-.workbench-analytics-pane .accumulation-panel { grid-column: 1 / -1; grid-row: 2; }
-.workbench-analytics-pane .ranking-panel { grid-column: 1; grid-row: 3; }
-.workbench-analytics-pane .distribution-panel { grid-column: 2; grid-row: 3; }
-.workbench-analytics-pane .scenario-panel { grid-column: 1 / -1; grid-row: 4; }
-.workbench-analytics-pane .line-chart-viewport { flex: 0 0 auto; display: flex; align-items: center; }
-.workbench-analytics-pane .accumulation-chart { height: 125px; max-height: 145px; min-height: 95px; }
-.workbench-analytics-pane .chart-reading { margin: 0.2rem 0 0.12rem; align-items: baseline; }
-.workbench-analytics-pane .chart-reading > div { display: flex; align-items: baseline; gap: 0.4rem; }
-.workbench-analytics-pane .chart-reading > div > span { margin-bottom: 0; font-size: 0.7rem; }
-.workbench-analytics-pane .chart-reading strong { font-size: 1.5rem; }
-.workbench-analytics-pane .chart-reading strong small { font-size: 0.8rem; }
-.workbench-analytics-pane .chart-reading > p { font-size: 0.7rem; line-height: 1.2; }
-.workbench-analytics-pane .chart-reading br { display: none; }
+.workbench-analytics-pane .accumulation-panel {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.workbench-analytics-pane .ranking-panel {
+  grid-column: 1;
+  grid-row: 3;
+}
+.workbench-analytics-pane .distribution-panel {
+  grid-column: 2;
+  grid-row: 3;
+}
+.workbench-analytics-pane .scenario-panel {
+  grid-column: 1 / -1;
+  grid-row: 4;
+}
+.workbench-analytics-pane .line-chart-viewport {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+.workbench-analytics-pane .accumulation-chart {
+  height: 125px;
+  max-height: 145px;
+  min-height: 95px;
+}
+.workbench-analytics-pane .chart-reading {
+  margin: 0.2rem 0 0.12rem;
+  align-items: baseline;
+}
+.workbench-analytics-pane .chart-reading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.workbench-analytics-pane .chart-reading > div > span {
+  margin-bottom: 0;
+  font-size: 0.7rem;
+}
+.workbench-analytics-pane .chart-reading strong {
+  font-size: 1.5rem;
+}
+.workbench-analytics-pane .chart-reading strong small {
+  font-size: 0.8rem;
+}
+.workbench-analytics-pane .chart-reading > p {
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.workbench-analytics-pane .chart-reading br {
+  display: none;
+}
 .workbench-analytics-pane .ranking-chart {
   flex: 1 1 0;
   min-height: 0;
@@ -203,7 +430,9 @@
 .workbench-analytics-pane .ranking-row:hover {
   background: var(--surface);
 }
-.workbench-analytics-pane .ranking-row strong { font-size: 0.72rem; }
+.workbench-analytics-pane .ranking-row strong {
+  font-size: 0.72rem;
+}
 .workbench-analytics-pane .distribution-body {
   flex: 1 1 0;
   min-height: 0;
@@ -227,9 +456,20 @@
   gap: 0.25rem;
   grid-template-columns: 8px minmax(0, 1fr) 22px 38px;
 }
-.workbench-analytics-pane .chart-footnote { font-size: 0.65rem; margin-top: 0.2rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.workbench-analytics-pane .scenario-panel { padding: 0.5rem 0.85rem 0.45rem; }
-.workbench-analytics-pane .scenario-panel > header { margin-bottom: 0.15rem; }
+.workbench-analytics-pane .chart-footnote {
+  font-size: 0.65rem;
+  margin-top: 0.2rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.workbench-analytics-pane .scenario-panel {
+  padding: 0.5rem 0.85rem 0.45rem;
+}
+.workbench-analytics-pane .scenario-panel > header {
+  margin-bottom: 0.15rem;
+}
 .workbench-analytics-pane .scenario-ledger {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -245,100 +485,290 @@
   padding: 0.1rem 0;
   font-size: 0.73rem;
 }
-.workbench-analytics-pane .scenario-panel .chart-footnote { margin-top: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.workbench-analytics-pane .results-section { border-top: 0; padding-top: 0; margin-top: 0.25rem; }
-.workbench-analytics-pane .provincial-explorer { margin: 0.65rem 0; padding: 1rem; }
+.workbench-analytics-pane .scenario-panel .chart-footnote {
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.workbench-analytics-pane .results-section {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0.25rem;
+}
+.workbench-analytics-pane .provincial-explorer {
+  margin: 0.65rem 0;
+  padding: 1rem;
+}
 
-/* Live timeline synchronization: faded eventual curve, playhead, growing bars. */
-.chart-line-reference { opacity: 0.3; stroke-dasharray: 6 5; }
-.chart-dot-future { opacity: 0.3; }
-.chart-playhead { stroke: var(--action); stroke-width: 2; stroke-dasharray: 5 4; }
-.rank-track > span { transition: width 0.25s ease; }
-.scenario-live-phase { font-weight: 650; color: var(--action); }
+/* Timeline playhead and progressive chart values. */
+.chart-line-reference {
+  opacity: 0.3;
+  stroke-dasharray: 6 5;
+}
+.chart-dot-future {
+  opacity: 0.3;
+}
+.chart-playhead {
+  stroke: var(--action);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+.rank-track > span {
+  transition: width 0.25s ease;
+}
+.scenario-live-phase {
+  font-weight: 650;
+  color: var(--action);
+}
 @media (prefers-reduced-motion: reduce) {
-  .rank-track > span { transition: none; }
+  .rank-track > span {
+    transition: none;
+  }
 }
 
 @media (min-width: 1600px) and (min-height: 950px) {
-  .application[data-page="dashboard"] .workspace { padding-top: 1.4rem; }
-  .dashboard-charts .chart-panel { padding: 1.3rem 1.8rem 1rem; }
-  .accumulation-chart { height: 235px; }
-  .application .ranking-row { min-height: 46px; }
-  .dashboard .ranking-chart { max-height: 350px; }
-  .deposit-donut { width: 170px; height: 170px; }
-  .chart-panel h3 { font-size: 1.2rem; }
-  .chart-panel header p { font-size: 0.88rem; }
-  .dashboard-context { font-size: 0.84rem; }
+  .application[data-page='dashboard'] .workspace {
+    padding-top: 1.4rem;
+  }
+  .dashboard-charts .chart-panel {
+    padding: 1.3rem 1.8rem 1rem;
+  }
+  .accumulation-chart {
+    height: 235px;
+  }
+  .application .ranking-row {
+    min-height: 46px;
+  }
+  .dashboard .ranking-chart {
+    max-height: 350px;
+  }
+  .deposit-donut {
+    width: 170px;
+    height: 170px;
+  }
+  .chart-panel h3 {
+    font-size: 1.2rem;
+  }
+  .chart-panel header p {
+    font-size: 0.88rem;
+  }
+  .dashboard-context {
+    font-size: 0.84rem;
+  }
 }
 @media (min-width: 1100px) and (min-height: 801px) and (max-height: 949px) {
-  .application[data-page="dashboard"] .workspace { padding-block: 1rem 0.75rem; }
-  .dashboard-heading h2 { font-size: 1.9rem; }
-  .dashboard-charts .chart-panel { padding: 1rem 1.2rem 0.85rem; }
-  .accumulation-chart { height: 185px; }
-  .application .ranking-row { min-height: 39px; font-size: 0.8rem; }
-  .dashboard .ranking-chart { max-height: 290px; }
-  .chart-reading { margin-top: 0.8rem; }
-  .chart-reading strong { font-size: 2.2rem; }
-  .deposit-donut { width: 155px; height: 155px; }
-  .distribution-legend li { font-size: 0.78rem; padding-block: 0.3rem; }
-  .scenario-ledger > div { padding-block: 0.5rem; }
-  .dashboard-heading > div > p:not(.dashboard-eyebrow) { display: none; }
-  .dashboard-context { padding-block: 0.55rem; }
-  .dashboard-charts { gap: 0.85rem; }
-  .application[data-page="dashboard"] .page-footer { padding-block: 0.6rem; }
+  .application[data-page='dashboard'] .workspace {
+    padding-block: 1rem 0.75rem;
+  }
+  .dashboard-heading h2 {
+    font-size: 1.9rem;
+  }
+  .dashboard-charts .chart-panel {
+    padding: 1rem 1.2rem 0.85rem;
+  }
+  .accumulation-chart {
+    height: 185px;
+  }
+  .application .ranking-row {
+    min-height: 39px;
+    font-size: 0.8rem;
+  }
+  .dashboard .ranking-chart {
+    max-height: 290px;
+  }
+  .chart-reading {
+    margin-top: 0.8rem;
+  }
+  .chart-reading strong {
+    font-size: 2.2rem;
+  }
+  .deposit-donut {
+    width: 155px;
+    height: 155px;
+  }
+  .distribution-legend li {
+    font-size: 0.78rem;
+    padding-block: 0.3rem;
+  }
+  .scenario-ledger > div {
+    padding-block: 0.5rem;
+  }
+  .dashboard-heading > div > p:not(.dashboard-eyebrow) {
+    display: none;
+  }
+  .dashboard-context {
+    padding-block: 0.55rem;
+  }
+  .dashboard-charts {
+    gap: 0.85rem;
+  }
+  .application[data-page='dashboard'] .page-footer {
+    padding-block: 0.6rem;
+  }
 }
 @media (min-width: 1100px) and (max-height: 800px) {
-  .application[data-page="dashboard"] .workspace { padding: 0.6rem 1.75rem 0.4rem; }
-  .dashboard-heading { padding-bottom: 0; }
-  .dashboard-heading h2 { font-size: 1.65rem; }
-  .dashboard-heading .dashboard-eyebrow { display: block; font-size: 0.6rem; margin-bottom: 0.2rem; }
-  .dashboard-context { padding: 0.4rem 0; font-size: 0.72rem; }
-  .dashboard-charts { gap: 0.65rem; }
-  .dashboard-charts .chart-panel { padding: 0.7rem 1rem; }
-  .chart-panel h3 { font-size: 0.98rem; }
-  .chart-panel header p { font-size: 0.74rem; }
-  .chart-reading { margin-top: 0.7rem; }
-  .chart-reading strong { font-size: 2rem; }
-  .chart-reading > p { font-size: 0.72rem; }
-  .accumulation-chart { height: 160px; }
-  .application .ranking-row { min-height: 33px; font-size: 0.76rem; }
-  .dashboard .ranking-chart { max-height: 240px; }
-  .ranking-row strong { font-size: 0.78rem; }
-  .deposit-donut { width: 135px; height: 135px; }
-  .distribution-legend li { font-size: 0.73rem; gap: 0.5rem; padding-block: 0.25rem; }
-  .scenario-ledger > div { padding-block: 0.35rem; font-size: 0.78rem; }
-  .application .chart-footnote { font-size: 0.7rem; margin-top: 0.6rem; }
+  .application[data-page='dashboard'] .workspace {
+    padding: 0.6rem 1.75rem 0.4rem;
+  }
+  .dashboard-heading {
+    padding-bottom: 0;
+  }
+  .dashboard-heading h2 {
+    font-size: 1.65rem;
+  }
+  .dashboard-heading .dashboard-eyebrow {
+    display: block;
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
+  }
+  .dashboard-context {
+    padding: 0.4rem 0;
+    font-size: 0.72rem;
+  }
+  .dashboard-charts {
+    gap: 0.65rem;
+  }
+  .dashboard-charts .chart-panel {
+    padding: 0.7rem 1rem;
+  }
+  .chart-panel h3 {
+    font-size: 0.98rem;
+  }
+  .chart-panel header p {
+    font-size: 0.74rem;
+  }
+  .chart-reading {
+    margin-top: 0.7rem;
+  }
+  .chart-reading strong {
+    font-size: 2rem;
+  }
+  .chart-reading > p {
+    font-size: 0.72rem;
+  }
+  .accumulation-chart {
+    height: 160px;
+  }
+  .application .ranking-row {
+    min-height: 33px;
+    font-size: 0.76rem;
+  }
+  .dashboard .ranking-chart {
+    max-height: 240px;
+  }
+  .ranking-row strong {
+    font-size: 0.78rem;
+  }
+  .deposit-donut {
+    width: 135px;
+    height: 135px;
+  }
+  .distribution-legend li {
+    font-size: 0.73rem;
+    gap: 0.5rem;
+    padding-block: 0.25rem;
+  }
+  .scenario-ledger > div {
+    padding-block: 0.35rem;
+    font-size: 0.78rem;
+  }
+  .application .chart-footnote {
+    font-size: 0.7rem;
+    margin-top: 0.6rem;
+  }
 }
 @media (min-width: 1100px) and (max-height: 949px) {
-  .application[data-page="dashboard"] .workspace { padding-bottom: 0.1rem; }
-  .application[data-page="dashboard"] .page-footer { padding-block: 0.35rem; }
+  .application[data-page='dashboard'] .workspace {
+    padding-bottom: 0.1rem;
+  }
+  .application[data-page='dashboard'] .page-footer {
+    padding-block: 0.35rem;
+  }
 }
 @media (max-width: 1023px) {
-  .dashboard:not(.dashboard-embedded) .dashboard-charts { display: flex; flex-direction: column; }
-  .dashboard:not(.dashboard-embedded) .accumulation-panel { order: -1; }
-  .dashboard:not(.dashboard-embedded) .accumulation-panel > header { flex-wrap: wrap; }
-  .dashboard:not(.dashboard-embedded) .chart-panel { padding: 1rem; }
-  .application .dashboard:not(.dashboard-embedded) .ranking-row { grid-template-columns: 18px minmax(75px, 1fr) minmax(35px, 0.65fr) 48px; font-size: 0.76rem; }
-  .dashboard:not(.dashboard-embedded) .ranking-row strong { font-size: 0.78rem; }
-  .dashboard:not(.dashboard-embedded) .distribution-body { flex-wrap: wrap; justify-content: center; }
-  .dashboard:not(.dashboard-embedded) .distribution-legend { flex-basis: 100%; }
-  .dashboard:not(.dashboard-embedded) .deposit-donut { width: 160px; height: 160px; }
-  .application .dashboard:not(.dashboard-embedded) .chart-location { width: 100%; }
+  .dashboard:not(.dashboard-embedded) .dashboard-charts {
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard:not(.dashboard-embedded) .accumulation-panel {
+    order: -1;
+  }
+  .dashboard:not(.dashboard-embedded) .accumulation-panel > header {
+    flex-wrap: wrap;
+  }
+  .dashboard:not(.dashboard-embedded) .chart-panel {
+    padding: 1rem;
+  }
+  .application .dashboard:not(.dashboard-embedded) .ranking-row {
+    grid-template-columns: 18px minmax(75px, 1fr) minmax(35px, 0.65fr) 48px;
+    font-size: 0.76rem;
+  }
+  .dashboard:not(.dashboard-embedded) .ranking-row strong {
+    font-size: 0.78rem;
+  }
+  .dashboard:not(.dashboard-embedded) .distribution-body {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .dashboard:not(.dashboard-embedded) .distribution-legend {
+    flex-basis: 100%;
+  }
+  .dashboard:not(.dashboard-embedded) .deposit-donut {
+    width: 160px;
+    height: 160px;
+  }
+  .application .dashboard:not(.dashboard-embedded) .chart-location {
+    width: 100%;
+  }
 }
 @media (max-width: 760px) {
-  .application[data-page="dashboard"] .workspace { padding: 1rem; }
-  .dashboard-heading h2 { font-size: 1.9rem; }
-  .dashboard-heading .dashboard-eyebrow { font-size: 0.6rem; }
-  .application .dashboard-actions label { width: 100%; }
-  .dashboard-charts { display: flex; flex-direction: column; }
-  .dashboard-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .accumulation-panel { order: -1; }
-  .dashboard-context span + span { border: 0; padding-left: 0; }
-  .chart-panel h3 { font-size: 1rem; }
-  .chart-reading strong { font-size: 2.2rem; }
-  .chart-reading > p { max-width: 45%; font-size: 0.75rem; }
-  .distribution-legend li { font-size: 0.76rem; }
-  .distribution-legend { min-width: 0; }
-  .application .ranking-row { min-height: 44px; }
-  .accumulation-chart { min-width: 740px; }
+  .application[data-page='dashboard'] .workspace {
+    padding: 1rem;
+  }
+  .dashboard-heading h2 {
+    font-size: 1.9rem;
+  }
+  .dashboard-heading .dashboard-eyebrow {
+    font-size: 0.6rem;
+  }
+  .application .dashboard-actions label {
+    width: 100%;
+  }
+  .dashboard-charts {
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .accumulation-panel {
+    order: -1;
+  }
+  .dashboard-context span + span {
+    border: 0;
+    padding-left: 0;
+  }
+  .chart-panel h3 {
+    font-size: 1rem;
+  }
+  .chart-reading strong {
+    font-size: 2.2rem;
+  }
+  .chart-reading > p {
+    max-width: 45%;
+    font-size: 0.75rem;
+  }
+  .distribution-legend li {
+    font-size: 0.76rem;
+  }
+  .distribution-legend {
+    min-width: 0;
+  }
+  .application .ranking-row {
+    min-height: 44px;
+  }
+  .accumulation-chart {
+    min-width: 740px;
+  }
 }

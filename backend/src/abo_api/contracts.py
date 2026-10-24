@@ -53,13 +53,11 @@ class Scenario(StrictModel):
     domain_km: float = Field(default=200, gt=0, le=400)
     cell_km: float = Field(default=1, ge=0.25, le=10)
     release_layers: int = Field(default=16, ge=1, le=32)
-    # Opt-in extensions beyond the proposal's uniform-wind, single-block source.
-    # When wind_profile is present it replaces the uniform wind in the deposit solver.
+    # A wind profile replaces the uniform wind in the deposit solver.
     wind_profile: list[WindLevel] | None = Field(default=None, min_length=2, max_length=32)
-    # When pulses are present, the summary fields must describe their envelope (validated).
+    # Summary fields must match the pulse envelope.
     pulses: list[EruptionPulse] | None = Field(default=None, min_length=1, max_length=8)
-    # Optional radial umbrella cloud radius in meters at column top.
-    # When provided, initial spread expands with height up to umbrella_radius_m.
+    # Spread grows with height up to this column-top radius (m).
     umbrella_radius_m: float | None = Field(default=None, ge=0)
 
     @model_validator(mode="after")

@@ -1,1 +1,56 @@
-const {chromium}=require('../../browser/playwright-runtime.cjs');const fs=require('fs');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('http://127.0.0.1:8000/');await p.getByRole('img',{name:/Deposit distribution/}).waitFor({timeout:90000});let out=[];for(let [w,h] of [[320,800],[701,900],[760,900],[761,900],[800,900],[1000,900],[1024,900],[1099,900],[1366,768],[1440,900],[1920,1080]]){await p.setViewportSize({width:w,height:h});out.push(await p.evaluate(()=>({w:innerWidth,h:innerHeight,sw:document.documentElement.scrollWidth,sh:document.documentElement.scrollHeight,cards:[...document.querySelectorAll('.chart-panel')].map(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width})),selector:document.querySelector('.chart-location').getBoundingClientRect().toJSON()})));if([800,1024,1920].includes(w))await p.screenshot({path:'output/playwright/dashboard-independent-final-'+w+'.png'});}fs.writeFileSync('qa/current_review/dashboard_independent_20261017/final-responsive.json',JSON.stringify(out,null,2));console.log(JSON.stringify(out));await b.close()})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require('../../browser/playwright-runtime.cjs')
+const fs = require('fs')
+;
+(async () => {
+
+  const b = await chromium.launch()
+  const p = await b.newPage()
+
+  await p.goto('http://127.0.0.1:8000/')
+  await p.getByRole('img', { name: /Deposit distribution/ }).waitFor({ timeout: 90000 })
+  let out = []
+
+  for (let [w, h] of [
+    [320, 800],
+    [701, 900],
+    [760, 900],
+    [761, 900],
+    [800, 900],
+    [1000, 900],
+    [1024, 900],
+    [1099, 900],
+    [1366, 768],
+    [1440, 900],
+    [1920, 1080],
+  ]) {
+    await p.setViewportSize({ width: w, height: h })
+    out.push(
+      await p.evaluate(() => ({
+        w: innerWidth,
+        h: innerHeight,
+        sw: document.documentElement.scrollWidth,
+        sh: document.documentElement.scrollHeight,
+        cards: [...document.querySelectorAll('.chart-panel')].map((e) => ({
+          left: e.getBoundingClientRect().left,
+          right: e.getBoundingClientRect().right,
+          width: e.getBoundingClientRect().width,
+        })),
+        selector: document.querySelector('.chart-location').getBoundingClientRect().toJSON(),
+      })),
+    )
+    if ([800, 1024, 1920].includes(w))
+      await p.screenshot({ path: 'output/playwright/dashboard-independent-final-' + w + '.png' })
+  }
+  fs.writeFileSync(
+    'qa/current_review/dashboard_independent_20261017/final-responsive.json',
+    JSON.stringify(out, null, 2),
+  )
+  console.log(JSON.stringify(out))
+  await b.close()
+
+})().catch((e) => {
+
+  console.error(e)
+  process.exit(1)
+
+})

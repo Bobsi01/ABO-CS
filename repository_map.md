@@ -6,6 +6,8 @@ Dashboard redesign (17 October): `frontend/src/components/Dashboard.tsx` provide
 
 ## Contributor entry points
 
+Code readability: `docs/CODE_STYLE.md` explains student-friendly spacing and comments. `frontend/scripts/format.mjs` applies Prettier and syntax-aware function/statement spacing across maintained JavaScript, TypeScript, and CSS; `frontend/.prettierrc.json` records the shared layout. `npm run check` includes its read-only formatting gate. Python uses the existing Ruff configuration.
+
 Realistic regional dispersion & caldera deposition (16 October): `docs/QA_REPORT_REALISTIC_REGIONAL_DISPERSION.md` records scientific mass conservation, radial umbrella cloud physics ($R_u \approx 20\text{ km}$), NOAA IGRA Tanay directional wind shear coupling, 360° proximal caldera deposition (affecting Laurel, Talisay, Agoncillo, San Nicolas, Tagaytay), and UI toolbar alignment. `backend/tests/test_umbrella_dispersion.py` provides numerical regression tests. `data/source/taal/taal_2020_caldera_observations.json` and `taal_2020_sounding_profile.json` supply the curated reference observations and radiosonde profile.
 
 Expanded regional visualization (16 October): `docs/QA_REPORT_EXPANDED_VISUALIZATION.md` records scientific and UI/accessibility verification. `frontend/src/components/ProvincialExposureExplorer.tsx` and `frontend/src/components/GeographicMap.tsx` deliver the provincial impact hierarchy, municipal choropleth, and trace contour layers. `frontend/public/municipal-boundaries.geojson`, `provincial-boundaries.geojson`, and `taal_2020_footprint.geojson` supply the local spatial assets.

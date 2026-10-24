@@ -10,13 +10,21 @@ type Props = {
   reportingCutoffMm?: number
 }
 
-function severityBadge(mm: number | null | undefined): { label: string; color: string; bg: string } {
+function severityBadge(mm: number | null | undefined): {
+  label: string
+  color: string
+  bg: string
+} {
+
   const val = mm ?? 0
+
   if (val >= 10) return { label: 'Heavy (≥10 mm)', color: '#7f1d1d', bg: '#fee2e2' }
   if (val >= 1) return { label: 'Moderate (1–10 mm)', color: '#9a3412', bg: '#ffedd5' }
   if (val >= 0.5) return { label: 'Light (0.5–1 mm)', color: '#854d0e', bg: '#fef9c3' }
   if (val >= 0.01) return { label: 'Trace (0.01–0.5 mm)', color: '#713f12', bg: '#fef08a' }
+
   return { label: 'None (<0.01 mm)', color: '#475569', bg: '#f1f5f9' }
+
 }
 
 function ProvincialExposureExplorer({
@@ -25,13 +33,15 @@ function ProvincialExposureExplorer({
   onSelect,
   reportingCutoffMm = 0.5,
 }: Props) {
+
   const [expandedProvinces, setExpandedProvinces] = useState<Record<string, boolean>>({})
 
   const threshold = reportingCutoffMm
 
   const provinces = useMemo(() => {
-    const inDomain = receptors.filter(r => r.in_domain && r.kind === 'municipality')
-    const affected = inDomain.filter(r => (r.thickness_mm ?? 0) >= threshold)
+
+    const inDomain = receptors.filter((r) => r.in_domain && r.kind === 'municipality')
+    const affected = inDomain.filter((r) => (r.thickness_mm ?? 0) >= threshold)
 
     const groups: Record<
       string,
@@ -46,7 +56,8 @@ function ProvincialExposureExplorer({
       }
     > = {}
 
-    affected.forEach(r => {
+    affected.forEach((r) => {
+
       const mm = r.thickness_mm ?? 0
       const prov = r.province || 'Other Province'
       const reg = r.region || 'Other Region'
@@ -64,6 +75,7 @@ function ProvincialExposureExplorer({
       }
 
       const g = groups[prov]
+
       g.items.push(r)
       if (mm > g.peakMm) {
         g.peakMm = mm
@@ -73,21 +85,28 @@ function ProvincialExposureExplorer({
         g.totalPop += r.population
         g.totalFamilies += calculateFamiliesAffected(r.population)
       }
+
     })
 
     const sortedProvinces = Object.values(groups).sort((a, b) => b.peakMm - a.peakMm)
-    sortedProvinces.forEach(g => {
+
+    sortedProvinces.forEach((g) => {
+
       g.items.sort((a, b) => (b.thickness_mm ?? 0) - (a.thickness_mm ?? 0))
+
     })
 
     return sortedProvinces
+
   }, [receptors, threshold])
 
   const toggleProvince = (prov: string) => {
-    setExpandedProvinces(prev => ({
+
+    setExpandedProvinces((prev) => ({
       ...prev,
       [prov]: prev[prov] === undefined ? false : !prev[prov],
     }))
+
   }
 
   return (
@@ -96,20 +115,24 @@ function ProvincialExposureExplorer({
         <div>
           <h3 id="provincial-explorer-title">Provincial & City Impact Breakdown</h3>
           <p className="view-note">
-            Regional footprint analysis showing which provinces and municipalities receive deposited ash.
+            Regional footprint analysis showing which provinces and municipalities receive deposited
+            ash.
           </p>
         </div>
       </div>
 
       {provinces.length === 0 ? (
         <p className="empty-note">
-          No municipalities inside the modeled domain receive ash at or above {threshold} mm under the current wind and eruption parameters.
+          No municipalities inside the modeled domain receive ash at or above {threshold} mm under
+          the current wind and eruption parameters.
         </p>
       ) : (
         <div className="province-cards-list">
-          {provinces.map(p => {
+          {provinces.map((p) => {
+
             const isExpanded = expandedProvinces[p.province] ?? true
-            const hasSelectedCity = p.items.some(item => item.id === selected)
+            const hasSelectedCity = p.items.some((item) => item.id === selected)
+
             return (
               <div
                 key={p.province}
@@ -132,9 +155,7 @@ function ProvincialExposureExplorer({
                     <span className="province-peak-stat">
                       Peak: <strong>{number(p.peakMm)} mm</strong> ({p.peakName})
                     </span>
-                    <span className="province-pop-stat">
-                      {number(p.totalFamilies, 0)} families
-                    </span>
+                    <span className="province-pop-stat">{number(p.totalFamilies, 0)} families</span>
                   </div>
                 </button>
 
@@ -152,15 +173,14 @@ function ProvincialExposureExplorer({
                         </tr>
                       </thead>
                       <tbody>
-                        {p.items.map(r => {
+                        {p.items.map((r) => {
+
                           const isSelected = r.id === selected
                           const badge = severityBadge(r.thickness_mm)
                           const families = calculateFamiliesAffected(r.population)
+
                           return (
-                            <tr
-                              key={r.id}
-                              className={isSelected ? 'selected-city-row' : ''}
-                            >
+                            <tr key={r.id} className={isSelected ? 'selected-city-row' : ''}>
                               <th scope="row">
                                 <span className="city-name-display">{r.name.split(',')[0]}</span>
                               </th>
@@ -188,7 +208,9 @@ function ProvincialExposureExplorer({
                                 {r.population ? (
                                   <>
                                     <span>{number(r.population, 0)}</span>
-                                    <small className="families-sub">({number(families, 0)} fam.)</small>
+                                    <small className="families-sub">
+                                      ({number(families, 0)} fam.)
+                                    </small>
                                   </>
                                 ) : (
                                   <span className="muted">Unknown</span>
@@ -207,6 +229,7 @@ function ProvincialExposureExplorer({
                               </td>
                             </tr>
                           )
+
                         })}
                       </tbody>
                     </table>
@@ -214,11 +237,13 @@ function ProvincialExposureExplorer({
                 )}
               </div>
             )
+
           })}
         </div>
       )}
     </div>
   )
+
 }
 
 export default memo(ProvincialExposureExplorer)

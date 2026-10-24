@@ -10,6 +10,7 @@ type Connection =
   | { state: 'error'; message: string }
 
 export default function App() {
+
   const [connection, setConnection] = useState<Connection>({ state: 'idle' })
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const request = useRef<AbortController | null>(null)
@@ -17,14 +18,18 @@ export default function App() {
   useEffect(() => () => request.current?.abort(), [])
 
   async function checkConnection() {
+
     request.current?.abort()
     const controller = new AbortController()
+
     request.current = controller
     const timeout = window.setTimeout(() => controller.abort(), 8000)
+
     setConnection({ state: 'loading' })
 
     try {
       const health = await getHealth(controller.signal)
+
       if (request.current === controller) setConnection({ state: 'connected', health })
     } catch (error) {
       if (request.current !== controller) return
@@ -37,6 +42,7 @@ export default function App() {
     } finally {
       window.clearTimeout(timeout)
     }
+
   }
 
   return (
@@ -56,7 +62,10 @@ export default function App() {
             {connection.state === 'idle' && <p>Python connection has not been checked yet.</p>}
             {connection.state === 'loading' && <p>Checking the local Python API...</p>}
             {connection.state === 'connected' && (
-              <p>Python API connected. {connection.health.service} API version {connection.health.version}.</p>
+              <p>
+                Python API connected. {connection.health.service} API version{' '}
+                {connection.health.version}.
+              </p>
             )}
             {connection.state === 'error' && <p>{connection.message}</p>}
           </div>
@@ -72,7 +81,9 @@ export default function App() {
             and manually curate the input sources. The map and municipality exposure table will
             follow that scientific specification.
           </p>
-          <p className="academic">Academic simulation only. This is not a PHIVOLCS hazard advisory.</p>
+          <p className="academic">
+            Academic simulation only. This is not a PHIVOLCS hazard advisory.
+          </p>
         </section>
 
         <footer>
@@ -90,4 +101,5 @@ export default function App() {
       </main>
     </div>
   )
+
 }

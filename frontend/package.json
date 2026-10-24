@@ -9,13 +9,15 @@
   "scripts": {
     "dev": "vite",
     "api:types": "uv run --project ../backend python ../scripts/export_openapi.py && openapi-typescript openapi.json -o src/api/schema.d.ts",
+    "format": "node scripts/format.mjs",
+    "format:check": "node scripts/format.mjs --check",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
-    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.1",
@@ -40,6 +42,7 @@
     "globals": "^16.0.0",
     "jsdom": "^27.0.0",
     "openapi-typescript": "^7.10.0",
+    "prettier": "3.6.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.71.1",
     "vite": "^8.3.3",

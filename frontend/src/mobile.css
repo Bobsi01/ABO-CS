@@ -1,101 +1,346 @@
 /* Content-sized panels replace the desktop viewport fit on tablets and phones. */
 @media (max-width: 1023px) {
-  .simulation-workbench, .workbench-spatial-stack,
-  .workbench-analytics-pane, .workbench-analytics-pane .dashboard {
+  .simulation-workbench,
+  .workbench-spatial-stack,
+  .workbench-analytics-pane,
+  .workbench-analytics-pane .dashboard {
     height: auto;
     min-height: 0;
     max-height: none;
   }
-  .workbench-spatial-stack > .spatial-view { flex: none; overflow: visible; }
+  .workbench-spatial-stack > .spatial-view {
+    flex: none;
+    overflow: visible;
+  }
   .workbench-spatial-stack > .spatial-view > .view-boundary,
-  .workbench-spatial-stack .scene-wrap, .workbench-spatial-stack .map-wrap { height: auto; }
-  .workbench-spatial-stack .spatial-card-sidebar { overflow: visible; padding-right: 0; }
-  .workbench-analytics-pane .dashboard-charts { flex: none; display: flex; flex-direction: column; }
-  .workbench-analytics-pane .dashboard-charts .chart-panel { flex: none; overflow: visible; }
-  .workbench-analytics-pane .line-chart-viewport { flex: none; display: block; }
-  .workbench-analytics-pane .accumulation-chart { height: 220px; min-height: 220px; max-height: none; }
-  .workbench-analytics-pane .ranking-chart { flex: none; max-height: 360px; }
-  .workbench-analytics-pane .distribution-body { flex: none; }
-  .workbench-analytics-pane .scenario-panel .chart-footnote { white-space: normal; }
+  .workbench-spatial-stack .scene-wrap,
+  .workbench-spatial-stack .map-wrap {
+    height: auto;
+  }
+  .workbench-spatial-stack .spatial-card-sidebar {
+    overflow: visible;
+    padding-right: 0;
+  }
+  .workbench-analytics-pane .dashboard-charts {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .workbench-analytics-pane .dashboard-charts .chart-panel {
+    flex: none;
+    overflow: visible;
+  }
+  .workbench-analytics-pane .line-chart-viewport {
+    flex: none;
+    display: block;
+  }
+  .workbench-analytics-pane .accumulation-chart {
+    height: 220px;
+    min-height: 220px;
+    max-height: none;
+  }
+  .workbench-analytics-pane .ranking-chart {
+    flex: none;
+    max-height: 360px;
+  }
+  .workbench-analytics-pane .distribution-body {
+    flex: none;
+  }
+  .workbench-analytics-pane .scenario-panel .chart-footnote {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 760px) {
-  main.laboratory { display: block; }
-  .workspace { padding: 0 0.75rem 1rem; }
-  .simulation-heading { gap: 0.75rem; padding-block: 0.75rem; }
-  .simulation-action-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 0.5rem; }
-  .application .header-scenario-select { width: 100%; grid-column: 1 / -1; }
-  .application .header-scenario-select select { min-height: 44px; font-size: 1rem; }
-  .simulation-action-group > button { width: 100%; white-space: normal; }
-  .application .simulation-action-group > button { gap: 0.35rem; padding-inline: 0.35rem; font-size: 0.8rem; }
-  .simulation-action-group .raw-data-action { grid-column: 1 / -1; }
-  .application .simulation-heading button { min-height: 44px; font-size: 0.85rem; }
-  .application .eruption-timeline.eruption-timeline-compact { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.6rem; width: 100%; }
-  .application .eruption-timeline.eruption-timeline-compact .phase-choices { flex: 1; justify-content: space-between; }
-  .application .eruption-timeline.eruption-timeline-compact .phase-choices button { min-height: 44px; padding: 0.35rem; font-size: 0.8rem; }
-  .application .eruption-timeline.eruption-timeline-compact .timeline-slider { flex-basis: 100%; width: 100%; gap: 0.75rem; }
-  .application .eruption-timeline.eruption-timeline-compact .timeline-slider input[type="range"] { flex: 1; width: auto; max-width: none; min-height: 32px; }
-  .workbench-spatial-stack .scene-stage, .workbench-spatial-stack .map-stage { height: 300px !important; }
-  .workbench-spatial-stack .spatial-card-sidebar { gap: 0.65rem; padding: 0.5rem 0.15rem; }
-  .workbench-spatial-stack .spatial-card-sidebar > h2 { font-size: 1rem; }
-  .workbench-spatial-stack .spatial-card-sidebar summary { min-height: 44px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
-  .workbench-spatial-stack .spatial-card-sidebar summary::before { content: '▸'; color: var(--action); }
-  .workbench-spatial-stack .spatial-card-sidebar details[open] > summary::before { content: '▾'; }
+  main.laboratory {
+    display: block;
+  }
+  .workspace {
+    padding: 0 0.75rem 1rem;
+  }
+  .simulation-heading {
+    gap: 0.75rem;
+    padding-block: 0.75rem;
+  }
+  .simulation-action-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .application .header-scenario-select {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+  .application .header-scenario-select select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+  .simulation-action-group > button {
+    width: 100%;
+    white-space: normal;
+  }
+  .application .simulation-action-group > button {
+    gap: 0.35rem;
+    padding-inline: 0.35rem;
+    font-size: 0.8rem;
+  }
+  .simulation-action-group .raw-data-action {
+    grid-column: 1 / -1;
+  }
+  .application .simulation-heading button {
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+  .application .eruption-timeline.eruption-timeline-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.6rem;
+    width: 100%;
+  }
+  .application .eruption-timeline.eruption-timeline-compact .phase-choices {
+    flex: 1;
+    justify-content: space-between;
+  }
+  .application .eruption-timeline.eruption-timeline-compact .phase-choices button {
+    min-height: 44px;
+    padding: 0.35rem;
+    font-size: 0.8rem;
+  }
+  .application .eruption-timeline.eruption-timeline-compact .timeline-slider {
+    flex-basis: 100%;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .application .eruption-timeline.eruption-timeline-compact .timeline-slider input[type='range'] {
+    flex: 1;
+    width: auto;
+    max-width: none;
+    min-height: 32px;
+  }
+  .workbench-spatial-stack .scene-stage,
+  .workbench-spatial-stack .map-stage {
+    height: 300px !important;
+  }
+  .workbench-spatial-stack .spatial-card-sidebar {
+    gap: 0.65rem;
+    padding: 0.5rem 0.15rem;
+  }
+  .workbench-spatial-stack .spatial-card-sidebar > h2 {
+    font-size: 1rem;
+  }
+  .workbench-spatial-stack .spatial-card-sidebar summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .workbench-spatial-stack .spatial-card-sidebar summary::before {
+    content: '▸';
+    color: var(--action);
+  }
+  .workbench-spatial-stack .spatial-card-sidebar details[open] > summary::before {
+    content: '▾';
+  }
   .workbench-spatial-stack .scene-toolbar .select-trigger,
   .workbench-spatial-stack .map-toolbar .select-trigger,
   .workbench-spatial-stack .spatial-card-sidebar button:not(.select-trigger),
   .workbench-spatial-stack .scene-view-controls > button.icon-button,
-  .workbench-spatial-stack .map-view-controls > button.icon-button { min-height: 44px; height: auto; font-size: 0.85rem; }
+  .workbench-spatial-stack .map-view-controls > button.icon-button {
+    min-height: 44px;
+    height: auto;
+    font-size: 0.85rem;
+  }
   .workbench-spatial-stack .scene-view-controls > button.icon-button,
-  .workbench-spatial-stack .map-view-controls > button.icon-button { flex-basis: 44px; width: 44px; min-width: 44px; }
-  .workbench-spatial-stack .select-control > label { font-size: 0.8rem; }
+  .workbench-spatial-stack .map-view-controls > button.icon-button {
+    flex-basis: 44px;
+    width: 44px;
+    min-width: 44px;
+  }
+  .workbench-spatial-stack .select-control > label {
+    font-size: 0.8rem;
+  }
   .workbench-spatial-stack .spatial-card-sidebar .spatial-sidebar-note,
   .workbench-spatial-stack .spatial-card-sidebar > p.view-note,
-  .workbench-spatial-stack .map-status { font-size: 0.8rem; line-height: 1.5; }
-  .workbench-spatial-stack .legend { font-size: 0.75rem; gap: 0.5rem; }
-  .workbench-spatial-stack .legend-title { font-size: 0.8rem; }
-  .workbench-spatial-stack .sidebar-exposure-tally { padding: 0.75rem; gap: 0.5rem; }
-  .sidebar-exposure-tally .impact-hud-title strong { font-size: 0.85rem; }
-  .sidebar-exposure-tally .impact-label, .sidebar-exposure-tally .impact-value { font-size: 0.8rem; }
-  .sidebar-exposure-tally .impact-disclaimer { font-size: 0.75rem; }
-  .spatial-details-panel { inset: auto 8px 8px !important; width: auto !important; max-height: min(80dvh, 640px); }
-  .spatial-details-content .checkbox-label { min-height: 44px; margin-bottom: 0.4rem; }
-  .application .select-portal [role="option"] { min-height: 44px; font-size: 0.9rem; }
-  .application input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-  .application select { font-size: 1rem; }
-  .workbench-analytics-pane .dashboard-charts .chart-panel { padding: 1rem; }
-  .workbench-analytics-pane .chart-panel h3 { font-size: 1rem; }
-  .workbench-analytics-pane .chart-panel header p, .workbench-analytics-pane .chart-footnote { font-size: 0.8rem; }
-  .workbench-analytics-pane .chart-reading { flex-wrap: wrap; gap: 0.5rem; margin-block: 0.75rem; }
-  .workbench-analytics-pane .chart-reading > div { flex-wrap: wrap; }
-  .workbench-analytics-pane .chart-reading > p { max-width: none; text-align: left; }
-  .workbench-analytics-pane .chart-reading strong { font-size: 2rem; }
-  .workbench-analytics-pane .accumulation-chart { min-width: 640px; }
-  .application .workbench-analytics-pane .ranking-row { min-height: 48px; font-size: 0.8rem; gap: 0.4rem; grid-template-columns: 18px minmax(0, 1fr) minmax(30px, 0.5fr) 45px; }
-  .workbench-analytics-pane .ranking-row strong { font-size: 0.8rem; }
-  .workbench-analytics-pane .distribution-body { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 1rem; }
-  .workbench-analytics-pane .distribution-legend { flex: none; width: 100%; min-width: 0; }
-  .workbench-analytics-pane .deposit-donut { align-self: center; width: 160px; height: 160px; }
-  .workbench-analytics-pane .distribution-legend li { font-size: 0.8rem; padding-block: 0.4rem; }
-  .workbench-analytics-pane .scenario-ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
-  .workbench-analytics-pane .scenario-ledger > div { font-size: 0.8rem; border-right: 0; }
-  .run-data-dialog { padding: 0.85rem; overflow: auto; }
-  .dialog-heading { gap: 0.5rem; }
-  .dialog-heading h2 { font-size: 1.25rem; }
-  .data-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .application .data-tabs button { min-height: 44px; white-space: normal; font-size: 0.8rem; padding-inline: 0.25rem; }
-  .application .view-tabs button { min-height: 44px; font-size: 0.8rem; }
-  .application .view-tabs .edit-baseline-button { grid-column: 1 / -1; min-height: 44px; }
-  .data-toolbar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
-  .application .data-toolbar label { min-width: 0; }
-  .application .data-toolbar label:first-child, .data-toolbar > button { grid-column: 1 / -1; }
-  .data-scroll { max-height: 40dvh; }
-  .comparison-wind-grid, .formulas-grid, .docs-hub-grid { grid-template-columns: minmax(0, 1fr); }
-  .scientific-methods-card { padding: 0.85rem; }
-  .citation-top-row { flex-wrap: wrap; }
-  .citation-entry-card { padding: 0.75rem; min-width: 0; overflow-wrap: anywhere; }
-  .formula-display { overflow-x: auto; }
-  .evidence-accordion > summary { flex-wrap: wrap; padding: 0.75rem; }
-  .evidence-accordion-title { min-width: 0; }
-  .scientific-kernel-badge { overflow-wrap: anywhere; }
+  .workbench-spatial-stack .map-status {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .workbench-spatial-stack .legend {
+    font-size: 0.75rem;
+    gap: 0.5rem;
+  }
+  .workbench-spatial-stack .legend-title {
+    font-size: 0.8rem;
+  }
+  .workbench-spatial-stack .sidebar-exposure-tally {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  .sidebar-exposure-tally .impact-hud-title strong {
+    font-size: 0.85rem;
+  }
+  .sidebar-exposure-tally .impact-label,
+  .sidebar-exposure-tally .impact-value {
+    font-size: 0.8rem;
+  }
+  .sidebar-exposure-tally .impact-disclaimer {
+    font-size: 0.75rem;
+  }
+  .spatial-details-panel {
+    inset: auto 8px 8px !important;
+    width: auto !important;
+    max-height: min(80dvh, 640px);
+  }
+  .spatial-details-content .checkbox-label {
+    min-height: 44px;
+    margin-bottom: 0.4rem;
+  }
+  .application .select-portal [role='option'] {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+  .application input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  .application select {
+    font-size: 1rem;
+  }
+  .workbench-analytics-pane .dashboard-charts .chart-panel {
+    padding: 1rem;
+  }
+  .workbench-analytics-pane .chart-panel h3 {
+    font-size: 1rem;
+  }
+  .workbench-analytics-pane .chart-panel header p,
+  .workbench-analytics-pane .chart-footnote {
+    font-size: 0.8rem;
+  }
+  .workbench-analytics-pane .chart-reading {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block: 0.75rem;
+  }
+  .workbench-analytics-pane .chart-reading > div {
+    flex-wrap: wrap;
+  }
+  .workbench-analytics-pane .chart-reading > p {
+    max-width: none;
+    text-align: left;
+  }
+  .workbench-analytics-pane .chart-reading strong {
+    font-size: 2rem;
+  }
+  .workbench-analytics-pane .accumulation-chart {
+    min-width: 640px;
+  }
+  .application .workbench-analytics-pane .ranking-row {
+    min-height: 48px;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+    grid-template-columns: 18px minmax(0, 1fr) minmax(30px, 0.5fr) 45px;
+  }
+  .workbench-analytics-pane .ranking-row strong {
+    font-size: 0.8rem;
+  }
+  .workbench-analytics-pane .distribution-body {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .workbench-analytics-pane .distribution-legend {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+  .workbench-analytics-pane .deposit-donut {
+    align-self: center;
+    width: 160px;
+    height: 160px;
+  }
+  .workbench-analytics-pane .distribution-legend li {
+    font-size: 0.8rem;
+    padding-block: 0.4rem;
+  }
+  .workbench-analytics-pane .scenario-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .workbench-analytics-pane .scenario-ledger > div {
+    font-size: 0.8rem;
+    border-right: 0;
+  }
+  .run-data-dialog {
+    padding: 0.85rem;
+    overflow: auto;
+  }
+  .dialog-heading {
+    gap: 0.5rem;
+  }
+  .dialog-heading h2 {
+    font-size: 1.25rem;
+  }
+  .data-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .application .data-tabs button {
+    min-height: 44px;
+    white-space: normal;
+    font-size: 0.8rem;
+    padding-inline: 0.25rem;
+  }
+  .application .view-tabs button {
+    min-height: 44px;
+    font-size: 0.8rem;
+  }
+  .application .view-tabs .edit-baseline-button {
+    grid-column: 1 / -1;
+    min-height: 44px;
+  }
+  .data-toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+  .application .data-toolbar label {
+    min-width: 0;
+  }
+  .application .data-toolbar label:first-child,
+  .data-toolbar > button {
+    grid-column: 1 / -1;
+  }
+  .data-scroll {
+    max-height: 40dvh;
+  }
+  .comparison-wind-grid,
+  .formulas-grid,
+  .docs-hub-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .scientific-methods-card {
+    padding: 0.85rem;
+  }
+  .citation-top-row {
+    flex-wrap: wrap;
+  }
+  .citation-entry-card {
+    padding: 0.75rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .formula-display {
+    overflow-x: auto;
+  }
+  .evidence-accordion > summary {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+  }
+  .evidence-accordion-title {
+    min-width: 0;
+  }
+  .scientific-kernel-badge {
+    overflow-wrap: anywhere;
+  }
 }

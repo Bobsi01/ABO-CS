@@ -53,6 +53,7 @@ async def validation_error_handler(request, exc):
 
 @app.get("/api/health", response_model=HealthResponse, operation_id="getHealth", tags=["health"])
 def health() -> HealthResponse:
+    # App status keeps connectivity separate from historical validation.
     return HealthResponse(
         status="ok",
         service="ABO",
@@ -66,6 +67,7 @@ compute_slot = BoundedSemaphore(1)
 
 
 def bounded_compute(function, *args):
+    # We allow one computation at a time to limit peak memory use.
     if not compute_slot.acquire(blocking=False):
         raise HTTPException(
             status_code=429, detail="A computation is running. Retry when it finishes."
@@ -82,6 +84,7 @@ def bounded_compute(function, *args):
 
 @app.get("/api/catalog", response_model=Catalog, operation_id="getCatalog", tags=["inputs"])
 def get_catalog():
+    # For loading curated local inputs and labeled teaching scenarios.
     try:
         return service.catalog()
     except service.CatalogUnavailableError as exc:

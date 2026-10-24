@@ -2,7 +2,13 @@ import { memo, useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import type { FeatureCollection } from 'geojson'
 import 'leaflet/dist/leaflet.css'
-import type { EruptionFrame, EruptionSequence, ReceptorResult, Scenario, SimulationResult } from '../api/simulator'
+import type {
+  EruptionFrame,
+  EruptionSequence,
+  ReceptorResult,
+  Scenario,
+  SimulationResult,
+} from '../api/simulator'
 import { depositColor, number } from '../presentation'
 import Legend from './Legend'
 import Select from './Select'
@@ -22,6 +28,7 @@ type Props = {
 }
 
 function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence, frame }: Props) {
+
   const element = useRef<HTMLDivElement>(null)
   const markers = useRef<Map<string, L.CircleMarker>>(new Map())
   const mapRef = useRef<L.Map | null>(null)
@@ -55,12 +62,15 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
   const rows = activeFrame?.receptors ?? result?.receptors
   const contours = activeFrame?.contours ?? result?.contours
   const [mapState, setMapState] = useState(
-    'Offline geographic context. Computed contours and receptors remain available.'
+    'Offline geographic context. Computed contours and receptors remain available.',
   )
 
   const select = useRef(onSelect)
+
   useEffect(() => {
+
     select.current = onSelect
+
   }, [onSelect])
 
   const [municipalBoundaries, setMunicipalBoundaries] = useState<FeatureCollection | null>(null)
@@ -68,6 +78,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
   const [historicalFootprint, setHistoricalFootprint] = useState<FeatureCollection | null>(null)
 
   useEffect(() => {
+
     if (!element.current) return
     const map = L.map(element.current, {
       center: [scenario.vent_lat, scenario.vent_lon],
@@ -75,6 +86,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       keyboard: true,
     })
     const stopVectorObserver = hideLeafletVectors(element.current)
+
     mapRef.current = map
     resultsLayer.current = L.layerGroup().addTo(map)
     referenceLayer.current = L.layerGroup().addTo(map)
@@ -82,6 +94,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
     const reference = referenceLayer.current
     const recorded = referenceZone(scenario.volcano_id)
+
     if (recorded?.radius_m) {
       L.circle([scenario.vent_lat, scenario.vent_lon], {
         radius: recorded.radius_m,
@@ -91,7 +104,7 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         fillOpacity: 0.04,
       })
         .bindTooltip(
-          `${recorded.radius_m / 1000} km PDZ reference · ${recorded.source.date} · not a current alert`
+          `${recorded.radius_m / 1000} km PDZ reference · ${recorded.source.date} · not a current alert`,
         )
         .addTo(reference)
     }
@@ -99,21 +112,25 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     if (!historicalVisible.current) map.removeLayer(historicalLayer.current)
 
     map.attributionControl.addAttribution(
-      'Land/lakes: Natural Earth; Boundaries: geoBoundaries/PSA; Taal Lake © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors · ODbL</a>'
+      'Land/lakes: Natural Earth; Boundaries: geoBoundaries/PSA; Taal Lake © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors · ODbL</a>',
     )
 
     const controller = new AbortController()
 
-    // 1. Load coastline / land-lake geography
+    // Local coastline and lake context.
     fetch('/geography-context.geojson', { signal: controller.signal, cache: 'no-store' })
-      .then(r => {
+      .then((r) => {
+
         if (!r.ok) throw new Error('Geographic context missing')
+
         return r.json() as Promise<FeatureCollection>
+
       })
-      .then(data => {
+      .then((data) => {
+
         L.geoJSON(data, {
           pane: 'tilePane',
-          style: feature => ({
+          style: (feature) => ({
             color: '#6b8599',
             weight: 1,
             fillColor: feature?.properties?.kind === 'lake' ? '#c4def1' : '#e7eddd',
@@ -124,68 +141,81 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
         if (scenario.volcano_id === 'taal') {
           fetch('/taal_pdz.geojson', { signal: controller.signal, cache: 'no-store' })
-            .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
-            .then(pdz => {
+            .then((r) => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
+            .then((pdz) => {
+
               if (pdz && referenceLayer.current) {
                 L.geoJSON(pdz, {
                   style: { color: '#5b527e', weight: 2, dashArray: '6 5', fillOpacity: 0.04 },
                 })
                   .bindTooltip(
-                    'Volcano Island shoreline context · PHIVOLCS PDZ reference, 15 Feb 2021 · contextual reference overlay, not a computed model result'
+                    'Volcano Island shoreline context · PHIVOLCS PDZ reference, 15 Feb 2021 · contextual reference overlay, not a computed model result',
                   )
                   .addTo(referenceLayer.current)
               }
+
             })
             .catch(() => {})
         }
+
       })
-      .catch(error => {
+      .catch((error) => {
+
         if (!controller.signal.aborted) {
           setMapState(
-            `Offline geography unavailable (${error.message}). Coordinates, contours and receptors still work.`
+            `Offline geography unavailable (${error.message}). Coordinates, contours and receptors still work.`,
           )
         }
+
       })
 
-    // 2. Load provincial boundaries
     fetch('/provincial-boundaries.geojson', { signal: controller.signal, cache: 'no-store' })
-      .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
-      .then(data => {
+      .then((r) => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
+      .then((data) => {
+
         if (data) setProvincialBoundaries(data)
+
       })
       .catch(() => {})
 
-    // 3. Load municipal boundaries
     fetch('/municipal-boundaries.geojson', { signal: controller.signal, cache: 'no-store' })
-      .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
-      .then(data => {
+      .then((r) => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
+      .then((data) => {
+
         if (data) setMunicipalBoundaries(data)
+
       })
       .catch(() => {})
 
-    // 4. Load 2020 historical footprint for Taal comparison
+    // Published Taal 2020 footprint for comparison.
     fetch('/taal_2020_footprint.geojson', { signal: controller.signal, cache: 'no-store' })
-      .then(r => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
-      .then(data => {
+      .then((r) => (r.ok ? (r.json() as Promise<FeatureCollection>) : null))
+      .then((data) => {
+
         if (data) setHistoricalFootprint(data)
+
       })
       .catch(() => {})
 
     const key = import.meta.env.VITE_MAPTILER_KEY
+
     if (key) {
       const tiles = L.tileLayer(
         `https://api.maptiler.com/maps/streets-v4/256/{z}/{x}/{y}.png?key=${encodeURIComponent(key)}`,
         {
           maxZoom: 18,
           attribution: '© <a href="https://www.maptiler.com/copyright/">MapTiler</a>',
-        }
+        },
       ).addTo(map)
+
       tiles.on('load', () => setMapState('MapTiler basemap; scientific data are local.'))
       tiles.on('tileerror', () => {
+
         map.removeLayer(tiles)
         setMapState(
-          'MapTiler unavailable. Using offline coastline; scientific results are unaffected.'
+          'MapTiler unavailable. Using offline coastline; scientific results are unaffected.',
         )
+
       })
     }
 
@@ -199,14 +229,18 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       title: `${scenario.volcano_id} model vent`,
     })
       .addTo(map)
-      .bindTooltip(`${scenario.volcano_id[0].toUpperCase()}${scenario.volcano_id.slice(1)} · model vent`)
+      .bindTooltip(
+        `${scenario.volcano_id[0].toUpperCase()}${scenario.volcano_id.slice(1)} · model vent`,
+      )
 
     L.control.scale({ imperial: false, maxWidth: 100 }).addTo(map)
     const resize = new ResizeObserver(() => map.invalidateSize())
+
     resize.observe(element.current)
     const createdMarkers = markers.current
 
     return () => {
+
       controller.abort()
       resize.disconnect()
       stopVectorObserver()
@@ -216,29 +250,38 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       referenceLayer.current = null
       historicalLayer.current = null
       createdMarkers.clear()
+
     }
+
   }, [scenario])
 
-  // Render results, boundaries, contours, and localities
   useEffect(() => {
+
     const map = mapRef.current
     const layer = resultsLayer.current
+
     if (!map || !layer) return
     layer.clearLayers()
     markers.current.clear()
 
     const receptorsMap = new Map<string, ReceptorResult>()
+
     if (rows) {
-      rows.forEach(r => {
+      rows.forEach((r) => {
+
         receptorsMap.set(r.id, r)
-        // Also map by clean base name
+        // Match records that omit the administrative suffix.
         const baseName = r.name.split(',')[0].trim().toLowerCase()
+
         if (!receptorsMap.has(baseName)) receptorsMap.set(baseName, r)
+
       })
     }
 
     const sampleGridThickness = (lat: number, lon: number): number | null => {
+
       const g = activeFrame?.grid ?? result?.grid
+
       if (!g || !g.east_m.length || !g.north_m.length) return null
       const dy = (lat - scenario.vent_lat) * 111132
       const dx = (lon - scenario.vent_lon) * 111132 * Math.cos((scenario.vent_lat * Math.PI) / 180)
@@ -247,51 +290,60 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       const cell = g.cell_m
       const i = Math.round((dx - e0) / cell)
       const j = Math.round((dy - n0) / cell)
+
       if (j >= 0 && j < g.thickness_mm.length && i >= 0 && i < g.thickness_mm[j].length) {
         return g.thickness_mm[j][i]
       }
+
       return null
+
     }
 
-    // 1. Municipal Boundaries Layer
     if (showMunicipalities && municipalBoundaries && rows) {
       L.geoJSON(municipalBoundaries, {
-        style: feat => {
+        style: (feat) => {
+
           const prop = feat?.properties ?? {}
           const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
           const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
           let thickness = rec?.thickness_mm
+
           if (thickness == null && prop.center_lat && prop.center_lon) {
             thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
           }
           const val = thickness ?? 0
           const hasAsh = val >= 0.01
+
           return {
             color: hasAsh ? '#334155' : '#94a3b8',
             weight: hasAsh ? 1.2 : 0.6,
             fillColor: hasAsh ? depositColor(val) : '#f8fafc',
             fillOpacity: val >= 0.5 ? 0.45 : val >= 0.01 ? 0.25 : 0.04,
           }
+
         },
         onEachFeature: (feat, polygon) => {
+
           const prop = feat.properties ?? {}
           const cleanName = String(prop.name).split(',')[0].trim().toLowerCase()
           const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(cleanName)
           let thickness = rec?.thickness_mm
+
           if (thickness == null && prop.center_lat && prop.center_lon) {
             thickness = sampleGridThickness(prop.center_lat, prop.center_lon)
           }
           const thicknessStr = thickness != null ? `${number(thickness)} mm ash` : 'Unmodeled'
           const provStr = prop.province ? ` (${prop.province})` : ''
+
           polygon.bindTooltip(`${prop.name}${provStr}: ${thicknessStr}`)
           if (rec) {
             polygon.on('click', () => select.current(rec.id))
           }
+
         },
       }).addTo(layer)
     }
 
-    // 2. Provincial Boundaries and Regional Labels
     if (showProvinces && provincialBoundaries) {
       L.geoJSON(provincialBoundaries, {
         style: {
@@ -303,11 +355,13 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
         interactive: false,
       }).addTo(layer)
 
-      // Add clean province labels at centroid
-      provincialBoundaries.features.forEach(feat => {
+      provincialBoundaries.features.forEach((feat) => {
+
         const prop = feat.properties ?? {}
+
         if (prop.center_lat && prop.center_lon && prop.province) {
           const labelHtml = `<span class="province-label-tag">${prop.province}</span>`
+
           L.marker([prop.center_lat, prop.center_lon], {
             icon: L.divIcon({
               className: 'province-map-label',
@@ -318,57 +372,68 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             interactive: false,
           }).addTo(layer)
         }
+
       })
     }
 
-    // 3. Ash Contours (trace 0.01-0.1 mm dashed, >=0.5 mm solid)
+    // Trace contours are dashed; deposits >=0.5 mm are solid.
     if (effect === 'ash' && contours) {
       const geojson = contours as unknown as FeatureCollection
-      // Casing line for >= 0.5 mm
+
+      // A dark casing keeps deposit contours visible on the basemap.
       L.geoJSON(geojson, {
-        filter: feat => Number(feat.properties?.thickness_mm) >= 0.5,
+        filter: (feat) => Number(feat.properties?.thickness_mm) >= 0.5,
         style: { color: '#3c4038', weight: 5, opacity: 0.95 },
         interactive: false,
       }).addTo(layer)
 
-      // Primary solid contours >= 0.5 mm
       L.geoJSON(geojson, {
-        filter: feat => Number(feat.properties?.thickness_mm) >= 0.5,
-        style: feat => ({
+        filter: (feat) => Number(feat.properties?.thickness_mm) >= 0.5,
+        style: (feat) => ({
           color: depositColor(Number(feat?.properties?.thickness_mm)),
           weight: 3,
           opacity: 1,
         }),
         onEachFeature: (feat, line) => {
-          line.bindTooltip(`${number(Number(feat.properties?.thickness_mm))} mm accumulated ash contour`)
+
+          line.bindTooltip(
+            `${number(Number(feat.properties?.thickness_mm))} mm accumulated ash contour`,
+          )
+
         },
       }).addTo(layer)
 
-      // Distal trace contours (0.01 mm and 0.1 mm) with amber/gold dashed styling
+      // Trace deposits: 0.01 and 0.1 mm.
       L.geoJSON(geojson, {
-        filter: feat => Number(feat.properties?.thickness_mm) < 0.5,
-        style: feat => ({
+        filter: (feat) => Number(feat.properties?.thickness_mm) < 0.5,
+        style: (feat) => ({
           color: Number(feat?.properties?.thickness_mm) >= 0.1 ? '#d97706' : '#eab308',
           weight: 2,
           dashArray: '5 4',
           opacity: 0.9,
         }),
         onEachFeature: (feat, line) => {
-          line.bindTooltip(`${number(Number(feat.properties?.thickness_mm))} mm distal trace ash contour`)
+
+          line.bindTooltip(
+            `${number(Number(feat.properties?.thickness_mm))} mm distal trace ash contour`,
+          )
+
         },
       }).addTo(layer)
     }
 
-    // 4. Illustrative Lava Routing
+    // Illustrative lava route.
     if (effect === 'lava' && eruptionSequence?.lava.enabled) {
       const lava = eruptionSequence.lava
       const elapsed = frame?.elapsed_s ?? 0
-      const path = lava.path.filter(p => p.arrival_s <= elapsed)
+      const path = lava.path.filter((p) => p.arrival_s <= elapsed)
       const next = lava.path[path.length]
       const previous = path[path.length - 1]
-      const coords = path.map(p => [p.lat, p.lon] as L.LatLngTuple)
+      const coords = path.map((p) => [p.lat, p.lon] as L.LatLngTuple)
+
       if (next && previous) {
         const fraction = (elapsed - previous.arrival_s) / (next.arrival_s - previous.arrival_s)
+
         coords.push([
           previous.lat + (next.lat - previous.lat) * fraction,
           previous.lon + (next.lon - previous.lon) * fraction,
@@ -398,13 +463,15 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       }
     }
 
-    // 5. Municipal Centroid Markers & Smart City Badges
     const labeledPositions = new Set<string>()
+
     if (rows) {
-      rows.forEach(r => {
+      rows.forEach((r) => {
+
         const isAffected = (r.thickness_mm ?? 0) >= 0.01
         const tooltip = document.createElement('span')
         const provText = r.province ? ` (${r.province})` : ''
+
         tooltip.textContent = `${r.name.split(',')[0]}${provText}: ${number(r.thickness_mm)} mm${r.in_domain ? '' : ' · Outside domain'}`
         if (effect === 'lava') {
           tooltip.textContent = `${r.name}: ${
@@ -423,8 +490,8 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
                 ? '#da6a26'
                 : '#ffffff'
               : r.thickness_mm == null
-              ? '#ffffff'
-              : depositColor(r.thickness_mm),
+                ? '#ffffff'
+                : depositColor(r.thickness_mm),
           fillOpacity: 1,
           weight: r.in_domain ? 1.5 : 1,
           dashArray: r.in_domain ? undefined : '2 2',
@@ -435,11 +502,17 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
 
         markers.current.set(r.id, marker)
 
-        // Show city label badge for prominent affected localities when enabled
-        if (showCityLabels && isAffected && effect === 'ash' && ((r.thickness_mm ?? 0) >= 1.0 || r.kind === 'airport')) {
+        if (
+          showCityLabels &&
+          isAffected &&
+          effect === 'ash' &&
+          ((r.thickness_mm ?? 0) >= 1.0 || r.kind === 'airport')
+        ) {
           const cityName = r.name.split(',')[0].replace('City of ', '').trim()
+
           labeledPositions.add(cityName.toLowerCase())
           const badgeHtml = `<span class="city-map-badge">${cityName} <strong>${number(r.thickness_mm)} mm</strong></span>`
+
           L.marker([r.lat, r.lon], {
             icon: L.divIcon({
               className: 'city-badge-container',
@@ -450,23 +523,29 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             interactive: false,
           }).addTo(layer)
         }
+
       })
     }
 
-    // Additional badges for major domain municipalities not covered in rows
+    // Label major municipalities missing from the result rows.
     if (showCityLabels && effect === 'ash' && municipalBoundaries) {
-      municipalBoundaries.features.forEach(feat => {
+      municipalBoundaries.features.forEach((feat) => {
+
         const prop = feat.properties ?? {}
+
         if (!prop.center_lat || !prop.center_lon) return
         const rawName = String(prop.name).split(',')[0].replace('City of ', '').trim()
         const normKey = rawName.toLowerCase()
+
         if (labeledPositions.has(normKey)) return
 
         const rec = receptorsMap.get(prop.receptor_id) || receptorsMap.get(normKey)
         const th = rec?.thickness_mm ?? sampleGridThickness(prop.center_lat, prop.center_lon)
+
         if (th != null && th >= 0.5) {
           labeledPositions.add(normKey)
           const badgeHtml = `<span class="city-map-badge">${rawName} <strong>${number(th)} mm</strong></span>`
+
           L.marker([prop.center_lat, prop.center_lon], {
             icon: L.divIcon({
               className: 'city-badge-container',
@@ -477,8 +556,10 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
             interactive: false,
           }).addTo(layer)
         }
+
       })
     }
+
   }, [
     scenario,
     rows,
@@ -495,11 +576,12 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
     provincialBoundaries,
   ])
 
-  // Historical Reference 2020 Footprint Toggle
   useEffect(() => {
+
     historicalVisible.current = showHistorical
     const layer = historicalLayer.current
     const map = mapRef.current
+
     if (!layer || !map) return
     layer.clearLayers()
 
@@ -513,49 +595,63 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
           fillOpacity: 0.08,
         },
         onEachFeature: (_, featureLayer) => {
+
           featureLayer.bindTooltip(
-            '12–13 Jan 2020 Taal 0.5 mm isopach (Balangue-Tarriela et al., 2022) · ~8,640 km² across Luzon'
+            '12–13 Jan 2020 Taal 0.5 mm isopach (Balangue-Tarriela et al., 2022) · ~8,640 km² across Luzon',
           )
+
         },
       }).addTo(layer)
       layer.addTo(map)
     } else {
       map.removeLayer(layer)
     }
+
   }, [showHistorical, scenario, historicalFootprint])
 
   useEffect(() => {
+
     referenceVisible.current = showReference
     if (referenceLayer.current && mapRef.current) {
       if (showReference) referenceLayer.current.addTo(mapRef.current)
       else mapRef.current.removeLayer(referenceLayer.current)
     }
+
   }, [showReference, scenario])
 
   useEffect(() => {
+
     markers.current.forEach((marker, id) => {
+
       marker.setRadius(selected === id ? 8 : 4)
       marker.setStyle({
         color: selected === id ? '#195cc2' : '#244d80',
         weight: selected === id ? 3 : 1.5,
       })
+
     })
     const marker = selected ? markers.current.get(selected) : null
+
     if (marker && mapRef.current && !mapRef.current.getBounds().contains(marker.getLatLng())) {
       mapRef.current.panTo(marker.getLatLng(), { animate: false })
     }
+
   }, [selected, result, frame, effect])
 
-  const chosen = rows?.find(r => r.id === selected)
+  const chosen = rows?.find((r) => r.id === selected)
 
   function fitDeposit() {
+
     if (!result || !mapRef.current) return
     const layer =
       effect === 'lava' && eruptionSequence?.lava.path.length
-        ? L.polyline(eruptionSequence.lava.path.map(p => [p.lat, p.lon]))
+        ? L.polyline(eruptionSequence.lava.path.map((p) => [p.lat, p.lon]))
         : L.geoJSON(contours as unknown as FeatureCollection)
     const bounds = layer.getBounds()
-    if (bounds.isValid()) mapRef.current.fitBounds(bounds, { padding: [24, 24], maxZoom: 12, animate: false })
+
+    if (bounds.isValid())
+      mapRef.current.fitBounds(bounds, { padding: [24, 24], maxZoom: 12, animate: false })
+
   }
 
   return (
@@ -564,210 +660,266 @@ function GeographicMap({ scenario, result, selected, onSelect, eruptionSequence,
       <div className="spatial-card-sidebar">
         <h2 id="map-title">Affected locations</h2>
         <div className="map-toolbar">
-        {eruptionSequence?.lava.enabled && (
-          <Select
-            label="Map effect"
-            value={effect}
-            onChange={value => setEffect(value as typeof effect)}
-            options={[
-              { value: 'ash', label: 'Accumulated ash' },
-              { value: 'lava', label: 'Lava channel · teaching model' },
-            ]}
-          />
-        )}
-        <div className="map-view-controls">
-          <button
-            type="button"
-            disabled={effect === 'ash' ? !contours?.features.length : !eruptionSequence?.lava.path.length}
-            onClick={fitDeposit}
-          >
-            <Icon name="map" />
-            {effect === 'ash' ? 'Deposit extent' : 'Channel extent'}
-          </button>
-          <button
-            className="icon-button"
-            type="button"
-            aria-label="Reset map to volcano region"
-            title="Reset map to volcano region"
-            onClick={() => mapRef.current?.setView([scenario.vent_lat, scenario.vent_lon], 9, { animate: false })}
-          >
-            <Icon name="reset" />
-          </button>
-        </div>
-      <SpatialDetails title="Layers" className="map-layer-menu">
-      <fieldset className="map-layers-fieldset" role="group" aria-label="Map visual layer toggles">
-        <legend>Map visual layers</legend>
-        <div className="map-layer-checkboxes">
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={showProvinces}
-              onChange={e => setShowProvinces(e.target.checked)}
+          {eruptionSequence?.lava.enabled && (
+            <Select
+              label="Map effect"
+              value={effect}
+              onChange={(value) => setEffect(value as typeof effect)}
+              options={[
+                { value: 'ash', label: 'Accumulated ash' },
+                { value: 'lava', label: 'Lava channel · teaching model' },
+              ]}
             />
-            <span>Provinces</span>
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={showMunicipalities}
-              onChange={e => setShowMunicipalities(e.target.checked)}
-            />
-            <span>Municipal areas</span>
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={showCityLabels}
-              onChange={e => setShowCityLabels(e.target.checked)}
-            />
-            <span>City labels</span>
-          </label>
-          {scenario.volcano_id === 'taal' && (
-            <label className="checkbox-label historical-checkbox-label">
-              <input
-                type="checkbox"
-                checked={showHistorical}
-                onChange={e => setShowHistorical(e.target.checked)}
-              />
-              <span>Jan 2020 Footprint</span>
-            </label>
           )}
-        </div>
-      </fieldset>
-      </SpatialDetails>
-      </div>
-
-      {import.meta.env.VITE_MAPTILER_KEY && (
-        <a className="maptiler-logo" href="https://www.maptiler.com/" aria-label="MapTiler attribution">
-          <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler" />
-        </a>
-      )}
-
-      {effect === 'ash' ? (
-        <Legend />
-      ) : (
-        <div className="legend">
-          <span className="legend-title">Illustrative lava routing</span>
-          <span>
-            <i style={{ background: '#da6a26' }} />
-            Channel / intersecting point
-          </span>
-          <small>Centerline enlarged; area uses prescribed width at this time. No validated runout or cooling prediction.</small>
-        </div>
-      )}
-
-      {frame && (
-        <p className="map-status spatial-sidebar-note">
-          Snapshot: {phaseLabel(frame.phase)} · {scenarioClock(frame.elapsed_s)} ·{' '}
-          {effect === 'lava'
-            ? `${
-                frame.receptors.filter(
-                  r => r.kind === 'municipality' && frame.lava_affected_receptor_ids.includes(r.id)
-                ).length
-              } municipal centroids intersect the illustrative channel`
-            : `${frame.receptors.filter(r => r.kind === 'municipality' && (r.thickness_mm ?? 0) >= 0.01).length} municipal centroids with ash ≥0.01 mm (${frame.receptors.filter(r => r.kind === 'municipality' && r.reported).length} with ≥0.5 mm)`}
-        </p>
-      )}
-
-      {result ? (
-        <SpatialDetails title="Inspect a location" className="location-inspector-disclosure" open={inspectOpen} onToggle={e => setInspectOpen(e.currentTarget.open)}><div className="location-inspector">
-          <Select
-            label="Inspect location"
-            value={selected ?? ''}
-            onChange={onSelect}
-            options={[
-              { value: '', label: 'Choose a map point or location', disabled: true },
-              ...[...(rows ?? [])]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(r => ({
-                  value: r.id,
-                  label: `${r.name}${r.in_domain ? '' : ' · outside domain'}`,
-                })),
-            ]}
-          />
-          {chosen && (
-            <div className="impact-detail" role="status">
-              <div className="impact-quantities">
-                <p>
-                  <strong>{number(chosen.thickness_mm)} mm</strong>
-                  <span>{frame ? 'Accumulated ash at selected time' : 'Eventual accumulated ash'}</span>
-                </p>
-                <p>
-                  <strong>{number(chosen.load_kg_m2)} kg/m²</strong>
-                  <span>Ground load</span>
-                </p>
+          <div className="map-view-controls">
+            <button
+              type="button"
+              disabled={
+                effect === 'ash' ? !contours?.features.length : !eruptionSequence?.lava.path.length
+              }
+              onClick={fitDeposit}
+            >
+              <Icon name="map" />
+              {effect === 'ash' ? 'Deposit extent' : 'Channel extent'}
+            </button>
+            <button
+              className="icon-button"
+              type="button"
+              aria-label="Reset map to volcano region"
+              title="Reset map to volcano region"
+              onClick={() =>
+                mapRef.current?.setView([scenario.vent_lat, scenario.vent_lon], 9, {
+                  animate: false,
+                })
+              }
+            >
+              <Icon name="reset" />
+            </button>
+          </div>
+          <SpatialDetails title="Layers" className="map-layer-menu">
+            <fieldset
+              className="map-layers-fieldset"
+              role="group"
+              aria-label="Map visual layer toggles"
+            >
+              <legend>Map visual layers</legend>
+              <div className="map-layer-checkboxes">
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={showProvinces}
+                    onChange={(e) => setShowProvinces(e.target.checked)}
+                  />
+                  <span>Provinces</span>
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={showMunicipalities}
+                    onChange={(e) => setShowMunicipalities(e.target.checked)}
+                  />
+                  <span>Municipal areas</span>
+                </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={showCityLabels}
+                    onChange={(e) => setShowCityLabels(e.target.checked)}
+                  />
+                  <span>City labels</span>
+                </label>
+                {scenario.volcano_id === 'taal' && (
+                  <label className="checkbox-label historical-checkbox-label">
+                    <input
+                      type="checkbox"
+                      checked={showHistorical}
+                      onChange={(e) => setShowHistorical(e.target.checked)}
+                    />
+                    <span>Jan 2020 Footprint</span>
+                  </label>
+                )}
               </div>
-              <p>
-                {chosen.in_domain
-                  ? (chosen.thickness_mm ?? 0) >= result.summary.reporting_cutoff_mm
-                    ? `At or above the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
-                    : (chosen.thickness_mm ?? 0) >= 0.01
-                    ? `Trace deposit (≥0.01 mm); below the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
-                    : `Negligible (<0.01 mm); below the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
-                  : 'Outside the computed domain. Exposure is unknown.'}
-              </p>
-              {effect === 'lava' && (
-                <p>
-                  {frame?.lava_affected_receptor_ids.includes(chosen.id)
-                    ? 'Point intersects the illustrative channel at this time. Direct inundation can bury or ignite surfaces; actual damage is not calculated.'
-                    : 'This point does not intersect the illustrative channel at this time. Other areas of its municipality may differ.'}
-                </p>
-              )}
-              <p className="view-note">
-                Population: {number(chosen.population, 0)} ({chosen.population_year ?? 'year unknown'}).
-                {chosen.province && ` Province: ${chosen.province}.`} A centroid sample does not describe every resident or building.
-              </p>
-            </div>
-          )}
-        </div></SpatialDetails>
-      ) : (
-        <p className="view-note">The geographic backdrop is ready. Run a scenario to compute contours and location exposure.</p>
-      )}
+            </fieldset>
+          </SpatialDetails>
+        </div>
 
-      <SpatialDetails title="Effects, reference zones & sources">
-        <p className="view-note">
-          Ash contours are wind-dependent, not circular hazard radii. Points sample accumulated ash at the selected snapshot.
-          Deposits can load roofs, cover crops and contaminate exposed water, but this model has no reviewed damage or potability criteria.
-          Airport points concern surface ash only.
-        </p>
-        {zone && (
-          <>
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={showReference}
-                onChange={event => setShowReference(event.target.checked)}
+        {import.meta.env.VITE_MAPTILER_KEY && (
+          <a
+            className="maptiler-logo"
+            href="https://www.maptiler.com/"
+            aria-label="MapTiler attribution"
+          >
+            <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler" />
+          </a>
+        )}
+
+        {effect === 'ash' ? (
+          <Legend />
+        ) : (
+          <div className="legend">
+            <span className="legend-title">Illustrative lava routing</span>
+            <span>
+              <i style={{ background: '#da6a26' }} />
+              Channel / intersecting point
+            </span>
+            <small>
+              Centerline enlarged; area uses prescribed width at this time. No validated runout or
+              cooling prediction.
+            </small>
+          </div>
+        )}
+
+        {frame && (
+          <p className="map-status spatial-sidebar-note">
+            Snapshot: {phaseLabel(frame.phase)} · {scenarioClock(frame.elapsed_s)} ·{' '}
+            {effect === 'lava'
+              ? `${
+                  frame.receptors.filter(
+                    (r) =>
+                      r.kind === 'municipality' && frame.lava_affected_receptor_ids.includes(r.id),
+                  ).length
+                } municipal centroids intersect the illustrative channel`
+              : `${frame.receptors.filter((r) => r.kind === 'municipality' && (r.thickness_mm ?? 0) >= 0.01).length} municipal centroids with ash ≥0.01 mm (${frame.receptors.filter((r) => r.kind === 'municipality' && r.reported).length} with ≥0.5 mm)`}
+          </p>
+        )}
+
+        {result ? (
+          <SpatialDetails
+            title="Inspect a location"
+            className="location-inspector-disclosure"
+            open={inspectOpen}
+            onToggle={(e) => setInspectOpen(e.currentTarget.open)}
+          >
+            <div className="location-inspector">
+              <Select
+                label="Inspect location"
+                value={selected ?? ''}
+                onChange={onSelect}
+                options={[
+                  { value: '', label: 'Choose a map point or location', disabled: true },
+                  ...[...(rows ?? [])]
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((r) => ({
+                      value: r.id,
+                      label: `${r.name}${r.in_domain ? '' : ' · outside domain'}`,
+                    })),
+                ]}
               />
-              Show dated PDZ reference{zone.radius_m ? ` (${zone.radius_m / 1000} km)` : ' (Volcano Island)'}
-            </label>
+              {chosen && (
+                <div className="impact-detail" role="status">
+                  <div className="impact-quantities">
+                    <p>
+                      <strong>{number(chosen.thickness_mm)} mm</strong>
+                      <span>
+                        {frame ? 'Accumulated ash at selected time' : 'Eventual accumulated ash'}
+                      </span>
+                    </p>
+                    <p>
+                      <strong>{number(chosen.load_kg_m2)} kg/m²</strong>
+                      <span>Ground load</span>
+                    </p>
+                  </div>
+                  <p>
+                    {chosen.in_domain
+                      ? (chosen.thickness_mm ?? 0) >= result.summary.reporting_cutoff_mm
+                        ? `At or above the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
+                        : (chosen.thickness_mm ?? 0) >= 0.01
+                          ? `Trace deposit (≥0.01 mm); below the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
+                          : `Negligible (<0.01 mm); below the ${result.summary.reporting_cutoff_mm} mm reporting cutoff.`
+                      : 'Outside the computed domain. Exposure is unknown.'}
+                  </p>
+                  {effect === 'lava' && (
+                    <p>
+                      {frame?.lava_affected_receptor_ids.includes(chosen.id)
+                        ? 'Point intersects the illustrative channel at this time. Direct inundation can bury or ignite surfaces; actual damage is not calculated.'
+                        : 'This point does not intersect the illustrative channel at this time. Other areas of its municipality may differ.'}
+                    </p>
+                  )}
+                  <p className="view-note">
+                    Population: {number(chosen.population, 0)} (
+                    {chosen.population_year ?? 'year unknown'}).
+                    {chosen.province && ` Province: ${chosen.province}.`} A centroid sample does not
+                    describe every resident or building.
+                  </p>
+                </div>
+              )}
+            </div>
+          </SpatialDetails>
+        ) : (
+          <p className="view-note">
+            The geographic backdrop is ready. Run a scenario to compute contours and location
+            exposure.
+          </p>
+        )}
+
+        <SpatialDetails title="Effects, reference zones & sources">
+          <p className="view-note">
+            Ash contours are wind-dependent, not circular hazard radii. Points sample accumulated
+            ash at the selected snapshot. Deposits can load roofs, cover crops and contaminate
+            exposed water, but this model has no reviewed damage or potability criteria. Airport
+            points concern surface ash only.
+          </p>
+          {zone && (
+            <>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={showReference}
+                  onChange={(event) => setShowReference(event.target.checked)}
+                />
+                Show dated PDZ reference
+                {zone.radius_m ? ` (${zone.radius_m / 1000} km)` : ' (Volcano Island)'}
+              </label>
+              <p className="view-note">
+                <span className="zone-line" />
+                Dashed outline:{' '}
+                <a href={zone.source.url} target="_blank" rel="noreferrer">
+                  {zone.source.publisher}, {zone.source.date}
+                </a>
+                . {zone.source.note} Reference center uses the catalog vent coordinate.
+              </p>
+            </>
+          )}
+          {showHistorical && scenario.volcano_id === 'taal' && (
             <p className="view-note">
-              <span className="zone-line" />
-              Dashed outline: <a href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.publisher}, {zone.source.date}</a>. {zone.source.note} Reference center uses the catalog vent coordinate.
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '16px',
+                  height: '2px',
+                  background: '#7c3aed',
+                  marginRight: '6px',
+                }}
+              />
+              Purple outline: Digitized 0.5 mm isopach from Balangue-Tarriela et al. (2022) Figure
+              4a covering ~8,640 km² across Luzon during the 12–13 Jan 2020 eruption.
             </p>
-          </>
-        )}
-        {showHistorical && scenario.volcano_id === 'taal' && (
-          <p className="view-note">
-            <span style={{ display: 'inline-block', width: '16px', height: '2px', background: '#7c3aed', marginRight: '6px' }} />
-            Purple outline: Digitized 0.5 mm isopach from Balangue-Tarriela et al. (2022) Figure 4a covering ~8,640 km² across Luzon during the 12–13 Jan 2020 eruption.
+          )}
+          {eruptionSequence?.lava.enabled && (
+            <p className="view-note">
+              {eruptionSequence.lava.model_label}. Route stops:{' '}
+              {eruptionSequence.lava.stop_reason.replaceAll('_', ' ')}.{' '}
+              <a
+                href="https://www.usgs.gov/programs/VHP/lava-flows-destroy-everything-their-path"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Lava effects and controls (USGS)
+              </a>
+            </p>
+          )}
+          <p className="map-status" role="status">
+            {mapState}
           </p>
-        )}
-        {eruptionSequence?.lava.enabled && (
           <p className="view-note">
-            {eruptionSequence.lava.model_label}. Route stops: {eruptionSequence.lava.stop_reason.replaceAll('_', ' ')}.{' '}
-            <a href="https://www.usgs.gov/programs/VHP/lava-flows-destroy-everything-their-path" target="_blank" rel="noreferrer">
-              Lava effects and controls (USGS)
-            </a>
+            Boundaries from geoBoundaries gbOpen ADM3 (2020) and PSA. Generalized land/lake geometry
+            is for orientation.
           </p>
-        )}
-        <p className="map-status" role="status">{mapState}</p>
-        <p className="view-note">
-          Boundaries from geoBoundaries gbOpen ADM3 (2020) and PSA. Generalized land/lake geometry is for orientation.
-        </p>
-      </SpatialDetails>
+        </SpatialDetails>
       </div>
     </div>
   )
+
 }
 
 export default memo(GeographicMap)

@@ -7,6 +7,9 @@ const SCOPE_NOTES: Record<string, string> = {
   kanlaon: 'Teaching illustration only. No historical reference event is curated for this volcano.',
 }
 
+// App note: each volcano keeps its own research or teaching label.
 export function scientificScopeNote(volcanoId: string): string | null {
+
   return SCOPE_NOTES[volcanoId] ?? null
+
 }

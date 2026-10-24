@@ -1,8 +1,121 @@
-const {chromium}=require('../../browser/playwright-runtime.cjs');
-const fs=require('node:fs'); const path=require('node:path'); const assert=require('node:assert/strict');
-const dest=__dirname;
-(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1920,height:1080}});const out={errors:[],viewports:[],scope:[]};p.on('pageerror',e=>out.errors.push(e.message));await p.goto('http://127.0.0.1:8000/'); await p.getByRole('img',{name:/Deposit distribution/}).waitFor({timeout:90000});
-for(const [width,height] of [[1920,1080],[1366,768],[701,900],[800,900],[1024,900],[1099,900],[320,800]]){await p.setViewportSize({width,height}); const d=await p.evaluate(()=>({width:innerWidth,height:innerHeight,sw:document.documentElement.scrollWidth,sh:document.documentElement.scrollHeight,canvases:document.querySelectorAll('canvas').length,bounds:[...document.querySelectorAll('.chart-panel,.chart-location')].map(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width}))}));assert.equal(d.sw,width); assert.equal(d.canvases,0);for(const r of d.bounds){assert(r.left>=0&&r.right<=width+1)}if(width>=1366)assert.equal(d.sh,height);out.viewports.push(d);if([1920,800,320].includes(width))await p.screenshot({path:path.join(dest,`dashboard-${width}.png`),fullPage:true});}
-await p.setViewportSize({width:1920,height:1080});await p.getByRole('button',{name:/Talisay, Batangas,/}).click();out.reading=await p.locator('.chart-reading').innerText();await p.getByRole('button',{name:'View raw data'}).click();for(const [tab,text]of [['Locations','Eventual totals'],['Event snapshots','Computed event snapshots'],['Locations','Eventual totals'],['Run details','Run provenance']]){await p.getByRole('button',{name:tab,exact:true}).click();const s=await p.locator('.dialog-heading').innerText();assert(s.includes(text));out.scope.push(s)}await p.getByRole('button',{name:'Locations',exact:true}).click();await p.getByLabel('Search location').fill('Laurel');assert.equal(await p.locator('.data-scroll tbody tr').count(),1);out.row=await p.locator('.data-scroll tbody').innerText();const download=p.waitForEvent('download');await p.getByRole('button',{name:'Export CSV',exact:true}).click();out.csv=fs.readFileSync(await(await download).path(),'utf8');assert(out.csv.includes('19.85037077245691'));await p.keyboard.press('Escape');out.focus=await p.evaluate(()=>document.activeElement.textContent);assert.equal(out.focus,'View raw data');await p.getByRole('button',{name:'Dark theme',exact:true}).click();await p.screenshot({path:path.join(dest,'dashboard-dark-1920.png')});
-await p.route('**/api/simulations',r=>r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({detail:'Release QA injected outage'})}));await p.locator('.dashboard-actions select').selectOption('mayon-teaching');await p.getByRole('alert').waitFor();assert.equal(await p.getByRole('img',{name:/Deposit distribution/}).count(),0);assert(await p.getByRole('button',{name:'View raw data'}).isDisabled());await p.unroute('**/api/simulations');await p.getByRole('button',{name:'Retry preset'}).click();await p.getByRole('img',{name:/Deposit distribution/}).waitFor({timeout:90000});out.recovery=await p.locator('.dashboard-context').innerText();assert(out.recovery.includes('34/320'));
-await p.route('**/api/simulations',async r=>{if(r.request().postDataJSON().scenario.volcano_id==='taal')await new Promise(resolve=>setTimeout(resolve,600));try{await r.continue()}catch{}});await p.locator('.dashboard-actions select').selectOption('taal-teaching');await p.locator('.dashboard-actions select').selectOption('mayon-teaching');await p.getByRole('img',{name:/Deposit distribution/}).waitFor();await p.waitForTimeout(900);assert.equal(await p.locator('.dashboard-actions select').inputValue(),'mayon-teaching');out.race=await p.locator('.dashboard-context').innerText();assert(out.race.includes('34/320'));assert.equal(out.errors.length,0);fs.writeFileSync(path.join(dest,'results.json'),JSON.stringify(out,null,2));await b.close();console.log('PASS fresh browser viewport/scope/CSV/failure/retry/race checks');})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require('../../browser/playwright-runtime.cjs')
+const fs = require('node:fs')
+const path = require('node:path')
+const assert = require('node:assert/strict')
+const dest = __dirname
+;
+(async () => {
+
+  const b = await chromium.launch()
+  const p = await b.newPage({ viewport: { width: 1920, height: 1080 } })
+  const out = { errors: [], viewports: [], scope: [] }
+
+  p.on('pageerror', (e) => out.errors.push(e.message))
+  await p.goto('http://127.0.0.1:8000/')
+  await p.getByRole('img', { name: /Deposit distribution/ }).waitFor({ timeout: 90000 })
+  for (const [width, height] of [
+    [1920, 1080],
+    [1366, 768],
+    [701, 900],
+    [800, 900],
+    [1024, 900],
+    [1099, 900],
+    [320, 800],
+  ]) {
+    await p.setViewportSize({ width, height })
+    const d = await p.evaluate(() => ({
+      width: innerWidth,
+      height: innerHeight,
+      sw: document.documentElement.scrollWidth,
+      sh: document.documentElement.scrollHeight,
+      canvases: document.querySelectorAll('canvas').length,
+      bounds: [...document.querySelectorAll('.chart-panel,.chart-location')].map((e) => ({
+        left: e.getBoundingClientRect().left,
+        right: e.getBoundingClientRect().right,
+        width: e.getBoundingClientRect().width,
+      })),
+    }))
+
+    assert.equal(d.sw, width)
+    assert.equal(d.canvases, 0)
+    for (const r of d.bounds) {
+      assert(r.left >= 0 && r.right <= width + 1)
+    }
+    if (width >= 1366) assert.equal(d.sh, height)
+    out.viewports.push(d)
+    if ([1920, 800, 320].includes(width))
+      await p.screenshot({ path: path.join(dest, `dashboard-${width}.png`), fullPage: true })
+  }
+  await p.setViewportSize({ width: 1920, height: 1080 })
+  await p.getByRole('button', { name: /Talisay, Batangas,/ }).click()
+  out.reading = await p.locator('.chart-reading').innerText()
+  await p.getByRole('button', { name: 'View raw data' }).click()
+  for (const [tab, text] of [
+    ['Locations', 'Eventual totals'],
+    ['Event snapshots', 'Computed event snapshots'],
+    ['Locations', 'Eventual totals'],
+    ['Run details', 'Run provenance'],
+  ]) {
+    await p.getByRole('button', { name: tab, exact: true }).click()
+    const s = await p.locator('.dialog-heading').innerText()
+
+    assert(s.includes(text))
+    out.scope.push(s)
+  }
+  await p.getByRole('button', { name: 'Locations', exact: true }).click()
+  await p.getByLabel('Search location').fill('Laurel')
+  assert.equal(await p.locator('.data-scroll tbody tr').count(), 1)
+  out.row = await p.locator('.data-scroll tbody').innerText()
+  const download = p.waitForEvent('download')
+
+  await p.getByRole('button', { name: 'Export CSV', exact: true }).click()
+  out.csv = fs.readFileSync(await (await download).path(), 'utf8')
+  assert(out.csv.includes('19.85037077245691'))
+  await p.keyboard.press('Escape')
+  out.focus = await p.evaluate(() => document.activeElement.textContent)
+  assert.equal(out.focus, 'View raw data')
+  await p.getByRole('button', { name: 'Dark theme', exact: true }).click()
+  await p.screenshot({ path: path.join(dest, 'dashboard-dark-1920.png') })
+  await p.route('**/api/simulations', (r) =>
+    r.fulfill({
+      status: 503,
+      contentType: 'application/json',
+      body: JSON.stringify({ detail: 'Release QA injected outage' }),
+    }),
+  )
+  await p.locator('.dashboard-actions select').selectOption('mayon-teaching')
+  await p.getByRole('alert').waitFor()
+  assert.equal(await p.getByRole('img', { name: /Deposit distribution/ }).count(), 0)
+  assert(await p.getByRole('button', { name: 'View raw data' }).isDisabled())
+  await p.unroute('**/api/simulations')
+  await p.getByRole('button', { name: 'Retry preset' }).click()
+  await p.getByRole('img', { name: /Deposit distribution/ }).waitFor({ timeout: 90000 })
+  out.recovery = await p.locator('.dashboard-context').innerText()
+  assert(out.recovery.includes('34/320'))
+  await p.route('**/api/simulations', async (r) => {
+
+    if (r.request().postDataJSON().scenario.volcano_id === 'taal')
+      await new Promise((resolve) => setTimeout(resolve, 600))
+    try {
+      await r.continue()
+    } catch {}
+
+  })
+  await p.locator('.dashboard-actions select').selectOption('taal-teaching')
+  await p.locator('.dashboard-actions select').selectOption('mayon-teaching')
+  await p.getByRole('img', { name: /Deposit distribution/ }).waitFor()
+  await p.waitForTimeout(900)
+  assert.equal(await p.locator('.dashboard-actions select').inputValue(), 'mayon-teaching')
+  out.race = await p.locator('.dashboard-context').innerText()
+  assert(out.race.includes('34/320'))
+  assert.equal(out.errors.length, 0)
+  fs.writeFileSync(path.join(dest, 'results.json'), JSON.stringify(out, null, 2))
+  await b.close()
+  console.log('PASS fresh browser viewport/scope/CSV/failure/retry/race checks')
+
+})().catch((e) => {
+
+  console.error(e)
+  process.exit(1)
+
+})
